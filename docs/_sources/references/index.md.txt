@@ -1,0 +1,10 @@
+# 参考文献
+
+ライセンス，参考文献, 引用
+
+```{toctree}
+:maxdepth: 2
+:numbered: 3
+
+01_references
+```
