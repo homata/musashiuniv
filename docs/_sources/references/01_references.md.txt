@@ -1,0 +1,17 @@
+ライセンス・リファレンス
+===
+
+* [ゼロからのPython入門講座](https://www.python.jp/train/index.html)
+* [Python Boot Camp(初心者向けPythonチュートリアル)](https://www.pycon.jp/support/bootcamp.html)
+* [Python Boot Camp テキスト](https://pycamp.pycon.jp/textbook/index.html)
+
+* [九州大学 数理・データサイエンス教育研究センター](https://mdsc.kyushu-u.ac.jp/lectures)
+
+* [Django Girls](https://tutorial.djangogirls.org/)
+
+
+* [武蔵大学：メディア分析法](https://drive.google.com/drive/folders/1qSUcir5uu30BBr2ST3Zye7xiypWNhnN9?usp=sharing)
+* [Introduction to Quantitative Data Analysis with Python](https://iiimethodsiv.github.io/intro2quandataanalysis/docs/intro.html)
+* [GitHub](https://github.com/iiimethodsiv/intro2quandataanalysis)
+
+* [東大が無料公開している超良質なPython/Data Science/Cloud教材まとめ (*随時更新)](https://digitaldigital.hatenablog.com/entry/2020/07/21/10404)
