@@ -1,0 +1,30 @@
+Python ゼロからはじめるプログラミング
+===
+
+**書籍**
+
+```{list-table}
+:header-rows: 1
+:widths: 20, 80
+
+* - 書影
+  - タイトル
+* - ![](./images/book.jpg)
+  - [Python ゼロからはじめるプログラミング (プログラミング学習シリーズ)](https://www.shoeisha.co.jp/book/detail/9784798169460)
+```
+
+**目次**
+
+```{toctree}
+:maxdepth: 1
+:numbered: 1
+
+00_index.md
+01_Pythonに触れる.md
+02_Pythonの基本.md
+03_条件分岐と繰り返し.md
+04_組み込み型とオブジェクト.md
+05_ユーザー定義関数.md
+06_クラスの基本.md
+07_発展と応用.md
+```

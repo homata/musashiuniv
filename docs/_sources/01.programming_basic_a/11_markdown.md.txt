@@ -1,0 +1,108 @@
+# Markdown記法
+
+### Markdown（マークダウン）記法とは？
+
+Markdown記法は、プレーンテキストで記述された文書を、構造化されたHTMLなどの形式に変換するための軽量マークアップ言語です。非常にシンプルで読みやすい記法でありながら、見出し、リスト、リンク、画像、コードブロックなど、一般的な文書に必要な要素を表現することができます。
+Markdown記法は、技術文書の作成、ブログ記事の執筆、メモ、チャットなど、さまざまな場面で活用されています。
+
+主な特徴は以下の通りです。
+* シンプルさ: 特殊なソフトウェアは不要で、テキストエディタで簡単に記述できます。
+* 可読性: プレーンテキストのままでも人間にとって読みやすいように設計されています。
+* 汎用性: Markdownで書かれたファイルは、様々なツールやプラットフォームでHTML、PDF、Wordなどの形式に変換できます。
+* 普及性: GitHub、Qiita、Slack、Jupyter Notebookなど、多くのWebサービスやアプリケーションで採用されています。
+
+
+例：Markdownの基本的な書き方
+
+  * **見出し:**
+    ```markdown
+    # 見出し1
+    ## 見出し2
+    ### 見出し3
+    ```
+  * **箇条書きリスト:**
+    ```markdown
+    - 項目1
+    - 項目2
+      - サブ項目
+    ```
+  * **番号付きリスト:**
+    ```markdown
+    1. 項目A
+    2. 項目B
+    ```
+  * **強調（イタリック体と太字）:**
+    ```markdown
+    *イタリック体* または _イタリック体_
+    **太字** または __太字__
+    ```
+  * **リンク:**
+    ```markdown
+    [Google](https://www.google.com/)
+    ```
+  * **コードブロック:**
+    ````markdown
+    ```python
+    print("Hello, world!")
+    ````
+  * **画像:**
+    ```markdown
+    ![altテキスト](画像URL)
+    ```
+  * **引用:**
+    ```markdown
+    > これは引用です
+    ```
+
+MarkdownはJohn Gruber氏によって考案されたもので比較的シンプルなアイデアに基づいています。その為、多くの派生形や拡張機能があります。
+
+
+----
+
+### Markdownの仕様
+Markdownの**公式仕様**は、長年の間「正式な標準」が存在せず、複数の方言（GitHub Flavored Markdownなど）が存在しています．
+
+---
+
+#### 標準的な仕様（CommonMark）
+
+* **名称**：CommonMark（コモンマーク）
+* **URL**：[https://commonmark.org/](https://commonmark.org/)
+* **特徴**：
+
+  * Markdownを標準化しようとするプロジェクト
+  * 明確な文法ルールとテストケースが定義されている
+  * 多くのエディタやサービスでベースとして採用されている
+  * 多くのMarkdownパーサー（MarkdownをHTMLなどに変換するプログラム）が準拠しています
+
+---
+
+#### GitHub Flavored Markdown（GFM）
+
+* **名称**：GitHub Flavored Markdown
+* **URL**：[https://github.github.com/gfm/](https://github.github.com/gfm/)
+* **特徴**：
+
+  * GitHubが独自に拡張したMarkdown仕様
+  * CommonMarkをベースに、表（table）やチェックリスト、コードブロックの言語指定などの機能が追加されている
+  * GitHubだけでなく、他の開発系ツールでも広く使われている
+
+#### Original Markdown
+
+* **名称**：Markdown: Syntax
+* **URL**：[https://daringfireball.net/projects/markdown/](https://daringfireball.net/projects/markdown/) |
+* **特徴**：
+    * John Gruber氏が定義した最初の仕様
+    * 公式サイト
+    * 今では古典的
+
+---
+
+### 何を使えばいい？
+
+* **一般的な仕様を知りたい場合:** 
+    - **CommonMark**の仕様書を参照するのが最も適切です。
+* **オリジナルのMarkdownについて知りたい場合:**
+    - John Gruber氏の**Markdown: Syntax**を参照します。
+* **特定のサービスやツールでのMarkdownの挙動を知りたい場合:** 
+    - そのサービスやツールの**公式ドキュメント**を参照します。

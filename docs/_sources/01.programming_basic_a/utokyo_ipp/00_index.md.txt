@@ -1,0 +1,79 @@
+# 学習サイト
+
+**Pythonプログラミング入門**<br>
+* [GitHub](https://github.com/homata/utokyo-ipp.github.io)
+* [PDF版](https://github.com/homata/utokyo-ipp.github.io/blob/master/docs/IPP_textbook.pdf)
+* [ダウンロード(Google Colabのみ)](https://raw.githubusercontent.com/homata/utokyo-ipp.github.io/refs/heads/master/docs/IPP_textbook.zip)
+  - [ダウンロード(ファイル一式)](files/download.zip)
+　　　　　　　
+----
+
+### トップ
+
+* [表紙](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/index.ipynb)
+
+----
+
+### 演習1
+
+### 1章
+* [1-0. Colaboratory (Colab) の使い方](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/1/1-0.ipynb)
+* [1-1. 数値演算](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/1/1-1.ipynb)
+* [1-2. 変数と関数の基礎](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/1/1-2.ipynb)
+* [1-3. 論理・比較演算と条件分岐の基礎](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/1/1-3.ipynb)
+* [1-4. テストとデバッグ](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/1/1-4.ipynb)
+
+### 2章
+* [2-1. 文字列 (string)](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/2/2-1.ipynb)
+* [2-2. リスト (list)](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/2/2-2.ipynb)
+* [2-3. 条件分岐](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/2/2-3.ipynb)
+
+----
+
+### 演習2
+
+### 3章
+* [3-1. 辞書 (dictionary)](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/3/3-1.ipynb)
+* [3-2. 繰り返し](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/3/3-2.ipynb)
+* [3-3. 関数](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/3/3-3.ipynb)
+
+### 4章
+* [4-1. ファイル入出力の基本](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/4/4-1.ipynb)
+* [4-2. イテラブルとイテレータ](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/4/4-2.ipynb)
+* [4-3. ディレクトリと木構造](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/4/4-3.ipynb)
+
+----
+
+### 演習3
+
+### 5章
+* [5-1. モジュールの使い方](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/5/5-1.ipynb)
+* [5-2. モジュールの作り方](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/5/5-2.ipynb)
+* [5-3. NumPyライブラリ](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/5/5-3.ipynb)
+  
+
+### 6章
+* [6-1. 内包表記](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/6/6-1.ipynb)
+* [6-2. 高階関数](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/6/6-2.ipynb)
+* [6-3. クラス](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/6/6-3.ipynb)
+
+### 演習4
+
+### 7章
+* [7-1. pandasライブラリ](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/7/7-1.ipynb)
+* [7-2. scikit-learnライブラリ](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/7/7-2.ipynb)
+
+----
+
+### Appendix
+* [Jupyter Notebook の使い方](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/appendix/1-jupyter-notebook.ipynb)
+* [セット (set)](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/appendix/2-set.ipynb)
+* [再帰](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/appendix/3-recursion.ipynb)
+* [簡単なデータの可視化](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/appendix/3-visualization.ipynb)
+* [CSVファイルの入出力](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/appendix/4-csv.ipynb)
+* [Bokehライブラリ](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/appendix/5-bokeh.ipynb)
+* [Pythonスクリプトとコマンドライン実行](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/appendix/5-command.ipynb)
+* [Matplotlibライブラリ](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/appendix/5-matplotlib.ipynb)
+* [正規表現](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/appendix/5-re.ipynb)
+
+----

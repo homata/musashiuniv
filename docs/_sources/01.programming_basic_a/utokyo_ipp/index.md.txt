@@ -1,0 +1,40 @@
+Pythonプログラミング入門
+===
+
+## オリジナルサイト
+
+**東京大学 数理・情報教育研究センターURL**<br>
+
+```{list-table}
+:header-rows: 1
+:widths: 20, 80
+
+* - URL
+  - タイトル
+* - ![](./images/book.png)
+  - [Pythonプログラミング入門 - 東京大学 数理・情報教育研究センター](https://utokyo-ipp.github.io)
+```
+
+* [Pythonプログラミング入門](https://utokyo-ipp.github.io/)
+* [数理・データサイエンス・AI教育強化拠点コンソーシアム - リテラシーレベルモデルカリキュラム対応教材](https://www.mi.u-tokyo.ac.jp/consortium/e-learning.html)
+
+
+**ライセンス**<br>
+
+<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br>
+<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ja">
+ 東京大学 数理・情報教育研究センター <br>
+Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International
+</a>
+
+---
+
+**演習**
+
+```{toctree}
+:maxdepth: 1
+:numbered: 1
+
+00_index.md
+```
+
