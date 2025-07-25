@@ -5,7 +5,8 @@
 * [PDF版](https://github.com/homata/utokyo-ipp.github.io/blob/master/docs/IPP_textbook.pdf)
 * [ダウンロード(Google Colabのみ)](https://raw.githubusercontent.com/homata/utokyo-ipp.github.io/refs/heads/master/docs/IPP_textbook.zip)
   - [ダウンロード(ファイル一式)](files/download.zip)
-　　　　　　　
+  - [ダウンロード(Jupyter版:オリジナルサイト)](https://utokyo-ipp.github.io/IPP_textbook.zip)
+
 ----
 
 ### トップ
