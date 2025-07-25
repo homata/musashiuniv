@@ -15,10 +15,6 @@
    99.references/index
 
 
-<!--
-02.programming_advanced_a/index
--->
-
 ライセンス
 ----------
 
