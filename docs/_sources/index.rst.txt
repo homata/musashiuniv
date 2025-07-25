@@ -3,28 +3,21 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-2025年度  集中授業 実施計画書
+目次
 =========================
 
-授業時間
-----
-* 1限　9:00-10:45  
-* 2限　10:55-12:40  
-* 3限　13:25-15:10  
-* 4限　15:20-17:05  
-* 5限　17:15-19:00  
-* 6限　19:10-20:55  
-
-目次
-----
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   programming_basic_a/index
-   programming_advanced_a/index
-   references/index
+   01.programming_basic_a/index
+   99.references/index
+
+
+<!--
+02.programming_advanced_a/index
+-->
 
 ライセンス
 ----------

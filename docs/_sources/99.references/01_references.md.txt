@@ -1,0 +1,101 @@
+ライセンス・リファレンス
+===
+
+### python
+* [Pyhon (公式)](https://www.python.org/)
+    - [ドキュメント](https://www.python.org/doc/)
+    - [マニュアル](https://docs.python.org/ja/3/)
+    - [Python 標準ライブラリ](https://docs.python.org/ja/3/library/index.html)
+    - [Python For Beginners](https://www.python.org/about/gettingstarted/)
+    - [ダウンロード](https://www.python.org/downloads/)
+    - [Python チュートリアル](https://docs.python.org/ja/3/tutorial/index.html)
+* [Python Japan (日本のコミュニティ)](https://www.python.jp/)
+    - [Python環境構築ガイド](https://www.python.jp/install/install.html)
+    - [ゼロからのPython入門講座](https://www.python.jp/train/index.html)
+
+### python.jp
+* [ゼロからのPython入門講座](https://www.python.jp/train/index.html)
+* [Python Boot Camp(初心者向けPythonチュートリアル)](https://www.pycon.jp/support/bootcamp.html)
+* [Python Boot Camp テキスト](https://pycamp.pycon.jp/textbook/index.html)
+
+### 東京大学 数理・情報教育研究センター
+- [Pythonプログラミング入門](https://utokyo-ipp.github.io/)
+    - [Pythonプログラミング入門(Google colab)](https://colab.research.google.com/github/utokyo-ipp/utokyo-ipp.github.io/blob/master/colab/index.ipynb)
+    - [Pythonプログラミング入門 (pdf版教科書)](https://utokyo-ipp.github.io/IPP_textbook.pdf)
+* [数理・データサイエンス・AI教育強化拠点コンソーシアム - リテラシーレベルモデルカリキュラム対応教材](https://www.mi.u-tokyo.ac.jp/consortium/e-learning.html)
+
+### other
+* [九州大学 数理・データサイエンス教育研究センター](https://mdsc.kyushu-u.ac.jp/lectures)
+* [Django Girls](https://tutorial.djangogirls.org/)
+* [とほほのクリエイティブ・コモンズ入門](https://www.tohoho-web.com/ex/creative-commons.html)
+
+### 書籍
+```{list-table}
+:header-rows: 1
+:widths: 20, 80
+
+* - URL
+  - タイトル
+* - ![](images/000.jpg)
+  - [Pythonによるプログラミング入門　東京大学教養学部テキスト: アルゴリズムと情報科学の基礎を学ぶ](https://www.utp.or.jp/book/b470446.html)
+* - ![](images/001.jpg)
+  - [データ分析のための数理モデル入門　本質をとらえた分析のために](https://www.socym.co.jp/book/1249)
+* - ![](images/002.jpg)
+  - [東京大学のデータサイエンティスト育成講座 ~Pythonで手を動かして学ぶデ―タ分析~](https://book.mynavi.jp/ec/products/detail/id=102631)
+* - ![](images/003.jpg)
+  - [Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック](https://book.impress.co.jp/books/1122101021)
+* - ![](images/004.jpg)
+  - [Python ゼロからはじめるプログラミング (プログラミング学習シリーズ)](https://www.shoeisha.co.jp/book/detail/9784798169460)
+* - ![](images/005.jpg)
+  - [独習Python 第2版](https://www.shoeisha.co.jp/book/detail/9784798189499)
+* - ![](images/006.jpg)
+  - [みんなのPython 第4版](https://www.sbcr.jp/product/4797389463/)
+* - ![](images/007.jpg)
+  - [Pythonエンジニア育成推進協会監修 Python実践レシピ](https://gihyo.jp/book/2022/978-4-297-12576-9)
+* - ![](images/008.jpg)
+  - [現場ですぐに使える！ 最新Pythonプログラミング逆引き大全450の極意](https://www.amazon.co.jp/dp/4798071552/)
+* - ![](images/009.jpg)
+  - [python ライブラリ厳選レシピ](https://gihyo.jp/book/2015/978-4-7741-7707-6)
+* - ![](images/010.jpg)
+  - [考え方から学ぶプログラミング講義　Pythonではじめる](https://www.utp.or.jp/book/b590055.html)
+```
+
+### Google Colaboratory
+
+* Google Colaboratory (https://colab.google/)
+    * ノートブックを開く (https://colab.research.google.com/)
+    * 新規ノートブックを作成 (https://colab.research.google.com/?authuser=0#create=true)
+
+### その他のツール
+
+* Visual Studio Code (VS Code)
+    - Visual Studio Code (VS Code) は、Microsoftが開発した無料で利用できるコードエディターです。
+    - 拡張機能が豊富で、カスタマイズ性が高く、開発現場で広く利用されています。
+    - 公式サイト: https://azure.microsoft.com/ja-jp/products/visual-studio-code
+* Jupyter Notebook
+    - Webブラウザ上でPythonなどのコードを実行できるインタラクティブな環境を提供するオープンソースのツールです。
+    - データ分析や機械学習の分野で広く利用され、コード、実行結果、メモなどをまとめて記述・管理できるのが特徴です。
+    - Google Colabは、Google Driveと連携した、Jupyter Notebookをベースにした開発環境です。名前の通りGoogleが提供しているクラウドサービスです．
+    - Jupyter Notebookはパソコン等に設定して実行する対話型実行環境です。
+    - JupyterLabは、Jupyter Notebookの後継となる統合開発環境です。従来のNotebookで行えたことはすべてJupyterLabでも可能であり、さらに多くの機能が拡張されています
+    - 公式サイト: https://jupyter.org/
+* Anaconda
+    - 初心者でも簡単にPythonの開発環境をインストーラーを実行するだけで構築可能です。
+    - データサイエンスや機械学習に関する作業をパソコンで行うための開発環境です。
+    - Python言語を用いたデータ分析やモデリング、可視化などのタスクを簡単に実行できるように設計されています。
+    - PythonとR言語の両方が実行可能です。
+    - 従業員数200名以上の営利企業では、Anacondaの利用は有料です
+    - 公式サイト: https://www.anaconda.com/
+* GitHub
+    - 公式サイト: https://github.com/
+    - ソフトウェア開発者がコードを共有・管理・共同開発するための開発者のためのプラットフォーム
+    - 運営会社：GitHub, Inc.（現在はMicrosoftの子会社）
+    - プログラムコードのバージョン管理
+    - 複数人での共同開発（コラボレーション）
+* PyCharm
+    - 公式サイト：https://www.jetbrains.com/pycharm/
+    - Pythonの統合開発環境（IDE）で、JetBrains社が開発・提供
+    - PyCharm 2025.1 から、PyCharm Community と Professional は統合された単一の製品で提供
+        - Community（無料: 基本的なPython開発に対応
+        - Professional（有料）: Web開発（Django, Flask）、データサイエンス、リモート開発などに対応（学生・教員は無料ライセンスあり）
+
