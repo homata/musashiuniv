@@ -1,5 +1,13 @@
-Pythonプログラミング入門
-===
+# Pythonプログラミング入門
+
+## 演習
+
+```{toctree}
+:maxdepth: 1
+:numbered: 1
+
+00_index.md
+```
 
 ## オリジナルサイト
 
@@ -27,14 +35,5 @@ Pythonプログラミング入門
 Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International
 </a>
 
----
 
-## 演習
-
-```{toctree}
-:maxdepth: 1
-:numbered: 1
-
-00_index.md
-```
 
