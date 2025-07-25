@@ -13,8 +13,7 @@
     - [Python環境構築ガイド](https://www.python.jp/install/install.html)
     - [ゼロからのPython入門講座](https://www.python.jp/train/index.html)
 
-### python.jp
-* [ゼロからのPython入門講座](https://www.python.jp/train/index.html)
+### Python Boot Camp
 * [Python Boot Camp(初心者向けPythonチュートリアル)](https://www.pycon.jp/support/bootcamp.html)
 * [Python Boot Camp テキスト](https://pycamp.pycon.jp/textbook/index.html)
 
