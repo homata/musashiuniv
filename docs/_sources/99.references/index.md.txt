@@ -1,7 +1,13 @@
-# 参考文献
+# ライセンス、参考文献
 
-## ライセンス，参考文献, 引用
+## ライセンス、引用
 
+### ライセンス
+* [Python Boot Camp テキスト](https://pycamp.pycon.jp/textbook/index.html)
+* [Pythonプログラミング入門](https://utokyo-ipp.github.io/)
+* [九州大学 数理・データサイエンス教育研究センター](https://mdsc.kyushu-u.ac.jp/lectures)
+
+## 参考文献
 
 ### python
 * [Pyhon (公式)](https://www.python.org/)
@@ -60,6 +66,8 @@
   - [python ライブラリ厳選レシピ](https://gihyo.jp/book/2015/978-4-7741-7707-6)
 * - ![](images/010.jpg)
   - [考え方から学ぶプログラミング講義　Pythonではじめる](https://www.utp.or.jp/book/b590055.html)
+* - ![](./images/011.jpg)
+  - [Python ゼロからはじめるプログラミング (プログラミング学習シリーズ)](https://www.shoeisha.co.jp/book/detail/9784798169460)
 ```
 
 ### Google Colaboratory
