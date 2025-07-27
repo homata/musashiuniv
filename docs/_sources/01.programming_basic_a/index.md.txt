@@ -17,7 +17,9 @@
 21_module.md
 
 utokyo_ipp/index.md
-programming_zero/index.md
 
 99_install.md
 ```
+<!--
+programming_zero/index.md
+-->

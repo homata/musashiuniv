@@ -1,6 +1,6 @@
 # Pythonプログラミング入門
 
-## 演習
+<br>
 
 ```{toctree}
 :maxdepth: 1
@@ -8,6 +8,17 @@
 
 00_index.md
 ```
+
+<br>
+
+---
+
+## 関連URL
+* [Google Colabファイル (ダウンロード)](https://utokyo-ipp.github.io/IPP_textbook.zip)
+* [演習帳 - PDF版](https://github.com/homata/utokyo-ipp.github.io/blob/master/docs/IPP_textbook.pdf)
+* [ソースコード - GitHub](https://github.com/homata/utokyo-ipp.github.io)
+
+---
 
 ## オリジナルサイト
 
