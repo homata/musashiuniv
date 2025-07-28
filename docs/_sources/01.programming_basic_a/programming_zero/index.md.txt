@@ -1,5 +1,4 @@
-Python ゼロからはじめるプログラミング
-===
+# (補足資料) Python ゼロからはじめるプログラミング
 
 **書籍**
 
@@ -16,8 +15,8 @@ Python ゼロからはじめるプログラミング
 **目次**
 
 ```{toctree}
-:maxdepth: 1
-:numbered: 1
+:maxdepth: 3
+:numbered: 2
 
 00_index.md
 01_Pythonに触れる.md
