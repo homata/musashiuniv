@@ -12,6 +12,9 @@
   - [Python ゼロからはじめるプログラミング (プログラミング学習シリーズ)](https://www.shoeisha.co.jp/book/detail/9784798169460)
 ```
 
+* [Python学習用教材(スライド)](https://mitani.cs.tsukuba.ac.jp/book_support/python/)
+* [サンプルファイル（722KB）](https://www.shoeisha.co.jp/book/download/3716/read)
+
 **目次**
 
 ```{toctree}
