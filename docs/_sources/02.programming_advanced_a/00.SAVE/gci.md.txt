@@ -1,0 +1,164 @@
+# 【GCI 参考文献】
+
+### Web
+
+| サイト概要 | URL |
+| --- | --- |
+| Python公式サイト | [https://www.python.org](https://www.python.org/) |
+| Dive Into Python 3 日本語版 | [Dive Into Python3 日本語版ブログ (diveintopython3tojp.blogspot.com)](https://diveintopython3tojp.blogspot.com/) |
+| Automate the Boring Stuff with Python（『『退屈なことはPythonにやらせよう 』の英語版 | https://automatetheboringstuff.com/ |
+| Jupyter Notebook を使ってみよう | https://pythondatascience.plavox.info/python%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83/jupyter-notebook%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86 |
+| Jupyter Notebook公式サイトで説明されているMarkdownの使い方 | https://jupyter-notebook.readthedocs.io/en/latest/examples/Notebook/Working%20With%20Markdown%20Cells.html |
+| PEP: 8（Python コードのスタイルガイド） | https://pep8-ja.readthedocs.io/ja/latest/ |
+| Matplotlib | [http://matplotlib.org/ http://seaborn.pydata.org/](http://matplotlib.org/) |
+| 統計学の時間 | https://bellcurve.jp/statistics/course/#step1 |
+| Numpy | https://www.numpy.org/devdocs/user/quickstart.html |
+| Scipy | [https://www.scipy.org](https://www.scipy.org/) |
+| Statistical Learning with Sparsity The Lasso and Generalizations | https://www.ime.unicamp.br/~dias/SLS.pdf |
+| Scipy Lecture Notes | http://www.turbare.net/transl/scipy-lecture-notes/index.html |
+| 異常検知技術のビジネス応用最前線 | https://www.slideshare.net/shoheihido/fit2012 |
+| scikit-learn | http://scikit-learn.org/stable/index.html |
+| [plot_hierarchical_clustering_ dendrogram.py](http://dendrogram.py/) | https://scikit-learn.org/stable/auto_examples/cluster/plot_agglomerative_dendrogram.html |
+| [Python Data Science Handbook](http://dendrogram.py/) | https://github.com/jakevdp/PythonDataScienceHandbook |
+| 主成分分析の考え方 | https://logics-of-blue.com/principal-components-analysis/ |
+| plot_partial_dependence関数について | http://scikit-learn.org/stable/modules/ensemble.html |
+| 『深層学習』の原著サイト | http://www.deeplearningbook.org/ |
+| Blaze | http://blaze.pydata.org/ |
+| 量的金融に関するリソースをまとめたGitHub | https://github.com/wilsonfreitas/awesome-quant |
+| アワビの年齢予測（英語） | [https://www.slideshare.net/hyperak/predicting-the-age-of-abalone](http://www.slideshare.net/hyperak/predicting-the-age-of-abalone) |
+| データサイエンス | http://data-science.tokyo/ |
+| 「高校生のための統計学習教材」 | https://www.stat.go.jp/teacher/comp-learn-03.html |
+
+### Book
+
+分類	書籍名
+#### データ分析関連の書籍	
+* 『最強のデータ分析組織 なぜ大阪ガスは成功したのか』(日経BP社 刊、ISBN:978-4822258917)
+*	『機械脳の時代―――データサイエンスは戦略・組織・仕事をどう変えるのか?』(ダイヤモンド社 刊、ISBN:978-4478039373)
+*	『アクセンチュアのプロフェッショナルが教えるデータ・アナリティクス実践講座』(翔泳社 刊、ISBN:978-4798143446)
+*	『会社を変える分析の力(講談社現代新書) 』(講談社 刊、ISBN:978-4062882187)
+*	『最強のビッグデータ戦略』（ビル・フランクス(著), 長尾高弘 (翻訳)、日経BP社 刊、ISBN:978-4822285012）
+*	『データサイエンティストの秘密ノート35の失敗事例と克服法』（高橋 威知郎 (著), 白石 卓也 (著), 清水 景絵 (著)、SBクリエイティブ 観、ISBN:978-4797389623）
+
+#### データ分析プロジェクトが学べる書籍
+*	『真実を見抜く分析力 ビジネスエリートは知っているデータ活用の基礎知識』(日経BP社 刊、ISBN:978-4822250058)
+*	『データ分析プロジェクトの手引: データの前処理から予測モデルの運用までを俯瞰する20章』(共立出版 刊、ISBN:978-4320124035)
+
+#### データを実務で運用していくときに役立つ書籍
+*	『仕事ではじめる機械学習』(オライリージャパン 刊、ISBN:978-4873118253)
+
+#### Pythonの学習に役立つ書籍
+*	『Pythonチュートリアル』(オライリージャパン 刊、ISBN:978-4873117539)
+*	『はじめてのPython』(オライリー・ジャパン 刊、ISBN:978-4873113937)
+*	『入門 Python3』(オライリー・ジャパン 刊、ISBN:978-4873117386)
+
+#### 統計学の理解に役立つ書籍
+*	『統計学入門(基礎統計学Ⅰ)』(東京大学出版 刊、ISBN:978-4130420655)
+*	『統計学』(東京大学出版 刊、ISBN:978-4130629218)
+*	『統計学』(森棟 公夫 (著), 照井 伸彦 (著), 中川 満 (著), 西埜 晴久 (著), 黒住 英司 (著)、有斐閣 刊、ISBN:978-4641053809)
+
+#### 数学の理解に役立つ書籍
+*	『線形代数学（新装版）』(日本評論社 刊、ISBN:978-4535786547)
+*	『入門線形代数』(培風館 刊、ISBN:978-4563002169)
+*	『明解演習 線形代数 (明解演習シリーズ) 』(共立出版 刊、ISBN:978-4320010789)
+*	『明解演習 微分積分 (明解演習シリーズ) 』(共立出版 刊、ISBN:978-4320013322)
+*	『キーポイント多変数の微分積分(理工系数学のキーポイント (7)) 』(岩波書店 刊、ISBN:978-4000078672)
+*	『やさしく学べる微分方程式』(共立出版 刊、ISBN:978-4320017504)
+
+#### 数学の理解に役立つ書籍（応用編）
+*	『技術者のための基礎解析学機械学習に必要な数学を本気で学ぶ』(翔泳社 刊、ISBN:978-4798155357)
+*	『技術者のための線形代数学大学の基礎数学を本気で学ぶ』(翔泳社 刊、ISBN:978-4798155364)
+*	『技術者のための確率統計学大学の基礎数学を本気で学ぶ』(翔泳社 刊、ISBN:978-4798157863)
+
+#### Pythonを使った自動化の書籍
+*	『退屈なことはPythonにやらせよう ―ノンプログラマーにもできる自動化処理プログラミング』(オライリージャパン 刊、ISBN:978-4873117782)
+
+#### 数学的確率の理解に役立つ書籍
+*	『測度・確率・ルベーグ積分応用への最短コース』（講談社刊、ISBN:978-4061565715）
+*	『測度と積分―入門から確率論へ』（培風館刊、ISBN:978-4563003807）
+*	『確率論 (新しい解析学の流れ)』（共立出版刊、ISBN:978-4320017313）
+
+#### Pythonを使ったデータ分析の書籍
+*	『科学技術計算のためのPython入門 ―開発基礎、必須ライブラリ、高速化』（技術評論社刊、ISBN:978-4774183886）
+*	『Python言語によるビジネスアナリティクス実務家のための最適化・統計解析・機械学習』（近代科学社刊、ISBN:978-4764905160）
+*	『Pythonによるデータ分析入門 ―NumPy、pandasを使ったデータ処理』（オライリージャパン刊、ISBN:978-4873118451）
+*	『エレガントなSciPy――Pythonによる科学技術計算』（オライリージャパン刊、ISBN:978-4-87311-860-4）
+
+#### 行列の分解に関する書籍
+*	『岩波データサイエンス Vol.5、特集「スパースモデリングと多変量データ解析」』（岩波書店刊、ISBN:978-4000298551）
+
+#### 欠損データの理解に役立つ書籍
+*	『欠損データの統計科学』（岩波書店刊、ISBN:978-4000298476）
+
+#### 異常検知に関する書籍
+*	『データ分析プロセス(シリーズ Useful R 2)』の第3章（共立出版 刊、ISBN:978-4320123656）
+*	『入門 機械学習による異常検知―Rによる実践ガイド』（コロナ社 刊、ISBN:978-4339024913）
+*	『異常検知と変化検知』（講談社刊、ISBN:978-4061529083）
+
+#### 極値統計学について学べる書籍
+*	『極値統計学 (ISMシリーズ:進化する統計数理)』（近代科学社 刊、ISBN:978-4764905153）
+
+#### データの取り扱いについての書籍
+*	『バッドデータハンドブック』（オライリージャパン刊、ISBN:978-4873116402）
+
+#### データのビジュアライゼーションについての書籍
+*	『PythonとJavaScriptではじめるデータビジュアライゼーション』（オライリージャパン刊、ISBN:978-4873118086）
+
+#### 資料作成に役立つ書籍
+*	『PythonユーザのためのJupyter[実践]入門』（技術評論社 刊、ISBN:978-4774192239）
+*	『入門 考える技術・書く技術―日本人のロジカルシンキング実践法』（ダイヤモンド社刊、ISBN:978-4478014585）
+*	『外資系コンサルのスライド作成術―図解表現23のテクニック』（東洋経済新報社 刊、ISBN:978-4492557204）
+
+#### Pythonでの機械学習に役立つ書籍
+*	『Google流資料作成術』（日本実業出版社刊、ISBN:978-4534054722）
+*	『Pythonによる機械学習入門』（オーム社 刊、ISBN:978-4274219634）
+*	『Pythonではじめる機械学習 ―scikit-learnで学ぶ特徴量エンジニアリングと機械学習の基礎』（オライリージャパン刊、ISBN:978-4873117980）
+
+#### ビジネス視点で機械学習を活かすのに役立つ書籍
+*	『戦略的データサイエンス入門―ビジネスに活かすコンセプトとテクニック』（オライリージャパン刊、ISBN:978-4873116853）
+*	『失敗しない データ分析・AIのビジネス導入: プロジェクト進行から組織づくりまで』（森北出版刊、ISBN:978-4627854116）
+
+#### データマイニングが学べる書籍
+*	『データマイニング手法予測・スコアリング編―営業、マーケティング、CRMのための顧客分析』（海文堂出版刊、ISBN:978-4303734275）
+* 『データマイニング手法探索的知識発見編―営業、マーケティング、CRMのための顧客分析』（海文堂出版刊、ISBN:978-4303734282）
+*	『Data Mining Techniques: For Marketing, Sales, and Customer Relationship Management 』（Wiley 刊、ISBN:978-0470650936）
+
+#### 強化学習を学べる書籍
+*	『強化学習』（森北出版刊、ISBN:978-4627826618）
+
+#### 特徴量エンジニアリングを学べる書籍
+*	『Pythonではじめる機械学習 ―scikit-learnで学ぶ特徴量エンジニアリングと機械学習の基礎』（オライリージャパン刊、ISBN:978-4873117980）
+*	『データサイエンス講義』（オライリージャパン刊、ISBN:978-4873117010）
+*	『実践機械学習システム』（オライリージャパン刊、ISBN:978-4873116983）
+*	『Python 機械学習プログラミング達人データサイエンティストによる理論と実践』（インプレス刊、ISBN:978-4295003373）
+
+#### モデル構築について扱っている書籍ROC曲線やAUCを学べる書籍
+*	『データマイニング手法予測・スコアリング編―営業、マーケティング、CRMのための顧客分析』（海文堂出版刊、ISBN:978-4303734275）
+*	『データマイニング手法探索的知識発見編―営業、マーケティング、CRMのための顧客分析』（海文堂出版刊、ISBN:978-4303734282）
+*	『戦略的データサイエンス入門―ビジネスに活かすコンセプトとテクニック』（Foster Provost (著), Tom Fawcett (著), 竹田 正和(監訳) (翻訳), 古畠 敦 (翻訳)、オライリージャパン）
+
+#### さらに機械学習を理解したい方向けの書籍
+*	『はじめてのパターン認識』（森北出版刊、ISBN:978-4627849716）
+*	『Python機械学習プログラミング』（インプレス刊、ISBN:978-4295003373）
+*	『scikit-learn、Keras、TensorFlowによる実践機械学習 第2版』（オライリージャパン刊、ISBN:978-4-87311-928-1）
+*	『科学技術計算のためのPython―確率・統計・機械学習』（エヌ・ティー・エス刊、ISBN:978-4860434717）
+*	『データ分析プロジェクトの手引: データの前処理から予測モデルの運用までを俯瞰する20章』（共立出版 刊、ISBN:978-4320124035）
+*	『Machine Learning実践の極意 機械学習システム構築の勘所をつかむ!』（インプレス 刊、ISBN:978-4295002659）
+*	『Fundamentals of Machine Learning for Predictive Data Analytics: Algorithms, Worked Examples, and Case Studies (MIT Press) 』（The MIT Press 刊、ISBN:978-0262029445 ）
+
+#### 数学的な手法についての書籍
+*	『Pythonデータサイエンスハンドブック ―Jupyter、NumPy、pandas、Matplotlib、scikit-learnを使ったデータ分析、機械学習』(オライリージャパン 刊、ISBN:978-4873118413)
+*	『IPythonデータサイエンスクックブック ―対話型コンピューティングと可視化のためのレシピ集』(オライリージャパン 刊、ISBN:978-4873117485)
+*	『統計的学習の基礎 ―データマイニング・推論・予測』(共立出版 刊、ISBN:978-4320123625)
+*	『パターン認識と機械学習上下』(丸善出版 刊、ISBN:978-4621061220)
+*	『Pythonで体験するベイズ推論 PyMCによるMCMC入門』(森北出版 刊、ISBN:978-4627077911)
+*	『Pythonによるベイズ統計モデリング: PyMCでのデータ分析実践ガイド』(共立出版 刊、ISBN:978-4320113374)
+*	『機械学習スタートアップシリーズベイズ推論による機械学習入門 (KS情報科学専門書)』(講談社 刊、ISBN:978-4061538320)
+
+#### エンジニアリングツールについての書籍
+*	『ビッグデータ テクノロジー完全ガイド』(マイナビ出版 刊、ISBN:978-4839953126)
+*	『FPGAの原理と構成』(オーム社 刊、ISBN:978-4274218644)
+
+#### 課題の特定に役立つ書籍
+*	『イシューからはじめよ―知的生産の「シンプルな本質」』（英治出版刊行、ISBN:978-4862760852）
+*	『統計クイックリファレンス第2版』(オライリージャパン刊、ISBN978-4873117102)

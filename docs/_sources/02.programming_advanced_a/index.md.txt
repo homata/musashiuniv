@@ -1,10 +1,12 @@
-# プログラミング応用A
+# プログラミング応用A/コンピューティング応用G
 
-2025年度 集中授業 プログラミング応用A
+2025年度 プログラミング応用A/コンピューティング応用G [集中] (M1850)
 
 ```{toctree}
 :maxdepth: 2
-:numbered: 3
+:numbered: 2
 
-01_README
+01_intro.md
+
+python_dataanalysis/index.md
 ```

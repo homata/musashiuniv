@@ -1,0 +1,78 @@
+# EDA（Exploratory Data Analysis）
+
+
+```{toctree}
+:maxdepth: 2
+:numbered: 2
+
+```
+Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック
+https://book.impress.co.jp/books/1122101021
+
+
+https://github.com/practical-handbook-python-data-analysis/practical-handbook-python-data-analysis
+
+
+EDAとは何か？
+EDAは「Exploratory Data Analysis」の略で、日本語では「探索的データ分析」と呼ばれます。その名の通り、データを探索し、視覚化や統計を活用してデータの特徴や傾向を理解するプロセスです
+
+EDA（Exploratory Data Analysis）とは？
+https://note.com/ohanadatascience/n/n9e254aff4321
+
+【データサイエンティスト入門編】探索的データ解析（EDA）の基礎操作をPythonを使ってやってみよう
+https://www.codexa.net/basic-exploratory-data-analysis-with-python/
+
+
+探索的データ分析（EDA）完全ガイド：2024年版
+https://qiita.com/futakuchi0117/items/0e4f2380d432a442b22d
+
+
+-----
+
+
+
+PandasとNumPyの違いと使い分け方
+https://deepage.net/features/pandas-numpy.html
+
+Pythonでできること8選！初心者におすすめな理由とは？AI・Webアプリ開発などの実例や学習方法などを交えて徹底解説
+https://tech-stock.com/magazine/what-can-you-do-with-python/
+
+
+【Python】たった15分でマスター！geopandasを使った地理空間データ分析のテクニック10選
+https://chocottopro.com/?p=653
+
+：TIOBE Index for March 2025
+https://www.tiobe.com/tiobe-index/
+
+Pythonのテキスト作りました
+https://qiita.com/KatsunoriNakamura/items/b465b0cf05b1b7fd4975
+
+データ処理用ライブラリとJupyter Notebook
+https://docs.pyq.jp/python/pydata/index.html
+
+Pandasとnumpyの違いや変換について(どっちを使えばいいの？)
+https://work-life-enj.com/pandas-numpy/
+
+【pandas】データ型DataFrameとSeriesとは？【Pythonデータ分析】
+https://datascience-lab.sakura.ne.jp/pandas_data/
+
+【pandas】concat：縦横結合【データフレーム処理】
+https://datasciencemore.com/python-pandas-concat/
+
+
+【pandas】query：行の抽出【データフレーム処理】
+https://datasciencemore.com/python-pandas-query/
+
+【polars】join：キー結合【データフレーム処理】
+https://datasciencemore.com/polars-join/
+
+【pandas】groupby：グルーピング【データフレーム処理】
+https://datasciencemore.com/polars-groupby/
+
+DataFrameやSeriesからデータを取得する
+https://zenn.dev/mook_jp/articles/81539d69c17ccf
+
+### 参考
+* [【初心者向け】PythonのList・Tuple・Set・Dict完全チートシート！使い分けと基本操作を徹底解説](https://saycon.co.jp/archives/neta/【初心者向け】pythonのlist・tuple・set・dict完全チートシート)
+
+

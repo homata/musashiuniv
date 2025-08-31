@@ -1,0 +1,89 @@
+# プログラミング応用A/コンピューティング応用G [集中] (M1850)
+
+## ライセンス、引用
+
+### ライセンス
+* 
+
+## 参考文献
+
+```{list-table}
+:header-rows: 1
+:widths: 20, 80
+
+* - URL
+  - タイトル
+* - ![](images/000.jpg)
+  - [Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック](https://book.impress.co.jp/books/1122101021)
+* - ![](images/001.jpg)
+  - [Pythonによる地理空間データ分析 ―例題で学ぶロケーションインテリジェンス](https://www.oreilly.co.jp/books/9784814400324/)
+* - ![](images/002.jpg)
+  - [Pythonで学ぶ衛星データ解析基礎――環境変化を定量的に把握しよう](https://gihyo.jp/book/2022/978-4-297-13232-3)
+* - ![](images/003.jpg)
+  - [現場のプロがわかりやすく教える位置情報エンジニア養成講座](https://www.shuwasystem.co.jp/book/9784798068923.html)
+* - ![](images/004.jpg)
+  - [現場のプロがわかりやすく教える位置情報デベロッパー養成講座](https://www.shuwasystem.co.jp/book/9784798072241.html)
+* - ![](images/005.jpg)
+  - [位置情報を扱う人のための実践QGIS](https://www.shuwasystem.co.jp/book/9784798074726.html)
+* - ![](images/006.jpg)
+  - [地理空間情報の基礎と活用 (放送大学教材 4257)](https://ua-book.shop-pro.jp/?pid=167017668)
+* - ![](images/007.jpg)
+  - [GIS入門 この一冊で「統計マップ」が自在に作れる](https://www.beret.co.jp/book/47933)
+```
+
+### リンク
+* [地理学で読み解く流通と消費: コンビニはなぜ集中出店するのか](https://www.amazon.co.jp/dp/4860646959/)
+
+
+<!--
+地理空間データ分析の必読書
+https://qiita.com/aokikenichi/items/fbaf123ac1d9a50d07ee
+-->
+
+### スケジュール
+* 2025年9月1日（月）2～4時限
+    * オリエンテーション・環境構築
+    * オープンデータの基本
+    * データの種類とデータ加工
+    * データ解析
+* 2025年9月2日（火）2～4時限
+    * 地理空間情報の基礎
+    * 地理空間データの活用
+* 2025年9月3日（水）2～4時限
+    * 3Dデータ（PLATEAU）の活用
+    * 地理空間データAPIの活用
+* 2025年9月4日（木）1～4時限
+    * scikit-learnで機械学習を行う
+    * Python × APIでAI活用（ChatGPT等）
+    * コード生成AIの利用
+    * 総合演習
+    * 総合演習・発表
+
+
+### 地理空間情報
+
+#### Qiusheng Wu (giswqs)
+* Introduction to GIS Programming - A Practical Python Guide to Open Source Geospatial Tools
+  - [ウェブサイト](https://gispro.gishub.org)
+  - [GitHub](https://github.com/giswqs/intro-gispro)
+  - PDF
+    - [Introduction to GIS Programming - A Practical Python Guide to Open Source Geospatial Tools](https://leanpub.com/gispro)
+    - [GIS プログラミング入門 - オープンソース地理空間ツールのための実践的Python ガイド](https://leanpub.com/gispro-ja)
+  - [Amazon.com](https://amazon.com/dp/B0FFW34LL3)
+* GitHub
+  - [giswqs](https://github.com/giswqs)
+  * [opengeos](https://github.com/opengeos)
+    - [geoai](https://github.com/opengeos/geoai)
+* Web
+  - [leafmap - geospatial analysis and interactive mapping in a Jupyter environment.](https://leafmap.org)
+  - [geemap - Earth Engine and Geemap: Geospatial Data Science with Python](https://geemap.org)
+  - [samgeo - segmenting geospatial data with the Segment Anything Model (SAM)](https://samgeo.gishub.org)
+  - [opengeoai - GeoAI: Artificial Intelligence for Geospatial Data](https://opengeoai.org/)
+* YouTube
+  - [GISプログラミング入門：書籍のリリースとコード例のウォークスルー](https://www.youtube.com/watch?v=6GwMoV4LOiU)
+  - [Open Geospatial Solutions](https://www.youtube.com/giswqs)
+
+#### Others
+* [GIS実習オープン教材](https://gis-oer.csis.u-tokyo.ac.jp/)
+* [GeoDjangoではじめる地理空間情報入門](https://homata.gitbook.io/geodjango/)
+* [YouTube - [PyCon JP 2022] Pythonではじめる地理空間情報 (小俣 博司 Hiroshi Omata)](https://www.youtube.com/watch?v=uIGG-Hdw4qE)

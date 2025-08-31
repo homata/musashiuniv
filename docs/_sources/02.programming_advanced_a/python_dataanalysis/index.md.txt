@@ -1,0 +1,20 @@
+# Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック
+
+**書籍**
+
+```{list-table}
+:header-rows: 1
+:widths: 20, 80
+
+* - 書影
+  - タイトル
+* - ![](./images/book.jpg)
+  - [Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック](https://book.impress.co.jp/books/1122101021)
+```
+
+```{toctree}
+:maxdepth: 3
+:numbered: 2
+
+00_index.md
+```

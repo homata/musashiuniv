@@ -1,0 +1,898 @@
+<!doctype html>
+<html class="no-js" lang="ja" data-content_root="../../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="7. Web API、スクレイピング" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="01.programming_basic_a/pycamp/textbook/7_scraping.html" />
+<meta property="og:site_name" content="musashiuniv" />
+<meta property="og:description" content="Web APIとスクレイピングとは: Web API はインターネット上に用意されているAPIをプログラムから呼び出す技術のことです。 スクレイピング はウェブサイトから情報を抽出する、コンピュータソフトウェア技術のことをいいます。 ここではPythonを使った実用的なプログラムの例として、Web APIとスクレイピングの演習を行います。 環境構築: 前章の「 venvとは 」を参考に、ve..." />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image" content="/_images/social_previews/summary_01.programming_basic_a_pycamp_textbook_7_scraping_20248b3c.png" />
+<meta property="og:image:alt" content="Web APIとスクレイピングとは: Web API はインターネット上に用意されているAPIをプログラムから呼び出す技術のことです。 スクレイピング はウェブサイトから情報を抽出する、コンピュータソフトウェア技術のことをいいます。 ここではPythonを使った実用的なプログラムの例として、Web APIとスクレ..." />
+<meta name="description" content="Web APIとスクレイピングとは: Web API はインターネット上に用意されているAPIをプログラムから呼び出す技術のことです。 スクレイピング はウェブサイトから情報を抽出する、コンピュータソフトウェア技術のことをいいます。 ここではPythonを使った実用的なプログラムの例として、Web APIとスクレイピングの演習を行います。 環境構築: 前章の「 venvとは 」を参考に、ve..." />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" /><link rel="next" title="8. 次のステップ" href="8_nextstep.html" /><link rel="prev" title="6. サードパーティ製パッケージと venv" href="6_venv.html" />
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+        <title>7. Web API、スクレイピング - Pythonプログラミング入門</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/musashiuniv/custom.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">Pythonプログラミング入門</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
+  
+  
+  <span class="sidebar-brand-text">Pythonプログラミング入門</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="検索" name="q" aria-label="検索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../../index.html">プログラミング基礎A/コンピューティング応用E</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of プログラミング基礎A/コンピューティング応用E</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../01_intro.html">1. Pythonをはじめよう</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02_computer.html">2. ノイマン型コンピュータ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_history.html">3. Pythonの歴史</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../20_coding.html">4. コーディング規約</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../21_module.html">5. モジュール</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../utokyo_ipp/index.html">Pythonプログラミング入門</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Pythonプログラミング入門</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../utokyo_ipp/00_index.html">1. 演習ページ</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../programming_zero/index.html">6. (補足資料) Python ゼロからはじめるプログラミング</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of 6. (補足資料) Python ゼロからはじめるプログラミング</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../programming_zero/00_index.html">6.1. Pythonプログラミング</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../programming_zero/01_Python%E3%81%AB%E8%A7%A6%E3%82%8C%E3%82%8B.html">6.2. 第1章 Pythonに触れる</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../programming_zero/02_Python%E3%81%AE%E5%9F%BA%E6%9C%AC.html">6.3. 第2章 Pythonの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../programming_zero/03_%E6%9D%A1%E4%BB%B6%E5%88%86%E5%B2%90%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%97.html">6.4. 第3章 条件分岐と繰り返し</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../programming_zero/04_%E7%B5%84%E3%81%BF%E8%BE%BC%E3%81%BF%E5%9E%8B%E3%81%A8%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88.html">6.5. 第4章 組み込み型とオブジェクト</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../programming_zero/05_%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E5%AE%9A%E7%BE%A9%E9%96%A2%E6%95%B0.html">6.6. 第5章 ユーザ定義関数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../programming_zero/06_%E3%82%AF%E3%83%A9%E3%82%B9%E3%81%AE%E5%9F%BA%E6%9C%AC.html">6.7. 第6章 クラスの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../programming_zero/07_%E7%99%BA%E5%B1%95%E3%81%A8%E5%BF%9C%E7%94%A8.html">6.8. 第7章 発展と応用</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="../index.html">7. (補助資料)Python Boot Camp Text</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 7. (補助資料)Python Boot Camp Text</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3 current has-children"><a class="reference internal" href="index.html">Python Boot Camp テキスト</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Python Boot Camp テキスト</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="1_install.html">1. Pythonをはじめる前に</a></li>
+<li class="toctree-l4"><a class="reference internal" href="2_intro.html">2. Pythonをはじめよう</a></li>
+<li class="toctree-l4"><a class="reference internal" href="3_types.html">3. Pythonのデータ型（基本編）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="4_collections.html">4. Pythonのデータ型（コレクション編）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="5_module.html">5. ファイル操作とモジュール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="6_venv.html">6. サードパーティ製パッケージと venv</a></li>
+<li class="toctree-l4 current current-page"><a class="current reference internal" href="#">7. Web API、スクレイピング</a></li>
+<li class="toctree-l4"><a class="reference internal" href="8_nextstep.html">8. 次のステップ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../99_install.html">8. 参考資料</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../02.programming_advanced_a/index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../02.programming_advanced_a/01_intro.html">1. はじめに</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../02.programming_advanced_a/python_dataanalysis/index.html">Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02.programming_advanced_a/python_dataanalysis/00_index.html">1. 資料</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../03.google_colab/index.html">Google Colaboratoryの使い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../04.markdown/index.html">Markdown記法</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../99.references/index.html">ライセンス、参考文献</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of ライセンス、参考文献</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../99.references/01_basic/basic.html">1. プログラミング基礎A/コンピューティング応用E [集中] (M1830)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../99.references/02_advanced/advance.html">2. プログラミング応用A/コンピューティング応用G [集中] (M1850)</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../../_sources/01.programming_basic_a/pycamp/textbook/7_scraping.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="web-api">
+<span id="index-0"></span><h1><span class="section-number">7. </span>Web API、スクレイピング<a class="headerlink" href="#web-api" title="Link to this heading">¶</a></h1>
+<div class="admonition- admonition">
+<p class="admonition-title">節サブタイトル</p>
+<p>自動でデータを収集する方法</p>
+</div>
+<section id="id1">
+<h2><span class="section-number">7.1. </span>Web APIとスクレイピングとは<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p><strong>Web API</strong> はインターネット上に用意されているAPIをプログラムから呼び出す技術のことです。
+<strong>スクレイピング</strong> はウェブサイトから情報を抽出する、コンピュータソフトウェア技術のことをいいます。</p>
+<p>ここではPythonを使った実用的なプログラムの例として、Web APIとスクレイピングの演習を行います。</p>
+</section>
+<section id="id2">
+<h2><span class="section-number">7.2. </span>環境構築<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>前章の「 <a class="reference internal" href="6_venv.html#about-venv"><span class="std std-ref">venvとは</span></a> 」を参考に、venvモジュールを利用して、スクレイピング用のvenv環境を構築します。
+venv環境を <code class="docutils literal notranslate"><span class="pre">activate</span></code> コマンドで有効にし、Web APIとスクレイピングに使用する <strong>Requests</strong> と <strong>Beautiful Soup 4</strong> を <code class="docutils literal notranslate"><span class="pre">pip</span></code> コマンドでインストールします。</p>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-number">リスト 7.1 </span><span class="caption-text">演習用のvenv環境を構築(macOS、Linux)</span><a class="headerlink" href="#id13" title="Link to this code">¶</a></div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mkdir<span class="w"> </span>scraping
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>scraping
+$<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>env
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>env/bin/activate
+<span class="o">(</span>env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>requests
+<span class="o">(</span>env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>beautifulsoup4
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-number">リスト 7.2 </span><span class="caption-text">演習用のvenv環境を構築(Windows)</span><a class="headerlink" href="#id14" title="Link to this code">¶</a></div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>mkdir<span class="w"> </span>scraping
+&gt;<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>scraping
+&gt;<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>env
+&gt;<span class="w"> </span>env<span class="se">\S</span>cripts<span class="se">\A</span>ctivate.ps1
+<span class="o">(</span>env<span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>requests
+<span class="o">(</span>env<span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>beautifulsoup4
+</pre></div>
+</div>
+</div>
+<section id="requests">
+<span id="index-1"></span><h3><span class="section-number">7.2.1. </span>Requests<a class="headerlink" href="#requests" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>URL: <a class="reference external" href="https://requests.readthedocs.io/">https://requests.readthedocs.io/</a></p></li>
+</ul>
+<p>Requests について簡単に紹介します。
+Requests はウェブサイトにアクセスしてHTMLなどのデータを取得するためのライブラリです。
+Pythonの標準ライブラリ <a class="reference external" href="https://docs.python.org/ja/3/library/urllib.request.html">urllib.request</a> でも同様のことは行なえますが、より便利な Requests をここでは使用します。</p>
+</section>
+<section id="beautiful-soup-4">
+<span id="index-2"></span><h3><span class="section-number">7.2.2. </span>Beautiful Soup 4<a class="headerlink" href="#beautiful-soup-4" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>URL: <a class="reference external" href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">https://www.crummy.com/software/BeautifulSoup/bs4/doc/</a></p></li>
+</ul>
+<p>Beautiful Soup 4はHTMLやXMLの中身を解析して、任意の情報を取得するためのライブラリです。
+Pythonの標準ライブラリ <a class="reference external" href="https://docs.python.org/ja/3/library/html.parser.html">html.parser</a> でも同様のことは行なえますが、より便利な Beautiful Soup 4 をここでは使用します。
+なお、beautifulsoupとbeautifulsoup4が存在しますが、新しい <strong>beautifulsoup4</strong> を使うようにしてください。</p>
+</section>
+</section>
+<section id="id3">
+<h2><span class="section-number">7.3. </span>シンプルなWeb APIのコード<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p>Web APIの例として、<a class="reference external" href="https://swapi.info">SWAPI.INFO</a>の「Star Wars API」で映画『スター・ウォーズ』シリーズに関する情報を入手してみましょう。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://swapi.info/api/">Star Wars API</a></p></li>
+</ul>
+<p>下記のコードを <code class="docutils literal notranslate"><span class="pre">films.py</span></code> という名前で、先ほど作成したscrapingフォルダ内に保存します（<a class="reference internal" href="#films-py"><span class="std std-numref">リスト 7.3</span></a>）。</p>
+<div class="literal-block-wrapper docutils container" id="id15">
+<span id="films-py"></span><div class="code-block-caption"><span class="caption-number">リスト 7.3 </span><span class="caption-text">films.py</span><a class="headerlink" href="#id15" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://swapi.info/api/films&quot;</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">films</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">film</span> <span class="ow">in</span> <span class="n">films</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="s2">&quot;Episode &quot;</span>
+            <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">film</span><span class="p">[</span><span class="s2">&quot;episode_id&quot;</span><span class="p">])</span>
+            <span class="o">+</span> <span class="s2">&quot;: &quot;</span>
+            <span class="o">+</span> <span class="n">film</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span>
+            <span class="o">+</span> <span class="s2">&quot; (&quot;</span>
+            <span class="o">+</span> <span class="n">film</span><span class="p">[</span><span class="s2">&quot;release_date&quot;</span><span class="p">]</span>
+            <span class="o">+</span> <span class="s2">&quot;)&quot;</span>
+        <span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>このコードを実行すると、『スター・ウォーズ』シリーズの旧三部作、新三部作のタイトルと公開日時の一覧を取得できます。（<a class="reference internal" href="#exec-films-py"><span class="std std-numref">リスト 7.4</span></a>）。
+なお、『スター・ウォーズ』シリーズは制作順序とエピソード番号の順序が異なるので注意しましょう。</p>
+<div class="literal-block-wrapper docutils container" id="id16">
+<span id="exec-films-py"></span><div class="code-block-caption"><span class="caption-number">リスト 7.4 </span><span class="caption-text">Star Wars APIを実行</span><a class="headerlink" href="#id16" title="Link to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>python<span class="w"> </span>films.py
+Episode<span class="w"> </span><span class="m">4</span>:<span class="w"> </span>A<span class="w"> </span>New<span class="w"> </span>Hope<span class="w"> </span><span class="o">(</span><span class="m">1977</span>-05-25<span class="o">)</span>
+Episode<span class="w"> </span><span class="m">5</span>:<span class="w"> </span>The<span class="w"> </span>Empire<span class="w"> </span>Strikes<span class="w"> </span>Back<span class="w"> </span><span class="o">(</span><span class="m">1980</span>-05-17<span class="o">)</span>
+Episode<span class="w"> </span><span class="m">6</span>:<span class="w"> </span>Return<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>Jedi<span class="w"> </span><span class="o">(</span><span class="m">1983</span>-05-25<span class="o">)</span>
+Episode<span class="w"> </span><span class="m">1</span>:<span class="w"> </span>The<span class="w"> </span>Phantom<span class="w"> </span>Menace<span class="w"> </span><span class="o">(</span><span class="m">1999</span>-05-19<span class="o">)</span>
+Episode<span class="w"> </span><span class="m">2</span>:<span class="w"> </span>Attack<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>Clones<span class="w"> </span><span class="o">(</span><span class="m">2002</span>-05-16<span class="o">)</span>
+Episode<span class="w"> </span><span class="m">3</span>:<span class="w"> </span>Revenge<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>Sith<span class="w"> </span><span class="o">(</span><span class="m">2005</span>-05-19<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<section id="id4">
+<h3><span class="section-number">7.3.1. </span>コードの解説<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p>上記のコードがどういった内容なのかを解説します。</p>
+<ul class="simple">
+<li><p>Web APIを実行するために <code class="docutils literal notranslate"><span class="pre">requests</span></code> をインポートします</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-number">リスト 7.5 </span><span class="caption-text">モジュールのインポート</span><a class="headerlink" href="#id17" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>メインとなる処理を <code class="docutils literal notranslate"><span class="pre">main</span></code> 関数として定義しています。 なお、関数の名前に特に決まりはなく、必ずしも <code class="docutils literal notranslate"><span class="pre">main</span></code> である必要はありません。</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-number">リスト 7.6 </span><span class="caption-text">main()関数の定義</span><a class="headerlink" href="#id18" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>APIのエンドポイントとなるURLを設定します。映画以外にも登場人物や乗り物、惑星などの情報を取得できるので、興味がある方はドキュメントを読んで試してみてください。</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-number">リスト 7.7 </span><span class="caption-text">APIのエンドポイントURLの設定</span><a class="headerlink" href="#id19" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://swapi.info/api/films&quot;</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">requests.get()</span></code> にURLとパラメーターを指定して結果を取得します。</p></li>
+<li><p>結果はJSON形式で返ってくるので、 <code class="docutils literal notranslate"><span class="pre">.json()</span></code> メソッドでPythonのデータ型（辞書、リスト等）に変換します。</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-number">リスト 7.8 </span><span class="caption-text">Web APIを実行して結果を取得</span><a class="headerlink" href="#id20" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">films</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Pythonデータ型の映画に関する情報から、エピソード番号、タイトル、公開日付を取得して出力します。</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id21">
+<div class="code-block-caption"><span class="caption-number">リスト 7.9 </span><span class="caption-text">エピソード番号、タイトル、公開日付の出力</span><a class="headerlink" href="#id21" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="k">for</span> <span class="n">film</span> <span class="ow">in</span> <span class="n">films</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>最後に、このスクリプトが実行された時に、 <code class="docutils literal notranslate"><span class="pre">main()</span></code> 関数を実行するように指定します。</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id22">
+<div class="code-block-caption"><span class="caption-number">リスト 7.10 </span><span class="caption-text">main()関数を実行</span><a class="headerlink" href="#id22" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>            <span class="o">+</span> <span class="s2">&quot;: &quot;</span>
+            <span class="o">+</span> <span class="n">film</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-json admonition" id="index-3">
+<p class="admonition-title">コラム: JSON形式</p>
+<p>Web APIにデータを送ったり、受け取ったりするときによく使われるデータの形式です。JavaScript Object Notationという、JavaScriptのオブジェクト表記法を使っています。この表記法は項目名と値のペアをテキストで記述したもので、階層構造にも対応しています。人間が簡単に読み取れて、コンピュータからも扱いやすいため、Pythonを含めさまざまな言語で活用されています。</p>
+</div>
+</section>
+<section id="id5">
+<h3><span class="section-number">7.3.2. </span>新たなるWeb API<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p>今回紹介したStar Wars API以外にも興味深いWeb APIがたくさんあります。
+いくつか紹介します。</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>名称</p></th>
+<th class="head"><p>Webサイト</p></th>
+<th class="head"><p>内容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NASA API</p></td>
+<td><p><a class="reference external" href="https://api.nasa.gov">https://api.nasa.gov</a></p></td>
+<td><p>NASA（アメリカ航空宇宙局）が所有するデータが扱えるAPI</p></td>
+</tr>
+<tr class="row-odd"><td><p>PokeAPI</p></td>
+<td><p><a class="reference external" href="https://pokeapi.co">https://pokeapi.co</a></p></td>
+<td><p>ゲームソフト『ポケットモンスター』シリーズに関するデータを取得できるAPI</p></td>
+</tr>
+<tr class="row-even"><td><p>国立国会図書館サーチ API</p></td>
+<td><p><a class="reference external" href="https://ndlsearch.ndl.go.jp/help/api/">https://ndlsearch.ndl.go.jp/help/api/</a></p></td>
+<td><p>国立国会図書館の所蔵検索APIや書影検索API</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>また、<a class="reference external" href="https://github.com/n0shake/Public-APIs">Public-APIs</a>には種類別にWeb APIがリストアップされています。
+気になるWeb APIがあれば、是非試してみましょう。</p>
+</section>
+</section>
+<section id="id6">
+<h2><span class="section-number">7.4. </span>シンプルなスクレイピングのコード<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<p>スクレイピングの例として、docs.python.orgの組み込み関数一覧のページ(<a class="reference external" href="https://docs.python.org/ja/3.12/library/functions.html">https://docs.python.org/ja/3.12/library/functions.html</a>)から関数名の情報を抜き出します。</p>
+<figure class="align-default" id="id23">
+<a class="reference internal image-reference" href="../../../_images/func-list.png"><img alt="../../../_images/func-list.png" src="../../../_images/func-list.png" style="width: 50%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">図 7.1 </span><span class="caption-text">組み込み関数一覧ページ</span><a class="headerlink" href="#id23" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>下記コードを <code class="docutils literal notranslate"><span class="pre">funcs.py</span></code> という名前で、scrapingフォルダ内に保存します(<a class="reference internal" href="#funcs-py"><span class="std std-numref">リスト 7.11</span></a>)。</p>
+<div class="literal-block-wrapper docutils container" id="id24">
+<span id="funcs-py"></span><div class="code-block-caption"><span class="caption-number">リスト 7.11 </span><span class="caption-text">funcs.py</span><a class="headerlink" href="#id24" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://docs.python.org/ja/3.12/library/functions.html&#39;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">content</span>
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># &lt;table class=&quot;docutils&quot;&gt;テーブルを見つける</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;table&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;docutils&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># テーブル内の全ての &lt;a class=&quot;reference internal&quot;&gt; 要素を見つける</span>
+    <span class="n">functions</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;reference internal&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;件数:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">functions</span><span class="p">))</span>
+    
+    <span class="k">for</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">functions</span><span class="p">:</span>
+        <span class="n">func_name</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">text</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">func_name</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>このコードを実行すると、以下のように関数名の一覧が取得できます(<a class="reference internal" href="#exec-funcs-py"><span class="std std-numref">リスト 7.12</span></a>)。</p>
+<div class="literal-block-wrapper docutils container" id="id25">
+<span id="exec-funcs-py"></span><div class="code-block-caption"><span class="caption-number">リスト 7.12 </span><span class="caption-text">スクレイピングを実行</span><a class="headerlink" href="#id25" title="Link to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>python<span class="w"> </span>funcs.py
+件数:<span class="w"> </span><span class="m">71</span>
+abs<span class="o">()</span>
+aiter<span class="o">()</span>
+all<span class="o">()</span>
+anext<span class="o">()</span>
+any<span class="o">()</span>
+ascii<span class="o">()</span>
+bin<span class="o">()</span>
+bool<span class="o">()</span>
+breakpoint<span class="o">()</span>
+:
+</pre></div>
+</div>
+</div>
+<div class="admonition-pythonpep8 admonition" id="index-4">
+<p class="admonition-title">コラム: Pythonのコーディング規約「PEP8」</p>
+<p>Pythonには <a class="reference external" href="https://peps.python.org/pep-0008/">PEP8（ペップエイト）</a> というコーディング規約があります。
+チームで開発をする際、人によってプログラムコードの書き方がバラバラだと読みにくいコードになってしまいます。
+そのため、PEP8のルールに従う習慣を身につけておくとよいでしょう。</p>
+<p>コードがPEP8のルールに従っているかは、 <a class="reference external" href="https://pep8.readthedocs.io/en/latest/">pycodestyle</a> というツールで検証できます(以前はツールの名前もpep8でした)。</p>
+<p>pycodestyleは <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pycodestyle</span></code> でインストールして使用します。
+<code class="docutils literal notranslate"><span class="pre">funcs.py</span></code> を検証するには、 <code class="docutils literal notranslate"><span class="pre">pycodestyle</span> <span class="pre">funcs.py</span></code> を実行します。</p>
+</div>
+<section id="id7">
+<h3><span class="section-number">7.4.1. </span>コードの解説<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p>上記のコードがどういった内容なのかを解説します。</p>
+<ul class="simple">
+<li><p>以下のコードはRequestsとBeautiful Soup 4をimportして利用できるようにしています。</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id26">
+<div class="code-block-caption"><span class="caption-number">リスト 7.13 </span><span class="caption-text">モジュールのimport</span><a class="headerlink" href="#id26" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeautifulSoup</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>メインとなる処理を <code class="docutils literal notranslate"><span class="pre">main</span></code> 関数として定義しています。
+なお、関数の名前に特に決まりはなく、必ずしも <code class="docutils literal notranslate"><span class="pre">main</span></code> である必要はありません。</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id27">
+<div class="code-block-caption"><span class="caption-number">リスト 7.14 </span><span class="caption-text">main()関数の定義</span><a class="headerlink" href="#id27" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Requestsを使用して、Webページの内容(HTML)を取得します。res.contentにHTMLの中身が文字列データとして入っています。</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id28">
+<div class="code-block-caption"><span class="caption-number">リスト 7.15 </span><span class="caption-text">ページの内容を取得</span><a class="headerlink" href="#id28" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://docs.python.org/ja/3.12/library/functions.html&#39;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">content</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>次にHTMLをBeautiful Soup 4に渡して解析します。HTMLの解析についてはもう少し詳しく説明します。</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id29">
+<div class="code-block-caption"><span class="caption-number">リスト 7.16 </span><span class="caption-text">WebページをBeautiful Soup 4で解析</span><a class="headerlink" href="#id29" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># &lt;table class=&quot;docutils&quot;&gt;テーブルを見つける</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;table&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;docutils&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># テーブル内の全ての &lt;a class=&quot;reference internal&quot;&gt; 要素を見つける</span>
+    <span class="n">functions</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;reference internal&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;件数:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">functions</span><span class="p">))</span>
+    
+    <span class="k">for</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">functions</span><span class="p">:</span>
+        <span class="n">func_name</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">text</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">func_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>最後に、このスクリプトが実行された時に、main()関数を実行するように指定します。</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id30">
+<div class="code-block-caption"><span class="caption-number">リスト 7.17 </span><span class="caption-text">main()関数を実行</span><a class="headerlink" href="#id30" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="html">
+<h3><span class="section-number">7.4.2. </span>HTMLの解析の解説<a class="headerlink" href="#html" title="Link to this heading">¶</a></h3>
+<p>Beautiful Soup 4でHTMLを解析して、値が取り出せましたが、どのように指定しているのでしょうか?
+組み込み関数一覧のHTMLを見てみると、以下のような形式になっています。(<a class="reference internal" href="#sponsor-list-html"><span class="std std-numref">リスト 7.18</span></a>)</p>
+<div class="literal-block-wrapper docutils container" id="id31">
+<span id="sponsor-list-html"></span><div class="code-block-caption"><span class="caption-number">リスト 7.18 </span><span class="caption-text">組み込み関数一覧のHTML</span><a class="headerlink" href="#id31" title="Link to this code">¶</a></div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="p">&lt;</span><span class="nt">table</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;docutils align-default&quot;</span><span class="p">&gt;</span>
+</span><span class="p">&lt;</span><span class="nt">thead</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">tr</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;row-odd&quot;</span><span class="p">&gt;&lt;</span><span class="nt">th</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;head&quot;</span> <span class="na">colspan</span><span class="o">=</span><span class="s">&quot;4&quot;</span><span class="p">&gt;&lt;</span><span class="nt">p</span><span class="p">&gt;</span>組み込み関数<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">thead</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">tr</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;row-even&quot;</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;line-block&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;line&quot;</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>A<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;line&quot;</span><span class="p">&gt;</span>
+<span class="hll">        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;reference internal&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#abs&quot;</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;abs&quot;</span><span class="p">&gt;</span>
+</span>        <span class="p">&lt;</span><span class="nt">code</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;xref py py-func docutils literal notranslate&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;pre&quot;</span><span class="p">&gt;</span>abs()<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">code</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+(以下続く)
+</pre></div>
+</div>
+</div>
+<p>このHTMLを見ると、関数の名前とURLは以下のようにして取得できそうです。</p>
+<ul class="simple">
+<li><p>テーブル<code class="docutils literal notranslate"><span class="pre">&lt;table</span> <span class="pre">class=&quot;docutils&quot;&gt;</span></code>を見つける</p></li>
+<li><p>見つけたテーブル内の全ての<code class="docutils literal notranslate"><span class="pre">&lt;a</span> <span class="pre">class=&quot;reference</span> <span class="pre">internal&quot;&gt;</span></code>要素を見つける</p></li>
+</ul>
+<p>HTMLの構造がわかったところで、もう一度HTMLを解析しているコードを見てみます。</p>
+<div class="literal-block-wrapper docutils container" id="id32">
+<span id="index-5"></span><div class="code-block-caption"><span class="caption-number">リスト 7.19 </span><span class="caption-text">WebページをBeautiful Soup 4で解析</span><a class="headerlink" href="#id32" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># &lt;table class=&quot;docutils&quot;&gt;テーブルを見つける</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;table&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;docutils&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># テーブル内の全ての &lt;a class=&quot;reference internal&quot;&gt; 要素を見つける</span>
+    <span class="n">functions</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;reference internal&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;件数:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">functions</span><span class="p">))</span>
+    
+    <span class="k">for</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">functions</span><span class="p">:</span>
+        <span class="n">func_name</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">text</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">func_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>まず、 <code class="docutils literal notranslate"><span class="pre">soup.find()</span></code> メソッドで、全関数の情報が含まれている テーブルを取得しています。
+次に、<code class="docutils literal notranslate"><span class="pre">find_all()</span></code> メソッドを使い、各関数情報(func変数に入っている)から値を取り出しています。
+関数名を取得して、出力しています。</p>
+</section>
+</section>
+<section id="id8">
+<h2><span class="section-number">7.5. </span>作り変えてみよう<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+<p>RequestsやBeautiful Soup 4の動作を変えて、さまざまなWebページから色んな要素を取得できます。</p>
+<p>以下にそれぞれのライブラリの簡単な使い方を紹介します。それ以外にもいろいろな使用方法があるので、ドキュメントを参考にしていろいろ作り変えてみてください。</p>
+<section id="index-6">
+<span id="id9"></span><h3><span class="section-number">7.5.1. </span>Requests の主な使い方<a class="headerlink" href="#index-6" title="Link to this heading">¶</a></h3>
+<p>ここでは Requests の主な使い方の例をいくつか載せます。
+詳細については以下の公式ドキュメントを参照してください。</p>
+<ul class="simple">
+<li><p><strong>公式ドキュメント</strong>: <a class="reference external" href="https://requests.readthedocs.io/">Requests: HTTP for Humans</a></p></li>
+</ul>
+<p>以下は認証つきのURLにアクセスして、結果を取得する例です。</p>
+<div class="literal-block-wrapper docutils container" id="id33">
+<div class="code-block-caption"><span class="caption-number">リスト 7.20 </span><span class="caption-text">認証付きURLにアクセスする</span><a class="headerlink" href="#id33" title="Link to this code">¶</a></div>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://api.github.com/user&#39;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;pass&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span>
+<span class="go">200</span>
+</pre></div>
+</div>
+</div>
+<p id="index-7">POST を行う場合は以下のように、POSTのパラメーターを辞書で定義します。</p>
+<div class="literal-block-wrapper docutils container" id="id34">
+<div class="code-block-caption"><span class="caption-number">リスト 7.21 </span><span class="caption-text">requests で POST する</span><a class="headerlink" href="#id34" title="Link to this code">¶</a></div>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;key1&#39;</span><span class="p">:</span> <span class="s1">&#39;value1&#39;</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">:</span> <span class="s1">&#39;value2&#39;</span><span class="p">}</span> <span class="c1"># POST するパラメーター</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;http://httpbin.org/post&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p id="index-8">GET に <code class="docutils literal notranslate"><span class="pre">?key1=value1&amp;key2=value2</span></code> のようなパラメーター付きでアクセスする場合も同様に、辞書で定義します。</p>
+<div class="literal-block-wrapper docutils container" id="id35">
+<div class="code-block-caption"><span class="caption-number">リスト 7.22 </span><span class="caption-text">requests でパラメーター付で GET する</span><a class="headerlink" href="#id35" title="Link to this code">¶</a></div>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;key1&#39;</span><span class="p">:</span> <span class="s1">&#39;value1&#39;</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">:</span> <span class="s1">&#39;value2&#39;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://httpbin.org/get&#39;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+<span class="go">http://httpbin.org/get?key2=value2&amp;key1=value1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;key1&#39;</span><span class="p">:</span> <span class="s1">&#39;value1&#39;</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;value2&#39;</span><span class="p">,</span> <span class="s1">&#39;value3&#39;</span><span class="p">]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://httpbin.org/get&#39;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+<span class="go">http://httpbin.org/get?key1=value1&amp;key2=value2&amp;key2=value3</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id10">
+<h3><span class="section-number">7.5.2. </span>Beautiful Soup 4の主な使い方<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<p>ここではBeautiful Soup 4の主な使い方の例をいくつか載せます。
+詳細については以下の公式ドキュメントを参照してください。</p>
+<ul class="simple">
+<li><p><strong>公式ドキュメント</strong>: <a class="reference external" href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">Beautiful Soup Documentation</a></p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id36">
+<span id="index-9"></span><div class="code-block-caption"><span class="caption-number">リスト 7.23 </span><span class="caption-text">Beautiful Soup 4の使用例</span><a class="headerlink" href="#id36" title="Link to this code">¶</a></div>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://www.python.org/blogs/&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span> <span class="c1"># 取得したHTMLを解析</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">soup</span><span class="o">.</span><span class="n">title</span> <span class="c1"># titleタグの情報を取得</span>
+<span class="go">&lt;title&gt;Our Blogs | Python.org&lt;/title&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">soup</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;title&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">soup</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">string</span> <span class="c1"># titleタグの文字列を取得</span>
+<span class="go">&#39;Our Blogs | Python.org&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">soup</span><span class="o">.</span><span class="n">a</span>
+<span class="go">&lt;a href=&quot;#content&quot; title=&quot;Skip to content&quot;&gt;Skip to content&lt;/a&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">))</span> <span class="c1"># 全ての a タグを取得しt len() で件数を取得</span>
+<span class="go">164</span>
+</pre></div>
+</div>
+</div>
+<p id="index-10">また、 <code class="docutils literal notranslate"><span class="pre">find()</span></code> <code class="docutils literal notranslate"><span class="pre">find_all()</span></code> などでタグを探す場合には、タグの属性などを条件として指定できます。</p>
+<div class="literal-block-wrapper docutils container" id="id37">
+<div class="code-block-caption"><span class="caption-number">リスト 7.24 </span><span class="caption-text">find/find_all の使用例</span><a class="headerlink" href="#id37" title="Link to this code">¶</a></div>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;h1&#39;</span><span class="p">))</span> <span class="c1"># 指定したタグを検索</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">([</span><span class="s1">&#39;h1&#39;</span><span class="p">,</span> <span class="s1">&#39;h2&#39;</span><span class="p">,</span> <span class="s1">&#39;h3&#39;</span><span class="p">]))</span> <span class="c1"># 複数のタグのいずれかにマッチ</span>
+<span class="go">24</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;h3&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;event-title&#39;</span><span class="p">}))</span> <span class="c1"># &lt;h3 class=&quot;event-title&quot;&gt; にマッチ</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="id11">
+<h2><span class="section-number">7.6. </span>まとめ<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<p>本節では、Pythonでスクレイピングをする方法を解説しました。</p>
+<p>RequestsとBeautiful Soup 4を使いこなすことにより、さまざまなウェブサイトから情報を取得できるようになります。</p>
+<p>なお、短時間にWebサイトに大量にアクセスをすると迷惑となるので、そういうことがないようにプログラムを実行するときには注意してください。</p>
+</section>
+<section id="id12">
+<h2><span class="section-number">7.7. </span>参考書籍<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
+<p>Pythonでのスクレイピングについてもいくつか書籍が出ています。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.oreilly.co.jp/books/9784873117614/">PythonによるWebスクレイピング</a></p></li>
+<li><p><a class="reference external" href="https://gihyo.jp/book/2017/978-4-7741-8367-1">Pythonクローリング＆スクレイピング ―データ収集・解析のための実践開発ガイド</a></p></li>
+<li><p><a class="reference external" href="https://www.socym.co.jp/book/1079">Pythonによるスクレイピング＆機械学習 開発テクニックBeautifulSoup、scikit-learn、TensorFlowを使ってみよう</a></p></li>
+<li><p><a class="reference external" href="https://gihyo.jp/book/2017/978-4-7741-9222-2">Pythonエンジニア ファーストブック</a> (第4章 PythonによるWebスクレイピング)</p></li>
+</ul>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="8_nextstep.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title"><span class="section-number">8. </span>次のステップ</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="6_venv.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title"><span class="section-number">6. </span>サードパーティ製パッケージと venv</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            <div class="last-updated">
+              Last updated on 2025-09-01</div>
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">7. Web API、スクレイピング</a><ul>
+<li><a class="reference internal" href="#id1">7.1. Web APIとスクレイピングとは</a></li>
+<li><a class="reference internal" href="#id2">7.2. 環境構築</a><ul>
+<li><a class="reference internal" href="#requests">7.2.1. Requests</a></li>
+<li><a class="reference internal" href="#beautiful-soup-4">7.2.2. Beautiful Soup 4</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3">7.3. シンプルなWeb APIのコード</a><ul>
+<li><a class="reference internal" href="#id4">7.3.1. コードの解説</a></li>
+<li><a class="reference internal" href="#id5">7.3.2. 新たなるWeb API</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">7.4. シンプルなスクレイピングのコード</a><ul>
+<li><a class="reference internal" href="#id7">7.4.1. コードの解説</a></li>
+<li><a class="reference internal" href="#html">7.4.2. HTMLの解析の解説</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8">7.5. 作り変えてみよう</a><ul>
+<li><a class="reference internal" href="#index-6">7.5.1. Requests の主な使い方</a></li>
+<li><a class="reference internal" href="#id10">7.5.2. Beautiful Soup 4の主な使い方</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id11">7.6. まとめ</a></li>
+<li><a class="reference internal" href="#id12">7.7. 参考書籍</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../_static/documentation_options.js?v=4d4437c9"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../../_static/translations.js?v=4755f45a"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    </body>
+</html>

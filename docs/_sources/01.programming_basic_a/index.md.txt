@@ -1,6 +1,6 @@
-# プログラミング基礎A
+# プログラミング基礎A/コンピューティング応用E
 
-2025年度 集中授業 プログラミング基礎A
+2025年度 プログラミング基礎A/コンピューティング応用E [集中] (M1830)
 
 ```{toctree}
 :maxdepth: 2
@@ -10,16 +10,11 @@
 02_computer.md
 03_history.md
 
-10_google_colab.md
-11_markdown.md
-
 20_coding.md
 21_module.md
 
 utokyo_ipp/index.md
 programming_zero/index.md
+pycamp/index.rst
 99_install.md
 ```
-<!--
-programming_zero/index.md
--->

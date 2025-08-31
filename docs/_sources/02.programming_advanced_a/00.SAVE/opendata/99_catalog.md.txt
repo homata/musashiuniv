@@ -1,0 +1,90 @@
+# カタログ
+
+### リンク
+* [デジタル庁 - オープンデータ](https://www.digital.go.jp/resources/open_data/)
+* [政府CIOポータル - オープンデータ](https://cio.go.jp/policy-opendata)
+* [総務省 - 地方公共団体のオープンデータの推進](https://www.soumu.go.jp/menu_seisaku/ictseisaku/ictriyou/opendata/)
+
+----
+
+#### 国・自治体
+##### データカタログ
+* [オープンデータカタログサイト](https://www.data.go.jp/)
+* [e-Govデータポータル](https://data.e-gov.go.jp/info/ja)
+* [e-Stat 政府統計の総合窓口](https://www.e-stat.go.jp/)
+
+##### サービス
+* [RESAS - 地域経済分析システム](https://resas.go.jp/)
+* [RAIDA - 地方創生データ分析評価プラットフォーム](https://raida.go.jp/)
+* デジタル庁
+    * [地域幸福度（Well-Being）指標サイト](https://well-being.digital.go.jp/)
+        - [SCI-Japan指標サイト](https://www.sci-japan.or.jp/LWCI/index.html)
+    * [Japan Dashboard（経済・財政・人口と暮らしに関するダッシュボード）](https://www.digital.go.jp/resources/japandashboard)
+
+----
+
+#### 民間
+##### データカタログ
+* [オープンデータ BODIK公式サイト - 九州先端科学技術研究所](https://www.bodik.jp/)
+* [日本のオープンデータ情報一覧・まとめ Awesome Japan Open Data](https://japan-opendata.github.io/awesome-japan-opendata/)
+    - [GitHub](https://github.com/japan-opendata/awesome-japan-opendata)
+    - [国土交通省 Project PLATEAU 情報まとめ](https://japan-opendata.github.io/awesome-plateau/)
+* [【2025最新】データ分析に必要なオープンデータソース一覧70選！](https://www.octoparse.jp/blog/70-amazing-free-data-sources-you-should-know)
+    - [2021年に知っておくべきオープンデータソース70選](https://qiita.com/Octoparse_Japan/items/a36ed462d97a8638b504)
+
+##### サービス
+* [OpenStreetMap - 世界を対象とした自由な地図データの作成プロジェクト](https://www.openstreetmap.org)
+* [Wikipedia - 誰でも編集できるフリー百科事典](https://ja.wikipedia.org/)
+* [Wikimedia commons - 誰でも自由に使えるメディアファイル](https://commons.wikimedia.org/)
+* [Wikidata - 人間とコンピュータの双方が平等に参照・編集できる無料のオープンな知識データベースサイト](https://www.wikidata.org/)
+* [LocalWiki - 世界中のローカルな知識をオープンにする収集、共有の草の根活動](https://ja.localwiki.org/)
+
+----
+
+### 地理空間系
+##### データカタログ
+* [国土数値情報ダウンロードサービス](https://nlftp.mlit.go.jp/ksj/)
+* [G空間情報センター](https://front.geospatial.jp/)
+* [PLATEAU - 国土交通省](https://www.mlit.go.jp/plateau/)
+* [国土交通データプラットフォーム](https://www.mlit-data.jp/)
+* [統計地理情報システム](https://www.e-stat.go.jp/gis)
+
+###### 民間
+* [GTFS.jp - 標準的なバス情報フォーマット](https://www.gtfs.jp/)
+* [公共交通オープンデータセンター](https://www.odpt.org/)
+* [Tellus - 衛星データプラットフォーム](https://www.tellusxdp.com/)
+
+##### サービス
+* [国土交通省国土地理院 - 地図・空中写真・地理調査](https://www.gsi.go.jp/tizu-kutyu.html)
+    * [地理院地図](https://maps.gsi.go.jp/)
+* [My City Forecast - あなたが暮らす地域が近い将来](https://mycityforecast.net/)
+* [My City Construction - オンライン電子納品](https://mycityconstruction.jp/)
+* [My City Report - 市民協働投稿サービス](https://www.mycityreport.jp/)
+* [をデジタルシティサービス - 都市の情報を三次元都市空間表示](https://www.digitalsmartcity.jp/)
+* [Re:Earth - 地理空間データを管理、変換、可視化するWebGISプラットフォーム](https://reearth.io/ja/)
+
+----
+
+### 国・自治体関連情報
+
+* [自治体標準オープンデータセットについて](https://www.digital.go.jp/assets/contents/node/basic_page/field_ref_resources/5345f63e-62aa-4ef5-b979-287b6f343e2a/b0729c29/20250501_resources_open_data_municipal-standard-open-dataset_outline_02.pptx)
+
+
+### 関連情報
+* [The Open Definition](https://opendefinition.org/)
+    - [GitHub]https://github.com/okfn/opendefinition)
+    - [オープンの定義 2.1版](https://opendefinition.org/od/2.1/ja/)
+    - [オープンの定義 第二版 下訳](https://qiita.com/nyampire/items/5aa1b3fc91890b132ab9)
+* [Creative Commons - インターネット時代のための新しい著作権ルール](https://creativecommons.org/)
+    - [クリエイティブ・コモンズ・ジャパン](https://creativecommons.jp/)
+    - [パブリック・ドメイン，クリエイティブコモンズとは？](https://utelecon.adm.u-tokyo.ac.jp/articles/copyright/public-domain-creative-commons-license/)
+* [オープンデータ取組の質評価指標（ベータ版）・研修資料](https://www.digital.go.jp/resources/open_data/materials-for-learning)
+* [漫画「まち想い！シブすぎオープンデータ＆どすごいシビックテック」](https://opendata-east-mikawa.jp/node/1743)
+* [山形巧哉 - Docswell](https://www.docswell.com/user/takkun)
+* [WikiGap](https://wikigapjapan.wordpress.com/)
+* [シビックパワーバトル - シティプロモーション](https://www.civicpowerbattle.org/)
+
+#### まとめ
+* [GIS（地理空間情報システム）とは～基本とできること、活用事例、GISデータ、ソフト～](https://sorabatake.jp/16915/)
+* [オープンデータ活用事例28選とおすすめのデータセット、都道府県別サイト一覧【オープンデータの基本から解説】](https://sorabatake.jp/14930/)
+* [自治体によるオープンデータの活用事例6選！意義や公開手法など解説](https://www.intec.co.jp/column/smartcity-08.html)

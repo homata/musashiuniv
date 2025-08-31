@@ -1,0 +1,40 @@
+# OpenCV
+
+* [OpenCV](https://opencv.org/)
+    * [Free Courses](https://opencv.org/university/free-courses/)
+    * [GitHub - OpenCV](https://github.com/opencv/)
+    * [GitHub - opencv-python](https://github.com/opencv/opencv-python)
+
+
+
+### OpenCV
+* [画像処理おすすめ本5選ご紹介【OpenCVで画像処理のやり方やテクニックを学ぼう】](https://engineer-ninaritai.com/open-cv-book/)
+
+* [OpenCV 入門：画像処理・画像認識・機械学習の実装を徹底解説（全実装コード公開）](https://www.codexa.net/opencv_python_introduction/)
+* [Python で画像ファイルの操作を行う方法を解説！【OpenCV編】](https://www.kikagaku.co.jp/kikagaku-blog/python-opencv/)
+
+* 画像処理の入門
+    - https://qiita.com/shuhashi/items/0bd0efa3411eee0682f7
+* PythonとOpenCVで画像処理超入門
+    - https://python.joho.info/opencv-tutorial/
+* 機械学習のためのOpenCV入門
+    - https://qiita.com/icoxfog417/items/53e61496ad980c41a08e
+
+
+### 顔検出
+杉山陽一他著「PythonによるAI・機械学習・深層学習アプリのつくり方」ISBN978-4-8026-1164-0 を参考にしています。
+
+顔検出＋モザイク処理
+https://colab.research.google.com/drive/12VoBf1ffuDTbIx_j8iamw2BGMJx3igTh?usp=sharing#scrollTo=7DPa9c-tkTtJ
+
+コタツ de python！5分でGoogle DriveからColabで「顔認識」をやってみよう！
+https://popomaru.jp/posts/KYrAR6p_
+
+【Python】Google Colab上での顔検出
+https://c-a-p-engineer.github.io/tech/2024/01/17/colab-opencv-face-rectangle-drawing/
+
+Google Colab + OpenCVで顔認証
+https://note.com/tukkidney/n/nae39c9699546
+
+
+
