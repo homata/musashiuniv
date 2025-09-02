@@ -9,4 +9,7 @@
 01_intro.md
 
 python_dataanalysis/index.md
+
+digital_twin/index.md
+leafmap/index.md
 ```

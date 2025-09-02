@@ -1,0 +1,163 @@
+**学ぶこと**
+
+* Pythonではじめる地理空間情報
+* 地理空間情報データ
+
+<!--
+**ダウンロード**
+* [Google Colabファイルとデータ](./files/download.zip)
+    * **Googleドライブにアップロードする時の注意点**
+        * ダウンロードされる「download.zip」は圧縮ファイルです
+        * 下記の手順でパソコン上で解凍してGoogleドライブにアップロードしてください
+            1. パソコンにダウンロードした「download.zip」ファイルは圧縮ファイルです。
+            2. 「download.zip」をパソコン上で解凍してください
+                - Windowsの場合、右マウスメニュー「すべてを展開」を選択して解凍します
+            3. 「download.zip」が解凍されると「download」というフォルダが作成されます
+            4. 「download」の下にある「python_dataanalysis」フォルダーをGoogleドライブの「マイフォルダー」にアップロードしてください
+-->
+
+
+#### leadmapとは
+Leafmapは、Google Colab、JupyterNotebook環境で地図作成と地理空間分析を行うためのPythonパッケージです。
+
+![](https://wetlands.io/file/images/leafmap_demo.gif)
+
+* 背景地図を自由に変えられる
+* 初期表示位置やズームレベルなど細かく設定できる
+* COGなど、最新のクラウドネイティブなラスター形式も読める
+* GeoPandasのGeoDataFrameが読めるので、つまりほとんどの形式のベクターデータが読める
+* 地物の属性情報は当然みれる
+* HTMLファイルを書き出せる
+* 地物を画面上で書いて、出力できる
+* mapbox style specっぽい書き方でスタイリングできる
+* 地図上からベクターデータにクエリできる
+* 複数のレイヤーを追加できる
+* WhiteboxToolsを取り込んでおり、高度なGIS処理ができる
+* バックエンドとしてkepler.glやpydeckを選択することもできる
+* これらをほぼコーディングせずに行える
+
+------
+
+#### leadmapのサイト
+
+[leafmap](https://leafmap.org/)を使って手軽にマップ表示をしてみます。
+
+Leafmapは、foliumやipyleaflet（インタラクティブマップ作成用）、WhiteboxToolsやwhiteboxgui（地理空間データ分析用）、ipywidgets（インタラクティブなGUIデザイン用）などのオープンソースのパッケージをベースに構築されています。
+
+* [GitHub - giswqs/leafmap](https://github.com/giswqs/leafmap)
+* [leafmap Tutorials](https://leafmap.org/notebooks/00_key_features/)
+* [JupyterNotebook形式ファイルダウンロード](https://drive.google.com/file/d/1prYiibICwX1yZ7yRY1ER5ulqMlCn9n59/view?usp=sharing)
+
+------
+
+#### 演習：Google Colab ファイル
+
+1. 対話型マッピングのためのPythonパッケージであるleafmapの紹介
+    - Introducing the leafmap Python package for interactive mapping ([video](https://youtu.be/-UPt7x3Gn60) | [gif](https://i.imgur.com/2pRxunR.gif) | [notebook](https://leafmap.org/notebooks/01_leafmap_intro))
+2. leafmapでベースマップを使用する
+    - Using basemaps in leafmap ([video](https://youtu.be/uylpjbDZesY) | [gif](https://youtu.be/-lOo-vxjrDM) | [notebook](https://leafmap.org/notebooks/02_using_basemaps))
+3. Cloud Optimized GeoTIFF（COG）とSpatioTemporal Asset Catalog（STAC）の利用について 
+    - Using Cloud Optimized GeoTIFF (COG) and SpatioTemporal Asset Catalog (STAC) ([notebook](https://leafmap.org/notebooks/03_cog_stac))
+4. Cloud Optimized GeoTIFF（COG）のバーチャルモザイクの作成
+    - Creating a virtual mosaic of Cloud Optimized GeoTIFFs (COG) ([notebook](https://leafmap.org/notebooks/04_cog_mosaic))
+5. leafmapを使ったローカルラスターデータセットの読み込み
+    - Loading local raster datasets with leafmap ([notebook](https://leafmap.org/notebooks/05_load_raster))
+6. 地図にカスタム凡例を追加する
+    - Adding custom legends to the map ([notebook](https://leafmap.org/notebooks/06_legend))
+7. 地図にカスタムカラーバーを追加する
+    - Adding custom colorbars to the map ([notebook](https://leafmap.org/notebooks/07_colorbar))
+8. LeafmapでWhiteboxToolsを使用する
+    - Using WhiteboxTools with leafmap ([notebook](https://leafmap.org/notebooks/08_whitebox))
+9. CSVをポイントに変換する
+    - Converting CSV to points ([notebook](https://leafmap.org/notebooks/09_csv_to_points))
+10. ローカルベクターデータ（shp, geojson, kmlなど）を地図に追加する
+    - Adding local vector data (e.g., shp, geojson, kml) to the map ([notebook](https://leafmap.org/notebooks/10_add_vector))
+11. 複数の地図を同時に可視化するリンクマップの作成
+    - Creating linked maps for visualizing multiple maps simultaneously ([notebook](https://leafmap.org/notebooks/11_linked_maps))
+12. 1行のコードで分割地図を作成する
+    - Creating a split-panel map with a single line of code ([notebook](https://leafmap.org/notebooks/12_split_map))
+13. 1行のコードでGeoPandas GeoDataFrameを地図に追加する。
+    - Adding a GeoPandas GeoDataFrame to the map with a single line of code ([notebook](https://leafmap.org/notebooks/13_geopandas))
+14. PostGISデータベースから地図にデータを追加する
+    - Adding data from a PostGIS database to the map ([notebook](https://leafmap.org/notebooks/14_postgis))
+15. OpenStreetMapのデータを1行のコードで地図にダウンロードする。
+    - Downloading OpenStreetMap data to the map with a single line of code ([notebook](https://leafmap.org/notebooks/15_add_osm))
+16. HERE Map Widget for Jupyterをプロットのバックエンドとして使用する。
+    - Use [HERE Map Widget for Jupyter](https://github.com/heremaps/here-map-widget-for-jupyter) as plotting backend ([notebook](https://leafmap.org/notebooks/16_heremap))
+17. 地図にベクタータイルレイヤーを追加する
+    - Adding vector tile layers to the map ([notebook](https://leafmap.org/notebooks/17_vector_tile_layer))
+18. ポップアップ属性を持つポイントレイヤーを地図に追加する
+    - Adding a point layer with popup attributes to the map ([notebook](https://leafmap.org/notebooks/18_point_layer))
+19. 地図をhtmlファイルとして保存する
+    - Saving maps as a html file ([notebook](https://leafmap.org/notebooks/19_map_to_html))
+20. プラネットグローバルマンスリーとクオータリーモザイクの追加 
+    - Adding Planet global monthly and quarterly mosaic ([notebook](https://leafmap.org/notebooks/20_planet_imagery))
+21. タイムセリーズインスペクタをワンクリックで使用する
+    - Using timeseries inspector with one click ([notebook](https://leafmap.org/notebooks/21_ts_inspector))
+22. タイムスライダーを使った時系列画像の可視化
+    - Using time slider for visualizing timeseries images ([notebook](https://leafmap.org/notebooks/22_time_slider))
+23. 1行のコードでカラーマップを作成する
+    - Creating colormaps with a single line of code ([notebook](https://leafmap.org/notebooks/23_colormaps))
+24. csvからヒートマップを作成する
+    - Creating heat map from csv ([notebook](https://leafmap.org/notebooks/24_heatmap))
+25. カラーバーと地図タイトルを使った人口ヒートマップの作成
+    - Creating a population heat map with a colorbar and map title ([notebook](https://leafmap.org/notebooks/25_map_title))
+26. kepler.glプロッティングバックエンドを利用したインタラクティブマップの作成
+    - Creating an interactive map using the kepler.gl plotting backend ([notebook](https://leafmap.org/notebooks/26_kepler_gl))
+27. ベースマップギャラリーの作成
+    - Creating a basemap gallery ([notebook](https://leafmap.org/notebooks/27_basemap_gallery))
+28. 1行のコードで地図を公開
+    - Publishing maps with a single line of code ([notebook](https://leafmap.org/notebooks/28_publish_map))
+29. pydeckプロッティングバックエンドを使用する 
+    - Using the pydeck plotting backend ([notebook](https://leafmap.org/notebooks/29_pydeck))
+30. 米国国勢調査のデータを使用
+    - Using U.S. Census data ([notebook](https://leafmap.org/notebooks/30_census_data))
+31. xyzservicesでベースマップを検索する
+    - Searching basemaps with xyzservices ([notebook](https://leafmap.org/notebooks/31_search_basemaps))
+32. ローカル ラスター データセットと Cloud Optimized GeoTIFF (COG) の読み込み
+    - Loading local raster datasets and Cloud Optimized GeoTIFF (COG) ([notebook](https://leafmap.org/notebooks/32_local_tile))
+33. 地図に画像をオーバーレイ表示する
+    - Adding image overlay to the map ([notebook](https://leafmap.org/notebooks/33_image_overlay))
+34. xyデータからポイントを追加する
+    - Adding points from xy data (e.g., CSV, Pandas DataFrame) ([notebook](https://leafmap.org/notebooks/34_add_points_from_xy))
+35. xyデータからサークルマーカーを追加する
+    - Adding circle markers from xy data (e.g., CSV, Pandas DataFrame) ([notebook](https://leafmap.org/notebooks/35_circle_markers))
+36. 地図にラベルを追加する
+    - Adding labels to the map ([notebook](https://leafmap.org/notebooks/36_add_labels))
+37. Planetary Computer STACアイテムを地図に追加する
+    - Adding Planetary Computer STAC item to the map ([notebook](https://leafmap.org/notebooks/37_planetary_computer))
+38. plotlyのプロッティングバックエンドを使用する
+    - Using the plotly plotting backend ([notebook](https://leafmap.org/notebooks/38_plotly))
+39. インスペクターツールを使った画素値の取得
+    - Getting pixel values using the Inspector tool ([notebook](https://leafmap.org/notebooks/39_inspector_tool))
+40. インタラクティブなplotlyツールバーGUIを使用する
+    - Using the interactive plotly toolbar GUI ([notebook](https://leafmap.org/notebooks/40_plotly_gui))
+41. ラスターGUIによるCOG/STACアイテムの読み込み
+    - Loading COG/STAC items using the raster GUI ([notebook](https://leafmap.org/notebooks/41_raster_gui))
+42. クラウド最適化GeoTIFF（COG）の作成
+    - Creating Cloud Optimized GeoTIFF (COG) ([notebook](https://leafmap.org/notebooks/42_create_cog))
+43. ベクターデータ内の位置や特徴を検索する
+    - Searching for locations and features in vector data ([notebook](https://leafmap.org/notebooks/43_search_control))
+44. ベクターデータの属性テーブルをコーディングなしで開く
+    - Opening vector data attribute table without coding ([notebook](https://leafmap.org/notebooks/44_attribute_table))
+45. コーディングなしでインタラクティブにベクターデータを作成
+    - Creating vector data interactively without coding ([notebook](https://leafmap.org/notebooks/45_create_vector))
+46. 既存のベクターデータをコーディングなしでインタラクティブに編集
+    - Editing existing vector data interactively without coding ([notebook](https://leafmap.org/notebooks/46_edit_vector))
+47. numpyの配列をCOGに変換する 
+    - Converting numpy array to COG ([notebook](https://leafmap.org/notebooks/47_numpy_to_cog))
+48. たった1行のコードでLiDARデータを3Dで可視化する
+    - Visualizing LiDAR data in 3D with only one line of code ([notebook](https://leafmap.org/notebooks/48_lidar))
+49. foliumで分割地図を作成する
+    - Creating a split-panel map with folium ([notebook](https://leafmap.org/notebooks/49_split_control))
+50. カスタムアイコンでマーカークラスタを作成する
+    - Creating a marker cluster with custom icons ([notebook](https://leafmap.org/notebooks/50_marker_cluster))
+51. マスクによる画像の切り抜き
+    - Clipping an image by mask ([notebook](https://leafmap.org/notebooks/51_clip_image))
+52. NetCDFデータの可視化
+    - Visualizing NetCDF data ([notebook](https://leafmap.org/notebooks/52_netcdf))
+    - netCDF (Network Common Data Form) は、気温、湿度、気圧、風速、方向などの科学的な多次元データ (変数) を格納するためのファイル形式
+53. 多様な分類体系を持つコレポリスマップの作成
+    - Creating choropleth maps with a variety of classification schemes ([notebook](https://leafmap.org/notebooks/53_choropleth))
+
+

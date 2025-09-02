@@ -1,0 +1,25 @@
+### デジタルツイン
+
+**学ぶこと**
+
+* Pythonではじめる地理空間情報
+* 地理空間情報データ
+
+**ダウンロード**
+* [Google Colabファイルとデータ](./files/digital_twin_r0.zip)
+    * **Googleドライブにアップロードする時の注意点**
+        * ダウンロードされる「digital_twin_r0.zip」は圧縮ファイルです
+        * 下記の手順でパソコン上で解凍してGoogleドライブにアップロードしてください
+            1. パソコンにダウンロードした「digital_twin_r0.zip」ファイルは圧縮ファイルです。
+            2. 「digital_twin_r0.zip」をパソコン上で解凍してください
+                - Windowsの場合、右マウスメニュー「すべてを展開」を選択して解凍します
+            3. 「digital_twin_r0.zip」が解凍されると「digital_twin_r0」というフォルダが作成されます
+            4. 「digital_twin_r0」の下にある「digital_twin_r0」フォルダーをGoogleドライブの「マイフォルダー」にアップロードしてください
+
+**目次**
+
+* [はじめに](./pdf/digital_twin_00.pdf)
+* [第1回 写真からつくるデジタルツイン](./pdf/digital_twin_01.pdf)
+* [第2回 スマートフォンのLiDARセンサで3次元モデルづくり](./pdf/digital_twin_02.pdf)
+* [第3回 PLATEAUで3次元都市モデルに触れてみる](./pdf/digital_twin_03.pdf)
+* [第4回 動画で3次元モデルつくり](./pdf/digital_twin_04.pdf)
