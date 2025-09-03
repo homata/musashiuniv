@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="5. 第4章 組み込み型とオブジェクト" />
+<meta property="og:title" content="7.5. 第4章 組み込み型とオブジェクト" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="01.programming_basic_a/programming_zero/04_%E7%B5%84%E3%81%BF%E8%BE%BC%E3%81%BF%E5%9E%8B%E3%81%A8%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88.html" />
 <meta property="og:site_name" content="musashiuniv" />
@@ -14,10 +14,10 @@
 <meta property="og:image:alt" content="オブジェクト指向: インスタンスの管理とID: Python はオブジェクト指向言語 1つ1つのオブジェクトにIDを割り当てて管理 137 代入の正確なイメージ: 138 「3という値を表すオブジェクトがコンピュータのメモリ上のどこかに保管される。 その保管場所を示す所在地情報が、aという名前の箱に入れられる」..." />
 <meta name="description" content="オブジェクト指向: インスタンスの管理とID: Python はオブジェクト指向言語 1つ1つのオブジェクトにIDを割り当てて管理 137 代入の正確なイメージ: 138 「3という値を表すオブジェクトがコンピュータのメモリ上のどこかに保管される。 その保管場所を示す所在地情報が、aという名前の箱に入れられる」 代入の正確なイメージ: 139 インスタンスの同値性と同一性: 「同値」と「同一..." />
 <meta name="twitter:card" content="summary_large_image" />
-<link rel="index" title="索引" href="../../genindex.html" /><link rel="search" title="検索" href="../../search.html" /><link rel="next" title="6. 第5章 ユーザ定義関数" href="05_%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E5%AE%9A%E7%BE%A9%E9%96%A2%E6%95%B0.html" /><link rel="prev" title="4. 第3章 条件分岐と繰り返し" href="03_%E6%9D%A1%E4%BB%B6%E5%88%86%E5%B2%90%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%97.html" />
+<link rel="index" title="索引" href="../../genindex.html" /><link rel="search" title="検索" href="../../search.html" /><link rel="next" title="7.6. 第5章 ユーザ定義関数" href="05_%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E5%AE%9A%E7%BE%A9%E9%96%A2%E6%95%B0.html" /><link rel="prev" title="7.4. 第3章 条件分岐と繰り返し" href="03_%E6%9D%A1%E4%BB%B6%E5%88%86%E5%B2%90%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%97.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
-        <title>5. 第4章 組み込み型とオブジェクト - Pythonプログラミング入門</title>
+        <title>7.5. 第4章 組み込み型とオブジェクト - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -220,21 +220,21 @@
 <li class="toctree-l2"><a class="reference internal" href="../20_coding.html">4. コーディング規約</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../21_module.html">5. モジュール</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../utokyo_ipp/index.html">6. Pythonプログラミング入門</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 6. Pythonプログラミング入門</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../utokyo_ipp/00_index.html">1. 演習ページ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../utokyo_ipp/00_index.html">6.1. 演習ページ</a></li>
 </ul>
 </li>
 <li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">7. (補足資料) Python ゼロからはじめるプログラミング</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of 7. (補足資料) Python ゼロからはじめるプログラミング</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="00_index.html">1. Pythonプログラミング</a></li>
-<li class="toctree-l3"><a class="reference internal" href="01_Python%E3%81%AB%E8%A7%A6%E3%82%8C%E3%82%8B.html">2. 第1章 Pythonに触れる</a></li>
-<li class="toctree-l3"><a class="reference internal" href="02_Python%E3%81%AE%E5%9F%BA%E6%9C%AC.html">3. 第2章 Pythonの基本</a></li>
-<li class="toctree-l3"><a class="reference internal" href="03_%E6%9D%A1%E4%BB%B6%E5%88%86%E5%B2%90%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%97.html">4. 第3章 条件分岐と繰り返し</a></li>
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">5. 第4章 組み込み型とオブジェクト</a></li>
-<li class="toctree-l3"><a class="reference internal" href="05_%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E5%AE%9A%E7%BE%A9%E9%96%A2%E6%95%B0.html">6. 第5章 ユーザ定義関数</a></li>
-<li class="toctree-l3"><a class="reference internal" href="06_%E3%82%AF%E3%83%A9%E3%82%B9%E3%81%AE%E5%9F%BA%E6%9C%AC.html">7. 第6章 クラスの基本</a></li>
-<li class="toctree-l3"><a class="reference internal" href="07_%E7%99%BA%E5%B1%95%E3%81%A8%E5%BF%9C%E7%94%A8.html">8. 第7章 発展と応用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="00_index.html">7.1. Pythonプログラミング</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01_Python%E3%81%AB%E8%A7%A6%E3%82%8C%E3%82%8B.html">7.2. 第1章 Pythonに触れる</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02_Python%E3%81%AE%E5%9F%BA%E6%9C%AC.html">7.3. 第2章 Pythonの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03_%E6%9D%A1%E4%BB%B6%E5%88%86%E5%B2%90%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%97.html">7.4. 第3章 条件分岐と繰り返し</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">7.5. 第4章 組み込み型とオブジェクト</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05_%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E5%AE%9A%E7%BE%A9%E9%96%A2%E6%95%B0.html">7.6. 第5章 ユーザ定義関数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06_%E3%82%AF%E3%83%A9%E3%82%B9%E3%81%AE%E5%9F%BA%E6%9C%AC.html">7.7. 第6章 クラスの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07_%E7%99%BA%E5%B1%95%E3%81%A8%E5%BF%9C%E7%94%A8.html">7.8. 第7章 発展と応用</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../pycamp/index.html">6. (補助資料)Python Boot Camp Text</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 6. (補助資料)Python Boot Camp Text</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../pycamp/index.html">8. (補助資料)Python Boot Camp Text</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 8. (補助資料)Python Boot Camp Text</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../pycamp/textbook/index.html">Python Boot Camp テキスト</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Python Boot Camp テキスト</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../pycamp/textbook/1_install.html">1. Pythonをはじめる前に</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pycamp/textbook/2_intro.html">2. Pythonをはじめよう</a></li>
@@ -248,26 +248,32 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../99_install.html">7. 参考資料</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99_install.html">9. 参考資料</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../02.programming_advanced_a/index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../02.programming_advanced_a/01_intro.html">1. はじめに</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../02.programming_advanced_a/python_dataanalysis/index.html">2. Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of 2. Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../02.programming_advanced_a/python_dataanalysis/index.html">2. Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of 2. Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02.programming_advanced_a/python_dataanalysis/00_index.html">1. 資料</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../02.programming_advanced_a/digital_twin/index.html">2. デジタルツイン</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../02.programming_advanced_a/leafmap/index.html">3. leafmap</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of 3. leafmap</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../02.programming_advanced_a/leafmap/01_intro.html">3.1. leadmapとは</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../02.programming_advanced_a/leafmap/01_intro.html#id1">3.2. leadmapのサイト</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../02.programming_advanced_a/leafmap/01_intro.html#google-colab">3.3. 演習：Google Colab ファイル</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../02.programming_advanced_a/leafmap/index.html">4. leafmap</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of 4. leafmap</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02.programming_advanced_a/leafmap/01_intro.html">1. leafmapとは</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02.programming_advanced_a/leafmap/01_intro.html#leadmap">2. leadmapのサイト</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02.programming_advanced_a/leafmap/01_intro.html#google-colab">3. 演習：Google Colab ファイル</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../02.programming_advanced_a/machine_learning/index.html">機械学習</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of 機械学習</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02.programming_advanced_a/machine_learning/supervised_learning.html">1. 機械学習</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../02.programming_advanced_a/machine_learning/unsupervised_learning.html">2. 教師なし学習</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../03.google_colab/index.html">Google Colaboratoryの使い方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../04.markdown/index.html">Markdown記法</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../99.references/index.html">ライセンス、参考文献</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of ライセンス、参考文献</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../99.references/index.html">ライセンス、参考文献</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of ライセンス、参考文献</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../99.references/01_basic/basic.html">1. プログラミング基礎A/コンピューティング応用E [集中] (M1830)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../99.references/02_advanced/advance.html">2. プログラミング応用A/コンピューティング応用G [集中] (M1850)</a></li>
 </ul>
@@ -313,28 +319,28 @@
         </div>
         <article role="main" id="furo-main-content">
           <section id="id1">
-<h1><span class="section-number">5. </span>第4章 組み込み型とオブジェクト<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">7.5. </span>第4章 組み込み型とオブジェクト<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
 <hr class="docutils" />
 <section id="id2">
-<h2><span class="section-number">5.1. </span>オブジェクト指向<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<h2>オブジェクト指向<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
 </section>
 <hr class="docutils" />
 <section id="id">
-<h2><span class="section-number">5.2. </span>インスタンスの管理とID<a class="headerlink" href="#id" title="Link to this heading">¶</a></h2>
+<h2>インスタンスの管理とID<a class="headerlink" href="#id" title="Link to this heading">¶</a></h2>
 <p>Python はオブジェクト指向言語<br />
 1つ1つのオブジェクトにIDを割り当てて管理</p>
 <p><img alt="137" src="../../_images/137.png" /></p>
 </section>
 <hr class="docutils" />
 <section id="id3">
-<h2><span class="section-number">5.3. </span>代入の正確なイメージ<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<h2>代入の正確なイメージ<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
 <p><img alt="138" src="../../_images/138.png" /></p>
 <p>「3という値を表すオブジェクトがコンピュータのメモリ上のどこかに保管される。<br />
 その保管場所を示す所在地情報が、aという名前の箱に入れられる」</p>
 </section>
 <hr class="docutils" />
 <section id="id4">
-<h2><span class="section-number">5.4. </span>代入の正確なイメージ<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<h2>代入の正確なイメージ<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">b</span>
 </pre></div>
@@ -343,13 +349,13 @@
 </section>
 <hr class="docutils" />
 <section id="id5">
-<h2><span class="section-number">5.5. </span>インスタンスの同値性と同一性<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<h2>インスタンスの同値性と同一性<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
 <p>「同値」と「同一」は異なる概念</p>
 <p><img alt="140" src="../../_images/140.png" /></p>
 </section>
 <hr class="docutils" />
 <section id="id6">
-<h2><span class="section-number">5.6. </span>クラスとインスタンスとメソッド<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<h2>クラスとインスタンスとメソッド<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>インスタンス</p>
 <ul>
@@ -375,7 +381,7 @@
 </section>
 <hr class="docutils" />
 <section id="id7">
-<h2><span class="section-number">5.7. </span>組み込み型<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<h2>組み込み型<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Pythonに最初から準備されている型（クラス）</p></li>
 <li><p>これまでに学習したもの</p>
@@ -393,7 +399,7 @@
 </section>
 <hr class="docutils" />
 <section id="id8">
-<h2><span class="section-number">5.8. </span>メソッドの呼び出し<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+<h2>メソッドの呼び出し<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
 <p>プログラムコードでの表記</p>
 <p><strong>オブジェクト.メソッド名()</strong></p>
 <p>例）文字列の中のo文字の数を数える</p>
@@ -408,7 +414,7 @@
 </section>
 <hr class="docutils" />
 <section id="str">
-<h2><span class="section-number">5.9. </span>strクラスのメソッド<a class="headerlink" href="#str" title="Link to this heading">¶</a></h2>
+<h2>strクラスのメソッド<a class="headerlink" href="#str" title="Link to this heading">¶</a></h2>
 <p>strクラスには文字列を操作するメソッドが定義されている</p>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
@@ -459,7 +465,7 @@
 </section>
 <hr class="docutils" />
 <section id="strformat">
-<h2><span class="section-number">5.10. </span>strクラスのformatメソッド<a class="headerlink" href="#strformat" title="Link to this heading">¶</a></h2>
+<h2>strクラスのformatメソッド<a class="headerlink" href="#strformat" title="Link to this heading">¶</a></h2>
 <p>文字列に含まれる{} への変数の値の埋め込み</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="mi">2021</span>
 <span class="n">month</span> <span class="o">=</span> <span class="mi">4</span>
@@ -489,7 +495,7 @@ print(message)
 </section>
 <hr class="docutils" />
 <section id="id9">
-<h2><span class="section-number">5.11. </span>strクラスのformatメソッド<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<h2>strクラスのformatメソッド<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
 <p>{}の中での書式を指定できる</p>
 <p>{インデックス番号:書式} のように記述する<br />
 （インデックス番号は省略可）</p>
@@ -516,7 +522,7 @@ print(message)
 </section>
 <hr class="docutils" />
 <section id="in">
-<h2><span class="section-number">5.12. </span>in 演算子<a class="headerlink" href="#in" title="Link to this heading">¶</a></h2>
+<h2>in 演算子<a class="headerlink" href="#in" title="Link to this heading">¶</a></h2>
 <p><img alt="147" src="../../_images/147.png" /></p>
 <p>文字列1 が  文字列2 に含まれると True、そうでないなら False になる</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;cat&#39;</span> <span class="ow">in</span> <span class="s1">&#39;catch&#39;</span>
@@ -536,11 +542,11 @@ print(message)
 </section>
 <hr class="docutils" />
 <section id="id10">
-<h2><span class="section-number">5.13. </span>リストとタプル<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<h2>リストとタプル<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
 </section>
 <hr class="docutils" />
 <section id="list">
-<h2><span class="section-number">5.14. </span>listクラスの主なメソッド<a class="headerlink" href="#list" title="Link to this heading">¶</a></h2>
+<h2>listクラスの主なメソッド<a class="headerlink" href="#list" title="Link to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -549,7 +555,7 @@ print(message)
 </section>
 <hr class="docutils" />
 <section id="id11">
-<h2><span class="section-number">5.15. </span>メソッドを使ったリストの操作<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<h2>メソッドを使ったリストの操作<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
 <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">a</span>
@@ -571,7 +577,7 @@ print(message)
 </div>
 </section>
 <section id="id12">
-<h2><span class="section-number">5.16. </span>メソッド以外のリストの操作<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
+<h2>メソッド以外のリストの操作<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
 <span class="k">del</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">a</span>
@@ -599,7 +605,7 @@ print(message)
 </section>
 <hr class="docutils" />
 <section id="id13">
-<h2><span class="section-number">5.17. </span>内包表記<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
+<h2>内包表記<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
 <p>for文を用いてリストの要素を作成することができる</p>
 <p><img alt="152" src="../../_images/152.png" /></p>
 <p>例</p>
@@ -616,7 +622,7 @@ print(message)
 </section>
 <hr class="docutils" />
 <section id="if">
-<h2><span class="section-number">5.18. </span>if 構文を含む内包表記<a class="headerlink" href="#if" title="Link to this heading">¶</a></h2>
+<h2>if 構文を含む内包表記<a class="headerlink" href="#if" title="Link to this heading">¶</a></h2>
 <p><img alt="153" src="../../_images/153.png" /></p>
 <p>例</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data0</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;avocado&#39;</span><span class="p">]</span>
@@ -629,7 +635,7 @@ print(message)
 </section>
 <hr class="docutils" />
 <section id="id14">
-<h2><span class="section-number">5.19. </span>リストを含むリスト<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
+<h2>リストを含むリスト<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]</span>
 <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>    <span class="o">&lt;----</span> <span class="n">先頭のリストの先頭の要素を参照</span>
 <span class="mi">1</span>
@@ -650,7 +656,7 @@ print(message)
 </section>
 <hr class="docutils" />
 <section id="id15">
-<h2><span class="section-number">5.20. </span>タプル<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
+<h2>タプル<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
 <p>リスト同様に複数の要素を格納する<br />
 （コレクションとよぶ）</p>
 <p>リスト</p>
@@ -682,17 +688,17 @@ print(message)
 </section>
 <hr class="docutils" />
 <section id="id16">
-<h2><span class="section-number">5.21. </span>( )の省略とアンパック代入<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h2>
+<h2>( )の省略とアンパック代入<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h2>
 <p>タプルの作成時に ( )を省略できる</p>
 <p><img alt="156" src="../../_images/156.png" /></p>
 </section>
 <hr class="docutils" />
 <section id="id17">
-<h2><span class="section-number">5.22. </span>辞書と集合（セット）<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h2>
+<h2>辞書と集合（セット）<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h2>
 </section>
 <hr class="docutils" />
 <section id="id18">
-<h2><span class="section-number">5.23. </span>辞書<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h2>
+<h2>辞書<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>キーと値のペアを格納</p></li>
 <li><p>インデックスの代わりにキーを使って値を取得できる</p></li>
@@ -707,7 +713,7 @@ print(message)
 </section>
 <hr class="docutils" />
 <section id="id19">
-<h2><span class="section-number">5.24. </span>辞書の要素の取得<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h2>
+<h2>辞書の要素の取得<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h2>
 <p>keysメソッドによるすべてのキーの取得<br />
 <img alt="159-1" src="../../_images/159-1.png" /></p>
 <p>valuesメソッドによるすべての値の取得<br />
@@ -717,7 +723,7 @@ print(message)
 </section>
 <hr class="docutils" />
 <section id="id20">
-<h2><span class="section-number">5.25. </span>辞書の操作<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h2>
+<h2>辞書の操作<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">info</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;firstname&#39;</span><span class="p">:</span><span class="s1">&#39;太郎&#39;</span><span class="p">,</span> <span class="s1">&#39;lastname&#39;</span><span class="p">:</span><span class="s1">&#39;山田&#39;</span><span class="p">,</span> <span class="s1">&#39;address&#39;</span><span class="p">:</span> <span class="s1">&#39;茨城県つくば市 99-99&#39;</span><span class="p">}</span>
 
 <span class="n">info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;firstname&#39;</span><span class="p">)</span>
@@ -744,7 +750,7 @@ print(message)
 </section>
 <hr class="docutils" />
 <section id="id21">
-<h2><span class="section-number">5.26. </span>辞書の要素の並べ替え<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h2>
+<h2>辞書の要素の並べ替え<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h2>
 <p>sorted 関数を使うと、辞書の要素を昇順に取得できる（キーを基準）</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span><span class="mi">7</span> <span class="p">}</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
@@ -762,7 +768,7 @@ print(message)
 </section>
 <hr class="docutils" />
 <section id="id22">
-<h2><span class="section-number">5.27. </span>セット<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h2>
+<h2>セット<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>値を格納</p></li>
 <li><p>要素の重複を許さない。順序が無い。</p></li>
@@ -786,7 +792,7 @@ print(message)
 </section>
 <hr class="docutils" />
 <section id="id23">
-<h2><span class="section-number">5.28. </span>セットの操作<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h2>
+<h2>セットの操作<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">a</span>
@@ -804,7 +810,7 @@ print(message)
 </section>
 <hr class="docutils" />
 <section id="id24">
-<h2><span class="section-number">5.29. </span>セットどうしの演算（集合演算）<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h2>
+<h2>セットどうしの演算（集合演算）<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h2>
 <p><img alt="164" src="../../_images/164.png" /></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">set1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">}</span>
 <span class="n">set2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">}</span>
@@ -824,7 +830,7 @@ print(message)
 </section>
 <hr class="docutils" />
 <section id="id25">
-<h2><span class="section-number">5.30. </span>基本型の性質<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h2>
+<h2>基本型の性質<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>変更可能（ミュータブル）</p></li>
 <li><p>反復可能（イテラブル）</p></li>
@@ -833,12 +839,12 @@ print(message)
 </section>
 <hr class="docutils" />
 <section id="id26">
-<h2><span class="section-number">5.31. </span>基本型の性質<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h2>
+<h2>基本型の性質<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h2>
 <p><img alt="167" src="../../_images/167.png" /></p>
 </section>
 <hr class="docutils" />
 <section id="id27">
-<h2><span class="section-number">5.32. </span>ミュータブルな型とイミュータブルな型<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h2>
+<h2>ミュータブルな型とイミュータブルな型<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>ミュータブルな型：値を変更できる<br />
 list型、dict型、set型（リスト、辞書、セット）</p></li>
@@ -850,7 +856,7 @@ int型、float型、bool型、str型、tuple型<br />
 </section>
 <hr class="docutils" />
 <section id="id28">
-<h2><span class="section-number">5.33. </span>ミュータブルな型とイミュータブルな型<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h2>
+<h2>ミュータブルな型とイミュータブルな型<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h2>
 <p>変数aの値を変える</p>
 <div style="text-align: center;font-size: xx-large;">
 ↓  
@@ -882,7 +888,7 @@ int型、float型、bool型、str型、tuple型<br />
 </section>
 <hr class="docutils" />
 <section id="id29">
-<h2><span class="section-number">5.34. </span>反復可能なオブジェクト<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h2>
+<h2>反復可能なオブジェクト<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h2>
 <p>反復可能なオブジェクト（イテラブルなオブジェクト）</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">xxxxxxx</span><span class="p">:</span>
    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
@@ -913,7 +919,7 @@ int型、float型、bool型、str型、tuple型<br />
 </section>
 <hr class="docutils" />
 <section id="id30">
-<h2><span class="section-number">5.35. </span>順序を持つオブジェクト<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h2>
+<h2>順序を持つオブジェクト<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h2>
 <p>a[0], a[1]のようにインデックスで要素を参照できる<br />
 （シーケンス型のオブジェクト）</p>
 <p>文字列、リスト、タプル<br />
@@ -933,7 +939,7 @@ int型、float型、bool型、str型、tuple型<br />
 </section>
 <hr class="docutils" />
 <section id="id31">
-<h2><span class="section-number">5.36. </span>スライス式<a class="headerlink" href="#id31" title="Link to this heading">¶</a></h2>
+<h2>スライス式<a class="headerlink" href="#id31" title="Link to this heading">¶</a></h2>
 <p>スライス式でインデックスの範囲を指定できる<br />
 [start:end] ← start ～ (end-1)の範囲</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Python&#39;</span> 
@@ -965,16 +971,16 @@ int型、float型、bool型、str型、tuple型<br />
 </section>
 <hr class="docutils" />
 <section id="id32">
-<h2><span class="section-number">5.37. </span>基本型の性質<a class="headerlink" href="#id32" title="Link to this heading">¶</a></h2>
+<h2>基本型の性質<a class="headerlink" href="#id32" title="Link to this heading">¶</a></h2>
 <p><img alt="173" src="../../_images/173.png" /></p>
 </section>
 <hr class="docutils" />
 <section id="id33">
-<h2><span class="section-number">5.38. </span>練習問題<a class="headerlink" href="#id33" title="Link to this heading">¶</a></h2>
+<h2>練習問題<a class="headerlink" href="#id33" title="Link to this heading">¶</a></h2>
 </section>
 <hr class="docutils" />
 <section id="id34">
-<h2><span class="section-number">5.39. </span>問題 1<a class="headerlink" href="#id34" title="Link to this heading">¶</a></h2>
+<h2>問題 1<a class="headerlink" href="#id34" title="Link to this heading">¶</a></h2>
 <p>次の文章の空欄に入れるべき語句を答えてください。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>・ Pythonは [  (1)  ] 指向型の言語であり、クラスは[  (1)  ]の属性や機能を定義したものです。
 
@@ -988,7 +994,7 @@ int型、float型、bool型、str型、tuple型<br />
 </section>
 <hr class="docutils" />
 <section id="id35">
-<h2><span class="section-number">5.40. </span>問題 1（解答）<a class="headerlink" href="#id35" title="Link to this heading">¶</a></h2>
+<h2>問題 1（解答）<a class="headerlink" href="#id35" title="Link to this heading">¶</a></h2>
 <p>次の文章の空欄に入れるべき語句を答えてください。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>・ Pythonは [ オブジェクト ] 指向型の言語であり、クラスは[オブジェクト ]の属性や機能を定義したものです。
 
@@ -1002,12 +1008,12 @@ int型、float型、bool型、str型、tuple型<br />
 </section>
 <hr class="docutils" />
 <section id="id36">
-<h2><span class="section-number">5.41. </span>問題 2<a class="headerlink" href="#id36" title="Link to this heading">¶</a></h2>
+<h2>問題 2<a class="headerlink" href="#id36" title="Link to this heading">¶</a></h2>
 <p>n 番目の要素の値がn * nであるようなリストを、内包表記を使って作成してください。ただし、要素数は10とします。</p>
 </section>
 <hr class="docutils" />
 <section id="id37">
-<h2><span class="section-number">5.42. </span>問題 2（解答）<a class="headerlink" href="#id37" title="Link to this heading">¶</a></h2>
+<h2>問題 2（解答）<a class="headerlink" href="#id37" title="Link to this heading">¶</a></h2>
 <p>n 番目の要素の値がn * nであるようなリストを、内包表記を使って作成してください。ただし、要素数は10とします。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">n</span> <span class="o">*</span> <span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)]</span>
 
@@ -1016,7 +1022,7 @@ int型、float型、bool型、str型、tuple型<br />
 </section>
 <hr class="docutils" />
 <section id="id38">
-<h2><span class="section-number">5.43. </span>問題 3<a class="headerlink" href="#id38" title="Link to this heading">¶</a></h2>
+<h2>問題 3<a class="headerlink" href="#id38" title="Link to this heading">¶</a></h2>
 <p>次の説明文が、リスト、タプル、辞書、セットのいずれに該当するか、答えてください（複数が該当する場合もあります）。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>（1） キーと値のペアを格納する
 （2） 要素の値の重複が許されない
@@ -1027,7 +1033,7 @@ int型、float型、bool型、str型、tuple型<br />
 </section>
 <hr class="docutils" />
 <section id="id39">
-<h2><span class="section-number">5.44. </span>問題 3（解答）<a class="headerlink" href="#id39" title="Link to this heading">¶</a></h2>
+<h2>問題 3（解答）<a class="headerlink" href="#id39" title="Link to this heading">¶</a></h2>
 <p>次の説明文が、リスト、タプル、辞書、セットのいずれに該当するか、答えてください（複数が該当する場合もあります）。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>（1） キーと値のペアを格納する		     辞書
 （2） 要素の値の重複が許されない	     セット
@@ -1038,13 +1044,13 @@ int型、float型、bool型、str型、tuple型<br />
 </section>
 <hr class="docutils" />
 <section id="id40">
-<h2><span class="section-number">5.45. </span>問題 4<a class="headerlink" href="#id40" title="Link to this heading">¶</a></h2>
+<h2>問題 4<a class="headerlink" href="#id40" title="Link to this heading">¶</a></h2>
 <p>下記の表は、基本型が、どのような性質を持つかをまとめたものです。空欄に対して、○か×を入れてください。</p>
 <p><img alt="181" src="../../_images/181.png" /></p>
 </section>
 <hr class="docutils" />
 <section id="id41">
-<h2><span class="section-number">5.46. </span>問題 4（解答）<a class="headerlink" href="#id41" title="Link to this heading">¶</a></h2>
+<h2>問題 4（解答）<a class="headerlink" href="#id41" title="Link to this heading">¶</a></h2>
 <p>下記の表は、基本型が、どのような性質を持つかをまとめたものです。空欄に対して、○か×を入れてください。</p>
 <p><img alt="182" src="../../_images/182.png" /></p>
 </section>
@@ -1060,7 +1066,7 @@ int型、float型、bool型、str型、tuple型<br />
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title"><span class="section-number">6. </span>第5章 ユーザ定義関数</div>
+                <div class="title"><span class="section-number">7.6. </span>第5章 ユーザ定義関数</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -1071,7 +1077,7 @@ int型、float型、bool型、str型、tuple型<br />
                   <span>Previous</span>
                 </div>
                 
-                <div class="title"><span class="section-number">4. </span>第3章 条件分岐と繰り返し</div>
+                <div class="title"><span class="section-number">7.4. </span>第3章 条件分岐と繰り返し</div>
                 
               </div>
             </a>
@@ -1082,7 +1088,7 @@ int型、float型、bool型、str型、tuple型<br />
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2025-09-03</div>
+              Last updated on 2025-09-04</div>
           </div>
           <div class="right-details">
             
@@ -1103,53 +1109,53 @@ int型、float型、bool型、str型、tuple型<br />
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">5. 第4章 組み込み型とオブジェクト</a><ul>
-<li><a class="reference internal" href="#id2">5.1. オブジェクト指向</a></li>
-<li><a class="reference internal" href="#id">5.2. インスタンスの管理とID</a></li>
-<li><a class="reference internal" href="#id3">5.3. 代入の正確なイメージ</a></li>
-<li><a class="reference internal" href="#id4">5.4. 代入の正確なイメージ</a></li>
-<li><a class="reference internal" href="#id5">5.5. インスタンスの同値性と同一性</a></li>
-<li><a class="reference internal" href="#id6">5.6. クラスとインスタンスとメソッド</a></li>
-<li><a class="reference internal" href="#id7">5.7. 組み込み型</a></li>
-<li><a class="reference internal" href="#id8">5.8. メソッドの呼び出し</a></li>
-<li><a class="reference internal" href="#str">5.9. strクラスのメソッド</a></li>
-<li><a class="reference internal" href="#strformat">5.10. strクラスのformatメソッド</a></li>
-<li><a class="reference internal" href="#id9">5.11. strクラスのformatメソッド</a></li>
-<li><a class="reference internal" href="#in">5.12. in 演算子</a></li>
-<li><a class="reference internal" href="#id10">5.13. リストとタプル</a></li>
-<li><a class="reference internal" href="#list">5.14. listクラスの主なメソッド</a></li>
-<li><a class="reference internal" href="#id11">5.15. メソッドを使ったリストの操作</a></li>
-<li><a class="reference internal" href="#id12">5.16. メソッド以外のリストの操作</a></li>
-<li><a class="reference internal" href="#id13">5.17. 内包表記</a></li>
-<li><a class="reference internal" href="#if">5.18. if 構文を含む内包表記</a></li>
-<li><a class="reference internal" href="#id14">5.19. リストを含むリスト</a></li>
-<li><a class="reference internal" href="#id15">5.20. タプル</a></li>
-<li><a class="reference internal" href="#id16">5.21. ( )の省略とアンパック代入</a></li>
-<li><a class="reference internal" href="#id17">5.22. 辞書と集合（セット）</a></li>
-<li><a class="reference internal" href="#id18">5.23. 辞書</a></li>
-<li><a class="reference internal" href="#id19">5.24. 辞書の要素の取得</a></li>
-<li><a class="reference internal" href="#id20">5.25. 辞書の操作</a></li>
-<li><a class="reference internal" href="#id21">5.26. 辞書の要素の並べ替え</a></li>
-<li><a class="reference internal" href="#id22">5.27. セット</a></li>
-<li><a class="reference internal" href="#id23">5.28. セットの操作</a></li>
-<li><a class="reference internal" href="#id24">5.29. セットどうしの演算（集合演算）</a></li>
-<li><a class="reference internal" href="#id25">5.30. 基本型の性質</a></li>
-<li><a class="reference internal" href="#id26">5.31. 基本型の性質</a></li>
-<li><a class="reference internal" href="#id27">5.32. ミュータブルな型とイミュータブルな型</a></li>
-<li><a class="reference internal" href="#id28">5.33. ミュータブルな型とイミュータブルな型</a></li>
-<li><a class="reference internal" href="#id29">5.34. 反復可能なオブジェクト</a></li>
-<li><a class="reference internal" href="#id30">5.35. 順序を持つオブジェクト</a></li>
-<li><a class="reference internal" href="#id31">5.36. スライス式</a></li>
-<li><a class="reference internal" href="#id32">5.37. 基本型の性質</a></li>
-<li><a class="reference internal" href="#id33">5.38. 練習問題</a></li>
-<li><a class="reference internal" href="#id34">5.39. 問題 1</a></li>
-<li><a class="reference internal" href="#id35">5.40. 問題 1（解答）</a></li>
-<li><a class="reference internal" href="#id36">5.41. 問題 2</a></li>
-<li><a class="reference internal" href="#id37">5.42. 問題 2（解答）</a></li>
-<li><a class="reference internal" href="#id38">5.43. 問題 3</a></li>
-<li><a class="reference internal" href="#id39">5.44. 問題 3（解答）</a></li>
-<li><a class="reference internal" href="#id40">5.45. 問題 4</a></li>
-<li><a class="reference internal" href="#id41">5.46. 問題 4（解答）</a></li>
+<li><a class="reference internal" href="#">7.5. 第4章 組み込み型とオブジェクト</a><ul>
+<li><a class="reference internal" href="#id2">オブジェクト指向</a></li>
+<li><a class="reference internal" href="#id">インスタンスの管理とID</a></li>
+<li><a class="reference internal" href="#id3">代入の正確なイメージ</a></li>
+<li><a class="reference internal" href="#id4">代入の正確なイメージ</a></li>
+<li><a class="reference internal" href="#id5">インスタンスの同値性と同一性</a></li>
+<li><a class="reference internal" href="#id6">クラスとインスタンスとメソッド</a></li>
+<li><a class="reference internal" href="#id7">組み込み型</a></li>
+<li><a class="reference internal" href="#id8">メソッドの呼び出し</a></li>
+<li><a class="reference internal" href="#str">strクラスのメソッド</a></li>
+<li><a class="reference internal" href="#strformat">strクラスのformatメソッド</a></li>
+<li><a class="reference internal" href="#id9">strクラスのformatメソッド</a></li>
+<li><a class="reference internal" href="#in">in 演算子</a></li>
+<li><a class="reference internal" href="#id10">リストとタプル</a></li>
+<li><a class="reference internal" href="#list">listクラスの主なメソッド</a></li>
+<li><a class="reference internal" href="#id11">メソッドを使ったリストの操作</a></li>
+<li><a class="reference internal" href="#id12">メソッド以外のリストの操作</a></li>
+<li><a class="reference internal" href="#id13">内包表記</a></li>
+<li><a class="reference internal" href="#if">if 構文を含む内包表記</a></li>
+<li><a class="reference internal" href="#id14">リストを含むリスト</a></li>
+<li><a class="reference internal" href="#id15">タプル</a></li>
+<li><a class="reference internal" href="#id16">( )の省略とアンパック代入</a></li>
+<li><a class="reference internal" href="#id17">辞書と集合（セット）</a></li>
+<li><a class="reference internal" href="#id18">辞書</a></li>
+<li><a class="reference internal" href="#id19">辞書の要素の取得</a></li>
+<li><a class="reference internal" href="#id20">辞書の操作</a></li>
+<li><a class="reference internal" href="#id21">辞書の要素の並べ替え</a></li>
+<li><a class="reference internal" href="#id22">セット</a></li>
+<li><a class="reference internal" href="#id23">セットの操作</a></li>
+<li><a class="reference internal" href="#id24">セットどうしの演算（集合演算）</a></li>
+<li><a class="reference internal" href="#id25">基本型の性質</a></li>
+<li><a class="reference internal" href="#id26">基本型の性質</a></li>
+<li><a class="reference internal" href="#id27">ミュータブルな型とイミュータブルな型</a></li>
+<li><a class="reference internal" href="#id28">ミュータブルな型とイミュータブルな型</a></li>
+<li><a class="reference internal" href="#id29">反復可能なオブジェクト</a></li>
+<li><a class="reference internal" href="#id30">順序を持つオブジェクト</a></li>
+<li><a class="reference internal" href="#id31">スライス式</a></li>
+<li><a class="reference internal" href="#id32">基本型の性質</a></li>
+<li><a class="reference internal" href="#id33">練習問題</a></li>
+<li><a class="reference internal" href="#id34">問題 1</a></li>
+<li><a class="reference internal" href="#id35">問題 1（解答）</a></li>
+<li><a class="reference internal" href="#id36">問題 2</a></li>
+<li><a class="reference internal" href="#id37">問題 2（解答）</a></li>
+<li><a class="reference internal" href="#id38">問題 3</a></li>
+<li><a class="reference internal" href="#id39">問題 3（解答）</a></li>
+<li><a class="reference internal" href="#id40">問題 4</a></li>
+<li><a class="reference internal" href="#id41">問題 4（解答）</a></li>
 </ul>
 </li>
 </ul>

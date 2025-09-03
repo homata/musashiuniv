@@ -1,0 +1,21 @@
+### 機械学習
+
+```{toctree}
+:maxdepth: 2
+:numbered: 2
+
+supervised_learning
+unsupervised_learning
+```
+
+- [7-2. scikit-learnライブラリ](https://utokyo-ipp.github.io/7/7-2.html)
+
+**ダウンロード**
+* [iris.csv](./files/iris.csv)
+
+<!--
+#### **参考**
+* [UTokyo - Pythonプログラミング入門](https://utokyo-ipp.github.io/index.html)
+* [第21回「scikit-learnの使い方（7）次元削減」](https://www.pythonic-exam.com/archives/9586)
+* [Introduction to Quantitative Data Analysis with Python](https://iiimethodsiv.github.io/intro2quandataanalysis/docs/sec08/supervised_learning.html)
+-->

@@ -12,4 +12,6 @@ python_dataanalysis/index.md
 
 digital_twin/index.md
 leafmap/index.md
+
+machine_learning/index.md
 ```

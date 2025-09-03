@@ -17,7 +17,17 @@
 -->
 
 
-#### leadmapとは
+インタラクティブなマッピングと地理空間分析を行うための無料でオープンソースの
+Pythonパッケージ
+ ユーザーが最小限のコーディングで地理空間データを分析および視覚化可能にしたもの
+ Google Colab、JupyterNotebook環境で動作
+ テネシー大学 地理学部 准教授のQiusheng Wu, PhDが開発
+ foliumやipyleafletなどのライブラリをベースに構築
+ geemapは、Google Earth Engine (GEE) が動作
+ leafmapは、geemapのスピンオフでgeemapのGEEなしのバージョン
+
+
+#### leafmapとは
 Leafmapは、Google Colab、JupyterNotebook環境で地図作成と地理空間分析を行うためのPythonパッケージです。
 
 ![](https://wetlands.io/file/images/leafmap_demo.gif)

@@ -52,3 +52,4 @@
 **補助資料**
 * グルーピング
     - [【polars】groupby：グルーピング【データフレーム処理】](https://datasciencemore.com/polars-groupby/)
+* [GeoDjangoではじめる地理空間情報](https://homata.gitbook.io/geodjango)
