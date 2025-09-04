@@ -7,14 +7,14 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="02.programming_advanced_a/machine_learning/unsupervised_learning.html" />
 <meta property="og:site_name" content="musashiuniv" />
-<meta property="og:description" content="クラスタリング: K-means: irisの特徴量 petal_length と petal_width を用いて、クラスタリング手法の一つであるK-meansを使ってクラスタリングします K-meansではクラスタの数を指定する必要があります。ここでは3つのクラスタを生成します。 PCA（主成分分析）次元削減: 高次元のデータの次元数を削減するために用いられることも多いです。 ここでは、..." />
+<meta property="og:description" content="クラスタリング: K-means: irisの特徴量 petal_length と petal_width を用いて、クラスタリング手法の一つであるK-meansを使ってクラスタリングします K-meansではクラスタの数を指定する必要があります。ここでは3つのクラスタを生成します。 PCA（主成分分析）次元削減: PCA（主成分分析）で次元削減を行う目的はいくつかあります。, 主に以下のよ..." />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
 <meta property="og:image" content="/None" />
 <meta property="og:image:alt" content="クラスタリング: K-means: irisの特徴量 petal_length と petal_width を用いて、クラスタリング手法の一つであるK-meansを使ってクラスタリングします K-meansではクラスタの数を指定する必要があります。ここでは3つのクラスタを生成します。 PCA（主成分分析）次元削減..." />
-<meta name="description" content="クラスタリング: K-means: irisの特徴量 petal_length と petal_width を用いて、クラスタリング手法の一つであるK-meansを使ってクラスタリングします K-meansではクラスタの数を指定する必要があります。ここでは3つのクラスタを生成します。 PCA（主成分分析）次元削減: 高次元のデータの次元数を削減するために用いられることも多いです。 ここでは、..." />
+<meta name="description" content="クラスタリング: K-means: irisの特徴量 petal_length と petal_width を用いて、クラスタリング手法の一つであるK-meansを使ってクラスタリングします K-meansではクラスタの数を指定する必要があります。ここでは3つのクラスタを生成します。 PCA（主成分分析）次元削減: PCA（主成分分析）で次元削減を行う目的はいくつかあります。, 主に以下のよ..." />
 <meta name="twitter:card" content="summary_large_image" />
-<link rel="index" title="索引" href="../../genindex.html" /><link rel="search" title="検索" href="../../search.html" /><link rel="next" title="Google Colaboratoryの使い方" href="../../03.google_colab/index.html" /><link rel="prev" title="1. 機械学習" href="supervised_learning.html" />
+<link rel="index" title="索引" href="../../genindex.html" /><link rel="search" title="検索" href="../../search.html" /><link rel="next" title="3. 分類問題における正解・不正解のパターン" href="f1score.html" /><link rel="prev" title="1. 機械学習" href="supervised_learning.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
         <title>2. 教師なし学習 - Pythonプログラミング入門</title>
@@ -268,6 +268,7 @@
 <li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">機械学習</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of 機械学習</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="supervised_learning.html">1. 機械学習</a></li>
 <li class="toctree-l3 current current-page"><a class="current reference internal" href="#">2. 教師なし学習</a></li>
+<li class="toctree-l3"><a class="reference internal" href="f1score.html">3. 分類問題における正解・不正解のパターン</a></li>
 </ul>
 </li>
 </ul>
@@ -358,7 +359,8 @@
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
-<div>
+  <div id="df-46c6b3fe-80bb-4f49-9308-aa0c250f05ad" class="colab-df-container">
+    <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -426,9 +428,218 @@
     </tr>
   </tbody>
 </table>
-</div></div>
 </div>
-<div class="nbinput docutils container">
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-46c6b3fe-80bb-4f49-9308-aa0c250f05ad')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-46c6b3fe-80bb-4f49-9308-aa0c250f05ad button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-46c6b3fe-80bb-4f49-9308-aa0c250f05ad');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-a25bd6e5-a989-4899-a142-18dd205897a8">
+      <button class="colab-df-quickchart" onclick="quickchart('df-a25bd6e5-a989-4899-a142-18dd205897a8')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-a25bd6e5-a989-4899-a142-18dd205897a8 button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+    </div>
+  </div></div>
+</div>
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
@@ -439,15 +650,6 @@
 <span class="n">y_km</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_iris</span><span class="p">)</span> <span class="c1"># クラスタを予測</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/Users/yuyashibu/anaconda3/envs/iiimethodsiv/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  warnings.warn(
-</pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -473,7 +675,34 @@
 </section>
 <section id="PCA（主成分分析）次元削減">
 <h3>PCA（主成分分析）次元削減<a class="headerlink" href="#PCA（主成分分析）次元削減" title="Link to this heading">¶</a></h3>
-<p>高次元のデータの次元数を削減するために用いられることも多いです。</p>
+<div class="line-block">
+<div class="line">PCA（主成分分析）で次元削減を行う目的はいくつかあります。</div>
+<div class="line">主に以下のような理由です。</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>計算コストの削減</strong></div>
+<div class="line">特徴量が多いと、機械学習モデルの学習に時間がかかります、過学習のリスクも高まります。</div>
+<div class="line">PCAで特徴量を減らすことで、学習時間の短縮やモデルのシンプル化が可能になります。</div>
+<div class="line">特徴量が減れば、学習・予測の速度が向上します。</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>情報の圧縮（次元削減）</strong></div>
+<div class="line">データには多数の特徴量（変数）があることが多いですが、それらの中には似たような情報を持っているものもあります。</div>
+<div class="line">PCAは相関の高い変数をまとめ、「できるだけ情報を失わないように」少数の新しい軸（主成分）に圧縮します</div>
+<div class="line">→ 少ない次元で効率的にデータを表現できる。</div>
+<div class="line">→ 重要な特徴を抽出できる。</div>
+<div class="line">→ 予測に本当に役立つ要素だけを取り出すことができます。</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>データの可視化が容易になる</strong></div>
+<div class="line">圧縮した2次元・3次元データなら、散布図などで傾向を直感的に把握できます。</div>
+<div class="line">PCAを使えば、高次元のデータを2次元や3次元に射影できるので、クラスタリングの傾向や異常値の存在などが見やすくなります。</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>ノイズ除去</strong></div>
+<div class="line">高次元データの中には、分析にほとんど寄与しない「ノイズ的な変数」も含まれています。</div>
+<div class="line">PCAでは分散が小さい成分（＝ほとんど情報を持たない軸）を落とすことで、ノイズを減らし、より本質的な構造を捉えることができます。</div>
+</div>
 <p>ここでは、irisデータの4つの特徴量を2次元にPCAを用いて削減します。</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
@@ -489,7 +718,8 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 特徴量の標準化</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -497,54 +727,17 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># PCAの実行（2次元に圧縮）</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">X_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_pca</span><span class="p">[:</span><span class="mi">2</span><span class="p">,:]</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-array([[-2.26470281,  0.4800266 ],
-       [-2.08096115, -0.67413356]])
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">[:</span><span class="mi">2</span><span class="p">,:]</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-array([[-0.90068117,  1.01900435, -1.34022653, -1.3154443 ],
-       [-1.14301691, -0.13197948, -1.34022653, -1.3154443 ]])
-</pre></div></div>
-</div>
-<p>どのくらいデータを説明できているか、寄与率(explained_variance_ratio)を用いて確認します。</p>
-<p>PCAの説明分散（または固有値）は、各主成分に帰属させることができる分散を示します。 各値は各主成分の分散に等しく、配列の長さは n_components で定義された成分の数に等しくなります。</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># もともとの特徴量</span>
 </pre></div>
 </div>
 </div>
@@ -553,12 +746,51 @@ array([[-0.90068117,  1.01900435, -1.34022653, -1.3154443 ],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[0.72962445 0.22850762]
+(150, 4)
 </pre></div></div>
 </div>
-<p>第一主成分と第二主成分をプロットしましょう。</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X_pca</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># 特徴量が圧縮されている。次元が削減されている</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(150, 2)
+</pre></div></div>
+</div>
+<p>どのくらいデータを説明できているか、寄与率(explained_variance_ratio)を用いて確認します。</p>
+<div class="line-block">
+<div class="line">PCAの説明分散（または固有値）は、各主成分に帰属させることができる分散を示します。</div>
+<div class="line">各値は各主成分の分散に等しく、配列の長さは n_components で定義された成分の数に等しくなります。</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;寄与率:&quot;</span><span class="p">,</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span>  <span class="c1"># 寄与率</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;累積寄与率:&quot;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">))</span> <span class="c1"># 累積寄与率</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+寄与率: [0.72962445 0.22850762]
+累積寄与率: 0.9581320720000163
+</pre></div></div>
+</div>
+<p>PCA後のデータを可視化</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;navy&#39;</span><span class="p">,</span> <span class="s1">&#39;turquoise&#39;</span><span class="p">,</span> <span class="s1">&#39;darkorange&#39;</span><span class="p">]</span>
@@ -587,12 +819,12 @@ array([[-0.90068117,  1.01900435, -1.34022653, -1.3154443 ],
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../../03.google_colab/index.html">
+          <a class="next-page" href="f1score.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Google Colaboratoryの使い方</div>
+                <div class="title"><span class="section-number">3. </span>分類問題における正解・不正解のパターン</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
