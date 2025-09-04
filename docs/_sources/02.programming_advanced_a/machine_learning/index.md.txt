@@ -6,18 +6,22 @@
 
 supervised_learning
 unsupervised_learning
+
 ```
 
-* [7-2. scikit-learnライブラリ](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/7/7-2.ipynb)
-
-
 **ダウンロード**
-* [iris.csv](./files/iris.csv)
+* [Google Colabファイルとデータ](./files/machine_learning_r0.zip)
+    * **Googleドライブにアップロードする時の注意点**
+        * ダウンロードされる「machine_learning_r0.zip」は圧縮ファイルです
+        * 下記の手順でパソコン上で解凍してGoogleドライブにアップロードしてください
+            1. パソコンにダウンロードした「machine_learning_r0.zip」ファイルは圧縮ファイルです。
+            2. 「machine_learning_r0.zip」をパソコン上で解凍してください
+                - Windowsの場合、右マウスメニュー「すべてを展開」を選択して解凍します
+            3. 「machine_learning_r0.zip」が解凍されると「machine_learning_r0」というフォルダが作成されます
+            4. 「machine_learning_r0」の下にある「machine_learning」フォルダーをGoogleドライブの「マイフォルダー」にアップロードしてください
 
-<!--
-- [7-2. scikit-learnライブラリ](https://utokyo-ipp.github.io/7/7-2.html)
-#### **参考**
-* [UTokyo - Pythonプログラミング入門](https://utokyo-ipp.github.io/index.html)
+**参考**  
+* [7-2. scikit-learnライブラリ](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/7/7-2.ipynb)
+* [分類問題における正解・不正解のパターン](./fiscore.md)
 * [第21回「scikit-learnの使い方（7）次元削減」](https://www.pythonic-exam.com/archives/9586)
-* [Introduction to Quantitative Data Analysis with Python](https://iiimethodsiv.github.io/intro2quandataanalysis/docs/sec08/supervised_learning.html)
--->
+

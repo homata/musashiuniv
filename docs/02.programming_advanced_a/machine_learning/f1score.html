@@ -3,21 +3,21 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="2.1. 資料" />
+<meta property="og:title" content="分類問題における正解・不正解のパターン" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="02.programming_advanced_a/python_dataanalysis/00_index.html" />
+<meta property="og:url" content="02.programming_advanced_a/machine_learning/f1score.html" />
 <meta property="og:site_name" content="musashiuniv" />
-<meta property="og:description" content="学ぶこと Pythonで取り扱いやすいデータに変換や加工を行う方法, 表形式データの加工, データの評価方法, 地理空間情報データ. ダウンロード Google Colabファイルとデータ- Googleドライブにアップロードする時の注意点- ダウンロードされる「download.zip」は圧縮ファイルです, 下記の手順でパソコン上で解凍してGoogleドライブにアップロードしてください- ..." />
+<meta property="og:description" content="分類問題の予測結果の評価指標（Accuracy, Precision, Recall, F値, AUC）について整理してみた. 分類問題における実測値と予測値の関係性は以下のマトリクスで表現できます。,,,, 正（実測）, 負（実測）,,, 正（予測）, TP, FP,, 負（予測）, FN, TN,,,, モデルが正しく予測したパターン→頭にT(True)がつく TP(True Posit..." />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/None" />
-<meta property="og:image:alt" content="学ぶこと Pythonで取り扱いやすいデータに変換や加工を行う方法, 表形式データの加工, データの評価方法, 地理空間情報データ. ダウンロード Google Colabファイルとデータ- Googleドライブにアップロードする時の注意点- ダウンロードされる「download.zip」は圧縮ファイルです, 下..." />
-<meta name="description" content="学ぶこと Pythonで取り扱いやすいデータに変換や加工を行う方法, 表形式データの加工, データの評価方法, 地理空間情報データ. ダウンロード Google Colabファイルとデータ- Googleドライブにアップロードする時の注意点- ダウンロードされる「download.zip」は圧縮ファイルです, 下記の手順でパソコン上で解凍してGoogleドライブにアップロードしてください- ..." />
+<meta property="og:image" content="/_images/social_previews/summary_02.programming_advanced_a_machine_learning_f1score_510ebb0c.png" />
+<meta property="og:image:alt" content="分類問題の予測結果の評価指標（Accuracy, Precision, Recall, F値, AUC）について整理してみた. 分類問題における実測値と予測値の関係性は以下のマトリクスで表現できます。,,,, 正（実測）, 負（実測）,,, 正（予測）, TP, FP,, 負（予測）, FN, TN,,,, モデ..." />
+<meta name="description" content="分類問題の予測結果の評価指標（Accuracy, Precision, Recall, F値, AUC）について整理してみた. 分類問題における実測値と予測値の関係性は以下のマトリクスで表現できます。,,,, 正（実測）, 負（実測）,,, 正（予測）, TP, FP,, 負（予測）, FN, TN,,,, モデルが正しく予測したパターン→頭にT(True)がつく TP(True Posit..." />
 <meta name="twitter:card" content="summary_large_image" />
-<link rel="index" title="索引" href="../../genindex.html" /><link rel="search" title="検索" href="../../search.html" /><link rel="next" title="3. デジタルツイン" href="../digital_twin/index.html" /><link rel="prev" title="2. Pythonデータ分析 実践ハンドブック 実務で使えるデータ加工のテクニック" href="index.html" />
+<link rel="index" title="索引" href="../../genindex.html" /><link rel="search" title="検索" href="../../search.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
-        <title>2.1. 資料 - Pythonプログラミング入門</title>
+        <title>分類問題における正解・不正解のパターン - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -212,7 +212,7 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01.programming_basic_a/index.html">プログラミング基礎A/コンピューティング応用E</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of プログラミング基礎A/コンピューティング応用E</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../01.programming_basic_a/01_intro.html">1. Pythonをはじめよう</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../01.programming_basic_a/02_computer.html">2. ノイマン型コンピュータ</a></li>
@@ -251,10 +251,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../01.programming_basic_a/99_install.html">7. 参考資料</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">プログラミング応用A/コンピューティング応用G</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../01_intro.html">1. はじめに</a></li>
-<li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">2. Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of 2. Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">2.1. 資料</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../python_dataanalysis/index.html">2. Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of 2. Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../python_dataanalysis/00_index.html">2.1. 資料</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../digital_twin/index.html">3. デジタルツイン</a></li>
@@ -264,9 +264,9 @@
 <li class="toctree-l3"><a class="reference internal" href="../leafmap/01_intro.html#google-colab">4.3. 演習：Google Colab ファイル</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../machine_learning/index.html">5. 機械学習</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of 5. 機械学習</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../machine_learning/supervised_learning.html">5.1. 機械学習</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../machine_learning/unsupervised_learning.html">5.2. 教師なし学習</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="index.html">5. 機械学習</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of 5. 機械学習</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="supervised_learning.html">5.1. 機械学習</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unsupervised_learning.html">5.2. 教師なし学習</a></li>
 </ul>
 </li>
 </ul>
@@ -298,7 +298,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="../../_sources/02.programming_advanced_a/python_dataanalysis/00_index.md.txt" title="View this page">
+  <a class="muted-link" href="../../_sources/02.programming_advanced_a/machine_learning/f1score.md.txt" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -319,95 +319,82 @@
         </div>
         <article role="main" id="furo-main-content">
           <section id="id1">
-<h1><span class="section-number">2.1. </span>資料<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
-<p><strong>学ぶこと</strong></p>
+<h1>分類問題における正解・不正解のパターン<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
 <ul class="simple">
-<li><p>Pythonで取り扱いやすいデータに変換や加工を行う方法</p></li>
-<li><p>表形式データの加工</p></li>
-<li><p>データの評価方法</p></li>
-<li><p>地理空間情報データ</p></li>
+<li><p><a class="reference external" href="https://tech.ledge.co.jp/entry/metrics">分類問題の予測結果の評価指標（Accuracy, Precision, Recall, F値, AUC）について整理してみた</a></p></li>
 </ul>
-<p><strong>ダウンロード</strong></p>
-<ul class="simple">
-<li><p><a class="reference download internal" download="" href="../../_downloads/7f63e417abaf894b6cecf4a2a98218dc/download.zip"><span class="xref download myst">Google Colabファイルとデータ</span></a></p>
-<ul>
-<li><p><strong>Googleドライブにアップロードする時の注意点</strong></p>
-<ul>
-<li><p>ダウンロードされる「download.zip」は圧縮ファイルです</p></li>
-<li><p>下記の手順でパソコン上で解凍してGoogleドライブにアップロードしてください</p>
-<ol class="arabic simple">
-<li><p>パソコンにダウンロードした「download.zip」ファイルは圧縮ファイルです。</p></li>
-<li><p>「download.zip」をパソコン上で解凍してください</p>
-<ul>
-<li><p>Windowsの場合、右マウスメニュー「すべてを展開」を選択して解凍します</p></li>
-</ul>
-</li>
-<li><p>「download.zip」が解凍されると「download」というフォルダが作成されます</p></li>
-<li><p>「download」の下にある「python_dataanalysis」フォルダーをGoogleドライブの「マイフォルダー」にアップロードしてください</p></li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>目次</strong></p>
-<ul class="simple">
-<li><p><a class="reference download internal" download="" href="../../_downloads/a93e80ef3af742dfc5e6d19949e14322/02_03_01_dataanalysis_r0.pdf"><span class="xref download myst">第1章 データ加工概論</span></a></p>
-<ul>
-<li><p>データ加工の概論を説明する</p></li>
-</ul>
-</li>
-<li><p><a class="reference download internal" download="" href="../../_downloads/d970222efeb3c91eb10773070e757462/02_03_02_dataanalysis_r0.pdf"><span class="xref download myst">第2章 データの種類と読み込み</span></a></p>
-<ul>
-<li><p>各種データ形式の取り扱い方</p></li>
-<li><p>Google Colab: 02-read-data</p></li>
-</ul>
-</li>
-<li><p><a class="reference download internal" download="" href="../../_downloads/69ecaa7454e90f4f6b22d57faa91ea27/02_03_03_dataanalysis_r0.pdf"><span class="xref download myst">第3章 表形式データの加工</span></a></p>
-<ul>
-<li><p>表形式のデータの加工方法</p></li>
-<li><p>Google Colab: 03-table-data</p></li>
-</ul>
-</li>
-<li><p><a class="reference download internal" download="" href="../../_downloads/446043794c7dbf2accc9f0da5e35b15b/02_03_05_dataanalysis_r0.pdf"><span class="xref download myst">第5章 データの評価</span></a></p>
-<ul>
-<li><p>データの評価方法を解説</p></li>
-<li><p>Google Colab: 05-evaluation</p></li>
-</ul>
-</li>
-<li><p><a class="reference download internal" download="" href="../../_downloads/288182fffaada80e20221b4fada6faf4/02_03_08_dataanalysis_r0.pdf"><span class="xref download myst">第8章 画像データの処理</span></a></p>
-<ul>
-<li><p>画像を数値データとして扱うことで大量に効率よく処理する方法</p></li>
-<li><p>Google Colab: 08-image-data</p></li>
-</ul>
-</li>
-<li><p><a class="reference download internal" download="" href="../../_downloads/485b10cea8a46e6f27090cb1dfb94df0/02_03_10_dataanalysis_r0.pdf"><span class="xref download myst">第10章 地理空間データの処理</span></a></p>
-<ul>
-<li><p>地理空間データの処理や可視化方法</p></li>
-</ul>
-</li>
-</ul>
+<p>分類問題における実測値と予測値の関係性は以下のマトリクスで表現できます。</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p></p></th>
+<th class="head text-left"><p>正（実測）</p></th>
+<th class="head text-left"><p>負（実測）</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>正（予測）</p></td>
+<td class="text-left"><p>TP</p></td>
+<td class="text-left"><p>FP</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>負（予測）</p></td>
+<td class="text-left"><p>FN</p></td>
+<td class="text-left"><p>TN</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <!--
-* 第4章 NumPyと数値データ
-    - NumPyで数値を扱うためのデータ型、多次元配列の構造
-* 第6章 時系列データの処理
-    - 時系列データの処理方法を解説
-* 第7章 テキスト情報の処理
-    - 文書データやテキストが含まれた表形式データの処理方法 
-* 第9章 グラフデータの処理
-    - グラフ構造のデータを処理する方法を解説
-* 第11章 データ加工のための線形代数
-    - データ分析に必要な線形代数の解説と、主成分分析の仕組み
+| 混同行列    |  実際            |...              | ...             |
+| ...        |                  | 陽性 (Positive) |  陰性 (Negative) |
+|:-----------|:-----------------|:---------------|:-----------------|
+| モデルの予測 | 陽性 (Positive) | TP              | FP               |
+| ...        | 陰性 (Negative)  | FN             | TN                |
 -->
-<p><strong>補助資料</strong></p>
+<p>モデルが正しく予測したパターン→頭にT(True)がつく</p>
 <ul class="simple">
-<li><p>グルーピング</p>
-<ul>
-<li><p><a class="reference external" href="https://datasciencemore.com/polars-groupby/">【polars】groupby：グルーピング【データフレーム処理】</a></p></li>
+<li><p>TP(True Positive)：実測値と予測値の両方が正であったもの</p></li>
+<li><p>TN(Ture Negative)：実測値と予測値の両方が負であったもの</p></li>
 </ul>
-</li>
-<li><p><a class="reference external" href="https://homata.gitbook.io/geodjango">GeoDjangoではじめる地理空間情報</a></p></li>
+<p>モデルが間違って予測したパターン→頭にF(False)がつく</p>
+<ul class="simple">
+<li><p>FP(False Positive)：実測値が負なのに、誤って正と予測値したもの（誤検知、偽陽性）</p></li>
+<li><p>FN(False Negative)：実測値が正なのに、誤って負と予測値したもの（偽陰性）</p></li>
+</ul>
+<p>この内どの数値を用いるかが評価指標を見るときのポイントになります。</p>
+<p><strong>Accuracy(正解率)</strong><br />
+読んで字のごとく、全体のうちどれだけ正解があるかだ。
+「予測がどれだけ正しかったか」を見る指標</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">TP</span> <span class="o">+</span> <span class="n">TN</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">TP</span> <span class="o">+</span> <span class="n">TN</span> <span class="o">+</span> <span class="n">FP</span> <span class="o">+</span> <span class="n">FN</span><span class="p">)</span>
+<span class="o">=&gt;</span>  <span class="n">予測が正しかった数</span> <span class="o">/</span> <span class="n">予測したデータ数</span>
+</pre></div>
+</div>
+<p><strong>Precision(適合率）</strong><br />
+無駄打ちをなくすのが目標<br />
+Precisionは「正と予測したものが、どれだけ正しかったか」を見る指標</p>
+<p>英語でPreciseは精密な、という意味があることからも精度のように厳密に予測の性能を図ることができる。<br />
+再現率とはトレードオフの関係にある。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TP</span> <span class="o">/</span> <span class="p">(</span><span class="n">TP</span> <span class="o">+</span> <span class="n">FP</span><span class="p">)</span>
+<span class="o">=&gt;</span>  <span class="n">正と予測した中で実際に正であったものの数</span> <span class="o">/</span> <span class="n">正と予測したものの数</span>
+</pre></div>
+</div>
+<p><strong>Recall(再現率)</strong>
+機会損失をなくすのが目標<br />
+Recallは「実際に正であったもののうち、どれだけ正と予測できたか」を見る指標</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TP</span> <span class="o">/</span> <span class="p">(</span><span class="n">TP</span> <span class="o">+</span> <span class="n">FN</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="n">実際に正であったものの中で正と予測できた数</span> <span class="o">/</span> <span class="n">実際に正であったものの数</span>
+</pre></div>
+</div>
+<p><strong>F値(F-measure/F1スコア)</strong>
+F値はPrecisionとRecallの調和平均<br />
+Recall(再現率)とPrecision(適合率)はトレードオフの関係にあることから、これらの調和平均をとって性能指標とすることが多い。
+これをF値(F-measure/F1スコア)と呼ぶ。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F1score</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="n">x</span> <span class="p">(</span><span class="n">適合率</span> <span class="n">x</span> <span class="n">再現率</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">適合率</span> <span class="o">+</span> <span class="n">再現率</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>参考</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.pythonic-exam.com/archives/9586">第21回「scikit-learnの使い方（7）次元削減」</a></p></li>
 </ul>
 </section>
 
@@ -416,26 +403,8 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../digital_twin/index.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title"><span class="section-number">3. </span>デジタルツイン</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="index.html">
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-              <div class="page-info">
-                <div class="context">
-                  <span>Previous</span>
-                </div>
-                
-                <div class="title"><span class="section-number">2. </span>Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック</div>
-                
-              </div>
-            </a>
+          
+          
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
