@@ -1,8 +1,5 @@
 ### 分類問題における正解・不正解のパターン
 
-* [分類問題の予測結果の評価指標（Accuracy, Precision, Recall, F値, AUC）について整理してみた](https://tech.ledge.co.jp/entry/metrics)
-
-
 分類問題における実測値と予測値の関係性は以下のマトリクスで表現できます。
 
 |          | 正（実測）| 負（実測） |
@@ -66,3 +63,8 @@ Recall(再現率)とPrecision(適合率)はトレードオフの関係にある�
 ```
 F1score = (2 x (適合率 x 再現率)) / (適合率 + 再現率)
 ```
+
+**参考**  
+* [分類問題の予測結果の評価指標（Accuracy, Precision, Recall, F値, AUC）について整理してみた](https://tech.ledge.co.jp/entry/metrics)
+* [【機械学習の初学者向け】F1スコアについて理解しよう！](https://note.com/noa813/n/nef0692042cdf)
+
