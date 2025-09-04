@@ -66,8 +66,3 @@ Recall(再現率)とPrecision(適合率)はトレードオフの関係にある�
 ```
 F1score = (2 x (適合率 x 再現率)) / (適合率 + 再現率)
 ```
-
-
-**参考**
-* [第21回「scikit-learnの使い方（7）次元削減」](https://www.pythonic-exam.com/archives/9586)
-
