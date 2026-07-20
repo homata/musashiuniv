@@ -1,0 +1,21 @@
+# プログラミング基礎A/コンピューティング応用E
+
+```{toctree}
+:maxdepth: 2
+:numbered: 2
+
+markdown/01.md
+markdown/02.md
+markdown/03.md
+markdown/04.md
+markdown/05.md
+markdown/06.md
+markdown/07.md
+markdown/08.md
+markdown/09.md
+
+markdown/10.md
+markdown/11.md
+markdown/12.md
+markdown/13.md
+```

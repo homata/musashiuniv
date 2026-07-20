@@ -6,18 +6,17 @@
 目次
 =========================
 
-
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   01.programming_basic_a/index
-   02.programming_advanced_a/index
+   2025/index
+   2026/index
+
    03.google_colab/index
    04.markdown/index
    05.windows/index
    99.references/index
-
 
 ライセンス
 ----------
