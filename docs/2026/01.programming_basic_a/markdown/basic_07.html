@@ -1,0 +1,802 @@
+<!doctype html>
+<html class="no-js" lang="ja" data-content_root="../../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="第7回 テスト・デバッグ、コードスタイル" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="2026/01.programming_basic_a/markdown/basic_07.html" />
+<meta property="og:site_name" content="musashiuniv" />
+<meta property="og:description" content="さて、プログラミングをしていて、赤い文字で「エラー（Error）」が出た時、ドキッとしませんか？「何か壊してしまったかも…」「自分には向いてないのかも…」と不安になる方もいると思います。 今回は、エラーを怖がらずに「バグ（虫）を見つけて退治する技術（デバッグ）」と、エラーを未然に防ぐための「美しいコードの書き方（コードスタイル）」を学びます。 これができるようになれば、今後のデータ分析が驚く..." />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image" content="/_images/social_previews/summary_2026_01.programming_basic_a_markdown_basic_07_20b62612.png" />
+<meta property="og:image:alt" content="さて、プログラミングをしていて、赤い文字で「エラー（Error）」が出た時、ドキッとしませんか？「何か壊してしまったかも…」「自分には向いてないのかも…」と不安になる方もいると思います。 今回は、エラーを怖がらずに「バグ（虫）を見つけて退治する技術（デバッグ）」と、エラーを未然に防ぐための「美しいコードの書き方（..." />
+<meta name="description" content="さて、プログラミングをしていて、赤い文字で「エラー（Error）」が出た時、ドキッとしませんか？「何か壊してしまったかも…」「自分には向いてないのかも…」と不安になる方もいると思います。 今回は、エラーを怖がらずに「バグ（虫）を見つけて退治する技術（デバッグ）」と、エラーを未然に防ぐための「美しいコードの書き方（コードスタイル）」を学びます。 これができるようになれば、今後のデータ分析が驚く..." />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" /><link rel="next" title="第8回 制御フロー（条件分岐、繰り返し、イテレータ、内包表記）" href="basic_08.html" /><link rel="prev" title="第6回 条件分岐、ファイル入出力の基本" href="basic_06.html" />
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+        <title>第7回 テスト・デバッグ、コードスタイル - Pythonプログラミング入門</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/musashiuniv/custom.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">Pythonプログラミング入門</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
+  
+  
+  <span class="sidebar-brand-text">Pythonプログラミング入門</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="検索" name="q" aria-label="検索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../2025/index.html">2025年度</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 2025年度</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/index.html">1. 2025年度 プログラミング基礎A/コンピューティング応用E</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 1. 2025年度 プログラミング基礎A/コンピューティング応用E</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/01_intro.html">1.1. Pythonをはじめよう</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/02_computer.html">1.2. ノイマン型コンピュータ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/03_history.html">1.3. Pythonの歴史</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/20_coding.html">1.4. コーディング規約</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/21_module.html">1.5. モジュール</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/utokyo_ipp/index.html">1.6. Pythonプログラミング入門</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of 1.6. Pythonプログラミング入門</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/utokyo_ipp/00_index.html">1. 演習ページ</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/index.html">1.7. (補足資料) Python ゼロからはじめるプログラミング</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 1.7. (補足資料) Python ゼロからはじめるプログラミング</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/00_index.html">1. Pythonプログラミング</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/01_Python%E3%81%AB%E8%A7%A6%E3%82%8C%E3%82%8B.html">2. 第1章 Pythonに触れる</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/02_Python%E3%81%AE%E5%9F%BA%E6%9C%AC.html">3. 第2章 Pythonの基本</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/03_%E6%9D%A1%E4%BB%B6%E5%88%86%E5%B2%90%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%97.html">4. 第3章 条件分岐と繰り返し</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/04_%E7%B5%84%E3%81%BF%E8%BE%BC%E3%81%BF%E5%9E%8B%E3%81%A8%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88.html">5. 第4章 組み込み型とオブジェクト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/05_%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E5%AE%9A%E7%BE%A9%E9%96%A2%E6%95%B0.html">6. 第5章 ユーザ定義関数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/06_%E3%82%AF%E3%83%A9%E3%82%B9%E3%81%AE%E5%9F%BA%E6%9C%AC.html">7. 第6章 クラスの基本</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/07_%E7%99%BA%E5%B1%95%E3%81%A8%E5%BF%9C%E7%94%A8.html">8. 第7章 発展と応用</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/index.html">1.8. (補助資料)Python Boot Camp Text</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 1.8. (補助資料)Python Boot Camp Text</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/index.html">Python Boot Camp テキスト</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Python Boot Camp テキスト</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/1_install.html">1. Pythonをはじめる前に</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/2_intro.html">2. Pythonをはじめよう</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/3_types.html">3. Pythonのデータ型（基本編）</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/4_collections.html">4. Pythonのデータ型（コレクション編）</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/5_module.html">5. ファイル操作とモジュール</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/6_venv.html">6. サードパーティ製パッケージと venv</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/7_scraping.html">7. Web API、スクレイピング</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/8_nextstep.html">8. 次のステップ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/99_install.html">1.9. 参考資料</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/index.html">2025年度 プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of 2025年度 プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/02.programming_advanced_a/01_intro.html">1. はじめに</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/python_dataanalysis/index.html">2. Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of 2. Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/python_dataanalysis/00_index.html">2.1. 資料</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/02.programming_advanced_a/digital_twin/index.html">3. デジタルツイン</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/index.html">4. leafmap</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of 4. leafmap</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/01_intro.html">4.1. leafmapとは</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/01_intro.html#leadmap">4.2. leadmapのサイト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/01_intro.html#google-colab">4.3. 演習：Google Colab ファイル</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/index.html">5. 機械学習</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of 5. 機械学習</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/supervised_learning.html">5.1. 機械学習</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/unsupervised_learning.html">5.2. 教師なし学習</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/f1score.html">5.3. 分類問題における正解・不正解のパターン</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../../index.html">2026年度</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of 2026年度</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current has-children"><a class="reference internal" href="../index.html">プログラミング基礎A/コンピューティング応用E</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle navigation of プログラミング基礎A/コンピューティング応用E</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="basic_01.html">第1回 オリエンテーション・Google Colabの使い方</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_02.html">第2回 コンピューターとプログラミングとは？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_03.html">第3回 Pythonの基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_04.html">第4回 数値演算と文字列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_05.html">第5回 データ構造（数値、文字列、リスト、辞書）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_06.html">第6回 条件分岐、ファイル入出力の基本</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">第7回 テスト・デバッグ、コードスタイル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_08.html">第8回 制御フロー（条件分岐、繰り返し、イテレータ、内包表記）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_09.html">第9回 関数と例外処理（オブジェクト、クラス、例外処理）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_10.html">第10回 Pythonのライブラリ・パッケージ（演算系）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_11.html">第11回 高階関数とpandasライブラリ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_12.html">第12回 Pythonのライブラリ・パッケージ（グラフ可視化）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_13.html">第13回 総合演習</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_01.html">第1回 オリエンテーション・Google Colabの使い方</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_02.html">第2回 コンピューターとプログラミングとは？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_03.html">第3回 Pythonの基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_04.html">第4回 数値演算と文字列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_05.html">第5回 データ構造（数値、文字列、リスト、辞書）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_06.html">第6回 条件分岐、ファイル入出力の基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_07.html">第7回 テスト・デバッグ、コードスタイル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_08.html">第8回 制御フロー（条件分岐、繰り返し、イテレータ、内包表記）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_09.html">第9回 関数と例外処理（オブジェクト、クラス、例外処理）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_10.html">第10回 Pythonのライブラリ・パッケージ（演算系）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_11.html">第11回 高階関数とpandasライブラリ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_12.html">第12回 Pythonのライブラリ・パッケージ（グラフ可視化）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_13.html">第13回 総合演習</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../02.programming_advanced_a/index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02.programming_advanced_a/markdown/advanced_01.html">第1回 オリエンテーション</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../03.google_colab/index.html">Google Colaboratoryの使い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../04.markdown/index.html">Markdown記法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../05.windows/index.html">Windows 特有の注意点</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../99.references/index.html">ライセンス、参考文献</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle navigation of ライセンス、参考文献</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../99.references/01_basic/basic.html">プログラミング基礎A/コンピューティング応用E [集中] (M1830)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../99.references/02_advanced/advance.html">プログラミング応用A/コンピューティング応用G [集中] (M1850)</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../../_sources/2026/01.programming_basic_a/markdown/basic_07.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="id1">
+<h1>第7回 テスト・デバッグ、コードスタイル<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<p>さて、プログラミングをしていて、赤い文字で「エラー（Error）」が出た時、ドキッとしませんか？「何か壊してしまったかも…」「自分には向いてないのかも…」と不安になる方もいると思います。</p>
+<p>今回は、エラーを怖がらずに「バグ（虫）を見つけて退治する技術（デバッグ）」と、エラーを未然に防ぐための「美しいコードの書き方（コードスタイル）」を学びます。
+これができるようになれば、今後のデータ分析が驚くほどスムーズになりますよ。一緒に楽しく学んでいきましょう！</p>
+<hr class="docutils" />
+<section id="id2">
+<h2>🎯 到達目標<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><strong>エラーの種類</strong>（構文エラー・実行時エラー・論理エラー）を区別し、適切な対処法がわかる。</p></li>
+<li><p><strong>print文や生成AIを活用したデバッグ（バグ退治）</strong> の具体的なテクニックを使える。</p></li>
+<li><p><strong>assert文</strong> を使って、プログラムが正しく動いているか「テスト」できる。</p></li>
+<li><p><strong>PEP 8（ペップエイト）</strong> というルールを知り、誰が読んでも読みやすい美しいコードが書ける。</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h2>イントロダクション：仕様・テスト・デバッグとは？<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p>まずは、プログラムを作る時の基本的な流れ、「仕様」「テスト」「デバッグ」という3つの言葉を、カフェの「新しいレジシステム導入」に例えて理解しましょう。</p>
+<ul class="simple">
+<li><p><strong>仕様（ルール決め）</strong>: 「コーヒーは450円」「会員なら50円引きにする」といった、プログラムが<strong>どう動くべきか</strong>のルールです。</p></li>
+<li><p><strong>テスト（確認）</strong>: 実際に「会員の山田さんがコーヒーを頼んだ時、ちゃんと400円になるかな？」と試してみることです。データ分析でも「このデータを入れたら、ちゃんとこのグラフが出るかな？」と確認することが非常に重要です。</p></li>
+<li><p><strong>デバッグ（バグ退治）</strong>: もしテストをして「あれ？450円のままになっちゃったぞ？」という時、その原因（バグ：虫）を探して修正する作業のことです。</p></li>
+</ul>
+<p><strong>【バグ退治（デバッグ）のイメージ図】</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  [ 📝 仕様 ] コーヒー450円, 会員50円引
+       │
+       ▼
+  [ 💻 コード ] price = 450 - 50 (←本当は会員かどうかの条件分岐が必要！)
+       │
+       ▼
+  [ 🧪 テスト ] 非会員の佐藤さんでお会計してみる
+       │
+       ▼
+  [ 🐛 バグ発見！ ] 非会員なのに400円になっちゃった！ (論理エラー)
+       │
+       ▼
+  [ 🛠️ デバッグ ] if文を追加してコードを修正する！
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id4">
+<h2>エラーの分類とよくあるエラー<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<p>エラーには大きく分けて3つの種類があります。これを知っておくだけで、パニックにならずに済みますよ！</p>
+<section id="syntaxerror">
+<h3>① 構文エラー (SyntaxError)<a class="headerlink" href="#syntaxerror" title="Link to this heading">¶</a></h3>
+<p>Pythonの文法ルールを間違えている時に出ます。「日本語として成り立っていない」状態です。</p>
+<ul class="simple">
+<li><p><strong>例</strong>: 「私 コーヒー 飲む は」</p></li>
+<li><p><strong>原因</strong>: カッコ <code class="docutils literal notranslate"><span class="pre">()</span></code> やクォーテーション <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> の閉じ忘れ、if文の最後のコロン <code class="docutils literal notranslate"><span class="pre">:</span></code> の忘れなど。一番下に出てくる <code class="docutils literal notranslate"><span class="pre">^</span></code> マークの少し前をチェックしましょう。</p></li>
+</ul>
+</section>
+<section id="runtime-error">
+<h3>② 例外 / 実行時エラー (Runtime Error)<a class="headerlink" href="#runtime-error" title="Link to this heading">¶</a></h3>
+<p>文法は合っているけれど、実行しようとしたら「物理的に無理だった」時に出ます。</p>
+<ul class="simple">
+<li><p><strong>例</strong>: 「メニューにないタピオカミルクティーを出して！」</p></li>
+<li><p><strong>よくあるエラーと対処法</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">NameError</span></code>: 変数名の間違い（例：<code class="docutils literal notranslate"><span class="pre">coffee</span></code> を <code class="docutils literal notranslate"><span class="pre">cofee</span></code> と打ち間違えた）。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TypeError</span></code>: 型の間違い（例：文字と数字を足し算しようとした）。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IndexError</span></code>: リストの範囲外（例：3人しかいないのに「5番目の人を呼んで」と言った）。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code>: ゼロで割り算をしようとした（データ分析で「来店者0人の日の平均」を出そうとするとよく起きます）。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id5">
+<h3>③ 論理エラー (バグ)<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p><strong>これが一番厄介です！</strong> エラー画面は出ず、プログラムは最後まで動くのに「結果が間違っている」状態です。</p>
+<ul class="simple">
+<li><p><strong>例</strong>: 「お会計がマイナス500円になった」</p></li>
+<li><p>これを直すために、次の「デバッグ技法」を使います。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ① 構文エラーの例（わざとコロンを忘れています。実行してエラーを見てみましょう）</span>
+<span class="c1"># if True</span>
+<span class="c1">#     print(&quot;コロンがないよ！&quot;)</span>
+
+<span class="c1"># ② 実行時エラーの例（わざと変数名を間違えています）</span>
+<span class="n">shop_name</span> <span class="o">=</span> <span class="s2">&quot;ムサシカフェ&quot;</span>
+<span class="c1"># print(shop_nam)  # NameErrorが出ます</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id6">
+<h2>デバッグ技法とベストプラクティス（具体例）<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<p>論理エラー（結果がおかしい！）が起きた時、プロはどうやって原因を探すのでしょうか？</p>
+<section id="print">
+<h3>ベストプラクティス1: <code class="docutils literal notranslate"><span class="pre">print()</span></code> を使って中身をのぞき見する<a class="headerlink" href="#print" title="Link to this heading">¶</a></h3>
+<p>計算の途中で変数がどうなっているか、こまめに <code class="docutils literal notranslate"><span class="pre">print()</span></code> を差し込んで確認します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># デバッグの具体例：なぜか割引が2回適用されてしまうバグ</span>
+<span class="n">price</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">is_student</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">is_member</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># 学割（200円引き）</span>
+<span class="k">if</span> <span class="n">is_student</span><span class="p">:</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">price</span> <span class="o">-</span> <span class="mi">200</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;【デバッグ】学割適用後:&quot;</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span> <span class="c1"># ← ここで中身を確認！</span>
+
+<span class="c1"># 会員割（100円引き。ただし学割との併用は不可にしたいのに...）</span>
+<span class="k">if</span> <span class="n">is_member</span><span class="p">:</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">price</span> <span class="o">-</span> <span class="mi">100</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;【デバッグ】会員割適用後:&quot;</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span> <span class="c1"># ← ここで中身を確認！</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;最終価格:&quot;</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span> <span class="c1"># 700円になってしまう（論理エラー）</span>
+
+<span class="c1"># 解決策：2つ目の if を elif に変えれば、併用不可（どちらか一方）になります！</span>
+</pre></div>
+</div>
+</section>
+<section id="ai-chatgpt">
+<h3>ベストプラクティス2: 生成AI（ChatGPTなど）を頼る！<a class="headerlink" href="#ai-chatgpt" title="Link to this heading">¶</a></h3>
+<p>今の時代、一人で何時間も悩む必要はありません。エラーが出たら、<strong>エラーメッセージ全体と自分のコードをコピーして、生成AIに「このエラーの原因と直し方を教えて」と聞いてみましょう。</strong> 非常にわかりやすく解説してくれます。これも立派なプログラミングスキルの一つです！</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="assert">
+<h2>assert文とテスト<a class="headerlink" href="#assert" title="Link to this heading">¶</a></h2>
+<p>「絶対にこうなっているはずだ！」という前提条件を確認するために、<strong><code class="docutils literal notranslate"><span class="pre">assert</span></code>（アサート：断言する）文</strong>を使います。
+もし条件が <code class="docutils literal notranslate"><span class="pre">False</span></code> だった場合、その場で <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> を出してプログラムを止めてくれます。被害が大きくなる前にストップする安全装置ですね。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># assert文の具体例</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calc_discount</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">discount_rate</span><span class="p">):</span>
+    <span class="c1"># 割引率は絶対に 0〜1 の間でなければならない！と断言（assert）します。</span>
+    <span class="c1"># そうでない場合は、カンマの右側のメッセージを出して停止します。</span>
+    <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">discount_rate</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;エラー：割引率がおかしいです！&quot;</span>
+    
+    <span class="k">return</span> <span class="n">price</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">discount_rate</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;正常な計算:&quot;</span><span class="p">,</span> <span class="n">calc_discount</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span> <span class="c1"># 20%引き</span>
+
+<span class="c1"># 下の行のコメントを外して実行すると、安全装置（assert）が作動して止まります！</span>
+<span class="c1"># print(&quot;異常な計算:&quot;, calc_discount(1000, 1.5)) # 150%引き！？</span>
+</pre></div>
+</div>
+<section id="pytest">
+<h3>pytest（パイテスト）について<a class="headerlink" href="#pytest" title="Link to this heading">¶</a></h3>
+<p>プロの世界では、こういったテストを全自動で何百個も行ってくれる <strong><code class="docutils literal notranslate"><span class="pre">pytest</span></code></strong> という強力な外部パッケージ（ツール）を使います。この授業では「そういう便利な自動テストツールがあるんだな」と知っておくだけで今は大丈夫です！</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="pep-8">
+<h2>コーディングスタイルと PEP 8<a class="headerlink" href="#pep-8" title="Link to this heading">¶</a></h2>
+<p>プログラミングは「動けばいい」というものではありません。データ分析の現場では、他の人（や未来の自分）がコードを読むことが多いため、**「誰が読んでも読みやすい、美しいコード」**を書くことが重要です。</p>
+<p>Pythonには <strong>PEP 8（ペップエイト）</strong> という、世界共通の「美しいコードの書き方マニュアル」があります。</p>
+<section id="id7">
+<h3>PEP 8 の代表的なルール（今日から真似しよう！）<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p><strong>インデントは半角スペース4つ</strong>（Tabは使わない）。</p></li>
+<li><p><strong>変数名は小文字とアンダースコア（_）で繋ぐ</strong>（例：<code class="docutils literal notranslate"><span class="pre">coffee_price</span></code>。<code class="docutils literal notranslate"><span class="pre">CoffeePrice</span></code> とは書かない）。</p></li>
+<li><p><strong>演算子の前後には半角スペースを1つ入れる</strong>（例：<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">b</span> <span class="pre">+</span> <span class="pre">c</span></code>。<code class="docutils literal notranslate"><span class="pre">a=b+c</span></code> とは書かない）。</p></li>
+<li><p><strong>カンマ <code class="docutils literal notranslate"><span class="pre">,</span></code> の後はスペースを1つ入れるが、前には入れない</strong>（例：``）。</p></li>
+<li><p><strong>わかりやすい変数名をつける</strong>（例：単なる <code class="docutils literal notranslate"><span class="pre">a</span></code> や <code class="docutils literal notranslate"><span class="pre">x</span></code> ではなく、<code class="docutils literal notranslate"><span class="pre">sales_total</span></code> のように意味を持たせる）。</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 悪いスタイルの例（動くけれど、PEP 8 に違反していて読みにくい！）</span>
+<span class="n">a</span><span class="o">=</span><span class="mi">100</span>
+<span class="n">b</span><span class="o">=</span><span class="mi">200</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calc</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span>
+<span class="n">mylist</span><span class="o">=</span>
+
+<span class="c1"># 良いスタイルの例（PEP 8 に準拠していて美しい！）</span>
+<span class="n">coffee_price</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">cake_price</span> <span class="o">=</span> <span class="mi">200</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_total</span><span class="p">(</span><span class="n">price1</span><span class="p">,</span> <span class="n">price2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">price1</span> <span class="o">+</span> <span class="n">price2</span>
+
+<span class="n">my_list</span> <span class="o">=</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id8">
+<h2>💻 演習課題<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+<p>わざとエラーが出るコードや、動きはおかしいコードを用意しました。
+探偵になったつもりで、エラーメッセージをよく読み、バグを見つけて修正してください。</p>
+<p>以下のコードセルのバグを修正し、プログラムを正しく動かしてください。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習1: 構文エラー (SyntaxError) を直そう（難易度：易）</span>
+<span class="c1"># 以下のコードは、カッコの閉じ忘れなどの文法ミスがあります。</span>
+<span class="c1"># TODO: エラーを直して、正しく「ようこそ！」と表示させてください。</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;いらっしゃいませ&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ようこそ！&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習2: 実行時エラー (TypeError) を直そう（難易度：易）</span>
+<span class="c1"># 文字列と数値をそのまま足そうとしているためエラーになります。</span>
+<span class="c1"># TODO: 数値の 3 を、str() を使って文字列に変換して結合してください。</span>
+
+<span class="n">coffee_name</span> <span class="o">=</span> <span class="s2">&quot;アイスコーヒー&quot;</span>
+<span class="n">amount</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c1"># TODO: amount を文字に変換してエラーを直す</span>
+<span class="n">message</span> <span class="o">=</span> <span class="n">coffee_name</span> <span class="o">+</span> <span class="s2">&quot;を&quot;</span> <span class="o">+</span> <span class="n">amount</span> <span class="o">+</span> <span class="s2">&quot;つですね！&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習3: 論理エラー（バグ）を print文 で見つけよう（難易度：中）</span>
+<span class="c1"># ポイントが50以上の時だけ「クーポンプレゼント」と出したいのに、</span>
+<span class="c1"># なぜか10ポイントでも出てしまいます。</span>
+<span class="c1"># TODO: 途中に print() を入れて中身を確認し、if文の条件式を正しく直してください。</span>
+
+<span class="n">point</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># TODO: もし point が 50 以上なら、に直す（比較演算子の向きが...？）</span>
+<span class="k">if</span> <span class="n">point</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;クーポンプレゼント！&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;もっとポイントを貯めてね。&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習4: assert文を使ってみよう（難易度：中）</span>
+<span class="c1"># カフェのお会計関数です。お金（money）がマイナスになることはあり得ません。</span>
+<span class="c1"># TODO: お金(money)が 0 以上である（money &gt;= 0）ことを assert文 で断言してください。</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">check_money</span><span class="p">(</span><span class="n">money</span><span class="p">):</span>
+    <span class="c1"># TODO: money が 0 以上であることを assert する。</span>
+    <span class="c1"># 条件がFalseの時のメッセージは &quot;エラー：金額がマイナスです！&quot; にしてください。</span>
+    
+    
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">money</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;円お預かりします。&quot;</span>
+
+<span class="c1"># 正常なテスト（ここは直さなくてOK）</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">check_money</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
+
+<span class="c1"># 異常なテスト（コメントを外して、assertが発動するか確かめてみましょう）</span>
+<span class="c1"># print(check_money(-500))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習5: 実践！PEP 8 に沿ってコードを美しく書き直そう（難易度：難）</span>
+<span class="c1"># 以下のコードは動きますが、非常に読みにくく、変数名も適当（x, y, z）です。</span>
+<span class="c1"># TODO: PEP 8 のルールに従って、空白を入れ、わかりやすい変数名に書き直してください。</span>
+<span class="c1"># 例：x -&gt; apple_price, y -&gt; apple_amount, z -&gt; total_price</span>
+
+<span class="n">x</span><span class="o">=</span><span class="mi">150</span>
+<span class="n">y</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">z</span><span class="o">=</span><span class="n">x</span><span class="o">*</span><span class="n">y</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;合計は&quot;</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="s2">&quot;円です&quot;</span><span class="p">)</span>
+
+<span class="c1"># ↓ここから下に、美しいコードを新しく書いてみましょう！</span>
+<span class="c1"># TODO: ここに書く</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id9">
+<h2>💡 演習問題の解答例<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<p>（どうしても分からない時は展開して見てくださいね。）</p>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p><strong>演習1の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;いらっしゃいませ&quot;</span><span class="p">)</span> <span class="c1"># 右側の閉じカッコ ) が足りませんでした！</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ようこそ！&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>演習2の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">message</span> <span class="o">=</span> <span class="n">coffee_name</span> <span class="o">+</span> <span class="s2">&quot;を&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;つですね！&quot;</span>
+</pre></div>
+</div>
+<p><strong>演習3の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">point</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">:</span> <span class="c1"># &lt;（より小さい）ではなく、&gt;=（以上）が正解です！</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;クーポンプレゼント！&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;もっとポイントを貯めてね。&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>演習4の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">check_money</span><span class="p">(</span><span class="n">money</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">money</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;エラー：金額がマイナスです！&quot;</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">money</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;円お預かりします。&quot;</span>
+</pre></div>
+</div>
+<p><strong>演習5の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 空白が正しく入り、変数名が意味を持つようになりました！（変数名は多少違っていても意味が通じればOKです）</span>
+<span class="n">apple_price</span> <span class="o">=</span> <span class="mi">150</span>
+<span class="n">apple_amount</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="n">total_price</span> <span class="o">=</span> <span class="n">apple_price</span> <span class="o">*</span> <span class="n">apple_amount</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;合計は&quot;</span><span class="p">,</span> <span class="n">total_price</span><span class="p">,</span> <span class="s2">&quot;円です&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id10">
+<h2>📚 第7回のまとめ<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<p>エラーを恐れずに向き合う「デバッグ」の力と、プロのように美しい「コードスタイル」を手に入れましたね。これらはプログラミングにおいて、文法と同じくらい大切なスキルです。</p>
+<section id="id11">
+<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>エラーの分類</strong>: 文法ミス（SyntaxError）、実行時の無理難題（例外）、計算間違い（論理エラー）の3つがある。</p></li>
+<li><p><strong>デバッグ</strong>: 論理エラーが出たら、怪しいところに <code class="docutils literal notranslate"><span class="pre">print()</span></code> を入れて変数の中身を覗き見する。生成AIもどんどん活用する！</p></li>
+<li><p><strong>assert文</strong>: 「絶対にこうなるはず！」という前提条件をプログラムに埋め込み、テストの自動化やバグの早期発見に役立てる。</p></li>
+<li><p><strong>PEP 8</strong>: 変数名（小文字と_）や、演算子の前後の空白など、みんなが読みやすい「美しいコード」のルール。</p></li>
+</ul>
+</section>
+<section id="faq">
+<h3>❓ よくある質問と回答 (FAQ)<a class="headerlink" href="#faq" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Q. 生成AIにコードを直してもらったら、自分が書いていない難しい書き方になって返ってきました…。</strong></p>
+<ul>
+<li><p><strong>A.</strong> AIあるあるですね！そういう時はAIに「プログラミング初心者です。if文など、なるべく簡単な文法だけで書き直して、理由も教えてください」と追加でお願い（プロンプトを工夫）してみましょう。</p></li>
+</ul>
+</li>
+<li><p><strong>Q. PEP 8のルールを全て覚えないとダメですか？</strong></p>
+<ul>
+<li><p><strong>A.</strong> 全て暗記する必要は全くありません！まずは「演算子の前後にスペースを入れる」「わかりやすい変数名にする」という基本の2つを意識するだけで、コードは劇的に綺麗になりますよ。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="colab">
+<h3>🌟 Colabで試すおすすめコード<a class="headerlink" href="#colab" title="Link to this heading">¶</a></h3>
+<p>assert文を使った簡単な「データ品質チェック」のプログラムです。
+データ分析では、読み込んだデータが正しい範囲にあるかチェックすることが重要です。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># カフェの顧客の年齢データリスト</span>
+<span class="n">age_data</span> <span class="o">=</span> <span class="c1"># おや...？200歳の人が混ざっています</span>
+
+<span class="c1"># データを一つずつ取り出してチェックします（次回詳しくやる for文を使います）</span>
+<span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">age_data</span><span class="p">:</span>
+    <span class="c1"># 年齢は 0歳以上、120歳以下のはずだと断言します！</span>
+    <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">age</span> <span class="o">&lt;=</span> <span class="mi">120</span><span class="p">,</span> <span class="s2">&quot;あり得ない年齢データが混ざっています: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;正常なデータ:&quot;</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
+
+<span class="c1"># 実行すると、200のところでAssertionErrorが出て止まり、異常データを発見できます！</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="basic_08.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">第8回 制御フロー（条件分岐、繰り返し、イテレータ、内包表記）</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="basic_06.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">第6回 条件分岐、ファイル入出力の基本</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            <div class="last-updated">
+              Last updated on 2026-07-25</div>
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">第7回 テスト・デバッグ、コードスタイル</a><ul>
+<li><a class="reference internal" href="#id2">🎯 到達目標</a></li>
+<li><a class="reference internal" href="#id3">イントロダクション：仕様・テスト・デバッグとは？</a></li>
+<li><a class="reference internal" href="#id4">エラーの分類とよくあるエラー</a><ul>
+<li><a class="reference internal" href="#syntaxerror">① 構文エラー (SyntaxError)</a></li>
+<li><a class="reference internal" href="#runtime-error">② 例外 / 実行時エラー (Runtime Error)</a></li>
+<li><a class="reference internal" href="#id5">③ 論理エラー (バグ)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">デバッグ技法とベストプラクティス（具体例）</a><ul>
+<li><a class="reference internal" href="#print">ベストプラクティス1: <code class="docutils literal notranslate"><span class="pre">print()</span></code> を使って中身をのぞき見する</a></li>
+<li><a class="reference internal" href="#ai-chatgpt">ベストプラクティス2: 生成AI（ChatGPTなど）を頼る！</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#assert">assert文とテスト</a><ul>
+<li><a class="reference internal" href="#pytest">pytest（パイテスト）について</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pep-8">コーディングスタイルと PEP 8</a><ul>
+<li><a class="reference internal" href="#id7">PEP 8 の代表的なルール（今日から真似しよう！）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8">💻 演習課題</a></li>
+<li><a class="reference internal" href="#id9">💡 演習問題の解答例</a></li>
+<li><a class="reference internal" href="#id10">📚 第7回のまとめ</a><ul>
+<li><a class="reference internal" href="#id11">✨ 今日の重要ポイントまとめ</a></li>
+<li><a class="reference internal" href="#faq">❓ よくある質問と回答 (FAQ)</a></li>
+<li><a class="reference internal" href="#colab">🌟 Colabで試すおすすめコード</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../_static/documentation_options.js?v=4d4437c9"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../../_static/translations.js?v=4755f45a"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    </body>
+</html>

@@ -1,8 +1,8 @@
 # プログラミング応用A/コンピューティング応用G
 
 ```{toctree}
-:maxdepth: 2
-:numbered: 2
+:maxdepth: 1
+:caption: Contents:
 
-markdown/01.md
+markdown/advanced_01.md
 ```

@@ -1,21 +1,56 @@
 # プログラミング基礎A/コンピューティング応用E
 
 ```{toctree}
-:maxdepth: 2
-:numbered: 2
+:maxdepth: 1
+:caption: Contents:
 
-markdown/01.md
-markdown/02.md
-markdown/03.md
-markdown/04.md
-markdown/05.md
-markdown/06.md
-markdown/07.md
-markdown/08.md
-markdown/09.md
+markdown/basic_01.md
+markdown/basic_02.md
+markdown/basic_03.md
+markdown/basic_04.md
+markdown/basic_05.md
+markdown/basic_06.md
+markdown/basic_07.md
+markdown/basic_08.md
+markdown/basic_09.md
 
-markdown/10.md
-markdown/11.md
-markdown/12.md
-markdown/13.md
+markdown/basic_10.md
+markdown/basic_11.md
+markdown/basic_12.md
+markdown/basic_13.md
 ```
+
+### Google Colab
+```{toctree}
+:maxdepth: 1
+:caption: Contents:
+
+colab/basic_01.ipynb
+colab/basic_02.ipynb
+colab/basic_03.ipynb
+colab/basic_04.ipynb
+colab/basic_05.ipynb
+colab/basic_06.ipynb
+colab/basic_07.ipynb
+colab/basic_08.ipynb
+colab/basic_09.ipynb
+
+colab/basic_10.ipynb
+colab/basic_11.ipynb
+colab/basic_12.ipynb
+colab/basic_13.ipynb
+```
+
+### 資料
+* [プログラミング基礎A/コンピューティング応用E M1830](pptx/00.basic_intro.pptx)
+* [Python 学習教材](pptx/00_python_slides.pptx)
+
+### 引用
+* [Python ゼロからはじめるプログラミング (プログラミング学習シリーズ)](https://www.shoeisha.co.jp/book/detail/9784798169460)
+* [Python Boot Camp テキスト](https://pycamp.pycon.jp/textbook/index.html)
+* [Pythonプログラミング入門](https://utokyo-ipp.github.io/)
+* [Introduction to Quantitative Data Analysis with Python](https://iiimethodsiv.github.io/intro2quandataanalysis/docs/intro.html)
+* [九州大学 数理・データサイエンス教育研究センター](https://mdsc.kyushu-u.ac.jp/lectures)
+* [ひとつひとつしっかり身につく Pythonの教科書](https://www.sbcr.jp/product/4815630614/)
+
+

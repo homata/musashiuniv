@@ -1,0 +1,886 @@
+<!doctype html>
+<html class="no-js" lang="ja" data-content_root="../../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="第5回 データ構造（数値、文字列、リスト、辞書）" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="2026/01.programming_basic_a/markdown/basic_05.html" />
+<meta property="og:site_name" content="musashiuniv" />
+<meta property="og:description" content="前回までは「1つの箱（変数）に1つのデータ」を入れてきました。 でも、現実のデータ分析では、何千、何万というデータを扱います。 「カフェの1ヶ月分の売上」を記録するのに、変数を30個も作るのは大変ですよね。 そこで今日は、**「たくさんのデータを1つにまとめて管理する魔法の箱（データ構造）」**を学びます！ 「リスト」「タプル」「辞書」「セット」と色々な名前が出てきますが、 それぞれ「レシー..." />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image" content="/_images/social_previews/summary_2026_01.programming_basic_a_markdown_basic_05_c90d678b.png" />
+<meta property="og:image:alt" content="前回までは「1つの箱（変数）に1つのデータ」を入れてきました。 でも、現実のデータ分析では、何千、何万というデータを扱います。 「カフェの1ヶ月分の売上」を記録するのに、変数を30個も作るのは大変ですよね。 そこで今日は、**「たくさんのデータを1つにまとめて管理する魔法の箱（データ構造）」**を学びます！ 「リ..." />
+<meta name="description" content="前回までは「1つの箱（変数）に1つのデータ」を入れてきました。 でも、現実のデータ分析では、何千、何万というデータを扱います。 「カフェの1ヶ月分の売上」を記録するのに、変数を30個も作るのは大変ですよね。 そこで今日は、**「たくさんのデータを1つにまとめて管理する魔法の箱（データ構造）」**を学びます！ 「リスト」「タプル」「辞書」「セット」と色々な名前が出てきますが、 それぞれ「レシー..." />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" /><link rel="next" title="第6回 条件分岐、ファイル入出力の基本" href="basic_06.html" /><link rel="prev" title="第4回 数値演算と文字列" href="basic_04.html" />
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+        <title>第5回 データ構造（数値、文字列、リスト、辞書） - Pythonプログラミング入門</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/musashiuniv/custom.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">Pythonプログラミング入門</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
+  
+  
+  <span class="sidebar-brand-text">Pythonプログラミング入門</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="検索" name="q" aria-label="検索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../2025/index.html">2025年度</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 2025年度</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/index.html">1. 2025年度 プログラミング基礎A/コンピューティング応用E</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 1. 2025年度 プログラミング基礎A/コンピューティング応用E</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/01_intro.html">1.1. Pythonをはじめよう</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/02_computer.html">1.2. ノイマン型コンピュータ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/03_history.html">1.3. Pythonの歴史</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/20_coding.html">1.4. コーディング規約</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/21_module.html">1.5. モジュール</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/utokyo_ipp/index.html">1.6. Pythonプログラミング入門</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of 1.6. Pythonプログラミング入門</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/utokyo_ipp/00_index.html">1. 演習ページ</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/index.html">1.7. (補足資料) Python ゼロからはじめるプログラミング</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 1.7. (補足資料) Python ゼロからはじめるプログラミング</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/00_index.html">1. Pythonプログラミング</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/01_Python%E3%81%AB%E8%A7%A6%E3%82%8C%E3%82%8B.html">2. 第1章 Pythonに触れる</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/02_Python%E3%81%AE%E5%9F%BA%E6%9C%AC.html">3. 第2章 Pythonの基本</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/03_%E6%9D%A1%E4%BB%B6%E5%88%86%E5%B2%90%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%97.html">4. 第3章 条件分岐と繰り返し</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/04_%E7%B5%84%E3%81%BF%E8%BE%BC%E3%81%BF%E5%9E%8B%E3%81%A8%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88.html">5. 第4章 組み込み型とオブジェクト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/05_%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E5%AE%9A%E7%BE%A9%E9%96%A2%E6%95%B0.html">6. 第5章 ユーザ定義関数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/06_%E3%82%AF%E3%83%A9%E3%82%B9%E3%81%AE%E5%9F%BA%E6%9C%AC.html">7. 第6章 クラスの基本</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/07_%E7%99%BA%E5%B1%95%E3%81%A8%E5%BF%9C%E7%94%A8.html">8. 第7章 発展と応用</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/index.html">1.8. (補助資料)Python Boot Camp Text</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 1.8. (補助資料)Python Boot Camp Text</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/index.html">Python Boot Camp テキスト</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Python Boot Camp テキスト</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/1_install.html">1. Pythonをはじめる前に</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/2_intro.html">2. Pythonをはじめよう</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/3_types.html">3. Pythonのデータ型（基本編）</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/4_collections.html">4. Pythonのデータ型（コレクション編）</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/5_module.html">5. ファイル操作とモジュール</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/6_venv.html">6. サードパーティ製パッケージと venv</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/7_scraping.html">7. Web API、スクレイピング</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/8_nextstep.html">8. 次のステップ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/99_install.html">1.9. 参考資料</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/index.html">2025年度 プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of 2025年度 プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/02.programming_advanced_a/01_intro.html">1. はじめに</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/python_dataanalysis/index.html">2. Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of 2. Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/python_dataanalysis/00_index.html">2.1. 資料</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/02.programming_advanced_a/digital_twin/index.html">3. デジタルツイン</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/index.html">4. leafmap</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of 4. leafmap</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/01_intro.html">4.1. leafmapとは</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/01_intro.html#leadmap">4.2. leadmapのサイト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/01_intro.html#google-colab">4.3. 演習：Google Colab ファイル</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/index.html">5. 機械学習</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of 5. 機械学習</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/supervised_learning.html">5.1. 機械学習</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/unsupervised_learning.html">5.2. 教師なし学習</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/f1score.html">5.3. 分類問題における正解・不正解のパターン</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../../index.html">2026年度</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of 2026年度</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current has-children"><a class="reference internal" href="../index.html">プログラミング基礎A/コンピューティング応用E</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle navigation of プログラミング基礎A/コンピューティング応用E</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="basic_01.html">第1回 オリエンテーション・Google Colabの使い方</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_02.html">第2回 コンピューターとプログラミングとは？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_03.html">第3回 Pythonの基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_04.html">第4回 数値演算と文字列</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">第5回 データ構造（数値、文字列、リスト、辞書）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_06.html">第6回 条件分岐、ファイル入出力の基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_07.html">第7回 テスト・デバッグ、コードスタイル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_08.html">第8回 制御フロー（条件分岐、繰り返し、イテレータ、内包表記）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_09.html">第9回 関数と例外処理（オブジェクト、クラス、例外処理）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_10.html">第10回 Pythonのライブラリ・パッケージ（演算系）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_11.html">第11回 高階関数とpandasライブラリ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_12.html">第12回 Pythonのライブラリ・パッケージ（グラフ可視化）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_13.html">第13回 総合演習</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_01.html">第1回 オリエンテーション・Google Colabの使い方</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_02.html">第2回 コンピューターとプログラミングとは？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_03.html">第3回 Pythonの基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_04.html">第4回 数値演算と文字列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_05.html">第5回 データ構造（数値、文字列、リスト、辞書）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_06.html">第6回 条件分岐、ファイル入出力の基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_07.html">第7回 テスト・デバッグ、コードスタイル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_08.html">第8回 制御フロー（条件分岐、繰り返し、イテレータ、内包表記）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_09.html">第9回 関数と例外処理（オブジェクト、クラス、例外処理）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_10.html">第10回 Pythonのライブラリ・パッケージ（演算系）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_11.html">第11回 高階関数とpandasライブラリ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_12.html">第12回 Pythonのライブラリ・パッケージ（グラフ可視化）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colab/basic_13.html">第13回 総合演習</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../02.programming_advanced_a/index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02.programming_advanced_a/markdown/advanced_01.html">第1回 オリエンテーション</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../03.google_colab/index.html">Google Colaboratoryの使い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../04.markdown/index.html">Markdown記法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../05.windows/index.html">Windows 特有の注意点</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../99.references/index.html">ライセンス、参考文献</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle navigation of ライセンス、参考文献</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../99.references/01_basic/basic.html">プログラミング基礎A/コンピューティング応用E [集中] (M1830)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../99.references/02_advanced/advance.html">プログラミング応用A/コンピューティング応用G [集中] (M1850)</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../../_sources/2026/01.programming_basic_a/markdown/basic_05.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="id1">
+<h1>第5回 データ構造（数値、文字列、リスト、辞書）<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<p>前回までは「1つの箱（変数）に1つのデータ」を入れてきました。<br />
+でも、現実のデータ分析では、何千、何万というデータを扱います。<br />
+「カフェの1ヶ月分の売上」を記録するのに、変数を30個も作るのは大変ですよね。</p>
+<p>そこで今日は、**「たくさんのデータを1つにまとめて管理する魔法の箱（データ構造）」**を学びます！<br />
+「リスト」「タプル」「辞書」「セット」と色々な名前が出てきますが、</p>
+<p>それぞれ「レシート」「鍵付きの箱」「メニュー表」「重複なし名簿」と例えていくので、一緒に楽しく整理していきましょう。これが使えるようになると、プログラミングが一気に便利に、そして強力になります</p>
+<hr class="docutils" />
+<section id="id2">
+<h2>🎯 到達目標<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><strong>リスト（list）</strong> を使って、たくさんのデータを順番に管理・操作できる。</p></li>
+<li><p><strong>辞書（dictionary）</strong> を使って、「商品名と価格」のようなペアのデータを管理できる。</p></li>
+<li><p><strong>タプル（tuple）とセット（set）</strong> の特徴を理解し、目的に応じて使い分けられる。</p></li>
+<li><p>「等しい（値が同じ）」と「同一（モノが同じ）」の違いなど、データ構造特有の<strong>エラーや落とし穴</strong>を回避できる。</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h2>イントロダクション：データ構造とは何か？<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p>データ分析を行うためには、バラバラのデータを「構造化（整理整頓）」する必要があります。<br />
+Pythonには、用途に合わせて様々な「まとめ方（データ構造）」が用意されています。</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>名前</p></th>
+<th class="head text-center"><p>括弧の記号</p></th>
+<th class="head text-left"><p>特徴（カフェの例え）</p></th>
+<th class="head text-left"><p>データ分析での用途</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>リスト</strong></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code></p></td>
+<td class="text-left"><p><strong>レシート（順番がある）</strong>。追加や削除が自由自在。</p></td>
+<td class="text-left"><p>時系列の売上データ、顧客リスト</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>タプル</strong></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">)</span></code></p></td>
+<td class="text-left"><p><strong>確定申告書（変更不可）</strong>。中身を書き換えられない。</p></td>
+<td class="text-left"><p>変更してはいけない座標や設定値</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>辞書</strong></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">:</span> <span class="pre">}</span></code></p></td>
+<td class="text-left"><p><strong>メニュー表（ラベル付き）</strong>。名前（キー）で探せる。</p></td>
+<td class="text-left"><p>商品名と価格、顧客IDと名前の紐付け</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>セット</strong></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code></p></td>
+<td class="text-left"><p><strong>来店者名簿（重複なし）</strong>。順番はないが重複を消せる。</p></td>
+<td class="text-left"><p>アンケートのユニーク（重複なし）回答者数の確認</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>まずは、一番よく使う「リスト」と「辞書」を中心に学んでいきましょう！</p>
+</section>
+<hr class="docutils" />
+<section id="list">
+<h2>リスト (list) ：データを順番に並べよう<a class="headerlink" href="#list" title="Link to this heading">¶</a></h2>
+<p>リストは、データを一列に並べて管理する箱です。角括弧 <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> を使います。</p>
+<section id="id4">
+<h3>リストとインデックス・スライス<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p>前回、文字列で「0番目から数える」ことを学びましたね。リストも全く同じです！</p>
+<p><strong>【リストの図解】</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  インデックス:    0        1        2
+  リスト(sales): [ 450,     500,     400 ]
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># カフェの売上をリスト（配列）にまとめます</span>
+<span class="n">sales</span> <span class="o">=</span> 
+
+<span class="c1"># インデックス（番号）でデータを取り出す</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;最初の売上:&quot;</span><span class="p">,</span> <span class="n">sales</span><span class="p">)</span>
+
+<span class="c1"># リストに対する関数・演算子・メソッド</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;データの個数(len):&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sales</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;合計金額(sum):&quot;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">sales</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;売上データの連結:&quot;</span><span class="p">,</span> <span class="n">sales</span> <span class="o">+</span> <span class="p">)</span> <span class="c1"># リスト同士は + で繋げます</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3>リストを操作するメソッドなど（追加・削除・スライス）<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p>リストは、後からデータを追加したり削除したりできます（これを「ミュータブル（変更可能）」と言います）。</p>
+<ul class="simple">
+<li><p><strong>破壊的（インプレース）な操作</strong>: 元のリストそのものを書き換えてしまう操作。</p></li>
+<li><p><strong>非破壊的な生成</strong>: 元のリストはそのままにして、新しいリストを作る操作（スライスなど）。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">menu</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;コーヒー&quot;</span><span class="p">,</span> <span class="s2">&quot;紅茶&quot;</span><span class="p">,</span> <span class="s2">&quot;ケーキ&quot;</span><span class="p">]</span>
+
+<span class="c1"># 破壊的な操作（元のリストが変化します！）</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;サンドイッチ&quot;</span><span class="p">)</span>  <span class="c1"># append: 最後に「追加」</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;追加後:&quot;</span><span class="p">,</span> <span class="n">menu</span><span class="p">)</span>
+
+<span class="n">menu</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;紅茶&quot;</span><span class="p">)</span>          <span class="c1"># remove: 指定したデータを「削除」</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;削除後:&quot;</span><span class="p">,</span> <span class="n">menu</span><span class="p">)</span>
+
+<span class="c1"># 非破壊的な操作（元のリストは変わりません）</span>
+<span class="n">sub_menu</span> <span class="o">=</span> <span class="n">menu</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>         <span class="c1"># スライスで一部を切り出す</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;スライスした結果:&quot;</span><span class="p">,</span> <span class="n">sub_menu</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;元のリストはそのまま:&quot;</span><span class="p">,</span> <span class="n">menu</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3>多重リスト<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<p>リストの中に、さらにリストを入れることができます（エクセルの表のようなイメージです）。
+<code class="docutils literal notranslate"><span class="pre">[行][列]</span></code> のようにしてデータを取り出します。</p>
+</section>
+<section id="id7">
+<h3>リストと文字列の相互変換<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p>データクレンジング（データの掃除）でよく使います。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">文字列.split()</span></code>: 文字列を分割してリストにする。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">結合文字.join(リスト)</span></code>: リストの文字をくっつけて1つの文字列にする。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 多重リスト（月曜と火曜の、午前・午後の客数）</span>
+<span class="n">visitors</span> <span class="o">=</span> <span class="p">[</span>
+   <span class="p">,</span> <span class="c1"># 月曜 [午前, 午後] (インデックス0)</span>
+     <span class="c1"># 火曜 [午前, 午後] (インデックス1)</span>
+<span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;火曜の午後の客数:&quot;</span><span class="p">,</span> <span class="n">visitors</span><span class="p">)</span> <span class="c1"># 1番目のリストの、1番目のデータ</span>
+
+<span class="c1"># 文字とリストの変換</span>
+<span class="n">csv_data</span> <span class="o">=</span> <span class="s2">&quot;コーヒー,400,ケーキ,500&quot;</span>
+<span class="n">data_list</span> <span class="o">=</span> <span class="n">csv_data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span> <span class="c1"># カンマで分割！</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;リスト化:&quot;</span><span class="p">,</span> <span class="n">data_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="tuple-10">
+<h2>タプル (tuple) とイミュータブル (約10分)<a class="headerlink" href="#tuple-10" title="Link to this heading">¶</a></h2>
+<p>タプルは、丸括弧 <code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">)</span></code> を使います。リストとそっくりですが、最大の決定的な違いがあります。
+それは**「イミュータブル（変更不可能）」**であることです。一度作ったら、追加も削除も書き換えも絶対にできません！「絶対に間違えて書き換えたくない重要なデータ」を守るために使います。</p>
+<section id="id8">
+<h3>多重代入<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p>タプルは、複数の変数に一気にデータを入れる（多重代入）ときによく隠れて使われています。</p>
+</section>
+<section id="is">
+<h3>オブジェクトの等価性(==)と同一性(is)<a class="headerlink" href="#is" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">==</span></code>（等価性）: 箱の**「中身（値）」**が同じかどうか。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is</span></code>（同一性）: 箱**「そのもの（メモリ上の場所）」**が同じかどうか。
+データ分析では基本的に <code class="docutils literal notranslate"><span class="pre">==</span></code> を使えば大丈夫です。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># タプルの作成</span>
+<span class="n">tax_rate</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">)</span> <span class="c1"># 軽減税率と標準税率（変わってはいけない値！）</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;標準税率:&quot;</span><span class="p">,</span> <span class="n">tax_rate</span><span class="p">)</span>
+
+<span class="c1"># エラーになります！（タプルは書き換えられないため、TypeErrorが出ます）</span>
+<span class="c1"># tax_rate = 0.15 </span>
+
+<span class="c1"># 多重代入（カンマで区切ると、実はタプルとして処理されています）</span>
+<span class="n">morning_sales</span><span class="p">,</span> <span class="n">afternoon_sales</span> <span class="o">=</span> <span class="mi">12000</span><span class="p">,</span> <span class="mi">15000</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;午後の売上:&quot;</span><span class="p">,</span> <span class="n">afternoon_sales</span><span class="p">)</span>
+
+<span class="c1"># 等価性と同一性の違い（リストやタプルの比較演算）</span>
+<span class="n">list_A</span> <span class="o">=</span>
+<span class="n">list_B</span> <span class="o">=</span>
+<span class="n">list_C</span> <span class="o">=</span> <span class="n">list_A</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;中身は同じ？(==):&quot;</span><span class="p">,</span> <span class="n">list_A</span> <span class="o">==</span> <span class="n">list_B</span><span class="p">)</span> <span class="c1"># True (中身は同じ)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;箱も同じ？(is):&quot;</span><span class="p">,</span> <span class="n">list_A</span> <span class="ow">is</span> <span class="n">list_B</span><span class="p">)</span> <span class="c1"># False (別の箱として作られた)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CはAと同じ箱？(is):&quot;</span><span class="p">,</span> <span class="n">list_A</span> <span class="ow">is</span> <span class="n">list_C</span><span class="p">)</span> <span class="c1"># True (同じ箱を指している)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="dictionary">
+<h2>辞書 (dictionary) ：名前（キー）でデータを管理<a class="headerlink" href="#dictionary" title="Link to this heading">¶</a></h2>
+<p>辞書は、波括弧 <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code> を使います。
+リストが「番号」でデータを管理するのに対し、辞書は**「名前（キー）」と「値（バリュー）」をペア**にして管理します。カフェのメニュー表を想像してください！</p>
+<p><strong>【辞書の図解】</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  [ キー (Key) ] ━▶ [ 値 (Value) ]
+  &quot;コーヒー&quot;     ━▶   450
+  &quot;ケーキ&quot;       ━▶   500
+</pre></div>
+</div>
+<section id="id9">
+<h3>辞書の操作（メソッド）と、辞書とリストの組み合わせ<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<p>辞書は、キーを指定して値を取り出したり、新しいキーを作ってデータを追加したりできます。
+また、リストの中に辞書を入れることで、複雑な顧客データなども綺麗に表現できます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 辞書の作成</span>
+<span class="n">menu_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;コーヒー&quot;</span><span class="p">:</span> <span class="mi">450</span><span class="p">,</span> <span class="s2">&quot;ケーキ&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">}</span>
+
+<span class="c1"># データの取り出し（番号ではなく、名前を使います！）</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;コーヒーの値段:&quot;</span><span class="p">,</span> <span class="n">menu_dict</span><span class="p">[</span><span class="s2">&quot;コーヒー&quot;</span><span class="p">])</span>
+
+<span class="c1"># データの追加と変更</span>
+<span class="n">menu_dict</span><span class="p">[</span><span class="s2">&quot;紅茶&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">400</span>         <span class="c1"># 新しいキーと値を追加</span>
+<span class="n">menu_dict</span><span class="p">[</span><span class="s2">&quot;コーヒー&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">480</span>     <span class="c1"># 既存のキーの値を変更（値上げ！）</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;変更後:&quot;</span><span class="p">,</span> <span class="n">menu_dict</span><span class="p">)</span>
+
+<span class="c1"># 辞書のメソッド（キーだけ、値だけを取り出す）</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;メニュー一覧:&quot;</span><span class="p">,</span> <span class="n">menu_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;価格一覧:&quot;</span><span class="p">,</span> <span class="n">menu_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+<span class="c1"># 辞書とリストの組み合わせ（顧客データの表現）</span>
+<span class="n">customers</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;山田&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;佐藤&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">35</span><span class="p">}</span>
+<span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2人目のお客様の名前:&quot;</span><span class="p">,</span> <span class="n">customers</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="set">
+<h2>set（セット）の特徴と活用<a class="headerlink" href="#set" title="Link to this heading">¶</a></h2>
+<p>セットも波括弧 <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code> を使いますが、辞書と違って「キーと値のペア」ではなく、単なるデータの集まりです。
+最大の特徴は**「重複を許さない（同じデータは1つにまとめられる）」**ことです！</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># アンケートで「好きな飲み物」を聞いた結果のリスト（重複があります）</span>
+<span class="n">survey_results</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;コーヒー&quot;</span><span class="p">,</span> <span class="s2">&quot;紅茶&quot;</span><span class="p">,</span> <span class="s2">&quot;コーヒー&quot;</span><span class="p">,</span> <span class="s2">&quot;ジュース&quot;</span><span class="p">,</span> <span class="s2">&quot;紅茶&quot;</span><span class="p">]</span>
+
+<span class="c1"># setに変換すると、重複が一瞬で消えます！（データ分析でよく使います）</span>
+<span class="n">unique_results</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">survey_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;重複なしの回答:&quot;</span><span class="p">,</span> <span class="n">unique_results</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="for">
+<h2>for文による繰り返しとデータ構造<a class="headerlink" href="#for" title="Link to this heading">¶</a></h2>
+<p><strong>※この内容は第8回で詳しくやりますが、データ構造と相性が抜群なので少しだけ紹介します！</strong></p>
+<p>リストや辞書の中身を1つずつ取り出して処理したいとき、<code class="docutils literal notranslate"><span class="pre">for</span></code> という魔法の言葉を使います。
+「箱（リスト）の中から、1つずつデータを取り出して、一時的な変数に入れる」という処理を全自動でやってくれます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;コーヒー&quot;</span><span class="p">,</span> <span class="s2">&quot;ケーキ&quot;</span><span class="p">,</span> <span class="s2">&quot;紅茶&quot;</span><span class="p">]</span>
+
+<span class="c1"># for文による繰り返しとリスト・タプル（文字列も同じように1文字ずつ繰り返せます）</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== 注文の読み上げ開始 ===&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">orders</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="s2">&quot;が入りました！&quot;</span><span class="p">)</span> <span class="c1"># インデント（字下げ）を忘れずに！</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== 読み上げ終了 ===&quot;</span><span class="p">)</span>
+
+<span class="c1"># for文によるリスト初期化の短縮記法（内包表記とも呼ばれます）</span>
+<span class="c1"># 値段リストのすべての要素を税込み(1.1倍)にする、といった時に1行で書けます。</span>
+<span class="n">prices</span> <span class="o">=</span> 
+<span class="n">tax_in_prices</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="o">*</span> <span class="mf">1.1</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prices</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;税込み価格リスト:&quot;</span><span class="p">,</span> <span class="n">tax_in_prices</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id10">
+<h2>💻 演習課題<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<p>今日学んだリストと辞書を使って、カフェのデータ処理ツールを作ってみましょう。
+エラーが出ても大丈夫。「あれ、丸括弧だっけ？角括弧だっけ？」と迷ったら、図解を見直してみてくださいね。</p>
+<p>以下の <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TODO:</span> </code> の部分を書き換えて、プログラムを完成させてください。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習1: リストの基本操作（難易度：易）</span>
+<span class="c1"># カフェの今週の来客数データです。</span>
+<span class="c1"># TODO: 客数に120を設定してください。</span>
+<span class="c1"># TODO: 月曜日（一番最初）の客数を print してください。</span>
+<span class="c1"># TODO: 日曜日（一番最後）に 150人 のデータを追加（append）して print してください。</span>
+
+<span class="n">visitors</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 月曜日（0番目）の客数を表示</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;月曜日の客数:&quot;</span><span class="p">,</span> <span class="p">)</span>
+
+<span class="c1"># TODO: append を使って 150 を追加</span>
+<span class="n">visitors</span><span class="o">.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;日曜追加後:&quot;</span><span class="p">,</span> <span class="n">visitors</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習2: 文字列からリストへの変換（難易度：易）</span>
+<span class="c1"># ネットショップから送られてきたカンマ区切りのデータがあります。</span>
+<span class="c1"># TODO: split() メソッドを使って、カンマ(,)で区切ったリストに変換してください。</span>
+
+<span class="n">raw_csv</span> <span class="o">=</span> <span class="s2">&quot;抹茶ラテ,550,ホット,Mサイズ&quot;</span>
+
+<span class="c1"># TODO: split(&quot;,&quot;) を使ってリスト化する</span>
+<span class="n">item_data</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;リスト化されたデータ:&quot;</span><span class="p">,</span> <span class="n">item_data</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習3: 辞書を使った価格検索ツール（難易度：中）</span>
+<span class="c1"># カフェのメニューと価格が辞書に登録されています。</span>
+<span class="c1"># TODO: 辞書から「サンドイッチ」の価格を取り出して変数 price に入れてください。</span>
+<span class="c1"># TODO: 新メニュー「スムージー」（600円）を辞書に追加してください。</span>
+
+<span class="n">menu_db</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;コーヒー&quot;</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span> <span class="s2">&quot;紅茶&quot;</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span> <span class="s2">&quot;サンドイッチ&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">}</span>
+
+<span class="c1"># TODO: 辞書からキーを指定して値を取得する</span>
+<span class="n">price</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;サンドイッチの価格は&quot;</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="s2">&quot;円です。&quot;</span><span class="p">)</span>
+
+<span class="c1"># TODO: 辞書に新しいキー「スムージー」と値「600」を追加する</span>
+<span class="n">menu_db</span><span class="p">[</span>   <span class="p">]</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;新メニュー追加後:&quot;</span><span class="p">,</span> <span class="n">menu_db</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習4: セット(set)を使った重複データの削除（難易度：中）</span>
+<span class="c1"># ポイントカードの利用履歴から、今日来店した「ユニークな（重複のない）顧客ID」を抽出します。</span>
+<span class="c1"># TODO: set() を使って duplicates_list から重複を消した unique_users を作成してください。</span>
+<span class="c1"># TODO: len() 関数を使って、ユニークな顧客が「何人」いるか表示してください。</span>
+
+<span class="n">duplicates_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ID01&quot;</span><span class="p">,</span> <span class="s2">&quot;ID02&quot;</span><span class="p">,</span> <span class="s2">&quot;ID01&quot;</span><span class="p">,</span> <span class="s2">&quot;ID03&quot;</span><span class="p">,</span> <span class="s2">&quot;ID02&quot;</span><span class="p">,</span> <span class="s2">&quot;ID04&quot;</span><span class="p">]</span>
+
+<span class="c1"># TODO: 重複を削除する</span>
+<span class="n">unique_users</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: len() を使って人数を数える</span>
+<span class="n">user_count</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;今日のユニークな来店者数は&quot;</span><span class="p">,</span> <span class="n">user_count</span><span class="p">,</span> <span class="s2">&quot;人です。&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習5: 実践！多重リストと辞書の組み合わせ（難易度：難）</span>
+<span class="c1"># これまでの総決算です。顧客の注文履歴が「辞書が入ったリスト」になっています。</span>
+<span class="c1"># TODO: 2番目のお客様（佐藤さん）が注文した「item（商品名）」を取り出して print してください。</span>
+<span class="c1"># ヒント：まずリストのインデックスを指定し、その後に辞書のキーを指定します。 orders[番号][&quot;キー&quot;]</span>
+
+<span class="n">order_history</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;山田&quot;</span><span class="p">,</span> <span class="s2">&quot;item&quot;</span><span class="p">:</span> <span class="s2">&quot;コーヒー&quot;</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;佐藤&quot;</span><span class="p">,</span> <span class="s2">&quot;item&quot;</span><span class="p">:</span> <span class="s2">&quot;ケーキ&quot;</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;鈴木&quot;</span><span class="p">,</span> <span class="s2">&quot;item&quot;</span><span class="p">:</span> <span class="s2">&quot;紅茶&quot;</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="c1"># TODO: 佐藤さんの item を取り出す</span>
+<span class="n">sato_item</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;佐藤さんのご注文は&quot;</span><span class="p">,</span> <span class="n">sato_item</span><span class="p">,</span> <span class="s2">&quot;です。&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id11">
+<h2>💡 演習問題の解答例<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<p>（どうしても分からない時や、答え合わせをしたい時に展開して見てくださいね。）</p>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p><strong>演習1の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;月曜日の客数:&quot;</span><span class="p">,</span> <span class="n">visitors</span><span class="p">)</span> <span class="c1"># 120 と出れば正解！</span>
+<span class="n">visitors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>演習2の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">item_data</span> <span class="o">=</span> <span class="n">raw_csv</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>演習3の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">price</span> <span class="o">=</span> <span class="n">menu_db</span><span class="p">[</span><span class="s2">&quot;サンドイッチ&quot;</span><span class="p">]</span>
+<span class="n">menu_db</span><span class="p">[</span><span class="s2">&quot;スムージー&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">600</span>
+</pre></div>
+</div>
+<p>※ 辞書に追加するときは <code class="docutils literal notranslate"><span class="pre">append</span></code> ではなく、新しいキーを指定して代入します。</p>
+<p><strong>演習4の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">unique_users</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">duplicates_list</span><span class="p">)</span>
+<span class="n">user_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique_users</span><span class="p">)</span> <span class="c1"># 4人 と出れば大正解！</span>
+</pre></div>
+</div>
+<p><strong>演習5の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sato_item</span> <span class="o">=</span> <span class="n">order_history</span><span class="p">[</span><span class="s2">&quot;item&quot;</span><span class="p">]</span>
+<span class="c1"># 「ケーキ」と表示されれば完璧です！リストので佐藤さんの辞書を取り出し、[&quot;item&quot;]で商品名を取り出します。</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id12">
+<h2>📚 第5回のまとめ<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
+<section id="id13">
+<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>リスト <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code></strong>: 順番のあるデータの集まり。インデックスで取り出し、<code class="docutils literal notranslate"><span class="pre">append</span></code> で追加。（ミュータブル＝変更可能）</p></li>
+<li><p><strong>タプル <code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">)</span></code></strong>: 変更してはいけないデータの集まり。（イミュータブル＝変更不可能）</p></li>
+<li><p><strong>辞書 <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code></strong>: キー（名前）と値のペア。「名前」で検索できる強力なメニュー表。</p></li>
+<li><p><strong>セット <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code></strong>: 重複を許さないデータの集まり。ユニークな（重複のない）データ数を知りたい時に便利。</p></li>
+</ul>
+</section>
+<section id="faq">
+<h3>❓ よくある質問と回答 (FAQ)<a class="headerlink" href="#faq" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Q. <code class="docutils literal notranslate"><span class="pre">TypeError:</span> <span class="pre">'tuple'</span> <span class="pre">object</span> <span class="pre">does</span> <span class="pre">not</span> <span class="pre">support</span> <span class="pre">item</span> <span class="pre">assignment</span></code> というエラーが出ました。</strong></p>
+<ul>
+<li><p><strong>A.</strong> タプル（丸括弧 <code class="docutils literal notranslate"><span class="pre">()</span></code> で作ったデータ）の中身を、後から書き換えようとしていませんか？ タプルは「イミュータブル（変更不可能）」という頑固な性質を持っています。書き換えたい場合は、リスト <code class="docutils literal notranslate"><span class="pre">[]</span></code> を使うようにコードを修正しましょう！</p></li>
+</ul>
+</li>
+<li><p><strong>Q. リストと辞書、どちらを使えばいいか迷います。</strong></p>
+<ul>
+<li><p><strong>A.</strong> 「順番」に意味があるか、「名前（ラベル）」に意味があるかで決めます。例えば「1日目、2日目、3日目の気温」なら順番に並べるリストが便利です。「国語の点数、数学の点数」なら、数字だけ並べても後から分からなくなるので、科目名をキーにした辞書が便利です。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="colab">
+<h3>🌟 Colabで試すおすすめコード<a class="headerlink" href="#colab" title="Link to this heading">¶</a></h3>
+<p>リスト、辞書、for文を組み合わせた「カフェの売上自動集計プログラム」です。
+データ分析の現場で実際に使う処理の基本形です。実行してみてください！</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+&lt;!-- コードセル --&gt;
+# 1日の注文履歴（辞書のリスト）
+daily_orders = [
+    {&quot;item&quot;: &quot;コーヒー&quot;, &quot;price&quot;: 450},
+    {&quot;item&quot;: &quot;ケーキ&quot;, &quot;price&quot;: 500},
+    {&quot;item&quot;: &quot;コーヒー&quot;, &quot;price&quot;: 450}
+]
+
+# 合計金額を入れる箱（最初は0円）
+total_sales = 0
+
+# for文で1つずつ注文を取り出して、値段を足していく
+for order in daily_orders:
+    total_sales = total_sales + order[&quot;price&quot;]
+
+print(&quot;本日の合計売上は&quot;, total_sales, &quot;円です！&quot;)
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="basic_06.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">第6回 条件分岐、ファイル入出力の基本</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="basic_04.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">第4回 数値演算と文字列</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            <div class="last-updated">
+              Last updated on 2026-07-25</div>
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">第5回 データ構造（数値、文字列、リスト、辞書）</a><ul>
+<li><a class="reference internal" href="#id2">🎯 到達目標</a></li>
+<li><a class="reference internal" href="#id3">イントロダクション：データ構造とは何か？</a></li>
+<li><a class="reference internal" href="#list">リスト (list) ：データを順番に並べよう</a><ul>
+<li><a class="reference internal" href="#id4">リストとインデックス・スライス</a></li>
+<li><a class="reference internal" href="#id5">リストを操作するメソッドなど（追加・削除・スライス）</a></li>
+<li><a class="reference internal" href="#id6">多重リスト</a></li>
+<li><a class="reference internal" href="#id7">リストと文字列の相互変換</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tuple-10">タプル (tuple) とイミュータブル (約10分)</a><ul>
+<li><a class="reference internal" href="#id8">多重代入</a></li>
+<li><a class="reference internal" href="#is">オブジェクトの等価性(==)と同一性(is)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dictionary">辞書 (dictionary) ：名前（キー）でデータを管理</a><ul>
+<li><a class="reference internal" href="#id9">辞書の操作（メソッド）と、辞書とリストの組み合わせ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#set">set（セット）の特徴と活用</a></li>
+<li><a class="reference internal" href="#for">for文による繰り返しとデータ構造</a></li>
+<li><a class="reference internal" href="#id10">💻 演習課題</a></li>
+<li><a class="reference internal" href="#id11">💡 演習問題の解答例</a></li>
+<li><a class="reference internal" href="#id12">📚 第5回のまとめ</a><ul>
+<li><a class="reference internal" href="#id13">✨ 今日の重要ポイントまとめ</a></li>
+<li><a class="reference internal" href="#faq">❓ よくある質問と回答 (FAQ)</a></li>
+<li><a class="reference internal" href="#colab">🌟 Colabで試すおすすめコード</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../_static/documentation_options.js?v=4d4437c9"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../../_static/translations.js?v=4755f45a"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    </body>
+</html>

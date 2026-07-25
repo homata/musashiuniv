@@ -1,8 +1,8 @@
 # ライセンス、参考文献
 
 ```{toctree}
-:maxdepth: 2
-:numbered: 2
+:maxdepth: 1
+:caption: Contents:
 
 01_basic/basic.md
 02_advanced/advance.md

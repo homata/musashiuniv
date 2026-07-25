@@ -6,6 +6,7 @@
 
 ### ライセンス
 * [プログラミング入門](https://homata.github.io/musashiuniv/)
+* [Python ゼロからはじめるプログラミング (プログラミング学習シリーズ)](https://www.shoeisha.co.jp/book/detail/9784798169460)
 * [Python Boot Camp テキスト](https://pycamp.pycon.jp/textbook/index.html)
 * [Pythonプログラミング入門](https://utokyo-ipp.github.io/)
 * [Introduction to Quantitative Data Analysis with Python](https://iiimethodsiv.github.io/intro2quandataanalysis/docs/intro.html)
