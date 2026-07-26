@@ -3,8 +3,8 @@
 2025年度 プログラミング基礎A/コンピューティング応用E [集中] (M1830)
 
 ```{toctree}
-:maxdepth: 2
-:numbered: 2
+:maxdepth: 1
+:caption: Contents:
 
 01_intro.md
 02_computer.md

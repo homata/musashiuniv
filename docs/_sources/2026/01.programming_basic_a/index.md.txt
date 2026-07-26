@@ -20,27 +20,6 @@ markdown/basic_12.md
 markdown/basic_13.md
 ```
 
-### Google Colab
-```{toctree}
-:maxdepth: 1
-:caption: Contents:
-
-colab/basic_01.ipynb
-colab/basic_02.ipynb
-colab/basic_03.ipynb
-colab/basic_04.ipynb
-colab/basic_05.ipynb
-colab/basic_06.ipynb
-colab/basic_07.ipynb
-colab/basic_08.ipynb
-colab/basic_09.ipynb
-
-colab/basic_10.ipynb
-colab/basic_11.ipynb
-colab/basic_12.ipynb
-colab/basic_13.ipynb
-```
-
 ### 資料
 * [プログラミング基礎A/コンピューティング応用E M1830](pptx/00.basic_intro.pptx)
 * [Python 学習教材](pptx/00_python_slides.pptx)

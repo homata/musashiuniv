@@ -3,21 +3,21 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="第10回 Pythonのライブラリ・パッケージ（演算系）" />
+<meta property="og:title" content="第10回 Pythonのライブラリ・パッケージ" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="2026/01.programming_basic_a/markdown/basic_10.html" />
 <meta property="og:site_name" content="musashiuniv" />
-<meta property="og:description" content="Pythonを「データ分析のプロ」にするための拡張機能（ライブラリ）の学習に入ります！ 今回は NumPy（ナムパイ） という、数値計算に特化した強力なツールを学びます。 「配列」や「線形代数」など数学的な言葉が出てきます 「数学のテスト」ではなく「便利な電卓の使い方」を学ぶつもりです。 🎯 到達目標: ライブラリ・モジュールの概念 を理解し、 import 文を使って正しく読み込むことがで..." />
+<meta property="og:description" content="Pythonの拡張機能（ライブラリ）です。 「配列」や「線形代数」など数学的な言葉が出てきます 🎯 到達目標: ライブラリ・モジュールの概念 を理解し、 import 文を使って正しく読み込むことができる。, NumPy配列（ndarray） を作成し、リストよりも効率的なデータ管理ができる。, NumPyを使って、 要素ごとの演算や統計量の算出（平均、合計など） ができる。, 真理値配列 ..." />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2026_01.programming_basic_a_markdown_basic_10_2383b5f9.png" />
-<meta property="og:image:alt" content="Pythonを「データ分析のプロ」にするための拡張機能（ライブラリ）の学習に入ります！ 今回は NumPy（ナムパイ） という、数値計算に特化した強力なツールを学びます。 「配列」や「線形代数」など数学的な言葉が出てきます 「数学のテスト」ではなく「便利な電卓の使い方」を学ぶつもりです。 🎯 到達目標: ライブラ..." />
-<meta name="description" content="Pythonを「データ分析のプロ」にするための拡張機能（ライブラリ）の学習に入ります！ 今回は NumPy（ナムパイ） という、数値計算に特化した強力なツールを学びます。 「配列」や「線形代数」など数学的な言葉が出てきます 「数学のテスト」ではなく「便利な電卓の使い方」を学ぶつもりです。 🎯 到達目標: ライブラリ・モジュールの概念 を理解し、 import 文を使って正しく読み込むことがで..." />
+<meta property="og:image" content="/_images/social_previews/summary_2026_01.programming_basic_a_markdown_basic_10_41c619cb.png" />
+<meta property="og:image:alt" content="Pythonの拡張機能（ライブラリ）です。 「配列」や「線形代数」など数学的な言葉が出てきます 🎯 到達目標: ライブラリ・モジュールの概念 を理解し、 import 文を使って正しく読み込むことができる。, NumPy配列（ndarray） を作成し、リストよりも効率的なデータ管理ができる。, NumPyを使っ..." />
+<meta name="description" content="Pythonの拡張機能（ライブラリ）です。 「配列」や「線形代数」など数学的な言葉が出てきます 🎯 到達目標: ライブラリ・モジュールの概念 を理解し、 import 文を使って正しく読み込むことができる。, NumPy配列（ndarray） を作成し、リストよりも効率的なデータ管理ができる。, NumPyを使って、 要素ごとの演算や統計量の算出（平均、合計など） ができる。, 真理値配列 ..." />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" /><link rel="next" title="第11回 高階関数とpandasライブラリ" href="basic_11.html" /><link rel="prev" title="第9回 関数と例外処理（オブジェクト、クラス、例外処理）" href="basic_09.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
-        <title>第10回 Pythonのライブラリ・パッケージ（演算系） - Pythonプログラミング入門</title>
+        <title>第10回 Pythonのライブラリ・パッケージ - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
@@ -214,17 +214,17 @@
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../2025/index.html">2025年度</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 2025年度</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/index.html">1. 2025年度 プログラミング基礎A/コンピューティング応用E</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 1. 2025年度 プログラミング基礎A/コンピューティング応用E</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/01_intro.html">1.1. Pythonをはじめよう</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/02_computer.html">1.2. ノイマン型コンピュータ</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/03_history.html">1.3. Pythonの歴史</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/20_coding.html">1.4. コーディング規約</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/21_module.html">1.5. モジュール</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/utokyo_ipp/index.html">1.6. Pythonプログラミング入門</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of 1.6. Pythonプログラミング入門</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/index.html">2025年度 プログラミング基礎A/コンピューティング応用E</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 2025年度 プログラミング基礎A/コンピューティング応用E</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/01_intro.html">1. Pythonをはじめよう</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/02_computer.html">2. ノイマン型コンピュータ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/03_history.html">3. Pythonの歴史</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/20_coding.html">4. コーディング規約</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/21_module.html">5. モジュール</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/utokyo_ipp/index.html">6. Pythonプログラミング入門</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of 6. Pythonプログラミング入門</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/utokyo_ipp/00_index.html">1. 演習ページ</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/index.html">1.7. (補足資料) Python ゼロからはじめるプログラミング</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 1.7. (補足資料) Python ゼロからはじめるプログラミング</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/index.html">6. (補足資料) Python ゼロからはじめるプログラミング</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 6. (補足資料) Python ゼロからはじめるプログラミング</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/00_index.html">1. Pythonプログラミング</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/01_Python%E3%81%AB%E8%A7%A6%E3%82%8C%E3%82%8B.html">2. 第1章 Pythonに触れる</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/02_Python%E3%81%AE%E5%9F%BA%E6%9C%AC.html">3. 第2章 Pythonの基本</a></li>
@@ -235,7 +235,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/07_%E7%99%BA%E5%B1%95%E3%81%A8%E5%BF%9C%E7%94%A8.html">8. 第7章 発展と応用</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/index.html">1.8. (補助資料)Python Boot Camp Text</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 1.8. (補助資料)Python Boot Camp Text</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/index.html">7. (補助資料)Python Boot Camp Text</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 7. (補助資料)Python Boot Camp Text</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/index.html">Python Boot Camp テキスト</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Python Boot Camp テキスト</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/1_install.html">1. Pythonをはじめる前に</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/2_intro.html">2. Pythonをはじめよう</a></li>
@@ -249,26 +249,26 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/99_install.html">1.9. 参考資料</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/99_install.html">参考資料</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/index.html">2025年度 プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of 2025年度 プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../2025/02.programming_advanced_a/01_intro.html">1. はじめに</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/python_dataanalysis/index.html">2. Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of 2. Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/python_dataanalysis/00_index.html">2.1. 資料</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/python_dataanalysis/00_index.html">1. 資料</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../../2025/02.programming_advanced_a/digital_twin/index.html">3. デジタルツイン</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/02.programming_advanced_a/digital_twin/index.html">2. デジタルツイン</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/index.html">4. leafmap</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of 4. leafmap</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/01_intro.html">4.1. leafmapとは</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/01_intro.html#leadmap">4.2. leadmapのサイト</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/01_intro.html#google-colab">4.3. 演習：Google Colab ファイル</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/01_intro.html">1. leafmapとは</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/01_intro.html#leadmap">2. leadmapのサイト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/01_intro.html#google-colab">3. 演習：Google Colab ファイル</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/index.html">5. 機械学習</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of 5. 機械学習</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/supervised_learning.html">5.1. 機械学習</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/unsupervised_learning.html">5.2. 教師なし学習</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/f1score.html">5.3. 分類問題における正解・不正解のパターン</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/index.html">1.3. 機械学習</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of 1.3. 機械学習</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/supervised_learning.html">1. 機械学習</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/unsupervised_learning.html">2. 教師なし学習</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/f1score.html">3. 分類問題における正解・不正解のパターン</a></li>
 </ul>
 </li>
 </ul>
@@ -286,23 +286,10 @@
 <li class="toctree-l3"><a class="reference internal" href="basic_07.html">第7回 テスト・デバッグ、コードスタイル</a></li>
 <li class="toctree-l3"><a class="reference internal" href="basic_08.html">第8回 制御フロー（条件分岐、繰り返し、イテレータ、内包表記）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="basic_09.html">第9回 関数と例外処理（オブジェクト、クラス、例外処理）</a></li>
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">第10回 Pythonのライブラリ・パッケージ（演算系）</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">第10回 Pythonのライブラリ・パッケージ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="basic_11.html">第11回 高階関数とpandasライブラリ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="basic_12.html">第12回 Pythonのライブラリ・パッケージ（グラフ可視化）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="basic_13.html">第13回 総合演習</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../colab/basic_01.html">第1回 オリエンテーション・Google Colabの使い方</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../colab/basic_02.html">第2回 コンピューターとプログラミングとは？</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../colab/basic_03.html">第3回 Pythonの基礎</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../colab/basic_04.html">第4回 数値演算と文字列</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../colab/basic_05.html">第5回 データ構造（数値、文字列、リスト、辞書）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../colab/basic_06.html">第6回 条件分岐、ファイル入出力の基本</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../colab/basic_07.html">第7回 テスト・デバッグ、コードスタイル</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../colab/basic_08.html">第8回 制御フロー（条件分岐、繰り返し、イテレータ、内包表記）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../colab/basic_09.html">第9回 関数と例外処理（オブジェクト、クラス、例外処理）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../colab/basic_10.html">第10回 Pythonのライブラリ・パッケージ（演算系）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../colab/basic_11.html">第11回 高階関数とpandasライブラリ</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../colab/basic_12.html">第12回 Pythonのライブラリ・パッケージ（グラフ可視化）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../colab/basic_13.html">第13回 総合演習</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../02.programming_advanced_a/index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -360,11 +347,9 @@
         </div>
         <article role="main" id="furo-main-content">
           <section id="python">
-<h1>第10回 Pythonのライブラリ・パッケージ（演算系）<a class="headerlink" href="#python" title="Link to this heading">¶</a></h1>
-<p>Pythonを「データ分析のプロ」にするための拡張機能（ライブラリ）の学習に入ります！</p>
-<p>今回は <strong>NumPy（ナムパイ）</strong> という、数値計算に特化した強力なツールを学びます。
-「配列」や「線形代数」など数学的な言葉が出てきます
-「数学のテスト」ではなく「便利な電卓の使い方」を学ぶつもりです。</p>
+<h1>第10回 Pythonのライブラリ・パッケージ<a class="headerlink" href="#python" title="Link to this heading">¶</a></h1>
+<p>Pythonの拡張機能（ライブラリ）です。
+「配列」や「線形代数」など数学的な言葉が出てきます</p>
 <hr class="docutils" />
 <section id="id1">
 <h2>🎯 到達目標<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
@@ -376,42 +361,234 @@
 </ol>
 </section>
 <hr class="docutils" />
-<section id="numpy">
-<h2>イントロダクション：ライブラリとNumPyとは？<a class="headerlink" href="#numpy" title="Link to this heading">¶</a></h2>
 <section id="id2">
-<h3>モジュール・パッケージ・ライブラリ<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
-<p>Pythonのすごいところは、世界中の天才たちが作った「便利な道具箱（拡張キット）」が無料で公開されていることです。</p>
+<h2>イントロダクション：モジュール・ライブラリとは？<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<section id="id3">
+<h3>モジュール・パッケージ・ライブラリ<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p>Pythonのすごいところは、世界中のエンジニアが作った「便利な道具箱（拡張キット）」が無料で公開されていることです。</p>
 <ul class="simple">
 <li><p><strong>モジュール</strong>: 便利な関数などを1つのファイルにまとめたもの。（例：カフェの「レジ打ち機能」）</p></li>
 <li><p><strong>パッケージ / ライブラリ</strong>: 複数のモジュールをさらに大きくまとめたもの。（例：カフェの「店舗運営まるごとセット」）</p></li>
 </ul>
 </section>
-<section id="id3">
-<h3>なぜリストではなくNumPy（ナムパイ）なのか？<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
-<p>これまで複数のデータは「リスト <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code>」に入れて計算（for文など）してきましたね。しかし、データが100万件になるとリストでは動作がとても遅くなります。
-<strong>NumPy</strong> は、Pythonの中で大量の数字を扱うための「超高速な計算職人」です。</p>
-<p><strong>【リストとNumPyの違い（イメージ図）】</strong></p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>▼ 普通のリスト（for文で1つずつ計算する）
- [ 400, 500, 450 ] ──▶ (1つずつロボットに渡す) ──▶ [ 440, 550, 495 ] (税込み計算)
- ※データが多いと時間がかかる…
-
-▼ NumPy配列（一気にまとめて計算する魔法！）
- [ 400, 500, 450 ] ━━▶ (巨大プレス機で一気に1.1倍！) ━━▶ [ 440, 550, 495 ]
- ※for文を書かなくても、超高速で全員まとめて処理できる！
-</pre></div>
-</div>
-</section>
 </section>
 <hr class="docutils" />
+<section id="id4">
+<h2>モジュール<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<p>1つのファイルに記述していると、プログラムが長くなるとどこに何を書いているのかがわからなくなってきます。</p>
+<p>処理が長く、複雑になると、複数のファイルに処理を分割する必要があります。役割ごとにファイルを分割することで、それぞれどういった処理をするものかを明確にできます。</p>
+<p>Pythonでは他のPythonファイルや関数をインポート（import）して再利用できます。処理を複数のファイルに分割し、必要な処理をインポートして使います。</p>
+</section>
 <section id="import">
 <h2>importの使い方（モジュールのインポート）<a class="headerlink" href="#import" title="Link to this heading">¶</a></h2>
+<p>別のファイルをインポートするには <code class="docutils literal notranslate"><span class="pre">import</span></code> 文を使います。</p>
 <p>拡張機能を使うには、Pythonに「この道具箱を持ってきて！」とお願いする必要があります。それが <code class="docutils literal notranslate"><span class="pre">import</span></code>（インポート）文です。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">〇〇</span></code> : 〇〇という道具箱を丸ごと持ってくる。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">〇〇</span> <span class="pre">as</span> <span class="pre">△△</span></code> : 〇〇という道具箱に、**短いあだ名（△△）**をつけて持ってくる。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">〇〇</span> <span class="pre">import</span> <span class="pre">××</span></code> : 〇〇という道具箱の中から、××という特定の道具だけを取り出して持ってくる。</p></li>
 </ul>
-<p>データ分析の世界では、NumPyをインポートする時は <strong><code class="docutils literal notranslate"><span class="pre">np</span></code> というあだ名をつけるのが世界共通のルール</strong> になっています。</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">import calc</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">calc</span></code> というモジュールがインポートされました。</p>
+<p>Pythonファイルをインポートすることでモジュール（module）として再利用できます。</p>
+<p><code class="docutils literal notranslate"><span class="pre">calc</span></code> モジュールから <code class="docutils literal notranslate"><span class="pre">add()</span></code> 関数を使うには、 <code class="docutils literal notranslate"><span class="pre">calc.add()</span></code> と呼び出します。</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">calc.add(1, 2)</span>
+</pre></div>
+</div>
+<section id="id5">
+<h3>関数のインポート<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">add()</span></code> 関数を直接インポートするには、 <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">＜モジュール＞</span> <span class="pre">import</span> <span class="pre">＜インポート対象＞</span></code> 文を使います。</p>
+<p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">＜モジュール＞</span></code> の部分にモジュール、 <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">＜インポート対象＞</span></code> の部分にインポートの対象を書きます。</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">from calc import add</span>
+
+<span class="go">add(1, 2)</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3>別名をつける<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<p>インポートした関数やモジュールに別名をつけるには <code class="docutils literal notranslate"><span class="pre">as</span></code> を使います。
+関数やモジュールが頻繁に使われるのに名前が長い場合に使われます。</p>
+<p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">&lt;インポート対象&gt;</span> <span class="pre">as</span> <span class="pre">&lt;別名&gt;</span></code> のように別名を指定します。
+<code class="docutils literal notranslate"><span class="pre">calc</span></code> モジュールに別名 <code class="docutils literal notranslate"><span class="pre">c</span></code> をつけてインポートするには<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">as</span></code> のようにします。</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">import calc as c</span>
+
+<span class="go">c.add(1, 2)</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h3>複数の対象をインポート<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">calc</span></code> モジュールから <code class="docutils literal notranslate"><span class="pre">add()</span></code> 、 <code class="docutils literal notranslate"><span class="pre">sub()</span></code> 関数を一度にインポートするには、
+<code class="docutils literal notranslate"><span class="pre">import</span></code> 文でインポート対象をカンマ区切りで指定します。</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">from calc import add, sub</span>
+
+<span class="go">add(1, 2)</span>
+
+<span class="go">sub(2, 1)</span>
+</pre></div>
+</div>
+<p>また、 <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">(functions2)</span></code> のように括弧を使っても指定できます。
+インポート対象が多い場合は括弧を使った書き方のほうが可読性が高いので、こちらを使います。</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">from calc import (add, sub)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id8">
+<h2>標準ライブラリの利用<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+<p>Python自体も標準でモジュールを提供しています。これら標準で提供されているモジュールをまとめて標準ライブラリと呼びます。</p>
+<p>必要な処理をすべて自分で実装するのでなく、積極的に標準ライブラリを利用しましょう。</p>
+<p>標準ライブラリを利用すると重複する実装が減り、コードの記述量を大幅に削減できます。</p>
+<section id="id9">
+<h3>日付を扱うモジュール<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<p>標準ライブラリの1つ <code class="docutils literal notranslate"><span class="pre">datetime</span></code> モジュールを取り上げます。
+<code class="docutils literal notranslate"><span class="pre">datetime</span></code> は日付や時刻を簡単に扱うことができるモジュールです。
+ここでは例として日付の計算をします。</p>
+<p><code class="docutils literal notranslate"><span class="pre">datetime.date()</span></code> コンストラクタを使って日付を意味するオブジェクトを生成できます。
+引数として年、月、日を指定します。</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">import datetime</span>
+
+<span class="go">d = datetime.date(2016, 12, 23)</span>
+<span class="go">print(d.year, d.month, d.day)</span>
+</pre></div>
+</div>
+<p>また、 <code class="docutils literal notranslate"><span class="pre">datetime.date.today()</span></code> メソッドを使うと今日の日付を取得することができます。</p>
+<div class="literal-block-wrapper docutils container" id="id25">
+<div class="code-block-caption"><span class="caption-number">リスト 29 </span><span class="caption-text">datetime.date.today()メソッド</span><a class="headerlink" href="#id25" title="Link to this code">¶</a></div>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">today = datetime.date.today()</span>
+<span class="go">print(today)  # 実行する日によって結果が異なる</span>
+<span class="go">2018-02-17</span>
+</pre></div>
+</div>
+</div>
+<p>ここで、自分が生まれてから今日までに何日経過したのかを計算してみましょう。
+自分で実装しようとすると、月ごとに日数が違う、うるう年の計算など面倒な計算が必要となりますが、
+<code class="docutils literal notranslate"><span class="pre">datetime.date</span></code> を使うと面倒な部分をモジュールが肩代わりしてくれます。</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">birthday = datetime.date(2008, 12, 3)  # Python 3.0のリリース日</span>
+
+<span class="go">today = datetime.date.today()</span>
+<span class="go">delta = today - birthday  # 日付や時刻の差を表すdatetime.timedeltaオブジェクト</span>
+
+<span class="go">print(delta.days)  # 実行する日によって結果が異なる</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">datetime</span></code> モジュールは他にも時刻を扱う <code class="docutils literal notranslate"><span class="pre">datetime.time</span></code>, 日付と時刻両方を扱う <code class="docutils literal notranslate"><span class="pre">datetime.datetime</span></code> など日付や時刻の計算に便利な関数がたくさんあります。
+詳しくはPythonの公式ドキュメントの「 <a class="reference external" href="https://docs.python.org/ja/3/library/datetime.html">datetimeモジュール</a> 」を参考にしてください。</p>
+</section>
+<section id="id10">
+<h3>正規表現モジュール<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<p>次に標準ライブラリの1つ <code class="docutils literal notranslate"><span class="pre">re</span></code> モジュールを扱います。
+<code class="docutils literal notranslate"><span class="pre">re</span></code> モジュールはPythonで正規表現を扱うためのモジュールです。</p>
+<p><code class="docutils literal notranslate"><span class="pre">re.search()</span></code> 関数を使って、文字列が正規表現にマッチするか調べられます。第1引数に正規表現、第2引数に対象の文字列を渡します（<code class="xref std std-numref docutils literal notranslate"><span class="pre">re-module</span></code>）。</p>
+<div class="highlight-pycon notranslate" id="re-module"><div class="highlight"><pre><span></span><span class="go">import re</span>
+
+<span class="go">m = re.search(&#39;(P(yth|l)|Z)o[pn]e?&#39;, &#39;Python&#39;)</span>
+</pre></div>
+</div>
+<p>正規表現にマッチした場合、 <code class="docutils literal notranslate"><span class="pre">re.search()</span></code> は結果を表すマッチオブジェクトを返します。
+マッチオブジェクトから値を取り出すには、 <code class="docutils literal notranslate"><span class="pre">.group()</span></code> メソッドを呼び出します。</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">m.group()</span>
+<span class="go">&#39;Python&#39;</span>
+</pre></div>
+</div>
+<p>正規表現がグループを含む場合、グループの番号を引数に渡して取り出せます。
+引数を指定しないか、0を指定すると、正規表現全体のマッチが返されます。</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">m = re.search(&#39;py(thon)&#39;, &#39;python&#39;)</span>
+
+<span class="go">m.group()</span>
+<span class="go">&#39;python&#39;</span>
+
+<span class="go">m.group(0)</span>
+<span class="go">&#39;python&#39;</span>
+
+<span class="go">m.group(1)</span>
+<span class="go">&#39;thon&#39;</span>
+</pre></div>
+</div>
+<p>正規表現にマッチしない場合は、<code class="xref std std-numref docutils literal notranslate"><span class="pre">not-match</span></code> に示すように何も返しません（<code class="docutils literal notranslate"><span class="pre">None</span></code> を返します）。</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">re.search(&#39;py&#39;, &#39;ruby&#39;)</span>
+</pre></div>
+</div>
+<div class="admonition- admonition">
+<p class="admonition-title">コラム: 正規表現の文字列</p>
+<p>正規表現の文字列にはPythonのraw文字列を使うのが一般的です。</p>
+<p><code class="docutils literal notranslate"><span class="pre">r</span></code> プレフィックスをつけてraw文字列を定義します。
+raw文字列ではバックスラッシュを特別扱いしないので、
+正規表現中にバックスラッシュを使う際に <code class="docutils literal notranslate"><span class="pre">'\\'</span></code> と書く必要がなくなります。</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">re</span></code> モジュールには、ここで説明していない有効な使い方があります。
+Pythonの公式ドキュメントの「 <a class="reference external" href="https://docs.python.org/ja/3/library/re.html">reモジュール</a> 」を参考にしてください。</p>
+<p>また、他のPython標準ライブラリについては、「 <a class="reference external" href="https://docs.python.org/ja/3/library/index.html">Python標準ライブラリ</a> 」を参考にしてください。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id11">
+<h2>サードパーティ製パッケージ<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<p>Python は標準ライブラリだけでもいろいろなことができますが、さらに便利なサードパーティ製のパッケージも提供されています。</p>
+<p>サードパーティ製パッケージは <a class="reference external" href="https://pypi.org/">PyPI</a> （the Python Package Index、パイピーアイと読む）というサイトで情報が共有されています。</p>
+<figure class="align-default" id="id26">
+<a class="reference internal image-reference" href="../../../_images/pypi2.png"><img alt="PyPI - the Python Package Index" src="../../../_images/pypi2.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">図 3 </span><span class="caption-text">PyPI - the Python Package Index</span><a class="headerlink" href="#id26" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<section id="pip">
+<h3>pipコマンド<a class="headerlink" href="#pip" title="Link to this heading">¶</a></h3>
+<p>サードパーティ製パッケージをインストールするには、 <strong>pipコマンド</strong> を使用します。</p>
+<p><strong>以下はpipコマンドのサンプルです</strong> ここでは実行しないで、以下のvenv環境を作ってから実行しましょう。
+pip コマンドを利用すると以下の様なコマンドで簡単にサードパーティ製パッケージをインストールできます。</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>パッケージ名
+</pre></div>
+</div>
+<p>pip自身もpipコマンドでアップグレードを行えます。
+アップグレードは、次のコマンドを実行します。</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pip<span class="w"> </span>--upgrade
+</pre></div>
+</div>
+<p>Windowsの場合、このコマンドを実行すると現在入っているpipが削除されたうえに最新バージョンのpipのインストールに失敗してpipが使えなくなることがたまに発生します。以下のコマンドを使ってください。</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>&gt;<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">freeze</span></code> コマンドを実行すると、インストールしたパッケージの一覧が出力されます。</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>requests
+<span class="o">(</span>env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
+<span class="o">(</span>env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>cat<span class="w"> </span>requirements.txt
+<span class="nv">certifi</span><span class="o">==</span><span class="m">2017</span>.4.17
+<span class="nv">chardet</span><span class="o">==</span><span class="m">3</span>.0.4
+<span class="nv">idna</span><span class="o">==</span><span class="m">2</span>.5
+<span class="nv">requests</span><span class="o">==</span><span class="m">2</span>.18.1
+<span class="nv">urllib3</span><span class="o">==</span><span class="m">1</span>.21.1
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="numpy">
+<h2>NumPyライブラリの基礎（配列の構築と操作）<a class="headerlink" href="#numpy" title="Link to this heading">¶</a></h2>
+<p>NumPyでデータを扱っていきましょう</p>
+<section id="id12">
+<h3>なぜリストではなくNumPy（ナムパイ）なのか？<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<p>これまで複数のデータは「リスト <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code>」に入れて計算（for文など）してきましたね。しかし、データが100万件になるとリストでは動作がとても遅くなります。
+<strong>NumPy</strong> は、Pythonの中で大量の数字を扱うための「超高速な計算職人」です。</p>
+<p><strong>【リストとNumPyの違い（イメージ図）】</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>▼ 普通のリスト（for文で1つずつ計算する）
+ [ 400, 500, 450 ] ──▶ (1つずつロボットに渡す) ──▶ [ 440, 550, 495 ] (税込み計算)
+ ※データが多いと時間がかかる…
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>▼ NumPy配列（一気にまとめて計算する魔法！）
+ [ 400, 500, 450 ] ━━▶ (巨大プレス機で一気に1.1倍！) ━━▶ [ 440, 550, 495 ]
+ ※for文を書かなくても、超高速で全員まとめて処理できる！
+</pre></div>
+</div>
+</section>
+<section id="id13">
+<h3>NumPyをインポート<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<p>データ分析の世界では、NumPyをインポートする時は <strong><code class="docutils literal notranslate"><span class="pre">np</span></code> というあだ名をつけるのが一般的</strong> になっています。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># NumPyライブラリを「np」というあだ名で読み込みます！</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
@@ -422,10 +599,6 @@
 </pre></div>
 </div>
 </section>
-<hr class="docutils" />
-<section id="id4">
-<h2>NumPyライブラリの基礎（配列の構築と操作）<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
-<p>さっそく、NumPyの職人（<code class="docutils literal notranslate"><span class="pre">np</span></code>）にデータを作ってもらいましょう！</p>
 <section id="np-array">
 <h3>配列の構築（np.array）<a class="headerlink" href="#np-array" title="Link to this heading">¶</a></h3>
 <p>普通のリストをNumPy専用の箱（<strong>ndarray</strong> と呼ばれます）に変換します。</p>
@@ -441,8 +614,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id5">
-<h3>配列要素を生成する構築関数<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<section id="id14">
+<h3>配列要素を生成する構築関数<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
 <p>「0だけが100個入ったデータ」などを一瞬で作ってくれる魔法の関数です。テストデータの準備（初期化）などでよく使います。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">np.zeros()</span></code>: すべて0の配列を作る。</p></li>
@@ -457,8 +630,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id6">
-<h3>配列要素の操作と多次元配列<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<section id="id15">
+<h3>配列要素の操作と多次元配列<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
 <p>NumPyの配列は、リストと同じようにインデックス（`` など）やスライス（<code class="docutils literal notranslate"><span class="pre">[0:2]</span></code>）でデータを取り出せます。
 また、エクセルの表のように「行と列」を持つ2次元（多次元）のデータも作れます。その形は <code class="docutils literal notranslate"><span class="pre">.shape</span></code>（シェイプ）という属性で確認できます。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2次元配列（月曜、火曜の、午前・午後の客数）</span>
@@ -477,11 +650,11 @@
 </section>
 </section>
 <hr class="docutils" />
-<section id="id7">
-<h2>NumPyを使った高度な計算とデータ操作<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<section id="id16">
+<h2>NumPyを使った高度な計算とデータ操作<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h2>
 <p>ここからがNumPyの真骨頂です！for文を使わずにデータを一気に処理します。</p>
-<section id="id8">
-<h3>要素毎の演算<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<section id="id17">
+<h3>要素毎の演算<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
 <p>配列そのものに対して足し算や掛け算をすると、<strong>中身のデータすべてに対して一気に計算</strong>してくれます。また、サイズの同じ配列同士を足すと、同じ場所にあるデータ同士を足してくれます。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()</span>
 <span class="n">amounts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()</span>
@@ -496,8 +669,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id9">
-<h3>よく使われる配列操作（統計量）<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<section id="id18">
+<h3>よく使われる配列操作（統計量）<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
 <p>データ分析で一番よく使う「合計」「平均」「最大値」などは、配列に用意されたメソッドを呼ぶだけで一発で計算できます。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()</span>
 
@@ -507,8 +680,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id10">
-<h3>真理値配列によるインデックスアクセス（超重要！）<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<section id="id19">
+<h3>真理値配列によるインデックスアクセス（超重要！）<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
 <p>データ分析では「売上が300以上のデータだけ欲しい」といった条件抽出が必須です。
 NumPyでは、条件式（<code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">&gt;=</span> <span class="pre">300</span></code>）を入れると「True / False」が入った配列（真理値配列）が作られます。それを元の配列の <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> の中に入れると、<strong>Trueの場所のデータだけを抽出</strong>してくれます！</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sales</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()</span>
@@ -527,8 +700,8 @@ NumPyでは、条件式（<code class="docutils literal notranslate"><span class
 </pre></div>
 </div>
 </section>
-<section id="id11">
-<h3>配列の保存と復元<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<section id="id20">
+<h3>配列の保存と復元<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
 <p>分析した結果は、パソコン内にファイルとして保存（<code class="docutils literal notranslate"><span class="pre">np.save</span></code>）し、後で読み込む（<code class="docutils literal notranslate"><span class="pre">np.load</span></code>）ことができます。NumPy専用の <code class="docutils literal notranslate"><span class="pre">.npy</span></code> という形式で保存されます。</p>
 </section>
 <section id="dot">
@@ -548,8 +721,8 @@ NumPyでは、条件式（<code class="docutils literal notranslate"><span class
 </section>
 </section>
 <hr class="docutils" />
-<section id="id12">
-<h2>💻 演習課題<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
+<section id="id21">
+<h2>💻 演習課題<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h2>
 <p>これまでfor文を使って苦労して書いていた処理が、いかにシンプルに書けるかを体感してください！</p>
 <p>エラー（例えば <code class="docutils literal notranslate"><span class="pre">ValueError:</span> <span class="pre">operands</span> <span class="pre">could</span> <span class="pre">not</span> <span class="pre">be</span> <span class="pre">broadcast</span> <span class="pre">together</span></code> など）が出たら、それは「配列同士のサイズ（長さ）が違って計算できないよ！」というNumPyからの警告です。</p>
 <p>以下の <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TODO:</span> </code> の部分を書き換えて、プログラムを完成させてください。</p>
@@ -630,8 +803,8 @@ NumPyでは、条件式（<code class="docutils literal notranslate"><span class
 </div>
 </section>
 <hr class="docutils" />
-<section id="id13">
-<h2>💡 演習問題の解答例<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
+<section id="id22">
+<h2>💡 演習問題の解答例<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h2>
 <p>（どうしても分からない時や、答え合わせをしたい時に展開して見てくださいね）</p>
 <details>
 <summary>👉 解答例を見る（ここをクリックして展開）</summary>
@@ -665,11 +838,11 @@ NumPyでは、条件式（<code class="docutils literal notranslate"><span class
 </details>
 </section>
 <hr class="docutils" />
-<section id="id14">
-<h2>📚 第10回のまとめ<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
+<section id="id23">
+<h2>📚 第10回のまとめ<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h2>
 <p>データ分析の強力な味方「NumPy」を学びました。これまでfor文を使って何行も書いていた処理が、魔法のように短く、しかも高速に書けるようになりました。</p>
-<section id="id15">
-<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<section id="id24">
+<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>import numpy as np</strong>: ライブラリを読み込む世界共通の「おまじない」。</p></li>
 <li><p><strong>ndarray</strong>: NumPy専用の配列（箱）。<code class="docutils literal notranslate"><span class="pre">np.array()</span></code> でリストから作れる。</p></li>
@@ -741,7 +914,7 @@ NumPyでは、条件式（<code class="docutils literal notranslate"><span class
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-25</div>
+              Last updated on 2026-07-26</div>
           </div>
           <div class="right-details">
             
@@ -762,32 +935,48 @@ NumPyでは、条件式（<code class="docutils literal notranslate"><span class
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">第10回 Pythonのライブラリ・パッケージ（演算系）</a><ul>
+<li><a class="reference internal" href="#">第10回 Pythonのライブラリ・パッケージ</a><ul>
 <li><a class="reference internal" href="#id1">🎯 到達目標</a></li>
-<li><a class="reference internal" href="#numpy">イントロダクション：ライブラリとNumPyとは？</a><ul>
-<li><a class="reference internal" href="#id2">モジュール・パッケージ・ライブラリ</a></li>
-<li><a class="reference internal" href="#id3">なぜリストではなくNumPy（ナムパイ）なのか？</a></li>
+<li><a class="reference internal" href="#id2">イントロダクション：モジュール・ライブラリとは？</a><ul>
+<li><a class="reference internal" href="#id3">モジュール・パッケージ・ライブラリ</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#import">importの使い方（モジュールのインポート）</a></li>
-<li><a class="reference internal" href="#id4">NumPyライブラリの基礎（配列の構築と操作）</a><ul>
+<li><a class="reference internal" href="#id4">モジュール</a></li>
+<li><a class="reference internal" href="#import">importの使い方（モジュールのインポート）</a><ul>
+<li><a class="reference internal" href="#id5">関数のインポート</a></li>
+<li><a class="reference internal" href="#id6">別名をつける</a></li>
+<li><a class="reference internal" href="#id7">複数の対象をインポート</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8">標準ライブラリの利用</a><ul>
+<li><a class="reference internal" href="#id9">日付を扱うモジュール</a></li>
+<li><a class="reference internal" href="#id10">正規表現モジュール</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id11">サードパーティ製パッケージ</a><ul>
+<li><a class="reference internal" href="#pip">pipコマンド</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#numpy">NumPyライブラリの基礎（配列の構築と操作）</a><ul>
+<li><a class="reference internal" href="#id12">なぜリストではなくNumPy（ナムパイ）なのか？</a></li>
+<li><a class="reference internal" href="#id13">NumPyをインポート</a></li>
 <li><a class="reference internal" href="#np-array">配列の構築（np.array）</a></li>
-<li><a class="reference internal" href="#id5">配列要素を生成する構築関数</a></li>
-<li><a class="reference internal" href="#id6">配列要素の操作と多次元配列</a></li>
+<li><a class="reference internal" href="#id14">配列要素を生成する構築関数</a></li>
+<li><a class="reference internal" href="#id15">配列要素の操作と多次元配列</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id7">NumPyを使った高度な計算とデータ操作</a><ul>
-<li><a class="reference internal" href="#id8">要素毎の演算</a></li>
-<li><a class="reference internal" href="#id9">よく使われる配列操作（統計量）</a></li>
-<li><a class="reference internal" href="#id10">真理値配列によるインデックスアクセス（超重要！）</a></li>
-<li><a class="reference internal" href="#id11">配列の保存と復元</a></li>
+<li><a class="reference internal" href="#id16">NumPyを使った高度な計算とデータ操作</a><ul>
+<li><a class="reference internal" href="#id17">要素毎の演算</a></li>
+<li><a class="reference internal" href="#id18">よく使われる配列操作（統計量）</a></li>
+<li><a class="reference internal" href="#id19">真理値配列によるインデックスアクセス（超重要！）</a></li>
+<li><a class="reference internal" href="#id20">配列の保存と復元</a></li>
 <li><a class="reference internal" href="#dot">▲ 線形代数の演算（内積：dot）</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id12">💻 演習課題</a></li>
-<li><a class="reference internal" href="#id13">💡 演習問題の解答例</a></li>
-<li><a class="reference internal" href="#id14">📚 第10回のまとめ</a><ul>
-<li><a class="reference internal" href="#id15">✨ 今日の重要ポイントまとめ</a></li>
+<li><a class="reference internal" href="#id21">💻 演習課題</a></li>
+<li><a class="reference internal" href="#id22">💡 演習問題の解答例</a></li>
+<li><a class="reference internal" href="#id23">📚 第10回のまとめ</a><ul>
+<li><a class="reference internal" href="#id24">✨ 今日の重要ポイントまとめ</a></li>
 <li><a class="reference internal" href="#faq">❓ よくある質問と回答 (FAQ)</a></li>
 <li><a class="reference internal" href="#colab">🌟 Colabで試すおすすめコード</a></li>
 </ul>

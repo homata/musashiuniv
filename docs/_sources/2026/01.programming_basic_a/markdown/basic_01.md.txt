@@ -3,6 +3,24 @@
 この授業は、次の「プログラミング応用A」へ繋がる大切な基礎固めでもあります。  
 焦らず自分のペースで進めていきましょう。
 
+### Google Colab
+```
+colab/basic_01.ipynb
+colab/basic_02.ipynb
+colab/basic_03.ipynb
+colab/basic_04.ipynb
+colab/basic_05.ipynb
+colab/basic_06.ipynb
+colab/basic_07.ipynb
+colab/basic_08.ipynb
+colab/basic_09.ipynb
+
+colab/basic_10.ipynb
+colab/basic_11.ipynb
+colab/basic_12.ipynb
+colab/basic_13.ipynb
+```
+
 ---
 
 ## 🎯 到達目標
