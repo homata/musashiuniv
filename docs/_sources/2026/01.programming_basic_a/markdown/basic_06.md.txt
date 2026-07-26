@@ -14,6 +14,18 @@
 
 ---
 
+### 練習問題のGoogle Colab起動
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](
+https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exercises/2026/01.programming_basic_a/basic_06.ipynb)
+
+1. 上記の「Open In Colab」をクリックして、Google Colabを起動させてください
+2. [ファイル] → [ドライブにコピーを保存] を選択して、Googleドライブにコピーを保存してください
+3. 保存が成功すると，Googleドライブの「マイドライブ」 →「Colab Notebooks」にコピーしたファイルが保存されます。
+4. GoogleドライブにコピーしたGoogle ColabのNotebooksを開いてください
+5. 開いたGoogle ColabのNotebooksで作業をしてください
+
+---
+
 ## イントロダクション：プログラムに「判断」と「記憶」をさせよう
 
 これまで私たちが書いてきたプログラムは、上から下へ「一直線」に進むだけでした。しかし、実際のカフェの業務やデータ分析では、条件によって対応を変える必要があります。

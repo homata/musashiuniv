@@ -3,24 +3,6 @@
 この授業は、次の「プログラミング応用A」へ繋がる大切な基礎固めでもあります。  
 焦らず自分のペースで進めていきましょう。
 
-### Google Colab
-```
-colab/basic_01.ipynb
-colab/basic_02.ipynb
-colab/basic_03.ipynb
-colab/basic_04.ipynb
-colab/basic_05.ipynb
-colab/basic_06.ipynb
-colab/basic_07.ipynb
-colab/basic_08.ipynb
-colab/basic_09.ipynb
-
-colab/basic_10.ipynb
-colab/basic_11.ipynb
-colab/basic_12.ipynb
-colab/basic_13.ipynb
-```
-
 ---
 
 ## 🎯 到達目標
@@ -29,8 +11,21 @@ colab/basic_13.ipynb
 2. **Google Colab** の基本的な使い方をマスターし、プログラムを動かせる。
 3. **Markdown（マークダウン）** を使って、ノートを見やすくまとめることができる。
 
-## イントロダクション：データ分析の重要性とプログラミングとは？
 ---
+
+### 練習問題のGoogle Colab起動
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](
+https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exercises/2026/01.programming_basic_a/basic_01.ipynb)
+
+1. 上記の「Open In Colab」をクリックして、Google Colabを起動させてください
+2. [ファイル] → [ドライブにコピーを保存] を選択して、Googleドライブにコピーを保存してください
+3. 保存が成功すると，Googleドライブの「マイドライブ」 →「Colab Notebooks」にコピーしたファイルが保存されます。
+4. GoogleドライブにコピーしたGoogle ColabのNotebooksを開いてください
+5. 開いたGoogle ColabのNotebooksで作業をしてください
+
+---
+
+## イントロダクション：データ分析の重要性とプログラミングとは？
 
 ### データ分析の重要性について
 現代社会では、どんな仕事をするにしても「データ」が溢れています。例えば、皆さんがよく行く身近な「カフェ」を想像してみてください☕️。

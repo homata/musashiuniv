@@ -16,6 +16,18 @@ pandasを使えば、皆さんが普段使っているExcelのような「表（
 
 ---
 
+### 練習問題のGoogle Colab起動
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](
+https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exercises/2026/01.programming_basic_a/basic_11.ipynb)
+
+1. 上記の「Open In Colab」をクリックして、Google Colabを起動させてください
+2. [ファイル] → [ドライブにコピーを保存] を選択して、Googleドライブにコピーを保存してください
+3. 保存が成功すると，Googleドライブの「マイドライブ」 →「Colab Notebooks」にコピーしたファイルが保存されます。
+4. GoogleドライブにコピーしたGoogle ColabのNotebooksを開いてください
+5. 開いたGoogle ColabのNotebooksで作業をしてください
+
+---
+
 ## イントロダクション：データ分析の主役「pandas」
 
 前回学んだ「NumPy」は数字の計算に特化した「超高速な電卓」でした。しかし、実際のデータには数字だけでなく「商品名」や「日付」といった様々な種類（型）が混ざっています。

@@ -15,6 +15,18 @@
 4. 初心者が最も陥りやすい **「変数」と「文字列」の混同** を見分け、エラーを解決できる。
 
 ---
+
+### 練習問題のGoogle Colab起動
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](
+https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exercises/2026/01.programming_basic_a/basic_04.ipynb)
+
+1. 上記の「Open In Colab」をクリックして、Google Colabを起動させてください
+2. [ファイル] → [ドライブにコピーを保存] を選択して、Googleドライブにコピーを保存してください
+3. 保存が成功すると，Googleドライブの「マイドライブ」 →「Colab Notebooks」にコピーしたファイルが保存されます。
+4. GoogleドライブにコピーしたGoogle ColabのNotebooksを開いてください
+5. 開いたGoogle ColabのNotebooksで作業をしてください
+
+---
 ## イントロダクション：データと変数の基礎
 
 データ分析を行うためには、まず「データ（食材）」を変数（箱）に入れ、それを正しく処理する必要があります。
