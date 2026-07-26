@@ -428,7 +428,6 @@ total_spending =
 # TODO: print関数を使って total_spending を表示する
 ```
 
-
 ---
 
 ## 💡 演習問題の解答例

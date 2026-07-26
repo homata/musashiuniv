@@ -135,22 +135,30 @@ Google ドライブにノートブックが保存されるため、他のユー�
 ログインしてない場合はログインをしてください。  
 (Googleアカウントをお持ちでない方は、新規にアカウントを作成してください)
 
-<img src="./images/colab/colab_000.png" width="70%">
+```{figure} images/colab/colab_000.png
+:width: 70%
+```
 
 3. Google Colabを起動します
 
-<img src="./images/colab/colab_001.png" width="70%">
+```{figure} images/colab/colab_001.png
+:width: 70%
+```
 
 4. コードセルもしくはテキストセルを追加し入力します
 
-<img src="./images/colab/colab_002.png" width="70%">
+```{figure} images/colab/colab_002.png
+:width: 70%
+```
 
 #### 画面名称
 セルには「コードセル」と「テキストセル」の2種類があります
 * コードセルにPythonのコードを書いて実行します。
 * テキストセル：Markdown記法で文章やコメントを入力します。Word等を同等に見出しをつけたり、画像を挿入したりすることが可能です
 
-<img src="./images/colab/colab_002a.png" width="70%">
+```{figure} images/colab/colab_002a.png
+:width: 70%
+```
 
 * 青枠: ここをクリックすると逐次(ちくじ)空のコードセルまたはテキストセルが追加される
 * 赤枠： テキストセル
@@ -166,7 +174,9 @@ Google ドライブにノートブックが保存されるため、他のユー�
 
 コードセルでPythonを実行する場合は、この実行マークをクリックする または セルを選択してから Shift+Enter します
 
-<img src="./images/colab/colab_004a.png" width="70%">
+```{figure} images/colab/colab_004a.png
+:width: 70%
+```
 
 * セルの基本: Colabは「セル」という四角いブロックの集まりです。
 テキストセル: 説明を書くためのブロックです。
@@ -185,7 +195,6 @@ sell_count = 10     # 売れた数
 # 掛け算をして表示します
 total_sales = coffee_price * sell_count
 print("コーヒーの今日の売上は", total_sales, "円です！")
-
 ```
 
 #### セルの編集
@@ -203,10 +212,16 @@ Codeセルが選択されているとき、Shift+Enter（もしくはShift+Retur
 
 #### ノートブックの保存
 1. ファイルメニューから「ドライブにコピーを保存」をクリック、ノートブックを保存します
-<img src="./images/colab/colab_002b.png" width="70%">
+
+```{figure} images/colab/colab_002b.png
+:width: 70%
+```
 
 2. Googleドライブ内に「Colab Notebooks」というフォルダが自動で作られ、その中にノートブックが保存されます
-<img src="./images/colab/colab_002c.png" width="70%">
+
+```{figure} images/colab/colab_002c.png
+:width: 70%
+```
 
 ----
 
@@ -214,18 +229,24 @@ Codeセルが選択されているとき、Shift+Enter（もしくはShift+Retur
 
 「ファイル」→「ダウンロード」→「.ipynbをダウンロード」を選択して、ノートブックファイル(.ipynb)をパソコンにダウンロードしまします
 
-<img src="./images/colab/colab_012.png" width="70%">
+```{figure} images/colab/colab_012.png
+:width: 70%
+```
 
 #### Google Colabのノートブック新規作成
 Google Colabのノートブックを新規作成する
 
 1. 「新規」を選択
 
-<img src="./images/colab/colab_021.png" width="70%">
+```{figure} images/colab/colab_021.png
+:width: 70%
+```
 
 2. 「その他」→ 「Google Colaboratory」を選択して新規作成する
 
-<img src="./images/colab/colab_022.png" width="70%">
+```{figure} images/colab/colab_022.png
+:width: 70%
+```
 
 #### 「Google Colaboratory」メニュー項目が無い場合
 
@@ -233,15 +254,21 @@ Google Colabのノートブックを新規作成する
 
 1. 「新規」→ 「その他」→ 「アプリを追加」を選択
 
-<img src="./images/colab/colab_023.png" width="70%">
+```{figure} images/colab/colab_023.png
+:width: 70%
+```
 
 2. 「Google Workspace Marketplace」で 「Google Colaboratory」を検索
 
-<img src="./images/colab/colab_024.png" width="70%">
+```{figure} images/colab/colab_024.png
+:width: 70%
+```
 
 3. 検索結果で「Google Colaboratory」が表示されたらクリックして「Google Colaboratory」アプリをインストール
 
-<img src="./images/colab/colab_025.png" width="70%">
+```{figure} images/colab/colab_025.png
+:width: 70%
+```
 
 #### Googleドライブのマウント
 ノートブックから、Googleドライブ内のファイルを読み書きする場合は、Googleドライブのマウントをする必要があります。
@@ -254,38 +281,54 @@ drive.mount('/content/drive')
 
 例）
 
-<img src="./images/colab/colab_004.png" width="80%">
+```{figure} images/colab/colab_004.png
+:width: 70%
+```
 
 2. 実行  
 この実行マークをクリックする または セルを選択してから Shift+Enter します
 
-<img src="./images/colab/colab_004a.png" width="80%">
+```{figure} images/colab/colab_004a.png
+:width: 70%
+```
 
 3. ファイルへのアクセスを確認するダイアログが表示されますので、「Googleドライブに接続」を押します。
-   
-<img src="./images/colab/colab_005.png" width="80%">
+
+```{figure} images/colab/colab_005.png
+:width: 70%
+```
    
 4. アカウントへのリクエストが表示されます。「許可」をクリックします。
 
-<img src="./images/colab/colab_006.png" width="80%">
+```{figure} images/colab/colab_006.png
+:width: 70%
+```
 
 5. このダイアログが表示されたら「次へ」をクリックします。
 
-<img src="./images/colab/colab_007.png" width="80%">
+```{figure} images/colab/colab_007.png
+:width: 70%
+```
 
 6. 次のダイアログでは「続行」をクリックします。
 
-<img src="./images/colab/colab_008.png" width="80%">
+```{figure} images/colab/colab_008.png
+:width: 70%
+```
 
 7. コード実行後、「Mounted at /content/drive」と表示されます。
 
-<img src="./images/colab/colab_009.png" width="80%">
+```{figure} images/colab/colab_009.png
+:width: 80%
+```
 
 Google ドライブのフォルダが追加される。
 
 8. 実行した際に作成されるcsvファイルは、画面左端のフォルダのマークを選択する
 
-<img src="./images/colab/colab_010.png" width="60%">
+```{figure} images/colab/colab_010.png
+:width: 60%
+```
 
 /content/driveの下にGoogleドライブのファイルがなどが表示されます。そこらからCSVファイル等を読み込み/書き込みをします
 
@@ -293,7 +336,8 @@ Google ドライブのフォルダが追加される。
 
 マウスから直接マウントする場合は下記で行います
 
-<img src="./images/colab/colab_011.png" width="50%">
+```{figure} images/colab/colab_011.png
+:width: 60%
 ```
 
 #### ファイルのアップロード
@@ -301,41 +345,59 @@ Google ドライブのフォルダが追加される。
 
 1. フォルダメニューを選択
 
-<img src="./images/colab/colab_013.png" width="640">
+```{figure} images/colab/colab_013.png
+:width: 70%
+```
 
 2. 右マウスでフォルダを選択してメニューを表示
 
-<img src="./images/colab/colab_014.png" width="640">
+```{figure} images/colab/colab_014.png
+:width: 70%
+```
 
 3. 「新しいフォルダ」を選択
 
-<img src="./images/colab/colab_015.png" width="640">
+```{figure} images/colab/colab_015.png
+:width: 70%
+```
 
 4. 「Untitled Folder」というフォルダが作成される
 
-<img src="./images/colab/colab_016.png" width="640">
+```{figure} images/colab/colab_016.png
+:width: 70%
+```
 
 5. フォルダ名「data」をキー入力
 
-<img src="./images/colab/colab_017.png" width="640">
+```{figure} images/colab/colab_017.png
+:width: 70%
+```
 
 6. 「data」フォルダにアップロードするファイルをドロップする
 
-<img src="./images/colab/colab_018.png" width="640">
+```{figure} images/colab/colab_018.png
+:width: 70%
+```
 
 7. アップロードデータはセッションが終了すると消える
 
 注意書きを読んで「OK」ボタンをクリック (表示されない場合もある)
 
-<img src="./images/colab/colab_026.png" width="640">
+```{figure} images/colab/colab_026.png
+:width: 70%
+```
 
 8.  「data」フォルダにファイルがアップロードされる
 
-<img src="./images/colab/colab_019.png" width="640">
+```{figure} images/colab/colab_019.png
+:width: 70%
+```
 
 9. ノートブックから”/<フォルダ名>/<ファイル名>”でアクセスする
 
-<img src="./images/colab/colab_020.png" width="80%">
+```{figure} images/colab/colab_020.png
+:width: 70%
+```
 
 例）"data/FEH_00200524_230205124938.csv"
 
@@ -344,11 +406,15 @@ Google ドライブのフォルダが追加される。
 初期表示時は、仮想環境のディレクトリは省略されて表示されている
 矢印の位置をクリックすると、フルディレクトリーが表示される
 
-<img src="./images/colab/colab_027.png" width="640">
+```{figure} images/colab/colab_027.png
+:width: 70%
+```
 
 「content」ディレクトリの直下がノートブックのカレントディレクトリとなる
 
-<img src="./images/colab/colab_028.png" width="640">
+```{figure} images/colab/colab_028.png
+:width: 70%
+```
 
 ### セッションが多すぎますと表示される
 
@@ -356,15 +422,21 @@ Google Colabの実行ボタンを押すとセッションが多すぎますと�
 
 その場合は、不要なセッションを閉じる必要がある
 
-<img src="./images/colab/colab_029.png" width="640">
+```{figure} images/colab/colab_029.png
+:width: 70%
+```
 
 ダイアログの「セッションの管理」ボタンをクリックするか、「ランタイム」メニューをクリックし、「セッションの管理」を選択する
 
-<img src="./images/colab/colab_030.png" width="640">
+```{figure} images/colab/colab_030.png
+:width: 70%
+```
 
 リストにある不要なノートブックを終了する
 
-<img src="./images/colab/colab_031.png" width="640">
+```{figure} images/colab/colab_031.png
+:width: 70%
+```
 
 ---
 
@@ -396,25 +468,43 @@ Windowsユーザーの方も、設定を確認しておきましょう。
   「ファイル名.txt」の `.txt` の部分を拡張子と呼び、ファイルの種類を表します。Windowsは初期設定でこれが隠れているので、エクスプローラーの「表示」タブから「ファイル名拡張子」にチェックを入れて表示させておきましょう。。
 
 #### 拡張子の表示なし（デフォルト）
-<img src="./images/windows/win_001.png" width="70%">
+
+```{figure} images/windows/win_001.png
+:width: 70%
+```
 
 #### 拡張子の表示あり
-<img src="./images/windows/win_000.png" width="70%">
+
+```{figure} images/windows/win_000.png
+:width: 70%
+```
 
 #### 拡張子を表示する設定
-<img src="./images/windows/win_002.png" width="70%">
+
+```{figure} images/windows/win_002.png
+:width: 70%
+```
 
 ### 圧縮ファイル（.zip）
   複数のファイルをギュッとまとめたものです。使うときは必ず「右クリック」→「すべて展開」を選んでから使ってくださいね。展開せずに中身を触ろうとするとエラーになります。
 
 #### 圧縮ファイルを展開
-<img src="./images/windows/win_003.png" width="70%">
+
+```{figure} images/windows/win_003.png
+:width: 70%
+```
 
 #### フォルダ付きで展開
-<img src="./images/windows/win_004.png" width="70%">
+
+```{figure} images/windows/win_004.png
+:width: 70%
+```
 
 #### 展開したフォルダの内容
-<img src="./images/windows/win_005.png" width="70%">
+
+```{figure} images/windows/win_005.png
+:width: 70%
+```
 
 ---
 ## Markdown（マークダウン）とは何か？

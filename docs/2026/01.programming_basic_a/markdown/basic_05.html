@@ -423,9 +423,20 @@ Pythonには、用途に合わせて様々な「まとめ方（データ構造�
 <section id="id4">
 <h3>リストとインデックス・スライス<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
 <p>前回、文字列で「0番目から数える」ことを学びましたね。リストも全く同じです！</p>
+<p>リスト</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド60.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8960.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8960.PNG" style="width: 70%;" />
+</a>
+</figure>
 <p><strong>【リストの図解】</strong></p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  インデックス:    0        1        2
   リスト(sales): [ 450,     500,     400 ]
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sales</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">450</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">400</span> <span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sales</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sales</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sales</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># カフェの売上をリスト（配列）にまとめます</span>
@@ -438,6 +449,41 @@ Pythonには、用途に合わせて様々な「まとめ方（データ構造�
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;データの個数(len):&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sales</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;合計金額(sum):&quot;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">sales</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;売上データの連結:&quot;</span><span class="p">,</span> <span class="n">sales</span> <span class="o">+</span> <span class="p">)</span> <span class="c1"># リスト同士は + で繋げます</span>
+</pre></div>
+</div>
+<p>マイナスのインデックス</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド61.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8961.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8961.PNG" style="width: 70%;" />
+</a>
+</figure>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sales</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">450</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">400</span> <span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sales</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sales</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sales</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>リスト内の値の変更</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド62.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8962.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8962.PNG" style="width: 70%;" />
+</a>
+</figure>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>リストの要素数の確認</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド63.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8963.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8963.PNG" style="width: 70%;" />
+</a>
+</figure>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -489,15 +535,105 @@ Pythonには、用途に合わせて様々な「まとめ方（データ構造�
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;リスト化:&quot;</span><span class="p">,</span> <span class="n">data_list</span><span class="p">)</span>
 </pre></div>
 </div>
+<hr class="docutils" />
+<p>listクラスの主なメソッド</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド149.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89149.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89149.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>メソッドを使ったリストの操作</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド150.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89150.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89150.PNG" style="width: 70%;" />
+</a>
+</figure>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">a</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="n">a</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<span class="n">a</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>メソッド以外のリストの操作</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド151.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89151.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89151.PNG" style="width: 70%;" />
+</a>
+</figure>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<span class="k">del</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">a</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">a</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="ow">in</span> <span class="n">a</span>
+<span class="mi">2</span> <span class="ow">in</span> <span class="n">a</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">sorted</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">sorted</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>リストを含むリスト</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド154.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89154.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89154.PNG" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="id8">
+<h3>内包表記<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p>内包表記</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド152.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89152.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89152.PNG" style="width: 70%;" />
+</a>
+</figure>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="o">**</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;月&#39;</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>if 構文を含む内包表記</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド153.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89153.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89153.PNG" style="width: 70%;" />
+</a>
+</figure>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data0</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;avocado&#39;</span><span class="p">]</span>
+<span class="n">data1</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">data0</span> <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;a&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data1</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 <hr class="docutils" />
-<section id="tuple-10">
-<h2>タプル (tuple) とイミュータブル (約10分)<a class="headerlink" href="#tuple-10" title="Link to this heading">¶</a></h2>
+<section id="tuple">
+<h2>タプル (tuple)<a class="headerlink" href="#tuple" title="Link to this heading">¶</a></h2>
 <p>タプルは、丸括弧 <code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">)</span></code> を使います。リストとそっくりですが、最大の決定的な違いがあります。
 それは**「イミュータブル（変更不可能）」**であることです。一度作ったら、追加も削除も書き換えも絶対にできません！「絶対に間違えて書き換えたくない重要なデータ」を守るために使います。</p>
-<section id="id8">
-<h3>多重代入<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p>タプル</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド155.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89155.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89155.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>( )の省略とアンパック代入</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド156.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89156.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89156.PNG" style="width: 70%;" />
+</a>
+</figure>
+<section id="id9">
+<h3>多重代入<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
 <p>タプルは、複数の変数に一気にデータを入れる（多重代入）ときによく隠れて使われています。</p>
 </section>
 <section id="is">
@@ -534,15 +670,46 @@ Pythonには、用途に合わせて様々な「まとめ方（データ構造�
 <section id="dictionary">
 <h2>辞書 (dictionary) ：名前（キー）でデータを管理<a class="headerlink" href="#dictionary" title="Link to this heading">¶</a></h2>
 <p>辞書は、波括弧 <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code> を使います。
-リストが「番号」でデータを管理するのに対し、辞書は**「名前（キー）」と「値（バリュー）」をペア**にして管理します。カフェのメニュー表を想像してください！</p>
+リストが「番号」でデータを管理するのに対し、辞書は**「名前（キー）」と「値（バリュー）」をペア**にして管理します。</p>
 <p><strong>【辞書の図解】</strong></p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  [ キー (Key) ] ━▶ [ 値 (Value) ]
   &quot;コーヒー&quot;     ━▶   450
   &quot;ケーキ&quot;       ━▶   500
 </pre></div>
 </div>
-<section id="id9">
-<h3>辞書の操作（メソッド）と、辞書とリストの組み合わせ<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<p>辞書</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド158.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89158.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89158.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>辞書の要素の取得</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド159.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89159.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89159.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>辞書の操作</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド160.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89160.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89160.PNG" style="width: 70%;" />
+</a>
+</figure>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">info</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;firstname&#39;</span><span class="p">:</span><span class="s1">&#39;太郎&#39;</span><span class="p">,</span> <span class="s1">&#39;lastname&#39;</span><span class="p">:</span><span class="s1">&#39;山田&#39;</span><span class="p">,</span> <span class="s1">&#39;address&#39;</span><span class="p">:</span> <span class="s1">&#39;茨城県つくば市 99-99&#39;</span><span class="p">}</span>
+<span class="n">info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;firstname&#39;</span><span class="p">)</span>
+<span class="n">info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tel&#39;</span><span class="p">)</span>
+<span class="n">info</span><span class="p">[</span><span class="s1">&#39;tel&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;090-000-0000&#39;</span>
+<span class="n">info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tel&#39;</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;tel&#39;</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
+<span class="s1">&#39;age&#39;</span> <span class="ow">in</span> <span class="n">info</span>
+<span class="s1">&#39;firstname&#39;</span> <span class="ow">in</span> <span class="n">info</span>
+</pre></div>
+</div>
+<p>辞書の要素の並べ替え</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド161.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89161.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89161.PNG" style="width: 70%;" />
+</a>
+</figure>
+<section id="id10">
+<h3>辞書の操作（メソッド）と、辞書とリストの組み合わせ<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
 <p>辞書は、キーを指定して値を取り出したり、新しいキーを作ってデータを追加したりできます。
 また、リストの中に辞書を入れることで、複雑な顧客データなども綺麗に表現できます。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 辞書の作成</span>
@@ -583,6 +750,93 @@ Pythonには、用途に合わせて様々な「まとめ方（データ構造�
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;重複なしの回答:&quot;</span><span class="p">,</span> <span class="n">unique_results</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>セット</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド162.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89162.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89162.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>セットの操作</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド163.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89163.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89163.PNG" style="width: 70%;" />
+</a>
+</figure>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">a</span>
+<span class="n">set1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">}</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">}</span>
+<span class="n">set1</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">set2</span><span class="p">)</span>
+<span class="n">set2</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">set1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>セットどうしの演算（集合演算）</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド164.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89164.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89164.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>セットどうしの演算（集合演算）</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド165.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89165.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89165.PNG" style="width: 70%;" />
+</a>
+</figure>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">set1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">}</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">}</span>
+<span class="n">set1</span> <span class="o">|</span> <span class="n">set2</span>
+<span class="n">set1</span> <span class="o">&amp;</span> <span class="n">set2</span>
+<span class="n">set1</span> <span class="o">-</span> <span class="n">set2</span>
+<span class="n">set1</span> <span class="o">^</span> <span class="n">set2</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id11">
+<h2>イミュータブル<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<p>基本型の性質</p>
+<ul class="simple">
+<li><p>変更可能（ミュータブル）</p></li>
+<li><p>反復可能（イテラブル）</p></li>
+<li><p>順序を持つ（シーケンス</p></li>
+</ul>
+<p>基本型の性質</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド167.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89167.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89167.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>ミュータブルな型とイミュータブルな型</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド168.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89168.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89168.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>反復可能なオブジェクト</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド170.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89170.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89170.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>順序を持つオブジェクト</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド171.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89171.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89171.PNG" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="id12">
+<h2>スライス式<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド172.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89172.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89172.PNG" style="width: 70%;" />
+</a>
+</figure>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Python&#39;</span> 
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> 
+<span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Python&#39;</span> 
+<span class="n">a</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> 
+<span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+</pre></div>
+</div>
 </section>
 <hr class="docutils" />
 <section id="for">
@@ -607,8 +861,8 @@ Pythonには、用途に合わせて様々な「まとめ方（データ構造�
 </div>
 </section>
 <hr class="docutils" />
-<section id="id10">
-<h2>💻 演習課題<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<section id="id13">
+<h2>💻 演習課題<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
 <p>今日学んだリストと辞書を使って、カフェのデータ処理ツールを作ってみましょう。
 エラーが出ても大丈夫。「あれ、丸括弧だっけ？角括弧だっけ？」と迷ったら、図解を見直してみてくださいね。</p>
 <p>以下の <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TODO:</span> </code> の部分を書き換えて、プログラムを完成させてください。</p>
@@ -694,8 +948,8 @@ Pythonには、用途に合わせて様々な「まとめ方（データ構造�
 </div>
 </section>
 <hr class="docutils" />
-<section id="id11">
-<h2>💡 演習問題の解答例<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<section id="id14">
+<h2>💡 演習問題の解答例<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
 <p>（どうしても分からない時や、答え合わせをしたい時に展開して見てくださいね。）</p>
 <details>
 <summary>👉 解答例を見る（ここをクリックして展開）</summary>
@@ -727,10 +981,10 @@ Pythonには、用途に合わせて様々な「まとめ方（データ構造�
 </details>
 </section>
 <hr class="docutils" />
-<section id="id12">
-<h2>📚 第5回のまとめ<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
-<section id="id13">
-<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<section id="id15">
+<h2>📚 第5回のまとめ<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
+<section id="id16">
+<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>リスト <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code></strong>: 順番のあるデータの集まり。インデックスで取り出し、<code class="docutils literal notranslate"><span class="pre">append</span></code> で追加。（ミュータブル＝変更可能）</p></li>
 <li><p><strong>タプル <code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">)</span></code></strong>: 変更してはいけないデータの集まり。（イミュータブル＝変更不可能）</p></li>
@@ -845,23 +1099,26 @@ print(&quot;本日の合計売上は&quot;, total_sales, &quot;円です！&quot
 <li><a class="reference internal" href="#id5">リストを操作するメソッドなど（追加・削除・スライス）</a></li>
 <li><a class="reference internal" href="#id6">多重リスト</a></li>
 <li><a class="reference internal" href="#id7">リストと文字列の相互変換</a></li>
+<li><a class="reference internal" href="#id8">内包表記</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#tuple-10">タプル (tuple) とイミュータブル (約10分)</a><ul>
-<li><a class="reference internal" href="#id8">多重代入</a></li>
+<li><a class="reference internal" href="#tuple">タプル (tuple)</a><ul>
+<li><a class="reference internal" href="#id9">多重代入</a></li>
 <li><a class="reference internal" href="#is">オブジェクトの等価性(==)と同一性(is)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#dictionary">辞書 (dictionary) ：名前（キー）でデータを管理</a><ul>
-<li><a class="reference internal" href="#id9">辞書の操作（メソッド）と、辞書とリストの組み合わせ</a></li>
+<li><a class="reference internal" href="#id10">辞書の操作（メソッド）と、辞書とリストの組み合わせ</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#set">set（セット）の特徴と活用</a></li>
+<li><a class="reference internal" href="#id11">イミュータブル</a></li>
+<li><a class="reference internal" href="#id12">スライス式</a></li>
 <li><a class="reference internal" href="#for">for文による繰り返しとデータ構造</a></li>
-<li><a class="reference internal" href="#id10">💻 演習課題</a></li>
-<li><a class="reference internal" href="#id11">💡 演習問題の解答例</a></li>
-<li><a class="reference internal" href="#id12">📚 第5回のまとめ</a><ul>
-<li><a class="reference internal" href="#id13">✨ 今日の重要ポイントまとめ</a></li>
+<li><a class="reference internal" href="#id13">💻 演習課題</a></li>
+<li><a class="reference internal" href="#id14">💡 演習問題の解答例</a></li>
+<li><a class="reference internal" href="#id15">📚 第5回のまとめ</a><ul>
+<li><a class="reference internal" href="#id16">✨ 今日の重要ポイントまとめ</a></li>
 <li><a class="reference internal" href="#faq">❓ よくある質問と回答 (FAQ)</a></li>
 <li><a class="reference internal" href="#colab">🌟 Colabで試すおすすめコード</a></li>
 </ul>

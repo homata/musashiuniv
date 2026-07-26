@@ -40,9 +40,26 @@ https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exe
 
 pandasに入る前に、Pythonの便利な書き方を少しだけ学びましょう。
 
+高階関数
+```{figure} images/python_slides/スライド205.PNG
+:width: 70%
+```
+
 ### ラムダ式（名無しの使い捨て関数）
 これまで `def` を使って関数を作ってきましたが、「1回しか使わない簡単な関数に、わざわざ名前をつけるのは面倒だな…」という時があります。そんな時に使うのが、1行で書ける **ラムダ式（`lambda`）** です。
 *   `lambda 引数: 返したい計算式` と書きます。
+
+
+ラムダ式（lambda式）
+```{figure} images/python_slides/スライド206.PNG
+:width: 70%
+```
+
+ラムダ式（lambda式）
+```{figure} images/python_slides/スライド207.PNG
+:width: 70%
+```
+
 
 ### 高階関数（関数を材料にする関数）
 関数の中に「別の関数」を引数として渡すことができる特別な関数のことを、**高階（こうかい）関数**と呼びます。ラムダ式ととても相性が良いです。

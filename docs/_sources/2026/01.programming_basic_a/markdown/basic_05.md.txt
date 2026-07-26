@@ -54,10 +54,23 @@ Pythonには、用途に合わせて様々な「まとめ方（データ構造�
 ### リストとインデックス・スライス
 前回、文字列で「0番目から数える」ことを学びましたね。リストも全く同じです！
 
+リスト
+```{figure} images/python_slides/スライド60.PNG
+:width: 70%
+```
+
+
 **【リストの図解】**
 ```text
   インデックス:    0        1        2
   リスト(sales): [ 450,     500,     400 ]
+```
+
+```python
+sales = [ 450, 500, 400 ]
+print(sales[0])
+print(sales[1])
+print(sales[2])
 ```
 
 ```
@@ -71,6 +84,44 @@ print("最初の売上:", sales)
 print("データの個数(len):", len(sales))
 print("合計金額(sum):", sum(sales))
 print("売上データの連結:", sales + ) # リスト同士は + で繋げます
+```
+
+マイナスのインデックス
+```{figure} images/python_slides/スライド61.PNG
+:width: 70%
+```
+
+```python
+sales = [ 450, 500, 400 ]
+print(sales[-1])
+print(sales[-2])
+print(sales[-3])
+```
+
+リスト内の値の変更
+```{figure} images/python_slides/スライド62.PNG
+:width: 70%
+```
+
+```python
+a = [10, 20, 30, 40, 50]
+print(a)
+
+a[0] = 99
+print(a)
+
+a[-1] = 'A'
+print(a)
+```
+
+リストの要素数の確認
+```{figure} images/python_slides/スライド63.PNG
+:width: 70%
+```
+
+```python
+a = [10, 20, 30, 40, 50]
+len(a)
 ```
 
 ### リストを操作するメソッドなど（追加・削除・スライス）
@@ -120,10 +171,113 @@ print("リスト化:", data_list)
 
 ---
 
-## タプル (tuple) とイミュータブル (約10分)
+listクラスの主なメソッド
+```{figure} images/python_slides/スライド149.PNG
+:width: 70%
+```
+
+メソッドを使ったリストの操作
+```{figure} images/python_slides/スライド150.PNG
+:width: 70%
+```
+
+```
+a = [10, 20, 30, 40]
+a.append(100)
+a
+```
+
+```
+a.pop()
+a
+```
+
+```
+a.reverse()
+a
+```
+
+```
+a.index(20)
+```
+
+メソッド以外のリストの操作
+```{figure} images/python_slides/スライド151.PNG
+:width: 70%
+```
+
+```
+a = [10, 20, 30, 40]
+del a[1]
+a
+```
+
+```
+a = a + [0, 1]
+a
+```
+
+```
+1 in a
+2 in a
+len(a)
+```
+
+```
+sorted(a)
+sorted(a, reverse=True)
+```
+
+リストを含むリスト
+```{figure} images/python_slides/スライド154.PNG
+:width: 70%
+```
+
+---
+
+### 内包表記
+
+内包表記
+```{figure} images/python_slides/スライド152.PNG
+:width: 70%
+```
+
+```
+data = [2**n for n in range(1, 11)]
+```
+
+```
+[str(n)+'月' for n in range(1, 13)]
+```
+
+if 構文を含む内包表記
+```{figure} images/python_slides/スライド153.PNG
+:width: 70%
+```
+
+```
+data0 = ['apple', 'orange', 'banana', 'avocado']
+data1 = [s for s in data0 if s[0] == 'a']
+print(data1)
+```
+
+
+---
+
+## タプル (tuple)
 
 タプルは、丸括弧 `( )` を使います。リストとそっくりですが、最大の決定的な違いがあります。
 それは**「イミュータブル（変更不可能）」**であることです。一度作ったら、追加も削除も書き換えも絶対にできません！「絶対に間違えて書き換えたくない重要なデータ」を守るために使います。
+
+タプル
+```{figure} images/python_slides/スライド155.PNG
+:width: 70%
+```
+
+( )の省略とアンパック代入
+```{figure} images/python_slides/スライド156.PNG
+:width: 70%
+```
 
 ### 多重代入
 タプルは、複数の変数に一気にデータを入れる（多重代入）ときによく隠れて使われています。
@@ -160,13 +314,45 @@ print("CはAと同じ箱？(is):", list_A is list_C) # True (同じ箱を指し�
 ## 辞書 (dictionary) ：名前（キー）でデータを管理
 
 辞書は、波括弧 `{ }` を使います。
-リストが「番号」でデータを管理するのに対し、辞書は**「名前（キー）」と「値（バリュー）」をペア**にして管理します。カフェのメニュー表を想像してください！
+リストが「番号」でデータを管理するのに対し、辞書は**「名前（キー）」と「値（バリュー）」をペア**にして管理します。
 
 **【辞書の図解】**
 ```text
   [ キー (Key) ] ━▶ [ 値 (Value) ]
   "コーヒー"     ━▶   450
   "ケーキ"       ━▶   500
+```
+
+辞書
+```{figure} images/python_slides/スライド158.PNG
+:width: 70%
+```
+
+辞書の要素の取得
+```{figure} images/python_slides/スライド159.PNG
+:width: 70%
+```
+
+辞書の操作
+```{figure} images/python_slides/スライド160.PNG
+:width: 70%
+```
+
+```
+info = {'firstname':'太郎', 'lastname':'山田', 'address': '茨城県つくば市 99-99'}
+info.get('firstname')
+info.get('tel')
+info['tel'] = '090-000-0000'
+info.get('tel')
+del info['tel']
+len(info)
+'age' in info
+'firstname' in info
+```
+
+辞書の要素の並べ替え
+```{figure} images/python_slides/スライド161.PNG
+:width: 70%
 ```
 
 ### 辞書の操作（メソッド）と、辞書とリストの組み合わせ
@@ -198,6 +384,7 @@ print("2人目のお客様の名前:", customers["name"])
 ```
 
 ---
+
 ## set（セット）の特徴と活用
 
 セットも波括弧 `{ }` を使いますが、辞書と違って「キーと値のペア」ではなく、単なるデータの集まりです。
@@ -211,6 +398,96 @@ survey_results = ["コーヒー", "紅茶", "コーヒー", "ジュース", "紅
 unique_results = set(survey_results)
 print("重複なしの回答:", unique_results)
 ```
+
+セット
+```{figure} images/python_slides/スライド162.PNG
+:width: 70%
+```
+
+セットの操作
+```{figure} images/python_slides/スライド163.PNG
+:width: 70%
+```
+
+```
+data = [1, 2, 3]
+a = set(data)
+a
+set1 = {'A', 'B', 'C'}
+set2 = {'B', 'C'}
+set1.issubset(set2)
+set2.issubset(set1)
+```
+
+セットどうしの演算（集合演算）
+```{figure} images/python_slides/スライド164.PNG
+:width: 70%
+```
+
+セットどうしの演算（集合演算）
+```{figure} images/python_slides/スライド165.PNG
+:width: 70%
+```
+
+```
+set1 = {'A', 'B', 'C'}
+set2 = {'A', 'B', 'D'}
+set1 | set2
+set1 & set2
+set1 - set2
+set1 ^ set2
+```
+
+---
+
+## イミュータブル
+
+基本型の性質
+* 変更可能（ミュータブル）
+* 反復可能（イテラブル）
+* 順序を持つ（シーケンス
+
+基本型の性質
+```{figure} images/python_slides/スライド167.PNG
+:width: 70%
+```
+
+ミュータブルな型とイミュータブルな型
+```{figure} images/python_slides/スライド168.PNG
+:width: 70%
+```
+
+反復可能なオブジェクト
+```{figure} images/python_slides/スライド170.PNG
+:width: 70%
+```
+
+順序を持つオブジェクト
+```{figure} images/python_slides/スライド171.PNG
+:width: 70%
+```
+
+----
+
+## スライス式
+```{figure} images/python_slides/スライド172.PNG
+:width: 70%
+```
+
+```
+a = 'Python' 
+a[1:3]
+a = (0, 1, 2, 3, 4) 
+a[2:5]
+```
+
+```
+a = 'Python' 
+a[:3]
+a = (0, 1, 2, 3, 4) 
+a[2:]
+```
+
 
 ---
 ## for文による繰り返しとデータ構造
