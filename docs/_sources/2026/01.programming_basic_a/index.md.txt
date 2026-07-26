@@ -20,10 +20,6 @@ markdown/basic_12.md
 markdown/basic_13.md
 ```
 
-### 資料
-* [プログラミング基礎A/コンピューティング応用E M1830](pptx/00.basic_intro.pptx)
-* [Python 学習教材](pptx/00_python_slides.pptx)
-
 ### 引用
 * [Python ゼロからはじめるプログラミング (プログラミング学習シリーズ)](https://www.shoeisha.co.jp/book/detail/9784798169460)
 * [Python Boot Camp テキスト](https://pycamp.pycon.jp/textbook/index.html)
@@ -31,5 +27,3 @@ markdown/basic_13.md
 * [Introduction to Quantitative Data Analysis with Python](https://iiimethodsiv.github.io/intro2quandataanalysis/docs/intro.html)
 * [九州大学 数理・データサイエンス教育研究センター](https://mdsc.kyushu-u.ac.jp/lectures)
 * [ひとつひとつしっかり身につく Pythonの教科書](https://www.sbcr.jp/product/4815630614/)
-
-

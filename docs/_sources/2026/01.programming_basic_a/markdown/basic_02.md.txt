@@ -44,6 +44,10 @@ https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exe
 そこで登場するのが **プログラミング言語** です。
 人間が理解しやすい言葉（英語や数式に近い言葉）で書いた指示を、コンピューターが分かる「0と1」に翻訳してくれる **「通訳者」の役割** を果たします。
 
+```{figure} images/python_slides/スライド12.PNG
+:width: 70%
+```
+
 **【プログラミング言語の役割の図解】**
 ```text
 [ 🧑‍🎓 私たち (人間) ] 
@@ -60,6 +64,10 @@ https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exe
    「01011001 11000101... (理解して実行！)」
 ```
 このように、人間と機械の間を取り持ってくれるのがプログラミング言語（Pythonなど）なのです。
+
+```{figure} images/python_slides/スライド13.PNG
+:width: 70%
+```
 
 ---
 
@@ -127,12 +135,9 @@ https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exe
 
 ### 5大要素 
 
-<!--
-![5大要素](./images/computer/five_major_elements.png)
--->
-<div style="text-align: center;">
- <img src="./images/computer/five_major_elements.png" width="70%" >
-</div>
+```{figure} images/computer/five_major_elements.png
+:width: 70%
+```
 
 「5大要素」という言葉は文脈によって様々な意味を持ちますが、前回のノイマン型コンピューターに関する質問から、コンピューターの主要な構成要素について尋ねられていると判断できます。
 

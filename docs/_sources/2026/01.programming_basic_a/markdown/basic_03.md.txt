@@ -51,15 +51,27 @@ AI（人工知能）の開発から、Webサイトの作成、そして**「デ�
 新しいプログラミング言語を学ぶとき、画面に「Hello World」と表示させるのが世界中のプログラマーの伝統です。  
 早速やってみましょう！
 
+```{figure} images/python_slides/スライド23.PNG
+:width: 70%
 ```
-# 記念すべき最初のコード
+
+記念すべき最初のコード
+```
 print("Hello World!")
+```
+
+```{figure} images/python_slides/スライド24.PNG
+:width: 70%
 ```
 
 ### インデント（字下げ）とブロックを表す仕組み【超重要】
 Pythonには「コードのまとまり（ブロック）」を表現するための、絶対に守らなければならないルールがあります。  
 それが**インデント（行の先頭の空白）**です。
 他の言語では `{ }` などの記号でまとめますが、Pythonは「見ための美しさ＝プログラムの構造」になります。
+
+```{figure} images/python_slides/スライド94.PNG
+:width: 70%
+```
 
 ```text
 ▼ 正しい例（インデントが揃っている）
@@ -83,18 +95,64 @@ Pythonには「コードのまとまり（ブロック）」を表現するた�
 *   `#` から始まる行は**コメント**と呼ばれ、プログラムとして実行されません。自分や他の人が読んだときの「メモ書き」としてどんどん使いましょう。
 *   コードとコードの間の「空行」は、読みやすくするために自由に入れてOKです。
 
+行の先頭のコメント
+```
+# これはコメント
+```
+
+行の途中のコメント
+```
+print("Hello World!")　　# これもコメント
+```
+
+「複数行単位」のコメントアウトは、'''（シングルクォート3つ）または"""（ダブルクォート3つ）で囲事でみます
+```
+'''
+これはクラス、メソッドの機能の複数行による説明
+変数の役割などを明記
+'''
+
+"""
+同様にダブルクォートを使った複数行コメントも可能
+クラス、メソッドの説明に利用
+"""
+```
+
 ---
 ## 変数（へんすう）の基礎
 
 ### 変数とは？
 変数とは、データを入れておく**「名前（ラベル）のついた箱」**のことです。
 
+```{figure} images/python_slides/スライド28.PNG
+:width: 70%
+```
+
 ```text
  📦 箱（変数名: coffee_price）
  [  450  ]  ◀━ 中身（データ：リテラル）
 ```
+
+```{figure} images/python_slides/スライド29.PNG
+:width: 70%
+```
+
 数学の変数（x や y）とは少し違い、**「右側のデータを、左側の箱に入れる（代入する）」**という意味になります。
 `coffee_price = 450` （※「等しい」ではなく「入れる」です！）
+
+```{figure} images/python_slides/スライド30.PNG
+:width: 70%
+```
+
+```{figure} images/python_slides/スライド31.PNG
+:width: 70%
+```
+
+```{figure} images/python_slides/スライド32.PNG
+:width: 70%
+```
+
+----
 
 ### データ型（箱の中身の種類）
 箱に入れるデータには「種類（型）」があります。代表的な4つを覚えましょう！
@@ -122,10 +180,18 @@ price_str = str(price)
 print("文字列になった値段: " + price_str) # 文字同士なら + 記号で繋げられます！
 ```
 
+```{figure} images/python_slides/スライド45.PNG
+:width: 70%
+```
+
 ---
 ## 変数と関数の基礎
 
 ### 関数（かんすう）とは？
+```{figure} images/python_slides/スライド185.PNG
+:width: 70%
+```
+
 関数とは、よく使う一連の処理をまとめた**「自動計算機（レシピ）」**のようなものです。  
 今まで使ってきた `print()` も、Pythonが最初から用意してくれている「組み込み関数」の一つです。
 
@@ -143,6 +209,22 @@ print("文字列になった値段: " + price_str) # 文字同士なら + 記号
 [ 完成品 (返値: return) ]
 ```
 
+```{figure} images/python_slides/スライド186.PNG
+:width: 70%
+```
+
+```{figure} images/python_slides/スライド187.PNG
+:width: 70%
+```
+
+```{figure} images/python_slides/スライド188.PNG
+:width: 70%
+```
+
+```{figure} images/python_slides/スライド189.PNG
+:width: 70%
+```
+
 ### print と return の違い【重要】
 
 ここ、多くの人が最初につまずくポイントです！
@@ -153,6 +235,10 @@ print("文字列になった値段: " + price_str) # 文字同士なら + 記号
 
 *   **ローカル変数**: 関数の中だけで使える「一時的な箱」。関数の外（キッチンから出た後）では消えてしまいます。
 *   **グローバル変数**: プログラムのどこからでも使える「共通の箱」。
+
+```{figure} images/python_slides/スライド190.PNG
+:width: 70%
+```
 
 実際にコードを見てみましょう！
 ```
@@ -180,6 +266,64 @@ print("ケーキの税込み価格は", cake_total, "円です。")
 # 括弧 () をつけずに関数名だけを変数に入れると、関数そのものに別名をつけることができます。
 my_calculator = calc_tax
 print("別名で計算:", my_calculator(1000))
+```
+
+```{figure} images/python_slides/スライド191.PNG
+:width: 70%
+```
+
+### 関数の引数
+
+関数の引数
+```{figure} images/python_slides/スライド193.PNG
+:width: 70%
+```
+
+引数のある関数
+```{figure} images/python_slides/スライド194.PNG
+:width: 70%
+```
+
+引数が2つある関数
+```{figure} images/python_slides/スライド195.PNG
+:width: 70%
+```
+
+デフォルト引数
+```{figure} images/python_slides/スライド196.PNG
+:width: 70%
+```
+
+デフォルト引数
+```{figure} images/python_slides/スライド197.PNG
+:width: 70%
+```
+
+デフォルト引数
+```{figure} images/python_slides/スライド198.PNG
+:width: 70%
+```
+
+### 関数の戻り値
+
+関数の戻り値
+```{figure} images/python_slides/スライド200.PNG
+:width: 70%
+```
+
+戻り値のある関数
+```{figure} images/python_slides/スライド201.PNG
+:width: 70%
+```
+
+真偽値を戻り値とする関数
+```{figure} images/python_slides/スライド202.PNG
+:width: 70%
+```
+
+複数の値を戻す
+```{figure} images/python_slides/スライド203.PNG
+:width: 70%
 ```
 
 ---
@@ -322,6 +466,8 @@ def checkout(price, amount):
     *   **A.** 文字列（str）と数字（int）を `+` でくっつけようとしていませんか？ 演習2のように、数字を `str()` で囲んで文字に変換してあげると解決しますよ。
 *   **Q. インデントは全角スペースでもいいですか？**
     *   **A.** **絶対にダメです！** 全角スペースはコンピュータにとって「謎の見えない文字」として扱われ、エラーの原因になります。必ず「半角スペース」か「Tabキー」を使ってください。
+
+---
 
 ### 🌟 Colabで試すおすすめコード
 今日学んだ関数を使って、自分だけの「BMI（肥満度）計算ツール」を作ってみましょう。体重と身長の数値を変えて実行してみてください。

@@ -406,15 +406,27 @@ AI（人工知能）の開発から、Webサイトの作成、そして**「デ�
 <h2>Hello World と Pythonの基本ルール<a class="headerlink" href="#hello-world-python" title="Link to this heading">¶</a></h2>
 <p>新しいプログラミング言語を学ぶとき、画面に「Hello World」と表示させるのが世界中のプログラマーの伝統です。<br />
 早速やってみましょう！</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 記念すべき最初のコード</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド23.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8923.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8923.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>記念すべき最初のコード</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド24.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8924.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8924.PNG" style="width: 70%;" />
+</a>
+</figure>
 <section id="id6">
 <h3>インデント（字下げ）とブロックを表す仕組み【超重要】<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
 <p>Pythonには「コードのまとまり（ブロック）」を表現するための、絶対に守らなければならないルールがあります。<br />
 それが**インデント（行の先頭の空白）**です。
 他の言語では <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code> などの記号でまとめますが、Pythonは「見ための美しさ＝プログラムの構造」になります。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド94.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8994.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8994.PNG" style="width: 70%;" />
+</a>
+</figure>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>▼ 正しい例（インデントが揃っている）
 スーパーに行く:
     りんごを買う   ← 4つの半角スペース（またはTabキー）で字下げ
@@ -441,6 +453,26 @@ AI（人工知能）の開発から、Webサイトの作成、そして**「デ�
 <li><p><code class="docutils literal notranslate"><span class="pre">#</span></code> から始まる行は<strong>コメント</strong>と呼ばれ、プログラムとして実行されません。自分や他の人が読んだときの「メモ書き」としてどんどん使いましょう。</p></li>
 <li><p>コードとコードの間の「空行」は、読みやすくするために自由に入れてOKです。</p></li>
 </ul>
+<p>行の先頭のコメント</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># これはコメント</span>
+</pre></div>
+</div>
+<p>行の途中のコメント</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>　　<span class="c1"># これもコメント</span>
+</pre></div>
+</div>
+<p>「複数行単位」のコメントアウトは、'''（シングルクォート3つ）または&quot;&quot;&quot;（ダブルクォート3つ）で囲事でみます</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">これはクラス、メソッドの機能の複数行による説明</span>
+<span class="sd">変数の役割などを明記</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">同様にダブルクォートを使った複数行コメントも可能</span>
+<span class="sd">クラス、メソッドの説明に利用</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
 </section>
 </section>
 <hr class="docutils" />
@@ -449,13 +481,34 @@ AI（人工知能）の開発から、Webサイトの作成、そして**「デ�
 <section id="id10">
 <h3>変数とは？<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
 <p>変数とは、データを入れておく**「名前（ラベル）のついた箱」**のことです。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド28.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8928.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8928.PNG" style="width: 70%;" />
+</a>
+</figure>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span> 📦 箱（変数名: coffee_price）
  [  450  ]  ◀━ 中身（データ：リテラル）
 </pre></div>
 </div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド29.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8929.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8929.PNG" style="width: 70%;" />
+</a>
+</figure>
 <p>数学の変数（x や y）とは少し違い、**「右側のデータを、左側の箱に入れる（代入する）」**という意味になります。
 <code class="docutils literal notranslate"><span class="pre">coffee_price</span> <span class="pre">=</span> <span class="pre">450</span></code> （※「等しい」ではなく「入れる」です！）</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド30.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8930.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8930.PNG" style="width: 70%;" />
+</a>
+</figure>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド31.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8931.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8931.PNG" style="width: 70%;" />
+</a>
+</figure>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド32.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8932.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8932.PNG" style="width: 70%;" />
+</a>
+</figure>
 </section>
+<hr class="docutils" />
 <section id="id11">
 <h3>データ型（箱の中身の種類）<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
 <p>箱に入れるデータには「種類（型）」があります。代表的な4つを覚えましょう！</p>
@@ -507,6 +560,10 @@ AI（人工知能）の開発から、Webサイトの作成、そして**「デ�
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;文字列になった値段: &quot;</span> <span class="o">+</span> <span class="n">price_str</span><span class="p">)</span> <span class="c1"># 文字同士なら + 記号で繋げられます！</span>
 </pre></div>
 </div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド45.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8945.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8945.PNG" style="width: 70%;" />
+</a>
+</figure>
 </section>
 </section>
 <hr class="docutils" />
@@ -514,6 +571,10 @@ AI（人工知能）の開発から、Webサイトの作成、そして**「デ�
 <h2>変数と関数の基礎<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
 <section id="id13">
 <h3>関数（かんすう）とは？<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド185.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89185.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89185.PNG" style="width: 70%;" />
+</a>
+</figure>
 <p>関数とは、よく使う一連の処理をまとめた**「自動計算機（レシピ）」**のようなものです。<br />
 今まで使ってきた <code class="docutils literal notranslate"><span class="pre">print()</span></code> も、Pythonが最初から用意してくれている「組み込み関数」の一つです。</p>
 <p>自分だけのオリジナルの関数を作るには、<code class="docutils literal notranslate"><span class="pre">def</span></code>（define：定義する）を使います。</p>
@@ -528,6 +589,22 @@ AI（人工知能）の開発から、Webサイトの作成、そして**「デ�
 [ 完成品 (返値: return) ]
 </pre></div>
 </div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド186.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89186.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89186.PNG" style="width: 70%;" />
+</a>
+</figure>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド187.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89187.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89187.PNG" style="width: 70%;" />
+</a>
+</figure>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド188.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89188.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89188.PNG" style="width: 70%;" />
+</a>
+</figure>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド189.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89189.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89189.PNG" style="width: 70%;" />
+</a>
+</figure>
 </section>
 <section id="print-return">
 <h3>print と return の違い【重要】<a class="headerlink" href="#print-return" title="Link to this heading">¶</a></h3>
@@ -543,6 +620,10 @@ AI（人工知能）の開発から、Webサイトの作成、そして**「デ�
 <li><p><strong>ローカル変数</strong>: 関数の中だけで使える「一時的な箱」。関数の外（キッチンから出た後）では消えてしまいます。</p></li>
 <li><p><strong>グローバル変数</strong>: プログラムのどこからでも使える「共通の箱」。</p></li>
 </ul>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド190.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89190.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89190.PNG" style="width: 70%;" />
+</a>
+</figure>
 <p>実際にコードを見てみましょう！</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 税込み価格を計算するオリジナル関数を定義（def）します！</span>
 
@@ -570,11 +651,71 @@ AI（人工知能）の開発から、Webサイトの作成、そして**「デ�
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;別名で計算:&quot;</span><span class="p">,</span> <span class="n">my_calculator</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
 </pre></div>
 </div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド191.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89191.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89191.PNG" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<section id="id15">
+<h3>関数の引数<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<p>関数の引数</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド193.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89193.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89193.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>引数のある関数</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド194.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89194.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89194.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>引数が2つある関数</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド195.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89195.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89195.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>デフォルト引数</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド196.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89196.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89196.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>デフォルト引数</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド197.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89197.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89197.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>デフォルト引数</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド198.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89198.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89198.PNG" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<section id="id16">
+<h3>関数の戻り値<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<p>関数の戻り値</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド200.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89200.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89200.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>戻り値のある関数</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド201.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89201.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89201.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>真偽値を戻り値とする関数</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド202.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89202.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89202.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>複数の値を戻す</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド203.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89203.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89203.PNG" style="width: 70%;" />
+</a>
+</figure>
 </section>
 </section>
 <hr class="docutils" />
-<section id="id15">
-<h2>💻 演習課題<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
+<section id="id17">
+<h2>💻 演習課題<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h2>
 <p>エラーが出ても全く問題ありません。エラーは「ここのスペルが違うかも？」というコンピュータからのヒントです。</p>
 <p>以下の <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TODO:</span> </code> の部分を書き換えて、プログラムを完成させてください。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習1: 変数の基礎（難易度：易）</span>
@@ -648,8 +789,8 @@ AI（人工知能）の開発から、Webサイトの作成、そして**「デ�
 </div>
 </section>
 <hr class="docutils" />
-<section id="id16">
-<h2>💡 演習問題の解答例<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h2>
+<section id="id18">
+<h2>💡 演習問題の解答例<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h2>
 <p>（どうしても分からない時や、答え合わせをしたい時に展開して見てくださいね）</p>
 <details>
 <summary>👉 解答例を見る（ここをクリックして展開）</summary>
@@ -684,10 +825,10 @@ AI（人工知能）の開発から、Webサイトの作成、そして**「デ�
 </details>
 </section>
 <hr class="docutils" />
-<section id="id17">
-<h2>📚 第3回のまとめ<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h2>
-<section id="id18">
-<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<section id="id19">
+<h2>📚 第3回のまとめ<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h2>
+<section id="id20">
+<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>インデント</strong>: Pythonは「見ための字下げ（空白）」でブロックを認識します。エラーが出たらまず行の先頭をチェック！</p></li>
 <li><p><strong>変数とデータ型</strong>: 文字（<code class="docutils literal notranslate"><span class="pre">str</span></code>）や数字（<code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>）は混ぜて計算できません。必要に応じて <code class="docutils literal notranslate"><span class="pre">str()</span></code> などで型変換しましょう。</p></li>
@@ -710,6 +851,7 @@ AI（人工知能）の開発から、Webサイトの作成、そして**「デ�
 </li>
 </ul>
 </section>
+<hr class="docutils" />
 <section id="colab">
 <h3>🌟 Colabで試すおすすめコード<a class="headerlink" href="#colab" title="Link to this heading">¶</a></h3>
 <p>今日学んだ関数を使って、自分だけの「BMI（肥満度）計算ツール」を作ってみましょう。体重と身長の数値を変えて実行してみてください。</p>
@@ -810,12 +952,14 @@ AI（人工知能）の開発から、Webサイトの作成、そして**「デ�
 <li><a class="reference internal" href="#id13">関数（かんすう）とは？</a></li>
 <li><a class="reference internal" href="#print-return">print と return の違い【重要】</a></li>
 <li><a class="reference internal" href="#id14">ローカル変数とグローバル変数（スコープ）</a></li>
+<li><a class="reference internal" href="#id15">関数の引数</a></li>
+<li><a class="reference internal" href="#id16">関数の戻り値</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id15">💻 演習課題</a></li>
-<li><a class="reference internal" href="#id16">💡 演習問題の解答例</a></li>
-<li><a class="reference internal" href="#id17">📚 第3回のまとめ</a><ul>
-<li><a class="reference internal" href="#id18">✨ 今日の重要ポイントまとめ</a></li>
+<li><a class="reference internal" href="#id17">💻 演習課題</a></li>
+<li><a class="reference internal" href="#id18">💡 演習問題の解答例</a></li>
+<li><a class="reference internal" href="#id19">📚 第3回のまとめ</a><ul>
+<li><a class="reference internal" href="#id20">✨ 今日の重要ポイントまとめ</a></li>
 <li><a class="reference internal" href="#faq">❓ よくある質問と回答 (FAQ)</a></li>
 <li><a class="reference internal" href="#colab">🌟 Colabで試すおすすめコード</a></li>
 </ul>
