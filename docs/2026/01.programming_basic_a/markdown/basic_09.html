@@ -378,19 +378,21 @@
 <h2>イントロダクション：関数、クラス、例外処理とは？<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
 <p>まずは、今日学ぶ3つの大きなテーマの「イメージ」を掴みましょう。</p>
 <ul class="simple">
-<li><p><strong>関数（復習と応用）</strong>: 第3回で学んだ「自動調理マシーン」です。今日は「トッピングの数を自由に選べる機能」などを追加します。</p></li>
-<li><p><strong>クラスとインスタンス</strong>: クラスは**「カフェの設計図（たい焼きの型）」<strong>、インスタンスは</strong>「実際のカフェ店舗（焼かれたたい焼き）」**です。設計図から、いくつでもお店を作ることができます。</p></li>
-<li><p><strong>例外処理</strong>: これまでエラー（バグ）が出ると、プログラムはそこで強制終了（フリーズ）していました。例外処理は、エラーが起きた時の**「安全装置（トラブル対応マニュアル）」**です。「もしエラーが起きたら、止まらずにこうしてね」と指示を出せます。</p></li>
+<li><p>**関数（復習と応用）</p></li>
+<li><p><strong>クラスとインスタンス</strong>: クラスは「設計図」、インスタンスは「実際の実態」です。設計図から、いくつでも実際の実態を作ることができます。</p></li>
+<li><p><strong>例外処理</strong>: これまでエラー（バグ）が出ると、プログラムはそこで強制終了（フリーズ）していました。例外処理は、エラーが起きた時の**「安全装置（トラブル対応マニュアル）」**です。</p></li>
 </ul>
 </section>
 <hr class="docutils" />
 <section id="id4">
 <h2>関数を極める（引数とスコープ）<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
-<p>第3回で、<code class="docutils literal notranslate"><span class="pre">def</span></code> を使って関数（自動計算機）を作る方法を学びました。今日はその機能をさらに拡張します。</p>
+<p><code class="docutils literal notranslate"><span class="pre">def</span></code> を使って関数を作る方法を学びました。その機能をさらに拡張します。</p>
+<hr class="docutils" />
 <section id="id5">
 <h3>関数の復習（関数定義、引数、返値、複数の引数）<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
 <p>関数には、材料である「引数（ひきすう）」を複数渡して、完成品である「返値（戻り値：return）」を受け取ることができましたね。</p>
 </section>
+<hr class="docutils" />
 <section id="id6">
 <h3>引数の初期値とキーワード引数<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
 <p>引数には、「もし何も指定されなかったら、これを基本（デフォルト）にするよ」という<strong>初期値</strong>を設定できます。
@@ -407,6 +409,7 @@
 </pre></div>
 </div>
 </section>
+<hr class="docutils" />
 <section id="args-kwargs">
 <h3>可変長引数（*args）と辞書型の可変長引数（**kwargs）<a class="headerlink" href="#args-kwargs" title="Link to this heading">¶</a></h3>
 <p>「トッピングをいくつ頼むか分からない！」という時に、引数の前に <code class="docutils literal notranslate"><span class="pre">*</span></code> (アスタリスク) をつけると、**好きな数だけ引数を受け取れる（可変長引数）**ようになります。受け取ったデータはタプルにまとまります。
@@ -425,6 +428,7 @@
 </pre></div>
 </div>
 </section>
+<hr class="docutils" />
 <section id="id8">
 <h3>変数のスコープ（ローカル / グローバル）<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
 <p>変数が「どこからどこまで有効か」という縄張りのことを<strong>スコープ</strong>と呼びます。</p>
@@ -444,6 +448,7 @@
 </pre></div>
 </div>
 </section>
+<hr class="docutils" />
 <section id="id9">
 <h3>変数としての関数<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
 <p>Pythonでは、関数そのもの（<code class="docutils literal notranslate"><span class="pre">def</span></code>で作ったもの）を、変数（箱）に入れることができます。「関数の別名」を作るようなイメージです。</p>
@@ -475,6 +480,42 @@
      「私は東京店です。開店します！」
 </pre></div>
 </div>
+<section id="id11">
+<h3>オブジェクト指向<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<p>インスタンスの管理とID</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド137.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89137.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89137.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>代入の正確なイメージ</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド138.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89138.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89138.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>代入の正確なイメージ</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド139.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89139.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89139.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>インスタンスの同値性と同一性</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド140.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89140.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89140.PNG" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="id12">
+<h3>クラスの基本<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<p>クラスとインスタンスとメソッド</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド141.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89141.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89141.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>メソッドの呼び出し</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド143.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89143.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89143.PNG" style="width: 70%;" />
+</a>
+</figure>
 <ul class="simple">
 <li><p><strong>クラス</strong>: 設計図です。<code class="docutils literal notranslate"><span class="pre">class</span></code> というキーワードで作ります。</p></li>
 <li><p><strong>インスタンス</strong>: 設計図から作られた「実体（オブジェクト）」です。</p></li>
@@ -508,11 +549,115 @@
 <span class="n">osaka_cafe</span><span class="o">.</span><span class="n">open_shop</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>データ分析では、自分でクラスを作ることは最初は少ないかもしれませんが、「pandas」などの強力なツールを使うとき、実は裏側でこの「クラスとインスタンス」の仕組みがバリバリ動いています。この概念を知っておくと、ツールの使い方がとてもスムーズに理解できますよ。</p>
+<hr class="docutils" />
+<p>クラスとは</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド226.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89226.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89226.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>これから扱うクラスとインスタンスの例</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド227.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89227.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89227.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>クラスの定義</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド228.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89228.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89228.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>初期化メソッド</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド229.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89229.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89229.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>インスタンス変数</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド230.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89230.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89230.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>インスタンス変数の参照</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド231.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89231.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89231.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>初期化メソッドの引数</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド232.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89232.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89232.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>クラス変数とインスタンス変数</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド233.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89233.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89233.PNG" style="width: 70%;" />
+</a>
+</figure>
+<hr class="docutils" />
+<section id="id13">
+<h4>メソッドの定義<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h4>
+<p>これから扱うクラスとインスタンスの例</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド235.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89235.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89235.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>メソッド</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド236.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89236.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89236.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>クラスメソッド</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド237.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89237.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89237.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>オリジナルのクラスをモジュールとして利用する</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド238.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89238.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89238.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>__name__変数</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド239.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89239.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89239.PNG" style="width: 70%;" />
+</a>
+</figure>
 </section>
 <hr class="docutils" />
-<section id="id11">
-<h2>例外処理：エラーで止まらないプログラム<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<section id="id14">
+<h4>継承<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h4>
+<p>継承</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド241.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89241.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89241.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>Python の継承</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド242.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89242.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89242.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>継承のしかた</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド243.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89243.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89243.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>インスタンス変数とメソッドの継承</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド244.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89244.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89244.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>メソッドのオーバーライド</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド245.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89245.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89245.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>親クラスのメソッドの呼び出し</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド246.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89246.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89246.PNG" style="width: 70%;" />
+</a>
+</figure>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id15">
+<h2>例外処理：エラーで止まらないプログラム<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
 <p>データ分析で数万件のデータを処理している時、たった1つのデータがおかしくてエラーになり、プログラムが途中で止まってしまったら悲しいですよね。</p>
 <p>そこで使うのが <strong>例外処理（<code class="docutils literal notranslate"><span class="pre">try</span></code> / <code class="docutils literal notranslate"><span class="pre">except</span></code> / <code class="docutils literal notranslate"><span class="pre">else</span></code> / <code class="docutils literal notranslate"><span class="pre">finally</span></code>）</strong> です。</p>
 <ul class="simple">
@@ -521,6 +666,29 @@
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">else</span></code></strong>: エラーが起きず、無事に成功した時だけ実行します。</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">finally</span></code></strong>: エラーが起きても起きなくても、絶対に最後に実行します（お片付け用）。</p></li>
 </ul>
+<hr class="docutils" />
+<p>例外</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド265.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89265.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89265.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>例外処理</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド266.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89266.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89266.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>例外の種類による処理の切り替え</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド267.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89267.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89267.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>例外が発生しなかった場合の処理</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド268.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89268.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89268.PNG" style="width: 70%;" />
+</a>
+</figure>
+<hr class="docutils" />
+<p>例外処理の基本</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 例外処理の基本</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">divide_sales</span><span class="p">(</span><span class="n">sales</span><span class="p">,</span> <span class="n">people</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
@@ -549,6 +717,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1人あたり:&quot;</span><span class="p">,</span> <span class="n">divide_sales</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s2">&quot;円&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<hr class="docutils" />
 <section id="raise">
 <h3>raise（意図的にエラーを起こす）<a class="headerlink" href="#raise" title="Link to this heading">¶</a></h3>
 <p>データがおかしい時に、「そのまま進むと危険だ！」と判断して、自分で意図的にエラーを発生させる（警告ブザーを鳴らす）こともできます。それが <code class="docutils literal notranslate"><span class="pre">raise</span></code> です。</p>
@@ -565,8 +734,8 @@
 </section>
 </section>
 <hr class="docutils" />
-<section id="id12">
-<h2>💻 演習課題<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
+<section id="id16">
+<h2>💻 演習課題<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h2>
 <p>「例外処理」は、データ分析の現場でデータを綺麗にする（クレンジング）際に大活躍します。</p>
 <p>以下の <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TODO:</span> </code> の部分を書き換えて、プログラムを完成させてください。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習1: 引数の初期値とキーワード引数（難易度：易）</span>
@@ -658,8 +827,8 @@
 </div>
 </section>
 <hr class="docutils" />
-<section id="id13">
-<h2>💡 演習問題の解答例<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
+<section id="id17">
+<h2>💡 演習問題の解答例<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h2>
 <p>（どうしても分からない時や、答え合わせをしたい時に展開して見てくださいね。）</p>
 <details>
 <summary>👉 解答例を見る（ここをクリックして展開）</summary>
@@ -703,12 +872,12 @@
 </details>
 </section>
 <hr class="docutils" />
-<section id="id14">
-<h2>📚 第9回のまとめ<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
+<section id="id18">
+<h2>📚 第9回のまとめ<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h2>
 <p>プログラミングの世界を大きく広げる、とても重要な概念を学びました。
 少し難しく感じたかもしれませんが、これができるようになるとプログラミングの自由度が格段に上がります！</p>
-<section id="id15">
-<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<section id="id19">
+<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>関数の応用</strong>: 引数には初期値を持たせたり、<code class="docutils literal notranslate"><span class="pre">*args</span></code> でいくつでも受け取ったりすることができる。</p></li>
 <li><p><strong>スコープ</strong>: 関数の中で作った変数（ローカル）は、外からは見えない。</p></li>
@@ -788,7 +957,7 @@
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-27</div>
+              Last updated on 2026-07-28</div>
           </div>
           <div class="right-details">
             
@@ -824,15 +993,23 @@
 <li><a class="reference internal" href="#id9">変数としての関数</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id10">クラスとオブジェクト指向の基礎</a></li>
-<li><a class="reference internal" href="#id11">例外処理：エラーで止まらないプログラム</a><ul>
+<li><a class="reference internal" href="#id10">クラスとオブジェクト指向の基礎</a><ul>
+<li><a class="reference internal" href="#id11">オブジェクト指向</a></li>
+<li><a class="reference internal" href="#id12">クラスの基本</a><ul>
+<li><a class="reference internal" href="#id13">メソッドの定義</a></li>
+<li><a class="reference internal" href="#id14">継承</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id15">例外処理：エラーで止まらないプログラム</a><ul>
 <li><a class="reference internal" href="#raise">raise（意図的にエラーを起こす）</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id12">💻 演習課題</a></li>
-<li><a class="reference internal" href="#id13">💡 演習問題の解答例</a></li>
-<li><a class="reference internal" href="#id14">📚 第9回のまとめ</a><ul>
-<li><a class="reference internal" href="#id15">✨ 今日の重要ポイントまとめ</a></li>
+<li><a class="reference internal" href="#id16">💻 演習課題</a></li>
+<li><a class="reference internal" href="#id17">💡 演習問題の解答例</a></li>
+<li><a class="reference internal" href="#id18">📚 第9回のまとめ</a><ul>
+<li><a class="reference internal" href="#id19">✨ 今日の重要ポイントまとめ</a></li>
 <li><a class="reference internal" href="#faq">❓ よくある質問と回答 (FAQ)</a></li>
 <li><a class="reference internal" href="#colab">🌟 Colabで試すおすすめコード</a></li>
 </ul>

@@ -410,12 +410,83 @@
 <li><p><strong>例</strong>: 「私 コーヒー 飲む は」</p></li>
 <li><p><strong>原因</strong>: カッコ <code class="docutils literal notranslate"><span class="pre">()</span></code> やクォーテーション <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> の閉じ忘れ、if文の最後のコロン <code class="docutils literal notranslate"><span class="pre">:</span></code> の忘れなど。一番下に出てくる <code class="docutils literal notranslate"><span class="pre">^</span></code> マークの少し前をチェックしましょう。</p></li>
 </ul>
+<section id="id5">
+<h4>代表例<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<p>コロン（:）の忘れ<br />
+if 文、for 文、def（関数定義）などの末尾にコロンを付け忘れるパターンです。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ❌ 間違い</span>
+<span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">20</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;成人です&quot;</span><span class="p">)</span>
+
+<span class="c1"># ⭕ 正解</span>
+<span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">20</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;成人です&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>括弧や引用符（クォート）の閉じ忘れ<br />
+( に対する ) や、&quot; に対する &quot; が足りない場合に発生します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ❌ 間違い</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span>
+
+<span class="c1"># ⭕ 正解</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>イコール（=）の使い間違い<br />
+比較条件の中で、比較演算子 == を使うべきところに代入演算子 = を使ってしまう例です。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ❌ 間違い</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;xは10です&quot;</span><span class="p">)</span>
+
+<span class="c1"># ⭕ 正解</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;xは10です&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>予約語（キーワード）を識別子に使ってしまう<br />
+Pythonの構文として意味が決まっている単語（class, def, return, pass など）に変数は命名できません。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># ❌ 間違い
+class = &quot;1年A組&quot;
+
+# ⭕ 正解
+class_name = &quot;1年A組&quot;
+</pre></div>
+</div>
+<p>f-string（フォーマット文字列）内のクォートのバッティング<br />
+f文字列の中で辞書（dict）のキーを指定する際、外側と内側で同じ引用符を使ってしまうとエラーになります。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">}</span>
+
+<span class="c1"># ❌ 間違い（外側も内側もダブルクォート）</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Name: </span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># ⭕ 正解（内側をシングルクォートにする）</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Name: </span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>インデント関連のエラー (IndentationError)<br />
+インデント（字下げ）のズレも SyntaxError の派生種である IndentationError として検出されます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ❌ 間違い</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">say_hello</span><span class="p">():</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello!&quot;</span><span class="p">)</span>  <span class="c1"># インデントがない</span>
+
+<span class="c1"># ⭕ 正解</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">say_hello</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>全角スペースの混入<br />
+見た目では気づきにくいですが、コード内に「全角スペース」が混ざると構文エラーになります。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ❌ 間違い（ifとxの間に全角スペースが入っている）</span>
+<span class="k">if</span>　<span class="n">x</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;10です&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="runtime-error">
 <h3>② 例外 / 実行時エラー (Runtime Error)<a class="headerlink" href="#runtime-error" title="Link to this heading">¶</a></h3>
 <p>文法は合っているけれど、実行しようとしたら「物理的に無理だった」時に出ます。</p>
 <ul class="simple">
-<li><p><strong>例</strong>: 「メニューにないタピオカミルクティーを出して！」</p></li>
 <li><p><strong>よくあるエラーと対処法</strong>:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">NameError</span></code>: 変数名の間違い（例：<code class="docutils literal notranslate"><span class="pre">coffee</span></code> を <code class="docutils literal notranslate"><span class="pre">cofee</span></code> と打ち間違えた）。</p></li>
@@ -425,12 +496,126 @@
 </ul>
 </li>
 </ul>
+<p>構文エラー（SyntaxError）が「実行前に文法違反で止まる」のに対し、例外 / 実行時エラー（Runtime Error / Exception）は「コードの文法自体は正しいが、プログラムを実行してみたら問題が発生して止まる」エラーです。</p>
+<section id="id6">
+<h4>代表例<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<p>ZeroDivisionError（ゼロ除算）<br />
+数値を 0 で割ろうとしたときに発生します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ❌ エラーが発生するコード</span>
+<span class="n">result</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">0</span>
+<span class="c1"># ZeroDivisionError: division by zero</span>
+
+<span class="c1"># ⭕ 対処法：割る数が0でないか事前にチェックする、または例外処理（try-except）を使う</span>
+<span class="n">divisor</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">if</span> <span class="n">divisor</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="n">divisor</span>
+</pre></div>
+</div>
+<p>TypeError（型エラー）<br />
+操作や関数の適用が、データ型と適合しない場合に発生します。（例: 文字列と数値を足そうとしたとき）</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ❌ エラーが発生するコード</span>
+<span class="n">age</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;年齢: &quot;</span> <span class="o">+</span> <span class="n">age</span>
+<span class="c1"># TypeError: can only concatenate str (not &quot;int&quot;) to str</span>
+
+<span class="c1"># ⭕ 対処法：型変換（str(age)）を行うか、f-string を使う</span>
+<span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;年齢: </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>ValueError（値エラー）<br />
+データ型自体は正しいものの、受け取った「値」が適切でない場合に発生します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ❌ エラーが発生するコード（数字に変換できない文字を int() に渡した）</span>
+<span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+<span class="c1"># ValueError: invalid literal for int() with base 10: &#39;hello&#39;</span>
+
+<span class="c1"># ⭕ 対処法：変換前に isdigit() などで検証するか、try-except でパースする</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;123&quot;</span>
+<span class="k">if</span> <span class="n">text</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>IndexError（インデックス範囲外エラー）<br />
+リストやタプルなどの要素数を超えるインデックスにアクセスしたときに発生します。<br />
+(スライスの場合は調整されてエラーにならない)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ❌ エラーが発生するコード（要素が3つのリストなのにインデックス5を指定）</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+<span class="c1"># IndexError: list index out of range</span>
+
+<span class="c1"># ⭕ 対処法：リストの長さを確認するか、安全なアクセスを行う</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>KeyError（キーエラー）<br />
+辞書（dict）に存在しないキーを指定して値を取得しようとしたときに発生します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ❌ エラーが発生するコード</span>
+<span class="n">user</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">])</span>
+<span class="c1"># KeyError: &#39;email&#39;</span>
+
+<span class="c1"># ⭕ 対処法：.get() メソッドを使う（キーがなければ None を返す）</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;email&quot;</span><span class="p">))</span>  <span class="c1"># None が返り、エラーにならない</span>
+</pre></div>
+</div>
+<p>AttributeError（属性エラー）<br />
+そのオブジェクト（型）に存在しないメソッドや属性を呼び出そうとしたときに発生します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ❌ エラーが発生するコード（数値型には upper() メソッドがない）</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mi">123</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+<span class="c1"># AttributeError: &#39;int&#39; object has no attribute &#39;upper&#39;</span>
+</pre></div>
+</div>
+<p>FileNotFoundError（ファイル未検出エラー）<br />
+存在しないファイルを開こうとした（読み込もうとした）ときに発生します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ❌ エラーが発生するコード</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;not_exist_file.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="c1"># FileNotFoundError: [Errno 2] No such file or directory: &#39;not_exist_file.txt&#39;</span>
+
+<span class="c1"># ⭕ 対処法：pathlib や os.path でファイルの存在確認をする</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;not_exist_file.txt&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">file_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>NameError（名前エラー）<br />
+定義されていない（宣言されていない）変数や関数を呼び出そうとしたときに発生します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ❌ エラーが発生するコード（タイポや定義忘れ）</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total_score</span><span class="p">)</span>
+<span class="c1"># NameError: name &#39;total_score&#39; is not defined</span>
+</pre></div>
+</div>
 </section>
-<section id="id5">
-<h3>③ 論理エラー (バグ)<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<section id="try-except">
+<h4>💡 実行時エラーを防ぐ基本：try - except<a class="headerlink" href="#try-except" title="Link to this heading">¶</a></h4>
+<p>実行時エラーが発生する可能性のある処理は、try - except 構文を使うことでプログラムの強制終了を防ぐことができます。<br />
+try - except 構文については第9回で説明します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="c1"># エラーが起きるかもしれない処理</span>
+    <span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;数字を入力してください: &quot;</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">number</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;計算結果: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;エラー: 数字以外の文字が入力されました。&quot;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;エラー: 0 で割ることはできません。&quot;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;予期せぬエラーが発生しました: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id7">
+<h3>③ 論理エラー (バグ)<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
 <p><strong>これが一番厄介です！</strong> エラー画面は出ず、プログラムは最後まで動くのに「結果が間違っている」状態です。</p>
 <ul class="simple">
-<li><p><strong>例</strong>: 「お会計がマイナス500円になった」</p></li>
 <li><p>これを直すために、次の「デバッグ技法」を使います。</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ① 構文エラーの例（わざとコロンを忘れています。実行してエラーを見てみましょう）</span>
@@ -442,12 +627,135 @@
 <span class="c1"># print(shop_nam)  # NameErrorが出ます</span>
 </pre></div>
 </div>
+<p><strong>論理エラー（Logical Error / 構造的バグ）<strong>は、文法チェック（<code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>）も通るし、プログラムを実行しても画面にエラー（<code class="docutils literal notranslate"><span class="pre">Runtime</span> <span class="pre">Error</span></code>）が出ずに</strong>最後まで動いてしまう</strong>エラーです。</p>
+<p>文法としては完全に正しいため、「プログラムは人間が指示した通りに完璧に動いているが、人間側の指示（ロジック）が間違っている状態」と言えます。
+発見するのが一番難しいエラーでもあります。</p>
+<hr class="docutils" />
+<section id="id8">
+<h4>代表例<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
+<p>境界値の指定ミス（<code class="docutils literal notranslate"><span class="pre">&gt;</span></code> と <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> の間違い）<br />
+指定した条件の「ギリギリの値（境界値）」で意図しない挙動になります。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ❌ 論理エラー：18歳が「未成年」と判定されてしまう</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_adult</span><span class="p">(</span><span class="n">age</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">age</span> <span class="o">&gt;</span> <span class="mi">18</span>  <span class="c1"># 18歳が含まれていない！</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">is_adult</span><span class="p">(</span><span class="mi">18</span><span class="p">))</span>  <span class="c1"># 結果: False（本当は True になってほしい）</span>
+
+<span class="c1"># ⭕ 修正</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_adult</span><span class="p">(</span><span class="n">age</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">18</span>  <span class="c1"># 以上（&gt;=）にする</span>
+</pre></div>
+</div>
+<p>インデックスの 1 ズレ（off-by-one エラー）<br />
+プログラミングのインデックスは <code class="docutils literal notranslate"><span class="pre">0</span></code> から始まるため、回数や範囲を勘違いして 1 回分多く（または少なく）処理してしまう現象です。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;りんご&quot;</span><span class="p">,</span> <span class="s2">&quot;みかん&quot;</span><span class="p">,</span> <span class="s2">&quot;バナナ&quot;</span><span class="p">]</span>
+
+<span class="c1"># ❌ 論理エラー：「バナナ」が処理されない（len(items) は 3 だが range(2) になっている）</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>  <span class="c1"># 「りんご」「みかん」しか出力されない</span>
+
+<span class="c1"># ⭕ 修正</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>  <span class="c1"># 直接要素を取り出すのが安全</span>
+</pre></div>
+</div>
+<p>演算子の優先順位の勘違い<br />
+足し算・引き算より<strong>掛け算・割り算が優先される</strong>ルールを失念して、カッコを付け忘れるミスです。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 平均値を計算したい（テストの点数: 80, 90, 70）</span>
+<span class="n">score1</span><span class="p">,</span> <span class="n">score2</span><span class="p">,</span> <span class="n">score3</span> <span class="o">=</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">70</span>
+
+<span class="c1"># ❌ 論理エラー：score3 / 3 が先に計算されてしまう（結果: 193.333...）</span>
+<span class="n">average</span> <span class="o">=</span> <span class="n">score1</span> <span class="o">+</span> <span class="n">score2</span> <span class="o">+</span> <span class="n">score3</span> <span class="o">/</span> <span class="mi">3</span>
+
+<span class="c1"># ⭕ 修正：カッコで括って足し算を先に計算させる（結果: 80.0）</span>
+<span class="n">average</span> <span class="o">=</span> <span class="p">(</span><span class="n">score1</span> <span class="o">+</span> <span class="n">score2</span> <span class="o">+</span> <span class="n">score3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>ミュータブル（可変）オブジェクトの参照共有<br />
+Pythonのリストや辞書は「参照（データの場所）」を渡す仕組みのため、片方を変更するともう片方も書き換わってしまうミスです。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ❌ 論理エラー：a を変更したつもりが b まで変わってしまう</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>  <span class="c1"># 参照がコピーされるだけで、同じ実体を見ている</span>
+
+<span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1"># 結果: [1, 2, 3, 4] （a も書き換わってしまった！）</span>
+
+<span class="c1"># ⭕ 修正：.copy() やスライス [:] で別物として複製する</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1"># 結果: [1, 2, 3]（a は無事）</span>
+</pre></div>
+</div>
+<p>可変オブジェクトを関数のデフォルト引数にする<br />
+Pythonの超有名・定番の罠です。関数のデフォルト引数に <code class="docutils literal notranslate"><span class="pre">[]</span></code> などのリストを指定すると、<strong>関数の呼び出し間で同じリストが使い回されます</strong>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ❌ 論理エラー：呼び出すたびに過去のデータが残ってしまう</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">item_list</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">item_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">item_list</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">add_item</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">))</span>  <span class="c1"># 結果: [&#39;A&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">add_item</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">))</span>  <span class="c1"># 結果: [&#39;A&#39;, &#39;B&#39;] （&#39;B&#39; だけのリストになってほしいのに！）</span>
+
+<span class="c1"># ⭕ 修正：デフォルト値には None を使い、関数内で初期化する</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">item_list</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">item_list</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">item_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">item_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">item_list</span>
+</pre></div>
+</div>
+<p>ループ内の更新忘れ（無限ループ）<br />
+<code class="docutils literal notranslate"><span class="pre">while</span></code> 文などで、ループを抜けるための条件更新を忘れると、永遠に処理が終わらなくなります。（エラーメッセージすら出ずに固まります）</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># ❌ 論理エラー：count が増えないため永遠に終わらない</span>
+<span class="k">while</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;処理中...&quot;</span><span class="p">)</span>
+    <span class="c1"># count += 1 を忘れいている！</span>
+
+<span class="c1"># ⭕ 修正</span>
+<span class="k">while</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;処理中...&quot;</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
 </section>
 </section>
 <hr class="docutils" />
-<section id="id6">
-<h2>デバッグ技法とベストプラクティス（具体例）<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<section id="id9">
+<h3>3種のエラーまとめ<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>エラーの種類</p></th>
+<th class="head"><p>発生するタイミング</p></th>
+<th class="head"><p>特徴</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>構文エラー (<code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>)</strong></p></td>
+<td><p>実行<strong>前</strong></p></td>
+<td><p>文法違反。1行でもあればプログラム自体が起動しない。</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>例外 / 実行時エラー (<code class="docutils literal notranslate"><span class="pre">Runtime</span> <span class="pre">Error</span></code>)</strong></p></td>
+<td><p>実行<strong>中</strong></p></td>
+<td><p>コードは実行できるが、途中で問題が発生してプログラムが<strong>強制終了</strong>する。</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>論理エラー (バグ)</strong></p></td>
+<td><p>実行<strong>中〜完了時</strong></p></td>
+<td><p><strong>エラーが出ずに最後まで完走してしまう</strong>が、結果が人間側の期待と異なる。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id10">
+<h2>デバッグ技法とベストプラクティス（具体例）<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
 <p>論理エラー（結果がおかしい！）が起きた時、プロはどうやって原因を探すのでしょうか？</p>
+<hr class="docutils" />
 <section id="print">
 <h3>ベストプラクティス1: <code class="docutils literal notranslate"><span class="pre">print()</span></code> を使って中身をのぞき見する<a class="headerlink" href="#print" title="Link to this heading">¶</a></h3>
 <p>計算の途中で変数がどうなっているか、こまめに <code class="docutils literal notranslate"><span class="pre">print()</span></code> を差し込んで確認します。</p>
@@ -472,16 +780,18 @@
 </pre></div>
 </div>
 </section>
-<section id="ai-chatgpt">
-<h3>ベストプラクティス2: 生成AI（ChatGPTなど）を頼る！<a class="headerlink" href="#ai-chatgpt" title="Link to this heading">¶</a></h3>
-<p>今の時代、一人で何時間も悩む必要はありません。エラーが出たら、<strong>エラーメッセージ全体と自分のコードをコピーして、生成AIに「このエラーの原因と直し方を教えて」と聞いてみましょう。</strong> 非常にわかりやすく解説してくれます。これも立派なプログラミングスキルの一つです！</p>
+<hr class="docutils" />
+<section id="ai">
+<h3>ベストプラクティス2: 生成AIを頼る！<a class="headerlink" href="#ai" title="Link to this heading">¶</a></h3>
+<p>今の時代、一人で何時間も悩む必要はありません。エラーが出たら、**エラーメッセージ全体と自分のコードをコピーして、生成AIに「このエラーの原因と直し方を教えて」と聞いてみましょう。</p>
+<p>** 非常にわかりやすく解説してくれます。今は、立派なプログラミングスキルの一つです！</p>
 </section>
 </section>
 <hr class="docutils" />
 <section id="assert">
 <h2>assert文とテスト<a class="headerlink" href="#assert" title="Link to this heading">¶</a></h2>
 <p>「絶対にこうなっているはずだ！」という前提条件を確認するために、<strong><code class="docutils literal notranslate"><span class="pre">assert</span></code>（アサート：断言する）文</strong>を使います。
-もし条件が <code class="docutils literal notranslate"><span class="pre">False</span></code> だった場合、その場で <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> を出してプログラムを止めてくれます。被害が大きくなる前にストップする安全装置ですね。</p>
+もし条件が <code class="docutils literal notranslate"><span class="pre">False</span></code> だった場合、その場で <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> を出してプログラムを止めてくれます。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># assert文の具体例</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">calc_discount</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">discount_rate</span><span class="p">):</span>
     <span class="c1"># 割引率は絶対に 0〜1 の間でなければならない！と断言（assert）します。</span>
@@ -498,8 +808,9 @@
 </div>
 <hr class="docutils" />
 <section id="pytest">
-<h3>pytest（パイテスト）について<a class="headerlink" href="#pytest" title="Link to this heading">¶</a></h3>
-<p>プロの世界では、こういったテストを全自動で何百個も行ってくれる <strong><code class="docutils literal notranslate"><span class="pre">pytest</span></code></strong> という強力な外部パッケージ（ツール）を使います。この授業では「そういう便利な自動テストツールがあるんだな」と知っておくだけで今は大丈夫です！</p>
+<h3>自動テスト pytest（パイテスト）について<a class="headerlink" href="#pytest" title="Link to this heading">¶</a></h3>
+<p>こういったテストを全自動で何百個もテストをする場合は、<strong><code class="docutils literal notranslate"><span class="pre">pytest</span></code></strong> という外部パッケージ（ツール）を使います。
+ここでは「そういう便利な自動テストツールがあるんだな」と知っておくだけで大丈夫です！</p>
 </section>
 </section>
 <hr class="docutils" />
@@ -511,8 +822,8 @@
 プログラミング言語のPerlには、「There's More Than One Way To Do It.」（やり方は一つじゃない）という格言があります。
 Pythonにも格言があり <a class="reference external" href="https://peps.python.org/pep-0020/">「PEP 20 – The Zen of Python」</a> には、「明示は暗黙に勝る」「シンプルは複雑に勝る」「可読性は重要」などが掲げられており、誰が読んでも理解しやすいコードを書くことが奨励されています。
 このような設計思想により、Pythonは初心者にも扱いやすいプログラミング言語とされています。</p>
-<section id="id7">
-<h3>PEP 8 の代表的なルール（今日から真似しよう！）<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<section id="id11">
+<h3>PEP 8 の代表的なルール（今日から真似しよう！）<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
 <ol class="arabic simple">
 <li><p><strong>インデントは半角スペース4つ</strong>（Tabは使わない）。</p></li>
 <li><p><strong>変数名は小文字とアンダースコア（_）で繋ぐ</strong>（例：<code class="docutils literal notranslate"><span class="pre">coffee_price</span></code>。<code class="docutils literal notranslate"><span class="pre">CoffeePrice</span></code> とは書かない）。</p></li>
@@ -539,26 +850,32 @@ Pythonにも格言があり <a class="reference external" href="https://peps.pyt
 </div>
 </section>
 <hr class="docutils" />
-<section id="id8">
-<h3>コーディング規約<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
-<p>主に下記があります。</p>
-<p>可読性の向上</p>
+<section id="id12">
+<h3>コーディング規約<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<p>コーディング規約は主に下記を目的にしています</p>
 <ul class="simple">
+<li><p>可読性の向上</p>
+<ul>
 <li><p>誰が書いたコードでも、読みやすく理解しやすいようにする</p></li>
 <li><p>チーム開発やオープンソースプロジェクトでの共同作業を円滑にする</p></li>
 </ul>
-<p>スタイルの統一</p>
-<ul class="simple">
+</li>
+<li><p>スタイルの統一</p>
+<ul>
 <li><p>インデント、変数名、関数名、空白の使い方などのルールを定め、コードの見た目を統一</p></li>
 <li><p>複数人が同じルールで記述することで、「慣れた見た目」を維持できる</p></li>
 </ul>
-<p>バグの予防</p>
-<ul class="simple">
+</li>
+<li><p>バグの予防</p>
+<ul>
 <li><p>曖昧な書き方を避けることで、潜在的なバグの原因となる表現を防ぐ</p></li>
 </ul>
-<p>ツールとの連携</p>
-<ul class="simple">
+</li>
+<li><p>ツールとの連携</p>
+<ul>
 <li><p>自動フォーマッタ（例：<code class="docutils literal notranslate"><span class="pre">black</span></code>, <code class="docutils literal notranslate"><span class="pre">autopep8</span></code>）や静的解析ツール（例：<code class="docutils literal notranslate"><span class="pre">flake8</span></code>）が PEP8 に準拠しているため、コード品質を機械的に保てる</p></li>
+</ul>
+</li>
 </ul>
 <p>このように、PEP8は「Pythonコードを書く際の作法」を定めたガイドラインであり、個人でもチームでも、より良いPythonプログラミングの基盤となるものです。</p>
 <hr class="docutils" />
@@ -627,8 +944,8 @@ PEP8は、「コードの可読性と一貫性を高めること」を目的と�
 </table>
 </div>
 <hr class="docutils" />
-<section id="id9">
-<h4>命名規約<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h4>
+<section id="id13">
+<h4>命名規約<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h4>
 <p>一般的な命名の表記方法は次のとおりです。</p>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
@@ -723,8 +1040,8 @@ PEP8は、「コードの可読性と一貫性を高めること」を目的と�
 </table>
 </div>
 <hr class="docutils" />
-<section id="id10">
-<h4>補助ツール<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h4>
+<section id="id14">
+<h4>補助ツール<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h4>
 <p>PEP8を補助するツールとして下記があります。
 コードエディターや開発環境に設定をしてコードスタイルの整形の補助をしています。</p>
 <ul class="simple">
@@ -745,70 +1062,73 @@ PEP8は、「コードの可読性と一貫性を高めること」を目的と�
 </ul>
 </section>
 <hr class="docutils" />
-<section id="id11">
-<h3>変数名の付け方<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<section id="id15">
+<h3>変数名の付け方<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>引用元：<a class="reference external" href="https://zenn.dev/naoki_oshiumi/articles/aad7e1b3719fad">変数名の付け方をまとめてみた</a></p></li>
 </ul>
-<section id="id12">
-<h4>良い変数名とは<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
+<section id="id16">
+<h4>良い変数名とは<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h4>
 <p>良い変数名は「必要な情報が含まれている」となります。
 例えば「name」という変数名はフルネームなのか名字なのか名前なのかが分かりませんが、
 「fullName」だと「フルネームなんだな」と理解できます。「name」だと情報不足なことがあります。</p>
 <p>良い変数名をつけると「無駄なコメントが減る」「他の開発者にとって読みやすい」などのメリットがあります。
 無駄なコメントは開発者を混乱させますし読みにくいコードはバグが生まれる原因になるので、変数名はかなり重要です。</p>
 </section>
-</section>
 <hr class="docutils" />
-<section id="id13">
-<h3>変数名をつけるコツ<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
-<section id="id14">
-<h4>①広く意味を持つ名前をつけない<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h4>
+<section id="id17">
+<h4>変数名をつけるコツ<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h4>
+<section id="id18">
+<h5>①広く意味を持つ名前をつけない<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h5>
 <p>先程例に上げた「name」は広い意味を持ってしまっているのでフルネーム？名字？名前？とわからなくなってしまいます。<br />
-他にも「tmp」や「temp」は「一時的」という意味がありますが、意味が広すぎて一時的な何者なのか？が全くわかりません。
+他にも「tmp」や「temp」は「一時的」という意味がありますが、意味が広すぎて一時的な何者なのか？が全くわかりません。<br />
 前後の文脈がないと判断できないもの、前後の文脈があっても判断できないものは修正する余地があるでしょう。</p>
 </section>
-<section id="id15">
-<h4>②多少長くなっても必要な情報は必ずいれる<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h4>
+<section id="id19">
+<h5>②多少長くなっても必要な情報は必ずいれる<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h5>
 <p>変数名が長いと嫌われる傾向にありますが、個人的には多少長くなっても構わないと思います。<br />
 それより必要な情報を変数名に入れるほうが優先だと思います。</p>
 <p>例えば、平文のパスワードの場合「password」ではなく「plain_password」が良いですし、
 税込み金額は「price」ではなく「priceIncludingTax」とかの方が良いと思います。
 また、税込金額を文字列フォーマットした場合は「formattedPriceIncludingTax」とかの方が良いかもしれません。（もっと適切な英語があるかも）</p>
 </section>
-<section id="id16">
-<h4>③不要な単語は排除する<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h4>
-<p>逆に無駄な情報は変数名にはいれないという考え方です。必要な情報を入れた上でなるべく変数名を短くしようということです。</p>
-<p>変数名を無理に短くしようとするあまり必要な情報が削られてしまうと意味がないので、意味がわかる範囲で作成します．</p>
+<section id="id20">
+<h5>③不要な単語は排除する<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h5>
+<p>逆に無駄な情報は変数名にはいれないという考え方です。必要な情報を入れた上でなるべく変数名を短くしようということです。<br />
+変数名を無理に短くしようとするあまり必要な情報が削られてしまうと意味がないので、意味がわかる範囲で作成します．</p>
 <p>例えば「convertToString」は「toString」で良いです。</p>
 </section>
-<section id="id17">
-<h4>④日本語をローマ字にした変数名は避ける<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h4>
-<p>「性別」の変数名は「seibetsu」ではなく「gender」
-「情報」の変数名は「jyoho」ではなく「information」が良いです。</p>
+<section id="id21">
+<h5>④日本語をローマ字にした変数名は避ける<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h5>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>「性別」の変数名は「seibetsu」ではなく「gender」
+「情報」の変数名は「jyoho」ではなく「information」が良いです。
+</pre></div>
+</div>
 </section>
-<section id="id18">
-<h4>⑤配列やコレクションは複数形にする<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h4>
+<section id="id22">
+<h5>⑤配列やコレクションは複数形にする<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h5>
 <p>例えば「userList」は「users」でOKです。複数系だとuserが複数いるんだとわかります。</p>
 <p>「data」とか「information」のように複数形かどうかわからない場合は「data_array」とかで良いです。</p>
 </section>
 <section id="booleanishascanshould">
-<h4>⑥boolean型は「is」「has」「can」「should」をつけると分かりやすくなることが多い<a class="headerlink" href="#booleanishascanshould" title="Link to this heading">¶</a></h4>
-<p>is ... 状態を表す（isActiveとか）<br />
-has ... 所有を表す（hasFileとか）<br />
-can ... 可能を表す（canGetとか）<br />
-should ... すべきかどうか（shouldChangeとか）</p>
+<h5>⑥boolean型は「is」「has」「can」「should」をつけると分かりやすくなることが多い<a class="headerlink" href="#booleanishascanshould" title="Link to this heading">¶</a></h5>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>is ... 状態を表す（isActiveとか）  
+has ... 所有を表す（hasFileとか）  
+can ... 可能を表す（canGetとか）  
+should ... すべきかどうか（shouldChangeとか）  
+</pre></div>
+</div>
 <p>isやhasはよく使われます</p>
 </section>
-<section id="id19">
-<h4>⑦品詞を意識する<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h4>
+<section id="id23">
+<h5>⑦品詞を意識する<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h5>
 <p>変数名は基本的に「名詞」なので、「名詞のみ」もしくは「形容詞 + 名詞」でつけます。<br />
 たまに変数名なのに動詞になっていることがあるので、品詞を意識してみると良いです。</p>
 <p>変数名に限らず、例えば関数名は何かを処理する動作を表しているはずなので基本的に「動詞のみ」もしくは「動詞 + 名詞」のように動詞から始まります。</p>
 </section>
 </section>
-<section id="id20">
-<h3>参考URL<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<section id="id24">
+<h4>参考URL<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.oreilly.co.jp/books/9784873115658/">リーダブルコード</a></p></li>
 <li><p><a class="reference external" href="https://nelog.jp/programming-words">プログラミングで変数名や関数名のネーミングに迷ったときに便利なカンニングペーパーまとめ</a></p></li>
@@ -818,9 +1138,10 @@ should ... すべきかどうか（shouldChangeとか）</p>
 </ul>
 </section>
 </section>
+</section>
 <hr class="docutils" />
-<section id="id21">
-<h2>💻 演習課題<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h2>
+<section id="id25">
+<h2>💻 演習課題<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h2>
 <p>わざとエラーが出るコードや、動きはおかしいコードを用意しました。
 探偵になったつもりで、エラーメッセージをよく読み、バグを見つけて修正してください。</p>
 <p>以下のコードセルのバグを修正し、プログラムを正しく動かしてください。</p>
@@ -893,8 +1214,8 @@ should ... すべきかどうか（shouldChangeとか）</p>
 </div>
 </section>
 <hr class="docutils" />
-<section id="id22">
-<h2>💡 演習問題の解答例<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h2>
+<section id="id26">
+<h2>💡 演習問題の解答例<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h2>
 <p>（どうしても分からない時は展開して見てくださいね。）</p>
 <details>
 <summary>👉 解答例を見る（ここをクリックして展開）</summary>
@@ -932,12 +1253,12 @@ should ... すべきかどうか（shouldChangeとか）</p>
 </details>
 </section>
 <hr class="docutils" />
-<section id="id23">
-<h2>📚 第7回のまとめ<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h2>
+<section id="id27">
+<h2>📚 第7回のまとめ<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h2>
 <p>エラーを恐れずに向き合う「デバッグ」の力と、プロのように美しい「コードスタイル」でした。
 これらはプログラミングにおいて、文法と同じくらい大切な部分です。</p>
-<section id="id24">
-<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
+<section id="id28">
+<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>エラーの分類</strong>: 文法ミス（SyntaxError）、実行時の無理難題（例外）、計算間違い（論理エラー）の3つがある。</p></li>
 <li><p><strong>デバッグ</strong>: 論理エラーが出たら、怪しいところに <code class="docutils literal notranslate"><span class="pre">print()</span></code> を入れて変数の中身を覗き見する。生成AIもどんどん活用する！</p></li>
@@ -1013,7 +1334,7 @@ should ... すべきかどうか（shouldChangeとか）</p>
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-27</div>
+              Last updated on 2026-07-28</div>
           </div>
           <div class="right-details">
             
@@ -1041,53 +1362,64 @@ should ... すべきかどうか（shouldChangeとか）</p>
 </li>
 <li><a class="reference internal" href="#id3">イントロダクション：仕様・テスト・デバッグとは？</a></li>
 <li><a class="reference internal" href="#id4">エラーの分類とよくあるエラー</a><ul>
-<li><a class="reference internal" href="#syntaxerror">① 構文エラー (SyntaxError)</a></li>
-<li><a class="reference internal" href="#runtime-error">② 例外 / 実行時エラー (Runtime Error)</a></li>
-<li><a class="reference internal" href="#id5">③ 論理エラー (バグ)</a></li>
+<li><a class="reference internal" href="#syntaxerror">① 構文エラー (SyntaxError)</a><ul>
+<li><a class="reference internal" href="#id5">代表例</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id6">デバッグ技法とベストプラクティス（具体例）</a><ul>
+<li><a class="reference internal" href="#runtime-error">② 例外 / 実行時エラー (Runtime Error)</a><ul>
+<li><a class="reference internal" href="#id6">代表例</a></li>
+<li><a class="reference internal" href="#try-except">💡 実行時エラーを防ぐ基本：try - except</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">③ 論理エラー (バグ)</a><ul>
+<li><a class="reference internal" href="#id8">代表例</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9">3種のエラーまとめ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10">デバッグ技法とベストプラクティス（具体例）</a><ul>
 <li><a class="reference internal" href="#print">ベストプラクティス1: <code class="docutils literal notranslate"><span class="pre">print()</span></code> を使って中身をのぞき見する</a></li>
-<li><a class="reference internal" href="#ai-chatgpt">ベストプラクティス2: 生成AI（ChatGPTなど）を頼る！</a></li>
+<li><a class="reference internal" href="#ai">ベストプラクティス2: 生成AIを頼る！</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#assert">assert文とテスト</a><ul>
-<li><a class="reference internal" href="#pytest">pytest（パイテスト）について</a></li>
+<li><a class="reference internal" href="#pytest">自動テスト pytest（パイテスト）について</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#pep-8">コーディングスタイルと PEP 8</a><ul>
-<li><a class="reference internal" href="#id7">PEP 8 の代表的なルール（今日から真似しよう！）</a></li>
-<li><a class="reference internal" href="#id8">コーディング規約</a></li>
+<li><a class="reference internal" href="#id11">PEP 8 の代表的なルール（今日から真似しよう！）</a></li>
+<li><a class="reference internal" href="#id12">コーディング規約</a></li>
 <li><a class="reference internal" href="#pep8">PEP8 スタイルガイド</a><ul>
-<li><a class="reference internal" href="#id9">命名規約</a></li>
+<li><a class="reference internal" href="#id13">命名規約</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#python">Pythonの理念の特徴まとめ</a><ul>
-<li><a class="reference internal" href="#id10">補助ツール</a></li>
+<li><a class="reference internal" href="#id14">補助ツール</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#url">参考URL</a></li>
-<li><a class="reference internal" href="#id11">変数名の付け方</a><ul>
-<li><a class="reference internal" href="#id12">良い変数名とは</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id13">変数名をつけるコツ</a><ul>
-<li><a class="reference internal" href="#id14">①広く意味を持つ名前をつけない</a></li>
-<li><a class="reference internal" href="#id15">②多少長くなっても必要な情報は必ずいれる</a></li>
-<li><a class="reference internal" href="#id16">③不要な単語は排除する</a></li>
-<li><a class="reference internal" href="#id17">④日本語をローマ字にした変数名は避ける</a></li>
-<li><a class="reference internal" href="#id18">⑤配列やコレクションは複数形にする</a></li>
+<li><a class="reference internal" href="#id15">変数名の付け方</a><ul>
+<li><a class="reference internal" href="#id16">良い変数名とは</a></li>
+<li><a class="reference internal" href="#id17">変数名をつけるコツ</a><ul>
+<li><a class="reference internal" href="#id18">①広く意味を持つ名前をつけない</a></li>
+<li><a class="reference internal" href="#id19">②多少長くなっても必要な情報は必ずいれる</a></li>
+<li><a class="reference internal" href="#id20">③不要な単語は排除する</a></li>
+<li><a class="reference internal" href="#id21">④日本語をローマ字にした変数名は避ける</a></li>
+<li><a class="reference internal" href="#id22">⑤配列やコレクションは複数形にする</a></li>
 <li><a class="reference internal" href="#booleanishascanshould">⑥boolean型は「is」「has」「can」「should」をつけると分かりやすくなることが多い</a></li>
-<li><a class="reference internal" href="#id19">⑦品詞を意識する</a></li>
+<li><a class="reference internal" href="#id23">⑦品詞を意識する</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id20">参考URL</a></li>
+<li><a class="reference internal" href="#id24">参考URL</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id21">💻 演習課題</a></li>
-<li><a class="reference internal" href="#id22">💡 演習問題の解答例</a></li>
-<li><a class="reference internal" href="#id23">📚 第7回のまとめ</a><ul>
-<li><a class="reference internal" href="#id24">✨ 今日の重要ポイントまとめ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id25">💻 演習課題</a></li>
+<li><a class="reference internal" href="#id26">💡 演習問題の解答例</a></li>
+<li><a class="reference internal" href="#id27">📚 第7回のまとめ</a><ul>
+<li><a class="reference internal" href="#id28">✨ 今日の重要ポイントまとめ</a></li>
 <li><a class="reference internal" href="#faq">❓ よくある質問と回答 (FAQ)</a></li>
 <li><a class="reference internal" href="#colab">🌟 Colabで試すおすすめコード</a></li>
 </ul>

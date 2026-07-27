@@ -654,19 +654,17 @@
 <a class="reference internal image-reference" href="../../../_images/スライド58.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8958.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8958.PNG" style="width: 70%;" />
 </a>
 </figure>
-<section id="id11">
-<h3>ワン・モア・ステップ<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
 <p>数値の指数表現</p>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../../../_images/スライド59.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8959.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%8959.PNG" style="width: 70%;" />
 </a>
 </figure>
-</section>
-<section id="id12">
-<h3>文字列とインデックス<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<hr class="docutils" />
+<section id="id11">
+<h3>文字列とインデックス<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
 <p>Pythonの世界では、文字列は「文字が順番に並んだ列車の車両」のように扱われます。
-それぞれの文字には**「インデックス（番号）」**が振られていますが、ここで最大の注意点！
-<strong>コンピュータは「0」から数字を数え始めます！</strong></p>
+それぞれの文字には**「インデックス（番号）」**が振られていますが、</p>
+<p>ここで最大の注意点！ <strong>コンピュータは「0」から数字を数え始めます！</strong></p>
 <p><strong>【インデックスの図解】</strong>
 「ＣＡＦＥ」という文字があった場合…</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  先頭から数える ──▶   0    1    2    3
@@ -676,10 +674,13 @@
 </div>
 <p>最初の「C」を取り出したければ、<code class="docutils literal notranslate"><span class="pre">0</span></code>番目を指定します。一番後ろの「E」は <code class="docutils literal notranslate"><span class="pre">-1</span></code> で取り出せます。</p>
 </section>
-<section id="id13">
-<h3>文字列とスライス<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
-<p>文字の「一部を切り取る」ことを<strong>スライス</strong>と呼びます。
-<code class="docutils literal notranslate"><span class="pre">文字列[開始</span> <span class="pre">:</span> <span class="pre">終了]</span></code> と書きますが、**「終了の番号は含まれない（その手前まで）」**というルールがあります。</p>
+<hr class="docutils" />
+<section id="id12">
+<h3>文字列とスライス<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<p>文字の「一部を切り取る」ことを<strong>スライス</strong>と呼びます。<br />
+<code class="docutils literal notranslate"><span class="pre">文字列[開始</span> <span class="pre">:</span> <span class="pre">終了]</span></code> と書きますが、<br />
+**「終了の番号は含まれない（その手前まで）」**というルールがあります。</p>
+<p>Pythonのスライス（slice）は、リストや文字列、タプルなどのシーケンス（配列）から、指定した範囲の要素を簡単に切り出す機能です</p>
 <p><strong>【スライスの図解】</strong></p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  [ C ][ A ][ F ][ E ]
   0    1    2    3    4  (文字の隙間に番号があるイメージを持つと分かりやすいです)
@@ -687,12 +688,29 @@
   ここから、ここまで（2は含まない） ＝ [0:2] ＝ &quot;CA&quot;
 </pre></div>
 </div>
-<p>Pythonのスライス（slice）は、リストや文字列、タプルなどのシーケンス（配列）から、指定した範囲の要素を簡単に切り出す機能です</p>
+<p>スライス式</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド172.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89172.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89172.PNG" style="width: 70%;" />
+</a>
+</figure>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">word1</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span>
 <span class="n">word1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;H&#39;</span>
 <span class="n">word1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Python&#39;</span> 
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> 
+<span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Python&#39;</span> 
+<span class="n">a</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> 
+<span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+</pre></div>
+</div>
+<hr class="docutils" />
 <p>まとめると文字列 <code class="docutils literal notranslate"><span class="pre">hello</span></code> の正負のインデックスは以下の表の関係になります。</p>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
@@ -723,7 +741,7 @@
 </tbody>
 </table>
 </div>
-<p>スライスを全て記述すると [開始位置:終了位置:ステップ] の形で指定します。</p>
+<p>スライスを全て記述すると <strong>[ 開始位置 : 終了位置 : ステップ ]</strong> の形で指定します。</p>
 <ul class="simple">
 <li><p>start（開始位置）: 取得を開始するインデックス（含める）。</p></li>
 <li><p>stop（終了位置）: 取得を終了するインデックス（含めない）。</p></li>
@@ -747,7 +765,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>  <span class="c1"># 後ろから3番目から最後まで</span>
 </pre></div>
 </div>
-<p>ステップ（飛ばし読み） [start:stop:step]</p>
+<p>ステップ（飛ばし読み） [start : stop : step]</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># 2マスずつ進む（1つ飛ばし）</span>
 <span class="n">numbers</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>    <span class="c1"># リスト全体から偶数インデックスだけ取得</span>
 </pre></div>
@@ -776,7 +794,7 @@
 <span class="n">digits1</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>スライスにおいても負数を指定して、 文字列の最後の方から部分文字列を取得できます</p>
+<p>負数を指定して、 文字列の最後の方から部分文字列を取得できます</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">digits1</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -789,7 +807,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">digits1</span><span class="p">[</span><span class="mi">8</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>まとめて記述</p>
+<p>練習</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shop_name</span> <span class="o">=</span> <span class="s2">&quot;ムサシ・カフェ&quot;</span>
 
 <span class="c1"># インデックス（1文字だけ取り出す）</span>
@@ -808,8 +826,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id14">
-<h3>空文字列（から・もじれつ）<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<section id="id13">
+<h3>空文字列（から・もじれつ）<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
 <p>文字が何も入っていない文字列 <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> のことを空文字列と呼びます。データの中で「欠損（データがない）」状態を表す時や、文字を消去したい時によく使います。</p>
 <p>シングルクォート（もしくはダブルクォート）で、何も囲まない場合、長さ 0 の文字列（空文字列（くうもじれつ）もしくは、空列（くうれつ））となります。 具体的には、下記のように使用します。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">blank</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
@@ -829,8 +847,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id15">
-<h3>文字列の連結とエスケープシーケンス<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<section id="id14">
+<h3>文字列の連結とエスケープシーケンス<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>連結</strong>: 文字列同士は <code class="docutils literal notranslate"><span class="pre">+</span></code> でくっつけることができます。</p></li>
 <li><p><strong>エスケープシーケンス</strong>: 改行などを表現するための特別な記号です。<code class="docutils literal notranslate"><span class="pre">\n</span></code>（バックスラッシュとn）と書くと、そこで文字が改行されます。Macの方は <code class="docutils literal notranslate"><span class="pre">Option</span> <span class="pre">+</span> <span class="pre">¥</span></code> で <code class="docutils literal notranslate"><span class="pre">\</span></code> を打てます</p></li>
@@ -846,8 +864,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id16">
-<h3>文字列の検索と比較<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<section id="id15">
+<h3>文字列の検索と比較<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>検索</strong>: <code class="docutils literal notranslate"><span class="pre">in</span></code> を使うと、その文字が含まれているか（True/False）を判定できます。</p></li>
 <li><p><strong>比較演算</strong>: <code class="docutils literal notranslate"><span class="pre">==</span></code> (等しい)、<code class="docutils literal notranslate"><span class="pre">!=</span></code> (等しくない) を使って文字列が一致するか調べます。</p></li>
@@ -878,8 +896,9 @@
 </pre></div>
 </div>
 </section>
-<section id="id17">
-<h3>文字列のメソッド（便利ツール）<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<hr class="docutils" />
+<section id="id16">
+<h3>文字列のメソッド（便利ツール）<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
 <p>文字列データには、自分自身を加工する便利なツール（メソッド）がくっついています。
 <code class="docutils literal notranslate"><span class="pre">文字列.メソッド名()</span></code> の形で使います。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;  Cafe Musashi  &quot;</span>
@@ -896,8 +915,35 @@
 </div>
 </section>
 <hr class="docutils" />
-<section id="id18">
-<h3>🚨 初心者によくある誤解 — 「変数」と「文字列」の混乱 (超重要！)<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<section id="str">
+<h3>strクラスのメソッド<a class="headerlink" href="#str" title="Link to this heading">¶</a></h3>
+<p>strクラスのメソッド</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド144.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89144.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89144.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>strクラスのformatメソッド</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド145.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89145.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89145.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>strクラスのformatメソッド</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド146.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89146.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89146.PNG" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<section id="in">
+<h3>in 演算子<a class="headerlink" href="#in" title="Link to this heading">¶</a></h3>
+<p>in 演算子</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド147.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89147.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89147.PNG" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="id17">
+<h3>🚨 初心者によくある誤解 — 「変数」と「文字列」の混乱 (超重要！)<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
 <p>初心者の皆さんが最初によくやってしまう、そしてパニックになりやすい間違いがこれです。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">&quot;coffee&quot;</span></code> ＝ クォーテーションで囲まれている。これは**「文字列（ただの文字）」**です。</p></li>
@@ -913,8 +959,212 @@
 </section>
 </section>
 <hr class="docutils" />
+<section id="id18">
+<h2>練習問題<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h2>
+<p>スライスの基本構文のおさらい</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">文字列</span><span class="p">[</span><span class="n">開始</span> <span class="p">:</span> <span class="n">終了</span> <span class="p">:</span> <span class="n">ステップ</span><span class="p">]</span>  
+</pre></div>
+</div>
+<p>※ 終了 に指定したインデックスの文字自体は含まれない（その手前まで）</p>
+<hr class="docutils" />
+<p>練習問題 1 （基礎：末尾の取得）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>文字列 text = &quot;Python&quot; から、最後の文字 &quot;n&quot; だけをスライスを使って取り出してください。
+（インデックスに負の数を使うのがポイントです）
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 1（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>負のインデックスを使うと末尾から数えられます。[-1] で最後の文字を指定できます。
+[-1:] と書くと「最後の1文字から最後まで」という意味になります。
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Python&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:])</span>  <span class="c1"># または text[-1]</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 2 （基礎：範囲指定）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>文字列 text = &quot;Hello World&quot; から、&quot;World&quot; の部分だけを取り出してください。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 2（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&quot;W&quot; はインデックス 6 です。stop（終了位置）を省略して [6:] と書くことで、
+「インデックス6から最後まで」を取り出せます。
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Hello World&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="mi">6</span><span class="p">:])</span>  <span class="c1"># または text[6:11]</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 3 （応用：1文字飛ばし）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>文字列 text = &quot;A1B2C3D4E5&quot; から、アルファベットだけを取り出して &quot;ABCDE&quot;
+ という文字列を作ってください。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 3（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[start:stop:step] の3つ目の値 step に 2 を指定すると、2文字ごとに飛び飛びで取得します。  
+先頭から始まるので [::2] と書くだけでアルファベットだけが抽出できます。
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;A1B2C3D4E5&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># または text[::2]</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 4 （応用：反転）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>文字列 text = &quot;strawberry&quot; を逆順（うしろから）にして、&quot;yrrebwarts&quot; という文字列を作ってください。
+スライスを使ってください。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 4（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>step に -1 を指定すると、後ろから前に向かって文字を取得するため、
+簡単に文字列を反転させることができます。
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;strawberry&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 5 （発展：実用的な文字列抽出）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ファイル名を表す文字列 filename = &quot;2026_report_final.pdf&quot; があります。
+スライスを使って、拡張子（.pdf）を含まないファイル名部分の &quot;2026_report_final&quot; 
+だけを取り出してください。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 5（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>.pdf は末尾の4文字（.pdf）です。[:-4] と書くことで、「先頭から、末尾4文字の手前まで」
+を取り出すことができます。
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;2026_report_final.pdf&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">filename</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
 <section id="id19">
-<h2>💻 演習課題<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h2>
+<h2>練習問題  (スライス深掘り)<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h2>
+<p>練習問題 1 （範囲の含み方）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>文字列 text = &quot;0123456789&quot; があります。
+text[2:6] を実行したとき、出力される文字列は何でしょうか？
+（※インデックスの「終了位置」がどう扱われるかがポイントです）
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 1（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>スライスでは 開始 の位置（インデックス2 → &quot;2&quot;）は含まれますが、終了 の位置（インデックス6 → &quot;6&quot;）は
+含まれません（その手前まで）。
+そのため、インデックス 2, 3, 4, 5 の要素である &quot;2345&quot; が取り出されます。
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;0123456789&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span>  <span class="c1"># &quot;2345&quot;</span>
+</pre></div>
+</div>
+<p>正解：&quot;2345&quot;</p>
+</details>
+<p>練習問題 2 （負のステップと開始・終了）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>文字列 text = &quot;ABCDEFG&quot; があります。
+text[5:1:-1] を実行したときに取得できる文字列は何でしょうか？
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 2（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ステップがマイナス（-1）のときは、右から左（後ろから前） へ移動します。  
+　開始: インデックス5 (&quot;F&quot;)  
+　終了: インデックス1 (&quot;B&quot;) の手前（＝インデックス2 の &quot;C&quot; まで）  
+したがって、F → E → D → C の順で取り出されます。  
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;ABCDEFG&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># &quot;FEDC&quot;</span>
+</pre></div>
+</div>
+<p>正解：&quot;FEDC&quot;</p>
+</details>
+<p>練習問題 3 （逆順での1文字飛ばし）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>文字列 text = &quot;123456789&quot; があります。
+スライスを使って、奇数を大きい順に並べた &quot;97531&quot; を取り出してください。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 3（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>開始・終了を省略すると、文字列全体が対象になります。
+ステップに -2 を指定することで、「末尾（&quot;9&quot;）から左に向かって2文字ずつ移動」します。
+結果として &quot;9&quot;, &quot;7&quot;, &quot;5&quot;, &quot;3&quot;, &quot;1&quot; が順番に拾われます。
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;123456789&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[::</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># &quot;97531&quot;</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 4 （範囲外のインデックス）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>文字列 text = &quot;Python&quot; があります。
+文字列の長さは6文字（インデックス 0〜5）ですが、あえて範囲を超える text[2:100] を実行するとどうなるでしょうか？
+（A〜Cから選んでください）
+
+A) エラー（IndexError）になる
+B) &quot;thon&quot; が取得できる
+C) None が返ってくる
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 4（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>通常、text[100] のように直接インデックスを指定すると IndexError になりますが、　　
+スライス操作では自動的に文字列の末尾（または先頭）で調整されます。エラーにはならず、
+安全に取れる範囲（インデックス2から最後まで）が返ってきます。
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Python&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">100</span><span class="p">])</span>  <span class="c1"># &quot;thon&quot;</span>
+</pre></div>
+</div>
+<p>正解：B (&quot;thon&quot;)</p>
+</details>
+<p>練習問題 5 （回文判定のロジック）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>与えられた文字列が、上から読んでも下から読んでも同じ「回文（かいぶん）」かどうかを
+判定する関数 is_palindrome(word) を作成してください。
+スライスを活用して 1行 で True か False を返すように書いてみましょう。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 5（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>word[::-1] で「元の文字列を反転した文字列」を作ることができます。  
+元の文字列 word と反転した文字列を == で比較するだけで、1行で回文判定が完成します！
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">is_palindrome</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">word</span> <span class="o">==</span> <span class="n">word</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># テスト</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_palindrome</span><span class="p">(</span><span class="s2">&quot;toyo&quot;</span><span class="p">))</span>  <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_palindrome</span><span class="p">(</span><span class="s2">&quot;shinbunshi&quot;</span><span class="p">))</span>  <span class="c1"># True（しんぶんし）</span>
+</pre></div>
+</div>
+</details>
+<p>※ palindrome（パリンドローム）とは、前から読んでも後ろから読んでも同じになる言葉や数字のこと</p>
+</section>
+<hr class="docutils" />
+<section id="id20">
+<h2>💻 演習課題<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h2>
 <p>それでは、今日学んだ「数値演算」と「文字列」の知識を使って、データ処理の演習に挑戦しましょう！
 エラーが出ても、一緒に原因を探せば大丈夫です。</p>
 <p>以下の <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TODO:</span> </code> の部分を書き換えて、プログラムを完成させてください。</p>
@@ -985,8 +1235,8 @@
 </div>
 </section>
 <hr class="docutils" />
-<section id="id20">
-<h2>💡 演習問題の解答例<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h2>
+<section id="id21">
+<h2>💡 演習問題の解答例<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h2>
 <p>（どうしても分からない時や、答え合わせをしたい時に展開して見てくださいね）</p>
 <details>
 <summary>👉 解答例を見る（ここをクリックして展開）</summary>
@@ -1019,11 +1269,11 @@
 </details>
 </section>
 <hr class="docutils" />
-<section id="id21">
-<h2>📚 第4回のまとめ<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h2>
-<p>計算と文字操作の基礎を学びました。どちらもデータ分析を行う上で避けては通れない、非常に強力な道具です。</p>
 <section id="id22">
-<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
+<h2>📚 第4回のまとめ<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h2>
+<p>計算と文字操作の基礎を学びました。どちらもデータ分析を行う上で避けては通れない、非常に強力な道具です。</p>
+<section id="id23">
+<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>算術演算子</strong>: <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">-</span> <span class="pre">*</span> <span class="pre">/</span></code> に加えて、商を出す <code class="docutils literal notranslate"><span class="pre">//</span></code> や、余りを出す <code class="docutils literal notranslate"><span class="pre">%</span></code> も便利！</p></li>
 <li><p><strong>インデックス</strong>: プログラミングの世界では**「0番目」から数え始める**のが鉄則。</p></li>
@@ -1101,7 +1351,7 @@
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-27</div>
+              Last updated on 2026-07-28</div>
           </div>
           <div class="right-details">
             
@@ -1141,20 +1391,23 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#id10">文字列：文字データを自由自在に操ろう</a><ul>
-<li><a class="reference internal" href="#id11">ワン・モア・ステップ</a></li>
-<li><a class="reference internal" href="#id12">文字列とインデックス</a></li>
-<li><a class="reference internal" href="#id13">文字列とスライス</a></li>
-<li><a class="reference internal" href="#id14">空文字列（から・もじれつ）</a></li>
-<li><a class="reference internal" href="#id15">文字列の連結とエスケープシーケンス</a></li>
-<li><a class="reference internal" href="#id16">文字列の検索と比較</a></li>
-<li><a class="reference internal" href="#id17">文字列のメソッド（便利ツール）</a></li>
-<li><a class="reference internal" href="#id18">🚨 初心者によくある誤解 — 「変数」と「文字列」の混乱 (超重要！)</a></li>
+<li><a class="reference internal" href="#id11">文字列とインデックス</a></li>
+<li><a class="reference internal" href="#id12">文字列とスライス</a></li>
+<li><a class="reference internal" href="#id13">空文字列（から・もじれつ）</a></li>
+<li><a class="reference internal" href="#id14">文字列の連結とエスケープシーケンス</a></li>
+<li><a class="reference internal" href="#id15">文字列の検索と比較</a></li>
+<li><a class="reference internal" href="#id16">文字列のメソッド（便利ツール）</a></li>
+<li><a class="reference internal" href="#str">strクラスのメソッド</a></li>
+<li><a class="reference internal" href="#in">in 演算子</a></li>
+<li><a class="reference internal" href="#id17">🚨 初心者によくある誤解 — 「変数」と「文字列」の混乱 (超重要！)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id19">💻 演習課題</a></li>
-<li><a class="reference internal" href="#id20">💡 演習問題の解答例</a></li>
-<li><a class="reference internal" href="#id21">📚 第4回のまとめ</a><ul>
-<li><a class="reference internal" href="#id22">✨ 今日の重要ポイントまとめ</a></li>
+<li><a class="reference internal" href="#id18">練習問題</a></li>
+<li><a class="reference internal" href="#id19">練習問題  (スライス深掘り)</a></li>
+<li><a class="reference internal" href="#id20">💻 演習課題</a></li>
+<li><a class="reference internal" href="#id21">💡 演習問題の解答例</a></li>
+<li><a class="reference internal" href="#id22">📚 第4回のまとめ</a><ul>
+<li><a class="reference internal" href="#id23">✨ 今日の重要ポイントまとめ</a></li>
 <li><a class="reference internal" href="#faq">❓ よくある質問と回答 (FAQ)</a></li>
 <li><a class="reference internal" href="#colab">🌟 Colabで試すおすすめコード</a></li>
 </ul>

@@ -32,18 +32,22 @@ https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exe
 
 まずは、今日学ぶ3つの大きなテーマの「イメージ」を掴みましょう。
 
-*   **関数（復習と応用）**: 第3回で学んだ「自動調理マシーン」です。今日は「トッピングの数を自由に選べる機能」などを追加します。
-*   **クラスとインスタンス**: クラスは**「カフェの設計図（たい焼きの型）」**、インスタンスは**「実際のカフェ店舗（焼かれたたい焼き）」**です。設計図から、いくつでもお店を作ることができます。
-*   **例外処理**: これまでエラー（バグ）が出ると、プログラムはそこで強制終了（フリーズ）していました。例外処理は、エラーが起きた時の**「安全装置（トラブル対応マニュアル）」**です。「もしエラーが起きたら、止まらずにこうしてね」と指示を出せます。
+* **関数（復習と応用）
+* **クラスとインスタンス**: クラスは「設計図」、インスタンスは「実際の実態」です。設計図から、いくつでも実際の実態を作ることができます。
+* **例外処理**: これまでエラー（バグ）が出ると、プログラムはそこで強制終了（フリーズ）していました。例外処理は、エラーが起きた時の**「安全装置（トラブル対応マニュアル）」**です。
 
 ---
 
 ## 関数を極める（引数とスコープ）
 
-第3回で、`def` を使って関数（自動計算機）を作る方法を学びました。今日はその機能をさらに拡張します。
+`def` を使って関数を作る方法を学びました。その機能をさらに拡張します。
+
+---
 
 ### 関数の復習（関数定義、引数、返値、複数の引数）
 関数には、材料である「引数（ひきすう）」を複数渡して、完成品である「返値（戻り値：return）」を受け取ることができましたね。
+
+---
 
 ### 引数の初期値とキーワード引数
 引数には、「もし何も指定されなかったら、これを基本（デフォルト）にするよ」という**初期値**を設定できます。
@@ -61,6 +65,8 @@ order_coffee(2)
 order_coffee(size="L", amount=3)
 ```
 
+---
+
 ### 可変長引数（*args）と辞書型の可変長引数（**kwargs）
 「トッピングをいくつ頼むか分からない！」という時に、引数の前に `*` (アスタリスク) をつけると、**好きな数だけ引数を受け取れる（可変長引数）**ようになります。受け取ったデータはタプルにまとまります。
 `**` を2つつけると、キーワード付きのデータを辞書として無限に受け取れます。
@@ -77,6 +83,7 @@ def order_pancake(base_menu, *toppings):
 # トッピングを3つ渡してみます
 order_pancake("プレーンパンケーキ", "チョコ", "バナナ", "ホイップ")
 ```
+---
 
 ### 変数のスコープ（ローカル / グローバル）
 変数が「どこからどこまで有効か」という縄張りのことを**スコープ**と呼びます。
@@ -95,6 +102,8 @@ def print_receipt():
 print_receipt()
 # print(tax_rate) # ←関数の外でローカル変数を呼ぼうとすると NameError になります！
 ```
+
+---
 
 ### 変数としての関数
 Pythonでは、関数そのもの（`def`で作ったもの）を、変数（箱）に入れることができます。「関数の別名」を作るようなイメージです。
@@ -127,6 +136,42 @@ Pythonの世界では、数値や文字列、リストなどすべてが「オ�
              │
   [ 🏠 実店舗 (インスタンス: tokyo_cafe) ]
      「私は東京店です。開店します！」
+```
+
+### オブジェクト指向
+
+インスタンスの管理とID
+```{figure} images/python_slides/スライド137.PNG
+:width: 70%
+```
+
+代入の正確なイメージ
+```{figure} images/python_slides/スライド138.PNG
+:width: 70%
+```
+
+代入の正確なイメージ
+```{figure} images/python_slides/スライド139.PNG
+:width: 70%
+```
+
+インスタンスの同値性と同一性
+```{figure} images/python_slides/スライド140.PNG
+:width: 70%
+```
+
+---
+
+### クラスの基本
+
+クラスとインスタンスとメソッド
+```{figure} images/python_slides/スライド141.PNG
+:width: 70%
+```
+
+メソッドの呼び出し
+```{figure} images/python_slides/スライド143.PNG
+:width: 70%
 ```
 
 *   **クラス**: 設計図です。`class` というキーワードで作ります。
@@ -163,7 +208,110 @@ tokyo_cafe.open_shop()
 osaka_cafe.open_shop()
 ```
 
-データ分析では、自分でクラスを作ることは最初は少ないかもしれませんが、「pandas」などの強力なツールを使うとき、実は裏側でこの「クラスとインスタンス」の仕組みがバリバリ動いています。この概念を知っておくと、ツールの使い方がとてもスムーズに理解できますよ。
+---
+
+クラスとは
+```{figure} images/python_slides/スライド226.PNG
+:width: 70%
+```
+
+これから扱うクラスとインスタンスの例
+```{figure} images/python_slides/スライド227.PNG
+:width: 70%
+```
+
+クラスの定義
+```{figure} images/python_slides/スライド228.PNG
+:width: 70%
+```
+
+初期化メソッド
+```{figure} images/python_slides/スライド229.PNG
+:width: 70%
+```
+
+インスタンス変数
+```{figure} images/python_slides/スライド230.PNG
+:width: 70%
+```
+
+インスタンス変数の参照
+```{figure} images/python_slides/スライド231.PNG
+:width: 70%
+```
+
+初期化メソッドの引数
+```{figure} images/python_slides/スライド232.PNG
+:width: 70%
+```
+
+クラス変数とインスタンス変数
+```{figure} images/python_slides/スライド233.PNG
+:width: 70%
+```
+
+---
+
+#### メソッドの定義
+
+これから扱うクラスとインスタンスの例
+```{figure} images/python_slides/スライド235.PNG
+:width: 70%
+```
+
+メソッド
+```{figure} images/python_slides/スライド236.PNG
+:width: 70%
+```
+
+クラスメソッド
+```{figure} images/python_slides/スライド237.PNG
+:width: 70%
+```
+
+オリジナルのクラスをモジュールとして利用する
+```{figure} images/python_slides/スライド238.PNG
+:width: 70%
+```
+
+__name__変数
+```{figure} images/python_slides/スライド239.PNG
+:width: 70%
+```
+
+---
+
+#### 継承
+
+継承
+```{figure} images/python_slides/スライド241.PNG
+:width: 70%
+```
+
+Python の継承
+```{figure} images/python_slides/スライド242.PNG
+:width: 70%
+```
+
+継承のしかた
+```{figure} images/python_slides/スライド243.PNG
+:width: 70%
+```
+
+インスタンス変数とメソッドの継承
+```{figure} images/python_slides/スライド244.PNG
+:width: 70%
+```
+
+メソッドのオーバーライド
+```{figure} images/python_slides/スライド245.PNG
+:width: 70%
+```
+
+親クラスのメソッドの呼び出し
+```{figure} images/python_slides/スライド246.PNG
+:width: 70%
+```
 
 ---
 
@@ -178,6 +326,31 @@ osaka_cafe.open_shop()
 *   **`else`**: エラーが起きず、無事に成功した時だけ実行します。
 *   **`finally`**: エラーが起きても起きなくても、絶対に最後に実行します（お片付け用）。
 
+---
+
+例外
+```{figure} images/python_slides/スライド265.PNG
+:width: 70%
+```
+
+例外処理
+```{figure} images/python_slides/スライド266.PNG
+:width: 70%
+```
+
+例外の種類による処理の切り替え
+```{figure} images/python_slides/スライド267.PNG
+:width: 70%
+```
+
+例外が発生しなかった場合の処理
+```{figure} images/python_slides/スライド268.PNG
+:width: 70%
+```
+
+---
+
+例外処理の基本
 ```
 # 例外処理の基本
 def divide_sales(sales, people):
@@ -206,6 +379,9 @@ print("1人あたり:", divide_sales(1000, 2), "円\n")
 # 異常なデータ（人数が0人！ 普通ならプログラムがクラッシュします）
 print("1人あたり:", divide_sales(1000, 0), "円")
 ```
+
+
+---
 
 ### raise（意図的にエラーを起こす）
 データがおかしい時に、「そのまま進むと危険だ！」と判断して、自分で意図的にエラーを発生させる（警告ブザーを鳴らす）こともできます。それが `raise` です。

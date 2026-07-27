@@ -819,26 +819,6 @@ Pythonには、用途に合わせて様々な「まとめ方（データ構造�
 </figure>
 </section>
 <hr class="docutils" />
-<section id="id12">
-<h2>スライス式<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
-<figure class="align-default">
-<a class="reference internal image-reference" href="../../../_images/スライド172.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89172.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89172.PNG" style="width: 70%;" />
-</a>
-</figure>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Python&#39;</span> 
-<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
-<span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> 
-<span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Python&#39;</span> 
-<span class="n">a</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
-<span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> 
-<span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
-</pre></div>
-</div>
-</section>
-<hr class="docutils" />
 <section id="for">
 <h2>for文による繰り返しとデータ構造<a class="headerlink" href="#for" title="Link to this heading">¶</a></h2>
 <p><strong>※この内容は第8回で詳しくやりますが、データ構造と相性が抜群なので少しだけ紹介します！</strong></p>
@@ -861,8 +841,8 @@ Pythonには、用途に合わせて様々な「まとめ方（データ構造�
 </div>
 </section>
 <hr class="docutils" />
-<section id="id13">
-<h2>💻 演習課題<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
+<section id="id12">
+<h2>💻 演習課題<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
 <p>今日学んだリストと辞書を使って、カフェのデータ処理ツールを作ってみましょう。
 エラーが出ても大丈夫。「あれ、丸括弧だっけ？角括弧だっけ？」と迷ったら、図解を見直してみてくださいね。</p>
 <p>以下の <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TODO:</span> </code> の部分を書き換えて、プログラムを完成させてください。</p>
@@ -948,8 +928,8 @@ Pythonには、用途に合わせて様々な「まとめ方（データ構造�
 </div>
 </section>
 <hr class="docutils" />
-<section id="id14">
-<h2>💡 演習問題の解答例<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
+<section id="id13">
+<h2>💡 演習問題の解答例<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
 <p>（どうしても分からない時や、答え合わせをしたい時に展開して見てくださいね。）</p>
 <details>
 <summary>👉 解答例を見る（ここをクリックして展開）</summary>
@@ -981,10 +961,10 @@ Pythonには、用途に合わせて様々な「まとめ方（データ構造�
 </details>
 </section>
 <hr class="docutils" />
+<section id="id14">
+<h2>📚 第5回のまとめ<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
 <section id="id15">
-<h2>📚 第5回のまとめ<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
-<section id="id16">
-<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>リスト <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code></strong>: 順番のあるデータの集まり。インデックスで取り出し、<code class="docutils literal notranslate"><span class="pre">append</span></code> で追加。（ミュータブル＝変更可能）</p></li>
 <li><p><strong>タプル <code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">)</span></code></strong>: 変更してはいけないデータの集まり。（イミュータブル＝変更不可能）</p></li>
@@ -1067,7 +1047,7 @@ print(&quot;本日の合計売上は&quot;, total_sales, &quot;円です！&quot
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-27</div>
+              Last updated on 2026-07-28</div>
           </div>
           <div class="right-details">
             
@@ -1113,12 +1093,11 @@ print(&quot;本日の合計売上は&quot;, total_sales, &quot;円です！&quot
 </li>
 <li><a class="reference internal" href="#set">set（セット）の特徴と活用</a></li>
 <li><a class="reference internal" href="#id11">イミュータブル</a></li>
-<li><a class="reference internal" href="#id12">スライス式</a></li>
 <li><a class="reference internal" href="#for">for文による繰り返しとデータ構造</a></li>
-<li><a class="reference internal" href="#id13">💻 演習課題</a></li>
-<li><a class="reference internal" href="#id14">💡 演習問題の解答例</a></li>
-<li><a class="reference internal" href="#id15">📚 第5回のまとめ</a><ul>
-<li><a class="reference internal" href="#id16">✨ 今日の重要ポイントまとめ</a></li>
+<li><a class="reference internal" href="#id12">💻 演習課題</a></li>
+<li><a class="reference internal" href="#id13">💡 演習問題の解答例</a></li>
+<li><a class="reference internal" href="#id14">📚 第5回のまとめ</a><ul>
+<li><a class="reference internal" href="#id15">✨ 今日の重要ポイントまとめ</a></li>
 <li><a class="reference internal" href="#faq">❓ よくある質問と回答 (FAQ)</a></li>
 <li><a class="reference internal" href="#colab">🌟 Colabで試すおすすめコード</a></li>
 </ul>

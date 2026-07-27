@@ -43,11 +43,23 @@ https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exe
 
 ---
 
+
 ## for文とrange()関数：回数が決まっている繰り返し
 
 ### for文による繰り返しと `in`
 
 `for`文は、「リストや文字列などの箱から、データを1つずつ取り出して処理する」魔法の言葉です。`in` の右側に箱を書き、左側に取り出したデータを入れる一時的な変数名を書きます。
+
+
+for文による処理の繰り返し
+```{figure} images/python_slides/スライド115.PNG
+:width: 70%
+```
+
+for 文の処理の流れ
+```{figure} images/python_slides/スライド116.PNG
+:width: 70%
+```
 
 ```
 # for文によるリストの繰り返し
@@ -62,9 +74,34 @@ for char in "CAFE":
     print("文字:", char)
 ```
 
+---
+
 ### range()関数による回数指定
 
 「10回繰り返したい！」という時に、わざわざ `[1, 2, 3...10]` とリストを作るのは大変です。そこで便利なのが、**整理券を発行してくれる `range()` 関数**です。`range(開始, 終了)` で作ります（※終了の数字は含まれません！）。これをリスト化することもできます。
+
+rangeオブジェクト
+```{figure} images/python_slides/スライド117.PNG
+:width: 70%
+```
+
+range オブジェクト
+```{figure} images/python_slides/スライド118.PNG
+:width: 70%
+```
+
+```
+list(raange(10))
+list(raange(3,10))
+list(raange(1, 30, 10))
+```
+
+```
+for i in range(100, 201, 5):
+    print(i)
+```
+
+---
 
 ### enumerate()：番号札付きで取り出す
 
@@ -85,13 +122,57 @@ for index, item in enumerate(menu):
     print(index, "番目のメニューは", item, "です。")
 ```
 
-### for文による繰り返しと辞書
-第5回で学んだ「辞書（メニュー表）」もfor文で回せます。`.keys()`, `.values()`, `.items()` を使い分けましょう。
+---
 
-### for文の入れ子と計算量
+### for文による繰り返しと辞書
+辞書もfor文で回せます。`.keys()`, `.values()`, `.items()` を使い分けましょう。
+
+使い分けのポイント
+| メソッド        | 取り出せるデータ            | 主な用途                                               |
+| -------------- | -------------------------- | -------------------------------------------------------|
+| menu.keys()    | キーのみ（"コーヒー", ...） | 商品名や登録データの一覧を出力したいとき                   |
+| menu.values()  | 値のみ（400, ...）         | 合計金額の計算（sum(menu.values())）や平均値を出したいとき |
+| menu.items()   | キーと値のペア             | 画面に「名前: 値」の形式でセット表示したいとき              |
+
+```
+# メニュー表の辞書（キー: 商品名, 値: 価格）
+menu = {"コーヒー": 400, "紅茶": 450, "カフェラテ": 500, "ケーキ": 600}
+```
+
+```
+# キー（商品名）だけを取り出す: .keys()
+print("--- [メニュー一覧] ---")
+# ※ .keys() は省略して `for item in menu:` と書いても同じ動作になります
+for item in menu.keys():
+    print(f"・{item}")
+```
+
+```
+# 値（価格）だけを取り出す: .values()
+print("\n--- [価格リスト] ---")
+for price in menu.values():
+    print(f"{price}円")
+```
+
+```
+# キーと値（商品名と価格）を同時に取り出す: .items()  ★一番よく使います！
+print("\n--- [メニュー表（全データ）] ---")
+# 2つの変数（item, price）で同時に受け取るのがポイントです
+for item, price in menu.items():
+    print(f"{item}: {price}円")
+```
+
+---
+
+#### for文の入れ子と計算量
 
 for文の中にさらにfor文を書く（入れ子）こともできます。ただし注意点があります！
-例えば、1000人の顧客リストと、1000個の商品リストを入れ子で回すと、「1000 × 1000 = 100万回」の処理が行われます。データが増えると急激に時間がかかるようになるため、これをプロの世界では**「計算量が大きい（O(N^2)の計算量）」**と言って警戒します。
+例えば、1000人の顧客リストと、1000個の商品リストを入れ子で回すと、「1000 × 1000 = 100万回」の処理が行われます。データが増えると急激に時間がかかるようになるため、これは**「計算量が大きい（O(N^2)の計算量）」**と言って警戒します。
+
+ループ処理のネスト
+```{figure} images/python_slides/スライド121.PNG
+:width: 70%
+```
 
 ```
 # 辞書の繰り返し
@@ -108,7 +189,7 @@ for i in range(1, 3):
 
 ---
 
-## while文と制御の流れを変える魔法 (約10分)
+## while文と制御の流れを変える魔法
 
 ### while文による繰り返し
 `for` 文が「回数や個数が決まっている」時に使うのに対し、**`while` 文は「条件を満たしている間はずっと繰り返す」**時に使います。
@@ -116,13 +197,105 @@ for i in range(1, 3):
 🚨 **【初心者の落とし穴：無限ループ】**
 while文で一番多いエラー（バグ）が、条件が一生Falseにならずに永遠に処理が止まらなくなる「無限ループ」です。もしコードを実行して星マーク `[*]` がずっと消えなかったら、左上の停止ボタン（■）を押して強制終了してください！
 
+### while文による処理の繰り返し
+
+while文による処理の繰り返し
+```{figure} images/python_slides/スライド112.PNG
+:width: 70%
+```
+
+処理の流れ
+```{figure} images/python_slides/スライド113.PNG
+:width: 70%
+```
+
+while文の例
+```{figure} images/python_slides/スライド114.PNG
+:width: 70%
+```
+
 ### break と continue と pass
-*   **`break`**: 繰り返しを「強制終了（店じまい）」します。
-*   **`continue`**: 今の処理だけスキップして、「次のお客様（次のループ）」へ進みます。
-*   **`pass`**: 「とりあえず何もしない」という目印です。後でコードを書く予定の場所に置きます。
+* **`break`**: 繰り返しを「強制終了」します。
+* **`continue`**: 今の処理だけスキップして、「次のループ」へ進みます。
+* **`pass`**: 「とりあえず何もしない」という目印です。
+
+ループ処理の流れの変更(break)
+```{figure} images/python_slides/スライド119.PNG
+:width: 70%
+```
+
+ループ処理の流れの変更(continue)
+```{figure} images/python_slides/スライド120.PNG
+:width: 70%
+```
+
+passの例
+```
+if a == 0:
+    print("OK")
+else:
+    pass
+```
+
+---
 
 ### for文とwhile文における else
 Python特有の機能として、ループが**「breakされずに最後まで無事に完走した時だけ実行される else」**を書くことができます。
+
+```text
+for / while (繰り返し処理)
+   │
+   ├── [条件合致] ──> break (途中脱出) ──> ［elseブロックを飛ばして終了］
+   │
+   └── [完走] ───────> 繰り返し終了  ──> ［elseブロックを実行！］
+
+「break ＝ else をキャンセルするコマンド」 と捉えるともいえる。
+```
+
+
+for文の例
+```
+numbers = [1, 3, 5, 7, 9]
+target = 4
+
+# 偶数が含まれているか探す
+for num in numbers:
+    if num % 2 == 0:
+        print(f"偶数 {num} を見つけました！")
+        break
+else:
+    # break されずにループが最後まで到達した場合のみ実行される
+    print("リスト内に偶数は見つかりませんでした。")
+
+# 出力結果:
+# リスト内に偶数は見つかりませんでした。
+```
+
+while文の例
+```
+import random
+
+attempts = 0
+max_attempts = 3
+success = False
+
+# 最大3回までチャレンジするループ
+while attempts < max_attempts:
+    attempts += 1
+    print(f"{attempts} 回目の接続試行中...")
+
+    # 50%の確率で成功させるダミー処理
+    if random.choice([True, False]):
+        print(" -> 接続に成功しました！")
+        success = True
+        break  # 成功したのでループを抜ける（elseは実行されない）
+
+    print(" -> 失敗しました。")
+else:
+    # 3回とも失敗して while の条件式（attempts < max_attempts）が False になり完走した場合
+    print("エラー: 規定回数内に接続できませんでした。")
+```
+
 
 ### 制御構造とreturn文
 関数（def）の中で `return` が実行されると、その時点でfor文やwhile文もすべて強制終了して結果を返します。
@@ -150,6 +323,67 @@ for i in range(3):
 else:
     print("ループがエラーや中断なく、無事に最後まで完了しました！")
 ```
+
+---
+
+## 練習問題
+
+練習問題 3-1
+```text
+10から20までの整数を順番に足し合わせて、その結果を出力するプログラムを作ってください。
+ただし、while文を使った場合とfor文を使った場合の2つのプログラムコードを作成してください。
+```
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+
+練習問題 3-1（解答）
+```
+# while 文
+total = 0
+i = 10
+while i < 21:
+    total += i
+    i += 1
+print(total)
+```
+
+```
+# for 文
+total = 0
+for i in range(10, 21):
+    total += i
+print(total)
+```
+</details>
+
+練習問題 3-2
+```text
+問題3-1で作成したfor文を使ったプログラムコードに対して、15だけは足し合わせしないように、変更してください。  
+ただし、continue 命令を使ってください。
+```
+```
+# for 文
+total = 0
+for i in range(10, 21):
+    total += i
+print(total)
+```
+
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+
+練習問題 3-2（解答）
+```
+# for 文
+total = 0
+for i in range(10, 21):
+    if i == 15:
+        continue
+    total += i
+print(total)
+```
+</details>
+
 
 ---
 

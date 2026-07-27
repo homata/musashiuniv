@@ -392,6 +392,16 @@
 <section id="for-in">
 <h3>for文による繰り返しと <code class="docutils literal notranslate"><span class="pre">in</span></code><a class="headerlink" href="#for-in" title="Link to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">for</span></code>文は、「リストや文字列などの箱から、データを1つずつ取り出して処理する」魔法の言葉です。<code class="docutils literal notranslate"><span class="pre">in</span></code> の右側に箱を書き、左側に取り出したデータを入れる一時的な変数名を書きます。</p>
+<p>for文による処理の繰り返し</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド115.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89115.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89115.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>for 文の処理の流れ</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド116.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89116.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89116.PNG" style="width: 70%;" />
+</a>
+</figure>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># for文によるリストの繰り返し</span>
 <span class="n">sales_list</span> <span class="o">=</span>  <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">]</span>  <span class="c1"># コーヒー、ケーキ、紅茶の売上</span>
 
@@ -405,10 +415,31 @@
 </pre></div>
 </div>
 </section>
+<hr class="docutils" />
 <section id="range">
 <h3>range()関数による回数指定<a class="headerlink" href="#range" title="Link to this heading">¶</a></h3>
 <p>「10回繰り返したい！」という時に、わざわざ <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3...10]</span></code> とリストを作るのは大変です。そこで便利なのが、<strong>整理券を発行してくれる <code class="docutils literal notranslate"><span class="pre">range()</span></code> 関数</strong>です。<code class="docutils literal notranslate"><span class="pre">range(開始,</span> <span class="pre">終了)</span></code> で作ります（※終了の数字は含まれません！）。これをリスト化することもできます。</p>
+<p>rangeオブジェクト</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド117.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89117.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89117.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>range オブジェクト</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド118.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89118.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89118.PNG" style="width: 70%;" />
+</a>
+</figure>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">raange</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">raange</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">raange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">201</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
+<hr class="docutils" />
 <section id="enumerate">
 <h3>enumerate()：番号札付きで取り出す<a class="headerlink" href="#enumerate" title="Link to this heading">¶</a></h3>
 <p>「いま何番目のデータか？」というインデックス番号も一緒に欲しい時は、<code class="docutils literal notranslate"><span class="pre">enumerate()</span></code>（エニュメレイト）を使います。データ分析で「3行目のデータでおかしくなったぞ？」と探す時に大活躍します。</p>
@@ -427,14 +458,69 @@
 </pre></div>
 </div>
 </section>
+<hr class="docutils" />
 <section id="for">
 <h3>for文による繰り返しと辞書<a class="headerlink" href="#for" title="Link to this heading">¶</a></h3>
-<p>第5回で学んだ「辞書（メニュー表）」もfor文で回せます。<code class="docutils literal notranslate"><span class="pre">.keys()</span></code>, <code class="docutils literal notranslate"><span class="pre">.values()</span></code>, <code class="docutils literal notranslate"><span class="pre">.items()</span></code> を使い分けましょう。</p>
-</section>
+<p>辞書もfor文で回せます。<code class="docutils literal notranslate"><span class="pre">.keys()</span></code>, <code class="docutils literal notranslate"><span class="pre">.values()</span></code>, <code class="docutils literal notranslate"><span class="pre">.items()</span></code> を使い分けましょう。</p>
+<p>使い分けのポイント</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>メソッド</p></th>
+<th class="head"><p>取り出せるデータ</p></th>
+<th class="head"><p>主な用途</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>menu.keys()</p></td>
+<td><p>キーのみ（&quot;コーヒー&quot;, ...）</p></td>
+<td><p>商品名や登録データの一覧を出力したいとき</p></td>
+</tr>
+<tr class="row-odd"><td><p>menu.values()</p></td>
+<td><p>値のみ（400, ...）</p></td>
+<td><p>合計金額の計算（sum(menu.values())）や平均値を出したいとき</p></td>
+</tr>
+<tr class="row-even"><td><p>menu.items()</p></td>
+<td><p>キーと値のペア</p></td>
+<td><p>画面に「名前: 値」の形式でセット表示したいとき</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># メニュー表の辞書（キー: 商品名, 値: 価格）</span>
+<span class="n">menu</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;コーヒー&quot;</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span> <span class="s2">&quot;紅茶&quot;</span><span class="p">:</span> <span class="mi">450</span><span class="p">,</span> <span class="s2">&quot;カフェラテ&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">&quot;ケーキ&quot;</span><span class="p">:</span> <span class="mi">600</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># キー（商品名）だけを取り出す: .keys()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- [メニュー一覧] ---&quot;</span><span class="p">)</span>
+<span class="c1"># ※ .keys() は省略して `for item in menu:` と書いても同じ動作になります</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">menu</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;・</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 値（価格）だけを取り出す: .values()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- [価格リスト] ---&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">price</span> <span class="ow">in</span> <span class="n">menu</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">price</span><span class="si">}</span><span class="s2">円&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># キーと値（商品名と価格）を同時に取り出す: .items()  ★一番よく使います！</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- [メニュー表（全データ）] ---&quot;</span><span class="p">)</span>
+<span class="c1"># 2つの変数（item, price）で同時に受け取るのがポイントです</span>
+<span class="k">for</span> <span class="n">item</span><span class="p">,</span> <span class="n">price</span> <span class="ow">in</span> <span class="n">menu</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">price</span><span class="si">}</span><span class="s2">円&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
 <section id="id4">
-<h3>for文の入れ子と計算量<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<h4>for文の入れ子と計算量<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
 <p>for文の中にさらにfor文を書く（入れ子）こともできます。ただし注意点があります！
-例えば、1000人の顧客リストと、1000個の商品リストを入れ子で回すと、「1000 × 1000 = 100万回」の処理が行われます。データが増えると急激に時間がかかるようになるため、これをプロの世界では**「計算量が大きい（O(N^2)の計算量）」**と言って警戒します。</p>
+例えば、1000人の顧客リストと、1000個の商品リストを入れ子で回すと、「1000 × 1000 = 100万回」の処理が行われます。データが増えると急激に時間がかかるようになるため、これは**「計算量が大きい（O(N^2)の計算量）」**と言って警戒します。</p>
+<p>ループ処理のネスト</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド121.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89121.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89121.PNG" style="width: 70%;" />
+</a>
+</figure>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 辞書の繰り返し</span>
 <span class="n">prices</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;コーヒー&quot;</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span> <span class="s2">&quot;紅茶&quot;</span><span class="p">:</span> <span class="mi">400</span><span class="p">}</span>
 <span class="c1"># .items() を使うと、キーと値を両方一気に取り出せます</span>
@@ -449,26 +535,113 @@
 </div>
 </section>
 </section>
+</section>
 <hr class="docutils" />
-<section id="while-10">
-<h2>while文と制御の流れを変える魔法 (約10分)<a class="headerlink" href="#while-10" title="Link to this heading">¶</a></h2>
 <section id="while">
-<h3>while文による繰り返し<a class="headerlink" href="#while" title="Link to this heading">¶</a></h3>
+<h2>while文と制御の流れを変える魔法<a class="headerlink" href="#while" title="Link to this heading">¶</a></h2>
+<section id="id5">
+<h3>while文による繰り返し<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">for</span></code> 文が「回数や個数が決まっている」時に使うのに対し、**<code class="docutils literal notranslate"><span class="pre">while</span></code> 文は「条件を満たしている間はずっと繰り返す」**時に使います。</p>
 <p>🚨 <strong>【初心者の落とし穴：無限ループ】</strong>
 while文で一番多いエラー（バグ）が、条件が一生Falseにならずに永遠に処理が止まらなくなる「無限ループ」です。もしコードを実行して星マーク <code class="docutils literal notranslate"><span class="pre">[*]</span></code> がずっと消えなかったら、左上の停止ボタン（■）を押して強制終了してください！</p>
 </section>
+<section id="id6">
+<h3>while文による処理の繰り返し<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<p>while文による処理の繰り返し</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド112.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89112.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89112.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>処理の流れ</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド113.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89113.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89113.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>while文の例</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド114.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89114.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89114.PNG" style="width: 70%;" />
+</a>
+</figure>
+</section>
 <section id="break-continue-pass">
 <h3>break と continue と pass<a class="headerlink" href="#break-continue-pass" title="Link to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">break</span></code></strong>: 繰り返しを「強制終了（店じまい）」します。</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">continue</span></code></strong>: 今の処理だけスキップして、「次のお客様（次のループ）」へ進みます。</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">pass</span></code></strong>: 「とりあえず何もしない」という目印です。後でコードを書く予定の場所に置きます。</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">break</span></code></strong>: 繰り返しを「強制終了」します。</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">continue</span></code></strong>: 今の処理だけスキップして、「次のループ」へ進みます。</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">pass</span></code></strong>: 「とりあえず何もしない」という目印です。</p></li>
 </ul>
+<p>ループ処理の流れの変更(break)</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド119.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89119.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89119.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>ループ処理の流れの変更(continue)</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド120.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89120.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89120.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>passの例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
 </section>
+<hr class="docutils" />
 <section id="forwhile-else">
 <h3>for文とwhile文における else<a class="headerlink" href="#forwhile-else" title="Link to this heading">¶</a></h3>
 <p>Python特有の機能として、ループが**「breakされずに最後まで無事に完走した時だけ実行される else」**を書くことができます。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>for / while (繰り返し処理)
+   │
+   ├── [条件合致] ──&gt; break (途中脱出) ──&gt; ［elseブロックを飛ばして終了］
+   │
+   └── [完走] ───────&gt; 繰り返し終了  ──&gt; ［elseブロックを実行！］
+
+「break ＝ else をキャンセルするコマンド」 と捉えるともいえる。
+</pre></div>
+</div>
+<p>for文の例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="n">target</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="c1"># 偶数が含まれているか探す</span>
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;偶数 </span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s2"> を見つけました！&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># break されずにループが最後まで到達した場合のみ実行される</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;リスト内に偶数は見つかりませんでした。&quot;</span><span class="p">)</span>
+
+<span class="c1"># 出力結果:</span>
+<span class="c1"># リスト内に偶数は見つかりませんでした。</span>
+</pre></div>
+</div>
+<p>while文の例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="n">attempts</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">max_attempts</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># 最大3回までチャレンジするループ</span>
+<span class="k">while</span> <span class="n">attempts</span> <span class="o">&lt;</span> <span class="n">max_attempts</span><span class="p">:</span>
+    <span class="n">attempts</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">attempts</span><span class="si">}</span><span class="s2"> 回目の接続試行中...&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 50%の確率で成功させるダミー処理</span>
+    <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; -&gt; 接続に成功しました！&quot;</span><span class="p">)</span>
+        <span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">break</span>  <span class="c1"># 成功したのでループを抜ける（elseは実行されない）</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; -&gt; 失敗しました。&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># 3回とも失敗して while の条件式（attempts &lt; max_attempts）が False になり完走した場合</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;エラー: 規定回数内に接続できませんでした。&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 <section id="return">
 <h3>制御構造とreturn文<a class="headerlink" href="#return" title="Link to this heading">¶</a></h3>
@@ -499,8 +672,62 @@ while文で一番多いエラー（バグ）が、条件が一生Falseになら�
 </section>
 </section>
 <hr class="docutils" />
-<section id="id5">
-<h2>イテラブルとイテレータ（繰り返しの裏側）<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<section id="id7">
+<h2>練習問題<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<p>練習問題 3-1</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>10から20までの整数を順番に足し合わせて、その結果を出力するプログラムを作ってください。
+ただし、while文を使った場合とfor文を使った場合の2つのプログラムコードを作成してください。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 3-1（解答）</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># while 文</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">21</span><span class="p">:</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">i</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># for 文</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">21</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">i</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 3-2</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>問題3-1で作成したfor文を使ったプログラムコードに対して、15だけは足し合わせしないように、変更してください。  
+ただし、continue 命令を使ってください。
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># for 文</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">21</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">i</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 3-2（解答）</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># for 文</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">21</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">15</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">i</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id8">
+<h2>イテラブルとイテレータ（繰り返しの裏側）<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
 <p>ここは少しだけ高度な、Pythonの裏側の仕組みのお話です。「for文ってどうして中身を順番に取り出せるの？」という疑問の答えです。</p>
 <ul class="simple">
 <li><p><strong>イテラブル (Iterable)</strong>: 「順番に取り出せる箱」のこと。（例：リスト、文字列、辞書）</p></li>
@@ -529,20 +756,20 @@ while文で一番多いエラー（バグ）が、条件が一生Falseになら�
 </div>
 </section>
 <hr class="docutils" />
-<section id="id6">
-<h2>内包表記（リストや辞書を美しく作る）<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<section id="id9">
+<h2>内包表記（リストや辞書を美しく作る）<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
 <p>データ分析では、「古いリストに処理をして、新しいリストを作る」ことが頻繁にあります。
 これを1行でスッキリ書けるのが**「内包表記（ないほうひょうき）」**です。少し暗号みたいに見えますが、慣れると手放せなくなりますよ！</p>
-<section id="id7">
-<h3>リスト内包表記<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<section id="id10">
+<h3>リスト内包表記<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">計算式</span> <span class="pre">for</span> <span class="pre">変数</span> <span class="pre">in</span> <span class="pre">イテラブル</span> <span class="pre">]</span></code> という書き方をします。</p>
 </section>
-<section id="id8">
-<h3>条件付き内包表記<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<section id="id11">
+<h3>条件付き内包表記<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">計算式</span> <span class="pre">for</span> <span class="pre">変数</span> <span class="pre">in</span> <span class="pre">イテラブル</span> <span class="pre">if</span> <span class="pre">条件</span> <span class="pre">]</span></code> と書くと、条件に合ったものだけを抽出できます！</p>
 </section>
-<section id="id9">
-<h3>セット・辞書内包表記 / ジェネレータ式<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<section id="id12">
+<h3>セット・辞書内包表記 / ジェネレータ式<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
 <p>カッコを <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code> に変えるとセットや辞書が作れます。丸カッコ <code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">)</span></code> にすると、メモリを節約できる「ジェネレータ式（イテレータの一種）」というものが作れます。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 通常のfor文で税込み価格のリストを作る場合</span>
 <span class="n">prices</span> <span class="o">=</span> 
@@ -570,8 +797,8 @@ while文で一番多いエラー（バグ）が、条件が一生Falseになら�
 </section>
 </section>
 <hr class="docutils" />
-<section id="id10">
-<h2>💻 演習課題<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<section id="id13">
+<h2>💻 演習課題<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
 <p>もし無限ループに入ってしまったら、焦らず左上の「■」ボタンを押してくださいね。</p>
 <p>以下の <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TODO:</span> </code> の部分を書き換えて、プログラムを完成させてください。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習1: for文とrangeによる繰り返し（難易度：易）</span>
@@ -654,8 +881,8 @@ while文で一番多いエラー（バグ）が、条件が一生Falseになら�
 </div>
 </section>
 <hr class="docutils" />
-<section id="id11">
-<h2>💡 演習問題の解答例<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<section id="id14">
+<h2>💡 演習問題の解答例<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
 <p>（どうしても分からない時は展開して見てくださいね。内包表記は最初は呪文に見えますが、必ず慣れます！）</p>
 <details>
 <summary>👉 解答例を見る（ここをクリックして展開）</summary>
@@ -694,11 +921,11 @@ while文で一番多いエラー（バグ）が、条件が一生Falseになら�
 </details>
 </section>
 <hr class="docutils" />
-<section id="id12">
-<h2>📚 第8回のまとめ<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
+<section id="id15">
+<h2>📚 第8回のまとめ<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
 <p>「データを一気に処理する」ための強力な道具です。データ分析の現場で必ず役立ちます。</p>
-<section id="id13">
-<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<section id="id16">
+<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>for文とrange</strong>: 何度も同じことを繰り返す時の基本。<code class="docutils literal notranslate"><span class="pre">enumerate</span></code> で番号札も取れる。</p></li>
 <li><p><strong>break と continue</strong>: 繰り返しを「強制終了」するか、「今回はスキップ」するか自由に操れる。</p></li>
@@ -777,7 +1004,7 @@ while文で一番多いエラー（バグ）が、条件が一生Falseになら�
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-27</div>
+              Last updated on 2026-07-28</div>
           </div>
           <div class="right-details">
             
@@ -808,28 +1035,32 @@ while文で一番多いエラー（バグ）が、条件が一生Falseになら�
 <li><a class="reference internal" href="#for-in">for文による繰り返しと <code class="docutils literal notranslate"><span class="pre">in</span></code></a></li>
 <li><a class="reference internal" href="#range">range()関数による回数指定</a></li>
 <li><a class="reference internal" href="#enumerate">enumerate()：番号札付きで取り出す</a></li>
-<li><a class="reference internal" href="#for">for文による繰り返しと辞書</a></li>
+<li><a class="reference internal" href="#for">for文による繰り返しと辞書</a><ul>
 <li><a class="reference internal" href="#id4">for文の入れ子と計算量</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#while-10">while文と制御の流れを変える魔法 (約10分)</a><ul>
-<li><a class="reference internal" href="#while">while文による繰り返し</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#while">while文と制御の流れを変える魔法</a><ul>
+<li><a class="reference internal" href="#id5">while文による繰り返し</a></li>
+<li><a class="reference internal" href="#id6">while文による処理の繰り返し</a></li>
 <li><a class="reference internal" href="#break-continue-pass">break と continue と pass</a></li>
 <li><a class="reference internal" href="#forwhile-else">for文とwhile文における else</a></li>
 <li><a class="reference internal" href="#return">制御構造とreturn文</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id5">イテラブルとイテレータ（繰り返しの裏側）</a></li>
-<li><a class="reference internal" href="#id6">内包表記（リストや辞書を美しく作る）</a><ul>
-<li><a class="reference internal" href="#id7">リスト内包表記</a></li>
-<li><a class="reference internal" href="#id8">条件付き内包表記</a></li>
-<li><a class="reference internal" href="#id9">セット・辞書内包表記 / ジェネレータ式</a></li>
+<li><a class="reference internal" href="#id7">練習問題</a></li>
+<li><a class="reference internal" href="#id8">イテラブルとイテレータ（繰り返しの裏側）</a></li>
+<li><a class="reference internal" href="#id9">内包表記（リストや辞書を美しく作る）</a><ul>
+<li><a class="reference internal" href="#id10">リスト内包表記</a></li>
+<li><a class="reference internal" href="#id11">条件付き内包表記</a></li>
+<li><a class="reference internal" href="#id12">セット・辞書内包表記 / ジェネレータ式</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id10">💻 演習課題</a></li>
-<li><a class="reference internal" href="#id11">💡 演習問題の解答例</a></li>
-<li><a class="reference internal" href="#id12">📚 第8回のまとめ</a><ul>
-<li><a class="reference internal" href="#id13">✨ 今日の重要ポイントまとめ</a></li>
+<li><a class="reference internal" href="#id13">💻 演習課題</a></li>
+<li><a class="reference internal" href="#id14">💡 演習問題の解答例</a></li>
+<li><a class="reference internal" href="#id15">📚 第8回のまとめ</a><ul>
+<li><a class="reference internal" href="#id16">✨ 今日の重要ポイントまとめ</a></li>
 <li><a class="reference internal" href="#faq">❓ よくある質問と回答 (FAQ)</a></li>
 <li><a class="reference internal" href="#colab">🌟 Colabで試すおすすめコード</a></li>
 </ul>
