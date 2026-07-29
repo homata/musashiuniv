@@ -10,7 +10,7 @@
 <meta property="og:description" content="さて、プログラミングをしていて、赤い文字で「エラー（Error）」が出た時、ドキッとしませんか？「何か壊してしまったかも…」「自分には向いてないのかも…」と不安になる方もいると思います。 今回は、エラーを怖がらずに「バグ（虫）を見つけて退治する技術（デバッグ）」と、エラーを未然に防ぐための「美しいコードの書き方（コードスタイル）」を学びます。 これができるようになれば、今後のデータ分析が驚く..." />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2026_01.programming_basic_a_markdown_basic_07_20b62612.png" />
+<meta property="og:image" content="/None" />
 <meta property="og:image:alt" content="さて、プログラミングをしていて、赤い文字で「エラー（Error）」が出た時、ドキッとしませんか？「何か壊してしまったかも…」「自分には向いてないのかも…」と不安になる方もいると思います。 今回は、エラーを怖がらずに「バグ（虫）を見つけて退治する技術（デバッグ）」と、エラーを未然に防ぐための「美しいコードの書き方（..." />
 <meta name="description" content="さて、プログラミングをしていて、赤い文字で「エラー（Error）」が出た時、ドキッとしませんか？「何か壊してしまったかも…」「自分には向いてないのかも…」と不安になる方もいると思います。 今回は、エラーを怖がらずに「バグ（虫）を見つけて退治する技術（デバッグ）」と、エラーを未然に防ぐための「美しいコードの書き方（コードスタイル）」を学びます。 これができるようになれば、今後のデータ分析が驚く..." />
 <meta name="twitter:card" content="summary_large_image" />
@@ -1141,7 +1141,189 @@ should ... すべきかどうか（shouldChangeとか）
 </section>
 <hr class="docutils" />
 <section id="id25">
-<h2>💻 演習課題<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h2>
+<h2>練習問題<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h2>
+<p>練習問題 1 (assert文)</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>与えられた引数を二乗する関数 square でのAssertionErrorを修正してください
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">x</span> <span class="c1"># バグがある</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+<span class="k">assert</span> <span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 1（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>square 関数が「二乗する」という仕様に修正する
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+<span class="k">assert</span> <span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+
+<span class="c1">### 確認</span>
+<span class="k">assert</span> <span class="n">square</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span>
+<span class="k">assert</span> <span class="n">square</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span>
+<span class="k">assert</span> <span class="n">square</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 2 (構文エラー)</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>構文エラー（syntax error）とは、プログラムコードが、Pythonの構文に違反しているときに生じるエラーです。
+Pythonにおける構文エラーの下記の典型例を挙げてください
+
+* クォートや括弧の閉じ忘れ
+* コロンのつけ忘れ
+* インデントの崩れ
+* 全角スペースの利用
+* == の代わりに = を使う
+* 変数の代わりに文字列を使う
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 2（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>典型例は下記です
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>クォートや括弧の閉じ忘れ</p></li>
+</ul>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">hello</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>コロンのつけ忘れ</p></li>
+</ul>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">age</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">if</span> <span class="n">age</span> <span class="o">&lt;=</span> <span class="mi">18</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;未成年者です&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>インデントの崩れ</p></li>
+</ul>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">score</span> <span class="o">=</span> <span class="mi">80</span>
+
+<span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;合格&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;終了&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>全角スペースの利用</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 誤り（＝の前が全角スペース）</span>
+<span class="n">name</span>　<span class="o">=</span> <span class="s2">&quot;田中&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>== の代わりに = を使う</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">score</span> <span class="o">=</span> <span class="mi">80</span>
+<span class="k">if</span> <span class="n">score</span> <span class="o">=</span> <span class="mi">80</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;80点です&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>変数の代わりに文字列を使う</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;田中&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>その他の例</p>
+<ul class="simple">
+<li><p>未定義の変数の参照</p></li>
+</ul>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">undefined_variable</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>グローバル変数のつもりでローカル変数を参照</p></li>
+</ul>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="c1"># グローバル変数のつもりでローカル変数を参照</span>
+<span class="n">f</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>ゼロによる除算</p></li>
+</ul>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">/</span><span class="mi">0</span> <span class="c1"># ゼロによる除算</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>登録されていないキーに対する値を参照</p></li>
+</ul>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="c1"># 登録されていないキーに対する値を参照</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>存在しないファイルの読み込み</p></li>
+</ul>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;non-existent.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="c1"># 存在しないファイルの読み込み</span>
+</pre></div>
+</div>
+<p>練習問題 3 (論理エラー)</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>論理エラー（logic error）とは、プログラムを実行できるが、意図したように動作しないことを意味します  
+
+次の関数 median(x, y, z) は、x と y と z の中央値（真ん中の値）を求めようとするものです。   
+ただし、 x と y と z は相異なる数であると仮定します。
+
+AssertionErrorがでるので修正してください
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">median</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">if</span> <span class="n">z</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x</span>
+    <span class="k">if</span> <span class="n">z</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">z</span>
+    <span class="k">return</span> <span class="n">y</span>
+
+<span class="k">assert</span> <span class="n">median</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 3（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>関数の入口にある最初の print では、期待通りに実引数となる 3・1・2 が、x・y・z に代入されています。   
+しかし、2番目の print では、 3 が消えて 1 が複製されています。   
+このことから、この2つの print の間にあるif文が疑わしいことが分かります。
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">median</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+    <span class="c1">#print(x, y, z)</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">:</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">x</span>  <span class="c1"># &lt;== ここ</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">w</span>
+    <span class="c1">#print(x, y, z)</span>
+    <span class="k">if</span> <span class="n">z</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x</span>
+    <span class="k">if</span> <span class="n">z</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">z</span>
+    <span class="k">return</span> <span class="n">y</span>
+
+<span class="k">assert</span> <span class="n">median</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id26">
+<h2>💻 演習課題<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h2>
 <p>わざとエラーが出るコードや、動きはおかしいコードを用意しました。
 探偵になったつもりで、エラーメッセージをよく読み、バグを見つけて修正してください。</p>
 <p>以下のコードセルのバグを修正し、プログラムを正しく動かしてください。</p>
@@ -1214,8 +1396,8 @@ should ... すべきかどうか（shouldChangeとか）
 </div>
 </section>
 <hr class="docutils" />
-<section id="id26">
-<h2>💡 演習問題の解答例<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h2>
+<section id="id27">
+<h2>💡 演習問題の解答例<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h2>
 <p>（どうしても分からない時は展開して見てくださいね。）</p>
 <details>
 <summary>👉 解答例を見る（ここをクリックして展開）</summary>
@@ -1253,12 +1435,12 @@ should ... すべきかどうか（shouldChangeとか）
 </details>
 </section>
 <hr class="docutils" />
-<section id="id27">
-<h2>📚 第7回のまとめ<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h2>
+<section id="id28">
+<h2>📚 第7回のまとめ<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h2>
 <p>エラーを恐れずに向き合う「デバッグ」の力と、プロのように美しい「コードスタイル」でした。
 これらはプログラミングにおいて、文法と同じくらい大切な部分です。</p>
-<section id="id28">
-<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h3>
+<section id="id29">
+<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>エラーの分類</strong>: 文法ミス（SyntaxError）、実行時の無理難題（例外）、計算間違い（論理エラー）の3つがある。</p></li>
 <li><p><strong>デバッグ</strong>: 論理エラーが出たら、怪しいところに <code class="docutils literal notranslate"><span class="pre">print()</span></code> を入れて変数の中身を覗き見する。生成AIもどんどん活用する！</p></li>
@@ -1334,7 +1516,7 @@ should ... すべきかどうか（shouldChangeとか）
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-28</div>
+              Last updated on 2026-07-29</div>
           </div>
           <div class="right-details">
             
@@ -1416,10 +1598,11 @@ should ... すべきかどうか（shouldChangeとか）
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id25">💻 演習課題</a></li>
-<li><a class="reference internal" href="#id26">💡 演習問題の解答例</a></li>
-<li><a class="reference internal" href="#id27">📚 第7回のまとめ</a><ul>
-<li><a class="reference internal" href="#id28">✨ 今日の重要ポイントまとめ</a></li>
+<li><a class="reference internal" href="#id25">練習問題</a></li>
+<li><a class="reference internal" href="#id26">💻 演習課題</a></li>
+<li><a class="reference internal" href="#id27">💡 演習問題の解答例</a></li>
+<li><a class="reference internal" href="#id28">📚 第7回のまとめ</a><ul>
+<li><a class="reference internal" href="#id29">✨ 今日の重要ポイントまとめ</a></li>
 <li><a class="reference internal" href="#faq">❓ よくある質問と回答 (FAQ)</a></li>
 <li><a class="reference internal" href="#colab">🌟 Colabで試すおすすめコード</a></li>
 </ul>

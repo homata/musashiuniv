@@ -694,6 +694,194 @@ isやhasはよく使われます
 
 ---
 
+## 練習問題
+
+練習問題 1 (assert文)
+```text
+与えられた引数を二乗する関数 square でのAssertionErrorを修正してください
+```
+
+```Python
+def square(x):
+    return x+x # バグがある
+
+x = -2
+assert square(x) >= 0
+```
+
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+
+練習問題 1（解答）  
+```text
+square 関数が「二乗する」という仕様に修正する
+```
+
+```Python
+def square(x):
+    return x*x
+
+x = -2
+assert square(x) >= 0
+
+### 確認
+assert square(2) == 4
+assert square(-2) == 4
+assert square(0) == 0
+```
+</details>
+
+
+練習問題 2 (構文エラー)
+```text
+構文エラー（syntax error）とは、プログラムコードが、Pythonの構文に違反しているときに生じるエラーです。
+Pythonにおける構文エラーの下記の典型例を挙げてください
+
+* クォートや括弧の閉じ忘れ
+* コロンのつけ忘れ
+* インデントの崩れ
+* 全角スペースの利用
+* == の代わりに = を使う
+* 変数の代わりに文字列を使う
+```
+
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+
+練習問題 2（解答）  
+```text
+典型例は下記です
+```
+
+* クォートや括弧の閉じ忘れ
+```Python
+print(hello)
+```
+
+* コロンのつけ忘れ
+```Python
+age = 10
+if age <= 18
+    print("未成年者です")
+```
+
+* インデントの崩れ
+```Python
+score = 80
+
+if score >= 60:
+print("合格")
+
+print("終了")
+```
+
+* 全角スペースの利用
+```
+# 誤り（＝の前が全角スペース）
+name　= "田中"
+
+print(name)
+```
+
+* == の代わりに = を使う
+```
+score = 80
+if score = 80:
+    print("80点です")
+```
+
+* 変数の代わりに文字列を使う
+```
+name = "田中"
+print("name")
+```
+
+その他の例
+
+* 未定義の変数の参照
+```Python
+undefined_variable
+```
+
+* グローバル変数のつもりでローカル変数を参照
+```Python
+x = 1
+def f():
+    x = x # グローバル変数のつもりでローカル変数を参照
+f()
+```
+
+* ゼロによる除算
+```Python
+1/0 # ゼロによる除算
+```
+
+* 登録されていないキーに対する値を参照
+```Python
+{'a': 1}['b'] # 登録されていないキーに対する値を参照
+```
+
+* 存在しないファイルの読み込み
+```Python
+open('non-existent.txt', 'r') # 存在しないファイルの読み込み
+```
+
+
+練習問題 3 (論理エラー)
+```text
+論理エラー（logic error）とは、プログラムを実行できるが、意図したように動作しないことを意味します  
+
+次の関数 median(x, y, z) は、x と y と z の中央値（真ん中の値）を求めようとするものです。   
+ただし、 x と y と z は相異なる数であると仮定します。
+
+AssertionErrorがでるので修正してください
+```
+
+```Python
+def median(x, y, z):
+    if x > y:
+        x = y
+        y = x
+    if z < x:
+        return x
+    if z < y:
+        return z
+    return y
+
+assert median(3, 1, 2) == 2
+```
+
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+
+練習問題 3（解答）  
+```text
+関数の入口にある最初の print では、期待通りに実引数となる 3・1・2 が、x・y・z に代入されています。   
+しかし、2番目の print では、 3 が消えて 1 が複製されています。   
+このことから、この2つの print の間にあるif文が疑わしいことが分かります。
+```
+
+```Python
+def median(x, y, z):
+    #print(x, y, z)
+    if x > y:
+        w = x  # <== ここ
+        x = y
+        y = w
+    #print(x, y, z)
+    if z < x:
+        return x
+    if z < y:
+        return z
+    return y
+
+assert median(3, 1, 2) == 2
+```
+</details>
+
+
+---
+
 ## 💻 演習課題
 
 わざとエラーが出るコードや、動きはおかしいコードを用意しました。

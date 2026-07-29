@@ -10,7 +10,7 @@
 <meta property="og:description" content="データ分析の現場で最もよく使う2つのデータ、「数値（数字）」と「文字列（テキスト）」の扱い方をマスターします。 「インデックス」や「スライス」など新しい概念が登場します。 特に「文字列の処理」は、アンケート結果などの文字データを分析しやすく綺麗にする（データクレンジング）ための必須スキルです。 🎯 到達目標: 様々な数値演算子 （割り算の余りなど）を使って、目的に合った計算ができる。, モジ..." />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2026_01.programming_basic_a_markdown_basic_04_caf95117.png" />
+<meta property="og:image" content="/None" />
 <meta property="og:image:alt" content="データ分析の現場で最もよく使う2つのデータ、「数値（数字）」と「文字列（テキスト）」の扱い方をマスターします。 「インデックス」や「スライス」など新しい概念が登場します。 特に「文字列の処理」は、アンケート結果などの文字データを分析しやすく綺麗にする（データクレンジング）ための必須スキルです。 🎯 到達目標: 様..." />
 <meta name="description" content="データ分析の現場で最もよく使う2つのデータ、「数値（数字）」と「文字列（テキスト）」の扱い方をマスターします。 「インデックス」や「スライス」など新しい概念が登場します。 特に「文字列の処理」は、アンケート結果などの文字データを分析しやすく綺麗にする（データクレンジング）ための必須スキルです。 🎯 到達目標: 様々な数値演算子 （割り算の余りなど）を使って、目的に合った計算ができる。, モジ..." />
 <meta name="twitter:card" content="summary_large_image" />
@@ -811,9 +811,9 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shop_name</span> <span class="o">=</span> <span class="s2">&quot;ムサシ・カフェ&quot;</span>
 
 <span class="c1"># インデックス（1文字だけ取り出す）</span>
-<span class="c1"># 0から数えるので、3番目は「・」ではなく「カ」になります！</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;0番目の文字:&quot;</span><span class="p">,</span> <span class="n">shop_name</span><span class="p">)</span>  
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3番目の文字:&quot;</span><span class="p">,</span> <span class="n">shop_name</span><span class="p">)</span>  
+<span class="c1"># 0から数えるので、3番目は「シ」ではなく「・」になります！</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;0番目の文字:&quot;</span><span class="p">,</span> <span class="n">shop_name</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3番目の文字:&quot;</span><span class="p">,</span> <span class="n">shop_name</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>  
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;最後の文字:&quot;</span><span class="p">,</span> <span class="n">shop_name</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> 
 
 <span class="c1"># スライス（範囲を切り出す）</span>
@@ -1156,7 +1156,7 @@ C) None が返ってくる
 
 <span class="c1"># テスト</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">is_palindrome</span><span class="p">(</span><span class="s2">&quot;toyo&quot;</span><span class="p">))</span>  <span class="c1"># False</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">is_palindrome</span><span class="p">(</span><span class="s2">&quot;shinbunshi&quot;</span><span class="p">))</span>  <span class="c1"># True（しんぶんし）</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_palindrome</span><span class="p">(</span><span class="s2">&quot;しんぶんし&quot;</span><span class="p">))</span>  <span class="c1"># True</span>
 </pre></div>
 </div>
 </details>
@@ -1351,7 +1351,7 @@ C) None が返ってくる
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-28</div>
+              Last updated on 2026-07-29</div>
           </div>
           <div class="right-details">
             
