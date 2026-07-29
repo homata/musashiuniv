@@ -103,23 +103,160 @@ final_price = coffee_price * TAX_RATE
 ```
 
 ---
-## 演習課題の説明と評価について
 
-これから、皆さんに難易度別のミニプロジェクト（演習1〜5）に取り組んでいただきます。
+## Webスクレイピング
 
-### 難易度と採点について
+Webスクレイピング
+```{figure} images/python_slides/スライド292.PNG
+:width: 70%
+```
+
+HTMLファイルの構造
+```{figure} images/python_slides/スライド293.PNG
+:width: 70%
+```
+
+Webスクレイピングの流れ
+```{figure} images/python_slides/スライド294.PNG
+:width: 70%
+```
+
+ライブラリの準備
+```{figure} images/python_slides/スライド295.PNG
+:width: 70%
+```
+
+HTMLファイルの取得
+```{figure} images/python_slides/スライド296.PNG
+:width: 70%
+```
+
+HTMLファイルの解析
+```{figure} images/python_slides/スライド297.PNG
+:width: 70%
+```
+
+HTMLファイルの解析（ファイルを読み込む場合）
+```{figure} images/python_slides/スライド298.PNG
+:width: 70%
+```
+
+ranking.html
+```{figure} images/python_slides/スライド299.PNG
+:width: 70%
+```
+
+extraction.py
+```{figure} images/python_slides/スライド300.PNG
+:width: 70%
+```
+
+実行結果
+```{figure} images/python_slides/スライド301.PNG
+:width: 70%
+```
+
+### サンプルコード
+
+事前準備 (モジュールインストール)
+```
+!pip install requests beautifulsoup4
+```
+
+「ニュース記事一覧のタイトルとリンクの抽出」を想定したサンプルコード
+```
+import time
+import requests
+from bs4 import BeautifulSoup
+
+# 1. 取得したいWebページのURL
+url = "https://news.ycombinator.com/"  # 例: Hacker News（シンプルな構造の英語サイト）
+
+# Webサーバーへの配慮（User-Agentの設定）
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+}
+
+try:
+    # 2. HTTPリクエストを送信してHTMLを取得
+    response = requests.get(url, headers=headers, timeout=10)
+
+    # ステータスコードのチェック（200 OK でなければ例外を発生させる）
+    response.raise_for_status()
+
+    # 3. BeautifulSoupでHTMLを解析（パーサーには html.parser を使用）
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    # 4. 要素の抽出（例: 記事タイトルとリンクを取得）
+    # .find_all() で該当するタグをすべて取得
+    articles = soup.select(".titleline > a")
+
+    print(f"--- 取得結果 ({len(articles)}件) ---")
+
+    for index, article in enumerate(articles[:10], 1):  # 上位10件を表示
+        title = article.text  # テキスト（タイトル）を取り出す
+        link = article.get("href")  # href 属性（URL）を取り出す
+
+        print(f"{index}. {title}")
+        print(f"   URL: {link}\n")
+
+        # サーバー負荷軽減のため、複数ページを巡回する場合は必ず待機時間を入れる
+        # time.sleep(1)
+
+except requests.exceptions.RequestException as e:
+    print(f"リクエストエラーが発生しました: {e}")
+```
+
+BeautifulSoupで要素を検索・抽出する手段は主に2パターンあります。
+
+CSSセレクターで探す（.select() / .select_one()）
+
+CSSと同じ書き方が使えるため、一番直感的で汎用性が高い方法です。
+```
+# class="title" の要素をすべて取得
+title = soup.select(".title")
+print(title)
+
+# id="main" の中の <a> タグをすべて取得
+main_atag = soup.select("#main a")
+print(main_atag)
+
+# 最初に見つかった1件だけを取得
+h1 = soup.select_one("h1")
+print(h1)
+```
+
+タグ名や属性で探す（.find() / .find_all()）
+
+シンプルに「すべての <a> タグを取りたい」時などに便利です。
+
+```
+# 最初の <h1> タグを取得
+h1 = soup.find("h1")
+print(h1)
+
+# <a class="link"> タグをすべて取得
+class_a = soup.find_all("a", class_="link")
+print(class_a)
+```
+
+#### ⚠️ Webスクレイピングのマナーと注意点
+* time.sleep(1) を入れる: 連続リクエストを送ると相手のサーバーに負荷がかかります。ループ処理の際は必ず1秒以上の間隔を開けましょう。
+* 利用規約（robots.txt）を確認する: サイトによってはスクレイピングを禁止している場合があります（[https://example.com/robots.txt](https://example.com/robots.txt) で確認可能）。
+
+---
+## 演習課題の説明
+
+これから、皆さんに準備体操として難易度別の演習1〜5に取り組んでください
+
+### 難易度
 *   **初級（基本文法中心）**: 変数、リスト、関数などの基礎。
 *   **中級（データ処理中心）**: pandasやmatplotlibを使った、実務に近いデータ分析。
 *   **上級（応用）**: クラス（オブジェクト指向）や例外処理を使った本格的なシステム。
 
-**【重要】難易度によって成績（採点）は変わりません！**
-上級が解けなかったからといって減点されることはありません。初級を丁寧に完璧に仕上げるのも、上級に果敢に挑んでエラーと格闘するのも、どちらも素晴らしい「学習のプロセス」として高く評価します。自分のレベルに合わせて、自由に選んで（もちろん全部やってもOK！）挑戦してください。
-
 ---
 
-## 💻 総合演習（ミニプロジェクトに挑戦！）
-
-それでは、いよいよ本番です。時間をたっぷり使って取り組んでください。
+## 💻 総合演習
 
 ```
 # 演習1: 【初級】簡易TODOリスト管理ツール（難易度：易）
@@ -150,7 +287,7 @@ def convert_c_to_f(celsius):
     fahrenheit = 
     return fahrenheit
 
-temperatures_c = # 摂氏のリスト
+temperatures_c = [10, 30, 39]
 temperatures_f = []           # 華氏を入れる空リスト
 
 # TODO: for文を使って、temperatures_c の中身を一つずつ変換し、temperatures_f に追加(append)する
@@ -159,7 +296,7 @@ for
     
 
 print("摂氏:", temperatures_c)
-print("華氏:", temperatures_f) # [68.0, 77.0, 86.0] になれば正解！
+print("華氏:", temperatures_f) # [50.0, 86.0, 102.2] になれば正解！
 ```
 
 ```
@@ -197,7 +334,7 @@ import japanize_matplotlib # 日本語化
 # （準備）売上データフレーム
 sales_df = pd.DataFrame({
     "店舗": ["東京", "大阪", "名古屋", "福岡"],
-    "売上": 
+    "売上": [5000, 3000, 2000, 2500] 
 })
 
 print("基本統計量:")
@@ -305,17 +442,12 @@ plt.bar(sales_df["店舗"], sales_df["売上"], color="skyblue")
     *   **A.** それこそが、この授業で得た最大の財産です！「エラーはコンピュータからの優しいお手紙」です。エラーを怖がらずに読み解く力（デバッグ力）は、どんな仕事でも役立つ論理的思考力そのものです。
 *   **Q. 授業が終わった後も勉強を続けたいですが、どうすればいいですか？**
     *   **A.** 今日作った「家計簿」や「TODOリスト」を、自分なりに改造してみてください。例えば「グラフの色を変えてみる」「新しい機能を追加してみる」といった遊び心が、一番成長を促してくれます。
-
 ---
 
 ### 🚀 次の一歩を示す：「プログラミング応用A」へ！
 
-この「プログラミング基礎A」で、皆さんはデータの「収集・整理・可視化」という強力な武器を手に入れました。
+この「プログラミング基礎A」で、皆さんはデータの「収集・整理・可視化」を習得できました。
+秋学期の**「プログラミング応用A（コンピューティング応用G）」**では、この基礎を活かして、以下のようなことに取り組みます
 
-秋学期の**「プログラミング応用A（コンピューティング応用G）」**では、この基礎を活かして、以下のようにより高度でワクワクする世界へ進みます！
-
-*   **デジタルツイン / 地理空間情報 (leafmap)**: 地図の上にデータを重ね合わせて、現実世界を可視化する。
-*   **機械学習の基礎**: 教師なし学習などを使い、AI（人工知能）の裏側の仕組みを自分で作る。
-
-皆さんがこの授業で培った「試行錯誤する力」があれば、応用クラスでも必ず活躍できます。
-これからもPythonを楽しみながら、データを使って社会の課題を解決できる人材になってくださいね。応援しています！
+* **デジタルツイン / 地理空間情報**: 地図の上にデータを重ね合わせて可視化する。
+* **機械学習の基礎**: 機械学習の入り口を体験する。

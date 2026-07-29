@@ -377,7 +377,7 @@
 </section>
 <hr class="docutils" />
 <section id="id2">
-<h2>イントロダクション：なぜデータを「可視化」するのか？ (約10分)<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<h2>イントロダクション：なぜデータを「可視化」するのか？<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
 <p>データ分析において、「数字」だけで相手を説得するのは非常に困難です。
 「先月のコーヒーの売上は、1週目が400杯、2週目が420杯、3週目が380杯で…」と言われるより、グラフを1枚見せた方が一瞬で伝わりますよね。</p>
 <p><strong>【データ可視化の効果（イメージ図）】</strong></p>
@@ -399,20 +399,23 @@
 <li><p><strong>seaborn（シーボーン）</strong>: グラフ界の「オシャレなデザイナー」。matplotlibをベースに作られており、統計データを見栄え良く、少ないコードで描いてくれます。</p></li>
 </ul>
 <p>この2つは「あだ名」をつけて読み込みます（<code class="docutils literal notranslate"><span class="pre">plt</span></code> と <code class="docutils literal notranslate"><span class="pre">sns</span></code>）。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># （準備）グラフを描くためのライブラリを読み込みます！
-# ※Colabでは最初からインストールされているので、importするだけで使えます。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># （準備）グラフを描くためのライブラリを読み込みます！</span>
+<span class="c1"># ※Colabでは最初からインストールされているので、importするだけで使えます。</span>
 
-import matplotlib.pyplot as plt  # 画用紙とペンのセット（あだ名は plt）
-import seaborn as sns            # おしゃれなデザイナー（あだ名は sns）
-import pandas as pd              # 前回学んだ、表データを扱うツール
-import numpy as np               # 前々回学んだ、計算ツール
-
-# ※注意：標準のmatplotlibは「日本語」を表示しようとすると文字化け（□□□）してしまいます。
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>  <span class="c1"># 画用紙とペンのセット（あだ名は plt）</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>            <span class="c1"># おしゃれなデザイナー（あだ名は sns）</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>              <span class="c1"># 前回学んだ、表データを扱うツール</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>               <span class="c1"># 前々回学んだ、計算ツール</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># ※注意：標準のmatplotlibは「日本語」を表示しようとすると文字化け（□□□）してしまいます。
 # Colabで簡単に日本語を表示できるおまじないライブラリを追加インストールします。
 !pip install japanize-matplotlib
 import japanize_matplotlib
-
-print(&quot;グラフを描く準備が完了しました！&quot;)
+</pre></div>
+</div>
+<p>matplotlib の出力をノートブックで表示させるには、以下をCodeセルで1回だけ実行します。   %matplotlib のように % で始まる文をマジックコマンドと呼びます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 </pre></div>
 </div>
 </section>
@@ -423,11 +426,26 @@ print(&quot;グラフを描く準備が完了しました！&quot;)
 <p>まずは基本の <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> を使って、目的に合わせた色々なグラフを描いてみましょう！
 使い方の基本は <strong>「1. キャンバスに描く → 2. 装飾する → 3. 画面に見せる(<code class="docutils literal notranslate"><span class="pre">plt.show()</span></code>)」</strong> の3ステップです。</p>
 <section id="id3">
-<h3>① 線グラフ（時間の経過・変化を見たい時）<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<h3>① 折れ線グラフ（時間の経過・変化を見たい時）<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
 <p>「1ヶ月の売上の推移」など、時間の流れによる変化を見るのに最適です。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">plt.plot(X軸のデータ,</span> <span class="pre">Y軸のデータ)</span></code></p></li>
 </ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">ls1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>折れ線グラフを複数表示させるには、plt.plot を繰り返します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">ls1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+<span class="n">ls2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;1st plot&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;2nd plot&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
 </section>
 <section id="id4">
 <h3>② 棒グラフ（量を比較したい時）<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
@@ -435,6 +453,23 @@ print(&quot;グラフを描く準備が完了しました！&quot;)
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">plt.bar(X軸のデータ,</span> <span class="pre">Y軸のデータ)</span></code></p></li>
 </ul>
+<p>棒グラフを表示させるには、plt.bar に水平座標、高さをリストで与えます。 この2つのリストの要素数は同じでなければなりません。 以下の例では、等間隔でグラフを表示させるため水平軸に整数列を使っています。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>文字列をキー、整数を値とする辞書を棒グラフで可視化します。
+さらに、水平軸にはキーをラベルとして表示されます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;apple&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="s1">&#39;kiwi&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">}</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">tick_label</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
 </section>
 <section id="id5">
 <h3>③ 散布図（2つの関係性・相関を見たい時）<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
@@ -442,13 +477,21 @@ print(&quot;グラフを描く準備が完了しました！&quot;)
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">plt.scatter(X軸のデータ,</span> <span class="pre">Y軸のデータ)</span></code></p></li>
 </ul>
+<p>散布図を表示させるには、plt.scatter にそれぞれの点に対応する水平、垂直座標をリストで与えます。 この2つのリストの要素数は同じでなければなりません。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
 </section>
 <section id="id6">
 <h3>グラフの装飾（タイトル、ラベル）<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
 <p>何も書いていないグラフは、何を表しているか分かりません。必ず名前をつけましょう。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># カフェの1週間の売上データ</span>
 <span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;月&quot;</span><span class="p">,</span> <span class="s2">&quot;火&quot;</span><span class="p">,</span> <span class="s2">&quot;水&quot;</span><span class="p">,</span> <span class="s2">&quot;木&quot;</span><span class="p">,</span> <span class="s2">&quot;金&quot;</span><span class="p">,</span> <span class="s2">&quot;土&quot;</span><span class="p">,</span> <span class="s2">&quot;日&quot;</span><span class="p">]</span>
-<span class="n">sales</span> <span class="o">=</span> 
+<span class="n">sales</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="mi">4000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">]</span>
 
 <span class="c1"># --- ① 線グラフの作成 ---</span>
 <span class="c1"># マーカー(点)の形や、色(color)を指定できます</span>
@@ -467,7 +510,7 @@ print(&quot;グラフを描く準備が完了しました！&quot;)
 
 <span class="c1"># --- ② 棒グラフの作成 ---</span>
 <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;コーヒー&quot;</span><span class="p">,</span> <span class="s2">&quot;紅茶&quot;</span><span class="p">,</span> <span class="s2">&quot;ケーキ&quot;</span><span class="p">]</span>
-<span class="n">amounts</span> <span class="o">=</span> 
+<span class="n">amounts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">400</span><span class="p">]</span>
 
 <span class="c1"># 棒グラフ（bar）を描きます</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">amounts</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
@@ -477,20 +520,154 @@ print(&quot;グラフを描く準備が完了しました！&quot;)
 </div>
 </section>
 </section>
+<section id="id7">
+<h2>基本的な図の作り方<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<p>初期インポート</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</pre></div>
+</div>
+<p>線グラフを描いてみます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1950</span><span class="p">,</span> <span class="mi">1960</span><span class="p">,</span> <span class="mi">1970</span><span class="p">,</span> <span class="mi">1980</span><span class="p">,</span> <span class="mi">1990</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2010</span><span class="p">]</span>
+<span class="n">yen</span> <span class="o">=</span> <span class="p">[</span><span class="mf">300.2</span><span class="p">,</span> <span class="mf">543.3</span><span class="p">,</span> <span class="mf">1075.9</span><span class="p">,</span> <span class="mf">2862.5</span><span class="p">,</span> <span class="mf">5979.6</span><span class="p">,</span> <span class="mf">10289.7</span><span class="p">,</span> <span class="mf">14958.3</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">yen</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Random price plot&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;yen&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>pandasのデータフレームを用いて棒グラフをつくります。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fruit</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;category&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;banana&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;banana&#39;</span><span class="p">],</span>
+                      <span class="s2">&quot;num_sell&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+                      <span class="s2">&quot;price&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">110</span><span class="p">],})</span>
+<span class="n">fruit</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fruit_size</span> <span class="o">=</span> <span class="n">fruit</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;category&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">fruit_size</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">fruit_size</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">fruit_size</span><span class="o">.</span><span class="n">num_sell</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">],</span> <span class="n">alpha</span> <span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;# of sold food&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fruit&#39;</span><span class="p">)</span>
+<span class="c1"># plt.savefig(&#39;fig_soldfruit.jpg&#39;) # この１行を実行するとカレントディレクトリにプロットした画像を保存することができます。</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<section id="id8">
+<h3>文字をプロットする<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p>プロットで使うデータをダミーとして作ります</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="s1">&#39;python&#39;</span><span class="p">,</span><span class="s1">&#39;analysis&#39;</span><span class="p">,</span> <span class="s1">&#39;science&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;statistics&#39;</span><span class="p">,</span> <span class="s1">&#39;dynamic&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;machine learning&#39;</span><span class="p">,</span> <span class="s1">&#39;deep learning&#39;</span><span class="p">,</span> <span class="s1">&#39;insights&#39;</span><span class="p">]</span>
+<span class="n">freq</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">importance</span> <span class="o">=</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">90</span><span class="p">]</span>
+
+<span class="n">text_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;text&#39;</span><span class="p">:</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;freq&#39;</span><span class="p">:</span> <span class="n">freq</span><span class="p">,</span> <span class="s1">&#39;importance&#39;</span><span class="p">:</span> <span class="n">importance</span><span class="p">})</span>
+<span class="n">text_df</span>
+</pre></div>
+</div>
+<p>plt.textを用いて文字をプロットしてみましょう</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text_df</span><span class="p">)):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">text_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;freq&#39;</span><span class="p">],</span> <span class="n">text_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;importance&#39;</span><span class="p">],</span> 
+             <span class="n">text_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Populality in papers&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Importance for ABC company&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">220</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Word populality in papers and importance for ABC company &#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>散布図をプロット</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+<span class="n">num_a</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">)]</span>
+<span class="n">num_b</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">)]</span>
+
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pink&#39;</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">num_a</span><span class="p">,</span> <span class="n">num_b</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="n">colors</span><span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">)],</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">a_count</span><span class="p">,</span> <span class="n">b_count</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">)),</span> <span class="n">num_a</span><span class="p">,</span> <span class="n">num_b</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="n">a_count</span><span class="p">,</span> <span class="n">b_count</span><span class="p">),</span> <span class="n">xytext</span> <span class="o">=</span> <span class="p">(</span><span class="n">a_count</span><span class="o">+</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">b_count</span><span class="o">-</span><span class="mf">0.01</span><span class="p">),</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Random Number Scatter&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="id9">
+<h3>複数図表のプロット<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<p>figureオブジェクトをまず生成します。figsizeで大きさを変更できます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="c1"># add_subplotでサブプロットを追加します。(2,2,1)はレイアウトを2x2にして4つのうちの1番目のサブプロットを選択しています。</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax4</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>これでからのサブプロット4つができました。
+同様のことは、pltsubplotsメソッドを使ってもできます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="c1"># axesは二次元配列のようなインデックスつけることが出来ます。</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span> 
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>Note
+2次元に配置された複数のsubplotsはflatten()を使うことで、１次元としてアクセスすることができるようになります</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">axs</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">i</span><span class="o">=</span><span class="mi">1</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">axs</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
 <hr class="docutils" />
 <section id="seaborn">
 <h2>データ分布と相関の可視化 (seaborn)<a class="headerlink" href="#seaborn" title="Link to this heading">¶</a></h2>
 <p>ここからは、デザイナーである <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> (sns) の出番です。pandasのデータフレームと非常に相性が良く、データ分析の現場で大活躍します。</p>
-<section id="id7">
-<h3>④ ヒストグラム（データの散らばり具合・分布を見たい時）<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>参考：可視化で便利なライブラリーがあります</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://bokeh.pydata.org/en/latest/">Bokeh</a> 　matplotlibをベースにインターラクティブなデータ可視化などを可能にするライブラリ</p></li>
+<li><p><a class="reference external" href="http://seaborn.pydata.org/">seaborn</a> 　matplotlibをベースに構築された見栄えの良い可視化などを可能にするライブラリ</p></li>
+</ul>
+</div>
+<section id="id10">
+<h3>④ ヒストグラム（データの散らばり具合・分布を見たい時）<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
 <p>「お客様の年齢層はどのあたりが多いかな？」というデータの「分布（ばらつき）」を見るグラフです。
 棒グラフと似ていますが、横軸が「区間（10代、20代など）」になるのが特徴です。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">sns.histplot(データ)</span></code></p></li>
 </ul>
 </section>
-<section id="id8">
-<h3>⑤ ヒートマップ（データ同士の相関やクロス集計を見たい時）<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<section id="id11">
+<h3>⑤ ヒートマップ（データ同士の相関やクロス集計を見たい時）<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
 <p>数字の大小を「色の濃淡」で表したグラフです。
 「月曜日の午後は売上が少ないから青色、土曜のお昼は激混みだから赤色」のように、全体像を一瞬で把握するのに使います。</p>
 <ul class="simple">
@@ -513,9 +690,9 @@ print(&quot;グラフを描く準備が完了しました！&quot;)
 <span class="c1"># --- ⑤ ヒートマップ ---</span>
 <span class="c1"># 時間帯(行)と曜日(列)の混雑度データ（pandasのデータフレームを使います）</span>
 <span class="n">congestion_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-    <span class="s2">&quot;月曜&quot;</span><span class="p">:,</span>
-    <span class="s2">&quot;水曜&quot;</span><span class="p">:,</span>
-    <span class="s2">&quot;土曜&quot;</span><span class="p">:</span>
+    <span class="s2">&quot;月曜&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
+    <span class="s2">&quot;水曜&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span>
+    <span class="s2">&quot;土曜&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">80</span><span class="p">]</span>
 <span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;午前&quot;</span><span class="p">,</span> <span class="s2">&quot;お昼&quot;</span><span class="p">,</span> <span class="s2">&quot;午後&quot;</span><span class="p">])</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;【元の表データ】&quot;</span><span class="p">)</span>
@@ -531,8 +708,8 @@ print(&quot;グラフを描く準備が完了しました！&quot;)
 </section>
 </section>
 <hr class="docutils" />
-<section id="id9">
-<h2>グラフの画像ファイル出力（保存）<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<section id="id12">
+<h2>グラフの画像ファイル出力（保存）<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
 <p>苦労して綺麗なグラフを作ったら、レポートやプレゼン資料に貼り付けたいですよね。
 <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> で画面に出す<strong>直前</strong>に、<code class="docutils literal notranslate"><span class="pre">plt.savefig(&quot;ファイル名.png&quot;)</span></code> を書くことで、画像ファイルとして保存できます。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># グラフの保存</span>
@@ -548,9 +725,203 @@ print(&quot;グラフを描く準備が完了しました！&quot;)
 </pre></div>
 </div>
 </section>
+<section id="id13">
+<h2>練習問題<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
+<section id="id14">
+<h3>💡 matplotlibの主要関数まとめ<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>折れ線グラフ: plt.plot()</p></li>
+<li><p>散布図: plt.scatter()</p></li>
+<li><p>棒グラフ: plt.bar()</p></li>
+<li><p>ヒストグラム: plt.hist()</p></li>
+<li><p>画面分割: plt.subplots(行, 列)</p></li>
+</ul>
+<p>事前に下記を実行してください</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install japanize-matplotlib
+
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+%matplotlib inline
+
+# 日本語表示の文字化けを防ぐ設定（環境に応じて使ってください）
+plt.rcParams[&quot;font.sans-serif&quot;] = [&quot;Hiragino Sans&quot;, &quot;Yu Gothic&quot;, &quot;Meiryo&quot;]
+</pre></div>
+</div>
 <hr class="docutils" />
-<section id="id10">
-<h2>💻 演習課題<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<p>練習問題 1（基礎：折れ線グラフと軸ラベル）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>以下のデータを使ってシンプルな折れ線グラフを描画してください。
+* x = [1, 2, 3, 4, 5]
+* y = [2, 5, 3, 8, 7]
+* グラフのタイトルに &quot;Monthly Data&quot;、X軸ラベルに &quot;Month&quot;、
+  Y軸ラベルに &quot;Sales&quot; を設定してください。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 1（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>plot / title / xlabel / ylabel
+plt.plot(x, y) で基本的な折れ線グラフを作成します。plt.title() や p
+lt.xlabel() でグラフに情報を追加し、最後に plt.show() で画面に出力する
+のが基本の流れです。
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+
+<span class="c1"># 折れ線グラフを描画</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># タイトルと軸ラベルの設定</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Monthly Data&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Month&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Sales&quot;</span><span class="p">)</span>
+
+<span class="c1"># グラフの表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 2（基礎：散布図と装飾）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>以下のデータを使って散布図（scatter plot）を描画してください。
+* x = [150, 160, 165, 170, 175, 180]（身長）
+* y = [45, 55, 60, 68, 70, 78]（体重）
+* マーカーの色を 赤（red）、形状を 星型（*） にし、グラフ全体に
+  グリッド線（方眼紙の線）を表示させてください。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 2（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>scatter / color / marker / grid
+散布図には plt.scatter() を使用します。color で色、marker で
+点の形（&quot;o&quot;, &quot;*&quot;, &quot;s&quot; など）、s でマーカーの大きさをカスタマイズできます。
+plt.grid(True) でグリッド線を引くと数値が読み取りやすくなります。
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">150</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">165</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="mi">180</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">78</span><span class="p">]</span>
+
+<span class="c1"># 散布図を描画（色: 赤, マーカー: 星型, サイズ: 100）</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># グリッド線の表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Height (cm)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Weight (kg)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 3（応用：複数のデータを重ねる棒グラフ）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>以下の2グループのデータを使って、2本の折れ線グラフを同じグラフ上に重ねて描画してください。
+* x = [1, 2, 3, 4, 5]
+* y1 = [10, 15, 20, 25, 30]（A社の売上）
+* y2 = [8, 18, 12, 28, 22]（B社の売上）
+* どちらの線か分かるように凡例（legend）を表示させてください。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 3（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>label と legend の連携
+plt.plot() を複数回呼び出すことで、同じグラフ上に線を重ねて表示できます。
+各 plot() に label=&quot;名称&quot; を指定し、最後に plt.legend() を呼ぶことで
+凡例が表示されます。
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">22</span><span class="p">]</span>
+
+<span class="c1"># label 引数で凡例用の名前を指定する</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Company A&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>  <span class="c1"># 破線</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Company B&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>  <span class="c1"># 丸マーカー付き線</span>
+
+<span class="c1"># 凡例を表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 4（応用：ヒストグラムの描画）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>以下のランダムな点数データを使ってヒストグラム（度数分布図）を描画してください。
+* scores = [65, 78, 88, 55, 92, 73, 85, 60, 75, 80, 95, 70, 82, 68, 90]
+* データの区切り（ビン数/柱の数 bins）を 5 に設定してください。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 4（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>hist と bins パラメータ
+度数分布を表示するには plt.hist() を使います。
+bins 引数で区切りの数（柱の数）を指定できます。edgecolor=&quot;black&quot; を指定すると、
+柱同士の境目がはっきりして見やすくなります。
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">92</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">90</span><span class="p">]</span>
+
+<span class="c1"># ヒストグラムを描画 (bins: 柱の数, edgecolor: 枠線の色)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;skyblue&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Score Distribution&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Score&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 5（発展：サブプロットで画面分割）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1つの画面（Figure）を左右（1行2列）に分割し、それぞれの領域に別のグラフを描画してください。
+* 左側の領域: x = [1, 2, 3], y = [1, 4, 9] の折れ線グラフ（タイトル: &quot;Line Chart&quot;）
+* 右側の領域: categories = [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;], values = [10, 25, 15] の棒グラフ
+             （タイトル: &quot;Bar Chart&quot;）
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 5（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>plt.subplots による画面分割
+複数のグラフを綺麗に並べるには plt.subplots(行数, 列数) を使うのが
+オブジェクト指向描画スタイルの標準です。
+
+分割された各領域（axes[0], axes[1]）に対して .plot() や .set_title() を
+呼び出して描画します。
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># 1行2列のサブプロット（画面分割）を作成</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># 1. 左側のグラフ (axes[0])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Line Chart&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2. 右側のグラフ (axes[1])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Bar Chart&quot;</span><span class="p">)</span>
+
+<span class="c1"># レイアウトの自動調整（タイトルの重なりなどを防ぐ）</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</details>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id15">
+<h2>💻 演習課題<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
 <p>データをグラフにしてみましょう！
 エラーが出ても大丈夫。「x軸とy軸のデータ個数が違うよ！」といったエラーがよく出ます。</p>
 <p>以下の <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TODO:</span> </code> の部分を書き換えて、プログラムを完成させてください。</p>
@@ -560,7 +931,7 @@ print(&quot;グラフを描く準備が完了しました！&quot;)
 <span class="c1"># TODO: グラフのタイトルを「アイスコーヒーの月別売上」に設定してください。</span>
 
 <span class="n">months</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;4月&quot;</span><span class="p">,</span> <span class="s2">&quot;5月&quot;</span><span class="p">,</span> <span class="s2">&quot;6月&quot;</span><span class="p">,</span> <span class="s2">&quot;7月&quot;</span><span class="p">,</span> <span class="s2">&quot;8月&quot;</span><span class="p">]</span>
-<span class="n">ice_coffee_sales</span> <span class="o">=</span> 
+<span class="n">ice_coffee_sales</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">800</span><span class="p">]</span>
 
 <span class="c1"># TODO: 線グラフを描く（color や marker は好きに設定してOKです！）</span>
 <span class="n">plt</span><span class="o">.</span>
@@ -573,42 +944,42 @@ print(&quot;グラフを描く準備が完了しました！&quot;)
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 演習2: 棒グラフの作成（難易度：易）
-# ランチメニューの人気投票結果です。
-# TODO: plt.bar() を使って棒グラフを作成してください。
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習2: 棒グラフの作成（難易度：易）</span>
+<span class="c1"># ランチメニューの人気投票結果です。</span>
+<span class="c1"># TODO: plt.bar() を使って棒グラフを作成してください。</span>
 
-menus = [&quot;Aセット&quot;, &quot;Bセット&quot;, &quot;Cセット&quot;]
-votes =
+<span class="n">menus</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aセット&quot;</span><span class="p">,</span> <span class="s2">&quot;Bセット&quot;</span><span class="p">,</span> <span class="s2">&quot;Cセット&quot;</span><span class="p">]</span>
+<span class="n">votes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">200</span><span class="p">]</span>
 
-# TODO: menus をX軸、votes をY軸にした棒グラフを描く
-plt.
+<span class="c1"># TODO: menus をX軸、votes をY軸にした棒グラフを描く</span>
+<span class="n">plt</span><span class="o">.</span>
 
-plt.title(&quot;ランチメニュー人気投票&quot;)
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;ランチメニュー人気投票&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習3: 散布図で関係性を探る（難易度：中）</span>
+<span class="c1"># 「その日の気温」と「フラペチーノの売上」のデータです。関係があるでしょうか？</span>
+<span class="c1"># TODO: plt.scatter() を使って、気温(X)と売上(Y)の散布図を描いてください。</span>
 
-&lt;!-- コードセル --&gt;
-# 演習3: 散布図で関係性を探る（難易度：中）
-# 「その日の気温」と「フラペチーノの売上」のデータです。関係があるでしょうか？
-# TODO: plt.scatter() を使って、気温(X)と売上(Y)の散布図を描いてください。
+<span class="n">temperatures</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="n">frappuccino_sales</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">60</span><span class="p">]</span>
 
-temperatures =
-frappuccino_sales =
+<span class="c1"># TODO: 散布図を描く</span>
+<span class="n">plt</span><span class="o">.</span>
 
-# TODO: 散布図を描く
-plt.
-
-plt.title(&quot;気温とフラペチーノ売上の関係&quot;)
-plt.xlabel(&quot;気温（℃）&quot;)
-plt.ylabel(&quot;売上（杯）&quot;)
-# 右上がりの点々になっていれば、「気温が高いほど売れる（正の相関）」ということがわかります！
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;気温とフラペチーノ売上の関係&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;気温（℃）&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;売上（杯）&quot;</span><span class="p">)</span>
+<span class="c1"># 右上がりの点々になっていれば、「気温が高いほど売れる（正の相関）」ということがわかります！</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習4: ヒストグラムによる分布の確認（難易度：中）</span>
 <span class="c1"># お客様の「カフェ滞在時間（分）」のデータです。</span>
 <span class="c1"># TODO: seaborn (sns) の histplot() を使って、滞在時間の分布をヒストグラムにしてください。</span>
 
-<span class="n">stay_times</span> <span class="o">=</span>
+<span class="n">stay_times</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
 
 <span class="c1"># TODO: sns.histplot() で stay_times のグラフを描く（bins=5 くらいがおすすめです）</span>
 <span class="n">sns</span><span class="o">.</span>
@@ -624,9 +995,9 @@ plt.show()
 <span class="c1"># TODO: plt.savefig() を使って、作成したグラフを &quot;branch_sales.png&quot; という名前で保存してください。</span>
 
 <span class="n">branch_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-    <span class="s2">&quot;4月&quot;</span><span class="p">:</span> <span class="p">,</span>
-    <span class="s2">&quot;5月&quot;</span><span class="p">:</span> <span class="p">,</span>
-    <span class="s2">&quot;6月&quot;</span><span class="p">:</span> 
+    <span class="s2">&quot;4月&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span>
+    <span class="s2">&quot;5月&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1600</span><span class="p">,</span> <span class="mi">800</span><span class="p">],</span>
+    <span class="s2">&quot;6月&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1500</span><span class="p">]</span>
 <span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;東京店&quot;</span><span class="p">,</span> <span class="s2">&quot;大阪店&quot;</span><span class="p">,</span> <span class="s2">&quot;名古屋店&quot;</span><span class="p">])</span>
 
 <span class="c1"># TODO: annot=True をつけてヒートマップを描く（cmap=&quot;Blues&quot; などがおしゃれです）</span>
@@ -642,8 +1013,8 @@ plt.show()
 </div>
 </section>
 <hr class="docutils" />
-<section id="id11">
-<h2>💡 演習問題の解答例<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<section id="id16">
+<h2>💡 演習問題の解答例<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h2>
 <p>（どうしても分からない時や、答え合わせをしたい時に展開して見てくださいね。グラフが画面に出た時の感動をぜひ味わってください！）</p>
 <details>
 <summary>👉 解答例を見る（ここをクリックして展開）</summary>
@@ -674,10 +1045,10 @@ plt.show()
 </details>
 </section>
 <hr class="docutils" />
-<section id="id12">
-<h2>📚 第12回のまとめ<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
-<section id="id13">
-<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<section id="id17">
+<h2>📚 第12回のまとめ<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h2>
+<section id="id18">
+<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>matplotlib (plt)</strong>: 自由自在にグラフを描ける職人。<code class="docutils literal notranslate"><span class="pre">plot</span></code>(線), <code class="docutils literal notranslate"><span class="pre">bar</span></code>(棒), <code class="docutils literal notranslate"><span class="pre">scatter</span></code>(散布図) などを使い分ける。</p></li>
 <li><p><strong>seaborn (sns)</strong>: 統計グラフをおしゃれに描くデザイナー。<code class="docutils literal notranslate"><span class="pre">histplot</span></code>(ヒストグラム) や <code class="docutils literal notranslate"><span class="pre">heatmap</span></code>(ヒートマップ) が得意。</p></li>
@@ -705,19 +1076,17 @@ plt.show()
 <h3>🌟 Colabで試すおすすめコード<a class="headerlink" href="#colab" title="Link to this heading">¶</a></h3>
 <p>pandasのデータフレームとseabornを組み合わせた、超強力な「ペアプロット（ペア散布図）」です。
 複数のデータ同士の関係性を、一撃ですべてグラフにしてくれます！</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-&lt;!-- コードセル --&gt;
-# カフェの顧客データ（年齢、滞在時間、使った金額）
-df_cafe = pd.DataFrame({
-    &quot;年齢&quot;:,
-    &quot;滞在時間&quot;:,
-    &quot;使った金額&quot;: 
-})
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># カフェの顧客データ（年齢、滞在時間、使った金額）</span>
+<span class="n">df_cafe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;年齢&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span>
+    <span class="s2">&quot;滞在時間&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+    <span class="s2">&quot;使った金額&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">]</span> 
+<span class="p">})</span>
 
-print(&quot;これだけのコードで、すべての組み合わせの散布図と分布が出ます！&quot;)
-# seaborn の pairplot を使うと、データフレーム内の全ての数値データの関係性を一覧にしてくれます。
-sns.pairplot(df_cafe)
-plt.show()
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;これだけのコードで、すべての組み合わせの散布図と分布が出ます！&quot;</span><span class="p">)</span>
+<span class="c1"># seaborn の pairplot を使うと、データフレーム内の全ての数値データの関係性を一覧にしてくれます。</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df_cafe</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
@@ -756,7 +1125,7 @@ plt.show()
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-29</div>
+              Last updated on 2026-07-30</div>
           </div>
           <div class="right-details">
             
@@ -782,27 +1151,36 @@ plt.show()
 <li><a class="reference internal" href="#google-colab">練習問題のGoogle Colab起動</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id2">イントロダクション：なぜデータを「可視化」するのか？ (約10分)</a><ul>
+<li><a class="reference internal" href="#id2">イントロダクション：なぜデータを「可視化」するのか？</a><ul>
 <li><a class="reference internal" href="#matplotlib-seaborn">2つの強力なライブラリ：matplotlib と seaborn</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#matplotlib">基本のグラフ作成と装飾 (matplotlib)</a><ul>
-<li><a class="reference internal" href="#id3">① 線グラフ（時間の経過・変化を見たい時）</a></li>
+<li><a class="reference internal" href="#id3">① 折れ線グラフ（時間の経過・変化を見たい時）</a></li>
 <li><a class="reference internal" href="#id4">② 棒グラフ（量を比較したい時）</a></li>
 <li><a class="reference internal" href="#id5">③ 散布図（2つの関係性・相関を見たい時）</a></li>
 <li><a class="reference internal" href="#id6">グラフの装飾（タイトル、ラベル）</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#seaborn">データ分布と相関の可視化 (seaborn)</a><ul>
-<li><a class="reference internal" href="#id7">④ ヒストグラム（データの散らばり具合・分布を見たい時）</a></li>
-<li><a class="reference internal" href="#id8">⑤ ヒートマップ（データ同士の相関やクロス集計を見たい時）</a></li>
+<li><a class="reference internal" href="#id7">基本的な図の作り方</a><ul>
+<li><a class="reference internal" href="#id8">文字をプロットする</a></li>
+<li><a class="reference internal" href="#id9">複数図表のプロット</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id9">グラフの画像ファイル出力（保存）</a></li>
-<li><a class="reference internal" href="#id10">💻 演習課題</a></li>
-<li><a class="reference internal" href="#id11">💡 演習問題の解答例</a></li>
-<li><a class="reference internal" href="#id12">📚 第12回のまとめ</a><ul>
-<li><a class="reference internal" href="#id13">✨ 今日の重要ポイントまとめ</a></li>
+<li><a class="reference internal" href="#seaborn">データ分布と相関の可視化 (seaborn)</a><ul>
+<li><a class="reference internal" href="#id10">④ ヒストグラム（データの散らばり具合・分布を見たい時）</a></li>
+<li><a class="reference internal" href="#id11">⑤ ヒートマップ（データ同士の相関やクロス集計を見たい時）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id12">グラフの画像ファイル出力（保存）</a></li>
+<li><a class="reference internal" href="#id13">練習問題</a><ul>
+<li><a class="reference internal" href="#id14">💡 matplotlibの主要関数まとめ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id15">💻 演習課題</a></li>
+<li><a class="reference internal" href="#id16">💡 演習問題の解答例</a></li>
+<li><a class="reference internal" href="#id17">📚 第12回のまとめ</a><ul>
+<li><a class="reference internal" href="#id18">✨ 今日の重要ポイントまとめ</a></li>
 <li><a class="reference internal" href="#faq">❓ よくある質問と回答 (FAQ)</a></li>
 <li><a class="reference internal" href="#colab">🌟 Colabで試すおすすめコード</a></li>
 </ul>

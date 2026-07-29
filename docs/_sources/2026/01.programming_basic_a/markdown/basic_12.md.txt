@@ -29,7 +29,7 @@ https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exe
 
 ---
 
-## イントロダクション：なぜデータを「可視化」するのか？ (約10分)
+## イントロダクション：なぜデータを「可視化」するのか？
 
 データ分析において、「数字」だけで相手を説得するのは非常に困難です。
 「先月のコーヒーの売上は、1週目が400杯、2週目が420杯、3週目が380杯で…」と言われるより、グラフを1枚見せた方が一瞬で伝わりますよね。
@@ -49,8 +49,8 @@ https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exe
 ### 2つの強力なライブラリ：matplotlib と seaborn
 Pythonでグラフを描くための2大ツールを紹介します。
 
-*   **matplotlib（マットプロットリブ）**: グラフ界の「職人さん」。真っ白な画用紙に、ゼロから線を引いたり色を塗ったりして、自由自在にグラフを描けます。
-*   **seaborn（シーボーン）**: グラフ界の「オシャレなデザイナー」。matplotlibをベースに作られており、統計データを見栄え良く、少ないコードで描いてくれます。
+* **matplotlib（マットプロットリブ）**: グラフ界の「職人さん」。真っ白な画用紙に、ゼロから線を引いたり色を塗ったりして、自由自在にグラフを描けます。
+* **seaborn（シーボーン）**: グラフ界の「オシャレなデザイナー」。matplotlibをベースに作られており、統計データを見栄え良く、少ないコードで描いてくれます。
 
 この2つは「あだ名」をつけて読み込みます（`plt` と `sns`）。
 
@@ -62,13 +62,19 @@ import matplotlib.pyplot as plt  # 画用紙とペンのセット（あだ名は
 import seaborn as sns            # おしゃれなデザイナー（あだ名は sns）
 import pandas as pd              # 前回学んだ、表データを扱うツール
 import numpy as np               # 前々回学んだ、計算ツール
+```
 
+
+```
 # ※注意：標準のmatplotlibは「日本語」を表示しようとすると文字化け（□□□）してしまいます。
 # Colabで簡単に日本語を表示できるおまじないライブラリを追加インストールします。
 !pip install japanize-matplotlib
 import japanize_matplotlib
+```
 
-print("グラフを描く準備が完了しました！")
+matplotlib の出力をノートブックで表示させるには、以下をCodeセルで1回だけ実行します。   %matplotlib のように % で始まる文をマジックコマンドと呼びます。
+```
+%matplotlib inline
 ```
 
 ---
@@ -78,25 +84,70 @@ print("グラフを描く準備が完了しました！")
 まずは基本の `matplotlib` を使って、目的に合わせた色々なグラフを描いてみましょう！
 使い方の基本は **「1. キャンバスに描く → 2. 装飾する → 3. 画面に見せる(`plt.show()`)」** の3ステップです。
 
-### ① 線グラフ（時間の経過・変化を見たい時）
+#### ① 折れ線グラフ（時間の経過・変化を見たい時）
 「1ヶ月の売上の推移」など、時間の流れによる変化を見るのに最適です。
 *   `plt.plot(X軸のデータ, Y軸のデータ)`
 
-### ② 棒グラフ（量を比較したい時）
+```
+import matplotlib.pyplot as plt
+ls1 = [1, 4, 9, 16]
+plt.plot(ls1)
+plt.show()
+```
+
+折れ線グラフを複数表示させるには、plt.plot を繰り返します。
+```
+import matplotlib.pyplot as plt
+ls1 = [1, 4, 9, 16]
+ls2 = [8, 7, 6, 5]
+plt.plot(ls1, label='1st plot')
+plt.plot(ls2, label='2nd plot')
+plt.show()
+```
+
+#### ② 棒グラフ（量を比較したい時）
 「コーヒーと紅茶とケーキ、どれが一番売れた？」など、大小を比べるのに使います。
 *   `plt.bar(X軸のデータ, Y軸のデータ)`
 
-### ③ 散布図（2つの関係性・相関を見たい時）
+棒グラフを表示させるには、plt.bar に水平座標、高さをリストで与えます。 この2つのリストの要素数は同じでなければなりません。 以下の例では、等間隔でグラフを表示させるため水平軸に整数列を使っています。
+```
+import matplotlib.pyplot as plt
+x = [1, 2, 3, 4]
+y = [10, 30, 40, 15]
+plt.bar(x,y)
+plt.show()
+```
+
+文字列をキー、整数を値とする辞書を棒グラフで可視化します。 
+さらに、水平軸にはキーをラベルとして表示されます。
+```
+import matplotlib.pyplot as plt
+d = {'apple':10, 'banana':30, 'orange': 40, 'kiwi': 15}
+x = [1,2,3,4]
+plt.bar(x, d.values(), tick_label=list(d.keys()))
+plt.show()
+```
+
+#### ③ 散布図（2つの関係性・相関を見たい時）
 「気温が高い日は、冷たい飲み物が売れるかな？」という関係性（相関）を点々で調べます。
 *   `plt.scatter(X軸のデータ, Y軸のデータ)`
 
-### グラフの装飾（タイトル、ラベル）
+散布図を表示させるには、plt.scatter にそれぞれの点に対応する水平、垂直座標をリストで与えます。 この2つのリストの要素数は同じでなければなりません。
+```
+import matplotlib.pyplot as plt
+x = [5, 10, 15, 10]
+y = [10, 5, 10, 15]
+plt.scatter(x,y)
+plt.show()
+```
+
+#### グラフの装飾（タイトル、ラベル）
 何も書いていないグラフは、何を表しているか分かりません。必ず名前をつけましょう。
 
 ```
 # カフェの1週間の売上データ
 days = ["月", "火", "水", "木", "金", "土", "日"]
-sales = 
+sales = [1000, 2000, 3000, 4000, 2000, 5000, 10000]
 
 # --- ① 線グラフの作成 ---
 # マーカー(点)の形や、色(color)を指定できます
@@ -115,11 +166,145 @@ plt.show()
 
 # --- ② 棒グラフの作成 ---
 items = ["コーヒー", "紅茶", "ケーキ"]
-amounts = 
+amounts = [500, 600, 400]
 
 # 棒グラフ（bar）を描きます
 plt.bar(items, amounts, color="orange")
 plt.title("商品別の販売数")
+plt.show()
+```
+
+## 基本的な図の作り方
+
+初期インポート
+```
+import pandas as pd
+import random
+from matplotlib import pyplot as plt
+import numpy as np
+%matplotlib inline
+```
+
+線グラフを描いてみます。
+```
+years = [1950, 1960, 1970, 1980, 1990, 2000, 2010]
+yen = [300.2, 543.3, 1075.9, 2862.5, 5979.6, 10289.7, 14958.3]
+
+plt.plot(years, yen, color = 'green', marker = 'o', linestyle = 'solid')
+plt.title('Random price plot')
+plt.xlabel('year')
+plt.ylabel('yen')
+plt.show()
+```
+
+pandasのデータフレームを用いて棒グラフをつくります。
+```
+fruit = pd.DataFrame({'category': ['banana','orange','apple','apple','orange','orange','apple','apple','apple','banana'],
+                      "num_sell" : [100, 40, 30, 30, 40, 100, np.nan, 40, 1, 6],
+                      "price" : [100, 130, 80, 150, 70, 75, np.nan, 90, 190, 110],})
+fruit
+```
+
+```
+fruit_size = fruit.groupby(['category']).sum()
+fruit_size
+```
+
+```
+plt.bar(fruit_size.index, fruit_size.num_sell, color = ['yellow','red','orange'], alpha =0.7)
+plt.ylabel('# of sold food')
+plt.title('Fruit')
+# plt.savefig('fig_soldfruit.jpg') # この１行を実行するとカレントディレクトリにプロットした画像を保存することができます。
+plt.show()
+```
+
+#### 文字をプロットする
+
+プロットで使うデータをダミーとして作ります
+```
+text = ['data','python','analysis', 'science', 
+        'statistics', 'dynamic','r', 'machine learning', 'deep learning', 'insights']
+freq = [100, 40, 80, 21, 10, 3, 45, 79, 81, 3]
+importance = [200, 180, 190, 50, 150, 30, 20, 40, 20, 90]
+
+text_df = pd.DataFrame({'text':text, 'freq': freq, 'importance': importance})
+text_df
+```
+
+plt.textを用いて文字をプロットしてみましょう
+```
+plt.figure(figsize=(7, 7))
+for i in range(len(text_df)):
+    plt.text(text_df.loc[i, 'freq'], text_df.loc[i, 'importance'], 
+             text_df.loc[i, 'text'], fontsize=15)
+    
+plt.xlabel("Populality in papers")
+plt.ylabel('Importance for ABC company')
+plt.axis([-10, 120, -10, 220])
+plt.title('Word populality in papers and importance for ABC company ')
+plt.show()
+```
+
+散布図をプロット
+```
+plt.figure(figsize=[8,8])
+num_a = [random.random() for x in range(50)]
+num_b = [random.random() for x in range(50)]
+
+colors = ['pink','red','blue','green','orange','c']
+
+plt.scatter(num_a, num_b, color = [colors[random.randint(0, 5)] for x in range(50)], alpha = 0.7)
+
+for label, a_count, b_count in zip(list(range(50)), num_a, num_b):
+    plt.annotate(label, xy = (a_count, b_count), xytext = (a_count+0.01, b_count-0.01), fontsize = 10)
+
+plt.title('Random Number Scatter')
+plt.show()
+```
+
+#### 複数図表のプロット
+
+figureオブジェクトをまず生成します。figsizeで大きさを変更できます。
+```
+fig = plt.figure(figsize=(8,8))
+# add_subplotでサブプロットを追加します。(2,2,1)はレイアウトを2x2にして4つのうちの1番目のサブプロットを選択しています。
+ax1 = fig.add_subplot(2,2,1)
+ax2 = fig.add_subplot(2,2,2)
+ax3 = fig.add_subplot(2,2,3)
+ax4 = fig.add_subplot(2,2,4)
+ax1.plot([0,1,2,3],[0,1,2,3], '-', color='k')
+ax2.bar([0,1,2,3],[0,1,2,3], color= 'green')
+ax3.plot([0,1,2,3][::-1],[0,1,2,3], 'o', color= 'r')
+ax4.plot([0,1,2,3][::-1],[0,1,2,3], color='orange')
+plt.show()
+```
+
+これでからのサブプロット4つができました。
+同様のことは、pltsubplotsメソッドを使ってもできます。
+```
+fig, axes = plt.subplots(2,2, figsize=(8,8))
+# axesは二次元配列のようなインデックスつけることが出来ます。
+axes[0,0].plot([0,1,2,3],[0,1,2,3], '-', color='k') 
+axes[0,1].bar([0,1,2,3],[0,1,2,3], color= 'green')
+axes[1,0].plot([0,1,2,3][::-1],[0,1,2,3], 'o', color= 'r')
+axes[1,1].plot([0,1,2,3][::-1],[0,1,2,3], color='orange')
+plt.show()
+```
+
+````{note}
+Note
+2次元に配置された複数のsubplotsはflatten()を使うことで、１次元としてアクセスすることができるようになります
+````
+
+```
+fig, axs = plt.subplots(2, 2)
+axs = axs.flatten()
+i=1
+for ax in axs:
+    ax.plot(i, 1, 'o', color = 'red')
+    i += 1
+    ax.set_xlim(0,len(axs)+1)
+plt.tight_layout()
 plt.show()
 ```
 
@@ -129,12 +314,20 @@ plt.show()
 
 ここからは、デザイナーである `seaborn` (sns) の出番です。pandasのデータフレームと非常に相性が良く、データ分析の現場で大活躍します。
 
-### ④ ヒストグラム（データの散らばり具合・分布を見たい時）
+````{note}
+
+参考：可視化で便利なライブラリーがあります
+
+* [Bokeh](https://bokeh.pydata.org/en/latest/) 　matplotlibをベースにインターラクティブなデータ可視化などを可能にするライブラリ
+* [seaborn](http://seaborn.pydata.org/) 　matplotlibをベースに構築された見栄えの良い可視化などを可能にするライブラリ
+````
+
+#### ④ ヒストグラム（データの散らばり具合・分布を見たい時）
 「お客様の年齢層はどのあたりが多いかな？」というデータの「分布（ばらつき）」を見るグラフです。
 棒グラフと似ていますが、横軸が「区間（10代、20代など）」になるのが特徴です。
 *   `sns.histplot(データ)`
 
-### ⑤ ヒートマップ（データ同士の相関やクロス集計を見たい時）
+#### ⑤ ヒートマップ（データ同士の相関やクロス集計を見たい時）
 数字の大小を「色の濃淡」で表したグラフです。
 「月曜日の午後は売上が少ないから青色、土曜のお昼は激混みだから赤色」のように、全体像を一瞬で把握するのに使います。
 *   `sns.heatmap(データ)`
@@ -157,9 +350,9 @@ plt.show()
 # --- ⑤ ヒートマップ ---
 # 時間帯(行)と曜日(列)の混雑度データ（pandasのデータフレームを使います）
 congestion_data = pd.DataFrame({
-    "月曜":,
-    "水曜":,
-    "土曜":
+    "月曜": [20, 30, 50],
+    "水曜": [10, 40, 30],
+    "土曜": [60, 70, 80]
 }, index=["午前", "お昼", "午後"])
 
 print("【元の表データ】")
@@ -192,6 +385,217 @@ print("my_graph.png を保存しました！（左の📁フォルダから確�
 plt.show()
 ```
 
+## 練習問題
+
+#### 💡 matplotlibの主要関数まとめ
+* 折れ線グラフ: plt.plot()
+* 散布図: plt.scatter()
+* 棒グラフ: plt.bar()
+* ヒストグラム: plt.hist()
+* 画面分割: plt.subplots(行, 列)
+
+事前に下記を実行してください
+```
+!pip install japanize-matplotlib
+
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+%matplotlib inline
+
+# 日本語表示の文字化けを防ぐ設定（環境に応じて使ってください）
+plt.rcParams["font.sans-serif"] = ["Hiragino Sans", "Yu Gothic", "Meiryo"]
+```
+
+---
+
+練習問題 1（基礎：折れ線グラフと軸ラベル）
+```text
+以下のデータを使ってシンプルな折れ線グラフを描画してください。
+* x = [1, 2, 3, 4, 5]
+* y = [2, 5, 3, 8, 7]
+* グラフのタイトルに "Monthly Data"、X軸ラベルに "Month"、
+  Y軸ラベルに "Sales" を設定してください。
+```
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+
+練習問題 1（解答）  
+```text
+plot / title / xlabel / ylabel
+plt.plot(x, y) で基本的な折れ線グラフを作成します。plt.title() や p
+lt.xlabel() でグラフに情報を追加し、最後に plt.show() で画面に出力する
+のが基本の流れです。
+```
+
+```python
+import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4, 5]
+y = [2, 5, 3, 8, 7]
+
+# 折れ線グラフを描画
+plt.plot(x, y)
+
+# タイトルと軸ラベルの設定
+plt.title("Monthly Data")
+plt.xlabel("Month")
+plt.ylabel("Sales")
+
+# グラフの表示
+plt.show()
+```
+</details>
+
+練習問題 2（基礎：散布図と装飾）
+```text
+以下のデータを使って散布図（scatter plot）を描画してください。
+* x = [150, 160, 165, 170, 175, 180]（身長）
+* y = [45, 55, 60, 68, 70, 78]（体重）
+* マーカーの色を 赤（red）、形状を 星型（*） にし、グラフ全体に
+  グリッド線（方眼紙の線）を表示させてください。
+```
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+
+練習問題 2（解答）  
+```text
+scatter / color / marker / grid
+散布図には plt.scatter() を使用します。color で色、marker で
+点の形（"o", "*", "s" など）、s でマーカーの大きさをカスタマイズできます。
+plt.grid(True) でグリッド線を引くと数値が読み取りやすくなります。
+```
+
+```python
+import matplotlib.pyplot as plt
+
+x = [150, 160, 165, 170, 175, 180]
+y = [45, 55, 60, 68, 70, 78]
+
+# 散布図を描画（色: 赤, マーカー: 星型, サイズ: 100）
+plt.scatter(x, y, color="red", marker="*", s=100)
+
+# グリッド線の表示
+plt.grid(True)
+
+plt.xlabel("Height (cm)")
+plt.ylabel("Weight (kg)")
+plt.show()
+```
+</details>
+
+
+練習問題 3（応用：複数のデータを重ねる棒グラフ）
+```text
+以下の2グループのデータを使って、2本の折れ線グラフを同じグラフ上に重ねて描画してください。
+* x = [1, 2, 3, 4, 5]
+* y1 = [10, 15, 20, 25, 30]（A社の売上）
+* y2 = [8, 18, 12, 28, 22]（B社の売上）
+* どちらの線か分かるように凡例（legend）を表示させてください。
+```
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+
+練習問題 3（解答）  
+```text
+label と legend の連携
+plt.plot() を複数回呼び出すことで、同じグラフ上に線を重ねて表示できます。
+各 plot() に label="名称" を指定し、最後に plt.legend() を呼ぶことで
+凡例が表示されます。
+```
+
+```python
+import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4, 5]
+y1 = [10, 15, 20, 25, 30]
+y2 = [8, 18, 12, 28, 22]
+
+# label 引数で凡例用の名前を指定する
+plt.plot(x, y1, label="Company A", linestyle="--")  # 破線
+plt.plot(x, y2, label="Company B", marker="o")  # 丸マーカー付き線
+
+# 凡例を表示
+plt.legend()
+
+plt.show()
+```
+</details>
+
+
+練習問題 4（応用：ヒストグラムの描画）
+```text
+以下のランダムな点数データを使ってヒストグラム（度数分布図）を描画してください。
+* scores = [65, 78, 88, 55, 92, 73, 85, 60, 75, 80, 95, 70, 82, 68, 90]
+* データの区切り（ビン数/柱の数 bins）を 5 に設定してください。
+```
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+
+練習問題 4（解答）  
+```text
+hist と bins パラメータ
+度数分布を表示するには plt.hist() を使います。
+bins 引数で区切りの数（柱の数）を指定できます。edgecolor="black" を指定すると、
+柱同士の境目がはっきりして見やすくなります。
+```
+
+```python
+import matplotlib.pyplot as plt
+
+scores = [65, 78, 88, 55, 92, 73, 85, 60, 75, 80, 95, 70, 82, 68, 90]
+
+# ヒストグラムを描画 (bins: 柱の数, edgecolor: 枠線の色)
+plt.hist(scores, bins=5, color="skyblue", edgecolor="black")
+
+plt.title("Score Distribution")
+plt.xlabel("Score")
+plt.ylabel("Frequency")
+plt.show()
+```
+</details>
+
+
+練習問題 5（発展：サブプロットで画面分割）
+```text
+1つの画面（Figure）を左右（1行2列）に分割し、それぞれの領域に別のグラフを描画してください。
+* 左側の領域: x = [1, 2, 3], y = [1, 4, 9] の折れ線グラフ（タイトル: "Line Chart"）
+* 右側の領域: categories = ["A", "B", "C"], values = [10, 25, 15] の棒グラフ
+             （タイトル: "Bar Chart"）
+```
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+
+練習問題 5（解答）  
+```text
+plt.subplots による画面分割
+複数のグラフを綺麗に並べるには plt.subplots(行数, 列数) を使うのが
+オブジェクト指向描画スタイルの標準です。
+
+分割された各領域（axes[0], axes[1]）に対して .plot() や .set_title() を
+呼び出して描画します。
+```
+
+```python
+import matplotlib.pyplot as plt
+
+# 1行2列のサブプロット（画面分割）を作成
+fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+
+# 1. 左側のグラフ (axes[0])
+axes[0].plot([1, 2, 3], [1, 4, 9], color="green")
+axes[0].set_title("Line Chart")
+
+# 2. 右側のグラフ (axes[1])
+axes[1].bar(["A", "B", "C"], [10, 25, 15], color="orange")
+axes[1].set_title("Bar Chart")
+
+# レイアウトの自動調整（タイトルの重なりなどを防ぐ）
+plt.tight_layout()
+plt.show()
+```
+</details>
+
+
 ---
 
 ## 💻 演習課題
@@ -208,7 +612,7 @@ plt.show()
 # TODO: グラフのタイトルを「アイスコーヒーの月別売上」に設定してください。
 
 months = ["4月", "5月", "6月", "7月", "8月"]
-ice_coffee_sales = 
+ice_coffee_sales = [100, 200, 300, 200, 800]
 
 # TODO: 線グラフを描く（color や marker は好きに設定してOKです！）
 plt.
@@ -227,21 +631,22 @@ plt.show()
 # TODO: plt.bar() を使って棒グラフを作成してください。
 
 menus = ["Aセット", "Bセット", "Cセット"]
-votes =
+votes = [100, 50, 200]
 
 # TODO: menus をX軸、votes をY軸にした棒グラフを描く
 plt.
 
 plt.title("ランチメニュー人気投票")
 plt.show()
+```
 
-<!-- コードセル -->
+```
 # 演習3: 散布図で関係性を探る（難易度：中）
 # 「その日の気温」と「フラペチーノの売上」のデータです。関係があるでしょうか？
 # TODO: plt.scatter() を使って、気温(X)と売上(Y)の散布図を描いてください。
 
-temperatures =
-frappuccino_sales =
+temperatures = [20, 25, 30]
+frappuccino_sales = [10, 30, 60]
 
 # TODO: 散布図を描く
 plt.
@@ -258,7 +663,7 @@ plt.show()
 # お客様の「カフェ滞在時間（分）」のデータです。
 # TODO: seaborn (sns) の histplot() を使って、滞在時間の分布をヒストグラムにしてください。
 
-stay_times =
+stay_times = [10, 30, 50, 40]
 
 # TODO: sns.histplot() で stay_times のグラフを描く（bins=5 くらいがおすすめです）
 sns.
@@ -275,9 +680,9 @@ plt.show()
 # TODO: plt.savefig() を使って、作成したグラフを "branch_sales.png" という名前で保存してください。
 
 branch_sales = pd.DataFrame({
-    "4月": ,
-    "5月": ,
-    "6月": 
+    "4月": [1000, 800, 500],
+    "5月": [2000, 1600, 800],
+    "6月": [3000, 1000, 1500]
 }, index=["東京店", "大阪店", "名古屋店"])
 
 # TODO: annot=True をつけてヒートマップを描く（cmap="Blues" などがおしゃれです）
@@ -352,13 +757,11 @@ plt.savefig("branch_sales.png")
 pandasのデータフレームとseabornを組み合わせた、超強力な「ペアプロット（ペア散布図）」です。
 複数のデータ同士の関係性を、一撃ですべてグラフにしてくれます！
 ```
-
-<!-- コードセル -->
 # カフェの顧客データ（年齢、滞在時間、使った金額）
 df_cafe = pd.DataFrame({
-    "年齢":,
-    "滞在時間":,
-    "使った金額": 
+    "年齢": [10, 20, 30],
+    "滞在時間": [100, 50, 20],
+    "使った金額": [500, 1000, 2000] 
 })
 
 print("これだけのコードで、すべての組み合わせの散布図と分布が出ます！")

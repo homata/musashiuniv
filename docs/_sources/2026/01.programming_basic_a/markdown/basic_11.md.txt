@@ -40,9 +40,31 @@ https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exe
 
 pandasに入る前に、Pythonの便利な書き方を少しだけ学びましょう。
 
+高階関数（こうかいかんすう、Higher-Order Function）とは、プログラミングにおいて「関数を引数として受け取る」、
+または「関数を戻り値（返り値）として返す」特性を持つ関数のことです
+
 高階関数
 ```{figure} images/python_slides/スライド205.PNG
 :width: 70%
+```
+
+```
+def print_price(price, func):
+    print('価格は' + func(price))
+
+def price_without_tax(price):
+    return f'税抜き{price}円'
+
+def price_with_tax(price):
+    return f'税込み{int(price*1.1)}円'
+
+print_price(800, price_without_tax)
+print_price(800, price_with_tax)
+```
+出力
+```
+価格は税抜き800円
+価格は税込み880円
 ```
 
 ### ラムダ式（名無しの使い捨て関数）
@@ -50,7 +72,7 @@ pandasに入る前に、Pythonの便利な書き方を少しだけ学びまし�
 *   `lambda 引数: 返したい計算式` と書きます。
 
 
-ラムダ式（lambda式）
+ラムダ式（lambda式）の説明
 ```{figure} images/python_slides/スライド206.PNG
 :width: 70%
 ```
@@ -58,6 +80,19 @@ pandasに入る前に、Pythonの便利な書き方を少しだけ学びまし�
 ラムダ式（lambda式）
 ```{figure} images/python_slides/スライド207.PNG
 :width: 70%
+```
+
+```
+def print_price(price, func):
+    print('価格は' + func(price))
+
+print_price(800, lambda price: f'税抜き{price}円')
+print_price(800, lambda price: f'税込み{int(price*1.1)}円')
+```
+出力
+```
+価格は税抜き800円
+価格は税込み880円
 ```
 
 
@@ -84,7 +119,7 @@ sorted_data = sorted(sales_data, key=lambda x: x["price"])
 print("安い順:", sorted_data)
 
 # map と filter の例
-numbers =
+numbers = [10, 20, 30]
 # 全て2倍にする (map)
 doubled = list(map(lambda x: x * 2, numbers))
 # 3以上のものだけ抽出する (filter)
@@ -92,6 +127,63 @@ filtered = list(filter(lambda x: x >= 3, numbers))
 
 print("2倍:", doubled)
 print("3以上抽出:", filtered)
+```
+出力
+```
+安い順: [{'name': 'コーヒー', 'price': 400}, {'name': '紅茶', 'price': 450}, {'name': 'ケーキ', 'price': 500}]
+2倍: [20, 40, 60]
+3以上抽出: [10, 20, 30]
+```
+
+#### map()
+map() は、関数とイテラブル（リストなど）を受け取り、各要素に関数を適用した結果を返す高階関数です。
+
+```
+# 1. 通常の関数を使う例
+def square(x):
+    """数を2乗する関数"""
+    return x ** 2
+
+numbers = [1, 2, 3, 4, 5]
+
+# map(関数, イテラブル)
+result = map(square, numbers)
+
+# mapオブジェクトはリストなどに変換する必要がある
+squared_list = list(result)
+print(squared_list)  # [1, 4, 9, 16, 25]
+```
+
+#### filder()
+filter() は、関数（条件）とイテラブルを受け取り、条件が True になる要素だけを抽出します。
+
+通常の関数を使う例
+```
+def is_even(n):
+    """偶数かどうかを判定"""
+    return n % 2 == 0
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# filter(条件関数, イテラブル)
+even_numbers = filter(is_even, numbers)
+
+# filterオブジェクトはリストなどに変換
+result = list(even_numbers)
+print(result)  # [2, 4, 6, 8, 10]
+```
+
+lambda式を使った例
+```
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# 偶数だけ抽出
+evens = list(filter(lambda x: x % 2 == 0, numbers))
+print(evens)  # [2, 4, 6, 8, 10]
+
+# 5より大きい数だけ抽出
+greater_than_5 = list(filter(lambda x: x > 5, numbers))
+print(greater_than_5)  # [6, 7, 8, 9, 10]
 ```
 
 ### 便利なモジュール（random, math, datetime）
@@ -113,14 +205,198 @@ now = datetime.datetime.now()
 print("現在の時刻:", now)
 ```
 
+----
+
+## 練習問題
+
+-----
+
+練習問題 1（基礎：map と filter）
+```text
+数値のリスト numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] があります。
+filter() と map()、そしてラムダ式を使って、「奇数だけを抽出し、それらをすべて2乗したリスト」を作成してください。
+（出力例: [1, 9, 25, 49, 81]）
+```
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+
+練習問題 1（解答）  
+```text
+filter と map の組み合わせ
+map() や filter() は「関数を引数として受け取る」高階関数です。
+ちょっとした条件付けには lambda x: ... のようにラムダ式を使うと、個別の def を定義せずに1行でスマートに記述できます。
+```
+
+```python
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# 1. 奇数のみフィルター (x % 2 != 0)
+# 2. 抽出された値を2乗 (x ** 2)
+odds_squared = list(
+    map(lambda x: x**2, filter(lambda x: x % 2 != 0, numbers))
+)
+
+print(odds_squared)  # [1, 9, 25, 49, 81]
+```
+</details>
+
+練習問題 2（基礎：sorted の key 指定）
+```text
+辞書のリスト users = [{"name": "Alice", "age": 25}, 
+                     {"name": "Bob", "age": 20}, 
+                     {"name": "Charlie", "age": 30}] があります。
+sorted() 関数とラムダ式を使って、年齢（age）が若い順に並び替えた新しいリストを作成してください。
+```
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+
+練習問題 2（解答）  
+```text
+sorted の key 引数への適用  
+sorted() の key 引数は高階関数の代表例です。
+各要素からソート用の「基準となる値」を抽出する関数をラムダ式で渡すことで、
+複雑な辞書オブジェクトも簡単に並び替えできます。
+```
+
+```python
+users = [
+    {"name": "Alice", "age": 25},
+    {"name": "Bob", "age": 20},
+    {"name": "Charlie", "age": 30},
+]
+
+# key 引数に「要素（辞書）を受け取って age の値を返すラムダ式」を渡す
+sorted_users = sorted(users, key=lambda user: user["age"])
+
+print(
+    sorted_users
+)  # [{'name': 'Bob', 'age': 20}, {'name': 'Alice', 'age': 25}, ...]
+```
+</details>
+
+練習問題 3（応用：自作の高階関数）
+```text
+自作関数 apply_twice(func, value) を作成してください。
+この関数は「第1引数に受け取った関数 func」を、「第2引数の値 value」に対して 
+2回連続で適用した結果 を返す高階関数です。
+（例: apply_twice(lambda x: x + 3, 10) を実行すると、10 + 3 + 3 = 16 が返る）
+```
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+
+練習問題 3（解答）  
+```text
+関数を引数にとる高階関数
+高階関数とは「関数を引数にとる」か「関数を戻り値として返す」関数のことです。
+func(func(value)) のように、受け取った関数をそのまま実行できます。
+```
+
+```python
+# 引数 func に「関数」を受け取る高階関数
+def apply_twice(func, value):
+    return func(func(value))
+
+
+# テスト: 10 に 「+3 する関数」を2回適用する
+result = apply_twice(lambda x: x + 3, 10)
+print(result)  # 16
+
+# テスト: 2 に 「2倍する関数」を2回適用する (2 * 2 * 2)
+print(apply_twice(lambda x: x * 2, 2))  # 8
+```
+</details>
+
+練習問題 4（応用：関数を返す関数 / アキュムレータ）
+```text
+「倍率 n」を受け取り、「入力された数値を n 倍にする新しい関数」を生成して返す
+高階関数 make_multiplier(n) を作成してください。
+これを使って「3倍する関数」を作成し、実行確認をしてください。
+```
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+
+練習問題 4（解答）  
+```text
+関数を返す高階関数 (クロージャ)
+関数の中で動的に新しい関数を生成して return しています。
+外側の変数 n の状態を保持した関数が作られるこの仕組みを クロージャ（クロージャ / エンクロージャー） と呼びます。
+```
+
+```python
+def make_multiplier(n):
+    # 関数の中でラムダ式（新しい関数）を作って返す
+    return lambda x: x * n
+
+
+# 「3倍する関数」を作る
+triple = make_multiplier(3)
+
+# 「5倍する関数」を作る
+quintuple = make_multiplier(5)
+
+print(triple(10))  # 30
+print(quintuple(10))  # 50
+```
+</details>
+
+練習問題 5（発展：実用的なソート条件）
+```text
+商品データのリスト items = [("Apple", 150, True), ("Banana", 100, False),
+                          ("Cherry", 200, True), ("Date", 100, True)] があります。
+タプルの要素は (商品名, 価格, 在庫ありフラグ) です。
+
+sorted() とラムダ式を使い、以下の複合優先度順で並び替えてください。
+
+1. 在庫があるもの（True）を優先
+2. 価格が安い順
+```
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+
+練習問題 5（解答）  
+```text
+タプルを使った複数条件ソート
+ラムダ式の戻り値として (条件1, 条件2) というタプルを返すと、
+複数のキーで優先順位をつけてソートできます。
+
+not item[2] とすることで、True (not で False / 0) が False (not で True / 1) 
+より小さくなり、在庫あり（True）が前に来ます。
+```
+
+```python
+items = [
+    ("Apple", 150, True),
+    ("Banana", 100, False),
+    ("Cherry", 200, True),
+    ("Date", 100, True),
+]
+
+# ソートキーにタプル (優先度1, 優先度2) を指定する
+# Pythonでは True(1) > False(0) なので、not item[2] で True を先頭にする
+sorted_items = sorted(items, key=lambda item: (not item[2], item[1]))
+
+for name, price, stock in sorted_items:
+    print(f"{name}: {price}円 (在庫: {stock})")
+
+# 出力結果:
+# Date: 100円 (在庫: True)
+# Apple: 150円 (在庫: True)
+# Cherry: 200円 (在庫: True)
+# Banana: 100円 (在庫: False)
+```
+</details>
+
 ---
 
-## pandasライブラリの基礎
+## pandasライブラリ
 
 さあ、ここからが本番の **pandas** です！ NumPyを `np` と呼んだように、pandasは **`pd`** というあだ名で読み込むのが世界共通のルールです。
 
 ### シリーズ (Series) と データフレーム (DataFrame)
 pandasには、2つの重要な「箱」があります。エクセルに例えて図解で覚えましょう。
+
+* DataFrame : 多次元、行と列がある。（いわゆる表形式）
+* Series : 1次元。一つの行もしくは列のみ。
 
 **【SeriesとDataFrameのイメージ図】**
 ```text
@@ -137,11 +413,152 @@ pandasには、2つの重要な「箱」があります。エクセルに例え�
      2             紅茶        450       8
 ```
 
+SeriesとDataFrame
+```{figure} images/pandas/pandas.png
+:width: 90%
+```
+
+pandasはpdとしてimportすることが慣例となっています。
+```
+import pandas as pd #
+```
+
 データ分析では、主にこの「データフレーム」を使います。
 
-### DataFrameの作成・読み込み
-自分でデータフレームを作ることもできますが、実務では **CSVファイルから読み込む（`pd.read_csv`）** ことがほとんどです。
+pandasはリッチなデータ構造と関数を提供します。DataFrameと呼ばれる二次元の表形式で分析を容易にします。そのほか、リレーショナルデータベース（SQLなど）の柔軟なデータ操作能力を持ち合わせます。 もともと金融データ分析アプリケーションとしてのツールとして設計されたこともあり、時系列データも扱いやすいです。
 
+### DataFrameの作成・読み込み
+自分でデータフレームを作ることもできますが、
+
+#### SeriesとDataFrame
+1列ずつデータをpd.Seriesを作成
+
+price
+```
+price = pd.Series([100, 40, 300, np.nan , 500, 1000, 300, 400, 240, 3000])
+print(price)
+```
+
+num
+```
+num = pd.Series([5, 2, 1, 0, 4, 200, 7, 19, 20, 100])
+print(num)
+```
+
+datetimes
+```
+datetimes = pd.date_range('20180601', periods=10, freq= '627H')
+print(datetimes)
+```
+
+Seriesの列データを組み合わせてデータフレームを作ります
+```
+df = pd.DataFrame({'price':price, 'num': num, 'datetime': datetimes })
+df
+```
+次のcellのようにまとめて作ることもできます。
+```
+df = pd.DataFrame({'price':[100, 40, 300, np.nan , 500, 1000, 300, 400, 240, 3000], 
+                   'num': [5, 2, 1, 0, 4, 200, 7, 19, 20, 100],
+                   'datetime': pd.date_range('20180601', periods=10, freq= '627H') })
+df
+```
+
+dfのタイプを確認します
+```
+type(df)
+```
+
+price列の型も確認してみましょう
+```
+type(df['price'])
+```
+
+2つ以上の列（もしくは行）を選択するとSeriesではなくDataFrameとなります。
+```
+type(df[['price','num']])
+```
+
+1つの行もSeriesです。
+```
+df.iloc[0]
+```
+typeをみる
+```
+type(df.iloc[0])
+```
+
+dtypesで列ごとのタイプを一括して確認できます
+```
+df.dtypes
+```
+
+headで行数を指定することで、DataFrameの最初の3行を表示できます
+```
+df.head(3)
+```
+
+DataFrameのランダムな3行を表示するにはsampleを用います
+```
+df.sample(3)
+```
+
+DataFrameの最後の3行をtailを用いて表示できます
+```
+df.tail(3)
+```
+
+DataFrameのIndexを確認します
+```
+df.index
+```
+
+DataFrameのcolumnsを確認します
+```
+df.columns
+```
+
+列の抽出は次のように列名を指定することできます
+```
+df['price']
+```
+
+複数列の抽出の抽出もできます
+```
+df[['price','datetime']]
+```
+
+特定の列をindexにすることもできます
+```
+df = df.set_index(['datetime'])
+df
+```
+```
+print(df.index[0]) # indexの0番目の値を確認
+print(df.index[-1]) # indexの末尾の値を確認
+```
+
+indexをresetして0から振り直すにはreset_indexが使えます。
+```
+df = df.reset_index()
+df.head(2)
+```
+
+indexには複数の列を指定することも可能です。（Multiindex）
+```
+df = df.set_index(['datetime','num'])
+df
+```
+
+indexをresetするには`reset_index`を使います。
+```
+df = df.reset_index()
+df
+```
+
+
+#### CSVから読み込む
+**CSVファイルから読み込む（`pd.read_csv`）**
 ```
 import pandas as pd
 
@@ -156,6 +573,10 @@ df = pd.read_csv("cafe_data.csv")
 # データフレーム(DataFrame)を表示します（Colabだと表が綺麗に表示されます！）
 df
 ```
+出力
+```{figure} images/pandas/pandas_01.png
+:width: 50%
+```
 
 ---
 
@@ -167,8 +588,21 @@ df
 これも初心者が非常に混乱しやすいポイントです！しっかり区別しましょう。
 
 *   **`loc` (ロケーション)**: インデックスの **「名前（ラベル）」** や列の **「名前」** で指定します。
+    * `loc`は行の名前（ラベル）や列の名前、条件を指定して抽出するために用いることができます。
 *   **`iloc` (インデックス・ロケーション)**: インデックスの **「番号（0, 1, 2...）」** で指定します。
+    * `iloc`は行や列の番号を指定して抽出することができます。
 
+````{note}
+Note
+loc iloc の違い
+
+[参考ページ](https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html)
+
+* ilocは基本的に場所を示す整数（0からテーブルの長さ-1まで）で指定することができます。またTrue/Falseでの条件指定もできます。
+* locは基本的には場所の名前（label）やで指定することができます。またTrue/Falseでの条件指定もできます。
+````
+
+loc と iloc の違い
 ```
 # loc と iloc の違い
 
@@ -180,15 +614,175 @@ print(df.iloc)
 print("\n--- 列の参照 ---")
 print(df["価格"])
 ```
+出力
+```
+--- iloc (番号で指定) ---
+<pandas.core.indexing._iLocIndexer object at 0x7e32b4241860>
+
+--- 列の参照 ---
+0    400
+1    500
+2    450
+Name: 価格, dtype: int64
+```
 
 ### データの条件取り出し
-NumPyと同じように、「条件に合う行だけ」を抽出することができます。データ分析で最も使う処理の一つです！
+NumPyと同じように、「条件に合う行だけ」を抽出することができます。
+
+#### 条件をつけて行や列を抽出する方法
+
+```
+import pandas as pd
+import numpy as np
+
+df = pd.DataFrame({'price':[100, 40, 300, np.nan , 500, 1000, 300, 400, 240, 3000], 
+                   'num': [5, 2, 1, 0, 4, 200, 7, 19, 20, 100],
+                   'datetime': pd.date_range('20180601', periods=10, freq= '627H') })
+```
+
+priceが100より大きい行のみ抽出します。
+```
+df.loc[df['price']>100]
+```
+
+priceが300以上の’price’列のみ抽出します。
+```
+df.loc[df['price']>=300, 'price']
+```
+
+複数の条件を指定することもできます。&でAND条件を指定できます
+```
+df.loc[(df['price']>100)&(df['datetime']>'2018-11-01')]
+```
+
+複数の条件をorで指定することもできます。orは|で示します。
+```
+df.loc[(df['price']>100) | (df['datetime']>'2018-11-01')]
+```
+
+次に行や列の番号で抽出する場合です。この場合は、ilocが使えます。
+```
+df.iloc[:5, 1]
+```
+
+2行目のデータを指定
+```
+df.iloc[2,:]
+```
+
+indexの名前（ラベル）が2のものを抽出
+```
+df.loc[2,:]
+```
+
+### 一意な値の集合
+列の中にあるユニークな値（重複がない値）を確認したい場合はunique()で確認できます。 
+次のDataFramefruitに何種類のフルーツに関するデータがあるか確認します。
+
+```
+fruit = pd.DataFrame({'category': ['banana','orange','apple','apple','orange','orange','apple','apple','apple','banana'],
+                      "num_sell" : [100, 40, 30, 30, 40, 100, np.nan, 40, 1, 6],
+                      "price" : [100, 130, 80, 150, 70, 75, np.nan, 90, 190, 110],})
+fruit
+```
+
+```
+print(fruit['category'].unique())
+print(len(fruit['category'].unique()))
+```
+
+一意な値がそれぞれ何個出現しているかを確認するためには、value_counts()が便利です。
+```
+fruit['category'].value_counts()
+```
+```
+type(fruit['category'].value_counts()) #value_counts()はSeriesを返しています
+```
+
 
 ### 列・行の追加と削除、データの並び替え
 *   列の追加：`df["新しい列名"] = データ`
 *   削除：`df.drop()`
 *   並び替え：`df.sort_values()`
 
+#### Dataframeを値に応じてソートする
+
+```
+fruit = pd.DataFrame({'category': ['banana','orange','apple','apple','orange','orange','apple','apple','apple','banana'],
+                      "num_sell" : [100, 40, 30, 30, 40, 100, np.nan, 40, 1, 6],
+                      "price" : [100, 130, 80, 150, 70, 75, np.nan, 90, 190, 110],})
+fruit
+```
+
+sort_valuesを用いて行をソートします。byでどの列の値でソートするかを指定します。
+defaultではascending（昇順）でソートします。
+```
+fruit.sort_values(by = ['num_sell']) 
+```
+
+降順（descending）で表示する場合は、ascending=Falseにします。
+```
+fruit.sort_values(by = ['num_sell'], ascending = False) 
+```
+
+#### 要素の削除
+dropは列や行を指定して削除するメソッドです。
+
+dropだけでは元のDataFrameは変わりません。 df = df.drop(0) のように元のDataFrameに再代入するか、dropの引数にinplace =True（defaultはFalse）を与えると元のDataFrameの指定した行が削除されます。
+
+その他の動作など詳しくは[pandasのドキュメント](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.drop.html)を参照してください。
+
+行の削除をdropを用いて行ってみます。
+```
+fruit.drop(3)
+```
+
+上の１行だけではfruitそれ自体は変りません。次のようにfruitに代入するとfruit自体の0行目が削除されます
+```
+fruit = fruit.drop(0)
+```
+
+列の削除は同様にdropを用いて削除する列名を指定し、axisを1とします
+```
+fruit.drop(['num_sell'],axis=1)
+```
+
+上の１行だけではfruitそれ自体は変りません。fruitに代入するとfruit自体の0行目が削除されます
+```
+fruit = fruit.drop(['num_sell'],axis=1)
+```
+
+---
+
+## 集計と欠損値・時系列データの処理
+
+現実のデータは、エクセルで誰かが入力し忘れた「空白（欠損値）」だらけです。pandasはこれらを綺麗に処理してくれます。
+
+### 欠損値処理
+データが空っぽの部分には `NaN`（Not a Number：データなし）という特別な目印が入ります。
+*   `df.dropna()`: `NaN` がある行を丸ごと「削除」する。
+*   `df.fillna(値)`: `NaN` の部分を、特定の値（0など）で「埋める」。
+
+欠損値の確認
+```
+fruit.isnull().sum()
+```
+
+### データの集計（groupby, describe）と統計量
+*   **`describe()`**: データの件数、平均、最小値、最大値などを一瞬で一覧表にしてくれます！
+*   **`groupby()` (グループ化)**: 「曜日ごと」「商品カテゴリーごと」にデータをまとめて集計（合計や平均など）します。
+
+要約統計量はdescribeを用いることで一括で確認できます。
+```
+fruit.describe()
+```
+
+複数の列でソートも可能です。
+```
+fruit.sort_values(by = ['category','price',], ascending = False) 
+```
+
+例
 ```
 # 条件取り出し（価格が450円以上のものだけ抽出）
 expensive_items = df[df["価格"] >= 450]
@@ -204,20 +798,44 @@ print("\n--- 売上合計の大きい順 ---")
 print(df_sorted)
 ```
 
----
+出力
+```
+--- 450円以上の商品 ---
+   商品名   価格  売上数
+1  ケーキ  500    5
+2   紅茶  450    8
 
-## 集計と欠損値・時系列データの処理
+--- 売上合計の大きい順 ---
+    商品名   価格  売上数  売上合計
+0  コーヒー  400   12  4800
+2    紅茶  450    8  3600
+1   ケーキ  500    5  2500
+```
 
-現実のデータは、エクセルで誰かが入力し忘れた「空白（欠損値）」だらけです。pandasはこれらを綺麗に処理してくれます。
+#### グループごとの集計などを確認する方法
+* groupbyを用いるとかん単位ぐるーぷごとの集計や計算などが行えます。
+* groupbyと一緒に使えるファンクションとして、sum(), mean(), size()などがあります。自分で任意の関数を作成することもできます。
 
-### 欠損値処理
-データが空っぽの部分には `NaN`（Not a Number：データなし）という特別な目印が入ります。
-*   `df.dropna()`: `NaN` がある行を丸ごと「削除」する。
-*   `df.fillna(値)`: `NaN` の部分を、特定の値（0など）で「埋める」。
+詳細は[pandasのドキュメント](http://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html)を確認してください。
 
-### データの集計（groupby, describe）と統計量
-*   **`describe()`**: データの件数、平均、最小値、最大値などを一瞬で一覧表にしてくれます！
-*   **`groupby()` (グループ化)**: 「曜日ごと」「商品カテゴリーごと」にデータをまとめて集計（合計や平均など）します。
+Category別の合計販売個数
+```
+fruit.groupby(['category']).sum()
+```
+Category別の平均販売個数
+```
+fruit.groupby(['category']).mean()
+```
+
+複数の条件を指定することもできます。
+```
+df.loc[(df['price']>100) & (df['datetime']>'2018-11-01')]
+```
+
+複数の条件をorで指定することもできます。orは`|`で示します。
+```
+df.loc[(df['price']>100) | (df['datetime']>'2018-11-01')]
+```
 
 ### データの連結と結合
 別々のファイルにあるデータをくっつけます。
@@ -244,6 +862,183 @@ print("\n--- 統計量の一覧 ---")
 print(df.describe())
 ```
 
+出力
+```
+--- 欠損値を含むデータ ---
+   顧客    年齢
+0  山田  20.0
+1  佐藤   NaN
+2  鈴木  35.0
+
+--- 欠損値を0で埋めたデータ ---
+   顧客    年齢
+0  山田  20.0
+1  佐藤   0.0
+2  鈴木  35.0
+
+--- 統計量の一覧 ---
+          価格        売上数
+count    3.0   3.000000
+mean   450.0   8.333333
+std     50.0   3.511885
+min    400.0   5.000000
+25%    425.0   6.500000
+50%    450.0   8.000000
+75%    475.0  10.000000
+max    500.0  12.000000
+```
+
+----
+
+## 練習問題
+
+#### 💡 pandasの重要メソッドまとめ
+* 抽出: df[df["列"] == 値] / df[df["列"].isin([...])]
+* 欠損値処理: df.fillna(値) / df.dropna()（欠損値のある行を削除）
+* 集計: df.groupby("キー列")["対象列"].集計関数()
+* 並び替え: df.sort_values(by="列名", ascending=False)
+
+以下のサンプルデータ（売上履歴）を使って問題に答えてください。
+```
+import pandas as pd
+
+# サンプルデータ
+data = {
+    "日付": [
+        "2026-07-01",
+        "2026-07-01",
+        "2026-07-02",
+        "2026-07-02",
+        "2026-07-03",
+    ],
+    "店舗": ["東京", "大阪", "東京", "名古屋", "大阪"],
+    "商品": ["りんご", "バナナ", "バナナ", "りんご", None],  # 欠損値あり
+    "売上額": [1500, 800, 1200, 2000, 1000],
+    "数量": [10, 8, 12, 15, 10],
+}
+
+df = pd.DataFrame(data)
+```
+---
+
+練習問題 1（基礎：データのフィルタリング）
+```text
+売上額が 1000 以上 のデータだけを抽出した新しいデータフレームを作成してください。
+```
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+
+練習問題 1（解答）  
+```text
+条件指定による抽出
+df[条件式] と書くことで、条件に合致する（True になる）行だけをフィルタリングできます。
+df["列名"] >= 値 の比較でブール値（True/False）のシリーズが作られます。
+```
+
+```python
+# 売上額が 1000 以上の行を抽出
+high_sales = df[df["売上額"] >= 1000]
+print(high_sales)
+```
+</details>
+
+練習問題 2（基礎：新しい列の追加）
+```text
+「売上額」を「数量」で割った 1個あたりの単価 を計算し、新しい列 "単価" 
+としてデータフレームに追加してください。
+```
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+
+練習問題 2（解答）  
+```text
+要素間の演算と列追加
+pandasでは df["列A"] / df["列B"] のように記述するだけで、
+行ごとの計算（ベクトル演算）を自動で行ってくれます。
+ループ処理（for文）を書かずに一括処理するのがpandasの特徴です。
+```
+
+```python
+# 列同士の割り算で新しい列を作成
+df["単価"] = df["売上額"] / df["数量"]
+print(df)
+```
+</details>
+
+練習問題 3（応用：欠損値処理）
+```text
+"商品" 列に含まれている欠損値（None / NaN）を、文字列 "不明" に置換してください。
+```
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+
+練習問題 3（解答）  
+```text
+fillna メソッドの使い方
+欠損値（NaN / None）の穴埋めには .fillna(置換したい値) を使用します。
+元のデータフレームを直接更新したい場合は df["商品"].fillna("不明", inplace=True) 
+と書くこともできます。
+```
+
+```python
+# fillna() で欠損値を置換（inplace=True または再代入）
+df["商品"] = df["商品"].fillna("不明")
+print(df)
+```
+</details>
+
+練習問題 4（応用：グループ集計）
+```text
+「店舗」ごとの 「売上額」の合計 を計算して表示してください。
+```
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+
+練習問題 4（解答）  
+```text
+groupby と sum
+カテゴリごとに集計したいときは .groupby("グループ化したい列") を使います。
+続けて ["集計したい列"].sum() や .mean()（平均）、.count()（件数）などを呼び出します。
+```
+
+```python
+# 店舗ごとにグループ化して売上額を集計
+shop_sales = df.groupby("店舗")["売上額"].sum()
+print(shop_sales)
+
+# 見やすくデータフレーム形式にしたい場合
+shop_sales_df = df.groupby("店舗")["売上額"].sum().reset_index()
+```
+</details>
+
+練習問題 5（発展：複合条件とソート）
+```text
+店舗が "東京" または "大阪" のデータに絞り込んだ上で、売上額が大きい順（降順） 
+に並び替えてください。
+```
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+
+練習問題 5（解答）  
+```text
+isin と sort_values の組み合わせ
+複数の候補値（東京または大阪）にマッチさせたい場合は .isin([リスト]) が便利です
+（| 演算子を使っても書けます）。
+
+ソートには .sort_values(by="列名") を使い、ascending=False を指定することで
+降順（大きい順）になります。
+```
+
+```python
+# 1. 「東京」または「大阪」でフィルタリング (.isin)
+filtered_df = df[df["店舗"].isin(["東京", "大阪"])]
+
+# 2. 売上額で降順ソート (ascending=False)
+result = filtered_df.sort_values(by="売上額", ascending=False)
+print(result)
+```
+</details>
+
 ---
 ## 💻 演習課題 
 
@@ -269,6 +1064,8 @@ print("年齢が高い順:", older_staff)
 ```
 
 ```
+
+
 # 演習2: DataFrameの作成と条件抽出（難易度：易）
 # 辞書からデータフレームを作成し、条件に合うデータを抽出します。
 # TODO: pd.DataFrame() を使って data_dict をデータフレーム df_menu に変換してください。
@@ -277,7 +1074,7 @@ import pandas as pd
 
 data_dict = {
     "メニュー": ["ショートケーキ", "チーズケーキ", "クッキー"],
-    "カロリー": 
+    "カロリー": [ 350, 250, 50]
 }
 
 # TODO: 辞書をデータフレームに変換する
@@ -294,12 +1091,20 @@ print("300キロカロリー超えのメニュー:\n", high_cal)
 # TODO: df_menu から、iloc を使って「0番目の行（ショートケーキの行）」だけを取り出してください。
 # TODO: df_menu に「価格」という新しい列を作り、 というリストを追加してください。
 
+data_dict = {
+    "メニュー": ["ショートケーキ", "チーズケーキ", "クッキー"],
+    "カロリー": [ 350, 250, 50]
+}
+
+# TODO: 辞書をデータフレームに変換する
+df_menu = pd.DataFrame(data_dict)
+
 # TODO: iloc で0番目の行を取り出す
 first_row = 
 print("0番目のデータ:\n", first_row)
 
 # TODO: "価格" 列を追加する
-df_menu[      ] = 
+df_menu[      ] = [500, 600, 100]
 
 print("\n価格を追加したデータフレーム:\n", df_menu)
 ```
@@ -331,7 +1136,7 @@ print("\n欠損値を埋めたデータ:\n", clean_df)
 sales_history = pd.DataFrame({
     "曜日": ["月", "火", "月", "火", "水"],
     "商品": ["コーヒー", "紅茶", "ケーキ", "コーヒー", "ケーキ"],
-    "売上": 
+    "売上": [300, 400, 500, 300, 500]
 })
 
 print("元の売上履歴:\n", sales_history)
@@ -367,7 +1172,7 @@ high_cal = df_menu[df_menu["カロリー"] > 300]
 **演習3の解答**
 ```python
 first_row = df_menu.iloc
-df_menu["価格"] = 
+df_menu["価格"] = [500, 600, 100]
 ```
 
 **演習4の解答**
@@ -409,13 +1214,13 @@ weekly_sum = sales_history.groupby("曜日")["売上"].sum()
 ```
 # 顧客の基本データ表
 customers = pd.DataFrame({
-    "顧客ID":,
+    "顧客ID": [1, 2, 3],
     "名前": ["山田", "佐藤", "鈴木"]
 })
 
 # 顧客の注文データ表（誰が何を頼んだか）
 orders = pd.DataFrame({
-    "顧客ID":,
+    "顧客ID": [1, 2, 3],
     "注文品": ["コーヒー", "ケーキ", "紅茶"]
 })
 

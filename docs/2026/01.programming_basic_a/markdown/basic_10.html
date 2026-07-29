@@ -449,103 +449,842 @@
 </div>
 </section>
 </section>
+<hr class="docutils" />
 <section id="id8">
 <h2>標準ライブラリの利用<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
 <p>Python自体も標準でモジュールを提供しています。これら標準で提供されているモジュールをまとめて標準ライブラリと呼びます。</p>
 <p>必要な処理をすべて自分で実装するのでなく、積極的に標準ライブラリを利用しましょう。</p>
 <p>標準ライブラリを利用すると重複する実装が減り、コードの記述量を大幅に削減できます。</p>
-<section id="id9">
-<h3>日付を扱うモジュール<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
-<p>標準ライブラリの1つ <code class="docutils literal notranslate"><span class="pre">datetime</span></code> モジュールを取り上げます。
-<code class="docutils literal notranslate"><span class="pre">datetime</span></code> は日付や時刻を簡単に扱うことができるモジュールです。
+<hr class="docutils" />
+<section id="datetime">
+<h3>日付を扱うモジュール (datetime)<a class="headerlink" href="#datetime" title="Link to this heading">¶</a></h3>
+<p>標準ライブラリの1つ <code class="docutils literal notranslate"><span class="pre">datetime</span></code> モジュールを取り上げます。<br />
+<code class="docutils literal notranslate"><span class="pre">datetime</span></code> は日付や時刻を簡単に扱うことができるモジュールです。<br />
 ここでは例として日付の計算をします。</p>
 <p><code class="docutils literal notranslate"><span class="pre">datetime.date()</span></code> コンストラクタを使って日付を意味するオブジェクトを生成できます。
 引数として年、月、日を指定します。</p>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">import datetime</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
 
-<span class="go">d = datetime.date(2016, 12, 23)</span>
-<span class="go">print(d.year, d.month, d.day)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2016</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">23</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>また、 <code class="docutils literal notranslate"><span class="pre">datetime.date.today()</span></code> メソッドを使うと今日の日付を取得することができます。</p>
-<div class="literal-block-wrapper docutils container" id="id25">
-<div class="code-block-caption"><span class="caption-number">リスト 29 </span><span class="caption-text">datetime.date.today()メソッド</span><a class="headerlink" href="#id25" title="Link to this code">¶</a></div>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">today = datetime.date.today()</span>
-<span class="go">print(today)  # 実行する日によって結果が異なる</span>
-<span class="go">2018-02-17</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">today</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">today</span><span class="p">)</span> 
 </pre></div>
-</div>
 </div>
 <p>ここで、自分が生まれてから今日までに何日経過したのかを計算してみましょう。
 自分で実装しようとすると、月ごとに日数が違う、うるう年の計算など面倒な計算が必要となりますが、
 <code class="docutils literal notranslate"><span class="pre">datetime.date</span></code> を使うと面倒な部分をモジュールが肩代わりしてくれます。</p>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">birthday = datetime.date(2008, 12, 3)  # Python 3.0のリリース日</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">birthday</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2008</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># Python 3.0のリリース日</span>
 
-<span class="go">today = datetime.date.today()</span>
-<span class="go">delta = today - birthday  # 日付や時刻の差を表すdatetime.timedeltaオブジェクト</span>
+<span class="n">today</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="n">today</span> <span class="o">-</span> <span class="n">birthday</span>  <span class="c1"># 日付や時刻の差を表すdatetime.timedeltaオブジェクト</span>
 
-<span class="go">print(delta.days)  # 実行する日によって結果が異なる</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">delta</span><span class="o">.</span><span class="n">days</span><span class="p">)</span>  <span class="c1"># 実行する日によって結果が異なる</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">datetime</span></code> モジュールは他にも時刻を扱う <code class="docutils literal notranslate"><span class="pre">datetime.time</span></code>, 日付と時刻両方を扱う <code class="docutils literal notranslate"><span class="pre">datetime.datetime</span></code> など日付や時刻の計算に便利な関数がたくさんあります。
-詳しくはPythonの公式ドキュメントの「 <a class="reference external" href="https://docs.python.org/ja/3/library/datetime.html">datetimeモジュール</a> 」を参考にしてください。</p>
+<section id="time-zone">
+<h4>タイムゾーン（Time Zone）とは？<a class="headerlink" href="#time-zone" title="Link to this heading">¶</a></h4>
+<p>Pythonの datetime オブジェクトにおけるタイムゾーンとは、「その日時が地球上のどこの標準時（地域）を基準にしているか」を表す情報のことです。</p>
+<p>pythonにおいて時刻を扱うdatetiem.datetimeとdatetime.timeオブジェクトにはnaiveとawareという概念があります。
+これは、生成されたオブジェクトがタイムゾーンの情報を持っているかどうかを示す属性値であり、タイムゾーンの情報を持っていればaware, なければnaiveになります。</p>
+<p>Pythonの datetime には、タイムゾーンの有無によって2つの状態があります。</p>
+<ol class="arabic simple">
+<li><p>naive（ネーブ）オブジェクト</p>
+<ul class="simple">
+<li><p>タイムゾーン情報を持たない日時です。</p></li>
+<li><p>「12:00」という情報だけで、それが日本（JST）の12時なのか、ロンドン（UTC）の12時なのか区別がつきません。バグの原因になりやすいため、基本的には次の「aware」を使うことが推奨されます。</p></li>
+</ul>
+</li>
+<li><p>aware（アウェア）オブジェクト</p>
+<ul class="simple">
+<li><p>タイムゾーン情報（tzinfo）を持った日時です。</p></li>
+<li><p>「日本時間の12:00」のように地球上の特定の瞬間を一意に指し示すことができるため、世界中の異なる地域で時間を比較したり、正しく変換したりできます。</p></li>
+</ul>
+</li>
+</ol>
+<p>主要な標準時</p>
+<ul class="simple">
+<li><p>UTC（協定世界時）：世界の基準となる、時差がゼロの標準時です。</p>
+<ul>
+<li><p>UTCは、イギリスのロンドン近郊を通る「本初子午線（経度0度）」を基準としています。</p></li>
+</ul>
+</li>
+<li><p>JST（日本標準時）：日本国内の標準時です。UTCより9時間進んでいます（UTC+9）。</p></li>
+</ul>
+<p>例1</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+
+<span class="c1"># naive（ネーブ）オブジェクト</span>
+<span class="n">naive</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">naive</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">naive</span><span class="o">.</span><span class="n">tzinfo</span><span class="p">)</span>
+
+<span class="c1"># aware（アウェア）オブジェクト</span>
+<span class="n">aware_utc</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+<span class="c1"># datetime.datetime.utcは世界標準時の情報を持ったitmezoneインスタンス</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">aware_utc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">aware_utc</span><span class="o">.</span><span class="n">tzinfo</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>例2</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">zoneinfo</span><span class="w"> </span><span class="kn">import</span> <span class="n">ZoneInfo</span>
+
+<span class="c1"># 1. 現在の日本時間（JST）を取得する</span>
+<span class="c1"># タイムゾーンに &quot;Asia/Tokyo&quot; を指定します</span>
+<span class="n">jst_now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">ZoneInfo</span><span class="p">(</span><span class="s2">&quot;Asia/Tokyo&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;日本時間 (JST): </span><span class="si">{</span><span class="n">jst_now</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># 出力例: 2026-07-29 23:57:00+09:00 （末尾の +09:00 がJSTの証）</span>
+
+<span class="c1"># 2. 現在の協定世界時（UTC）を取得する</span>
+<span class="n">utc_now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">ZoneInfo</span><span class="p">(</span><span class="s2">&quot;UTC&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;世界基準 (UTC): </span><span class="si">{</span><span class="n">utc_now</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># 出力例: 2026-07-29 14:57:00+00:00 （日本より9時間前の時間になります）</span>
+
+<span class="c1"># 3. タイムゾーンを別の地域に変換する（astimezoneメソッド）</span>
+<span class="c1"># 日本時間を、アメリカ・ニューヨークの時間（EST/EDT）に変換します</span>
+<span class="n">ny_time</span> <span class="o">=</span> <span class="n">jst_now</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">ZoneInfo</span><span class="p">(</span><span class="s2">&quot;America/New_York&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ニューヨーク時間: </span><span class="si">{</span><span class="n">ny_time</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 4. 2つの地域の日時を比較する（時差が違っても正しく判定されます）</span>
+<span class="c1"># 日本の23:57と、UTCの14:57は「地球上で同じ瞬間」を指すため True になります</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;同じ瞬間か？:&quot;</span><span class="p">,</span> <span class="n">jst_now</span> <span class="o">==</span> <span class="n">utc_now</span><span class="p">)</span>  <span class="c1"># 出力: True</span>
+
+</pre></div>
+</div>
+<p>zoneinfo を使用する際、標準のタイムゾーンデータベース（tzdata）が見つからずにエラーが出る場合があります。その場合は、以下のコマンドを実行してモジュールをインストールしてください。</p>
+<p>Google Colabの場合</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install tzdata
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><code class="docutils literal notranslate"><span class="pre">datetime</span></code> モジュールは他にも時刻を扱う <code class="docutils literal notranslate"><span class="pre">datetime.time</span></code>, 日付と時刻両方を扱う <code class="docutils literal notranslate"><span class="pre">datetime.datetime</span></code> など日付や時刻の計算に便利な関数がたくさんあります。</p>
+<p>詳しくはPythonの公式ドキュメントの「 <a class="reference external" href="https://docs.python.org/ja/3/library/datetime.html">datetimeモジュール</a> 」を参考にしてください。</p>
 </section>
-<section id="id10">
-<h3>正規表現モジュール<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
-<p>次に標準ライブラリの1つ <code class="docutils literal notranslate"><span class="pre">re</span></code> モジュールを扱います。
-<code class="docutils literal notranslate"><span class="pre">re</span></code> モジュールはPythonで正規表現を扱うためのモジュールです。</p>
-<p><code class="docutils literal notranslate"><span class="pre">re.search()</span></code> 関数を使って、文字列が正規表現にマッチするか調べられます。第1引数に正規表現、第2引数に対象の文字列を渡します（<a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/5_module.html#re-module"><span class="std std-numref">リスト 5.22</span></a>）。</p>
-<div class="highlight-pycon notranslate" id="re-module"><div class="highlight"><pre><span></span><span class="go">import re</span>
-
-<span class="go">m = re.search(&#39;(P(yth|l)|Z)o[pn]e?&#39;, &#39;Python&#39;)</span>
-</pre></div>
-</div>
-<p>正規表現にマッチした場合、 <code class="docutils literal notranslate"><span class="pre">re.search()</span></code> は結果を表すマッチオブジェクトを返します。
-マッチオブジェクトから値を取り出すには、 <code class="docutils literal notranslate"><span class="pre">.group()</span></code> メソッドを呼び出します。</p>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">m.group()</span>
-<span class="go">&#39;Python&#39;</span>
-</pre></div>
-</div>
-<p>正規表現がグループを含む場合、グループの番号を引数に渡して取り出せます。
-引数を指定しないか、0を指定すると、正規表現全体のマッチが返されます。</p>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">m = re.search(&#39;py(thon)&#39;, &#39;python&#39;)</span>
-
-<span class="go">m.group()</span>
-<span class="go">&#39;python&#39;</span>
-
-<span class="go">m.group(0)</span>
-<span class="go">&#39;python&#39;</span>
-
-<span class="go">m.group(1)</span>
-<span class="go">&#39;thon&#39;</span>
-</pre></div>
-</div>
-<p>正規表現にマッチしない場合は、<a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/5_module.html#not-match"><span class="std std-numref">リスト 5.25</span></a> に示すように何も返しません（<code class="docutils literal notranslate"><span class="pre">None</span></code> を返します）。</p>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">re.search(&#39;py&#39;, &#39;ruby&#39;)</span>
-</pre></div>
-</div>
-<div class="admonition- admonition">
-<p class="admonition-title">コラム: 正規表現の文字列</p>
-<p>正規表現の文字列にはPythonのraw文字列を使うのが一般的です。</p>
-<p><code class="docutils literal notranslate"><span class="pre">r</span></code> プレフィックスをつけてraw文字列を定義します。
-raw文字列ではバックスラッシュを特別扱いしないので、
-正規表現中にバックスラッシュを使う際に <code class="docutils literal notranslate"><span class="pre">'\\'</span></code> と書く必要がなくなります。</p>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">re</span></code> モジュールには、ここで説明していない有効な使い方があります。
-Pythonの公式ドキュメントの「 <a class="reference external" href="https://docs.python.org/ja/3/library/re.html">reモジュール</a> 」を参考にしてください。</p>
-<p>また、他のPython標準ライブラリについては、「 <a class="reference external" href="https://docs.python.org/ja/3/library/index.html">Python標準ライブラリ</a> 」を参考にしてください。</p>
 </section>
 </section>
 <hr class="docutils" />
+<section id="id9">
+<h2>練習問題<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<section id="id10">
+<h3>💡 覚えるためのワンポイント<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>strftime (string format time): 日付データ ➔ 文字列へ変換</p></li>
+<li><p>strptime (string parse time): 文字列 ➔ 日付データへ変換</p></li>
+<li><p>timedelta: 日数の計算（加減算）に使用</p></li>
+</ul>
+<hr class="docutils" />
+<p>練習問題 1（基礎：現在の時刻とフォーマット指定）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>現在のシステム日時を取得し、&quot;2026年07月30日 12時00分&quot; のような形式の文字列に変換して出力してください。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 1（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>strftime の使い方  
+datetime.now() で現在日時を取得し、.strftime(フォーマット) を使って指定した文字列形式に変換します。
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="c1"># %Y: 4桁年, %m: 2桁月, %d: 2桁日, %H: 24時間表記の時, %M: 分</span>
+<span class="n">formatted_now</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y年%m月</span><span class="si">%d</span><span class="s2">日 %H時%M分&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">formatted_now</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 2（応用：文字列から datetime オブジェクトへの変換）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>文字列 &quot;2025-12-25 18:30:00&quot; があります。
+この文字列を datetime オブジェクトに変換し、「月」と「日」だけを取り出して 
+&quot;12月25日&quot; と表示させてください。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 2（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>strptime の使い方  
+文字列を日付データとして扱いたいときは datetime.strptime() を使います。
+変換後は .month や .day などの属性で数値として簡単にアクセスできます。
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="n">date_str</span> <span class="o">=</span> <span class="s2">&quot;2025-12-25 18:30:00&quot;</span>
+
+<span class="c1"># 文字列を datetime オブジェクトに変換 (strptime = string parse time)</span>
+<span class="n">dt_obj</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date_str</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dt_obj</span><span class="o">.</span><span class="n">month</span><span class="si">}</span><span class="s2">月</span><span class="si">{</span><span class="n">dt_obj</span><span class="o">.</span><span class="n">day</span><span class="si">}</span><span class="s2">日&quot;</span><span class="p">)</span>  <span class="c1"># 12月25日</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 3（日付の計算：未来・過去の日付）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>今日の日付から 「100日後の日付」 と 「3週間前の日付」 を計算して、
+それぞれ &quot;YYYY-MM-DD&quot; の形式で表示させてください。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 3（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>timedelta による加減算  
+日付の足し算・引き算には timedelta を使用します。
+days や weeks などの引数を指定できます。
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
+
+<span class="n">today</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+
+<span class="c1"># 100日後</span>
+<span class="n">after_100_days</span> <span class="o">=</span> <span class="n">today</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="c1"># 3週間（21日）前</span>
+<span class="n">before_3_weeks</span> <span class="o">=</span> <span class="n">today</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">weeks</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;100日後:&quot;</span><span class="p">,</span> <span class="n">after_100_days</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3週間前:&quot;</span><span class="p">,</span> <span class="n">before_3_weeks</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 4（日付の差分計算：日数カウント）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>オリンピックの開催日 target_date = datetime.date(2028, 7, 14) と、
+今日の日付（today = datetime.date.today()）の差を計算し、「あと何日か」 を
+出力してください。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 4（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>日付同士の引き算  
+date や datetime 同士を引き算すると、結果は timedelta オブジェクトになります。
+.days 属性を見ることで差分の角の日数を取得できます。
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span>
+
+<span class="n">today</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+<span class="n">target_date</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">2028</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
+
+<span class="c1"># date オブジェクト同士を引き算すると timedelta オブジェクトが返る</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">target_date</span> <span class="o">-</span> <span class="n">today</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;目標の日まであと </span><span class="si">{</span><span class="n">diff</span><span class="o">.</span><span class="n">days</span><span class="si">}</span><span class="s2"> 日です！&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 5（発展：月の最終日を取得する）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ある年と月（例: 2026年2月）が与えられたときに、その月の最終日（月末の日付）を
+求める処理を書いてください。
+※ヒント: timedelta を使うか、翌月の1日から1日引き算するなどのアイデアが使えます。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 5（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>月末日の動的計算  
+月によって「30日」「31日」「28日（うるう年は29日）」と日数が異なるため、
+「翌月の1日を作ってから 1 日引く（timedelta(days=1)）」というロジックを使うと、
+うるう年も含めて確実に月末の日付が計算できます。
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_last_day_of_month</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">):</span>
+    <span class="c1"># 翌月の1日を作成する（※12月の場合は翌年1月にする調整）</span>
+    <span class="k">if</span> <span class="n">month</span> <span class="o">==</span> <span class="mi">12</span><span class="p">:</span>
+        <span class="n">next_month</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="n">year</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">next_month</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># 翌月1日から1日引くと、今月の最終日になる</span>
+    <span class="n">last_day</span> <span class="o">=</span> <span class="n">next_month</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">last_day</span>
+
+<span class="c1"># テスト (2026年2月末)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">get_last_day_of_month</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 2026-02-28</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="regular-expression">
+<h3>正規表現（regular expression）モジュール<a class="headerlink" href="#regular-expression" title="Link to this heading">¶</a></h3>
+<p>正規表現は文字列などを扱う上でとても便利です。ここでは、その基本的な使い方を紹介します。
+ここでは正規表現の初歩とPythonでの扱い方を紹介します。</p>
+<p>Pythonでの正規表現</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/ja/3/library/re.html">公式ドキュメント</a></p></li>
+</ul>
+<p>次に標準ライブラリの1つ <code class="docutils literal notranslate"><span class="pre">re</span></code> モジュールを扱います。
+<code class="docutils literal notranslate"><span class="pre">re</span></code> モジュールはPythonで正規表現を扱うためのモジュールです。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span> <span class="c1"># Pythonで正規表現を扱うモジュール</span>
+</pre></div>
+</div>
+<p>例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;(P(yth|l)|Z)o[pn]e?&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>正規表現とは、文字列のパターンを表す式です。 文字列が正規表現にマッチするとは、文字列が正規表現の表すパターンに適合していることを意味します。 また、正規表現が文字列にマッチするという言い方もします。</p>
+<p>たとえば、正規表現 abc は文字列 abcde （の部分文字列 abc）にマッチします。
+正規表現に文字列がマッチしているかどうかを調べることのできる関数に match があります。
+match は、指定した 正規表現A が 文字列B（の先頭部分）にマッチするかどうか調べます。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>re.match(正規表現A, 文字列B)
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;abcde&#39;</span><span class="p">)</span> <span class="c1">#マッチする</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;ababc&#39;</span><span class="p">)</span> <span class="c1">#マッチしない</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>match では、マッチが成立している場合、matchオブジェクトと呼ばれる特殊なデータを返します。<br />
+マッチが成立しない場合、None を返します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;abcde&#39;</span><span class="p">):</span> <span class="c1">#マッチする</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;正規表現abcが文字列abcdeにマッチする&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;正規表現abcが文字列abcdeにマッチしない&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;ababc&#39;</span><span class="p">):</span> <span class="c1">#マッチしない</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;正規表現abcが文字列ababcにマッチする&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;正規表現abcが文字列ababcにマッチしない&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>マッチが成立している場合、matchオブジェクトには、マッチした文字列の情報が格納されています。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">_sre</span><span class="o">.</span><span class="n">SRE_Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;abc&#39;</span><span class="o">&gt;</span> 
+</pre></div>
+</div>
+<p>このオブジェクト内の match という値は、マッチした文字列を、 span という値はマッチしたパターンが存在する、文字列のインデックスの範囲を表します。</p>
+<p>正規表現では大文字と小文字は区別されます。たとえば、正規表現 abc は文字列 ABCdef にはマッチしません。勿論、正規表現 ABC も文字列 abcdef にはマッチしません。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;ABCdef&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;ABC&#39;</span><span class="p">,</span> <span class="s1">&#39;abcdef&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>match の3番目の引数として re.IGNORECASE もしくは re.I を指定すると、大文字と小文字を区別せずにマッチするかどうかを調べることができます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;ABCdef&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;ABC&#39;</span><span class="p">,</span> <span class="s1">&#39;abcdef&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;ABC&#39;</span><span class="p">,</span> <span class="s1">&#39;ABCdef&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;ABCdef&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;ABC&#39;</span><span class="p">,</span> <span class="s1">&#39;abcdef&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;ABC&#39;</span><span class="p">,</span> <span class="s1">&#39;ABCdef&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;AbC&#39;</span><span class="p">,</span> <span class="s1">&#39;aBcdef&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>match は文字列の先頭がマッチするかどうか調べますので、次のような場合、matchオブジェクトを返さずに None が返されます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;def&#39;</span><span class="p">,</span> <span class="s1">&#39;abcdef&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;xyz&#39;</span><span class="p">,</span> <span class="s1">&#39;abcdef&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">re.match()</span></code>文字列の先頭しか調べられないです。<br />
+<code class="docutils literal notranslate"><span class="pre">re.search()</span></code>は、指定した 正規表現A が 文字列B に（文字列の先頭以外でも）マッチするかどうか調べることができます。
+<code class="docutils literal notranslate"><span class="pre">re.search()</span></code> は結果を表すマッチオブジェクトを返します。<br />
+正規表現にマッチしない場合は、<code class="docutils literal notranslate"><span class="pre">not-match</span></code> に示すように何も返しません（<code class="docutils literal notranslate"><span class="pre">None</span></code> を返します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">正規表現A</span><span class="p">,</span> <span class="n">文字列B</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;abcdef&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;ababcd&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;def&#39;</span><span class="p">,</span> <span class="s1">&#39;abcdef&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>search の場合も3番目の引数として re.IGNORECASE、 もしくは re.I を指定することで、大文字と小文字を区別せずにマッチするかどうかを調べることができます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;ABCdef&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;DEF&#39;</span><span class="p">,</span> <span class="s1">&#39;abcdef&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;ABCdef&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;DEF&#39;</span><span class="p">,</span> <span class="s1">&#39;abcdef&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;not&#39;</span><span class="p">,</span> <span class="s1">&#39;It is NOT me.&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;NOT&#39;</span><span class="p">,</span> <span class="s1">&#39;It is not mine.&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>文字列の先頭からのマッチを調べたいときには、正規表現の先頭にキャレット (^) をつけてください。また、文字列の最後からマッチさせたいときは、正規表現の最後にドル記号 ($) をつけてください</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;ababcd&#39;</span><span class="p">)</span>  <span class="c1">#キャレットなしだとマッチする</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;^abc&#39;</span><span class="p">,</span> <span class="s1">&#39;ababcd&#39;</span><span class="p">)</span> <span class="c1">#キャレットありだとマッチしない</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;def&#39;</span><span class="p">,</span> <span class="s1">&#39;abcdefg&#39;</span><span class="p">)</span> <span class="c1">#ドル記号なしだとマッチする</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;def$&#39;</span><span class="p">,</span> <span class="s1">&#39;abcdefg&#39;</span><span class="p">)</span> <span class="c1">#ドル記号ありだとマッチしない</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;def$&#39;</span><span class="p">,</span> <span class="s1">&#39;abcdefxyzdef&#39;</span><span class="p">)</span> <span class="c1"># 2つあるうちの2番目（最後）の def にマッチする</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>正規表現は文字列の「パターン」を表すので、1つの正規表現で複数の文字列を表すことも可能です。</p>
+<p>たとえば、正規表現 ab と正規表現 de という2つの正規表現を | という記号で繋げた ab|de も正規表現を表します。この正規表現では、ab と de という2つの文字列を表しており、これらのいずれかを含む文字列にマッチします。この | の記号（演算）を**「和、もしくは選択」**といいます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;ab|de&#39;</span><span class="p">,</span> <span class="s1">&#39;bcdef&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;ab|de&#39;</span><span class="p">,</span> <span class="s1">&#39;abcdef&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;ab|de&#39;</span><span class="p">,</span> <span class="s1">&#39;fgdeab&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;ab|de&#39;</span><span class="p">,</span> <span class="s1">&#39;acdf&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;a|an|the&#39;</span><span class="p">,</span> <span class="s1">&#39;I slipped on a piece of the banana.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;a|an|the&#39;</span><span class="p">,</span> <span class="s1">&#39;I slipped on the banana.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;Good (Morning|Evening)&#39;</span><span class="p">,</span> <span class="s1">&#39;Good Evening, Vietnam.&#39;</span><span class="p">)</span> <span class="c1">#正規表現内の（）については下で述べます</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;colo(u|)r&#39;</span><span class="p">,</span> <span class="s1">&#39;That color matches your suit.&#39;</span><span class="p">)</span> <span class="c1">#正規表現内の（）については下で述べます</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;colo(u|)r&#39;</span><span class="p">,</span> <span class="s1">&#39;That colour matches your suit.&#39;</span><span class="p">)</span> <span class="c1">#正規表現内の（）については下で述べます</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>上記の3番目の例に注意してください。正規表現 ab | de では ab が de よりも先に記述されていますが、マッチする文字列は文字列上で先に出てきた方（ab ではなく、de）であることに注意してください。</p>
+<p>正規表現 abc は、正規表現 a と正規表現 b と正規表現 c という3つの正規表現を繋げて構成された正規表現であり、このように正規表現を繋げて新しい正規表現を作る演算を**「連接」**といいます。</p>
+<p>a* は、正規表現 a を0回以上繰り返した文字列とマッチします。この * の演算を**「閉包(へいほう)」**といいます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;a*&#39;</span><span class="p">,</span> <span class="s1">&#39;abcdef&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;a*&#39;</span><span class="p">,</span> <span class="s1">&#39;aabbcc&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;a*&#39;</span><span class="p">,</span> <span class="s1">&#39;cde&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;bo*&#39;</span><span class="p">,</span> <span class="s1">&#39;boooo!&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>上記の3番目の例において（文字 a が含まれていないにも関わらず）None が返らずに、マッチしているのを不思議に思うかもしれません。しかし、a* は a を0回反復した文字列にもマッチします。この0回反復した文字列とは、長さが0の文字列であり、空列とか空文字列と呼ばれます。文字列 cde の先頭には、空列があると見なせるので、a* が先頭部分にマッチしているのです。</p>
+<p>たとえば、正規表現 abb* は、 ab, abb, abbb, … という文字列にマッチします。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;abb*&#39;</span><span class="p">,</span> <span class="s1">&#39;abcdef&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;abb*&#39;</span><span class="p">,</span> <span class="s1">&#39;aabbcc&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;abb*&#39;</span><span class="p">,</span> <span class="s1">&#39;cde&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;hello*&#39;</span><span class="p">,</span> <span class="s1">&#39;Hi, hellooooo!&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;hello*&#39;</span><span class="p">,</span> <span class="s1">&#39;Hi, good morning!&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>連接、和、閉包という3つの演算を組み合わせることで様々な正規表現を記述することができますが、これらの演算には結合の強さが存在します。たとえば、先に見た ab | cd という正規表現は、 ab もしくは cd という文字列にマッチします（(ab)|(cd) と同じ意味です）。つまり、連接の方が和よりも強く結合しているのです。そこで、丸括弧を使って a(b|c)d とすると、この正規表現は、abd | acd と同じ意味になります。</p>
+<ul class="simple">
+<li><p>和（Sum / Union）: 2つ以上のものを「足し算する（合わせる）」こと。</p></li>
+<li><p>閉包（Closure）: 1つの集まりを「はみ出さないように囲う（閉じる）」こと。</p></li>
+<li><p>連接（Coherence）: 空間の上で、バラバラな数式たちが「きれいに連動して繋がっている」こと。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;ab|de&#39;</span><span class="p">,</span> <span class="s1">&#39;fgdeab&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;(ab)|(de)&#39;</span><span class="p">,</span> <span class="s1">&#39;fgdeab&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;a(b|d)e&#39;</span><span class="p">,</span> <span class="s1">&#39;fgdeab&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;a(b|d)e&#39;</span><span class="p">,</span> <span class="s1">&#39;fgadeab&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;abe|ade&#39;</span><span class="p">,</span> <span class="s1">&#39;fgadeab&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;(I|i)t(&#39;s| is| was)&quot;</span><span class="p">,</span> <span class="s2">&quot;It was rainy yesterday, but it&#39;s fine today.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;(I|i)t(&#39;s| is| was)&quot;</span><span class="p">,</span> <span class="s2">&quot;It rained yesterday, but it&#39;s fine today.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>演算の結合の強さは、「和 &lt; 連接 &lt; 閉包」という順序になっています。これは数学の、「和（＋）&lt; 積(×) &lt; べき」と同じですので、直感的にもわかりやすいと思います。これまでに紹介した連接、和、閉包という3つの演算と結合の順序を明記する丸括弧 () とを組み合わせることでさまざまな正規表現を記述できます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;a(bc|b)*&#39;</span><span class="p">,</span> <span class="s1">&#39;defabcxyz&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;a(bc|b)*&#39;</span><span class="p">,</span> <span class="s1">&#39;bbacbabbbbc&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;ca(r|t(egory|tle|))&#39;</span><span class="p">,</span> <span class="s1">&#39;What category is this cat in?&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;ca(r|t(egory|tle|))&#39;</span><span class="p">,</span> <span class="s1">&#39;No, this is not a carpet.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;ca(r|t(egory|tle|))&#39;</span><span class="p">,</span> <span class="s1">&#39;We saw a cattle car almost hit the cat.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;ca(r|t(egory|tle|))&#39;</span><span class="p">,</span> <span class="s1">&#39;Please locate him.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;ca(r|t(egory|tle|))&#39;</span><span class="p">,</span> <span class="s2">&quot;Don&#39;t play castanets.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Pythonでは正規表現は文字列によって表していることに注意してください。たとえば、match 関数の第一引数を文字列の変数で置き換えられるということです。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;abcde&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">reg1</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span> <span class="c1"># 正規表現を文字列で記述する</span>
+<span class="n">match2</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">reg1</span><span class="p">,</span> <span class="s1">&#39;abcde&#39;</span><span class="p">)</span> <span class="c1">#match1と同じ結果になる</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>このことを覚えておくと複雑な正規表現を書くときに、少しずつ分解して記述することができて便利です。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">match1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;(I|i)t(&#39;s| is| was)&quot;</span><span class="p">,</span> <span class="s2">&quot;It was rainy yesterday, but it&#39;s fine today.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match1</span><span class="p">)</span>
+<span class="n">reg1</span> <span class="o">=</span> <span class="s1">&#39;(I|i)t&#39;</span> <span class="c1"># 正規表現の前半部分</span>
+<span class="n">reg2</span> <span class="o">=</span> <span class="s2">&quot;(&#39;s| is| was)&quot;</span> <span class="c1"># 正規表現の後半部分</span>
+<span class="n">reg3</span> <span class="o">=</span> <span class="n">reg1</span> <span class="o">+</span> <span class="n">reg2</span> <span class="c1"># 正規表現を表す2つの文字列を結合する</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">reg3</span><span class="p">)</span>
+<span class="n">match2</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">reg3</span><span class="p">,</span> <span class="s2">&quot;It was rainy yesterday, but it&#39;s fine today.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match2</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 <section id="id11">
-<h2>サードパーティ製パッケージ<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<h3>マッチした部分を取り出す<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<p>re モジュールでマッチした部分を取り出すには、group() メソッドや findall() 関数を使用します。</p>
+<div class="admonition- admonition">
+<p class="admonition-title">コラム: 正規表現の文字列</p>
+<p>正規表現の文字列にはPythonのraw文字列を使うのが一般的です。
+<code class="docutils literal notranslate"><span class="pre">r</span></code> プレフィックスをつけてraw文字列を定義します。</p>
+<p>raw文字列（生の文字列）とは、エスケープシーケンス（\n や \t など）を特別な意味として解釈せず、書いた文字をそのまま扱う文字列のことです．
+正規表現中にバックスラッシュを使う際に \ と書く必要がなくなります。</p>
+<p>なぜ必要なのか？</p>
+<p>通常、Pythonの文字列で \n と書くと「改行」を意味します。しかし、正規表現やWindowsのファイルパスでは \d（数字）や \（ディレクトリの区切り）のように、バックスラッシュ（\）そのものをたくさん使います。raw文字列を使わない場合、バックスラッシュ自体を表現するために \ と2つ重ねて書く必要があり、コードが非常に読みづらくなります。raw文字列を使えば、バックスラッシュをそのまま1つ書くだけで済みます。</p>
+</div>
+<section id="id12">
+<h4>最初にマッチした部分全体を取り出す<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
+<p>最初にマッチした部分全体を取り出すre.search() や re.match() が返すマッチオブジェクトに対して、group()（または group(0)）を呼び出します</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="c1"># 最初に見つかる「数字+円」のパターンを検索</span>
+<span class="c1"># r&#39;\d+円&#39; は、テキストの中から「1回以上繰り返す数字の後に『円』が続く部分を検索</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Apple: 100円, Banana: 200円&quot;</span>
+<span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+円&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># 出力: 100円</span>
+</pre></div>
+</div>
+</section>
+<section id="id13">
+<h4>カッコ () でグループ化した部分だけを取り出す<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h4>
+<p>正規表現内で () を使うと、特定の箇所だけをピンポイントで抽出できます。group(1)、group(2) のように引数に番号を指定します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="c1"># カッコの中の英数字だけをグループ化</span>
+<span class="c1"># (\w+) は、「1文字以上の英数字やアンダースコア（_）の塊」を見つけ、さらにそれを「後から取り出せるように記憶する（グループ化）」という意味</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;ユーザー名は user_123 です。&quot;</span>
+<span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;ユーザー名は (\w+) です&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>  <span class="c1"># 一致した全体: ユーザー名は user_123 です</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>  <span class="c1"># 1つ目のカッコ内: user_123</span>
+</pre></div>
+</div>
+</section>
+<section id="id14">
+<h4>マッチするすべての部分をリストでまとめて取り出す<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="c1"># すべての数字部分をリストで取得</span>
+<span class="c1"># r&#39;\d+&#39; は、テキストの中から「1桁以上の連続した数字（数字の塊）」をすべて見つける</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Apple: 100円, Banana: 200円, Orange: 300円&quot;</span>
+<span class="n">prices</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>  <span class="c1"># 出力: [&#39;100&#39;, &#39;200&#39;, &#39;300&#39;]</span>
+</pre></div>
+</div>
+<p>※ re.findall() のパターン内に () が含まれている場合は、カッコ内のグループにマッチした部分だけがリスト化されます。</p>
+</section>
+<section id="id15">
+<h4>マッチした位置（インデックス）を取得する<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h4>
+<p>文字列のどこからどこまでがマッチしたかを知りたい場合は、start(), end(), span() メソッドを使用します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Hello World&quot;</span>
+<span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;World&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">start</span><span class="p">())</span>  <span class="c1"># 開始位置のインデックス: 6</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">end</span><span class="p">())</span>    <span class="c1"># 終了位置のインデックス: 11</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">span</span><span class="p">())</span>   <span class="c1"># 開始と終了のタプル: (6, 11)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id16">
+<h4>普通の文字は全て正規表現です。<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h4>
+<p>-　aという正規表現はaにマッチします。</p>
+</section>
+<section id="id17">
+<h4>正規表現の初歩（の初歩）<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.</span></code>（ドット）は任意の一文字にマッチ</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[]</span></code>で囲むと<code class="docutils literal notranslate"><span class="pre">[]</span></code>の中の文字のいずれかにマッチ</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">[AB]C</span></code>は<code class="docutils literal notranslate"><span class="pre">AB</span></code>もしくは<code class="docutils literal notranslate"><span class="pre">AC</span></code>のいずれかにマッチ</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[123]0</span></code>は<code class="docutils literal notranslate"><span class="pre">10</span></code>,<code class="docutils literal notranslate"><span class="pre">20</span></code>,<code class="docutils literal notranslate"><span class="pre">30</span></code>のいずれかにマッチ</p></li>
+<li><p>全ての大文字アルファベットのいずれかにマッチは<code class="docutils literal notranslate"><span class="pre">[A-Z]</span></code></p></li>
+<li><p>全ての整数値のいずれかにマッチは<code class="docutils literal notranslate"><span class="pre">[0-9]</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code>は直前の文字の0回以上の繰り返し（0回 == なくても良い）</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">AKB[0-9]*</span></code>は<code class="docutils literal notranslate"><span class="pre">AKB49</span></code>にも<code class="docutils literal notranslate"><span class="pre">AKB</span></code>にも<code class="docutils literal notranslate"><span class="pre">AKB1</span></code>にもマッチ</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(|)</span></code>はor（または）という意味になる</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">(A|B)</span></code>は A or B（AまたはB）にマッチ</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[AB]&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[123]0&#39;</span><span class="p">,</span> <span class="s1">&#39;20&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;AKB[0-9]*&#39;</span><span class="p">,</span> <span class="s1">&#39;AKB49&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(A|B)&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>正規表現パターンを「正規表現オブジェクト」にコンパイルする方法<br />
+match()やsearch()などのメソッドを使えます</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="n">pat1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">pat2</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;[AB]&#39;</span><span class="p">)</span>
+<span class="n">pat3</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;[123]0&#39;</span><span class="p">)</span>
+<span class="n">pat4</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;AKB[0-9]*&#39;</span><span class="p">)</span>
+<span class="n">pat5</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;(A|B)&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pat1</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">)</span> <span class="c1"># マッチすればTrueを返す</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pat2</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pat3</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;20&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pat4</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;AKB49&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pat5</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>ソフトなどによって微妙に記法など異なる場合もあります</p>
+<p><code class="docutils literal notranslate"><span class="pre">re</span></code> モジュールには、ここで説明していない有効な使い方があります。<br />
+Pythonの公式ドキュメントの「 <a class="reference external" href="https://docs.python.org/ja/3/library/re.html">reモジュール</a> 」を参考にしてください。</p>
+<p>また、他のPython標準ライブラリについては、「 <a class="reference external" href="https://docs.python.org/ja/3/library/index.html">Python標準ライブラリ</a> 」を参考にしてください。</p>
+<p>正規表現は奥が深い...</p>
+<p>もっと、深く学びたい人は<a class="reference external" href="https://www.amazon.co.jp/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE-%E7%AC%AC3%E7%89%88-Jeffrey-F-Friedl/dp/4873113598/ref=sr_1_1?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&amp;amp;keywords=%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE&amp;amp;qid=1560402782&amp;amp;s=gateway&amp;amp;sr=8-1">「詳説 正規表現」by Jeffrey Fried </a>を参考にしてください</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id18">
+<h2>練習問題<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h2>
+<section id="id19">
+<h3>💡 正規表現でよく使う記号のまとめ<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>\d: 数字（0〜9） / \D: 数字以外</p></li>
+<li><p>\w: 英数字・無条件の単語文字（アンダースコア含む）</p></li>
+<li><p>+: 1回以上の繰り返し / *: 0回以上の繰り返し</p></li>
+<li><p>?: 0回または1回（または非貪欲化）</p></li>
+<li><p>r&quot;...&quot;: 正規表現を書くときはエスケープ事故を防ぐため必ず r をつける</p></li>
+</ul>
+<hr class="docutils" />
+<p>練習問題 1（基礎：特定の形式のパターン抽出）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>文字列 text = &quot;お問い合わせは support@example.com または info@test.co.jp まで&quot; 
+があります。  
+正規表現を使って、テキスト内に含まれるメールアドレスだけをすべて抽出してリスト形式で
+取り出してください。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 1（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>re.findall の使い方
+re.findall() を使うと、パターンにマッチする部分をすべてリストで返してくれます。
+文字列の前に r&quot;...&quot; をつけることでエスケープシーケンス（\）をそのまま扱う
+「生文字列（raw string）」になります。
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;お問い合わせは support@example.com または info@test.co.jp まで&quot;</span>
+
+<span class="c1"># \S+@\S+\.\S+ (空欄以外の文字 + @ + 空欄以外の文字 + . + 空欄以外の文字)</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;[\w\.-]+@[\w\.-]+\.\w+&quot;</span>
+<span class="n">emails</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">emails</span><span class="p">)</span>  <span class="c1"># [&#39;support@example.com&#39;, &#39;info@test.co.jp&#39;]</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 2（基礎：電話番号のバリデーション）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ユーザーが入力した電話番号のフォーマット（例: &quot;090-1234-5678&quot; のようにハイフン区切りの数字）
+が正しいか判定する関数 is_valid_phone(phone_str) を作成してください。
+
+* 先頭から末尾まで完全一致（^ と $）で判定し、True か False を返すようにしてください
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 2（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>re.fullmatch / メタ文字の使用
+文字列全体がパターンに適合しているか確認したいときは re.fullmatch() 
+または ^ と $ を組み合わせます。\d は数字を表し、
+{3,4} で出現回数の範囲を指定します。
+
+re.fullmatch()とは？
+* search：「どこかにある？」
+* match：「最初から合ってる？」
+* fullmatch：「全部ぴったり合ってる？」
+入力チェック（郵便番号、電話番号、学生番号、パスワードなど）では、
+文字列全体の形式を確認したいため、re.fullmatch() がよく使われます。
+</pre></div>
+</div>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>関数</p></th>
+<th class="head"><p>判定範囲</p></th>
+<th class="head"><p>例（<code class="docutils literal notranslate"><span class="pre">&quot;123abc&quot;</span></code> に <code class="docutils literal notranslate"><span class="pre">\d+</span></code>）</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">re.search()</span></code></p></td>
+<td><p>どこかに一致</p></td>
+<td><p>○</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">re.match()</span></code></p></td>
+<td><p>先頭が一致</p></td>
+<td><p>○</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">re.fullmatch()</span></code></p></td>
+<td><p>全体が一致</p></td>
+<td><p>×</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_valid_phone</span><span class="p">(</span><span class="n">phone_str</span><span class="p">):</span>
+    <span class="c1"># ^: 先頭, \d{2,4}: 2〜4桁の数字, -: ハイフン, $: 末尾</span>
+    <span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;^\d{2,4}-\d{2,4}-\d</span><span class="si">{4}</span><span class="s2">$&quot;</span>
+    <span class="c1"># fullmatch は全体が完全一致した場合のみ Match オブジェクトを返す</span>
+    <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">phone_str</span><span class="p">))</span>
+
+<span class="c1"># テスト</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_valid_phone</span><span class="p">(</span><span class="s2">&quot;090-1234-5678&quot;</span><span class="p">))</span>  <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_valid_phone</span><span class="p">(</span><span class="s2">&quot;09012345678&quot;</span><span class="p">))</span>  <span class="c1"># False（ハイフンなし）</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 3（応用：文字の置換）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>文字列 text = &quot;リンゴ: 150円, バナナ: 80円, イチゴ: 500円&quot; があります。
+re.sub() を使って、数字の部分だけをすべて &quot;***&quot; に伏字（マスク）処理した文字列を
+作成してください。
+
+re.sub() は、「指定したルールに一致する文字列を、別の文字列に置き換える関数」です。
+例えば、
+* 数字を削除する
+* メールアドレスの一部を隠す
+* 複数のスペースを1つにまとめる
+* 改行や記号を取り除く
+といった文字列の前処理で使われます。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 3（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>re.sub による置換
+re.sub(パターン, 置換後の文字列, 対象テキスト) を使います。
+\d+ は「1文字以上続く数字」にマッチするため、150や80を一塊として置換できます。
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;リンゴ: 150円, バナナ: 80円, イチゴ: 500円&quot;</span>
+
+<span class="c1"># \d+ (1桁以上の数字) を &quot;***&quot; に置換</span>
+<span class="n">masked_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="s2">&quot;***&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">masked_text</span><span class="p">)</span>  <span class="c1"># リンゴ: ***円, バナナ: ***円, イチゴ: ***円</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 4（応用：キャプチャグループによる情報抽出）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>日付を表す文字列 date_str = &quot;2026-07-30&quot; があります。
+正規表現のgroup() と search() を使って、「年」「月」「日」を
+それぞれ個別の変数に取り出して表示してください。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 4（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>グループ化 () と match.group()
+パターン内で () を使うと、マッチした部分を後から match.group(インデックス) で
+個別に引き出すことができます（group(0) は全体にマッチした文字列になります）。
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="n">date_str</span> <span class="o">=</span> <span class="s2">&quot;2026-07-30&quot;</span>
+
+<span class="c1"># カッコ () で囲んだ部分がグループとして扱われる</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(\d</span><span class="si">{4}</span><span class="s2">)-(\d</span><span class="si">{2}</span><span class="s2">)-(\d</span><span class="si">{2}</span><span class="s2">)&quot;</span>
+<span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">date_str</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+    <span class="n">year</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 1番目のカッコ</span>
+    <span class="n">month</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># 2番目のカッコ</span>
+    <span class="n">day</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># 3番目のカッコ</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">年 </span><span class="si">{</span><span class="n">month</span><span class="si">}</span><span class="s2">月 </span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2">日&quot;</span><span class="p">)</span>  <span class="c1"># 2026年 07月 30日</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 5（発展：HTMLタグの除去）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>HTMLのタグが含まれた文字列 html = &quot;&lt;p&gt;こんにちは &lt;b&gt;Python&lt;/b&gt; 世界！&lt;/p&gt;&quot; があります。
+re.sub() を使って、すべてのHTMLタグ（&lt;...&gt; の部分）を取り除き、テキスト部分の 
+&quot;こんにちは Python 世界！&quot; だけを抽出してください。
+（※最短一致 .*? を使うのがポイントです）
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 5（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>最短一致 (.*?) の活用
+単に &lt;.*&gt;（強欲なマッチ/最長一致）と書くと、最初の &lt;p&gt; の &lt; から最後の &lt;/p&gt; の &gt; 
+まで文字列全体が消えてしまいます。
+
+? を付けて &lt;.*?&gt; とすることで「最も近い &gt; まで」という**最短一致（非貪欲マッチ）**になり、
+タグだけをきれいに削除できます。
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="n">html</span> <span class="o">=</span> <span class="s2">&quot;こんにちは Python 世界！&quot;</span>
+
+<span class="c1"># &lt;.*?&gt; は &quot;&lt;&quot; から始まり最も近い &quot;&gt;&quot; まで（最短一致）にマッチ</span>
+<span class="n">clean_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&lt;.*?&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">html</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">clean_text</span><span class="p">)</span>  <span class="c1"># こんにちは Python 世界！</span>
+</pre></div>
+</div>
+</details>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id20">
+<h2>サードパーティ製パッケージ<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h2>
 <p>Python は標準ライブラリだけでもいろいろなことができますが、さらに便利なサードパーティ製のパッケージも提供されています。</p>
 <p>サードパーティ製パッケージは <a class="reference external" href="https://pypi.org/">PyPI</a> （the Python Package Index、パイピーアイと読む）というサイトで情報が共有されています。</p>
-<figure class="align-default" id="id26">
+<figure class="align-default" id="id35">
 <a class="reference internal image-reference" href="../../../_images/pypi2.png"><img alt="PyPI - the Python Package Index" src="../../../_images/pypi2.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">図 3 </span><span class="caption-text">PyPI - the Python Package Index</span><a class="headerlink" href="#id26" title="Link to this image">¶</a></p>
+<p><span class="caption-number">図 3 </span><span class="caption-text">PyPI - the Python Package Index</span><a class="headerlink" href="#id35" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="pip">
@@ -553,39 +1292,38 @@ Pythonの公式ドキュメントの「 <a class="reference external" href="http
 <p>サードパーティ製パッケージをインストールするには、 <strong>pipコマンド</strong> を使用します。</p>
 <p><strong>以下はpipコマンドのサンプルです</strong> ここでは実行しないで、以下のvenv環境を作ってから実行しましょう。
 pip コマンドを利用すると以下の様なコマンドで簡単にサードパーティ製パッケージをインストールできます。</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>パッケージ名
+<p>Google Colabの場合</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>!pip<span class="w"> </span>install<span class="w"> </span>パッケージ名
 </pre></div>
 </div>
 <p>pip自身もpipコマンドでアップグレードを行えます。
 アップグレードは、次のコマンドを実行します。</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pip<span class="w"> </span>--upgrade
-</pre></div>
-</div>
-<p>Windowsの場合、このコマンドを実行すると現在入っているpipが削除されたうえに最新バージョンのpipのインストールに失敗してpipが使えなくなることがたまに発生します。以下のコマンドを使ってください。</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>&gt;<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+<p>Google Colabの場合</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>！pip<span class="w"> </span>install<span class="w"> </span>pip<span class="w"> </span>--upgrade
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">freeze</span></code> コマンドを実行すると、インストールしたパッケージの一覧が出力されます。</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>requests
-<span class="o">(</span>env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
-<span class="o">(</span>env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>cat<span class="w"> </span>requirements.txt
-<span class="nv">certifi</span><span class="o">==</span><span class="m">2017</span>.4.17
-<span class="nv">chardet</span><span class="o">==</span><span class="m">3</span>.0.4
-<span class="nv">idna</span><span class="o">==</span><span class="m">2</span>.5
-<span class="nv">requests</span><span class="o">==</span><span class="m">2</span>.18.1
-<span class="nv">urllib3</span><span class="o">==</span><span class="m">1</span>.21.1
+<p>Google Colabの場合</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>!pip<span class="w"> </span>freeze
 </pre></div>
 </div>
 </section>
 </section>
 <hr class="docutils" />
 <section id="numpy">
-<h2>NumPyライブラリの基礎（配列の構築と操作）<a class="headerlink" href="#numpy" title="Link to this heading">¶</a></h2>
-<p>NumPyでデータを扱っていきましょう</p>
-<section id="id12">
-<h3>なぜリストではなくNumPy（ナムパイ）なのか？<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
-<p>これまで複数のデータは「リスト <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code>」に入れて計算（for文など）してきましたね。しかし、データが100万件になるとリストでは動作がとても遅くなります。
-<strong>NumPy</strong> は、Pythonの中で大量の数字を扱うための「超高速な計算職人」です。</p>
+<h2>NumPyライブラリ<a class="headerlink" href="#numpy" title="Link to this heading">¶</a></h2>
+<p>Numpy(Numerical Python (ナムパイ))は、行列計算や数値計算を高速に処理をするパッケージです。
+現在の行列計算や数値計算におけるデファクト・スタンダードとなってます。</p>
+<p>詳細は公式ドキュメントを参照してください</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://numpy.org/doc/">NumPy Documentation (公式サイト) </a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/ja/">NumPy 日本語公式サイト</a></p></li>
+</ul>
+<section id="id21">
+<h3>なぜリストではなくNumPyなのか？<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
+<p>これまで複数のデータは「リスト <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code>」に入れて計算（for文など）してきました。
+しかし、データが100万件になるとリストでは動作がとても遅くなります。
+<strong>NumPy</strong> は、Pythonの中で大量のデータを「高速に計算」することが可能です。</p>
 <p><strong>【リストとNumPyの違い（イメージ図）】</strong></p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>▼ 普通のリスト（for文で1つずつ計算する）
  [ 400, 500, 450 ] ──▶ (1つずつロボットに渡す) ──▶ [ 440, 550, 495 ] (税込み計算)
@@ -598,8 +1336,8 @@ pip コマンドを利用すると以下の様なコマンドで簡単にサー�
 </pre></div>
 </div>
 </section>
-<section id="id13">
-<h3>NumPyをインポート<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<section id="id22">
+<h3>NumPyをインポート<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
 <p>データ分析の世界では、NumPyをインポートする時は <strong><code class="docutils literal notranslate"><span class="pre">np</span></code> というあだ名をつけるのが一般的</strong> になっています。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># NumPyライブラリを「np」というあだ名で読み込みます！</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -614,8 +1352,35 @@ pip コマンドを利用すると以下の様なコマンドで簡単にサー�
 <section id="np-array">
 <h3>配列の構築（np.array）<a class="headerlink" href="#np-array" title="Link to this heading">¶</a></h3>
 <p>普通のリストをNumPy専用の箱（<strong>ndarray</strong> と呼ばれます）に変換します。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 通常のリスト</span>
-<span class="n">sales_list</span> <span class="o">=</span> 
+<p>リスト型からndarray型への変換</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>リスト型のように見えますが、type()関数で確認するとndarray型であることが確認できます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span> <span class="o">==</span> <span class="nb">list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[1 2 3 4]
+False
+&lt;class &#39;numpy.ndarray&#39;&gt;
+True
+&lt;class &#39;list&#39;&gt;
+</pre></div>
+</div>
+<p>リスト型へ相互変換もできます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data_list</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_list</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># 通常のリスト</span>
+<span class="n">sales_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">]</span>
 
 <span class="c1"># np.array() を使ってNumPy配列（ndarray）に変換！</span>
 <span class="n">sales_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sales_list</span><span class="p">)</span>
@@ -625,10 +1390,171 @@ pip コマンドを利用すると以下の様なコマンドで簡単にサー�
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;型を確認:&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">sales_array</span><span class="p">))</span>
 </pre></div>
 </div>
+<p>NumPyは多次元配列を扱うことも可能です</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.98</span><span class="p">,</span> <span class="mf">0.28</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mf">0.548</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>欠損値はnp.nanでとなります。
+NaNはNot a Number（非数）を意味します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mf">0.28</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mf">0.548</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>欠損値の確認はnp.isnanを使います。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">data1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>出力</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="kc">False</span><span class="p">,</span>  <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+       <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>モジュールmathを使っても確認できます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">data1</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>出力</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>NaNは自分との比較はFalseになります（Not a Number（非数）のため）。</p>
+<p>詳しくはこちらの<a class="reference external" href="https://numpy.org/doc/stable/user/misc.html">NumPyのドキュメント</a>をご覧ください。</p>
+<p>例えば、==でNaNを確認しようとすると、想定と異なる結果が得られます。</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kc">False</span>
+</pre></div>
+</div>
+<section id="numpy-ndarray">
+<h4>NumPy ndarrayの加減乗除<a class="headerlink" href="#numpy-ndarray" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.98</span><span class="p">,</span> <span class="mf">0.28</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mf">0.548</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>乗算</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">*</span><span class="mi">10</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="mf">1.</span>  <span class="p">,</span> <span class="mf">9.8</span> <span class="p">,</span> <span class="mf">2.8</span> <span class="p">],</span>
+       <span class="p">[</span><span class="mf">5.48</span><span class="p">,</span> <span class="mf">4.7</span> <span class="p">,</span> <span class="mf">6.5</span> <span class="p">]])</span>
+</pre></div>
+</div>
+<p>加算</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">+</span><span class="n">data</span> 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="mf">0.2</span>  <span class="p">,</span> <span class="mf">1.96</span> <span class="p">,</span> <span class="mf">0.56</span> <span class="p">],</span>
+       <span class="p">[</span><span class="mf">1.096</span><span class="p">,</span> <span class="mf">0.94</span> <span class="p">,</span> <span class="mf">1.3</span>  <span class="p">]])</span>
+</pre></div>
+</div>
 </section>
-<section id="id14">
-<h3>配列要素を生成する構築関数<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
-<p>「0だけが100個入ったデータ」などを一瞬で作ってくれる魔法の関数です。テストデータの準備（初期化）などでよく使います。</p>
+</section>
+<section id="id23">
+<h3>要素数を変えずに多次元配列の構造（行と列）を変更する<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h3>
+<p>reshape() は、要素数を変えずに多次元配列の構造（行と列）を変更するメソッドです。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># 1次元配列（要素数6）を作成</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+<span class="c1"># 2行3列の2次元配列に変換</span>
+<span class="n">arr_2d</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr_2d</span><span class="p">)</span>
+<span class="c1"># 出力:</span>
+<span class="c1"># [[0 1 2]</span>
+<span class="c1">#  [3 4 5]]</span>
+</pre></div>
+</div>
+</section>
+<section id="id24">
+<h3>配列要素の操作と多次元配列<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
+<p>NumPyの配列は、リストと同じようにインデックス（`` など）やスライス（<code class="docutils literal notranslate"><span class="pre">[0:2]</span></code>）でデータを取り出せます。
+また、エクセルの表のように「行と列」を持つ2次元（多次元）のデータも作れます。その形は <code class="docutils literal notranslate"><span class="pre">.shape</span></code>（シェイプ）という属性で確認できます。</p>
+<p>配列やデータの「スライス（Slicing）」は、データの一部を切り出し（抽出する）ます。<br />
+NumPyの reshape と組み合わせて使うことも非常に多く、<br />
+基本構文は [開始:終了:ステップ] で指定します。</p>
+<p>1次元配列（リスト・NumPy共通）の基本</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
+
+<span class="c1"># インデックス1から3の手前（2）まで抽出</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>    <span class="c1"># [10 20]</span>
+
+<span class="c1"># 最初からインデックス3の手前まで抽出</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>     <span class="c1"># [0 10 20]</span>
+
+<span class="c1"># インデックス2から最後まで抽出</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>     <span class="c1"># [20 30 40 50]</span>
+
+<span class="c1"># 1つ飛ばし（ステップ2）で抽出</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr</span><span class="p">[::</span><span class="mi">2</span><span class="p">])</span>    <span class="c1"># [0 20 40]</span>
+
+<span class="c1"># 末尾から2つの要素を抽出（負のインデックス）</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:])</span>    <span class="c1"># [40 50]</span>
+</pre></div>
+</div>
+<p>2次元配列（NumPy）のスライス</p>
+<p>matrix[ 行の指定 , 列の指定 ]</p>
+<ul class="simple">
+<li><p>縦方向（上下） の範囲を左側に書く</p></li>
+<li><p>横方向（左右） の範囲を右側に書く</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># 3行4列の配列を作成</span>
+<span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+<span class="p">])</span>
+
+<span class="c1"># 1. 特定の「列」だけを抽出（例：2列目（インデックス1）の縦一列）</span>
+<span class="c1"># 全ての行（:）を対象に、インデックス1の列を指定</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrix</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="c1"># [2 6 10]</span>
+
+<span class="c1"># 2. 部分的な行列を切り出す（上2行 × 右2列）</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrix</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">:])</span>
+<span class="c1"># [[3 4]</span>
+<span class="c1">#  [7 8]]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># 2次元配列（月曜、火曜の、午前・午後の客数）</span>
+<span class="n">visitors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+   <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>  <span class="c1"># 月曜</span>
+   <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>    <span class="c1"># 火曜</span>
+<span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2次元配列:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">visitors</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;データの形(shape):&quot;</span><span class="p">,</span> <span class="n">visitors</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># (2, 2) つまり「2行、2列」と教えてくれます</span>
+
+<span class="c1"># データを取り出す（1行目・0列目：火曜の午前）</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;火曜の午前:&quot;</span><span class="p">,</span> <span class="n">visitors</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="n">次元配列</span><span class="p">:</span>
+ <span class="p">[[</span><span class="mi">10</span> <span class="mi">20</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">5</span> <span class="mi">10</span><span class="p">]]</span>
+<span class="n">データの形</span><span class="p">(</span><span class="n">shape</span><span class="p">):</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">火曜の午前</span><span class="p">:</span> <span class="p">[[</span><span class="mi">10</span> <span class="mi">20</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">5</span> <span class="mi">10</span><span class="p">]]</span>
+</pre></div>
+</div>
+</section>
+<section id="id25">
+<h3>配列要素を生成する構築関数<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h3>
+<p>「0だけが100個入ったデータ」などを一瞬で作ってくれる関数です。<br />
+テストデータの準備（初期化）などでよく使います。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">np.zeros()</span></code>: すべて0の配列を作る。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">np.ones()</span></code>: すべて1の配列を作る。</p></li>
@@ -642,34 +1568,21 @@ pip コマンドを利用すると以下の様なコマンドで簡単にサー�
 </pre></div>
 </div>
 </section>
-<section id="id15">
-<h3>配列要素の操作と多次元配列<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
-<p>NumPyの配列は、リストと同じようにインデックス（`` など）やスライス（<code class="docutils literal notranslate"><span class="pre">[0:2]</span></code>）でデータを取り出せます。
-また、エクセルの表のように「行と列」を持つ2次元（多次元）のデータも作れます。その形は <code class="docutils literal notranslate"><span class="pre">.shape</span></code>（シェイプ）という属性で確認できます。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2次元配列（月曜、火曜の、午前・午後の客数）</span>
-<span class="n">visitors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-   <span class="p">,</span>  <span class="c1"># 月曜</span>
-      <span class="c1"># 火曜</span>
-<span class="p">])</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2次元配列:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">visitors</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;データの形(shape):&quot;</span><span class="p">,</span> <span class="n">visitors</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># (2, 2) つまり「2行、2列」と教えてくれます</span>
-
-<span class="c1"># データを取り出す（1行目・0列目：火曜の午前）</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;火曜の午前:&quot;</span><span class="p">,</span> <span class="n">visitors</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
 </section>
 <hr class="docutils" />
-<section id="id16">
-<h2>NumPyを使った高度な計算とデータ操作<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h2>
-<p>ここからがNumPyの真骨頂です！for文を使わずにデータを一気に処理します。</p>
-<section id="id17">
-<h3>要素毎の演算<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<section id="id26">
+<h2>NumPyを使った高度な計算とデータ操作<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h2>
+<p>NumPyは、for文を使わずにデータを一気に処理します。</p>
+<section id="id27">
+<h3>要素毎の演算<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h3>
 <p>配列そのものに対して足し算や掛け算をすると、<strong>中身のデータすべてに対して一気に計算</strong>してくれます。また、サイズの同じ配列同士を足すと、同じ場所にあるデータ同士を足してくれます。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()</span>
-<span class="n">amounts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">prices_list</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">150</span><span class="p">]</span>
+<span class="n">amounts_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+
+<span class="n">prices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">prices_list</span><span class="p">)</span>
+<span class="n">amounts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">amounts_list</span><span class="p">)</span>
 
 <span class="c1"># 一気に税込み価格にする！（for文は不要です）</span>
 <span class="n">tax_in_prices</span> <span class="o">=</span> <span class="n">prices</span> <span class="o">*</span> <span class="mf">1.1</span>
@@ -681,22 +1594,35 @@ pip コマンドを利用すると以下の様なコマンドで簡単にサー�
 </pre></div>
 </div>
 </section>
-<section id="id18">
-<h3>よく使われる配列操作（統計量）<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<section id="id28">
+<h3>よく使われる配列操作（統計量）<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h3>
 <p>データ分析で一番よく使う「合計」「平均」「最大値」などは、配列に用意されたメソッドを呼ぶだけで一発で計算できます。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">data_list</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data_list</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;合計 (sum):&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;平均 (mean):&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;最大値 (max):&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
 </pre></div>
 </div>
+<p>出力</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">合計</span> <span class="p">(</span><span class="nb">sum</span><span class="p">):</span> <span class="mi">1500</span>
+<span class="n">平均</span> <span class="p">(</span><span class="n">mean</span><span class="p">):</span> <span class="mf">300.0</span>
+<span class="n">最大値</span> <span class="p">(</span><span class="nb">max</span><span class="p">):</span> <span class="mi">500</span>
+</pre></div>
+</div>
 </section>
-<section id="id19">
-<h3>真理値配列によるインデックスアクセス（超重要！）<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<section id="id29">
+<h3>真理値配列によるインデックスアクセス<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h3>
 <p>データ分析では「売上が300以上のデータだけ欲しい」といった条件抽出が必須です。
-NumPyでは、条件式（<code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">&gt;=</span> <span class="pre">300</span></code>）を入れると「True / False」が入った配列（真理値配列）が作られます。それを元の配列の <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> の中に入れると、<strong>Trueの場所のデータだけを抽出</strong>してくれます！</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sales</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()</span>
+NumPyでは、条件式（<code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">&gt;=</span> <span class="pre">300</span></code>）を入れると「True / False」が入った配列（真理値配列）が作られます。<br />
+それを元の配列の <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> の中に入れると、<strong>Trueの場所のデータだけを抽出</strong>してくれます！</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">sales_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="n">sales</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sales_list</span><span class="p">)</span>
 
 <span class="c1"># 1. まず条件式を書くと、True/False の配列ができる</span>
 <span class="n">is_high_sales</span> <span class="o">=</span> <span class="n">sales</span> <span class="o">&gt;=</span> <span class="mi">300</span>
@@ -711,15 +1637,22 @@ NumPyでは、条件式（<code class="docutils literal notranslate"><span class
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;300以上の売上:&quot;</span><span class="p">,</span> <span class="n">good_sales</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>出力</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">条件チェック</span><span class="p">:</span> <span class="p">[</span> <span class="kc">True</span>  <span class="kc">True</span> <span class="kc">False</span>  <span class="kc">True</span> <span class="kc">False</span><span class="p">]</span>
+<span class="mi">300</span><span class="n">以上の売上</span><span class="p">:</span> <span class="p">[</span><span class="mi">1000</span>  <span class="mi">300</span> <span class="mi">2000</span><span class="p">]</span>
+</pre></div>
+</div>
 </section>
-<section id="id20">
-<h3>配列の保存と復元<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<section id="id30">
+<h3>配列の保存と復元<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h3>
 <p>分析した結果は、パソコン内にファイルとして保存（<code class="docutils literal notranslate"><span class="pre">np.save</span></code>）し、後で読み込む（<code class="docutils literal notranslate"><span class="pre">np.load</span></code>）ことができます。NumPy専用の <code class="docutils literal notranslate"><span class="pre">.npy</span></code> という形式で保存されます。</p>
 </section>
 <section id="dot">
-<h3>▲ 線形代数の演算（内積：dot）<a class="headerlink" href="#dot" title="Link to this heading">¶</a></h3>
+<h3>線形代数の演算（内積：dot）<a class="headerlink" href="#dot" title="Link to this heading">¶</a></h3>
 <p>「線形代数（行列の計算）」と聞くと難しそうですが、文系のデータ分析でも実は使います。例えば「商品の価格リスト」と「売れた個数リスト」を掛け合わせて、全部の合計金額を出す計算を <strong>内積（ドット積）</strong> と呼び、<code class="docutils literal notranslate"><span class="pre">np.dot()</span></code> で一発で計算できます。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 配列の保存と復元</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># 配列の保存と復元</span>
 <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;my_data.npy&quot;</span><span class="p">,</span> <span class="n">sales</span><span class="p">)</span>            <span class="c1"># フォルダ📁に保存されます</span>
 <span class="n">loaded_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;my_data.npy&quot;</span><span class="p">)</span>     <span class="c1"># ファイルから読み込みます</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;復元したデータ:&quot;</span><span class="p">,</span> <span class="n">loaded_data</span><span class="p">)</span>
@@ -730,11 +1663,16 @@ NumPyでは、条件式（<code class="docutils literal notranslate"><span class
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1日の総売上:&quot;</span><span class="p">,</span> <span class="n">total_revenue</span><span class="p">,</span> <span class="s2">&quot;円&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>出力</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">復元したデータ</span><span class="p">:</span> <span class="p">[</span><span class="mi">1000</span>  <span class="mi">300</span>  <span class="mi">150</span> <span class="mi">2000</span>  <span class="mi">100</span><span class="p">]</span>
+<span class="mi">1</span><span class="n">日の総売上</span><span class="p">:</span> <span class="mi">5000</span> <span class="n">円</span>
+</pre></div>
+</div>
 </section>
 </section>
 <hr class="docutils" />
-<section id="id21">
-<h2>💻 演習課題<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h2>
+<section id="id31">
+<h2>💻 演習課題<a class="headerlink" href="#id31" title="Link to this heading">¶</a></h2>
 <p>これまでfor文を使って苦労して書いていた処理が、いかにシンプルに書けるかを体感してください！</p>
 <p>エラー（例えば <code class="docutils literal notranslate"><span class="pre">ValueError:</span> <span class="pre">operands</span> <span class="pre">could</span> <span class="pre">not</span> <span class="pre">be</span> <span class="pre">broadcast</span> <span class="pre">together</span></code> など）が出たら、それは「配列同士のサイズ（長さ）が違って計算できないよ！」というNumPyからの警告です。</p>
 <p>以下の <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TODO:</span> </code> の部分を書き換えて、プログラムを完成させてください。</p>
@@ -745,10 +1683,10 @@ NumPyでは、条件式（<code class="docutils literal notranslate"><span class
 <span class="c1"># TODO: import を書く</span>
 <span class="kn">import</span><span class="w"> </span>
 
-<span class="nn">my_list</span> <span class="o">=</span>
+<span class="nn">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">]</span>
 
 <span class="c1"># TODO: NumPy配列に変換して np_array に入れる</span>
-<span class="n">np_array</span> <span class="o">=</span> 
+<span class="n">np_array</span> <span class="o">=</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NumPy配列:&quot;</span><span class="p">,</span> <span class="n">np_array</span><span class="p">)</span>
 </pre></div>
@@ -756,6 +1694,8 @@ NumPyでは、条件式（<code class="docutils literal notranslate"><span class
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習2: 構築関数と要素の操作（難易度：易）</span>
 <span class="c1"># TODO: np.arange() を使って、1 から 5 までの連番の配列を作ってください（※終了の数字に注意）。</span>
 <span class="c1"># TODO: 作った配列に 10 を掛け算して、print で表示してください。</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># TODO: 1, 2, 3, 4, 5 の配列を作る（終了は含まれないので6を指定します）</span>
 <span class="n">numbers</span> <span class="o">=</span> 
@@ -771,7 +1711,10 @@ NumPyでは、条件式（<code class="docutils literal notranslate"><span class
 <span class="c1"># TODO: .mean() を使って、1週間の「平均」来客数を計算してください。</span>
 <span class="c1"># TODO: .max() を使って、「最大」来客数を計算してください。</span>
 
-<span class="n">visitors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">]</span>
+<span class="n">visitors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
 
 <span class="c1"># TODO: 平均を計算する</span>
 <span class="n">average_visitors</span> <span class="o">=</span> 
@@ -787,6 +1730,9 @@ NumPyでは、条件式（<code class="docutils literal notranslate"><span class
 <span class="c1"># データ抽出の超重要テクニックです！</span>
 <span class="c1"># TODO: 1週間の来客数(visitors)の中から、「150人以上」の日だけを抽出して print してください。</span>
 
+<span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">140</span><span class="p">]</span>
+<span class="n">visitors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+
 <span class="c1"># TODO: [ ] の中に条件式（visitors &gt;= 150）を書く</span>
 <span class="n">busy_days</span> <span class="o">=</span> <span class="n">visitors</span><span class="p">[</span>             <span class="p">]</span>
 
@@ -797,9 +1743,10 @@ NumPyでは、条件式（<code class="docutils literal notranslate"><span class
 <span class="c1"># 3種類のケーキの「価格(prices)」と「売れた個数(amounts)」のデータです。</span>
 <span class="c1"># TODO: 要素ごとの掛け算を使って、それぞれのケーキの「売上(sales)」配列を作ってください。</span>
 <span class="c1"># TODO: np.save() を使って、その sales 配列を &quot;cake_sales.npy&quot; という名前で保存してください。</span>
-
-<span class="n">cake_prices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()</span>
-<span class="n">cake_amounts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()</span>
+<span class="n">prices_list</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">150</span><span class="p">]</span>
+<span class="n">amounts_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="n">cake_prices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">prices_list</span><span class="p">)</span>
+<span class="n">cake_amounts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">amounts_list</span><span class="p">)</span>
 
 <span class="c1"># TODO: prices と amounts を掛け算して sales を作る</span>
 <span class="n">sales</span> <span class="o">=</span> 
@@ -815,8 +1762,8 @@ NumPyでは、条件式（<code class="docutils literal notranslate"><span class
 </div>
 </section>
 <hr class="docutils" />
-<section id="id22">
-<h2>💡 演習問題の解答例<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h2>
+<section id="id32">
+<h2>💡 演習問題の解答例<a class="headerlink" href="#id32" title="Link to this heading">¶</a></h2>
 <p>（どうしても分からない時や、答え合わせをしたい時に展開して見てくださいね）</p>
 <details>
 <summary>👉 解答例を見る（ここをクリックして展開）</summary>
@@ -828,33 +1775,37 @@ NumPyでは、条件式（<code class="docutils literal notranslate"><span class
 <p><strong>演習2の解答</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span> <span class="c1"># になります</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">numbers</span> <span class="o">*</span> <span class="mi">10</span>
-<span class="c1">#  と出れば正解です！</span>
+<span class="c1">#  10倍にした配列: [10 20 30 40 50] と出れば正解です！</span>
 </pre></div>
 </div>
 <p><strong>演習3の解答</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">average_visitors</span> <span class="o">=</span> <span class="n">visitors</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">max_visitors</span> <span class="o">=</span> <span class="n">visitors</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="c1"># 平均来客数: 250.0 人</span>
+<span class="c1"># 最大来客数: 400 人</span>
+<span class="c1"># と出れば正解です！</span>
 </pre></div>
 </div>
 <p><strong>演習4の解答</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">busy_days</span> <span class="o">=</span> <span class="n">visitors</span><span class="p">[</span><span class="n">visitors</span> <span class="o">&gt;=</span> <span class="mi">150</span><span class="p">]</span>
-<span class="c1">#  が抽出されていれば大正解です！</span>
+<span class="c1">#  150人以上の日のデータ: [200 150] が抽出されていれば正解です！</span>
 </pre></div>
 </div>
 <p><strong>演習5の解答</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sales</span> <span class="o">=</span> <span class="n">cake_prices</span> <span class="o">*</span> <span class="n">cake_amounts</span>
 <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;cake_sales.npy&quot;</span><span class="p">,</span> <span class="n">sales</span><span class="p">)</span>
-<span class="c1"># 4000, 2250, 4000 と計算されていれば完璧です！</span>
+<span class="c1"># それぞれの売上: [1000 1000 3000] と計算されていれば正解です！</span>
 </pre></div>
 </div>
 </details>
 </section>
 <hr class="docutils" />
-<section id="id23">
-<h2>📚 第10回のまとめ<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h2>
+<section id="id33">
+<h2>📚 第10回のまとめ<a class="headerlink" href="#id33" title="Link to this heading">¶</a></h2>
 <p>データ分析の強力な味方「NumPy」を学びました。これまでfor文を使って何行も書いていた処理が、魔法のように短く、しかも高速に書けるようになりました。</p>
-<section id="id24">
-<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
+<section id="id34">
+<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id34" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>import numpy as np</strong>: ライブラリを読み込む世界共通の「おまじない」。</p></li>
 <li><p><strong>ndarray</strong>: NumPy専用の配列（箱）。<code class="docutils literal notranslate"><span class="pre">np.array()</span></code> でリストから作れる。</p></li>
@@ -927,7 +1878,7 @@ NumPyでは、条件式（<code class="docutils literal notranslate"><span class
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-29</div>
+              Last updated on 2026-07-30</div>
           </div>
           <div class="right-details">
             
@@ -965,34 +1916,58 @@ NumPyでは、条件式（<code class="docutils literal notranslate"><span class
 </ul>
 </li>
 <li><a class="reference internal" href="#id8">標準ライブラリの利用</a><ul>
-<li><a class="reference internal" href="#id9">日付を扱うモジュール</a></li>
-<li><a class="reference internal" href="#id10">正規表現モジュール</a></li>
+<li><a class="reference internal" href="#datetime">日付を扱うモジュール (datetime)</a><ul>
+<li><a class="reference internal" href="#time-zone">タイムゾーン（Time Zone）とは？</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id11">サードパーティ製パッケージ</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9">練習問題</a><ul>
+<li><a class="reference internal" href="#id10">💡 覚えるためのワンポイント</a></li>
+<li><a class="reference internal" href="#regular-expression">正規表現（regular expression）モジュール</a></li>
+<li><a class="reference internal" href="#id11">マッチした部分を取り出す</a><ul>
+<li><a class="reference internal" href="#id12">最初にマッチした部分全体を取り出す</a></li>
+<li><a class="reference internal" href="#id13">カッコ () でグループ化した部分だけを取り出す</a></li>
+<li><a class="reference internal" href="#id14">マッチするすべての部分をリストでまとめて取り出す</a></li>
+<li><a class="reference internal" href="#id15">マッチした位置（インデックス）を取得する</a></li>
+<li><a class="reference internal" href="#id16">普通の文字は全て正規表現です。</a></li>
+<li><a class="reference internal" href="#id17">正規表現の初歩（の初歩）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id18">練習問題</a><ul>
+<li><a class="reference internal" href="#id19">💡 正規表現でよく使う記号のまとめ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id20">サードパーティ製パッケージ</a><ul>
 <li><a class="reference internal" href="#pip">pipコマンド</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#numpy">NumPyライブラリの基礎（配列の構築と操作）</a><ul>
-<li><a class="reference internal" href="#id12">なぜリストではなくNumPy（ナムパイ）なのか？</a></li>
-<li><a class="reference internal" href="#id13">NumPyをインポート</a></li>
-<li><a class="reference internal" href="#np-array">配列の構築（np.array）</a></li>
-<li><a class="reference internal" href="#id14">配列要素を生成する構築関数</a></li>
-<li><a class="reference internal" href="#id15">配列要素の操作と多次元配列</a></li>
+<li><a class="reference internal" href="#numpy">NumPyライブラリ</a><ul>
+<li><a class="reference internal" href="#id21">なぜリストではなくNumPyなのか？</a></li>
+<li><a class="reference internal" href="#id22">NumPyをインポート</a></li>
+<li><a class="reference internal" href="#np-array">配列の構築（np.array）</a><ul>
+<li><a class="reference internal" href="#numpy-ndarray">NumPy ndarrayの加減乗除</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id16">NumPyを使った高度な計算とデータ操作</a><ul>
-<li><a class="reference internal" href="#id17">要素毎の演算</a></li>
-<li><a class="reference internal" href="#id18">よく使われる配列操作（統計量）</a></li>
-<li><a class="reference internal" href="#id19">真理値配列によるインデックスアクセス（超重要！）</a></li>
-<li><a class="reference internal" href="#id20">配列の保存と復元</a></li>
-<li><a class="reference internal" href="#dot">▲ 線形代数の演算（内積：dot）</a></li>
+<li><a class="reference internal" href="#id23">要素数を変えずに多次元配列の構造（行と列）を変更する</a></li>
+<li><a class="reference internal" href="#id24">配列要素の操作と多次元配列</a></li>
+<li><a class="reference internal" href="#id25">配列要素を生成する構築関数</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id21">💻 演習課題</a></li>
-<li><a class="reference internal" href="#id22">💡 演習問題の解答例</a></li>
-<li><a class="reference internal" href="#id23">📚 第10回のまとめ</a><ul>
-<li><a class="reference internal" href="#id24">✨ 今日の重要ポイントまとめ</a></li>
+<li><a class="reference internal" href="#id26">NumPyを使った高度な計算とデータ操作</a><ul>
+<li><a class="reference internal" href="#id27">要素毎の演算</a></li>
+<li><a class="reference internal" href="#id28">よく使われる配列操作（統計量）</a></li>
+<li><a class="reference internal" href="#id29">真理値配列によるインデックスアクセス</a></li>
+<li><a class="reference internal" href="#id30">配列の保存と復元</a></li>
+<li><a class="reference internal" href="#dot">線形代数の演算（内積：dot）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id31">💻 演習課題</a></li>
+<li><a class="reference internal" href="#id32">💡 演習問題の解答例</a></li>
+<li><a class="reference internal" href="#id33">📚 第10回のまとめ</a><ul>
+<li><a class="reference internal" href="#id34">✨ 今日の重要ポイントまとめ</a></li>
 <li><a class="reference internal" href="#faq">❓ よくある質問と回答 (FAQ)</a></li>
 <li><a class="reference internal" href="#colab">🌟 Colabで試すおすすめコード</a></li>
 </ul>

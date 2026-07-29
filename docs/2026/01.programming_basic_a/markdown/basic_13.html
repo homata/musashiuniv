@@ -450,24 +450,159 @@
 </div>
 </section>
 <hr class="docutils" />
+<section id="web">
+<h2>Webスクレイピング<a class="headerlink" href="#web" title="Link to this heading">¶</a></h2>
+<p>Webスクレイピング</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド292.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89292.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89292.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>HTMLファイルの構造</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド293.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89293.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89293.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>Webスクレイピングの流れ</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド294.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89294.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89294.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>ライブラリの準備</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド295.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89295.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89295.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>HTMLファイルの取得</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド296.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89296.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89296.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>HTMLファイルの解析</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド297.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89297.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89297.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>HTMLファイルの解析（ファイルを読み込む場合）</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド298.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89298.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89298.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>ranking.html</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド299.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89299.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89299.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>extraction.py</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド300.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89300.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89300.PNG" style="width: 70%;" />
+</a>
+</figure>
+<p>実行結果</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/スライド301.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89301.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89301.PNG" style="width: 70%;" />
+</a>
+</figure>
 <section id="id7">
-<h2>演習課題の説明と評価について<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
-<p>これから、皆さんに難易度別のミニプロジェクト（演習1〜5）に取り組んでいただきます。</p>
+<h3>サンプルコード<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p>事前準備 (モジュールインストール)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install requests beautifulsoup4
+</pre></div>
+</div>
+<p>「ニュース記事一覧のタイトルとリンクの抽出」を想定したサンプルコード</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="c1"># 1. 取得したいWebページのURL</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://news.ycombinator.com/&quot;</span>  <span class="c1"># 例: Hacker News（シンプルな構造の英語サイト）</span>
+
+<span class="c1"># Webサーバーへの配慮（User-Agentの設定）</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36&quot;</span>
+<span class="p">}</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># 2. HTTPリクエストを送信してHTMLを取得</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+    <span class="c1"># ステータスコードのチェック（200 OK でなければ例外を発生させる）</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+
+    <span class="c1"># 3. BeautifulSoupでHTMLを解析（パーサーには html.parser を使用）</span>
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 4. 要素の抽出（例: 記事タイトルとリンクを取得）</span>
+    <span class="c1"># .find_all() で該当するタグをすべて取得</span>
+    <span class="n">articles</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.titleline &gt; a&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;--- 取得結果 (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">articles</span><span class="p">)</span><span class="si">}</span><span class="s2">件) ---&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">article</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">articles</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="mi">1</span><span class="p">):</span>  <span class="c1"># 上位10件を表示</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">text</span>  <span class="c1"># テキスト（タイトル）を取り出す</span>
+        <span class="n">link</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;href&quot;</span><span class="p">)</span>  <span class="c1"># href 属性（URL）を取り出す</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   URL: </span><span class="si">{</span><span class="n">link</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># サーバー負荷軽減のため、複数ページを巡回する場合は必ず待機時間を入れる</span>
+        <span class="c1"># time.sleep(1)</span>
+
+<span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;リクエストエラーが発生しました: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>BeautifulSoupで要素を検索・抽出する手段は主に2パターンあります。</p>
+<p>CSSセレクターで探す（.select() / .select_one()）</p>
+<p>CSSと同じ書き方が使えるため、一番直感的で汎用性が高い方法です。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># class=&quot;title&quot; の要素をすべて取得</span>
+<span class="n">title</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.title&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+
+<span class="c1"># id=&quot;main&quot; の中の &lt;a&gt; タグをすべて取得</span>
+<span class="n">main_atag</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;#main a&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">main_atag</span><span class="p">)</span>
+
+<span class="c1"># 最初に見つかった1件だけを取得</span>
+<span class="n">h1</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;h1&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>タグ名や属性で探す（.find() / .find_all()）</p>
+<p>シンプルに「すべての <a> タグを取りたい」時などに便利です。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 最初の &lt;h1&gt; タグを取得</span>
+<span class="n">h1</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;h1&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h1</span><span class="p">)</span>
+
+<span class="c1"># &lt;a class=&quot;link&quot;&gt; タグをすべて取得</span>
+<span class="n">class_a</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s2">&quot;link&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">class_a</span><span class="p">)</span>
+</pre></div>
+</div>
 <section id="id8">
-<h3>難易度と採点について<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<h4>⚠️ Webスクレイピングのマナーと注意点<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>time.sleep(1) を入れる: 連続リクエストを送ると相手のサーバーに負荷がかかります。ループ処理の際は必ず1秒以上の間隔を開けましょう。</p></li>
+<li><p>利用規約（robots.txt）を確認する: サイトによってはスクレイピングを禁止している場合があります（<a class="reference external" href="https://example.com/robots.txt">https://example.com/robots.txt</a> で確認可能）。</p></li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id9">
+<h2>演習課題の説明<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<p>これから、皆さんに準備体操として難易度別の演習1〜5に取り組んでください</p>
+<section id="id10">
+<h3>難易度<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>初級（基本文法中心）</strong>: 変数、リスト、関数などの基礎。</p></li>
 <li><p><strong>中級（データ処理中心）</strong>: pandasやmatplotlibを使った、実務に近いデータ分析。</p></li>
 <li><p><strong>上級（応用）</strong>: クラス（オブジェクト指向）や例外処理を使った本格的なシステム。</p></li>
 </ul>
-<p><strong>【重要】難易度によって成績（採点）は変わりません！</strong>
-上級が解けなかったからといって減点されることはありません。初級を丁寧に完璧に仕上げるのも、上級に果敢に挑んでエラーと格闘するのも、どちらも素晴らしい「学習のプロセス」として高く評価します。自分のレベルに合わせて、自由に選んで（もちろん全部やってもOK！）挑戦してください。</p>
 </section>
 </section>
 <hr class="docutils" />
-<section id="id9">
-<h2>💻 総合演習（ミニプロジェクトに挑戦！）<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
-<p>それでは、いよいよ本番です。時間をたっぷり使って取り組んでください。</p>
+<section id="id11">
+<h2>💻 総合演習<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習1: 【初級】簡易TODOリスト管理ツール（難易度：易）</span>
 <span class="c1"># 辞書のリストを使って、タスクを管理します。</span>
 <span class="c1"># TODO: 未完了（status が &quot;未&quot;）のタスクだけを取り出し、画面に表示するプログラムを書いてください。</span>
@@ -495,7 +630,7 @@
     <span class="n">fahrenheit</span> <span class="o">=</span> 
     <span class="k">return</span> <span class="n">fahrenheit</span>
 
-<span class="n">temperatures_c</span> <span class="o">=</span> <span class="c1"># 摂氏のリスト</span>
+<span class="n">temperatures_c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">39</span><span class="p">]</span>
 <span class="n">temperatures_f</span> <span class="o">=</span> <span class="p">[]</span>           <span class="c1"># 華氏を入れる空リスト</span>
 
 <span class="c1"># TODO: for文を使って、temperatures_c の中身を一つずつ変換し、temperatures_f に追加(append)する</span>
@@ -504,7 +639,7 @@
     
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;摂氏:&quot;</span><span class="p">,</span> <span class="n">temperatures_c</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;華氏:&quot;</span><span class="p">,</span> <span class="n">temperatures_f</span><span class="p">)</span> <span class="c1"># [68.0, 77.0, 86.0] になれば正解！</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;華氏:&quot;</span><span class="p">,</span> <span class="n">temperatures_f</span><span class="p">)</span> <span class="c1"># [50.0, 86.0, 102.2] になれば正解！</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習3: 【中級】家計簿管理アプリ（入力→集計）（難易度：中）</span>
@@ -540,7 +675,7 @@
 <span class="c1"># （準備）売上データフレーム</span>
 <span class="n">sales_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s2">&quot;店舗&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;東京&quot;</span><span class="p">,</span> <span class="s2">&quot;大阪&quot;</span><span class="p">,</span> <span class="s2">&quot;名古屋&quot;</span><span class="p">,</span> <span class="s2">&quot;福岡&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;売上&quot;</span><span class="p">:</span> 
+    <span class="s2">&quot;売上&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2500</span><span class="p">]</span> 
 <span class="p">})</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;基本統計量:&quot;</span><span class="p">)</span>
@@ -588,8 +723,8 @@
 </div>
 </section>
 <hr class="docutils" />
-<section id="id10">
-<h2>💡 演習問題の解答例<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<section id="id12">
+<h2>💡 演習問題の解答例<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
 <p>（エラーが出てもすぐに諦めず、ぜひ「なぜ動かないのか」を考えてみてください。それが一番の勉強になります！）</p>
 <details>
 <summary>👉 解答例を見る（ここをクリックして展開）</summary>
@@ -633,8 +768,8 @@
 </details>
 </section>
 <hr class="docutils" />
-<section id="id11">
-<h2>📚 第13回のまとめと、次の一歩<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<section id="id13">
+<h2>📚 第13回のまとめと、次の一歩<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
 <section id="q-a">
 <h3>🔄 学習の振り返りとQ&amp;A<a class="headerlink" href="#q-a" title="Link to this heading">¶</a></h3>
 <ul class="simple">
@@ -653,14 +788,12 @@
 <hr class="docutils" />
 <section id="a">
 <h3>🚀 次の一歩を示す：「プログラミング応用A」へ！<a class="headerlink" href="#a" title="Link to this heading">¶</a></h3>
-<p>この「プログラミング基礎A」で、皆さんはデータの「収集・整理・可視化」という強力な武器を手に入れました。</p>
-<p>秋学期の**「プログラミング応用A（コンピューティング応用G）」**では、この基礎を活かして、以下のようにより高度でワクワクする世界へ進みます！</p>
+<p>この「プログラミング基礎A」で、皆さんはデータの「収集・整理・可視化」を習得できました。
+秋学期の**「プログラミング応用A（コンピューティング応用G）」**では、この基礎を活かして、以下のようなことに取り組みます</p>
 <ul class="simple">
-<li><p><strong>デジタルツイン / 地理空間情報 (leafmap)</strong>: 地図の上にデータを重ね合わせて、現実世界を可視化する。</p></li>
-<li><p><strong>機械学習の基礎</strong>: 教師なし学習などを使い、AI（人工知能）の裏側の仕組みを自分で作る。</p></li>
+<li><p><strong>デジタルツイン / 地理空間情報</strong>: 地図の上にデータを重ね合わせて可視化する。</p></li>
+<li><p><strong>機械学習の基礎</strong>: 機械学習の入り口を体験する。</p></li>
 </ul>
-<p>皆さんがこの授業で培った「試行錯誤する力」があれば、応用クラスでも必ず活躍できます。
-これからもPythonを楽しみながら、データを使って社会の課題を解決できる人材になってくださいね。応援しています！</p>
 </section>
 </section>
 </section>
@@ -697,7 +830,7 @@
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-29</div>
+              Last updated on 2026-07-30</div>
           </div>
           <div class="right-details">
             
@@ -729,13 +862,20 @@
 </li>
 <li><a class="reference internal" href="#id5">プロジェクト設計・実装のステップ</a></li>
 <li><a class="reference internal" href="#id6">コードの整理とコメント</a></li>
-<li><a class="reference internal" href="#id7">演習課題の説明と評価について</a><ul>
-<li><a class="reference internal" href="#id8">難易度と採点について</a></li>
+<li><a class="reference internal" href="#web">Webスクレイピング</a><ul>
+<li><a class="reference internal" href="#id7">サンプルコード</a><ul>
+<li><a class="reference internal" href="#id8">⚠️ Webスクレイピングのマナーと注意点</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id9">💻 総合演習（ミニプロジェクトに挑戦！）</a></li>
-<li><a class="reference internal" href="#id10">💡 演習問題の解答例</a></li>
-<li><a class="reference internal" href="#id11">📚 第13回のまとめと、次の一歩</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9">演習課題の説明</a><ul>
+<li><a class="reference internal" href="#id10">難易度</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id11">💻 総合演習</a></li>
+<li><a class="reference internal" href="#id12">💡 演習問題の解答例</a></li>
+<li><a class="reference internal" href="#id13">📚 第13回のまとめと、次の一歩</a><ul>
 <li><a class="reference internal" href="#q-a">🔄 学習の振り返りとQ&amp;A</a></li>
 <li><a class="reference internal" href="#a">🚀 次の一歩を示す：「プログラミング応用A」へ！</a></li>
 </ul>

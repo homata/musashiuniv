@@ -383,18 +383,38 @@
 <section id="id3">
 <h2>高階関数と便利なモジュール<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
 <p>pandasに入る前に、Pythonの便利な書き方を少しだけ学びましょう。</p>
+<p>高階関数（こうかいかんすう、Higher-Order Function）とは、プログラミングにおいて「関数を引数として受け取る」、
+または「関数を戻り値（返り値）として返す」特性を持つ関数のことです</p>
 <p>高階関数</p>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../../../_images/スライド205.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89205.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89205.PNG" style="width: 70%;" />
 </a>
 </figure>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">print_price</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;価格は&#39;</span> <span class="o">+</span> <span class="n">func</span><span class="p">(</span><span class="n">price</span><span class="p">))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">price_without_tax</span><span class="p">(</span><span class="n">price</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;税抜き</span><span class="si">{</span><span class="n">price</span><span class="si">}</span><span class="s1">円&#39;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">price_with_tax</span><span class="p">(</span><span class="n">price</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;税込み</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">price</span><span class="o">*</span><span class="mf">1.1</span><span class="p">)</span><span class="si">}</span><span class="s1">円&#39;</span>
+
+<span class="n">print_price</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="n">price_without_tax</span><span class="p">)</span>
+<span class="n">print_price</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="n">price_with_tax</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>出力</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">価格は税抜き800円</span>
+<span class="n">価格は税込み880円</span>
+</pre></div>
+</div>
 <section id="id4">
 <h3>ラムダ式（名無しの使い捨て関数）<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
 <p>これまで <code class="docutils literal notranslate"><span class="pre">def</span></code> を使って関数を作ってきましたが、「1回しか使わない簡単な関数に、わざわざ名前をつけるのは面倒だな…」という時があります。そんな時に使うのが、1行で書ける <strong>ラムダ式（<code class="docutils literal notranslate"><span class="pre">lambda</span></code>）</strong> です。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">lambda</span> <span class="pre">引数:</span> <span class="pre">返したい計算式</span></code> と書きます。</p></li>
 </ul>
-<p>ラムダ式（lambda式）</p>
+<p>ラムダ式（lambda式）の説明</p>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../../../_images/スライド206.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89206.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89206.PNG" style="width: 70%;" />
 </a>
@@ -404,6 +424,18 @@
 <a class="reference internal image-reference" href="../../../_images/スライド207.PNG"><img alt="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89207.PNG" src="../../../_images/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89207.PNG" style="width: 70%;" />
 </a>
 </figure>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">print_price</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;価格は&#39;</span> <span class="o">+</span> <span class="n">func</span><span class="p">(</span><span class="n">price</span><span class="p">))</span>
+
+<span class="n">print_price</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">price</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;税抜き</span><span class="si">{</span><span class="n">price</span><span class="si">}</span><span class="s1">円&#39;</span><span class="p">)</span>
+<span class="n">print_price</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">price</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;税込み</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">price</span><span class="o">*</span><span class="mf">1.1</span><span class="p">)</span><span class="si">}</span><span class="s1">円&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>出力</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">価格は税抜き800円</span>
+<span class="n">価格は税込み880円</span>
+</pre></div>
+</div>
 </section>
 <section id="id5">
 <h3>高階関数（関数を材料にする関数）<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
@@ -428,7 +460,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;安い順:&quot;</span><span class="p">,</span> <span class="n">sorted_data</span><span class="p">)</span>
 
 <span class="c1"># map と filter の例</span>
-<span class="n">numbers</span> <span class="o">=</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
 <span class="c1"># 全て2倍にする (map)</span>
 <span class="n">doubled</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">numbers</span><span class="p">))</span>
 <span class="c1"># 3以上のものだけ抽出する (filter)</span>
@@ -438,6 +470,62 @@
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3以上抽出:&quot;</span><span class="p">,</span> <span class="n">filtered</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>出力</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">安い順</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;コーヒー&#39;</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="mi">400</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;紅茶&#39;</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="mi">450</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;ケーキ&#39;</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="mi">500</span><span class="p">}]</span>
+<span class="mi">2</span><span class="n">倍</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">]</span>
+<span class="mi">3</span><span class="n">以上抽出</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+</pre></div>
+</div>
+<section id="map">
+<h4>map()<a class="headerlink" href="#map" title="Link to this heading">¶</a></h4>
+<p>map() は、関数とイテラブル（リストなど）を受け取り、各要素に関数を適用した結果を返す高階関数です。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. 通常の関数を使う例</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;数を2乗する関数&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="c1"># map(関数, イテラブル)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">square</span><span class="p">,</span> <span class="n">numbers</span><span class="p">)</span>
+
+<span class="c1"># mapオブジェクトはリストなどに変換する必要がある</span>
+<span class="n">squared_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">squared_list</span><span class="p">)</span>  <span class="c1"># [1, 4, 9, 16, 25]</span>
+</pre></div>
+</div>
+</section>
+<section id="filder">
+<h4>filder()<a class="headerlink" href="#filder" title="Link to this heading">¶</a></h4>
+<p>filter() は、関数（条件）とイテラブルを受け取り、条件が True になる要素だけを抽出します。</p>
+<p>通常の関数を使う例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">is_even</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;偶数かどうかを判定&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+
+<span class="c1"># filter(条件関数, イテラブル)</span>
+<span class="n">even_numbers</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="n">is_even</span><span class="p">,</span> <span class="n">numbers</span><span class="p">)</span>
+
+<span class="c1"># filterオブジェクトはリストなどに変換</span>
+<span class="n">result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">even_numbers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># [2, 4, 6, 8, 10]</span>
+</pre></div>
+</div>
+<p>lambda式を使った例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+
+<span class="c1"># 偶数だけ抽出</span>
+<span class="n">evens</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">numbers</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evens</span><span class="p">)</span>  <span class="c1"># [2, 4, 6, 8, 10]</span>
+
+<span class="c1"># 5より大きい数だけ抽出</span>
+<span class="n">greater_than_5</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">,</span> <span class="n">numbers</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">greater_than_5</span><span class="p">)</span>  <span class="c1"># [6, 7, 8, 9, 10]</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="random-math-datetime">
 <h3>便利なモジュール（random, math, datetime）<a class="headerlink" href="#random-math-datetime" title="Link to this heading">¶</a></h3>
@@ -463,11 +551,180 @@
 </section>
 <hr class="docutils" />
 <section id="id6">
-<h2>pandasライブラリの基礎<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<h2>練習問題<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<hr class="docutils" />
+<p>練習問題 1（基礎：map と filter）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>数値のリスト numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] があります。
+filter() と map()、そしてラムダ式を使って、「奇数だけを抽出し、それらをすべて2乗したリスト」を作成してください。
+（出力例: [1, 9, 25, 49, 81]）
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 1（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>filter と map の組み合わせ
+map() や filter() は「関数を引数として受け取る」高階関数です。
+ちょっとした条件付けには lambda x: ... のようにラムダ式を使うと、個別の def を定義せずに1行でスマートに記述できます。
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+
+<span class="c1"># 1. 奇数のみフィルター (x % 2 != 0)</span>
+<span class="c1"># 2. 抽出された値を2乗 (x ** 2)</span>
+<span class="n">odds_squared</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+    <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">numbers</span><span class="p">))</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">odds_squared</span><span class="p">)</span>  <span class="c1"># [1, 9, 25, 49, 81]</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 2（基礎：sorted の key 指定）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>辞書のリスト users = [{&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 25}, 
+                     {&quot;name&quot;: &quot;Bob&quot;, &quot;age&quot;: 20}, 
+                     {&quot;name&quot;: &quot;Charlie&quot;, &quot;age&quot;: 30}] があります。
+sorted() 関数とラムダ式を使って、年齢（age）が若い順に並び替えた新しいリストを作成してください。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 2（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sorted の key 引数への適用  
+sorted() の key 引数は高階関数の代表例です。
+各要素からソート用の「基準となる値」を抽出する関数をラムダ式で渡すことで、
+複雑な辞書オブジェクトも簡単に並び替えできます。
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">users</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Charlie&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>
+<span class="p">]</span>
+
+<span class="c1"># key 引数に「要素（辞書）を受け取って age の値を返すラムダ式」を渡す</span>
+<span class="n">sorted_users</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">users</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">user</span><span class="p">:</span> <span class="n">user</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="n">sorted_users</span>
+<span class="p">)</span>  <span class="c1"># [{&#39;name&#39;: &#39;Bob&#39;, &#39;age&#39;: 20}, {&#39;name&#39;: &#39;Alice&#39;, &#39;age&#39;: 25}, ...]</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 3（応用：自作の高階関数）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>自作関数 apply_twice(func, value) を作成してください。
+この関数は「第1引数に受け取った関数 func」を、「第2引数の値 value」に対して 
+2回連続で適用した結果 を返す高階関数です。
+（例: apply_twice(lambda x: x + 3, 10) を実行すると、10 + 3 + 3 = 16 が返る）
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 3（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>関数を引数にとる高階関数
+高階関数とは「関数を引数にとる」か「関数を戻り値として返す」関数のことです。
+func(func(value)) のように、受け取った関数をそのまま実行できます。
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 引数 func に「関数」を受け取る高階関数</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">apply_twice</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+
+
+<span class="c1"># テスト: 10 に 「+3 する関数」を2回適用する</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">apply_twice</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># 16</span>
+
+<span class="c1"># テスト: 2 に 「2倍する関数」を2回適用する (2 * 2 * 2)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">apply_twice</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 8</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 4（応用：関数を返す関数 / アキュムレータ）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>「倍率 n」を受け取り、「入力された数値を n 倍にする新しい関数」を生成して返す
+高階関数 make_multiplier(n) を作成してください。
+これを使って「3倍する関数」を作成し、実行確認をしてください。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 4（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>関数を返す高階関数 (クロージャ)
+関数の中で動的に新しい関数を生成して return しています。
+外側の変数 n の状態を保持した関数が作られるこの仕組みを クロージャ（クロージャ / エンクロージャー） と呼びます。
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_multiplier</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="c1"># 関数の中でラムダ式（新しい関数）を作って返す</span>
+    <span class="k">return</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">n</span>
+
+
+<span class="c1"># 「3倍する関数」を作る</span>
+<span class="n">triple</span> <span class="o">=</span> <span class="n">make_multiplier</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># 「5倍する関数」を作る</span>
+<span class="n">quintuple</span> <span class="o">=</span> <span class="n">make_multiplier</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">triple</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>  <span class="c1"># 30</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">quintuple</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>  <span class="c1"># 50</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 5（発展：実用的なソート条件）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>商品データのリスト items = [(&quot;Apple&quot;, 150, True), (&quot;Banana&quot;, 100, False),
+                          (&quot;Cherry&quot;, 200, True), (&quot;Date&quot;, 100, True)] があります。
+タプルの要素は (商品名, 価格, 在庫ありフラグ) です。
+
+sorted() とラムダ式を使い、以下の複合優先度順で並び替えてください。
+
+1. 在庫があるもの（True）を優先
+2. 価格が安い順
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 5（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>タプルを使った複数条件ソート
+ラムダ式の戻り値として (条件1, 条件2) というタプルを返すと、
+複数のキーで優先順位をつけてソートできます。
+
+not item[2] とすることで、True (not で False / 0) が False (not で True / 1) 
+より小さくなり、在庫あり（True）が前に来ます。
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">items</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;Apple&quot;</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="kc">True</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Banana&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Cherry&quot;</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="kc">True</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="kc">True</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="c1"># ソートキーにタプル (優先度1, 優先度2) を指定する</span>
+<span class="c1"># Pythonでは True(1) &gt; False(0) なので、not item[2] で True を先頭にする</span>
+<span class="n">sorted_items</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="p">(</span><span class="ow">not</span> <span class="n">item</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">stock</span> <span class="ow">in</span> <span class="n">sorted_items</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">price</span><span class="si">}</span><span class="s2">円 (在庫: </span><span class="si">{</span><span class="n">stock</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="c1"># 出力結果:</span>
+<span class="c1"># Date: 100円 (在庫: True)</span>
+<span class="c1"># Apple: 150円 (在庫: True)</span>
+<span class="c1"># Cherry: 200円 (在庫: True)</span>
+<span class="c1"># Banana: 100円 (在庫: False)</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id7">
+<h2>pandasライブラリ<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
 <p>さあ、ここからが本番の <strong>pandas</strong> です！ NumPyを <code class="docutils literal notranslate"><span class="pre">np</span></code> と呼んだように、pandasは <strong><code class="docutils literal notranslate"><span class="pre">pd</span></code></strong> というあだ名で読み込むのが世界共通のルールです。</p>
 <section id="series-dataframe">
 <h3>シリーズ (Series) と データフレーム (DataFrame)<a class="headerlink" href="#series-dataframe" title="Link to this heading">¶</a></h3>
 <p>pandasには、2つの重要な「箱」があります。エクセルに例えて図解で覚えましょう。</p>
+<ul class="simple">
+<li><p>DataFrame : 多次元、行と列がある。（いわゆる表形式）</p></li>
+<li><p>Series : 1次元。一つの行もしくは列のみ。</p></li>
+</ul>
 <p><strong>【SeriesとDataFrameのイメージ図】</strong></p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>▼ Series (シリーズ) ＝ 「1列だけのデータ（リストの強化版）」
   [インデックス]   [データ]
@@ -482,11 +739,131 @@
      2             紅茶        450       8
 </pre></div>
 </div>
+<p>SeriesとDataFrame</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/pandas.png"><img alt="../../../_images/pandas.png" src="../../../_images/pandas.png" style="width: 90%;" />
+</a>
+</figure>
+<p>pandasはpdとしてimportすることが慣例となっています。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span> <span class="c1">#</span>
+</pre></div>
+</div>
 <p>データ分析では、主にこの「データフレーム」を使います。</p>
+<p>pandasはリッチなデータ構造と関数を提供します。DataFrameと呼ばれる二次元の表形式で分析を容易にします。そのほか、リレーショナルデータベース（SQLなど）の柔軟なデータ操作能力を持ち合わせます。 もともと金融データ分析アプリケーションとしてのツールとして設計されたこともあり、時系列データも扱いやすいです。</p>
 </section>
 <section id="dataframe">
 <h3>DataFrameの作成・読み込み<a class="headerlink" href="#dataframe" title="Link to this heading">¶</a></h3>
-<p>自分でデータフレームを作ることもできますが、実務では <strong>CSVファイルから読み込む（<code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code>）</strong> ことがほとんどです。</p>
+<p>自分でデータフレームを作ることもできますが、</p>
+<section id="seriesdataframe">
+<h4>SeriesとDataFrame<a class="headerlink" href="#seriesdataframe" title="Link to this heading">¶</a></h4>
+<p>1列ずつデータをpd.Seriesを作成</p>
+<p>price</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">price</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">3000</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>num</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>datetimes</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">datetimes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;20180601&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span> <span class="s1">&#39;627H&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datetimes</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Seriesの列データを組み合わせてデータフレームを作ります</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;price&#39;</span><span class="p">:</span><span class="n">price</span><span class="p">,</span> <span class="s1">&#39;num&#39;</span><span class="p">:</span> <span class="n">num</span><span class="p">,</span> <span class="s1">&#39;datetime&#39;</span><span class="p">:</span> <span class="n">datetimes</span> <span class="p">})</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+<p>次のcellのようにまとめて作ることもできます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;price&#39;</span><span class="p">:[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">3000</span><span class="p">],</span> 
+                   <span class="s1">&#39;num&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+                   <span class="s1">&#39;datetime&#39;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;20180601&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span> <span class="s1">&#39;627H&#39;</span><span class="p">)</span> <span class="p">})</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+<p>dfのタイプを確認します</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>price列の型も確認してみましょう</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>2つ以上の列（もしくは行）を選択するとSeriesではなくDataFrameとなります。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;price&#39;</span><span class="p">,</span><span class="s1">&#39;num&#39;</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>1つの行もSeriesです。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>typeをみる</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>dtypesで列ごとのタイプを一括して確認できます</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+<p>headで行数を指定することで、DataFrameの最初の3行を表示できます</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>DataFrameのランダムな3行を表示するにはsampleを用います</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>DataFrameの最後の3行をtailを用いて表示できます</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>DataFrameのIndexを確認します</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+<p>DataFrameのcolumnsを確認します</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+<p>列の抽出は次のように列名を指定することできます</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>複数列の抽出の抽出もできます</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;price&#39;</span><span class="p">,</span><span class="s1">&#39;datetime&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>特定の列をindexにすることもできます</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;datetime&#39;</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># indexの0番目の値を確認</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># indexの末尾の値を確認</span>
+</pre></div>
+</div>
+<p>indexをresetして0から振り直すにはreset_indexが使えます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>indexには複数の列を指定することも可能です。（Multiindex）</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;datetime&#39;</span><span class="p">,</span><span class="s1">&#39;num&#39;</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+<p>indexをresetするには<code class="docutils literal notranslate"><span class="pre">reset_index</span></code>を使います。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</section>
+<section id="csv">
+<h4>CSVから読み込む<a class="headerlink" href="#csv" title="Link to this heading">¶</a></h4>
+<p><strong>CSVファイルから読み込む（<code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code>）</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="c1"># （準備）Colab上に練習用のCSVファイルを作ります</span>
@@ -501,19 +878,44 @@
 <span class="n">df</span>
 </pre></div>
 </div>
+<p>出力</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/pandas_01.png"><img alt="../../../_images/pandas_01.png" src="../../../_images/pandas_01.png" style="width: 50%;" />
+</a>
+</figure>
+</section>
 </section>
 </section>
 <hr class="docutils" />
-<section id="id7">
-<h2>データの抽出・操作の基本<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<section id="id8">
+<h2>データの抽出・操作の基本<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
 <p>巨大な表の中から、自分の欲しいデータだけを切り出すテクニックです。</p>
 <section id="loc-iloc">
 <h3>基本的なデータ選択（loc, iloc）とデータの参照<a class="headerlink" href="#loc-iloc" title="Link to this heading">¶</a></h3>
 <p>これも初心者が非常に混乱しやすいポイントです！しっかり区別しましょう。</p>
 <ul class="simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">loc</span></code> (ロケーション)</strong>: インデックスの <strong>「名前（ラベル）」</strong> や列の <strong>「名前」</strong> で指定します。</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">iloc</span></code> (インデックス・ロケーション)</strong>: インデックスの <strong>「番号（0, 1, 2...）」</strong> で指定します。</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">loc</span></code> (ロケーション)</strong>: インデックスの <strong>「名前（ラベル）」</strong> や列の <strong>「名前」</strong> で指定します。</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">loc</span></code>は行の名前（ラベル）や列の名前、条件を指定して抽出するために用いることができます。</p></li>
 </ul>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">iloc</span></code> (インデックス・ロケーション)</strong>: インデックスの <strong>「番号（0, 1, 2...）」</strong> で指定します。</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">iloc</span></code>は行や列の番号を指定して抽出することができます。</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>Note
+loc iloc の違い</p>
+<p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html">参考ページ</a></p>
+<ul class="simple">
+<li><p>ilocは基本的に場所を示す整数（0からテーブルの長さ-1まで）で指定することができます。またTrue/Falseでの条件指定もできます。</p></li>
+<li><p>locは基本的には場所の名前（label）やで指定することができます。またTrue/Falseでの条件指定もできます。</p></li>
+</ul>
+</div>
+<p>loc と iloc の違い</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># loc と iloc の違い</span>
 
 <span class="c1"># iloc: 「1行目（0から数える）」のデータを取り出す</span>
@@ -525,18 +927,163 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;価格&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
-</section>
-<section id="id8">
-<h3>データの条件取り出し<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
-<p>NumPyと同じように、「条件に合う行だけ」を抽出することができます。データ分析で最も使う処理の一つです！</p>
+<p>出力</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">iloc</span> <span class="p">(</span><span class="n">番号で指定</span><span class="p">)</span> <span class="o">---</span>
+<span class="o">&lt;</span><span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">indexing</span><span class="o">.</span><span class="n">_iLocIndexer</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7e32b4241860</span><span class="o">&gt;</span>
+
+<span class="o">---</span> <span class="n">列の参照</span> <span class="o">---</span>
+<span class="mi">0</span>    <span class="mi">400</span>
+<span class="mi">1</span>    <span class="mi">500</span>
+<span class="mi">2</span>    <span class="mi">450</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">価格</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</pre></div>
+</div>
 </section>
 <section id="id9">
-<h3>列・行の追加と削除、データの並び替え<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<h3>データの条件取り出し<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<p>NumPyと同じように、「条件に合う行だけ」を抽出することができます。</p>
+<section id="id10">
+<h4>条件をつけて行や列を抽出する方法<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;price&#39;</span><span class="p">:[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">3000</span><span class="p">],</span> 
+                   <span class="s1">&#39;num&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+                   <span class="s1">&#39;datetime&#39;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;20180601&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span> <span class="s1">&#39;627H&#39;</span><span class="p">)</span> <span class="p">})</span>
+</pre></div>
+</div>
+<p>priceが100より大きい行のみ抽出します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">100</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>priceが300以上の’price’列のみ抽出します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">300</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>複数の条件を指定することもできます。&amp;でAND条件を指定できます</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">100</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="s1">&#39;2018-11-01&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>複数の条件をorで指定することもできます。orは|で示します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">100</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="s1">&#39;2018-11-01&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>次に行や列の番号で抽出する場合です。この場合は、ilocが使えます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>2行目のデータを指定</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]</span>
+</pre></div>
+</div>
+<p>indexの名前（ラベル）が2のものを抽出</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id11">
+<h3>一意な値の集合<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<p>列の中にあるユニークな値（重複がない値）を確認したい場合はunique()で確認できます。
+次のDataFramefruitに何種類のフルーツに関するデータがあるか確認します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fruit</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;category&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;banana&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;banana&#39;</span><span class="p">],</span>
+                      <span class="s2">&quot;num_sell&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+                      <span class="s2">&quot;price&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">110</span><span class="p">],})</span>
+<span class="n">fruit</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fruit</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fruit</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+</pre></div>
+</div>
+<p>一意な値がそれぞれ何個出現しているかを確認するためには、value_counts()が便利です。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fruit</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">fruit</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span> <span class="c1">#value_counts()はSeriesを返しています</span>
+</pre></div>
+</div>
+</section>
+<section id="id12">
+<h3>列・行の追加と削除、データの並び替え<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>列の追加：<code class="docutils literal notranslate"><span class="pre">df[&quot;新しい列名&quot;]</span> <span class="pre">=</span> <span class="pre">データ</span></code></p></li>
 <li><p>削除：<code class="docutils literal notranslate"><span class="pre">df.drop()</span></code></p></li>
 <li><p>並び替え：<code class="docutils literal notranslate"><span class="pre">df.sort_values()</span></code></p></li>
 </ul>
+<section id="id13">
+<h4>Dataframeを値に応じてソートする<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fruit</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;category&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;banana&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;banana&#39;</span><span class="p">],</span>
+                      <span class="s2">&quot;num_sell&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+                      <span class="s2">&quot;price&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">110</span><span class="p">],})</span>
+<span class="n">fruit</span>
+</pre></div>
+</div>
+<p>sort_valuesを用いて行をソートします。byでどの列の値でソートするかを指定します。
+defaultではascending（昇順）でソートします。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fruit</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;num_sell&#39;</span><span class="p">])</span> 
+</pre></div>
+</div>
+<p>降順（descending）で表示する場合は、ascending=Falseにします。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fruit</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;num_sell&#39;</span><span class="p">],</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> 
+</pre></div>
+</div>
+</section>
+<section id="id14">
+<h4>要素の削除<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h4>
+<p>dropは列や行を指定して削除するメソッドです。</p>
+<p>dropだけでは元のDataFrameは変わりません。 df = df.drop(0) のように元のDataFrameに再代入するか、dropの引数にinplace =True（defaultはFalse）を与えると元のDataFrameの指定した行が削除されます。</p>
+<p>その他の動作など詳しくは<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.drop.html">pandasのドキュメント</a>を参照してください。</p>
+<p>行の削除をdropを用いて行ってみます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fruit</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>上の１行だけではfruitそれ自体は変りません。次のようにfruitに代入するとfruit自体の0行目が削除されます</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fruit</span> <span class="o">=</span> <span class="n">fruit</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>列の削除は同様にdropを用いて削除する列名を指定し、axisを1とします</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fruit</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;num_sell&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>上の１行だけではfruitそれ自体は変りません。fruitに代入するとfruit自体の0行目が削除されます</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fruit</span> <span class="o">=</span> <span class="n">fruit</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;num_sell&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id15">
+<h2>集計と欠損値・時系列データの処理<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
+<p>現実のデータは、エクセルで誰かが入力し忘れた「空白（欠損値）」だらけです。pandasはこれらを綺麗に処理してくれます。</p>
+<section id="id16">
+<h3>欠損値処理<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<p>データが空っぽの部分には <code class="docutils literal notranslate"><span class="pre">NaN</span></code>（Not a Number：データなし）という特別な目印が入ります。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">df.dropna()</span></code>: <code class="docutils literal notranslate"><span class="pre">NaN</span></code> がある行を丸ごと「削除」する。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.fillna(値)</span></code>: <code class="docutils literal notranslate"><span class="pre">NaN</span></code> の部分を、特定の値（0など）で「埋める」。</p></li>
+</ul>
+<p>欠損値の確認</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fruit</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="groupby-describe">
+<h3>データの集計（groupby, describe）と統計量<a class="headerlink" href="#groupby-describe" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">describe()</span></code></strong>: データの件数、平均、最小値、最大値などを一瞬で一覧表にしてくれます！</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">groupby()</span></code> (グループ化)</strong>: 「曜日ごと」「商品カテゴリーごと」にデータをまとめて集計（合計や平均など）します。</p></li>
+</ul>
+<p>要約統計量はdescribeを用いることで一括で確認できます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fruit</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>複数の列でソートも可能です。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fruit</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">,</span><span class="s1">&#39;price&#39;</span><span class="p">,],</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> 
+</pre></div>
+</div>
+<p>例</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 条件取り出し（価格が450円以上のものだけ抽出）</span>
 <span class="n">expensive_items</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;価格&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">450</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- 450円以上の商品 ---&quot;</span><span class="p">)</span>
@@ -551,29 +1098,46 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">df_sorted</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-</section>
-<hr class="docutils" />
-<section id="id10">
-<h2>集計と欠損値・時系列データの処理<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
-<p>現実のデータは、エクセルで誰かが入力し忘れた「空白（欠損値）」だらけです。pandasはこれらを綺麗に処理してくれます。</p>
-<section id="id11">
-<h3>欠損値処理<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
-<p>データが空っぽの部分には <code class="docutils literal notranslate"><span class="pre">NaN</span></code>（Not a Number：データなし）という特別な目印が入ります。</p>
+<p>出力</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="mi">450</span><span class="n">円以上の商品</span> <span class="o">---</span>
+   <span class="n">商品名</span>   <span class="n">価格</span>  <span class="n">売上数</span>
+<span class="mi">1</span>  <span class="n">ケーキ</span>  <span class="mi">500</span>    <span class="mi">5</span>
+<span class="mi">2</span>   <span class="n">紅茶</span>  <span class="mi">450</span>    <span class="mi">8</span>
+
+<span class="o">---</span> <span class="n">売上合計の大きい順</span> <span class="o">---</span>
+    <span class="n">商品名</span>   <span class="n">価格</span>  <span class="n">売上数</span>  <span class="n">売上合計</span>
+<span class="mi">0</span>  <span class="n">コーヒー</span>  <span class="mi">400</span>   <span class="mi">12</span>  <span class="mi">4800</span>
+<span class="mi">2</span>    <span class="n">紅茶</span>  <span class="mi">450</span>    <span class="mi">8</span>  <span class="mi">3600</span>
+<span class="mi">1</span>   <span class="n">ケーキ</span>  <span class="mi">500</span>    <span class="mi">5</span>  <span class="mi">2500</span>
+</pre></div>
+</div>
+<section id="id17">
+<h4>グループごとの集計などを確認する方法<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h4>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">df.dropna()</span></code>: <code class="docutils literal notranslate"><span class="pre">NaN</span></code> がある行を丸ごと「削除」する。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">df.fillna(値)</span></code>: <code class="docutils literal notranslate"><span class="pre">NaN</span></code> の部分を、特定の値（0など）で「埋める」。</p></li>
+<li><p>groupbyを用いるとかん単位ぐるーぷごとの集計や計算などが行えます。</p></li>
+<li><p>groupbyと一緒に使えるファンクションとして、sum(), mean(), size()などがあります。自分で任意の関数を作成することもできます。</p></li>
 </ul>
+<p>詳細は<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html">pandasのドキュメント</a>を確認してください。</p>
+<p>Category別の合計販売個数</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fruit</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;category&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Category別の平均販売個数</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fruit</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;category&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>複数の条件を指定することもできます。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">100</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="s1">&#39;2018-11-01&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>複数の条件をorで指定することもできます。orは<code class="docutils literal notranslate"><span class="pre">|</span></code>で示します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">100</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="s1">&#39;2018-11-01&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
 </section>
-<section id="groupby-describe">
-<h3>データの集計（groupby, describe）と統計量<a class="headerlink" href="#groupby-describe" title="Link to this heading">¶</a></h3>
-<ul class="simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">describe()</span></code></strong>: データの件数、平均、最小値、最大値などを一瞬で一覧表にしてくれます！</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">groupby()</span></code> (グループ化)</strong>: 「曜日ごと」「商品カテゴリーごと」にデータをまとめて集計（合計や平均など）します。</p></li>
-</ul>
 </section>
-<section id="id12">
-<h3>データの連結と結合<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<section id="id18">
+<h3>データの連結と結合<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
 <p>別々のファイルにあるデータをくっつけます。</p>
 <ul class="simple">
 <li><p><strong>連結 (<code class="docutils literal notranslate"><span class="pre">concat</span></code>)</strong>: 表を縦（または横）に単純にくっつける。</p></li>
@@ -598,11 +1162,174 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
 </pre></div>
 </div>
+<p>出力</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">欠損値を含むデータ</span> <span class="o">---</span>
+   <span class="n">顧客</span>    <span class="n">年齢</span>
+<span class="mi">0</span>  <span class="n">山田</span>  <span class="mf">20.0</span>
+<span class="mi">1</span>  <span class="n">佐藤</span>   <span class="n">NaN</span>
+<span class="mi">2</span>  <span class="n">鈴木</span>  <span class="mf">35.0</span>
+
+<span class="o">---</span> <span class="n">欠損値を0で埋めたデータ</span> <span class="o">---</span>
+   <span class="n">顧客</span>    <span class="n">年齢</span>
+<span class="mi">0</span>  <span class="n">山田</span>  <span class="mf">20.0</span>
+<span class="mi">1</span>  <span class="n">佐藤</span>   <span class="mf">0.0</span>
+<span class="mi">2</span>  <span class="n">鈴木</span>  <span class="mf">35.0</span>
+
+<span class="o">---</span> <span class="n">統計量の一覧</span> <span class="o">---</span>
+          <span class="n">価格</span>        <span class="n">売上数</span>
+<span class="n">count</span>    <span class="mf">3.0</span>   <span class="mf">3.000000</span>
+<span class="n">mean</span>   <span class="mf">450.0</span>   <span class="mf">8.333333</span>
+<span class="n">std</span>     <span class="mf">50.0</span>   <span class="mf">3.511885</span>
+<span class="nb">min</span>    <span class="mf">400.0</span>   <span class="mf">5.000000</span>
+<span class="mi">25</span><span class="o">%</span>    <span class="mf">425.0</span>   <span class="mf">6.500000</span>
+<span class="mi">50</span><span class="o">%</span>    <span class="mf">450.0</span>   <span class="mf">8.000000</span>
+<span class="mi">75</span><span class="o">%</span>    <span class="mf">475.0</span>  <span class="mf">10.000000</span>
+<span class="nb">max</span>    <span class="mf">500.0</span>  <span class="mf">12.000000</span>
+</pre></div>
+</div>
 </section>
 </section>
 <hr class="docutils" />
-<section id="id13">
-<h2>💻 演習課題<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
+<section id="id19">
+<h2>練習問題<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h2>
+<section id="id20">
+<h3>💡 pandasの重要メソッドまとめ<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>抽出: df[df[&quot;列&quot;] == 値] / df[df[&quot;列&quot;].isin([...])]</p></li>
+<li><p>欠損値処理: df.fillna(値) / df.dropna()（欠損値のある行を削除）</p></li>
+<li><p>集計: df.groupby(&quot;キー列&quot;)[&quot;対象列&quot;].集計関数()</p></li>
+<li><p>並び替え: df.sort_values(by=&quot;列名&quot;, ascending=False)</p></li>
+</ul>
+<p>以下のサンプルデータ（売上履歴）を使って問題に答えてください。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># サンプルデータ</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;日付&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;2026-07-01&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2026-07-01&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2026-07-02&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2026-07-02&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2026-07-03&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;店舗&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;東京&quot;</span><span class="p">,</span> <span class="s2">&quot;大阪&quot;</span><span class="p">,</span> <span class="s2">&quot;東京&quot;</span><span class="p">,</span> <span class="s2">&quot;名古屋&quot;</span><span class="p">,</span> <span class="s2">&quot;大阪&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;商品&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;りんご&quot;</span><span class="p">,</span> <span class="s2">&quot;バナナ&quot;</span><span class="p">,</span> <span class="s2">&quot;バナナ&quot;</span><span class="p">,</span> <span class="s2">&quot;りんご&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>  <span class="c1"># 欠損値あり</span>
+    <span class="s2">&quot;売上額&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1500</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">1200</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span>
+    <span class="s2">&quot;数量&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>練習問題 1（基礎：データのフィルタリング）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>売上額が 1000 以上 のデータだけを抽出した新しいデータフレームを作成してください。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 1（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>条件指定による抽出
+df[条件式] と書くことで、条件に合致する（True になる）行だけをフィルタリングできます。
+df[&quot;列名&quot;] &gt;= 値 の比較でブール値（True/False）のシリーズが作られます。
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 売上額が 1000 以上の行を抽出</span>
+<span class="n">high_sales</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;売上額&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">1000</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">high_sales</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 2（基礎：新しい列の追加）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>「売上額」を「数量」で割った 1個あたりの単価 を計算し、新しい列 &quot;単価&quot; 
+としてデータフレームに追加してください。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 2（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>要素間の演算と列追加
+pandasでは df[&quot;列A&quot;] / df[&quot;列B&quot;] のように記述するだけで、
+行ごとの計算（ベクトル演算）を自動で行ってくれます。
+ループ処理（for文）を書かずに一括処理するのがpandasの特徴です。
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 列同士の割り算で新しい列を作成</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;単価&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;売上額&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;数量&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 3（応用：欠損値処理）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&quot;商品&quot; 列に含まれている欠損値（None / NaN）を、文字列 &quot;不明&quot; に置換してください。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 3（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fillna メソッドの使い方
+欠損値（NaN / None）の穴埋めには .fillna(置換したい値) を使用します。
+元のデータフレームを直接更新したい場合は df[&quot;商品&quot;].fillna(&quot;不明&quot;, inplace=True) 
+と書くこともできます。
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fillna() で欠損値を置換（inplace=True または再代入）</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;商品&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;商品&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;不明&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 4（応用：グループ集計）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>「店舗」ごとの 「売上額」の合計 を計算して表示してください。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 4（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>groupby と sum
+カテゴリごとに集計したいときは .groupby(&quot;グループ化したい列&quot;) を使います。
+続けて [&quot;集計したい列&quot;].sum() や .mean()（平均）、.count()（件数）などを呼び出します。
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 店舗ごとにグループ化して売上額を集計</span>
+<span class="n">shop_sales</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;店舗&quot;</span><span class="p">)[</span><span class="s2">&quot;売上額&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">shop_sales</span><span class="p">)</span>
+
+<span class="c1"># 見やすくデータフレーム形式にしたい場合</span>
+<span class="n">shop_sales_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;店舗&quot;</span><span class="p">)[</span><span class="s2">&quot;売上額&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</details>
+<p>練習問題 5（発展：複合条件とソート）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>店舗が &quot;東京&quot; または &quot;大阪&quot; のデータに絞り込んだ上で、売上額が大きい順（降順） 
+に並び替えてください。
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 5（解答）</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>isin と sort_values の組み合わせ
+複数の候補値（東京または大阪）にマッチさせたい場合は .isin([リスト]) が便利です
+（| 演算子を使っても書けます）。
+
+ソートには .sort_values(by=&quot;列名&quot;) を使い、ascending=False を指定することで
+降順（大きい順）になります。
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. 「東京」または「大阪」でフィルタリング (.isin)</span>
+<span class="n">filtered_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;店舗&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">&quot;東京&quot;</span><span class="p">,</span> <span class="s2">&quot;大阪&quot;</span><span class="p">])]</span>
+
+<span class="c1"># 2. 売上額で降順ソート (ascending=False)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">filtered_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;売上額&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id21">
+<h2>💻 演習課題<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h2>
 <p>エラーが出たら、列の名前が間違っていないかなどを確認しましょう。</p>
 <p>以下の <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TODO:</span> </code> の部分を書き換えて、プログラムを完成させてください。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習1: 高階関数（ラムダ式とsorted）（難易度：易）</span>
@@ -621,7 +1348,9 @@
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;年齢が高い順:&quot;</span><span class="p">,</span> <span class="n">older_staff</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習2: DataFrameの作成と条件抽出（難易度：易）</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+
+<span class="c1"># 演習2: DataFrameの作成と条件抽出（難易度：易）</span>
 <span class="c1"># 辞書からデータフレームを作成し、条件に合うデータを抽出します。</span>
 <span class="c1"># TODO: pd.DataFrame() を使って data_dict をデータフレーム df_menu に変換してください。</span>
 <span class="c1"># TODO: df_menu の中から、カロリーが 300 より大きいデータだけを抽出してください。</span>
@@ -629,7 +1358,7 @@
 
 <span class="n">data_dict</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;メニュー&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ショートケーキ&quot;</span><span class="p">,</span> <span class="s2">&quot;チーズケーキ&quot;</span><span class="p">,</span> <span class="s2">&quot;クッキー&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;カロリー&quot;</span><span class="p">:</span> 
+    <span class="s2">&quot;カロリー&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="mi">350</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
 <span class="p">}</span>
 
 <span class="c1"># TODO: 辞書をデータフレームに変換する</span>
@@ -645,12 +1374,20 @@
 <span class="c1"># TODO: df_menu から、iloc を使って「0番目の行（ショートケーキの行）」だけを取り出してください。</span>
 <span class="c1"># TODO: df_menu に「価格」という新しい列を作り、 というリストを追加してください。</span>
 
+<span class="n">data_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;メニュー&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ショートケーキ&quot;</span><span class="p">,</span> <span class="s2">&quot;チーズケーキ&quot;</span><span class="p">,</span> <span class="s2">&quot;クッキー&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;カロリー&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="mi">350</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># TODO: 辞書をデータフレームに変換する</span>
+<span class="n">df_menu</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_dict</span><span class="p">)</span>
+
 <span class="c1"># TODO: iloc で0番目の行を取り出す</span>
 <span class="n">first_row</span> <span class="o">=</span> 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;0番目のデータ:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">first_row</span><span class="p">)</span>
 
 <span class="c1"># TODO: &quot;価格&quot; 列を追加する</span>
-<span class="n">df_menu</span><span class="p">[</span>      <span class="p">]</span> <span class="o">=</span> 
+<span class="n">df_menu</span><span class="p">[</span>      <span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">価格を追加したデータフレーム:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">df_menu</span><span class="p">)</span>
 </pre></div>
@@ -680,7 +1417,7 @@
 <span class="n">sales_history</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s2">&quot;曜日&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;月&quot;</span><span class="p">,</span> <span class="s2">&quot;火&quot;</span><span class="p">,</span> <span class="s2">&quot;月&quot;</span><span class="p">,</span> <span class="s2">&quot;火&quot;</span><span class="p">,</span> <span class="s2">&quot;水&quot;</span><span class="p">],</span>
     <span class="s2">&quot;商品&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;コーヒー&quot;</span><span class="p">,</span> <span class="s2">&quot;紅茶&quot;</span><span class="p">,</span> <span class="s2">&quot;ケーキ&quot;</span><span class="p">,</span> <span class="s2">&quot;コーヒー&quot;</span><span class="p">,</span> <span class="s2">&quot;ケーキ&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;売上&quot;</span><span class="p">:</span> 
+    <span class="s2">&quot;売上&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
 <span class="p">})</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;元の売上履歴:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sales_history</span><span class="p">)</span>
@@ -694,8 +1431,8 @@
 </div>
 </section>
 <hr class="docutils" />
-<section id="id14">
-<h2>💡 演習問題の解答例<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
+<section id="id22">
+<h2>💡 演習問題の解答例<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h2>
 <p>（どうしても分からない時や、答え合わせをしたい時に展開して見てくださいね。DataFrameの操作は最初は慣れが必要ですが慣れていきましょう）</p>
 <details>
 <summary>👉 解答例を見る（ここをクリックして展開）</summary>
@@ -711,7 +1448,7 @@
 </div>
 <p><strong>演習3の解答</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">first_row</span> <span class="o">=</span> <span class="n">df_menu</span><span class="o">.</span><span class="n">iloc</span>
-<span class="n">df_menu</span><span class="p">[</span><span class="s2">&quot;価格&quot;</span><span class="p">]</span> <span class="o">=</span> 
+<span class="n">df_menu</span><span class="p">[</span><span class="s2">&quot;価格&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
 </pre></div>
 </div>
 <p><strong>演習4の解答</strong></p>
@@ -727,11 +1464,11 @@
 </details>
 </section>
 <hr class="docutils" />
-<section id="id15">
-<h2>📚 第11回のまとめ<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
+<section id="id23">
+<h2>📚 第11回のまとめ<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h2>
 <p>データ分析の必須ツール「pandas」の基礎を一気に学びました。これで、エクセルで行っていたような集計作業を、Pythonで自動化する準備が整いました。</p>
-<section id="id16">
-<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<section id="id24">
+<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>ラムダ式と高階関数</strong>: <code class="docutils literal notranslate"><span class="pre">lambda</span> <span class="pre">x:</span> <span class="pre">x</span></code> のような1行関数や、<code class="docutils literal notranslate"><span class="pre">map</span></code>, <code class="docutils literal notranslate"><span class="pre">filter</span></code> でリスト処理を短く書ける。</p></li>
 <li><p><strong>SeriesとDataFrame</strong>: pandasの2大要素。Seriesは1列（リスト強化版）、DataFrameは行と列がある「表」。</p></li>
@@ -760,13 +1497,13 @@
 <p>データの「結合（merge）」です。エクセルの VLOOKUP 関数のように、2つの表を「共通のID」などをキーにしてくっつける、超便利な機能です！</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 顧客の基本データ表</span>
 <span class="n">customers</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-    <span class="s2">&quot;顧客ID&quot;</span><span class="p">:,</span>
+    <span class="s2">&quot;顧客ID&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
     <span class="s2">&quot;名前&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;山田&quot;</span><span class="p">,</span> <span class="s2">&quot;佐藤&quot;</span><span class="p">,</span> <span class="s2">&quot;鈴木&quot;</span><span class="p">]</span>
 <span class="p">})</span>
 
 <span class="c1"># 顧客の注文データ表（誰が何を頼んだか）</span>
 <span class="n">orders</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-    <span class="s2">&quot;顧客ID&quot;</span><span class="p">:,</span>
+    <span class="s2">&quot;顧客ID&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
     <span class="s2">&quot;注文品&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;コーヒー&quot;</span><span class="p">,</span> <span class="s2">&quot;ケーキ&quot;</span><span class="p">,</span> <span class="s2">&quot;紅茶&quot;</span><span class="p">]</span>
 <span class="p">})</span>
 
@@ -813,7 +1550,7 @@
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-29</div>
+              Last updated on 2026-07-30</div>
           </div>
           <div class="right-details">
             
@@ -842,31 +1579,55 @@
 <li><a class="reference internal" href="#id2">イントロダクション：データ分析の主役「pandas」</a></li>
 <li><a class="reference internal" href="#id3">高階関数と便利なモジュール</a><ul>
 <li><a class="reference internal" href="#id4">ラムダ式（名無しの使い捨て関数）</a></li>
-<li><a class="reference internal" href="#id5">高階関数（関数を材料にする関数）</a></li>
+<li><a class="reference internal" href="#id5">高階関数（関数を材料にする関数）</a><ul>
+<li><a class="reference internal" href="#map">map()</a></li>
+<li><a class="reference internal" href="#filder">filder()</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#random-math-datetime">便利なモジュール（random, math, datetime）</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id6">pandasライブラリの基礎</a><ul>
+<li><a class="reference internal" href="#id6">練習問題</a></li>
+<li><a class="reference internal" href="#id7">pandasライブラリ</a><ul>
 <li><a class="reference internal" href="#series-dataframe">シリーズ (Series) と データフレーム (DataFrame)</a></li>
-<li><a class="reference internal" href="#dataframe">DataFrameの作成・読み込み</a></li>
+<li><a class="reference internal" href="#dataframe">DataFrameの作成・読み込み</a><ul>
+<li><a class="reference internal" href="#seriesdataframe">SeriesとDataFrame</a></li>
+<li><a class="reference internal" href="#csv">CSVから読み込む</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id7">データの抽出・操作の基本</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8">データの抽出・操作の基本</a><ul>
 <li><a class="reference internal" href="#loc-iloc">基本的なデータ選択（loc, iloc）とデータの参照</a></li>
-<li><a class="reference internal" href="#id8">データの条件取り出し</a></li>
-<li><a class="reference internal" href="#id9">列・行の追加と削除、データの並び替え</a></li>
+<li><a class="reference internal" href="#id9">データの条件取り出し</a><ul>
+<li><a class="reference internal" href="#id10">条件をつけて行や列を抽出する方法</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id10">集計と欠損値・時系列データの処理</a><ul>
-<li><a class="reference internal" href="#id11">欠損値処理</a></li>
-<li><a class="reference internal" href="#groupby-describe">データの集計（groupby, describe）と統計量</a></li>
-<li><a class="reference internal" href="#id12">データの連結と結合</a></li>
+<li><a class="reference internal" href="#id11">一意な値の集合</a></li>
+<li><a class="reference internal" href="#id12">列・行の追加と削除、データの並び替え</a><ul>
+<li><a class="reference internal" href="#id13">Dataframeを値に応じてソートする</a></li>
+<li><a class="reference internal" href="#id14">要素の削除</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id13">💻 演習課題</a></li>
-<li><a class="reference internal" href="#id14">💡 演習問題の解答例</a></li>
-<li><a class="reference internal" href="#id15">📚 第11回のまとめ</a><ul>
-<li><a class="reference internal" href="#id16">✨ 今日の重要ポイントまとめ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id15">集計と欠損値・時系列データの処理</a><ul>
+<li><a class="reference internal" href="#id16">欠損値処理</a></li>
+<li><a class="reference internal" href="#groupby-describe">データの集計（groupby, describe）と統計量</a><ul>
+<li><a class="reference internal" href="#id17">グループごとの集計などを確認する方法</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id18">データの連結と結合</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id19">練習問題</a><ul>
+<li><a class="reference internal" href="#id20">💡 pandasの重要メソッドまとめ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id21">💻 演習課題</a></li>
+<li><a class="reference internal" href="#id22">💡 演習問題の解答例</a></li>
+<li><a class="reference internal" href="#id23">📚 第11回のまとめ</a><ul>
+<li><a class="reference internal" href="#id24">✨ 今日の重要ポイントまとめ</a></li>
 <li><a class="reference internal" href="#faq">❓ よくある質問と回答 (FAQ)</a></li>
 <li><a class="reference internal" href="#colab">🌟 Colabで試すおすすめコード</a></li>
 </ul>
