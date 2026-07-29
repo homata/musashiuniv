@@ -825,7 +825,7 @@ f()
 ```Python
 open('non-existent.txt', 'r') # 存在しないファイルの読み込み
 ```
-
+</details>
 
 練習問題 3 (論理エラー)
 ```text
