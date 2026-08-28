@@ -1,0 +1,952 @@
+<!doctype html>
+<html class="no-js" lang="ja" data-content_root="../../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="第5回 Webサービスの活用1：StreamlitによるWebアプリ開発の基礎" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="2026/02.programming_advanced_a/markdown/advanced_05_web_service1.html" />
+<meta property="og:site_name" content="musashiuniv" />
+<meta property="og:description" content="皆さん、こんにちは！プログラミング応用A、第5回の講義です。担当の教員です。 前回（第4回）は、Pandasを使って「平均値の罠」を見破り、データのばらつき（標準偏差）や関係性の強さ（相関係数）を可視化する「データ解析」の基本を学びました。 今回からは、データ分析をさらに一歩進めて、**「Webサービスの活用」**という新しい領域に突入します！ 具体的には、Pythonだけで本格的なWebア..." />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image" content="/None" />
+<meta property="og:image:alt" content="皆さん、こんにちは！プログラミング応用A、第5回の講義です。担当の教員です。 前回（第4回）は、Pandasを使って「平均値の罠」を見破り、データのばらつき（標準偏差）や関係性の強さ（相関係数）を可視化する「データ解析」の基本を学びました。 今回からは、データ分析をさらに一歩進めて、**「Webサービスの活用」*..." />
+<meta name="description" content="皆さん、こんにちは！プログラミング応用A、第5回の講義です。担当の教員です。 前回（第4回）は、Pandasを使って「平均値の罠」を見破り、データのばらつき（標準偏差）や関係性の強さ（相関係数）を可視化する「データ解析」の基本を学びました。 今回からは、データ分析をさらに一歩進めて、**「Webサービスの活用」**という新しい領域に突入します！ 具体的には、Pythonだけで本格的なWebア..." />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" />
+
+    <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
+        <title>第5回 Webサービスの活用1：StreamlitによるWebアプリ開発の基礎 - Pythonプログラミング入門</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=949a1ff5" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/musashiuniv/custom.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">Pythonプログラミング入門</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
+  
+  
+  <span class="sidebar-brand-text">Pythonプログラミング入門</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="検索" name="q" aria-label="検索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../2025/index.html">2025年度</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 2025年度</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/index.html">2025年度 プログラミング基礎A/コンピューティング応用E</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 2025年度 プログラミング基礎A/コンピューティング応用E</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/01_intro.html">Pythonをはじめよう</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/02_computer.html">ノイマン型コンピュータ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/03_history.html">Pythonの歴史</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/20_coding.html">コーディング規約</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/21_module.html">モジュール</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/utokyo_ipp/index.html">Pythonプログラミング入門</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Pythonプログラミング入門</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/utokyo_ipp/00_index.html">1. 演習ページ</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/index.html">(補足資料) Python ゼロからはじめるプログラミング</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of (補足資料) Python ゼロからはじめるプログラミング</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/00_index.html">1. Pythonプログラミング</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/01_Python%E3%81%AB%E8%A7%A6%E3%82%8C%E3%82%8B.html">2. 第1章 Pythonに触れる</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/02_Python%E3%81%AE%E5%9F%BA%E6%9C%AC.html">3. 第2章 Pythonの基本</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/03_%E6%9D%A1%E4%BB%B6%E5%88%86%E5%B2%90%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%97.html">4. 第3章 条件分岐と繰り返し</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/04_%E7%B5%84%E3%81%BF%E8%BE%BC%E3%81%BF%E5%9E%8B%E3%81%A8%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88.html">5. 第4章 組み込み型とオブジェクト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/05_%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E5%AE%9A%E7%BE%A9%E9%96%A2%E6%95%B0.html">6. 第5章 ユーザ定義関数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/06_%E3%82%AF%E3%83%A9%E3%82%B9%E3%81%AE%E5%9F%BA%E6%9C%AC.html">7. 第6章 クラスの基本</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/07_%E7%99%BA%E5%B1%95%E3%81%A8%E5%BF%9C%E7%94%A8.html">8. 第7章 発展と応用</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/index.html">(補助資料)Python Boot Camp Text</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of (補助資料)Python Boot Camp Text</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/index.html">Python Boot Camp テキスト</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Python Boot Camp テキスト</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/1_install.html">1. Pythonをはじめる前に</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/2_intro.html">2. Pythonをはじめよう</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/3_types.html">3. Pythonのデータ型（基本編）</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/4_collections.html">4. Pythonのデータ型（コレクション編）</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/5_module.html">5. ファイル操作とモジュール</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/6_venv.html">6. サードパーティ製パッケージと venv</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/7_scraping.html">7. Web API、スクレイピング</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/8_nextstep.html">8. 次のステップ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/99_install.html">参考資料</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/index.html">2025年度 プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of 2025年度 プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/02.programming_advanced_a/01_intro.html">はじめに</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/python_dataanalysis/index.html">Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/python_dataanalysis/00_index.html">1. 資料</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/02.programming_advanced_a/digital_twin/index.html">デジタルツイン</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/index.html">leafmap</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of leafmap</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/01_intro.html">1. leafmapとは</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/01_intro.html#leadmap">2. leadmapのサイト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/01_intro.html#google-colab">3. 演習：Google Colab ファイル</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/index.html">機械学習</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of 機械学習</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/supervised_learning.html">1. 機械学習</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/unsupervised_learning.html">2. 教師なし学習</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/f1score.html">3. 分類問題における正解・不正解のパターン</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../index.html">2026年度</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of 2026年度</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../01.programming_basic_a/index.html">プログラミング基礎A/コンピューティング応用E</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle navigation of プログラミング基礎A/コンピューティング応用E</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_01.html">第1回 オリエンテーション・Google Colabの使い方</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_02.html">第2回 コンピューターとプログラミングとは？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_03.html">第3回 Pythonの基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_04.html">第4回 数値演算と文字列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_05.html">第5回 データ構造（数値、文字列、リスト、辞書）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_06.html">第6回 条件分岐、ファイル入出力の基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_07.html">第7回 テスト・デバッグ、コードスタイル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_08.html">第8回 制御フロー（条件分岐、繰り返し、イテレータ、内包表記）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_09.html">第9回 関数と例外処理（オブジェクト、クラス、例外処理）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_10.html">第10回 Pythonのライブラリ・パッケージ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_11.html">第11回 高階関数とpandasライブラリ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_12.html">第12回 Pythonのライブラリ・パッケージ（グラフ可視化）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_13.html">第13回 総合演習</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="advanced_01.html">第1回 オリエンテーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_02.html">第2回 オープンデータの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_03.html">第3回 データの種類とデータ加⼯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_04.html">第4回 データ解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_05.html">第5回 Webサービスの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_06.html">第6回 Webサービスの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_07.html">第7回 地理空間情報の基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_08.html">第8回 地理空間データの活⽤1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_09.html">第9回 地理空間データの活⽤2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_13.html">第13回 総合演習</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../03.google_colab/index.html">Google Colaboratoryの使い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../04.markdown/index.html">Markdown記法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../05.windows/index.html">Windows 特有の注意点</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../99.references/index.html">ライセンス、参考文献</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle navigation of ライセンス、参考文献</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../99.references/01_basic/basic.html">プログラミング基礎A/コンピューティング応用E [集中] (M1830)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../99.references/02_advanced/advance.html">プログラミング応用A/コンピューティング応用G [集中] (M1850)</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../../_sources/2026/02.programming_advanced_a/markdown/advanced_05_web_service1.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section class="tex2jax_ignore mathjax_ignore" id="web1-streamlitweb">
+<h1>第5回 Webサービスの活用1：StreamlitによるWebアプリ開発の基礎<a class="headerlink" href="#web1-streamlitweb" title="Link to this heading">¶</a></h1>
+<p>皆さん、こんにちは！プログラミング応用A、第5回の講義です。担当の教員です。
+前回（第4回）は、Pandasを使って「平均値の罠」を見破り、データのばらつき（標準偏差）や関係性の強さ（相関係数）を可視化する「データ解析」の基本を学びました。</p>
+<p>今回からは、データ分析をさらに一歩進めて、**「Webサービスの活用」**という新しい領域に突入します！
+具体的には、Pythonだけで本格的なWebアプリケーションを構築できる魔法のライブラリ <strong>Streamlit（ストリームリット）</strong> を使って、あなた専用の「データダッシュボード」を作っていきます。</p>
+<p>「HTMLやCSSは難しそう…」「Webサーバーって何？」と思うかもしれませんが、<strong>大丈夫です！</strong>
+Streamlitを使えば、そうした難しいデザインのコードは一切書く必要がありません。Pythonのコードを数行書くだけで、オシャレなボタンやスライダー、グラフが画面に自動的に配置されます。</p>
+<p>今日は、Google Colab上でWebアプリを起動するための特別な手順（トンネリング）から、基本的なボタンや入力欄（ウィジェット）の配置方法まで、丁寧に学んでいきます。自分で作ったプログラムがWebブラウザ上で「アプリ」として動く感動を、ぜひ味わってください！</p>
+<hr class="docutils" />
+<section id="id1">
+<h2>🎯 到達目標 (約5分)<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p>この授業が終わるころには、以下のことができるようになります。</p>
+<ol class="arabic simple">
+<li><p><strong>Webアプリ化（ダッシュボード化）の目的と意義</strong>（なぜデータをアプリとして公開するのか）を説明できる。</p></li>
+<li><p><strong>Google Colab上でStreamlitを安全に起動</strong>し、ローカルトンネル（localtunnel）を使ってスマホやブラウザからアクセスできる。</p></li>
+<li><p><strong>Streamlitの基本コマンド</strong>（タイトル、テキスト出力、マークダウン）を使い分けてWeb画面を構成できる。</p></li>
+<li><p><strong>入力用ウィジェット</strong>（ボタン、スライダー、テキスト入力、セレクトボックス）を配置し、ユーザーの操作に応じて画面が変わるインタラクティブ（対話型）なアプリが作れる。</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="id2">
+<h2>⏱️ 100分授業のタイムテーブル<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>1コマ100分の授業時間を最大限に活かすためのタイムテーブルです。Colab特有の「環境構築」をクリアすれば、あとは楽しいアプリ開発の世界が待っています！</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th style="text-align: left;">時間（目安）</th>
+<th style="text-align: left;">セクションと活動内容</th>
+<th style="text-align: left;">指導のポイントと教員の役割</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>00:00 - 00:05</strong><br>（5分）</td>
+<td style="text-align: left;"><strong>イントロダクション</strong><br>・本日の到達目標の確認</td>
+<td style="text-align: left;">データ分析を「エクセルやグラフ画像」のままではなく、「アプリ」として共有する価値を説明します。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>00:05 - 00:20</strong><br>（15分）</td>
+<td style="text-align: left;"><strong>5.1 なぜデータを「アプリ」にするのか？</strong><br>・Streamlitの概要と特徴</td>
+<td style="text-align: left;">HTML/CSSなしでWebアプリが構築できるStreamlitのメリットを、従来の開発手法との比較図を用いて解説します。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>00:20 - 00:45</strong><br>（25分）</td>
+<td style="text-align: left;"><strong>5.2 ColabでのStreamlit環境構築</strong><br>・ライブラリのインストール<br>・ファイル書き出し(<code>%%writefile</code>)の仕組み<br>・<strong>localtunnelによる公開（最重要）</strong></td>
+<td style="text-align: left;">本日の最難関です。Colabというクラウド上のパソコンで動くアプリを、手元のパソコン（ブラウザ）で見るための「トンネリング技術」を詳しく解説し、全員の起動を確認します。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>00:45 - 01:10</strong><br>（25分）</td>
+<td style="text-align: left;"><strong>5.3 Streamlitの基本操作とウィジェット</strong><br>・テキスト表示(<code>st.write</code>, <code>st.title</code>)<br>・入力部品(<code>st.button</code>, <code>st.slider</code>, etc.)<br>・状態の変化（対話型処理）</td>
+<td style="text-align: left;">スライダーを動かすと、即座に画面の計算結果が変わる「リアクティブ（即時反応）」なStreamlitの動きの仕組みを解説します。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>01:10 - 01:35</strong><br>（25分）</td>
+<td style="text-align: left;"><strong>💻 演習課題（難易度別1〜5）</strong><br>・コードの書き換えとローカル実行<br>・AIを使ったデバッグの練習</td>
+<td style="text-align: left;">Colab上で <code>app.py</code> などのファイルを書き換え、ブラウザをリロード（再読み込み）して変化を確認する開発サイクルを体験させます。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>01:35 - 01:40</strong><br>（5分）</td>
+<td style="text-align: left;"><strong>解答確認とまとめ</strong><br>・次回の「グラフやデータ連携」への接続</td>
+<td style="text-align: left;">自分でアプリを作れた達成感を肯定し、次回は「第3〜4回で学んだデータ解析（Pandas/グラフ）と合体させる」ことを告げて終了します。</td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h2>5.1 なぜデータを「アプリ」にするのか？ (約15分)<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<section id="id4">
+<h3>データ分析を「社会に届ける」最後のステップ<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p>これまでの授業で、私たちはデータを収集し、Pandasで集計し、Matplotlibでグラフを描くことができるようになりました。
+しかし、その分析結果を「プログラミングを知らない会社の上司や、一般のお客様」に見せたいとき、どうしますか？</p>
+<ul class="simple">
+<li><p>「Pythonのコードと、グラフの画像ファイルをメールで送ります」
+➡ 相手はPythonを実行できませんし、画像は「静止画」なので、自分の見たい部分（例：特定の店舗だけ、特定の日付だけ）を拡大したり絞り込んだりできません。</p></li>
+<li><p>「Excelファイルを共有します」
+➡ 相手が関数を壊してしまったり、スマートフォンからだと操作しづらかったりします。</p></li>
+</ul>
+<p>一番良い解決策は、**「誰でもスマホやパソコンのブラウザからアクセスして、ボタン一つでデータを絞り込める『Webアプリ』にして渡すこと」<strong>です。これを</strong>「データダッシュボード」**と呼びます。</p>
+<p><strong>【ダッシュボード開発の今と昔（イメージ図）】</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>▼ 昔の開発方法（学習コスト：極大 😱）
+  Python(分析) ＋ HTML/CSS(画面デザイン) ＋ JavaScript(動き) ＋ サーバー構築
+  ➡ 覚えることが多すぎて、文系学生やデータ分析者は挫折してしまいます。
+
+▼ Streamlitを使った開発（学習コスト：極小 😍）
+  [ 🐍 Pythonコード数行 ] ──▶  [ 🎨 Streamlitが自動変換 ] ──▶ [ 💻 プロ級のWebアプリ ]
+  ➡ HTMLもサーバーの知識も不要！分析コードがそのまま綺麗なアプリに生まれ変わります。
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="google-colabstreamlit-25">
+<h2>5.2 Google Colab上でStreamlitを動かす魔法（環境構築） (約25分)<a class="headerlink" href="#google-colabstreamlit-25" title="Link to this heading">¶</a></h2>
+<p>通常、Streamlitは自分のパソコン（ローカル環境）の黒い画面（ターミナル）で起動します。
+しかし、この授業では誰もが同じ環境で学べるよう <strong>Google Colab</strong> を使っています。Colabは「Googleのクラウド上にあるパソコン」なので、そこで動かしたWebアプリを、手元のパソコンやスマホのブラウザで見るためには、**一時的な通り道（トンネル）**を作ってあげる必要があります。</p>
+<p>このトンネリングツールとして <strong>localtunnel（ローカルトンネル）</strong> という無料の仕組みを使います。
+まずは、Colabのセルに以下の「おまじない」を貼り付けて、環境を構築しましょう！</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ------------------------------------------------------------------</span>
+<span class="c1"># ステップ 1: 必要なライブラリのインストール（Colabのセルで実行してください）</span>
+<span class="c1"># ------------------------------------------------------------------</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="n">streamlit</span>
+<span class="err">!</span><span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">localtunnel</span>
+</pre></div>
+</div>
+<section id="colabstreamlit3">
+<h3>【超重要】ColabでStreamlitを起動する「3つの手順」<a class="headerlink" href="#colabstreamlit3" title="Link to this heading">¶</a></h3>
+<p>Colab上でアプリを開発する時は、以下のセットを常に使います。</p>
+<section id="a-writefile">
+<h4>手順A: アプリのソースコードを書き出す（<code class="docutils literal notranslate"><span class="pre">%%writefile</span></code>）<a class="headerlink" href="#a-writefile" title="Link to this heading">¶</a></h4>
+<p>セルの1行目に <code class="docutils literal notranslate"><span class="pre">%%writefile</span> <span class="pre">app.py</span></code> と書くと、そのセルの中身がそのまま <code class="docutils literal notranslate"><span class="pre">app.py</span></code> という名前のPythonファイルとしてColabの中に保存されます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="c1"># ここにStreamlitのコードを書きます</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Musashi Cafe アプリ ☕"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"プログラミング応用Aの授業で作成したWebアプリです！"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="b-ip">
+<h4>手順B: トンネルの鍵（あなたのIPアドレス）を確認する<a class="headerlink" href="#b-ip" title="Link to this heading">¶</a></h4>
+<p>localtunnelを使って外部からアプリにアクセスする際、セキュリティ確認のために「Colabの仮想パソコンのIPアドレス（4つの数字）」を求められます。以下のコマンドを実行して、出てきた数字をメモ（コピー）しておきましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># あなたのColab環境のIPアドレスを表示します（パスワードのようなものです）</span>
+<span class="err">!</span><span class="n">wget</span> <span class="o">-</span><span class="n">qO</span><span class="o">-</span> <span class="n">ipv4</span><span class="o">.</span><span class="n">icanhazip</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+</div>
+</section>
+<section id="c">
+<h4>手順C: アプリをバックグラウンドで起動し、トンネルを開通する！<a class="headerlink" href="#c" title="Link to this heading">¶</a></h4>
+<p>以下のコマンドを実行すると、Streamlitが裏側（バックグラウンド）で起動し、localtunnelが世界中からアクセスできる一時的なURLを発行してくれます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Streamlitを裏で起動</span>
+<span class="err">!</span><span class="n">streamlit</span> <span class="n">run</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span> <span class="o">&amp;&gt;/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span> <span class="o">&amp;</span>
+
+<span class="c1"># ポート8501番（Streamlitの標準ポート）を外部に公開する</span>
+<span class="err">!</span><span class="n">npx</span> <span class="n">localtunnel</span> <span class="o">--</span><span class="n">port</span> <span class="mi">8501</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>使い方</strong>:</p>
+<ol class="arabic simple">
+<li><p>上のセルを実行すると、<code class="docutils literal notranslate"><span class="pre">url:</span> <span class="pre">https://xxxx.loca.lt</span></code> というリンクが表示されます。</p></li>
+<li><p>そのリンクをクリックすると、「Tunnel Password」という入力画面が開きます。</p></li>
+<li><p>そこに <strong>手順Bで確認したIPアドレス（例：34.125.12.34）</strong> を貼り付けて「Submit」ボタンを押します。</p></li>
+<li><p>画面が切り替わり、あなたが作った「Musashi Cafe アプリ」が表示されます！</p></li>
+</ol>
+</li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="streamlit-25">
+<h2>5.3 Streamlitの基本操作とウィジェット (約25分)<a class="headerlink" href="#streamlit-25" title="Link to this heading">¶</a></h2>
+<p>無事にアプリが起動したら、今度はアプリの中身を豪華にしていきましょう！
+Streamlitは、ユーザーがボタンを押したりスライダーを動かしたりするたびに、**「コードが上から下まで自動的に再実行され、画面が即座に書き換わる」**という超画期的な仕組み（リアクティブ・フレームワーク）を持っています。</p>
+<p>代表的なコマンドとウィジェット（入力部品）を体験してみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="c1"># ==========================================</span>
+<span class="c1"># 1. テキスト・見出しの表示</span>
+<span class="c1"># ==========================================</span>
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"カフェ自動レジアプリ ☕"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">"お会計シミュレーター"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"商品の選択と数量を入力すると、自動でお会計を計算します。"</span><span class="p">)</span>
+
+<span class="c1"># ==========================================</span>
+<span class="c1"># 2. セレクトボックス（ドロップダウンメニュー）</span>
+<span class="c1"># ==========================================</span>
+<span class="c1"># st.selectbox("案内メッセージ", 選択肢のリスト)</span>
+<span class="c1"># ユーザーが選んだ値が、そのまま変数 selected_item に入ります！</span>
+<span class="n">selected_item</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span>
+    <span class="s2">"ご注文の商品を選んでください:"</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">"コーヒー (450円)"</span><span class="p">,</span> <span class="s2">"紅茶 (400円)"</span><span class="p">,</span> <span class="s2">"チョコレートケーキ (550円)"</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># 商品名と価格の切り分け処理</span>
+<span class="k">if</span> <span class="s2">"コーヒー"</span> <span class="ow">in</span> <span class="n">selected_item</span><span class="p">:</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="mi">450</span>
+<span class="k">elif</span> <span class="s2">"紅茶"</span> <span class="ow">in</span> <span class="n">selected_item</span><span class="p">:</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="mi">400</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="mi">550</span>
+
+<span class="c1"># ==========================================</span>
+<span class="c1"># 3. スライダー（数値の調整）</span>
+<span class="c1"># ==========================================</span>
+<span class="c1"># st.slider("案内メッセージ", 最小値, 最大値, 初期値)</span>
+<span class="n">quantity</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">"数量を選んでください:"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># ==========================================</span>
+<span class="c1"># 4. ボタン（実行のトリガー）</span>
+<span class="c1"># ==========================================</span>
+<span class="c1"># st.button("ボタンの文字") は、ボタンが押された瞬間だけ True になります！</span>
+<span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">"お会計を計算する"</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">price</span> <span class="o">*</span> <span class="n">quantity</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="sa">f</span><span class="s2">"計算が完了しました！"</span><span class="p">)</span> <span class="c1"># 緑色の綺麗なボックスで表示します</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"ご注文: </span><span class="si">{</span><span class="n">selected_item</span><span class="si">}</span><span class="s2"> × </span><span class="si">{</span><span class="n">quantity</span><span class="si">}</span><span class="s2">個"</span><span class="p">)</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"合計金額 (税込)"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span> <span class="c1"># プロっぽい数値インジケータ</span>
+</pre></div>
+</div>
+<section id="always-rerun">
+<h3>💡 開発を10倍楽にする「常時リロード（Always Rerun）」<a class="headerlink" href="#always-rerun" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>localtunnelで開いたWebアプリ画面の右上に「<strong>︙</strong>（設定メニュー）」があります。</p></li>
+<li><p>そこをクリックし、**「Settings」➡「Run on save」**にチェックを入れます。</p></li>
+<li><p>これにより、Colab側で <code class="docutils literal notranslate"><span class="pre">app.py</span></code> のセルを実行（ファイルを上書き保存）するだけで、<strong>ブラウザのタブを手動でリロードしなくても、Webアプリ画面が自動で一瞬で最新に更新される</strong>ようになります。非常に快適に開発ができるので、ぜひ設定しましょう！</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id5">
+<h2>💻 演習課題 (約25分)<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<p>それでは、今日学んだStreamlitの基本ウィジェットを使って、インタラクティブなWebアプリを作成してみましょう！
+今回は「注文アプリの拡張」や「ユーザーの入力に応じたメッセージの変化」など、初級から応用までの5つの課題を用意しました。</p>
+<p>Colab上の <code class="docutils literal notranslate"><span class="pre">app.py</span></code> の中身を書き換え、実行（上書き）し、開いているアプリ画面で確認を繰り返しながら進めましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習1: タイトルとウェルカムメッセージのカスタマイズ（難易度：易）</span>
+<span class="c1"># あなたオリジナルの「店舗名」を設定してみましょう。</span>
+<span class="c1"># TODO: st.title() を使って「〇〇（あなたの名前）のデジタルカフェ」と表示し、</span>
+<span class="c1">#       st.write() で「本日の営業時間は 10:00〜18:00 です。」と表示する app.py を作成してください。</span>
+
+<span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="c1"># TODO: タイトルとウェルカムメッセージを表示するコードを書く</span>
+
+
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習2: テキスト入力とボタンを使った名前呼びかけアプリ（難易度：易）</span>
+<span class="c1"># ユーザーが入力した名前に向かって、ボタンを押すと挨拶するアプリです。</span>
+<span class="c1"># TODO: st.text_input() を使ってユーザーにお名前を入力してもらい、</span>
+<span class="c1">#       st.button("挨拶する") が押されたら、st.success() で「〇〇さん、こんにちは！」と表示してください。</span>
+
+<span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"ご挨拶アプリ"</span><span class="p">)</span>
+
+<span class="c1"># TODO: 1. テキスト入力ウィジェットを配置し、変数 user_name に代入する</span>
+<span class="n">user_name</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 2. ボタンを配置し、押されたら st.success() で挨拶する</span>
+<span class="k">if</span> 
+    <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">user_name</span><span class="si">}</span><span class="s2">さん、こんにちは！本日も良い一日を。"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習3: チェックボックスによるトッピング追加（オプション料金）（難易度：中）</span>
+<span class="c1"># `st.checkbox()` は、チェックが入っている時は `True`、入っていない時は `False` を返します。</span>
+<span class="c1"># TODO: ホイップトッピング（50円）のチェックボックスを配置し、</span>
+<span class="c1">#       チェックが入っている場合は、ベースのコーヒー（450円）に50円を加算して合計金額を表示してください。</span>
+
+<span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"トッピング付きコーヒーレジ"</span><span class="p">)</span>
+<span class="n">base_price</span> <span class="o">=</span> <span class="mi">450</span>
+
+<span class="c1"># TODO: 1. st.checkbox("トッピング（ホイップ追加 +50円）") を配置し、変数 add_whip に代入する</span>
+<span class="n">add_whip</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 2. add_whip が True（チェックが入っている）なら、ベース価格に 50円 をプラスする</span>
+<span class="n">total_price</span> <span class="o">=</span> <span class="n">base_price</span>
+<span class="k">if</span> 
+    <span class="n">total_price</span> <span class="o">=</span> 
+
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"現在のお会計: </span><span class="si">{</span><span class="n">total_price</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習4: セレクトボックスによるメンバー特典割引（難易度：中）</span>
+<span class="c1"># 選択された会員ランク（ゴールド会員：20%引き、シルバー会員：10%引き、一般：割引なし）に</span>
+<span class="c1"># 応じて、注文金額の割引計算をシミュレートします。</span>
+<span class="c1"># TODO: 選択された会員ランクに応じた割引率を適用し、お支払い金額を計算してください。</span>
+
+<span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"会員特典レジシステム"</span><span class="p">)</span>
+<span class="n">order_amount</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># 注文金額は一律1000円とします</span>
+
+<span class="c1"># TODO: 1. セレクトボックスを配置し、「ゴールド会員」「シルバー会員」「一般客」から選べるようにする</span>
+<span class="n">rank</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 2. 選ばれた会員ランクに応じて割引率(discount_rate)を決定する</span>
+<span class="n">discount_rate</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="k">if</span> <span class="n">rank</span> <span class="o">==</span> <span class="s2">"ゴールド会員"</span><span class="p">:</span>
+    
+<span class="k">elif</span> <span class="n">rank</span> <span class="o">==</span> <span class="s2">"シルバー会員"</span><span class="p">:</span>
+    
+<span class="k">else</span><span class="p">:</span>
+    
+
+<span class="c1"># 割引後の計算</span>
+<span class="n">final_amount</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">order_amount</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">discount_rate</span><span class="p">))</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"会員ランク: </span><span class="si">{</span><span class="n">rank</span><span class="si">}</span><span class="s2"> (割引率: </span><span class="si">{</span><span class="n">discount_rate</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">%)"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"お支払い金額"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">final_amount</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習5: 実践！簡易カフェ注文フル機能アプリ（難易度：難）</span>
+<span class="c1"># これまで学んだウィジェットをすべて合体させた、プロ級のカフェ注文アプリを作成します！</span>
+<span class="c1"># TODO: 以下の仕様を満たすように、足りないコードを埋めてアプリを完成させてください。</span>
+<span class="c1"># - 1. セレクトボックスで「ドリンク」を選ぶ（ブレンドコーヒー: 400円、カフェラテ: 450円、抹茶オレ: 500円）</span>
+<span class="c1"># - 2. チェックボックスで「テイクアウト（お持ち帰り）」かどうかを選ぶ（テイクアウトなら消費税8%[1.08]、店内なら10%[1.10]）</span>
+<span class="c1"># - 3. スライダーで「数量（1〜10）」を選ぶ</span>
+<span class="c1"># - 4. 「注文を確定する」ボタンが押されたら、総支払い金額（税込、小数点以下切り捨て）を st.metric() でオシャレに表示する</span>
+
+<span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"☕ Musashi Smart Cafe Regi ☕"</span><span class="p">)</span>
+
+<span class="c1"># TODO: 1. ドリンクの選択</span>
+<span class="n">drink</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">"ドリンクを選択してください:"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"ブレンドコーヒー (400円)"</span><span class="p">,</span> <span class="s2">"カフェラテ (450円)"</span><span class="p">,</span> <span class="s2">"抹茶オレ (500円)"</span><span class="p">])</span>
+
+<span class="k">if</span> <span class="s2">"ブレンドコーヒー"</span> <span class="ow">in</span> <span class="n">drink</span><span class="p">:</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="mi">400</span>
+<span class="k">elif</span> <span class="s2">"カフェラテ"</span> <span class="ow">in</span> <span class="n">drink</span><span class="p">:</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="mi">450</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="mi">500</span>
+
+<span class="c1"># TODO: 2. テイクアウトの選択</span>
+<span class="n">is_takeout</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span><span class="s2">"テイクアウト（お持ち帰り）ですか？ (税率8%になります)"</span><span class="p">)</span>
+
+<span class="c1"># テイクアウトなら税率1.08、店内飲食なら税率1.10</span>
+<span class="c1"># TODO: if文を使って税率 tax_rate を設定する</span>
+<span class="n">tax_rate</span> <span class="o">=</span> <span class="mf">1.10</span>
+<span class="k">if</span> 
+    <span class="n">tax_rate</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 3. 数量の選択</span>
+<span class="n">quantity</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 4. 注文確定ボタンが押されたらお会計を計算して st.metric で表示する</span>
+<span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">"注文を確定する"</span><span class="p">):</span>
+    <span class="c1"># 合計金額 = 単価 × 数量 × 税率 (結果は整数型 int にキャスト)</span>
+    <span class="n">total_bill</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">price</span> <span class="o">*</span> <span class="n">quantity</span> <span class="o">*</span> <span class="n">tax_rate</span><span class="p">)</span>
+    
+    <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="s2">"ご注文ありがとうございます！"</span><span class="p">)</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"内訳: </span><span class="si">{</span><span class="n">drink</span><span class="si">}</span><span class="s2"> × </span><span class="si">{</span><span class="n">quantity</span><span class="si">}</span><span class="s2">個 (税率: </span><span class="si">{</span><span class="n">tax_rate</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">%)"</span><span class="p">)</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"ご請求金額 (税込)"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">total_bill</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id6">
+<h2>💡 演習問題の解答例<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<p>（何度もファイルを書き出し、Webアプリ側の変化を確認しながら、試行錯誤できましたか？エラーが出たら、スペルミスやインデントを確認しましょう！）</p>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p><strong>演習1の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"タカシのデジタルカフェ"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"本日の営業時間は 10:00〜18:00 です。"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>演習2の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"ご挨拶アプリ"</span><span class="p">)</span>
+<span class="n">user_name</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">text_input</span><span class="p">(</span><span class="s2">"お名前を入力してください:"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">"挨拶する"</span><span class="p">):</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">user_name</span><span class="si">}</span><span class="s2">さん、こんにちは！本日も良い一日を。"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>演習3の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"トッピング付きコーヒーレジ"</span><span class="p">)</span>
+<span class="n">base_price</span> <span class="o">=</span> <span class="mi">450</span>
+<span class="n">add_whip</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span><span class="s2">"トッピング（ホイップ追加 +50円）"</span><span class="p">)</span>
+<span class="n">total_price</span> <span class="o">=</span> <span class="n">base_price</span>
+<span class="k">if</span> <span class="n">add_whip</span><span class="p">:</span>
+    <span class="n">total_price</span> <span class="o">=</span> <span class="n">base_price</span> <span class="o">+</span> <span class="mi">50</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"現在のお会計: </span><span class="si">{</span><span class="n">total_price</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>演習4の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"会員特典レジシステム"</span><span class="p">)</span>
+<span class="n">order_amount</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">rank</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">"会員ランクを選択してください:"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"ゴールド会員"</span><span class="p">,</span> <span class="s2">"シルバー会員"</span><span class="p">,</span> <span class="s2">"一般客"</span><span class="p">])</span>
+
+<span class="k">if</span> <span class="n">rank</span> <span class="o">==</span> <span class="s2">"ゴールド会員"</span><span class="p">:</span>
+    <span class="n">discount_rate</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="k">elif</span> <span class="n">rank</span> <span class="o">==</span> <span class="s2">"シルバー会員"</span><span class="p">:</span>
+    <span class="n">discount_rate</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">discount_rate</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+<span class="n">final_amount</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">order_amount</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">discount_rate</span><span class="p">))</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"会員ランク: </span><span class="si">{</span><span class="n">rank</span><span class="si">}</span><span class="s2"> (割引率: </span><span class="si">{</span><span class="n">discount_rate</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">%)"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"お支払い金額"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">final_amount</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>演習5の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"☕ Musashi Smart Cafe Regi ☕"</span><span class="p">)</span>
+
+<span class="n">drink</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">"ドリンクを選択してください:"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"ブレンドコーヒー (400円)"</span><span class="p">,</span> <span class="s2">"カフェラテ (450円)"</span><span class="p">,</span> <span class="s2">"抹茶オレ (500円)"</span><span class="p">])</span>
+
+<span class="k">if</span> <span class="s2">"ブレンドコーヒー"</span> <span class="ow">in</span> <span class="n">drink</span><span class="p">:</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="mi">400</span>
+<span class="k">elif</span> <span class="s2">"カフェラテ"</span> <span class="ow">in</span> <span class="n">drink</span><span class="p">:</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="mi">450</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="mi">500</span>
+
+<span class="n">is_takeout</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span><span class="s2">"テイクアウト（お持ち帰り）ですか？ (税率8%になります)"</span><span class="p">)</span>
+
+<span class="c1"># テイクアウト判定</span>
+<span class="k">if</span> <span class="n">is_takeout</span><span class="p">:</span>
+    <span class="n">tax_rate</span> <span class="o">=</span> <span class="mf">1.08</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">tax_rate</span> <span class="o">=</span> <span class="mf">1.10</span>
+
+<span class="n">quantity</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">"数量を選択してください:"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">"注文を確定する"</span><span class="p">):</span>
+    <span class="n">total_bill</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">price</span> <span class="o">*</span> <span class="n">quantity</span> <span class="o">*</span> <span class="n">tax_rate</span><span class="p">)</span>
+    
+    <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="s2">"ご注文ありがとうございます！"</span><span class="p">)</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"内訳: </span><span class="si">{</span><span class="n">drink</span><span class="si">}</span><span class="s2"> × </span><span class="si">{</span><span class="n">quantity</span><span class="si">}</span><span class="s2">個 (税率: </span><span class="si">{</span><span class="n">tax_rate</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">%)"</span><span class="p">)</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"ご請求金額 (税込)"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">total_bill</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id7">
+<h2>📚 第5回のまとめ<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<p>お疲れ様でした！今日は、PythonでWebアプリを構築する世界最強のツール「Streamlit」の基礎を学びました。</p>
+<section id="id8">
+<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Streamlit</strong>: HTMLやサーバー構築の知識がゼロでも、Pythonだけで美しいWebアプリを作れるライブラリ。</p></li>
+<li><p><strong>localtunnel</strong>: Colabのクラウド環境で動くアプリを、手元のブラウザから安全に閲覧可能にするための「トンネル（通り道）」。</p></li>
+<li><p><strong>リアクティブ処理</strong>: スライダーやボタンを操作するたびに、Streamlitはコードを上から下まで瞬時に再実行して、画面を常に最新に書き換える。</p></li>
+<li><p><strong>入力ウィジェット</strong>: <code class="docutils literal notranslate"><span class="pre">st.selectbox</span></code> (ドロップダウン)、<code class="docutils literal notranslate"><span class="pre">st.slider</span></code> (スライドバー)、<code class="docutils literal notranslate"><span class="pre">st.checkbox</span></code> (二択) などの戻り値をそのままPythonの変数に代入して条件分岐に使える。</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="faq">
+<h2>❓ よくある質問と回答 (FAQ)<a class="headerlink" href="#faq" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Q. localtunnelのURLを開いたら「Friendly Reminder...」という青い警告画面が出て、アプリが表示されません。</strong></p>
+<ul>
+<li><p><strong>A.</strong> 大丈夫です、それはlocaltunnelの仕様です。画面中央にある <strong>「Click to Submit」</strong> または <strong>「Visit Site」</strong> というボタンをクリックすれば、作成したアプリ画面に問題なく進むことができます。</p></li>
+</ul>
+</li>
+<li><p><strong>Q. コードを書き換えてセルを実行したのに、Webアプリ側の画面が変わりません。</strong></p>
+<ul>
+<li><p><strong>A.</strong> アプリ画面の右上にある「︙」メニューから、**「Always Rerun（常時リロード）」**が有効になっているか確認してください。もし無効になっている場合は、手動でWebブラウザの再読み込みボタン（F5キーなど）を押すか、Colab側で Streamlit の起動セルを再度実行し直してみてください。</p></li>
+</ul>
+</li>
+<li><p><strong>Q. localtunnelへのアクセス時に「Tunnel xxxx not found」やエラーが出ます。</strong></p>
+<ul>
+<li><p><strong>A.</strong> Google Colabのネットワーク状況により、時折トンネル接続が切断されることがあります。その場合は、Colabの実行セルの停止（■）ボタンを押し、<code class="docutils literal notranslate"><span class="pre">!streamlit</span> <span class="pre">run</span> <span class="pre">app.py</span> <span class="pre">&amp;</span></code> から始まる起動セルをもう一度実行して、新しいURLを発行してみてください。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="colab">
+<h2>🌟 Colabで試すおすすめコード（次回のワクワクの扉）<a class="headerlink" href="#colab" title="Link to this heading">¶</a></h2>
+<p>今日学んだ Streamlit は、実は <strong>Pandasの表データや、Matplotlib/Seabornのグラフを画面に一発で表示する機能</strong> も持っています！
+以下のコードを Colab に貼り付け、Webアプリの画面がどう進化するか覗いてみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"📊 カフェ売上ダッシュボード 📊"</span><span class="p">)</span>
+
+<span class="c1"># 模擬データ（1週間分の売上）</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"曜日"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"月"</span><span class="p">,</span> <span class="s2">"火"</span><span class="p">,</span> <span class="s2">"水"</span><span class="p">,</span> <span class="s2">"木"</span><span class="p">,</span> <span class="s2">"金"</span><span class="p">,</span> <span class="s2">"土"</span><span class="p">,</span> <span class="s2">"日"</span><span class="p">],</span>
+    <span class="s2">"売上額 (千円)"</span><span class="p">:</span> <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">120</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># 1. データの表をそのままアプリ上に表示！</span>
+<span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">"曜日別売上表"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1"># インタラクティブなスプレッドシートとして表示されます</span>
+
+<span class="c1"># 2. グラフをアプリ上にプロット！</span>
+<span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">"売上推移グラフ"</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"曜日"</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">"売上額 (千円)"</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">"skyblue"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">pyplot</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span> <span class="c1"># 描画した matplotlib のグラフを一発でWeb画面に埋め込み！</span>
+</pre></div>
+</div>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>エクセルを一生懸命触らなくても、Pythonだけでこんなにかっこいい「データ分析ダッシュボード」が作成できてしまいました！
+
+次回（第6回）は、今日学んだ基本ウィジェットに、この**「Pandasのデータ処理」と「グラフ描画」を合体**させ、ユーザーがボタンで選んだ条件に合わせて、グラフや集計結果がリアルタイムに変化する「本格的インタラクティブ・ダッシュボード」を開発します。お楽しみに！
+</pre></div>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            <div class="last-updated">
+              Last updated on 2026-08-28</div>
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">第5回 Webサービスの活用1：StreamlitによるWebアプリ開発の基礎</a><ul>
+<li><a class="reference internal" href="#id1">🎯 到達目標 (約5分)</a></li>
+<li><a class="reference internal" href="#id2">⏱️ 100分授業のタイムテーブル</a></li>
+<li><a class="reference internal" href="#id3">5.1 なぜデータを「アプリ」にするのか？ (約15分)</a><ul>
+<li><a class="reference internal" href="#id4">データ分析を「社会に届ける」最後のステップ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#google-colabstreamlit-25">5.2 Google Colab上でStreamlitを動かす魔法（環境構築） (約25分)</a><ul>
+<li><a class="reference internal" href="#colabstreamlit3">【超重要】ColabでStreamlitを起動する「3つの手順」</a><ul>
+<li><a class="reference internal" href="#a-writefile">手順A: アプリのソースコードを書き出す（<code class="docutils literal notranslate"><span class="pre">%%writefile</span></code>）</a></li>
+<li><a class="reference internal" href="#b-ip">手順B: トンネルの鍵（あなたのIPアドレス）を確認する</a></li>
+<li><a class="reference internal" href="#c">手順C: アプリをバックグラウンドで起動し、トンネルを開通する！</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#streamlit-25">5.3 Streamlitの基本操作とウィジェット (約25分)</a><ul>
+<li><a class="reference internal" href="#always-rerun">💡 開発を10倍楽にする「常時リロード（Always Rerun）」</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">💻 演習課題 (約25分)</a></li>
+<li><a class="reference internal" href="#id6">💡 演習問題の解答例</a></li>
+<li><a class="reference internal" href="#id7">📚 第5回のまとめ</a><ul>
+<li><a class="reference internal" href="#id8">✨ 今日の重要ポイントまとめ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#faq">❓ よくある質問と回答 (FAQ)</a></li>
+<li><a class="reference internal" href="#colab">🌟 Colabで試すおすすめコード（次回のワクワクの扉）</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../_static/documentation_options.js?v=4d4437c9"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=940804e7"></script>
+    <script src="../../../_static/translations.js?v=4755f45a"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    </body>
+</html>

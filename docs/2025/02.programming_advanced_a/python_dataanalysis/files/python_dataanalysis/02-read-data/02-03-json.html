@@ -10,17 +10,17 @@
 <meta property="og:description" content="JSON形式を扱うライブラリ: jsonライブラリを使う: pandasのDataFrameに変換: pandasを使って読み込む: json_normalize関数を使う:" />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2025_02.programming_advanced_a_python_dataanalysis_files_python_dataanalysis_02-read-data_02-03-json_ee25adfa.png" />
+<meta property="og:image" content="/None" />
 <meta property="og:image:alt" content="JSON形式を扱うライブラリ: jsonライブラリを使う: pandasのDataFrameに変換: pandasを使って読み込む: json_normalize関数を使う:" />
 <meta name="description" content="JSON形式を扱うライブラリ: jsonライブラリを使う: pandasのDataFrameに変換: pandasを使って読み込む: json_normalize関数を使う:" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="索引" href="../../../../../../genindex.html" /><link rel="search" title="検索" href="../../../../../../search.html" />
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
         <title>JSON形式 - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=949a1ff5" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo-extensions.css?v=302659d7" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/musashiuniv/custom.css" />
@@ -295,6 +295,18 @@
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_01.html">第1回 オリエンテーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_02.html">第2回 オープンデータの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_03.html">第3回 データの種類とデータ加⼯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_04.html">第4回 データ解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_05.html">第5回 Webサービスの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_06.html">第6回 Webサービスの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_07.html">第7回 地理空間情報の基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_08.html">第8回 地理空間データの活⽤1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_09.html">第9回 地理空間データの活⽤2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_13.html">第13回 総合演習</a></li>
 </ul>
 </li>
 </ul>
@@ -361,7 +373,7 @@
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data/population-202302.json&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"data/population-202302.json"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 
 <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -9547,7 +9559,7 @@ dict
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;GET_STATS_DATA&quot;</span><span class="p">][</span><span class="s2">&quot;STATISTICAL_DATA&quot;</span><span class="p">][</span><span class="s2">&quot;RESULT_INF&quot;</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s2">"GET_STATS_DATA"</span><span class="p">][</span><span class="s2">"STATISTICAL_DATA"</span><span class="p">][</span><span class="s2">"RESULT_INF"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -9564,7 +9576,7 @@ dict
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;GET_STATS_DATA&quot;</span><span class="p">][</span><span class="s2">&quot;STATISTICAL_DATA&quot;</span><span class="p">][</span><span class="s2">&quot;TABLE_INF&quot;</span><span class="p">][</span><span class="s2">&quot;TITLE&quot;</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s2">"GET_STATS_DATA"</span><span class="p">][</span><span class="s2">"STATISTICAL_DATA"</span><span class="p">][</span><span class="s2">"TABLE_INF"</span><span class="p">][</span><span class="s2">"TITLE"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -9581,7 +9593,7 @@ dict
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;GET_STATS_DATA&quot;</span><span class="p">][</span><span class="s2">&quot;STATISTICAL_DATA&quot;</span><span class="p">][</span><span class="s2">&quot;DATA_INF&quot;</span><span class="p">][</span><span class="s2">&quot;VALUE&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s2">"GET_STATS_DATA"</span><span class="p">][</span><span class="s2">"STATISTICAL_DATA"</span><span class="p">][</span><span class="s2">"DATA_INF"</span><span class="p">][</span><span class="s2">"VALUE"</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -9606,7 +9618,7 @@ dict
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;GET_STATS_DATA&quot;</span><span class="p">][</span><span class="s2">&quot;STATISTICAL_DATA&quot;</span><span class="p">][</span><span class="s2">&quot;DATA_INF&quot;</span><span class="p">][</span><span class="s2">&quot;VALUE&quot;</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"GET_STATS_DATA"</span><span class="p">][</span><span class="s2">"STATISTICAL_DATA"</span><span class="p">][</span><span class="s2">"DATA_INF"</span><span class="p">][</span><span class="s2">"VALUE"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -9623,12 +9635,12 @@ dict
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">values</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;GET_STATS_DATA&quot;</span><span class="p">][</span><span class="s2">&quot;STATISTICAL_DATA&quot;</span><span class="p">][</span><span class="s2">&quot;DATA_INF&quot;</span><span class="p">][</span><span class="s2">&quot;VALUE&quot;</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">values</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"GET_STATS_DATA"</span><span class="p">][</span><span class="s2">"STATISTICAL_DATA"</span><span class="p">][</span><span class="s2">"DATA_INF"</span><span class="p">][</span><span class="s2">"VALUE"</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;|&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">"|"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;===&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"==="</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">break</span>
 </pre></div>
@@ -9662,7 +9674,7 @@ dict
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;GET_STATS_DATA&quot;</span><span class="p">][</span><span class="s2">&quot;STATISTICAL_DATA&quot;</span><span class="p">][</span><span class="s2">&quot;DATA_INF&quot;</span><span class="p">][</span><span class="s2">&quot;VALUE&quot;</span><span class="p">]</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">"GET_STATS_DATA"</span><span class="p">][</span><span class="s2">"STATISTICAL_DATA"</span><span class="p">][</span><span class="s2">"DATA_INF"</span><span class="p">][</span><span class="s2">"VALUE"</span><span class="p">]</span>
 <span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -9792,7 +9804,7 @@ dict
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_raw_json</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&quot;data/population-202302.json&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_raw_json</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">"data/population-202302.json"</span><span class="p">)</span>
 <span class="n">df_raw_json</span>
 </pre></div>
 </div>
@@ -9848,10 +9860,10 @@ dict
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data/population-202302.json&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"data/population-202302.json"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 
-<span class="n">values</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;GET_STATS_DATA&quot;</span><span class="p">][</span><span class="s2">&quot;STATISTICAL_DATA&quot;</span><span class="p">][</span><span class="s2">&quot;DATA_INF&quot;</span><span class="p">][</span><span class="s2">&quot;VALUE&quot;</span><span class="p">]</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"GET_STATS_DATA"</span><span class="p">][</span><span class="s2">"STATISTICAL_DATA"</span><span class="p">][</span><span class="s2">"DATA_INF"</span><span class="p">][</span><span class="s2">"VALUE"</span><span class="p">]</span>
 <span class="n">df_norm_json</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -9986,14 +9998,14 @@ dict
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># カラム名に該当する情報をJSONから取得して、columnsに代入</span>
 <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">d</span><span class="p">[</span><span class="s2">&quot;@name&quot;</span><span class="p">]</span>
-    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;GET_STATS_DATA&quot;</span><span class="p">][</span><span class="s2">&quot;STATISTICAL_DATA&quot;</span><span class="p">][</span><span class="s2">&quot;CLASS_INF&quot;</span><span class="p">][</span>
-        <span class="s2">&quot;CLASS_OBJ&quot;</span>
+    <span class="n">d</span><span class="p">[</span><span class="s2">"@name"</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">"GET_STATS_DATA"</span><span class="p">][</span><span class="s2">"STATISTICAL_DATA"</span><span class="p">][</span><span class="s2">"CLASS_INF"</span><span class="p">][</span>
+        <span class="s2">"CLASS_OBJ"</span>
     <span class="p">]</span>
 <span class="p">]</span>
 
 <span class="c1"># JSONからの情報に不足している情報を付与</span>
-<span class="n">df_norm_json</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">columns</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;単位&quot;</span><span class="p">,</span> <span class="s2">&quot;人数&quot;</span><span class="p">]</span>
+<span class="n">df_norm_json</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">columns</span> <span class="o">+</span> <span class="p">[</span><span class="s2">"単位"</span><span class="p">,</span> <span class="s2">"人数"</span><span class="p">]</span>
 <span class="n">df_norm_json</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -10114,7 +10126,7 @@ dict
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-30</div>
+              Last updated on 2026-08-28</div>
           </div>
           <div class="right-details">
             
@@ -10134,7 +10146,7 @@ dict
     <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../../_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../../../../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../../../../../_static/copybutton.js?v=940804e7"></script>
     <script src="../../../../../../_static/translations.js?v=4755f45a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     </body>

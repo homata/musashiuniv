@@ -10,17 +10,17 @@
 <meta property="og:description" content="正規表現による処理: ルビの処理: 複数行のテキストデータの処理: DataFrame化:" />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2025_02.programming_advanced_a_python_dataanalysis_files_python_dataanalysis_07-text-data_07-01-str-re_f15e0a16.png" />
+<meta property="og:image" content="/None" />
 <meta property="og:image:alt" content="正規表現による処理: ルビの処理: 複数行のテキストデータの処理: DataFrame化:" />
 <meta name="description" content="正規表現による処理: ルビの処理: 複数行のテキストデータの処理: DataFrame化:" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="索引" href="../../../../../../genindex.html" /><link rel="search" title="検索" href="../../../../../../search.html" />
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
         <title>Pythonを使った文字列処理 - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=949a1ff5" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo-extensions.css?v=302659d7" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/musashiuniv/custom.css" />
@@ -295,6 +295,18 @@
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_01.html">第1回 オリエンテーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_02.html">第2回 オープンデータの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_03.html">第3回 データの種類とデータ加⼯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_04.html">第4回 データ解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_05.html">第5回 Webサービスの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_06.html">第6回 Webサービスの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_07.html">第7回 地理空間情報の基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_08.html">第8回 地理空間データの活⽤1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_09.html">第9回 地理空間データの活⽤2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_13.html">第13回 総合演習</a></li>
 </ul>
 </li>
 </ul>
@@ -357,7 +369,7 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;私は実に先生をこの雑沓《ざっとう》の間《あいだ》に見付け出したのである。&quot;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">"私は実に先生をこの雑沓《ざっとう》の間《あいだ》に見付け出したのである。"</span>
 </pre></div>
 </div>
 </div>
@@ -367,7 +379,7 @@
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
-<span class="n">RE_RUBY</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;《.+?》&quot;</span><span class="p">)</span>
+<span class="n">RE_RUBY</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"《.+?》"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -392,7 +404,7 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ignored_text</span> <span class="o">=</span> <span class="n">RE_RUBY</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ignored_text</span> <span class="o">=</span> <span class="n">RE_RUBY</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">""</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
 <span class="n">ignored_text</span>
 </pre></div>
 </div>
@@ -414,18 +426,18 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data/kokoro-1.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"data/kokoro-1.txt"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
             <span class="k">continue</span>
         <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;org&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">line</span>
-        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;length&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">"org"</span><span class="p">]</span> <span class="o">=</span> <span class="n">line</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">"length"</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
         <span class="n">rubies</span> <span class="o">=</span> <span class="n">RE_RUBY</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>  <span class="c1"># ・・①</span>
-        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;number-of-ruby&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">rubies</span><span class="p">)</span>  <span class="c1"># ・・②</span>
-        <span class="n">ignored_text</span> <span class="o">=</span> <span class="n">RE_RUBY</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>  <span class="c1"># ・・③</span>
-        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;ignored-text&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ignored_text</span>  <span class="c1"># ・・④</span>
-        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;ignored-length&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ignored_text</span><span class="p">)</span>  <span class="c1"># ・・⑤</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">"number-of-ruby"</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">rubies</span><span class="p">)</span>  <span class="c1"># ・・②</span>
+        <span class="n">ignored_text</span> <span class="o">=</span> <span class="n">RE_RUBY</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">""</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>  <span class="c1"># ・・③</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">"ignored-text"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ignored_text</span>  <span class="c1"># ・・④</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">"ignored-length"</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ignored_text</span><span class="p">)</span>  <span class="c1"># ・・⑤</span>
         <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
@@ -574,7 +586,7 @@
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-30</div>
+              Last updated on 2026-08-28</div>
           </div>
           <div class="right-details">
             
@@ -618,7 +630,7 @@
     <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../../_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../../../../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../../../../../_static/copybutton.js?v=940804e7"></script>
     <script src="../../../../../../_static/translations.js?v=4755f45a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     </body>

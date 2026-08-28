@@ -10,17 +10,17 @@
 <meta property="og:description" content="尺度水準: カテゴリーデータの生成: カテゴリーデータへの型変換: カテゴリーデータの順序付け: データの離散化によるカテゴリーデータの生成:.catアクセサ: CategoricalIndex: カテゴリーデータの結合:" />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2025_02.programming_advanced_a_python_dataanalysis_files_python_dataanalysis_03-table-data_03-03-categorical-data_8b3d50fa.png" />
+<meta property="og:image" content="/None" />
 <meta property="og:image:alt" content="尺度水準: カテゴリーデータの生成: カテゴリーデータへの型変換: カテゴリーデータの順序付け: データの離散化によるカテゴリーデータの生成:.catアクセサ: CategoricalIndex: カテゴリーデータの結合:" />
 <meta name="description" content="尺度水準: カテゴリーデータの生成: カテゴリーデータへの型変換: カテゴリーデータの順序付け: データの離散化によるカテゴリーデータの生成:.catアクセサ: CategoricalIndex: カテゴリーデータの結合:" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="索引" href="../../../../../../genindex.html" /><link rel="search" title="検索" href="../../../../../../search.html" />
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
         <title>カテゴリーデータの処理 - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=949a1ff5" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo-extensions.css?v=302659d7" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/musashiuniv/custom.css" />
@@ -295,6 +295,18 @@
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_01.html">第1回 オリエンテーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_02.html">第2回 オープンデータの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_03.html">第3回 データの種類とデータ加⼯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_04.html">第4回 データ解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_05.html">第5回 Webサービスの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_06.html">第6回 Webサービスの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_07.html">第7回 地理空間情報の基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_08.html">第8回 地理空間データの活⽤1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_09.html">第9回 地理空間データの活⽤2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_13.html">第13回 総合演習</a></li>
 </ul>
 </li>
 </ul>
@@ -361,13 +373,13 @@
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">survey_data</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;満足&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;普通&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;普通&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;非常に不満&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;不満&quot;</span><span class="p">,</span>
+    <span class="s2">"満足"</span><span class="p">,</span>
+    <span class="s2">"普通"</span><span class="p">,</span>
+    <span class="s2">"普通"</span><span class="p">,</span>
+    <span class="s2">"非常に不満"</span><span class="p">,</span>
+    <span class="s2">"不満"</span><span class="p">,</span>
 <span class="p">]</span>
-<span class="n">survey_ser</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">survey_data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
+<span class="n">survey_ser</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">survey_data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">"category"</span><span class="p">)</span>
 <span class="n">survey_ser</span>
 </pre></div>
 </div>
@@ -394,7 +406,7 @@ Categories (4, object): [&#39;不満&#39;, &#39;普通&#39;, &#39;満足&#39;, &
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">survey_data</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dtype</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">survey_data</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"category"</span><span class="p">)</span><span class="o">.</span><span class="n">dtype</span>
 </pre></div>
 </div>
 </div>
@@ -460,11 +472,11 @@ Name: count, dtype: int64
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rating</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">CategoricalDtype</span><span class="p">(</span>
     <span class="n">categories</span><span class="o">=</span><span class="p">[</span>
-        <span class="s2">&quot;非常に不満&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;不満&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;普通&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;満足&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;非常に満足&quot;</span><span class="p">,</span>
+        <span class="s2">"非常に不満"</span><span class="p">,</span>
+        <span class="s2">"不満"</span><span class="p">,</span>
+        <span class="s2">"普通"</span><span class="p">,</span>
+        <span class="s2">"満足"</span><span class="p">,</span>
+        <span class="s2">"非常に満足"</span><span class="p">,</span>
     <span class="p">],</span>
     <span class="n">ordered</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
@@ -634,7 +646,7 @@ dtype: int8
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">survey_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
-<span class="n">missing_suvey_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">survey_data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
+<span class="n">missing_suvey_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">survey_data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">"category"</span><span class="p">)</span>
 <span class="n">missing_suvey_data</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">codes</span>
 </pre></div>
 </div>
@@ -668,14 +680,14 @@ dtype: int8
     <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">101</span><span class="p">],</span>  <span class="c1"># ①</span>
     <span class="n">right</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># ②</span>
     <span class="n">labels</span><span class="o">=</span><span class="p">[</span>
-        <span class="s2">&quot;非常に不満&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;不満&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;普通&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;満足&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;非常に満足&quot;</span><span class="p">,</span>
+        <span class="s2">"非常に不満"</span><span class="p">,</span>
+        <span class="s2">"不満"</span><span class="p">,</span>
+        <span class="s2">"普通"</span><span class="p">,</span>
+        <span class="s2">"満足"</span><span class="p">,</span>
+        <span class="s2">"非常に満足"</span><span class="p">,</span>
     <span class="p">],</span>  <span class="c1"># ③</span>
 <span class="p">)</span>
-<span class="n">survey_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;satisfaction&quot;</span><span class="p">:</span> <span class="n">satisfaction</span><span class="p">,</span> <span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="n">score</span><span class="p">})</span>
+<span class="n">survey_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"satisfaction"</span><span class="p">:</span> <span class="n">satisfaction</span><span class="p">,</span> <span class="s2">"score"</span><span class="p">:</span> <span class="n">score</span><span class="p">})</span>
 <span class="n">survey_df</span>
 </pre></div>
 </div>
@@ -772,14 +784,14 @@ dtype: int8
     <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>  <span class="c1"># ①</span>
     <span class="n">right</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># ②</span>
     <span class="n">labels</span><span class="o">=</span><span class="p">[</span>
-        <span class="s2">&quot;非常に不満&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;不満&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;普通&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;満足&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;非常に満足&quot;</span><span class="p">,</span>
+        <span class="s2">"非常に不満"</span><span class="p">,</span>
+        <span class="s2">"不満"</span><span class="p">,</span>
+        <span class="s2">"普通"</span><span class="p">,</span>
+        <span class="s2">"満足"</span><span class="p">,</span>
+        <span class="s2">"非常に満足"</span><span class="p">,</span>
     <span class="p">],</span>  <span class="c1"># ③</span>
 <span class="p">)</span>
-<span class="n">survey_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;satisfaction&quot;</span><span class="p">:</span> <span class="n">satisfaction</span><span class="p">,</span> <span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="n">score</span><span class="p">})</span>
+<span class="n">survey_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"satisfaction"</span><span class="p">:</span> <span class="n">satisfaction</span><span class="p">,</span> <span class="s2">"score"</span><span class="p">:</span> <span class="n">score</span><span class="p">})</span>
 <span class="n">survey_df</span>
 </pre></div>
 </div>
@@ -877,14 +889,14 @@ dtype: int8
     <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span>  <span class="c1"># ①</span>
     <span class="n">right</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># ②</span>
     <span class="n">labels</span><span class="o">=</span><span class="p">[</span>
-        <span class="s2">&quot;非常に不満&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;不満&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;普通&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;満足&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;非常に満足&quot;</span><span class="p">,</span>
+        <span class="s2">"非常に不満"</span><span class="p">,</span>
+        <span class="s2">"不満"</span><span class="p">,</span>
+        <span class="s2">"普通"</span><span class="p">,</span>
+        <span class="s2">"満足"</span><span class="p">,</span>
+        <span class="s2">"非常に満足"</span><span class="p">,</span>
     <span class="p">],</span>  <span class="c1"># ③</span>
 <span class="p">)</span>
-<span class="n">survey_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;satisfaction&quot;</span><span class="p">:</span> <span class="n">satisfaction</span><span class="p">,</span> <span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="n">score</span><span class="p">})</span>
+<span class="n">survey_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"satisfaction"</span><span class="p">:</span> <span class="n">satisfaction</span><span class="p">,</span> <span class="s2">"score"</span><span class="p">:</span> <span class="n">score</span><span class="p">})</span>
 <span class="n">survey_df</span>
 </pre></div>
 </div>
@@ -994,7 +1006,7 @@ dtype: object
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">survey_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;satisfaction&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">ordered</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">survey_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"satisfaction"</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">ordered</span>
 </pre></div>
 </div>
 </div>
@@ -1011,7 +1023,7 @@ True
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">survey_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;satisfaction&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">survey_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"satisfaction"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1077,7 +1089,7 @@ True
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unordered_satisfaction</span> <span class="o">=</span> <span class="n">survey_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;satisfaction&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">as_unordered</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unordered_satisfaction</span> <span class="o">=</span> <span class="n">survey_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"satisfaction"</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">as_unordered</span><span class="p">()</span>
 <span class="n">unordered_satisfaction</span>
 </pre></div>
 </div>
@@ -1136,11 +1148,11 @@ Categories (5, object): [&#39;非常に不満&#39; &lt; &#39;不満&#39; &lt; &#
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unordered_satisfaction</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">reorder_categories</span><span class="p">(</span>
     <span class="p">[</span>
-        <span class="s2">&quot;非常に満足&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;満足&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;普通&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;不満&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;非常に不満&quot;</span><span class="p">,</span>
+        <span class="s2">"非常に満足"</span><span class="p">,</span>
+        <span class="s2">"満足"</span><span class="p">,</span>
+        <span class="s2">"普通"</span><span class="p">,</span>
+        <span class="s2">"不満"</span><span class="p">,</span>
+        <span class="s2">"非常に不満"</span><span class="p">,</span>
     <span class="p">],</span>
     <span class="n">ordered</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
@@ -1173,13 +1185,13 @@ Categories (5, object): [&#39;非常に満足&#39; &lt; &#39;満足&#39; &lt; &#
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unordered_satisfaction</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">set_categories</span><span class="p">(</span>
     <span class="p">[</span>
-        <span class="s2">&quot;非常に満足&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;満足&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;少し満足&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;普通&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;少し不満&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;不満&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;非常に不満&quot;</span><span class="p">,</span>
+        <span class="s2">"非常に満足"</span><span class="p">,</span>
+        <span class="s2">"満足"</span><span class="p">,</span>
+        <span class="s2">"少し満足"</span><span class="p">,</span>
+        <span class="s2">"普通"</span><span class="p">,</span>
+        <span class="s2">"少し不満"</span><span class="p">,</span>
+        <span class="s2">"不満"</span><span class="p">,</span>
+        <span class="s2">"非常に不満"</span><span class="p">,</span>
     <span class="p">],</span>
     <span class="n">ordered</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
@@ -1213,7 +1225,7 @@ Categories (7, object): [&#39;非常に満足&#39; &lt; &#39;満足&#39; &lt; &#
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_survey_df</span> <span class="o">=</span> <span class="n">survey_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;satisfaction&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_survey_df</span> <span class="o">=</span> <span class="n">survey_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"satisfaction"</span><span class="p">)</span>
 <span class="n">new_survey_df</span>
 </pre></div>
 </div>
@@ -1316,7 +1328,7 @@ CategoricalIndex([&#39;普通&#39;, &#39;普通&#39;, &#39;満足&#39;, &#39;非
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_survey_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;非常に満足&quot;</span><span class="p">,</span> <span class="p">:]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_survey_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"非常に満足"</span><span class="p">,</span> <span class="p">:]</span>
 </pre></div>
 </div>
 </div>
@@ -1463,16 +1475,16 @@ CategoricalIndex([&#39;普通&#39;, &#39;普通&#39;, &#39;満足&#39;, &#39;非
 
 <span class="n">cat1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span>
     <span class="p">[</span>
-        <span class="s2">&quot;普通&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;満足&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;非常に満足&quot;</span><span class="p">,</span>
+        <span class="s2">"普通"</span><span class="p">,</span>
+        <span class="s2">"満足"</span><span class="p">,</span>
+        <span class="s2">"非常に満足"</span><span class="p">,</span>
     <span class="p">]</span>
 <span class="p">)</span>
 <span class="n">cat2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span>
     <span class="p">[</span>
-        <span class="s2">&quot;非常に不満&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;不満&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;普通&quot;</span><span class="p">,</span>
+        <span class="s2">"非常に不満"</span><span class="p">,</span>
+        <span class="s2">"不満"</span><span class="p">,</span>
+        <span class="s2">"普通"</span><span class="p">,</span>
     <span class="p">]</span>
 <span class="p">)</span>
 <span class="n">union_categoricals</span><span class="p">([</span><span class="n">cat1</span><span class="p">,</span> <span class="n">cat2</span><span class="p">])</span>
@@ -1495,17 +1507,17 @@ Categories (5, object): [&#39;普通&#39;, &#39;満足&#39;, &#39;非常に満�
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ordered_cat1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span>
     <span class="p">[</span>
-        <span class="s2">&quot;普通&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;満足&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;非常に満足&quot;</span><span class="p">,</span>
+        <span class="s2">"普通"</span><span class="p">,</span>
+        <span class="s2">"満足"</span><span class="p">,</span>
+        <span class="s2">"非常に満足"</span><span class="p">,</span>
     <span class="p">],</span>
     <span class="n">ordered</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">ordered_cat2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span>
     <span class="p">[</span>
-        <span class="s2">&quot;非常に不満&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;不満&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;普通&quot;</span><span class="p">,</span>
+        <span class="s2">"非常に不満"</span><span class="p">,</span>
+        <span class="s2">"不満"</span><span class="p">,</span>
+        <span class="s2">"普通"</span><span class="p">,</span>
     <span class="p">],</span>
     <span class="n">ordered</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
@@ -1583,7 +1595,7 @@ Categories (5, object): [&#39;普通&#39;, &#39;満足&#39;, &#39;非常に満�
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-30</div>
+              Last updated on 2026-08-28</div>
           </div>
           <div class="right-details">
             
@@ -1629,7 +1641,7 @@ Categories (5, object): [&#39;普通&#39;, &#39;満足&#39;, &#39;非常に満�
     <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../../_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../../../../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../../../../../_static/copybutton.js?v=940804e7"></script>
     <script src="../../../../../../_static/translations.js?v=4755f45a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     </body>

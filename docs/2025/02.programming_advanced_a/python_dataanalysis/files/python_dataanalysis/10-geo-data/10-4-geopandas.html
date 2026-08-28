@@ -10,17 +10,17 @@
 <meta property="og:description" content="GeoDataFrame:.cxインデクサ: GeoSeriesの処理:" />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2025_02.programming_advanced_a_python_dataanalysis_files_python_dataanalysis_10-geo-data_10-4-geopandas_768dadd1.png" />
+<meta property="og:image" content="/None" />
 <meta property="og:image:alt" content="GeoDataFrame:.cxインデクサ: GeoSeriesの処理:" />
 <meta name="description" content="GeoDataFrame:.cxインデクサ: GeoSeriesの処理:" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="索引" href="../../../../../../genindex.html" /><link rel="search" title="検索" href="../../../../../../search.html" />
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
         <title>GeoPandas - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=949a1ff5" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo-extensions.css?v=302659d7" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/musashiuniv/custom.css" />
@@ -295,6 +295,18 @@
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_01.html">第1回 オリエンテーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_02.html">第2回 オープンデータの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_03.html">第3回 データの種類とデータ加⼯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_04.html">第4回 データ解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_05.html">第5回 Webサービスの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_06.html">第6回 Webサービスの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_07.html">第7回 地理空間情報の基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_08.html">第8回 地理空間データの活⽤1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_09.html">第9回 地理空間データの活⽤2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_13.html">第13回 総合演習</a></li>
 </ul>
 </li>
 </ul>
@@ -357,7 +369,7 @@
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
 
-<span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;./data/N03-20220101_25_GML/N03-22_25_220101.geojson&quot;</span><span class="p">)</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">"./data/N03-20220101_25_GML/N03-22_25_220101.geojson"</span><span class="p">)</span>
 <span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -370,8 +382,9 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[1]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">geopandas</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">as</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">gpd</span>
-<span class="ansi-green-fg">      3</span> gdf = gpd.read_file(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">./data/N03-20220101_25_GML/N03-22_25_220101.geojson</span><span class="ansi-yellow-fg">&#34;</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> geopandas <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> gpd
+<span class="ansi-green-fg">      2</span>
+<span class="ansi-green-fg">      3</span> gdf = gpd.read_file(<span class="ansi-yellow-fg">&#34;./data/N03-20220101_25_GML/N03-22_25_220101.geojson&#34;</span>)
 <span class="ansi-green-fg">      4</span> gdf.head()
 
 <span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;geopandas&#39;
@@ -381,7 +394,7 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;./data/N03-20220101_25_GML/&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">"./data/N03-20220101_25_GML/"</span><span class="p">)</span>
 <span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -394,7 +407,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[2]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> gdf = <span class="ansi-yellow-bg">gpd</span>.read_file(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">./data/N03-20220101_25_GML/</span><span class="ansi-yellow-fg">&#34;</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> gdf = gpd.read_file(<span class="ansi-yellow-fg">&#34;./data/N03-20220101_25_GML/&#34;</span>)
 <span class="ansi-green-fg">      2</span> gdf.head()
 
 <span class="ansi-red-fg">NameError</span>: name &#39;gpd&#39; is not defined
@@ -419,7 +432,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[3]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">gdf</span>.cx[<span class="ansi-green-fg">136.2</span>:<span class="ansi-green-fg">136.4</span>, <span class="ansi-green-fg">35.5</span>:<span class="ansi-green-fg">35.6</span>]
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> gdf.cx[<span class="ansi-green-fg">136.2</span>:<span class="ansi-green-fg">136.4</span>, <span class="ansi-green-fg">35.5</span>:<span class="ansi-green-fg">35.6</span>]
 
 <span class="ansi-red-fg">NameError</span>: name &#39;gdf&#39; is not defined
 </pre></div></div>
@@ -443,7 +456,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[4]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">gdf</span>.dtypes
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> gdf.dtypes
 
 <span class="ansi-red-fg">NameError</span>: name &#39;gdf&#39; is not defined
 </pre></div></div>
@@ -452,7 +465,7 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geoseries</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geoseries</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"geometry"</span><span class="p">]</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">geoseries</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -465,8 +478,8 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[5]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> geoseries = <span class="ansi-yellow-bg">gdf</span>.loc[:, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">geometry</span><span class="ansi-yellow-fg">&#34;</span>]
-<span class="ansi-green-fg">      2</span> <span style="color: rgb(0,135,0)">type</span>(geoseries)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> geoseries = gdf.loc[:, <span class="ansi-yellow-fg">&#34;geometry&#34;</span>]
+<span class="ansi-green-fg">      2</span> type(geoseries)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;gdf&#39; is not defined
 </pre></div></div>
@@ -487,7 +500,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[6]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span style="color: rgb(0,135,0)">type</span>(<span class="ansi-yellow-bg">geoseries</span>[<span class="ansi-green-fg">0</span>])
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> type(geoseries[<span class="ansi-green-fg">0</span>])
 
 <span class="ansi-red-fg">NameError</span>: name &#39;geoseries&#39; is not defined
 </pre></div></div>
@@ -508,7 +521,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[7]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">geoseries</span>[<span class="ansi-green-fg">0</span>]
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> geoseries[<span class="ansi-green-fg">0</span>]
 
 <span class="ansi-red-fg">NameError</span>: name &#39;geoseries&#39; is not defined
 </pre></div></div>
@@ -529,7 +542,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[8]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">geoseries</span>[<span class="ansi-green-fg">0</span>].geom_type
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> geoseries[<span class="ansi-green-fg">0</span>].geom_type
 
 <span class="ansi-red-fg">NameError</span>: name &#39;geoseries&#39; is not defined
 </pre></div></div>
@@ -550,7 +563,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[9]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">geoseries</span>.geom_type.head()
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> geoseries.geom_type.head()
 
 <span class="ansi-red-fg">NameError</span>: name &#39;geoseries&#39; is not defined
 </pre></div></div>
@@ -571,7 +584,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[10]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">geoseries</span>.plot()
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> geoseries.plot()
 
 <span class="ansi-red-fg">NameError</span>: name &#39;geoseries&#39; is not defined
 </pre></div></div>
@@ -592,7 +605,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[11]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">geoseries</span>.length.head(<span class="ansi-green-fg">3</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> geoseries.length.head(<span class="ansi-green-fg">3</span>)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;geoseries&#39; is not defined
 </pre></div></div>
@@ -601,7 +614,7 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geoseries_transformed</span> <span class="o">=</span> <span class="n">geoseries</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s2">&quot;EPSG:6674&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geoseries_transformed</span> <span class="o">=</span> <span class="n">geoseries</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s2">"EPSG:6674"</span><span class="p">)</span>
 <span class="n">geoseries_transformed</span><span class="o">.</span><span class="n">length</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -614,7 +627,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[12]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> geoseries_transformed = <span class="ansi-yellow-bg">geoseries</span>.to_crs(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">EPSG:6674</span><span class="ansi-yellow-fg">&#34;</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> geoseries_transformed = geoseries.to_crs(<span class="ansi-yellow-fg">&#34;EPSG:6674&#34;</span>)
 <span class="ansi-green-fg">      2</span> geoseries_transformed.length.head(<span class="ansi-green-fg">3</span>)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;geoseries&#39; is not defined
@@ -636,7 +649,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[13]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">geoseries_transformed</span>.area.head(<span class="ansi-green-fg">3</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> geoseries_transformed.area.head(<span class="ansi-green-fg">3</span>)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;geoseries_transformed&#39; is not defined
 </pre></div></div>
@@ -658,7 +671,7 @@
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-30</div>
+              Last updated on 2026-08-28</div>
           </div>
           <div class="right-details">
             
@@ -699,7 +712,7 @@
     <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../../_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../../../../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../../../../../_static/copybutton.js?v=940804e7"></script>
     <script src="../../../../../../_static/translations.js?v=4755f45a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     </body>

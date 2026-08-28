@@ -10,17 +10,17 @@
 <meta property="og:description" content="ピボットとアンピボット: ピボット: アンピボット: スタックとアンスタック: スタック: アンスタック: MultiIndexのスタック・アンスタック: ダミー変数: 要素の展開:" />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2025_02.programming_advanced_a_python_dataanalysis_files_python_dataanalysis_03-table-data_03-02-reshaping_49071db0.png" />
+<meta property="og:image" content="/None" />
 <meta property="og:image:alt" content="ピボットとアンピボット: ピボット: アンピボット: スタックとアンスタック: スタック: アンスタック: MultiIndexのスタック・アンスタック: ダミー変数: 要素の展開:" />
 <meta name="description" content="ピボットとアンピボット: ピボット: アンピボット: スタックとアンスタック: スタック: アンスタック: MultiIndexのスタック・アンスタック: ダミー変数: 要素の展開:" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="索引" href="../../../../../../genindex.html" /><link rel="search" title="検索" href="../../../../../../search.html" />
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
         <title>データの変形 - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=949a1ff5" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo-extensions.css?v=302659d7" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/musashiuniv/custom.css" />
@@ -295,6 +295,18 @@
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_01.html">第1回 オリエンテーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_02.html">第2回 オープンデータの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_03.html">第3回 データの種類とデータ加⼯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_04.html">第4回 データ解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_05.html">第5回 Webサービスの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_06.html">第6回 Webサービスの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_07.html">第7回 地理空間情報の基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_08.html">第8回 地理空間データの活⽤1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_09.html">第9回 地理空間データの活⽤2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_13.html">第13回 総合演習</a></li>
 </ul>
 </li>
 </ul>
@@ -361,12 +373,12 @@
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">tips</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
-    <span class="s2">&quot;https://raw.githubusercontent.com/plotly/datasets/master/tips.csv&quot;</span><span class="p">,</span>
+    <span class="s2">"https://raw.githubusercontent.com/plotly/datasets/master/tips.csv"</span><span class="p">,</span>
     <span class="n">dtype</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;sex&quot;</span><span class="p">:</span> <span class="s2">&quot;category&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;smoker&quot;</span><span class="p">:</span> <span class="s2">&quot;category&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;day&quot;</span><span class="p">:</span> <span class="s2">&quot;category&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;category&quot;</span><span class="p">,</span>
+        <span class="s2">"sex"</span><span class="p">:</span> <span class="s2">"category"</span><span class="p">,</span>
+        <span class="s2">"smoker"</span><span class="p">:</span> <span class="s2">"category"</span><span class="p">,</span>
+        <span class="s2">"day"</span><span class="p">:</span> <span class="s2">"category"</span><span class="p">,</span>
+        <span class="s2">"time"</span><span class="p">:</span> <span class="s2">"category"</span><span class="p">,</span>
     <span class="p">},</span>
 <span class="p">)</span>
 <span class="n">tips</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -465,9 +477,9 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
-    <span class="n">index</span><span class="o">=</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span>
-    <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span>
-    <span class="n">values</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span><span class="s2">"smoker"</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="s2">"time"</span><span class="p">,</span>
+    <span class="n">values</span><span class="o">=</span><span class="s2">"total_bill"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -526,10 +538,10 @@
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">tips</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
-    <span class="n">index</span><span class="o">=</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span>
-    <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span>
-    <span class="n">values</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span>
-    <span class="n">aggfunc</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span><span class="s2">"smoker"</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="s2">"time"</span><span class="p">,</span>
+    <span class="n">values</span><span class="o">=</span><span class="s2">"total_bill"</span><span class="p">,</span>
+    <span class="n">aggfunc</span><span class="o">=</span><span class="s2">"median"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -586,10 +598,10 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
-    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">],</span>
-    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span> <span class="s2">&quot;sex&quot;</span><span class="p">],</span>
-    <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;size&quot;</span><span class="p">],</span>
-    <span class="n">aggfunc</span><span class="o">=</span><span class="s2">&quot;count&quot;</span><span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"day"</span><span class="p">,</span> <span class="s2">"time"</span><span class="p">],</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"smoker"</span><span class="p">,</span> <span class="s2">"sex"</span><span class="p">],</span>
+    <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">"size"</span><span class="p">],</span>
+    <span class="n">aggfunc</span><span class="o">=</span><span class="s2">"count"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -717,9 +729,9 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
-    <span class="n">index</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span>
-    <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span>
-    <span class="n">values</span><span class="o">=</span><span class="s2">&quot;size&quot;</span><span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span><span class="s2">"time"</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="s2">"smoker"</span><span class="p">,</span>
+    <span class="n">values</span><span class="o">=</span><span class="s2">"size"</span><span class="p">,</span>
     <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -788,13 +800,13 @@
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 下記のコードと同じ処理</span>
 <span class="c1"># tips.pivot_table(</span>
-<span class="c1">#     index=&quot;day&quot;, columns=&quot;time&quot;, values=&quot;tip&quot;, aggfunc=&quot;count&quot;</span>
+<span class="c1">#     index="day", columns="time", values="tip", aggfunc="count"</span>
 <span class="c1"># )</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span>
-    <span class="n">index</span><span class="o">=</span><span class="n">tips</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;day&quot;</span><span class="p">],</span>
-    <span class="n">columns</span><span class="o">=</span><span class="n">tips</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;time&quot;</span><span class="p">],</span>
-    <span class="n">values</span><span class="o">=</span><span class="n">tips</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;tip&quot;</span><span class="p">],</span>
-    <span class="n">aggfunc</span><span class="o">=</span><span class="s2">&quot;count&quot;</span><span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span><span class="n">tips</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"day"</span><span class="p">],</span>
+    <span class="n">columns</span><span class="o">=</span><span class="n">tips</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"time"</span><span class="p">],</span>
+    <span class="n">values</span><span class="o">=</span><span class="n">tips</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"tip"</span><span class="p">],</span>
+    <span class="n">aggfunc</span><span class="o">=</span><span class="s2">"count"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -861,8 +873,8 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span>
-    <span class="n">index</span><span class="o">=</span><span class="n">tips</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;day&quot;</span><span class="p">],</span>
-    <span class="n">columns</span><span class="o">=</span><span class="n">tips</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;time&quot;</span><span class="p">],</span>
+    <span class="n">index</span><span class="o">=</span><span class="n">tips</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"day"</span><span class="p">],</span>
+    <span class="n">columns</span><span class="o">=</span><span class="n">tips</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"time"</span><span class="p">],</span>
     <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -932,9 +944,9 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pivoted_tips</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
-    <span class="n">index</span><span class="o">=</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span>
-    <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span>
-    <span class="n">values</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span><span class="s2">"smoker"</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="s2">"time"</span><span class="p">,</span>
+    <span class="n">values</span><span class="o">=</span><span class="s2">"total_bill"</span><span class="p">,</span>
 <span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">pivoted_tips</span>
 </pre></div>
@@ -990,10 +1002,10 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pivoted_tips</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span>
-    <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;smoker&quot;</span><span class="p">],</span>
-    <span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Dinner&quot;</span><span class="p">,</span> <span class="s2">&quot;Lunch&quot;</span><span class="p">],</span>
-    <span class="n">var_name</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">],</span>
-    <span class="n">value_name</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span>
+    <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">"smoker"</span><span class="p">],</span>
+    <span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">"Dinner"</span><span class="p">,</span> <span class="s2">"Lunch"</span><span class="p">],</span>
+    <span class="n">var_name</span><span class="o">=</span><span class="p">[</span><span class="s2">"time"</span><span class="p">],</span>
+    <span class="n">value_name</span><span class="o">=</span><span class="s2">"total_bill"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1291,15 +1303,15 @@ MultiIndex([(0, &#39;total_bill&#39;),
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groupby_time</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)[</span>  <span class="c1"># ①time列でグルーピング</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groupby_time</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"time"</span><span class="p">)[</span>  <span class="c1"># ①time列でグルーピング</span>
     <span class="c1"># ①グループ化したオブジェクトから列を選択</span>
-    <span class="p">[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="s2">&quot;tip&quot;</span><span class="p">]</span>
+    <span class="p">[</span><span class="s2">"total_bill"</span><span class="p">,</span> <span class="s2">"tip"</span><span class="p">]</span>
 <span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
-    <span class="p">(</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;median&quot;</span><span class="p">)</span>
+    <span class="p">(</span><span class="s2">"mean"</span><span class="p">,</span> <span class="s2">"median"</span><span class="p">)</span>
 <span class="p">)</span>  <span class="c1"># ①平均値と中央値を算出</span>
 <span class="n">groupby_time</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s2">&quot;value&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;agg&quot;</span><span class="p">,</span>
+    <span class="s2">"value"</span><span class="p">,</span>
+    <span class="s2">"agg"</span><span class="p">,</span>
 <span class="p">)</span>  <span class="c1"># ②インデックスに名前を設定</span>
 <span class="n">groupby_time</span>
 </pre></div>
@@ -1460,7 +1472,7 @@ FrozenList([&#39;value&#39;, &#39;agg&#39;])
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groupby_time</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="s2">&quot;agg&quot;</span><span class="p">)</span>  <span class="c1"># インデックスの名前</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groupby_time</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="s2">"agg"</span><span class="p">)</span>  <span class="c1"># インデックスの名前</span>
 </pre></div>
 </div>
 </div>
@@ -1529,7 +1541,7 @@ FrozenList([&#39;value&#39;, &#39;agg&#39;])
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groupby_time_stack</span> <span class="o">=</span> <span class="n">groupby_time</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groupby_time_stack</span> <span class="o">=</span> <span class="n">groupby_time</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="s2">"value"</span><span class="p">)</span>
 <span class="n">groupby_time_stack</span>
 </pre></div>
 </div>
@@ -1689,7 +1701,7 @@ FrozenList([&#39;time&#39;, &#39;value&#39;])
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groupby_time_stack</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groupby_time_stack</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s2">"time"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1763,7 +1775,7 @@ FrozenList([&#39;time&#39;, &#39;value&#39;])
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">tips</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;day&quot;</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">tips</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"day"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1883,7 +1895,7 @@ FrozenList([&#39;time&#39;, &#39;value&#39;])
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"smoker"</span><span class="p">,</span> <span class="s2">"time"</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1995,12 +2007,12 @@ FrozenList([&#39;time&#39;, &#39;value&#39;])
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">students</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="p">{</span>
-        <span class="s2">&quot;名前&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;寺田&quot;</span><span class="p">,</span> <span class="s2">&quot;辻&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;履修科目&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">[</span><span class="s2">&quot;国語&quot;</span><span class="p">,</span> <span class="s2">&quot;英語&quot;</span><span class="p">,</span> <span class="s2">&quot;数学&quot;</span><span class="p">],</span>
-            <span class="p">[</span><span class="s2">&quot;英語&quot;</span><span class="p">,</span> <span class="s2">&quot;物理&quot;</span><span class="p">],</span>
+        <span class="s2">"名前"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"寺田"</span><span class="p">,</span> <span class="s2">"辻"</span><span class="p">],</span>
+        <span class="s2">"履修科目"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span><span class="s2">"国語"</span><span class="p">,</span> <span class="s2">"英語"</span><span class="p">,</span> <span class="s2">"数学"</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">"英語"</span><span class="p">,</span> <span class="s2">"物理"</span><span class="p">],</span>
         <span class="p">],</span>
-        <span class="s2">&quot;得点&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="mi">78</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">89</span><span class="p">],</span> <span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">82</span><span class="p">]],</span>
+        <span class="s2">"得点"</span><span class="p">:</span> <span class="p">[[</span><span class="mi">78</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">89</span><span class="p">],</span> <span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">82</span><span class="p">]],</span>
     <span class="p">}</span>
 <span class="p">)</span>
 <span class="n">students</span>
@@ -2056,7 +2068,7 @@ FrozenList([&#39;time&#39;, &#39;value&#39;])
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">students</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;得点&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">students</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"得点"</span><span class="p">]</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2078,7 +2090,7 @@ Name: 得点, dtype: object
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">students</span><span class="o">.</span><span class="n">explode</span><span class="p">([</span><span class="s2">&quot;履修科目&quot;</span><span class="p">,</span> <span class="s2">&quot;得点&quot;</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">students</span><span class="o">.</span><span class="n">explode</span><span class="p">([</span><span class="s2">"履修科目"</span><span class="p">,</span> <span class="s2">"得点"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -2163,7 +2175,7 @@ Name: 得点, dtype: object
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-30</div>
+              Last updated on 2026-08-28</div>
           </div>
           <div class="right-details">
             
@@ -2214,7 +2226,7 @@ Name: 得点, dtype: object
     <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../../_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../../../../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../../../../../_static/copybutton.js?v=940804e7"></script>
     <script src="../../../../../../_static/translations.js?v=4755f45a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     </body>

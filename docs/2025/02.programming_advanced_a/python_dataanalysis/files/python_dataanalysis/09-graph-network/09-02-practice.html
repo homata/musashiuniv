@@ -10,17 +10,17 @@
 <meta property="og:description" content="データの準備: グラフの構築: ノードの特徴を定量化する:" />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2025_02.programming_advanced_a_python_dataanalysis_files_python_dataanalysis_09-graph-network_09-02-practice_b2fa845a.png" />
+<meta property="og:image" content="/None" />
 <meta property="og:image:alt" content="データの準備: グラフの構築: ノードの特徴を定量化する:" />
 <meta name="description" content="データの準備: グラフの構築: ノードの特徴を定量化する:" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="索引" href="../../../../../../genindex.html" /><link rel="search" title="検索" href="../../../../../../search.html" />
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
         <title>実践的なグラフデータの解析 - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=949a1ff5" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo-extensions.css?v=302659d7" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/musashiuniv/custom.css" />
@@ -295,6 +295,18 @@
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_01.html">第1回 オリエンテーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_02.html">第2回 オープンデータの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_03.html">第3回 データの種類とデータ加⼯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_04.html">第4回 データ解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_05.html">第5回 Webサービスの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_06.html">第6回 Webサービスの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_07.html">第7回 地理空間情報の基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_08.html">第8回 地理空間データの活⽤1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_09.html">第9回 地理空間データの活⽤2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_13.html">第13回 総合演習</a></li>
 </ul>
 </li>
 </ul>
@@ -357,7 +369,7 @@
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="n">titles_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/titles.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">)</span>
+<span class="n">titles_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/titles.csv"</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">"id"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">titles_all</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">titles_all</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -521,9 +533,9 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titles</span> <span class="o">=</span> <span class="n">titles_all</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">titles_all</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;MOVIE&quot;</span><span class="p">)</span> <span class="o">&amp;</span>
-                        <span class="p">(</span><span class="n">titles_all</span><span class="p">[</span><span class="s2">&quot;release_year&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1990</span><span class="p">)</span> <span class="o">&amp;</span>
-                        <span class="p">(</span><span class="n">titles_all</span><span class="p">[</span><span class="s2">&quot;release_year&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2000</span><span class="p">)]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titles</span> <span class="o">=</span> <span class="n">titles_all</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">titles_all</span><span class="p">[</span><span class="s2">"type"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"MOVIE"</span><span class="p">)</span> <span class="o">&amp;</span>
+                        <span class="p">(</span><span class="n">titles_all</span><span class="p">[</span><span class="s2">"release_year"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1990</span><span class="p">)</span> <span class="o">&amp;</span>
+                        <span class="p">(</span><span class="n">titles_all</span><span class="p">[</span><span class="s2">"release_year"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2000</span><span class="p">)]</span>
 <span class="n">titles</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
@@ -541,7 +553,7 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/credits.csv&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/credits.csv"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">actors</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">actors</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -634,7 +646,7 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actors_gr</span> <span class="o">=</span> <span class="n">actors</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;role&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s2">&quot;ACTOR&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actors_gr</span> <span class="o">=</span> <span class="n">actors</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"role"</span><span class="p">)</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s2">"ACTOR"</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"id"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -654,8 +666,8 @@
     <span class="c1"># グループ化したキーにmovie_aとmovie_bが両方存在した場合</span>
     <span class="k">if</span> <span class="n">movie_a</span> <span class="ow">in</span> <span class="n">all_movies</span> <span class="ow">and</span> <span class="n">movie_b</span> <span class="ow">in</span> <span class="n">all_movies</span><span class="p">:</span>
         <span class="c1"># movie_aとmovie_bの出演者をsetにする</span>
-        <span class="n">set_a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">actors_gr</span><span class="p">[</span><span class="s2">&quot;person_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="n">movie_a</span><span class="p">))</span>
-        <span class="n">set_b</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">actors_gr</span><span class="p">[</span><span class="s2">&quot;person_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="n">movie_b</span><span class="p">))</span>
+        <span class="n">set_a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">actors_gr</span><span class="p">[</span><span class="s2">"person_id"</span><span class="p">]</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="n">movie_a</span><span class="p">))</span>
+        <span class="n">set_b</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">actors_gr</span><span class="p">[</span><span class="s2">"person_id"</span><span class="p">]</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="n">movie_b</span><span class="p">))</span>
         <span class="c1"># 共通して出演している俳優の数</span>
         <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">set_a</span> <span class="o">&amp;</span> <span class="n">set_b</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -686,9 +698,9 @@
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actor_overlaps</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="n">movie_a_b_list</span><span class="p">,</span>
     <span class="n">columns</span><span class="o">=</span><span class="p">[</span>
-        <span class="s2">&quot;movie_A&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;movie_B&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;weight&quot;</span><span class="p">,</span>
+        <span class="s2">"movie_A"</span><span class="p">,</span>
+        <span class="s2">"movie_B"</span><span class="p">,</span>
+        <span class="s2">"weight"</span><span class="p">,</span>
     <span class="p">],</span>
 <span class="p">)</span>
 
@@ -770,9 +782,9 @@
 
 <span class="n">all_movie_graph</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_edgelist</span><span class="p">(</span>
     <span class="n">actor_overlaps</span><span class="p">,</span>
-    <span class="n">source</span><span class="o">=</span><span class="s2">&quot;movie_A&quot;</span><span class="p">,</span>
-    <span class="n">target</span><span class="o">=</span><span class="s2">&quot;movie_B&quot;</span><span class="p">,</span>
-    <span class="n">edge_attr</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span>
+    <span class="n">source</span><span class="o">=</span><span class="s2">"movie_A"</span><span class="p">,</span>
+    <span class="n">target</span><span class="o">=</span><span class="s2">"movie_B"</span><span class="p">,</span>
+    <span class="n">edge_attr</span><span class="o">=</span><span class="s2">"weight"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -812,9 +824,9 @@
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyvis.network</span><span class="w"> </span><span class="kn">import</span> <span class="n">Network</span>
 
 <span class="c1"># 描画する際のサイズを指定できます</span>
-<span class="n">nt</span> <span class="o">=</span> <span class="n">Network</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="s2">&quot;800px&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;800px&quot;</span><span class="p">,</span> <span class="n">notebook</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cdn_resources</span><span class="o">=</span><span class="s2">&quot;in_line&quot;</span><span class="p">)</span>
+<span class="n">nt</span> <span class="o">=</span> <span class="n">Network</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="s2">"800px"</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"800px"</span><span class="p">,</span> <span class="n">notebook</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cdn_resources</span><span class="o">=</span><span class="s2">"in_line"</span><span class="p">)</span>
 <span class="n">nt</span><span class="o">.</span><span class="n">from_nx</span><span class="p">(</span><span class="n">movie_graph</span><span class="p">)</span>
-<span class="n">nt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s2">&quot;movie_graph.html&quot;</span><span class="p">)</span>
+<span class="n">nt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s2">"movie_graph.html"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -844,7 +856,7 @@ movie_graph.html
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titles</span><span class="p">[</span><span class="s2">&quot;production_countries&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titles</span><span class="p">[</span><span class="s2">"production_countries"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -872,21 +884,21 @@ Name: count, dtype: int64
     <span class="n">row</span> <span class="o">=</span> <span class="n">titles</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">node</span><span class="p">]</span>
     <span class="c1"># ノードのtitle属性に、映画のタイトルと制作した国を追加</span>
     <span class="n">movie_graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span>
-        <span class="s2">&quot;title&quot;</span>
-    <span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;production_countries&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="s2">"title"</span>
+    <span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">'production_countries'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
     <span class="c1"># 文字列からeval関数でリストを生成</span>
-    <span class="n">countries</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;production_countries&quot;</span><span class="p">])</span>
+    <span class="n">countries</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"production_countries"</span><span class="p">])</span>
     <span class="c1"># 国ごとに色分け</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">countries</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">countries</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;US&quot;</span><span class="p">:</span>
-            <span class="n">movie_graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s2">&quot;color&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;#636EFA&quot;</span>  <span class="c1"># 青</span>
-        <span class="k">if</span> <span class="n">countries</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;IN&quot;</span><span class="p">:</span>
-            <span class="n">movie_graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s2">&quot;color&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;#EF553B&quot;</span>  <span class="c1"># 赤</span>
+        <span class="k">if</span> <span class="n">countries</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"US"</span><span class="p">:</span>
+            <span class="n">movie_graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s2">"color"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"#636EFA"</span>  <span class="c1"># 青</span>
+        <span class="k">if</span> <span class="n">countries</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"IN"</span><span class="p">:</span>
+            <span class="n">movie_graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s2">"color"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"#EF553B"</span>  <span class="c1"># 赤</span>
             <span class="c1"># 以下のようにshape属性を指定できます。</span>
-            <span class="c1"># movie_graph.nodes[node][&quot;shape&quot;] = &quot;ellipse&quot;</span>
+            <span class="c1"># movie_graph.nodes[node]["shape"] = "ellipse"</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">movie_graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s2">&quot;color&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;#00CC96&quot;</span>  <span class="c1"># 緑</span>
-        <span class="c1"># movie_graph.nodes[node][&quot;shape&quot;] = &quot;box&quot;  # 青</span>
+        <span class="n">movie_graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s2">"color"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"#00CC96"</span>  <span class="c1"># 緑</span>
+        <span class="c1"># movie_graph.nodes[node]["shape"] = "box"  # 青</span>
 </pre></div>
 </div>
 </div>
@@ -894,9 +906,9 @@ Name: count, dtype: int64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nt</span> <span class="o">=</span> <span class="n">Network</span><span class="p">(</span><span class="s2">&quot;800px&quot;</span><span class="p">,</span> <span class="s2">&quot;800px&quot;</span><span class="p">,</span> <span class="n">notebook</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cdn_resources</span><span class="o">=</span><span class="s2">&quot;in_line&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nt</span> <span class="o">=</span> <span class="n">Network</span><span class="p">(</span><span class="s2">"800px"</span><span class="p">,</span> <span class="s2">"800px"</span><span class="p">,</span> <span class="n">notebook</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cdn_resources</span><span class="o">=</span><span class="s2">"in_line"</span><span class="p">)</span>
 <span class="n">nt</span><span class="o">.</span><span class="n">from_nx</span><span class="p">(</span><span class="n">movie_graph</span><span class="p">)</span>
-<span class="n">nt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s2">&quot;colored_movie_graph.html&quot;</span><span class="p">)</span>
+<span class="n">nt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s2">"colored_movie_graph.html"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -936,17 +948,17 @@ colored_movie_graph.html
 <span class="c1"># 次数中心性の計算</span>
 <span class="n">deg_cent</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">degree_centrality</span><span class="p">(</span><span class="n">movie_graph</span><span class="p">)</span>
 <span class="c1"># degree centralityの列を追加</span>
-<span class="n">titles_in_graph</span><span class="p">[</span><span class="s2">&quot;degree_centrality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">deg_cent</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_list</span><span class="p">]</span>
+<span class="n">titles_in_graph</span><span class="p">[</span><span class="s2">"degree_centrality"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">deg_cent</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_list</span><span class="p">]</span>
 
 <span class="c1"># 出力列を限定</span>
 <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;title&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;production_countries&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;degree_centrality&quot;</span><span class="p">,</span>
+    <span class="s2">"title"</span><span class="p">,</span>
+    <span class="s2">"production_countries"</span><span class="p">,</span>
+    <span class="s2">"degree_centrality"</span><span class="p">,</span>
 <span class="p">]</span>
 
 <span class="c1"># 次数中心性で降順にソート</span>
-<span class="n">titles_in_graph</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;degree_centrality&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">titles_in_graph</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"degree_centrality"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1064,18 +1076,18 @@ colored_movie_graph.html
 <span class="n">bet_cent</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">movie_graph</span><span class="p">)</span>
 
 <span class="c1"># 媒介中心性のデータを追加</span>
-<span class="n">titles_in_graph</span><span class="p">[</span><span class="s2">&quot;betweenness_centrality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">bet_cent</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_list</span><span class="p">]</span>
+<span class="n">titles_in_graph</span><span class="p">[</span><span class="s2">"betweenness_centrality"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">bet_cent</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_list</span><span class="p">]</span>
 
 <span class="c1"># 出力列を限定</span>
 <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;title&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;production_countries&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;betweenness_centrality&quot;</span><span class="p">,</span>
+    <span class="s2">"title"</span><span class="p">,</span>
+    <span class="s2">"production_countries"</span><span class="p">,</span>
+    <span class="s2">"betweenness_centrality"</span><span class="p">,</span>
 <span class="p">]</span>
 
 <span class="c1"># 降順で並べ変えて表示</span>
 <span class="n">titles_in_graph</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
-    <span class="s2">&quot;betweenness_centrality&quot;</span><span class="p">,</span>
+    <span class="s2">"betweenness_centrality"</span><span class="p">,</span>
     <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -1204,7 +1216,7 @@ colored_movie_graph.html
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-30</div>
+              Last updated on 2026-08-28</div>
           </div>
           <div class="right-details">
             
@@ -1245,7 +1257,7 @@ colored_movie_graph.html
     <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../../_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../../../../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../../../../../_static/copybutton.js?v=940804e7"></script>
     <script src="../../../../../../_static/translations.js?v=4755f45a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     </body>

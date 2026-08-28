@@ -1,0 +1,307 @@
+# オープンデータ関連一覧 (by オープン川崎)
+
+主に公的機関の情報やオープンデータのサイトのリンク集です。
+このリンク集に無いデータで、他に欲しいデータがあれば問い合せください。
+
+また、他にオススメのサイトがあればお知らせください。
+
+川崎市
+----
+川崎市がWebで公開している主な情報をまとめました。
+
+* [市政情報](http://www.city.kawasaki.jp/shisei/)
+    * 川崎市の市政に関する情報のポータルサイトです
+    * 
+#### マップ
+* [統計マップ](http://www.city.kawasaki.jp/170/page/0000062682.html)
+    * [ガイドマップかわさき](http://kawasaki.geocloud.jp/webgis/)
+    * [統計マップ](http://kawasaki.geocloud.jp/webgis/?p=0&bt=0&mp=71-12&)
+* [土砂災害ハザードマップについて](http://www.city.kawasaki.jp/500/page/0000017971.html)
+* [京浜河川事務所ホーム > リアルタイム情報（ライブカメラ・水位・雨量） > ライブカメラ](http://www.ktr.mlit.go.jp/keihin/keihin_index034.html)
+
+#### 情報公開・各種統計
+川崎市のが公開している情報と統計データです。　
+
+* [情報公開・各種統計](http://www.city.kawasaki.jp/shisei/category/51-0-0-0-0-0-0-0-0-0.html)
+    * 情報と統計データのトップページ
+* [川崎市の監査](http://www.city.kawasaki.jp/shisei/category/51-3-0-0-0-0-0-0-0-0.html)
+    * 監査委員が行う監査の種類、内容、監査の結果等
+* [統計情報](http://www.city.kawasaki.jp/shisei/category/51-4-0-0-0-0-0-0-0-0.html)
+    * 国勢調査や統計データ
+* [オープンデータ](http://www.city.kawasaki.jp/shisei/category/51-7-0-0-0-0-0-0-0-0.html)
+    * 川崎市のオープデータサイト
+* [川崎市労働白書](http://www.city.kawasaki.jp/shisei/category/51-5-0-0-0-0-0-0-0-0.html)
+    * 「労働状況実態調査」の調査結果と「川崎労働事情」
+* [統計書　平成30年（2018年）版－キーワード検索](http://www.city.kawasaki.jp/170/page/0000105346.html)
+* [大都市データランキング　カワサキをカイセキ！](http://www.city.kawasaki.jp/shisei/category/51-4-9-6-0-0-0-0-0-0.html)
+
+##### オープデータ類
+* [川崎市統計データブック](http://www.city.kawasaki.jp/shisei/category/51-4-9-2-0-0-0-0-0-0.html)
+    * 川崎市の主要な統計データを分野別、体系的に整理したデータブック
+* [つなぐっどKAWASAKI　かわさきの今を知る](https://www.tsuna-good.city.kawasaki.jp/current)
+    * 「かわさきの今を知る」としてグラフ化したもの
+
+#### 条例・要綱・公報
+* [条例・要綱・公報](http://www.city.kawasaki.jp/shisei/category/38-0-0-0-0-0-0-0-0-0.html)
+    * 条例・要綱・公報のトップページ
+* [川崎市自治基本条例](http://www.city.kawasaki.jp/shisei/category/38-1-0-0-0-0-0-0-0-0.html)
+    * 川崎市における自治の基本を定めるルールを定めた条例
+
+#### 市の財政・市債・行財政改革
+川崎市の財政のサイト
+* [財政](http://www.city.kawasaki.jp/shisei/category/47-3-0-0-0-0-0-0-0-0.html)
+    * 財政のトップページ
+* [財政のあらまし](http://www.city.kawasaki.jp/shisei/category/47-3-1-0-0-0-0-0-0-0.html)
+    * 自治体の財政状況及び公営企業の業務状況
+* [川崎市財政読本　～川崎市民のおサイフ～](http://www.city.kawasaki.jp/shisei/category/47-3-2-0-0-0-0-0-0-0.html)
+    * わかりやすく財政状況などを説明した冊子
+
+#### 広報・広聴
+市民へ広報、市民からの意見を聞くサイト
+
+* [広報・広聴](http://www.city.kawasaki.jp/shisei/category/50-0-0-0-0-0-0-0-0-0.html)
+    * 広報・広聴のトップページ
+* [市政だより](http://www.city.kawasaki.jp/shisei/category/50-1-0-0-0-0-0-0-0-0.html)
+    * 毎月2回発行している「市政のお知らせ」
+* [年間イベント情報「行事・事業一覧」](http://www.city.kawasaki.jp/shisei/category/50-2-0-0-0-0-0-0-0-0.html)
+    * 毎月一日にその月のイベントの最新情報のお知らせ
+* [海外への情報発信](http://www.city.kawasaki.jp/shisei/category/50-24-0-0-0-0-0-0-0-0.html)
+    * 外国語による海外への発信
+
+#### 計画・事業
+* [総合計画](http://www.city.kawasaki.jp/shisei/category/54-1-0-0-0-0-0-0-0-0.html)
+    * 市が定めた、都市像や基本目標等を定めた「基本計画」
+* [景観・住環境・都市計画](http://www.city.kawasaki.jp/shisei/category/54-2-3-0-0-0-0-0-0-0.html)
+    * 景観・住環境・都市計画に関するページ
+* [都市計画マスタープラン](http://www.city.kawasaki.jp/kurashi/category/26-1-1-9-3-0-0-0-0-0.html)
+    * 市が定めた、都市の将来像の計画
+
+#### 市政資料
+* [市政資料一覧](http://www.city.kawasaki.jp/shisei/category/62-11-0-0-0-0-0-0-0-0.html)
+    * 市政や区政に関する資料
+* [市長提出議案一覧](http://www.city.kawasaki.jp/shisei/category/62-12-0-0-0-0-0-0-0-0.html)
+    * 川崎市議会で市長に提出した議案
+
+#### 防災
+* [防災情報](http://www.city.kawasaki.jp/kurashi/category/15-3-39-0-0-0-0-0-0-0.html)
+    * 川崎市の防災情報のトップページ
+* [川崎市の防災計画](http://www.city.kawasaki.jp/kurashi/category/15-3-40-0-0-0-0-0-0-0.html)
+    * 川崎市の防災計画のトップページ
+* [川崎市防災情報ポータルサイト](http://portal.kikikanri.city.kawasaki.jp/index.shtml)
+    * 防災地図・ハザードマップの防災情報ポータルサイト
+
+#### まちづくり
+* [まちづくり](http://www.city.kawasaki.jp/kurashi/category/26-0-0-0-0-0-0-0-0-0.html)
+* [川崎市の交通政策](http://www.city.kawasaki.jp/kurashi/category/26-1-2-0-0-0-0-0-0-0.html)
+    * [パーソントリップ調査](http://www.city.kawasaki.jp/500/page/0000002337.html)
+
+#### 市議会
+* [市議会](http://www.city.kawasaki.jp/shisei/category/40-0-0-0-0-0-0-0-0-0.html)
+    * 川崎市議会のトップページ
+* [会議録（会議録検索システム、本会議配付資料）](http://www.city.kawasaki.jp/shisei/category/40-17-0-0-0-0-0-0-0-0.html)
+    * 川崎市議会の会議録
+
+#### 川崎市、行政区のWebサイト
+川崎市と川崎市7区の公式サイト
+
+* [川崎市](http://www.city.kawasaki.jp/)
+    * [川崎区](http://www.city.kawasaki.jp/kawasaki/)
+    * [幸区](http://www.city.kawasaki.jp/saiwai/)
+    * [中原区](http://www.city.kawasaki.jp/nakahara/)
+    * [高津区](http://www.city.kawasaki.jp/takatsu/)
+    * [宮前区](http://www.city.kawasaki.jp/miyamae/)
+    * [多摩区](http://www.city.kawasaki.jp/tama/)
+    * [麻生区](http://www.city.kawasaki.jp/asao/)
+
+#### その他
+* [川崎市長 福田紀彦（ふくだのりひこ）公式サイト](http://fukuda-norihiko.com/)
+    * 現川崎市長の公式サイト
+* [川崎市映像アーカイブ](https://www.kawasaki-movie-archive.com/)
+    * 川崎市の市政ニュース映画のサイト
+* [高津区ふるさとアーカイブ](http://takatsufurusato.sakura.ne.jp/) 
+    * 川崎市高津区の記録動画を公開しているサイト
+* [ガイドマップかわさき](http://kawasaki.geocloud.jp/webgis/?p=1)
+    * 地図からみた情報を可視化している、川崎市地図情報サイト
+
+----
+
+神奈川県
+----
+
+* [神奈川県オープンデータサイト](http://www.pref.kanagawa.jp/docs/b8k/cnt/f534212/)
+    * 神奈川県のオープンデータサイト
+        * 飲食店新規営業許可施設
+        * 医療機関情報
+        * 県内イベント情報
+* [観光かながわnow](http://www.kanagawa-kankou.or.jp/)
+    * 神奈川県公式の観光情報サイト
+
+### 神奈川県下
+* [横浜市オープンデータポータル](https://data.city.yokohama.lg.jp/)
+* [川崎市オープンデータ](http://www.city.kawasaki.jp/shisei/category/51-7-0-0-0-0-0-0-0-0.html)
+* [相模原市オープンデータ](http://www.city.sagamihara.kanagawa.jp/shisei/opendata/index.html)
+* [横須賀市オープンデータライブラリ](https://www.city.yokosuka.kanagawa.jp/0830/opendata/index.html)
+* [鎌倉市オープンデータポータル](http://www.city.kamakura.kanagawa.jp/opendata/opendata.html)
+* [茅ヶ崎市オープンデータライブラリ](http://www.city.chigasaki.kanagawa.jp/jyohosuishin/1009746.html)
+* [藤沢市オープンデータライブラリ](http://www.city.fujisawa.kanagawa.jp/joho006/shise/kekaku/kakushu/datalibrary.html)
+* [平塚市オープンデータライブラリ](http://www.city.hiratsuka.kanagawa.jp/keikaku/page-c_00951.html)
+* [小田原市オープンデータサイト](http://www.city.odawara.kanagawa.jp/municipality/itpolicy/p25549.html)
+* [逗子市オープンデータ・ポータル](https://www.city.zushi.kanagawa.jp/syokan/jouhou/opendata.html)
+* [三浦市オープンデータポータル](http://www.city.miura.kanagawa.jp/toukeijyouhou/opendataportal.html)
+* [秦野市オープンデータライブラリ](http://www.city.hadano.kanagawa.jp/www/contents/1505208576337/index.html)
+* [厚木市オープンデータポータルサイト](https://www.city.atsugi.kanagawa.jp/shisei/15001/opendata/index.html)
+* [大和市オープンデータ](http://www.city.yamato.lg.jp/web/jyoho/opendata.html)
+* [伊勢原市オープンデータ](http://www.city.isehara.kanagawa.jp/docs/2019020600020/)
+* [海老名市オープンデータライブラリ](https://www.city.ebina.kanagawa.jp/shisei/denshi/opendata/1008755/index.html)
+* [座間市オープンデータ](http://www.city.zama.kanagawa.jp/www/genre/0000000000000/1511919234048/index.html)
+* [綾瀬市オープンデータ](http://www.city.ayase.kanagawa.jp/hp/page000028100/hpg000028050.htm)
+* [葉山町オープンデータ](https://www.town.hayama.lg.jp/chousei/5822.html)
+* [愛川町オープンデータ](http://www.town.aikawa.kanagawa.jp/soshiki/soumu/gyousei/joho/info/aikawa_OD.html)
+
+----
+
+日本
+----
+
+日本の国や公的機関が出しているデータ
+
+* [RESAS（地域経済分析システム）](https://resas.go.jp/)
+    * 産業構造や人口動態、人の流れなどを視覚化した地域経済分析システム
+* [政府統計の総合窓口(e-stat)](https://www.e-stat.go.jp/)
+    * 日本の統計が閲覧できる政府統計ポータルサイト
+* [統計ダッシュボード](https://dashboard.e-stat.go.jp/)
+    * e-statの代表的なデータをダッシュボード化したもの
+* [Data.go.jp データカタログサイト](https://www.data.go.jp/)
+    * 国のオープンデータのデータカタログサイト
+* [政府CIOポータル](https://cio.go.jp/policy-opendata)
+    * 内閣官房 情報通信技術（IT）総合戦略室が公開しているオープンデータサイト
+* [ITダッシュボード](https://www.itdashboard.go.jp/)
+    * 政府のIT投資等の状況を誰でも確認できるサイト
+* [IMI 共通語彙基盤](https://imi.go.jp/)
+    * データに用いる文字や用語を共通化し、情報の共有や活用を円滑に行うための基盤の情報サイト
+* [地方公共団体のオープンデータの推進](http://www.soumu.go.jp/menu_seisaku/ictseisaku/ictriyou/opendata/)
+    * 総務省の地方公共団体のオープンデータの推進サイト
+* [オープンデータ研修ポータル](https://www.opendata-training.org/)
+    * 総務省のオープンデータ研修ポータルサイト
+* [気象庁](https://www.jma.go.jp/jma/menu/menureport.html)
+    * [最新の気象データ](http://www.data.jma.go.jp/obd/stats/data/mdrr/docs/csv_dl_readme.html)
+        * 気象観測データ
+* [国土数値情報ダウンロードサービス(](http://nlftp.mlit.go.jp/ksj/)
+    * 国土に関する基礎的な情報をGISデータとして整備したデータ
+* [農業データ連携基盤（WAGRI）](https://wagri.net/wagriapi)
+    * 気象や土地、地図情報等に関するAPI
+* [内閣府の今週の指標](https://www5.cao.go.jp/keizai3/shihyo/)
+
+#### 日本の国や公的機関
+
+##### 内閣官房
+* [高度情報通信ネットワーク社会推進戦略本部（ＩＴ総合戦略本部）](http://www.kantei.go.jp/jp/singi/it2/)
+* [内閣官房 情報通信技術（IT）総合戦略室 - 政府CIOポータル](https://cio.go.jp/)
+* [電子行政オープンデータ実務者会議](http://www.kantei.go.jp/jp/singi/it2/densi/)
+* [オープンデータ100（政府CIOポータル）](https://cio.go.jp/opendata100)
+
+##### 総務省
+* [地方公共団体のオープンデータの推進](http://www.soumu.go.jp/menu_seisaku/ictseisaku/ictriyou/opendata/)
+* [eGov 電子政府の総合窓口](https://www.e-gov.go.jp/doc/opendata/index.html)
+* [一般社団法人オープン＆ビッグデータ活用・地方創生推進機構](http://www.vled.or.jp/)
+* [情報通信白書](http://www.soumu.go.jp/johotsusintokei/whitepaper/)
+* [情報通信統計データベース](http://www.soumu.go.jp/johotsusintokei/)
+* [政府統計の総合窓口(e-Stat)](https://www.e-stat.go.jp/)
+* [総務省統計局](http://www.stat.go.jp/)
+* [政策評価ポータルサイト](https://www.soumu.go.jp/main_sosiki/hyouka/seisaku_n/seisaku_forum.html)
+
+##### 経産省
+* [データカタログサイト（DATA.GO.JP）](https://www.data.go.jp/)
+
+##### まとめサイト
+* [日本の行政機関等が公開しているAPIについてのまとめ（2016年8月17日暫定版。随時更新）](https://qiita.com/kimuraya/items/3cc6c84bf6eac30851f1)
+    * Qiitaにまとめられた、日本の行政機関等が公開しているAPI情報
+
+##### デジタルデータ アーカイブ
+* [国立国会図書館インターネット資料収集保存事業](http://warp.da.ndl.go.jp/)
+    * 日本国内の公的機関のウェブサイトを大規模に収集しているサイト
+* [国立国会図書館デジタルコレクション](http://dl.ndl.go.jp/)
+    * 国立国会図書館で収集・保存しているデジタル資料を検索・閲覧できるサービス
+* [歴史的音源](http://rekion.dl.ndl.go.jp/)
+    * 国立国会図書館デジタルコレクションの歴史的音源のみを検索・再生するサイト
+* [ジャパンサーチ(BETA) - (さまざまな分野のデジタルアーカイブ)](https://jpsearch.go.jp/)
+    * 国が保有する多様なコンテンツのメタデータをまとめて検索できる国の分野横断統合ポータルサイト
+
+##### 首都圏
+* [東京都市圏交通計画協議会(東京都市圏パーソントリップ調査)](https://www.tokyo-pt.jp/)
+
+##### 自治体サイト
+* [埼玉県オープンデータ](https://opendata.pref.saitama.lg.jp/)
+* [福岡、北九州を中心としたオープンデータのサイト](https://www.open-governmentdata.org/)
+
+##### 準公的サイト
+* [G空間情報センター (地理空間情報データポータルサイト)](https://www.geospatial.jp/)
+    * 産官学の様々な機関が保有する地理空間情報のポータルサイト
+* [Tellus (政府衛星データサイト)](https://www.tellusxdp.com/ja/)
+    * オープン&フリーな衛星データプラットフォーム
+* [My City Forecast あなたのまちの未来予報](https://mycityforecast.net/)
+    * 2015年～2040年に想定される居住地域の環境を可視化したシステム
+* [LinkData.org](http://linkdata.org/)
+    * オープンデータ活用支援プラットフォーム
+* [公共クラウドシステム](https://www.chiikinogennki.soumu.go.jp/k-cloud-api/)
+    * 全国の自治体の観光情報をオープンデータ
+
+#### 白書
+国が発行している（年次報告書）
+
+* [白書一覧 (首相官邸)](http://www.kantei.go.jp/jp//hakusyo/)
+    * 国が発行してる白書の一覧
+
+##### 一覧からの代表例
+* [地方財政白書](http://www.soumu.go.jp/menu_seisaku/hakusyo/index.html#chihou)
+    * 総務省でとりまとめている地方財政の白書
+* [情報通信白書](http://www.soumu.go.jp/menu_seisaku/hakusyo/index.html#johotsusintokei)
+    * 総務省でとりまとめている情報と通信に関する白書
+* [消費者白書](https://www.caa.go.jp/policies/policy/consumer_research/white_paper/)
+    * 消費者庁がとりまとめている消費者に関する白書
+
+----
+
+海外
+----
+* [世界銀行 オープンデータ (World Bank Open Data)](https://data.worldbank.org/)
+    * 世界銀行が公開しているオープンデータ
+* [Weather API - OpenWeatherMap](https://openweathermap.org/api)
+    * 世界気象データのAPI
+* [国際貿易の可視化サイト](https://oec.world/en/visualize/tree_map/hs92/import/jpn/show/8703/2017/)
+    * MITメディアラボがやっている国際貿易の可視化サイト
+
+----
+
+その他
+----
+
+* [経済レポート](http://www3.keizaireport.com/)
+    * 経済レポート専門ニュース・サイト-
+* [観光予報プラットフォーム](https://kankouyohou.com/)
+    * 観光に関する情報とデータを公開しているサイト
+* [データ流通市場の歩き方](http://www.j-dex.co.jp/datamarketguide/)
+    * 株式会社日本データ取引所が企画・編集している、16の業界テーマ別にデータについて案内しているサイト
+* [GTFS - 標準的なバス情報フォーマット](https://www.gtfs.jp/)
+    * バス事業者と経路検索等の共通フォーマットの情報サイト
+* [社会実情データ図録](https://honkawa2.sakura.ne.jp/index.html)
+    * 世界の社会実情をデータで示したサイト
+* [JUDGIT - 国の事業予算を可視化したサイト](https://judgit.net/)
+    * 日本政府が何に税金を使っているのか、政府の事業が検索できるサイト
+* [駅データ.jp](http://www.ekidata.jp/)
+    * 日本の鉄道駅の情報（駅データ）を配布するサイトです。
+
+API
+----
+* [MA2018 ヒーローズ・リーグ のパートナー様からの、提供素材・API一覧](https://protopedia.net/material/partner/ma2018)
+* [海外・国内の便利なAPI一覧 - API LIST 100+](http://smsurf.app-rox.com/api/)
+* [API Bank](https://www.apibank.jp/ApiBank/api)
+    * https://www.apibank.jp/ApiBank/api?category_no=0
+* [【2019年最新】作りたいアプリ別API一覧を全紹介〜随時更新〜](https://www.sejuku.net/blog/7278)
+
+
+民間関連サービス
+----
+
+* [株式会社日本データ取引所](http://j-dex.co.jp/)
+* [オープンデータスタック](https://opendatastack.jp)

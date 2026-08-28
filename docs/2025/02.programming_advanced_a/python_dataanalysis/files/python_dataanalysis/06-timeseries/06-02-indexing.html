@@ -10,17 +10,17 @@
 <meta property="og:description" content="DatetimeIndex クラス: date_range() 関数: DatetimeIndexの参照: PeriodIndex クラス: period_range() 関数:" />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2025_02.programming_advanced_a_python_dataanalysis_files_python_dataanalysis_06-timeseries_06-02-indexing_c64d5d7a.png" />
+<meta property="og:image" content="/None" />
 <meta property="og:image:alt" content="DatetimeIndex クラス: date_range() 関数: DatetimeIndexの参照: PeriodIndex クラス: period_range() 関数:" />
 <meta name="description" content="DatetimeIndex クラス: date_range() 関数: DatetimeIndexの参照: PeriodIndex クラス: period_range() 関数:" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="索引" href="../../../../../../genindex.html" /><link rel="search" title="検索" href="../../../../../../search.html" />
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
         <title>時系列データのインデックス - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=949a1ff5" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo-extensions.css?v=302659d7" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/musashiuniv/custom.css" />
@@ -295,6 +295,18 @@
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_01.html">第1回 オリエンテーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_02.html">第2回 オープンデータの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_03.html">第3回 データの種類とデータ加⼯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_04.html">第4回 データ解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_05.html">第5回 Webサービスの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_06.html">第6回 Webサービスの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_07.html">第7回 地理空間情報の基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_08.html">第8回 地理空間データの活⽤1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_09.html">第9回 地理空間データの活⽤2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_13.html">第13回 総合演習</a></li>
 </ul>
 </li>
 </ul>
@@ -383,7 +395,7 @@ DatetimeIndex([&#39;2023-01-01&#39;, &#39;2023-01-02&#39;], dtype=&#39;datetime6
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 文字列を要素としたリスト</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span><span class="p">([</span><span class="s2">&quot;2023-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2023-01-02&quot;</span><span class="p">])</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span><span class="p">([</span><span class="s2">"2023-01-01"</span><span class="p">,</span> <span class="s2">"2023-01-02"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -403,7 +415,7 @@ DatetimeIndex([&#39;2023-01-01&#39;, &#39;2023-01-02&#39;], dtype=&#39;datetime6
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s2">&quot;2023-01-01&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;2023-01-03&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s2">"2023-01-01"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">"2023-01-03"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -420,7 +432,7 @@ DatetimeIndex([&#39;2023-01-01&#39;, &#39;2023-01-02&#39;, &#39;2023-01-03&#39;]
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s2">&quot;2023-01-01&quot;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s2">"2023-01-01"</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -438,9 +450,9 @@ DatetimeIndex([&#39;2023-01-01&#39;, &#39;2023-01-02&#39;, &#39;2023-01-03&#39;]
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span>
-    <span class="s2">&quot;2023-01-01 9:00:00&quot;</span><span class="p">,</span>
+    <span class="s2">"2023-01-01 9:00:00"</span><span class="p">,</span>
     <span class="n">periods</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-    <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;1S&quot;</span><span class="p">,</span>
+    <span class="n">freq</span><span class="o">=</span><span class="s2">"1S"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -462,7 +474,7 @@ DatetimeIndex([&#39;2023-01-01 09:00:00&#39;, &#39;2023-01-01 09:00:01&#39;,
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span>
-    <span class="s2">&quot;2022-01-01 9:00:00&quot;</span><span class="p">,</span>
+    <span class="s2">"2022-01-01 9:00:00"</span><span class="p">,</span>
     <span class="n">periods</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
     <span class="n">freq</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
 <span class="p">)</span>
@@ -494,9 +506,9 @@ DatetimeIndex([&#39;2022-01-01 09:00:00&#39;, &#39;2022-01-01 09:00:01&#39;,
 <span class="n">ts_ser</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
     <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span>
     <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span>
-        <span class="s2">&quot;2023-01-01&quot;</span><span class="p">,</span>
+        <span class="s2">"2023-01-01"</span><span class="p">,</span>
         <span class="n">periods</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
-        <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;1H&quot;</span><span class="p">,</span>
+        <span class="n">freq</span><span class="o">=</span><span class="s2">"1H"</span><span class="p">,</span>
     <span class="p">),</span>
 <span class="p">)</span>
 <span class="n">ts_ser</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -573,7 +585,7 @@ DatetimeIndex([&#39;2023-01-01 00:00:00&#39;, &#39;2023-01-01 01:00:00&#39;,
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts_ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
 <span class="c1"># or</span>
-<span class="n">ts_ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2023-02-11 15:00&quot;</span><span class="p">]</span>
+<span class="n">ts_ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"2023-02-11 15:00"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -612,7 +624,7 @@ Freq: 24H, dtype: float64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts_ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2023-02&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts_ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"2023-02"</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -634,7 +646,7 @@ Freq: H, dtype: float64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts_ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2023-01-10 3:00&quot;</span><span class="p">:</span><span class="s2">&quot;2023-01-10 5:00&quot;</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts_ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"2023-01-10 3:00"</span><span class="p">:</span><span class="s2">"2023-01-10 5:00"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -654,7 +666,7 @@ Freq: H, dtype: float64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts_ser</span><span class="o">.</span><span class="n">between_time</span><span class="p">(</span><span class="s2">&quot;10:00&quot;</span><span class="p">,</span> <span class="s2">&quot;17:00&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts_ser</span><span class="o">.</span><span class="n">between_time</span><span class="p">(</span><span class="s2">"10:00"</span><span class="p">,</span> <span class="s2">"17:00"</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -690,7 +702,7 @@ dtype: float64
         <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
         <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
     <span class="p">],</span>
-    <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;M&quot;</span><span class="p">,</span>
+    <span class="n">freq</span><span class="o">=</span><span class="s2">"M"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -710,8 +722,8 @@ PeriodIndex([&#39;2023-01&#39;, &#39;2023-02&#39;], dtype=&#39;period[M]&#39;)
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 文字列を要素としたリスト</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">PeriodIndex</span><span class="p">(</span>
-    <span class="p">[</span><span class="s2">&quot;2023-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2023-02-01&quot;</span><span class="p">],</span>
-    <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;period[M]&quot;</span><span class="p">,</span>  <span class="c1"># freq=&quot;M&quot;でも可</span>
+    <span class="p">[</span><span class="s2">"2023-01-01"</span><span class="p">,</span> <span class="s2">"2023-02-01"</span><span class="p">],</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="s2">"period[M]"</span><span class="p">,</span>  <span class="c1"># freq="M"でも可</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -732,7 +744,7 @@ PeriodIndex([&#39;2023-01&#39;, &#39;2023-02&#39;], dtype=&#39;period[M]&#39;)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">period_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s2">&quot;2023-01-01&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;2023-01-03&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">period_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s2">"2023-01-01"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">"2023-01-03"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -749,7 +761,7 @@ PeriodIndex([&#39;2023-01-01&#39;, &#39;2023-01-02&#39;, &#39;2023-01-03&#39;], 
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">period_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s2">&quot;2023-01-01&quot;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">period_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s2">"2023-01-01"</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -767,9 +779,9 @@ PeriodIndex([&#39;2023-01-01&#39;, &#39;2023-01-02&#39;, &#39;2023-01-03&#39;], 
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">period_range</span><span class="p">(</span>
-    <span class="s2">&quot;2023-01-01 9:00:00&quot;</span><span class="p">,</span>
+    <span class="s2">"2023-01-01 9:00:00"</span><span class="p">,</span>
     <span class="n">periods</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-    <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;1S&quot;</span><span class="p">,</span>
+    <span class="n">freq</span><span class="o">=</span><span class="s2">"1S"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -793,9 +805,9 @@ PeriodIndex([&#39;2023-01-01 09:00:00&#39;, &#39;2023-01-01 09:00:01&#39;,
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd_ser</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
     <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
     <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">period_range</span><span class="p">(</span>
-        <span class="s2">&quot;2023-01-01&quot;</span><span class="p">,</span>
+        <span class="s2">"2023-01-01"</span><span class="p">,</span>
         <span class="n">periods</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-        <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;1Q&quot;</span><span class="p">,</span>
+        <span class="n">freq</span><span class="o">=</span><span class="s2">"1Q"</span><span class="p">,</span>
     <span class="p">),</span>
 <span class="p">)</span>
 <span class="n">pd_ser</span>
@@ -859,7 +871,7 @@ Freq: Q-DEC, dtype: float64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd_ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2023Q4&quot;</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd_ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"2023Q4"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -876,7 +888,7 @@ Freq: Q-DEC, dtype: float64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd_ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2023&quot;</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd_ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"2023"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -897,7 +909,7 @@ Freq: Q-DEC, dtype: float64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd_ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2023Q3&quot;</span><span class="p">:</span><span class="s2">&quot;2024Q2&quot;</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd_ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"2023Q3"</span><span class="p">:</span><span class="s2">"2024Q2"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -931,7 +943,7 @@ Freq: Q-DEC, dtype: float64
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-30</div>
+              Last updated on 2026-08-28</div>
           </div>
           <div class="right-details">
             
@@ -974,7 +986,7 @@ Freq: Q-DEC, dtype: float64
     <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../../_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../../../../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../../../../../_static/copybutton.js?v=940804e7"></script>
     <script src="../../../../../../_static/translations.js?v=4755f45a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     </body>

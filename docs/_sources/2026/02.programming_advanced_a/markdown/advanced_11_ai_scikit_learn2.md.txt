@@ -1,0 +1,375 @@
+<!-- Markdownセル -->
+# 第11回 PythonとAI (scikit-learn) 2：分類モデルとクラスタリング
+
+皆さん、こんにちは！プログラミング応用A、第11回の講義です。担当の教員です。
+前回（第10回）は、機械学習の全体像を学び、AIに明日の売上高や客数を「数値」で予測させる「線形回帰（Linear Regression）」に挑戦しました。データの「学習（`.fit`）」と「予測（`.predict`）」、そして過学習を防ぐための「学習用・テスト用のデータ分割」という機械学習の黄金の型を習得しましたね。
+
+今回は、AIシリーズの第2弾として、さらに実務で大活躍する2つの強力なAI技術をマスターします！
+
+1.  **分類モデル（教師あり学習）**：
+    「客がコーヒーを買うか、買わないか？」「この取引は不正か、正常か？」という、**「Yes / No」の判断（カテゴリ）を予測**するAIモデルです。
+2.  **クラスタリング（教師なし学習）**：
+    あらかじめ正解を与えずに、データ自体の特徴（客単価や来店頻度など）をAIがじっくり眺め、**自動で「隠れたグループ」を見つけて分類**するAI技術です。
+
+「決定木（ディシジョン・ツリー）」や「K-means（ケー・ミーンズ）」など、一見難しそうな横文字が出てきますが、**大丈夫です！**
+「カフェのYes/Noフローチャート（チャート診断）」や「お店の常連さんグループ分け」に例えながら、文系の皆さんが最も直感的に理解できるよう100分間かけて面白く図解していきます！
+
+---
+## 🎯 到達目標 (約5分)
+この授業が終わるころには、以下のことができるようになります。
+1. **「回帰（数値を予測）」と「分類（カテゴリを予測）」の違い**を事例を挙げて説明できる。
+2. **決定木（Decision Tree）**モデルの仕組みを理解し、scikit-learnで分類予測を実装できる。
+3. 分類モデルの評価指標である**正解率（Accuracy）**の意味を理解し、算出できる。
+4. **K-means（K平均法）**を用いた「クラスタリング」の仕組みを理解し、顧客データを自動でセグメント化（グループ分け）できる。
+
+---
+## 11.1 分類モデル（教師あり学習）：決定木（Decision Tree） (約20分)
+
+まずは、YesかNoかのカテゴリを予測する「分類（Classification）」を学びます。
+今回は、AIがデータから自動的に「もし〜なら」というルールを作って、ツリー状のトーナメント表（フローチャート）のように分類していく **決定木（Decision Tree）** という非常に直感的で人気のあるアルブを扱います。
+
+**【決定木のルール作成イメージ】**
+```text
+                  [ 🤔 顧客はリピートするか？ ]
+                              │
+                ╭─────────────┴─────────────╮
+        (気温 >= 28℃？)             (気温 < 28℃？)
+                │                           │
+          【 アイス購入 】              (顧客は会員？)
+                                            │
+                                     ╭──────┴──────╮
+                                  【リピート】   【リピートなし】
+```
+このように、決定木は「どの質問（条件）でデータを切り分ければ、最もスッキリYes/Noに分かれるか」を自動で計算してくれます。
+
+### 分類予測の実践
+カフェの顧客アンケートのデータ（年齢、来店頻度）から、その顧客が「限定商品を注文した（1）」「注文しなかった（0）」を予測してみましょう。
+
+```python
+<!-- コードセル -->
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier # 決定木の「分類モデル」
+from sklearn.metrics import accuracy_score       # 正解率の評価ツール
+
+# 1. 模擬顧客データ（100人分）を作成します
+np.random.seed(42)
+age = np.random.randint(18, 60, 100)           # 年齢（18〜60歳）
+visits_per_month = np.random.randint(1, 15, 100) # 月の来店回数
+
+# 「来店回数が多くて、年齢が若い人は、限定商品を買う傾向がある（1、そうでないなら0）」
+buy_limited = np.where((visits_per_month >= 6) & (age <= 35), 1, 0)
+
+df_customers = pd.DataFrame({
+    "年齢": age,
+    "月来店回数": visits_per_month,
+    "限定商品購入": buy_limited
+})
+
+print("--- 顧客アンケートデータ（先頭5人分） ---")
+display(df_customers.head())
+
+# 2. X（ヒント：年齢、月来店回数）と y（ターゲット：限定商品購入）に分割
+X = df_customers[["年齢", "月来店回数"]]
+y = df_customers["限定商品購入"]
+
+# 3. 学習用とテスト用に分割（20%をテスト用に）
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# 4. 決定木分類モデルを定義・学習
+tree_model = DecisionTreeClassifier(max_depth=3, random_state=42) # max_depthは質問の最大深さ（3段まで）
+tree_model.fit(X_train, y_train)
+
+print("\n決定木モデルの学習が完了しました！")
+```
+
+---
+## 11.2 分類モデルの評価：正解率（Accuracy） (約15分)
+
+分類AIモデルの賢さを測る最も基本的な指標が **正解率（Accuracy）** です。
+
+*   **意味**：AIのすべての予測のうち、**「何パーセントの予測がピタリと当たっていたか」**を表します。
+*   **計算式**：
+    $$\text{正解率 (Accuracy)} = \frac{\text{見事に予測が当たった数}}{\text{すべてのテストデータの数}}$$
+*   **見方**：通常は **0.0 〜 1.0**（パーセント表記だと 0% 〜 100%）になります。1.0（100%）が完全な予測です。
+
+```python
+<!-- コードセル -->
+# 5. テストデータを使って予測させ、正解率を計算します
+y_pred = tree_model.predict(X_test)
+
+accuracy = accuracy_score(y_test, y_pred)
+print("--- 決定木モデルの実力テスト ---")
+print(f"正解率（Accuracy）: {accuracy:.3f}  ({accuracy*100:.1f}% の確率で予測が的中！)")
+
+# 実際の答えと、AIの予測を並べてみる
+test_results = pd.DataFrame({
+    "年齢（テスト用）": X_test["年齢"],
+    "月来店回数": X_test["月来店回数"],
+    "実際の行動": y_test,
+    "AIの予測": y_pred
+})
+display(test_results.head())
+```
+
+---
+## 11.3 教師なし学習：K-meansによる顧客クラスタリング (約25分)
+
+ここからは、もう一つのメインテーマである「教師なし学習」の **クラスタリング（Clustering）** を学びます。
+クラスタリングは、あらかじめ「正解（ラベル）」を教えてもらえない状態で、AIがデータの中に潜む「自発的なグループ（仲間）」を見つけ出します。
+
+最も有名なアルゴリズムが **K-means（K平均法）** です。
+*   **「K」** ＝ 「いくつのグループ（クラスタ）に分けたいか」という指定。
+*   **「means」** ＝ 「平均（グループの中心点）」という意味。
+
+**【K-meansの自動グループ分けのイメージ】**
+```text
+  [ 散らばった点データ ] ──▶  [ 🤖 K-meansが中心点を探す ] ──▶ [ 🔴 🔵 🟢 3つのクラスタへ！ ]
+  （正解ラベルなし）           「近いもの同士をまとめるよ」      「常連、ライト、新規」に自動分類
+```
+
+### K-means の実践
+100人のお客さんの「客単価（使った金額）」と「来店頻度」のデータから、AIに自発的に3つのグループに分類させてみましょう。これは、カフェの「VIP判定」や「顧客セグメンテーション（ターゲット分析）」に直結する非常に高度なマーケティング手法です。
+
+```python
+<!-- コードセル -->
+from sklearn.cluster import KMeans # K-meansモデルのインポート
+
+# 1. 100人の顧客の「1回あたりの客単価」と「年間来店回数」データ
+np.random.seed(42)
+# 意図的に3つの特徴的なグループを作ります（AIがこれを見破れるかテスト！）
+group1 = np.random.multivariate_normal([1200, 24], [[20000, 4], [4, 4]], 30) # 高単価・高頻度（ロイヤル客）
+group2 = np.random.multivariate_normal([450, 12], [[10000, 2], [2, 4]], 40)  # 低単価・中頻度（学生など）
+group3 = np.random.multivariate_normal([800, 4], [[15000, 1], [1, 1]], 30)   # 中単価・低頻度（たまに来る人）
+
+all_data = np.vstack([group1, group2, group3])
+df_marketing = pd.DataFrame(all_data, columns=["客単価", "年間来店回数"])
+
+# 2. 【超重要】教師なし学習なので、X（ヒント）だけで y（正解）はありません！
+X_clustering = df_marketing[["客単価", "年間来店回数"]]
+
+# 3. K-meansの定義（n_clusters=3 で、3つのグループに分けるよう指示）
+kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
+
+# 4. 学習（fit）。教師なしなので、ヒントXだけを渡します
+kmeans.fit(X_clustering)
+
+# 5. 各データがどのグループ（0, 1, 2）に分類されたかのラベルを取得し、データフレームに合体！
+df_marketing["グループID"] = kmeans.labels_
+
+print("AIによる自動グループ分けが完了しました！先頭10件を表示します。")
+display(df_marketing.head(10))
+```
+
+```python
+<!-- コードセル -->
+# 6. AIが分類したグループをグラフに描画して、見破り具合を確認してみましょう！
+plt.figure(figsize=(8, 6))
+
+# グループ（0, 1, 2）ごとに色を変えて点々をプロットします
+for g_id in :
+    sub_df = df_marketing[df_marketing["グループID"] == g_id]
+    plt.scatter(sub_df["客単価"], sub_df["年間来店回数"], label=f"グループ {g_id}")
+
+# AIが計算した「各グループの平均重心（セントロイド）」を★マークで表示！
+centers = kmeans.cluster_centers_
+plt.scatter(centers[:, 0], centers[:, 1], s=300, c="red", marker="*", label="グループの重心")
+
+plt.title("K-meansによる顧客セグメンテーション（自動グループ分け）")
+plt.xlabel("客単価 (円)")
+plt.ylabel("年間来店回数 (回)")
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+グラフを見てみてください！
+正解を教えていないにもかかわらず、AIは完璧に「高単価・高頻度」「低単価・中頻度」「中単価・低頻度」の3つの顧客グループを境界線で切り分け、それぞれの中心点（★）を計算できていることが視覚的に分かります。
+これが「教師なし学習」の驚くべき力です！
+
+---
+## 💻 演習課題 (約25分)
+
+それでは、今日学んだ「決定木分類モデル」と「K-meansクラスタリング」に自分の手で挑戦してみましょう！
+
+以下の `# TODO: ` の部分を書き換えて、プログラムを完成させてください。
+```
+
+```python
+# 演習1: 決定木分類モデルの構築（難易度：易）
+# 100人の「年齢（age）」と「平日のみの来店かどうか（weekday_only）」から、
+# その人が「ケーキを注文した（1）」「注文しなかった（0）」を予測します。
+# TODO: 決定木分類モデル（DecisionTreeClassifier）を定義し、学習データ（X_train, y_train）で学習させてください。
+# ※決定木の最大の深さは 3 (max_depth=3), random_state=42 としてください。
+
+from sklearn.tree import DecisionTreeClassifier
+
+# 模擬データ（ここは直さなくてOK）
+np.random.seed(42)
+X_dummy = pd.DataFrame({
+    "年齢": np.random.randint(18, 60, 100),
+    "平日来店率": np.random.uniform(0, 1, 100)
+})
+y_dummy = np.where((X_dummy["年齢"] >= 40) & (X_dummy["平日来店率"] >= 0.5), 1, 0)
+X_train, X_test, y_train, y_test = train_test_split(X_dummy, y_dummy, test_size=0.2, random_state=42)
+
+# TODO: 1. 決定木分類モデルの定義（max_depth と random_state を指定）
+my_tree_model = 
+
+# TODO: 2. モデルの学習（.fit）
+
+
+print("モデルの学習完了！")
+```
+
+```python
+# 演習2: 分類モデルの予測と正解率の算出（難易度：易）
+# TODO: 1. 学習させた my_tree_model を使って、テストデータ（X_test）に対する予測を行い、
+#          結果を変数 y_pred に代入してください。
+# TODO: 2. accuracy_score() を使って、その予測の「正解率」を計算し、表示してください。
+
+from sklearn.metrics import accuracy_score
+
+# TODO: 1. テストデータに対する予測を行う
+y_pred = 
+
+# TODO: 2. 正解率を計算する
+acc_score = 
+
+print(f"実力テストの正解率: {acc_score:.4f} ({acc_score*100:.1f}%)")
+```
+
+```python
+# 演習3: K-meansのインスタンス定義と学習（難易度：中）
+# 店舗の「商品数（num_items）」と「平均満足度（satisfaction）」データから、
+# 店舗のブランドイメージを4つのグループにクラスタリングします。
+# TODO: KMeansモデルを使って、4つのグループ（n_clusters=4）に分ける定義をし、
+#       データ X_shops を学習させてください。
+# ※random_state=42, n_init=10 と設定してください。
+
+from sklearn.cluster import KMeans
+
+# 模擬データ（ここは直さなくてOK）
+np.random.seed(42)
+X_shops = pd.DataFrame({
+    "商品数": np.random.randint(5, 50, 50),
+    "平均満足度": np.random.uniform(1.0, 5.0, 50)
+})
+
+# TODO: 1. KMeansモデルの定義（n_clusters=4, random_state=42, n_init=10）
+my_kmeans = 
+
+# TODO: 2. モデルの学習（.fit）※教師なしなので X_shops のみを渡します
+
+
+print("K-meansのクラスタリング完了！")
+```
+
+```python
+# 演習4: クラスタリング結果のラベル取得と合体（難易度：中）
+# TODO: 1. my_kmeans から、各データがどのクラスタに割り当てられたかのラベル（.labels_）を取り出し、
+#          変数 shop_cluster_labels に代入してください。
+# TODO: 2. 取り出したラベルを、データフレーム X_shops の「グループ分類」という新しい列に追加してください。
+
+# TODO: 1. ラベルを取得する
+shop_cluster_labels = 
+
+# TODO: 2. 新しい列として追加する
+X_shops["グループ分類"] = 
+
+# 先頭3行を表示して確認（ここは直さなくてOK）
+display(X_shops.head(3))
+```
+
+```python
+# 演習5: 実践！自動グループ分けの「重心（セントロイド）」の取得（難易度：難）
+# K-meansでは、AIが自動で決めた各グループの中心座標（平均値）を確認できます。
+# これにより、「グループ0は『商品数が多くて、満足度が低い不満店舗グループ』だな」と分析できます。
+# TODO: my_kmeans から、各グループの中心座標（.cluster_centers_）を取り出し、
+#       変数 cluster_centers に代入して表示してください。
+
+# TODO: グループの重心（中心点）を取得するプロパティを代入
+cluster_centers = 
+
+print("--- AIが分析した 4つのグループの満足度・商品数の中心座標 ---")
+print(cluster_centers)
+# 表示された座標（4行2列の配列）が、それぞれのグループの「満足度・商品数の平均値（中心）」を表します！
+```
+
+---
+## 💡 演習問題の解答例
+
+（Yes/Noの予測から、正解のないグループ分けまで、高度なAI分析をやり遂げました！素晴らしいです。答え合わせをしましょう。）
+
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+
+**演習1の解答**
+```python
+my_tree_model = DecisionTreeClassifier(max_depth=3, random_state=42)
+my_tree_model.fit(X_train, y_train)
+```
+
+**演習2の解答**
+```python
+y_pred = my_tree_model.predict(X_test)
+acc_score = accuracy_score(y_test, y_pred)
+```
+
+**演習3の解答**
+```python
+my_kmeans = KMeans(n_clusters=4, random_state=42, n_init=10)
+my_kmeans.fit(X_shops)
+```
+
+**演習4の解答**
+```python
+shop_cluster_labels = my_kmeans.labels_
+X_shops["グループ分類"] = shop_cluster_labels
+```
+
+**演習5の解答**
+```python
+cluster_centers = my_kmeans.cluster_centers_
+```
+
+</details>
+
+---
+## 📚 第11回のまとめ
+
+お疲れ様でした！今回の授業で、「教師あり学習」の２大問題（回帰・分類）と、データから勝手に規則性を見出す「教師なし学習」の両方の主要技術を使いこなせるようになりました。
+
+### ✨ 今日の重要ポイントまとめ
+*   **分類（Classification）**：Yes/No（1か0か）やカテゴリを予測する教師あり学習。今回は「決定木（Decision Tree）」のフローチャート式の切り分け方を学びました。
+*   **正解率（Accuracy）**：分類予測がどれだけ当たっていたかを示す指標（全体に対する正解数の割合）。
+*   **クラスタリング（教師なし学習）**：正解ラベルのないデータから、自発的にグループを分類する技術。
+*   **K-means法**：指定したグループ数（K）だけ中心点を自動で移動させ、最も近いデータ同士を仲間分けする。
+
+### ❓ よくある質問と回答 (FAQ)
+*   **Q. 決定木の「max_depth（深さ）」をめちゃくちゃ大きくするとどうなりますか？**
+    *   **A.** 質問が無限に増えるため、学習データに対しては100%完璧に分類できるようになります。しかし、これは「過去の細かなノイズまで丸暗記した」状態になり、前回学んだ **過学習（オーバーフィッティング）** が引き起こされます。テストデータに対する正解率（Accuracy）がガクンと下がってしまうため、深さは「3〜5」程度に制限（この操作を「枝刈り」と呼びます）するのが鉄則です。
+*   **Q. K-meansで「n_clusters（分けるグループ数）」はどうやって決めればいいですか？**
+    *   **A.** これには決まった唯一の正解はありません。ビジネス上の目的（例えば「VIP」「普通」「ライト」の3種類にキャンペーンを打ちたいから3つにする、など）で決めることが多いです。データ分析的な手法としては、グループ数を変えながらデータのまとまりの良さを計算する「エルボー法」や「シルエット分析」というアプローチもあります。
+
+### 🌟 Colabで試すおすすめコード
+決定木モデルが作った「Yes/Noの分岐条件」を、**日本語のテキストとして分かりやすく出力（視覚化）** するコードです。
+AIが顧客データから「どの質問で、どのようにデータを切り分けたか」の意思決定プロセスが丸見えになります。これが「中身が見える（説明可能なAI）」と呼ばれる決定木の最大のメリットです。
+```python
+<!-- コードセル -->
+from sklearn.tree import export_text
+
+# 決定木が学習したルール（フローチャート）をテキスト形式でエクスポート
+# feature_names で列の名前を指定します
+tree_rules = export_text(tree_model, feature_names=["年齢", "月来店回数"])
+
+print("--- AIが自動生成したフローチャート（意思決定プロセス） ---")
+print(tree_rules)
+# 「もし月来店回数が 5.5回以下なら限定商品は買わない」「5.5回より多くて、年齢が35.5歳以下なら買う！」
+# というルールを、AIがデータから一瞬で見つけ出したことがひと目で分かりますね！
+```
+```markdown
+<!-- Markdownセル -->
+次回（第12回）は、本コースの総まとめとして、今話題の最新開発スタイル**「バイブコーディング（Vibe Coding）」**を学びます。生成AIをフル活用し、自分が書けないはずの高度なシステム（Webアプリ、機械学習、GISの合体）を、AIと会話しながら一瞬で爆速開発する現代最先端のプログラミング手法です。お楽しみに！
+```

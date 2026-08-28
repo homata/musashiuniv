@@ -10,17 +10,17 @@
 <meta property="og:description" content="SQLite3: データサンプル: sqlite3モジュールを使う: pandasを使う:" />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2025_02.programming_advanced_a_python_dataanalysis_files_python_dataanalysis_02-read-data_02-09-rdb_db02a300.png" />
+<meta property="og:image" content="/None" />
 <meta property="og:image:alt" content="SQLite3: データサンプル: sqlite3モジュールを使う: pandasを使う:" />
 <meta name="description" content="SQLite3: データサンプル: sqlite3モジュールを使う: pandasを使う:" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="索引" href="../../../../../../genindex.html" /><link rel="search" title="検索" href="../../../../../../search.html" />
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
         <title>RDBデータ - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=949a1ff5" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo-extensions.css?v=302659d7" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/musashiuniv/custom.css" />
@@ -295,6 +295,18 @@
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_01.html">第1回 オリエンテーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_02.html">第2回 オープンデータの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_03.html">第3回 データの種類とデータ加⼯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_04.html">第4回 データ解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_05.html">第5回 Webサービスの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_06.html">第6回 Webサービスの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_07.html">第7回 地理空間情報の基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_08.html">第8回 地理空間データの活⽤1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_09.html">第9回 地理空間データの活⽤2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_13.html">第13回 総合演習</a></li>
 </ul>
 </li>
 </ul>
@@ -364,7 +376,7 @@
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
 
-<span class="n">con</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;data/sakila-sqlite3/sakila_master.db&quot;</span><span class="p">)</span>  <span class="c1"># ・・①</span>
+<span class="n">con</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"data/sakila-sqlite3/sakila_master.db"</span><span class="p">)</span>  <span class="c1"># ・・①</span>
 </pre></div>
 </div>
 </div>
@@ -375,7 +387,7 @@
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cur</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>  <span class="c1"># コネクションからカーソルオブジェクトを取得 ・・②</span>
 <span class="c1"># select文を実行してfor文で順次データを取得</span>
 <span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>  <span class="c1">#  ・・③</span>
-    <span class="s2">&quot;SELECT name FROM sqlite_master WHERE type=&#39;table&#39;;&quot;</span>
+    <span class="s2">"SELECT name FROM sqlite_master WHERE type='table';"</span>
 <span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># ・・④</span>
 </pre></div>
@@ -408,7 +420,7 @@ rental
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT count(*) FROM film;&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"SELECT count(*) FROM film;"</span><span class="p">)</span>
 <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -427,7 +439,7 @@ rental
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-    <span class="s2">&quot;SELECT FILM_ID, TITLE, RELEASE_YEAR, LENGTH, LAST_UPDATE FROM film LIMIT 10;&quot;</span>
+    <span class="s2">"SELECT FILM_ID, TITLE, RELEASE_YEAR, LENGTH, LAST_UPDATE FROM film LIMIT 10;"</span>
 <span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
@@ -457,8 +469,8 @@ rental
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">limit</span> <span class="o">=</span> <span class="mi">5</span>
 
 <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-    <span class="s2">&quot;SELECT FILM_ID, TITLE, RELEASE_YEAR, LENGTH, LAST_UPDATE&quot;</span>
-    <span class="s2">&quot; FROM film LIMIT (?);&quot;</span><span class="p">,</span>
+    <span class="s2">"SELECT FILM_ID, TITLE, RELEASE_YEAR, LENGTH, LAST_UPDATE"</span>
+    <span class="s2">" FROM film LIMIT (?);"</span><span class="p">,</span>
     <span class="p">(</span><span class="n">limit</span><span class="p">,),</span>
 <span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -484,12 +496,12 @@ rental
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">limit</span> <span class="o">=</span> <span class="mi">20</span>
 
 <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-    <span class="s2">&quot;SELECT F.FILM_ID, F.TITLE, F.RELEASE_YEAR, F.LENGTH, F.LAST_UPDATE, C.NAME&quot;</span>
-    <span class="s2">&quot; FROM film as F&quot;</span>
-    <span class="s2">&quot; LEFT JOIN film_category as FC ON F.FILM_ID = FC.FILM_ID&quot;</span>
-    <span class="s2">&quot; LEFT JOIN category as C ON FC.CATEGORY_ID = C.CATEGORY_ID&quot;</span>
-    <span class="s2">&quot; ORDER BY F.TITLE&quot;</span>
-    <span class="s2">&quot; LIMIT (?);&quot;</span><span class="p">,</span>
+    <span class="s2">"SELECT F.FILM_ID, F.TITLE, F.RELEASE_YEAR, F.LENGTH, F.LAST_UPDATE, C.NAME"</span>
+    <span class="s2">" FROM film as F"</span>
+    <span class="s2">" LEFT JOIN film_category as FC ON F.FILM_ID = FC.FILM_ID"</span>
+    <span class="s2">" LEFT JOIN category as C ON FC.CATEGORY_ID = C.CATEGORY_ID"</span>
+    <span class="s2">" ORDER BY F.TITLE"</span>
+    <span class="s2">" LIMIT (?);"</span><span class="p">,</span>
     <span class="p">(</span><span class="n">limit</span><span class="p">,),</span>
 <span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -533,12 +545,12 @@ rental
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span>
-    <span class="s2">&quot;SELECT F.FILM_ID, F.TITLE, F.RELEASE_YEAR, F.LENGTH, F.LAST_UPDATE, C.NAME&quot;</span>
-    <span class="s2">&quot; FROM film as F&quot;</span>
-    <span class="s2">&quot; LEFT JOIN film_category as FC ON F.FILM_ID = FC.FILM_ID&quot;</span>
-    <span class="s2">&quot; LEFT JOIN category as C ON FC.CATEGORY_ID = C.CATEGORY_ID&quot;</span><span class="p">,</span>
+    <span class="s2">"SELECT F.FILM_ID, F.TITLE, F.RELEASE_YEAR, F.LENGTH, F.LAST_UPDATE, C.NAME"</span>
+    <span class="s2">" FROM film as F"</span>
+    <span class="s2">" LEFT JOIN film_category as FC ON F.FILM_ID = FC.FILM_ID"</span>
+    <span class="s2">" LEFT JOIN category as C ON FC.CATEGORY_ID = C.CATEGORY_ID"</span><span class="p">,</span>
     <span class="n">con</span><span class="o">=</span><span class="n">con</span><span class="p">,</span>
-    <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;last_update&quot;</span><span class="p">],</span>
+    <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">"last_update"</span><span class="p">],</span>
 <span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -657,11 +669,11 @@ rental
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 film_id                  int64
-title                   object
-release_year            object
+title                      str
+release_year               str
 length                   int64
-last_update     datetime64[ns]
-name                    object
+last_update     datetime64[us]
+name                       str
 dtype: object
 </pre></div></div>
 </div>
@@ -689,7 +701,7 @@ dtype: object
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-30</div>
+              Last updated on 2026-08-28</div>
           </div>
           <div class="right-details">
             
@@ -731,7 +743,7 @@ dtype: object
     <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../../_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../../../../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../../../../../_static/copybutton.js?v=940804e7"></script>
     <script src="../../../../../../_static/translations.js?v=4755f45a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     </body>

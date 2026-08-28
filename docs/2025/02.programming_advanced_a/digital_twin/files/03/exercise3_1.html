@@ -10,17 +10,17 @@
 <meta property="og:description" content="読み込んだ平面データを三角形のメッシュデータに変換するために、多角形を三角形分割する方法として「耳刈り取り法」のモジュールを利用します 単調多角形を三角形分割する手法(耳刈り取り法) earcut-python." />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2025_02.programming_advanced_a_digital_twin_files_03_exercise3_1_2c87394a.png" />
+<meta property="og:image" content="/None" />
 <meta property="og:image:alt" content="読み込んだ平面データを三角形のメッシュデータに変換するために、多角形を三角形分割する方法として「耳刈り取り法」のモジュールを利用します 単調多角形を三角形分割する手法(耳刈り取り法) earcut-python." />
 <meta name="description" content="読み込んだ平面データを三角形のメッシュデータに変換するために、多角形を三角形分割する方法として「耳刈り取り法」のモジュールを利用します 単調多角形を三角形分割する手法(耳刈り取り法) earcut-python." />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="索引" href="../../../../../genindex.html" /><link rel="search" title="検索" href="../../../../../search.html" />
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
         <title>&lt;no title&gt; - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=949a1ff5" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/furo-extensions.css?v=302659d7" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/musashiuniv/custom.css" />
@@ -295,6 +295,18 @@
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../2026/02.programming_advanced_a/index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../2026/02.programming_advanced_a/markdown/advanced_01.html">第1回 オリエンテーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../2026/02.programming_advanced_a/markdown/advanced_02.html">第2回 オープンデータの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../2026/02.programming_advanced_a/markdown/advanced_03.html">第3回 データの種類とデータ加⼯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../2026/02.programming_advanced_a/markdown/advanced_04.html">第4回 データ解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../2026/02.programming_advanced_a/markdown/advanced_05.html">第5回 Webサービスの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../2026/02.programming_advanced_a/markdown/advanced_06.html">第6回 Webサービスの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../2026/02.programming_advanced_a/markdown/advanced_07.html">第7回 地理空間情報の基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../2026/02.programming_advanced_a/markdown/advanced_08.html">第8回 地理空間データの活⽤1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../2026/02.programming_advanced_a/markdown/advanced_09.html">第9回 地理空間データの活⽤2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../2026/02.programming_advanced_a/markdown/advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../2026/02.programming_advanced_a/markdown/advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../2026/02.programming_advanced_a/markdown/advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../2026/02.programming_advanced_a/markdown/advanced_13.html">第13回 総合演習</a></li>
 </ul>
 </li>
 </ul>
@@ -353,7 +365,7 @@
 </div>
 <div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Googleドライブをマウント</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">drive</span>
-<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">'/content/drive'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -521,12 +533,12 @@ Requirement already satisfied: packaging in /usr/local/lib/python3.12/dist-packa
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
 <span class="c1"># CityGML(XML)ファイル</span>
-<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/13.Colab Notebooks/dataset/citygml_in/53392633_bldg_6697_2_op.gml&quot;</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">"/content/drive/MyDrive/13.Colab Notebooks/dataset/citygml_in/53392633_bldg_6697_2_op.gml"</span>
 <span class="c1"># CityGML(XML)ファイルのファイル名のみを取得</span>
 <span class="n">basename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 
 <span class="c1"># ファイル名を分割</span>
-<span class="n">basenames</span> <span class="o">=</span> <span class="n">basename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
+<span class="n">basenames</span> <span class="o">=</span> <span class="n">basename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'_'</span><span class="p">)</span>
 <span class="c1"># ファイル名からメッシュコードを取得</span>
 <span class="n">mesh_code</span> <span class="o">=</span> <span class="n">basenames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="c1"># ファイル名から地物型 (bldg)</span>
@@ -540,7 +552,7 @@ Requirement already satisfied: packaging in /usr/local/lib/python3.12/dist-packa
 
 <span class="c1"># 東京都大田区羽田空港のデータなので、東京都の座標・測地系で出力する</span>
 <span class="c1"># 日本測地系2011　平面直角座標系: 東京都の一部、福島県、栃木県、茨城県、埼玉県、千葉県、群馬県、神祭川県</span>
-<span class="n">to_srid</span> <span class="o">=</span> <span class="s2">&quot;6677&quot;</span>
+<span class="n">to_srid</span> <span class="o">=</span> <span class="s2">"6677"</span>
 </pre></div>
 </div>
 </div>
@@ -567,8 +579,8 @@ Requirement already satisfied: packaging in /usr/local/lib/python3.12/dist-packa
 
 <span class="c1"># 文字列データから配列に変換</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">str2floats</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; x y z -&gt; [x, y, z] &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)])</span>
+<span class="w">    </span><span class="sd">""" x y z -&gt; [x, y, z] """</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">' '</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
@@ -586,7 +598,7 @@ Requirement already satisfied: packaging in /usr/local/lib/python3.12/dist-packa
 <span class="kn">import</span><span class="w"> </span><span class="nn">open3d</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">o3d</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">Building</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; bldg:Building&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">""" bldg:Building"""</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">from_srid</span><span class="p">,</span> <span class="n">to_srid</span><span class="p">):</span>
         <span class="c1"># 元の平面データ</span>
@@ -600,7 +612,7 @@ Requirement already satisfied: packaging in /usr/local/lib/python3.12/dist-packa
         <span class="bp">self</span><span class="o">.</span><span class="n">triangle_meshes</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="c1"># 座標変換の定義をします： 変換元座標系 → 変換先座標系</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">transformer</span> <span class="o">=</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">Transformer</span><span class="o">.</span><span class="n">from_crs</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;epsg:</span><span class="si">{</span><span class="n">from_srid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;epsg:</span><span class="si">{</span><span class="n">to_srid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transformer</span> <span class="o">=</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">Transformer</span><span class="o">.</span><span class="n">from_crs</span><span class="p">(</span><span class="sa">f</span><span class="s2">"epsg:</span><span class="si">{</span><span class="n">from_srid</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"epsg:</span><span class="si">{</span><span class="n">to_srid</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_triangle_mesh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># 三角形のメッシュデータを返す</span>
@@ -647,11 +659,11 @@ Requirement already satisfied: packaging in /usr/local/lib/python3.12/dist-packa
 </div>
 <div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># LOD2のデータを取得</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">lod2</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">nmap</span><span class="p">,</span> <span class="n">from_srid</span><span class="p">,</span> <span class="n">to_srid</span><span class="p">):</span>
-<span class="w">  </span><span class="sd">&quot;&quot;&quot; lod2 &quot;&quot;&quot;</span>
+<span class="w">  </span><span class="sd">""" lod2 """</span>
   <span class="n">obj_buildings</span> <span class="o">=</span> <span class="p">[]</span>
 
   <span class="c1"># bldg:Building 建物データを検索</span>
-  <span class="n">buildings</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;/core:CityModel/core:cityObjectMember/bldg:Building&#39;</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">nsmap</span><span class="p">)</span>
+  <span class="n">buildings</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'/core:CityModel/core:cityObjectMember/bldg:Building'</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">nsmap</span><span class="p">)</span>
 
   <span class="c1"># 建物データでループ</span>
   <span class="k">for</span> <span class="n">building</span> <span class="ow">in</span> <span class="n">buildings</span><span class="p">:</span>
@@ -660,16 +672,16 @@ Requirement already satisfied: packaging in /usr/local/lib/python3.12/dist-packa
 
     <span class="c1"># bldg:GroundSurface, bldg:RoofSurface, bldg:RoofSurface</span>
     <span class="c1"># LOD2の屋根、壁、床の面データのパスを定義</span>
-    <span class="n">polygon_xpaths</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;bldg:boundedBy/bldg:GroundSurface/bldg:lod2MultiSurface/gml:MultiSurface/gml:surfaceMember/gml:Polygon&#39;</span><span class="p">,</span>
-                      <span class="s1">&#39;bldg:boundedBy/bldg:RoofSurface/bldg:lod2MultiSurface/gml:MultiSurface/gml:surfaceMember/gml:Polygon&#39;</span><span class="p">,</span>
-                      <span class="s1">&#39;bldg:boundedBy/bldg:WallSurface/bldg:lod2MultiSurface/gml:MultiSurface/gml:surfaceMember/gml:Polygon&#39;</span><span class="p">]</span>
+    <span class="n">polygon_xpaths</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'bldg:boundedBy/bldg:GroundSurface/bldg:lod2MultiSurface/gml:MultiSurface/gml:surfaceMember/gml:Polygon'</span><span class="p">,</span>
+                      <span class="s1">'bldg:boundedBy/bldg:RoofSurface/bldg:lod2MultiSurface/gml:MultiSurface/gml:surfaceMember/gml:Polygon'</span><span class="p">,</span>
+                      <span class="s1">'bldg:boundedBy/bldg:WallSurface/bldg:lod2MultiSurface/gml:MultiSurface/gml:surfaceMember/gml:Polygon'</span><span class="p">]</span>
 
     <span class="c1"># LOD2の屋根、壁、床の面データの位置情報を取得</span>
     <span class="n">vals_list</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">polygon_xpath</span> <span class="ow">in</span> <span class="n">polygon_xpaths</span><span class="p">:</span>
       <span class="n">poslist_xpaths</span> <span class="o">=</span> <span class="n">building</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="n">polygon_xpath</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">nsmap</span><span class="p">)</span>
       <span class="k">for</span> <span class="n">poslist_xpath</span> <span class="ow">in</span> <span class="n">poslist_xpaths</span><span class="p">:</span>
-        <span class="n">vals</span> <span class="o">=</span> <span class="n">poslist_xpath</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;gml:exterior/gml:LinearRing/gml:posList&#39;</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">nsmap</span><span class="p">)</span>
+        <span class="n">vals</span> <span class="o">=</span> <span class="n">poslist_xpath</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'gml:exterior/gml:LinearRing/gml:posList'</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">nsmap</span><span class="p">)</span>
         <span class="n">vals_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
 
     <span class="c1"># [X, Y, Z]の座標配列を作成</span>
@@ -700,7 +712,7 @@ Requirement already satisfied: packaging in /usr/local/lib/python3.12/dist-packa
     <span class="c1"># 三角形のメッシュデータを取得</span>
     <span class="n">triangle_mesh</span> <span class="o">=</span> <span class="n">obj_building</span><span class="o">.</span><span class="n">get_triangle_mesh</span><span class="p">()</span>
     <span class="c1"># PLYファイルに保存</span>
-    <span class="n">pathname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">basedir</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">basename</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">index</span><span class="si">:</span><span class="s2">02</span><span class="si">}{</span><span class="n">extname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">pathname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">basedir</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">basename</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">index</span><span class="si">:</span><span class="s2">02</span><span class="si">}{</span><span class="n">extname</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="n">o3d</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_triangle_mesh</span><span class="p">(</span><span class="n">pathname</span><span class="p">,</span> <span class="n">triangle_mesh</span><span class="p">,</span> <span class="n">write_ascii</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -712,7 +724,7 @@ Requirement already satisfied: packaging in /usr/local/lib/python3.12/dist-packa
 <div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># LOD2の建物データを作成</span>
 <span class="n">obj_buildings</span> <span class="o">=</span> <span class="n">lod2</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">nsmap</span><span class="p">,</span> <span class="n">from_srid</span><span class="p">,</span> <span class="n">to_srid</span><span class="p">)</span>
 <span class="c1"># PLYファイルに保存</span>
-<span class="n">output_filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/content/drive/MyDrive/13.Colab Notebooks/dataset/citygml_out/</span><span class="si">{</span><span class="n">mesh_code</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">object_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">to_srid</span><span class="si">}</span><span class="s2">_lod2.ply&quot;</span>
+<span class="n">output_filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"/content/drive/MyDrive/13.Colab Notebooks/dataset/citygml_out/</span><span class="si">{</span><span class="n">mesh_code</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">object_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">to_srid</span><span class="si">}</span><span class="s2">_lod2.ply"</span>
 <span class="n">write_ply</span><span class="p">(</span><span class="n">output_filename</span><span class="p">,</span> <span class="n">obj_buildings</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -766,7 +778,7 @@ Requirement already satisfied: packaging in /usr/local/lib/python3.12/dist-packa
 </pre></div>
 </div>
 <div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># PLYファイル表示(LOD2 - No.1の建物)</span>
-<span class="n">show_ply</span><span class="p">(</span><span class="s2">&quot;//content/drive/MyDrive/13.Colab Notebooks/dataset/citygml_out/53392633_bldg_6677_lod2_01.ply&quot;</span><span class="p">)</span>
+<span class="n">show_ply</span><span class="p">(</span><span class="s2">"//content/drive/MyDrive/13.Colab Notebooks/dataset/citygml_out/53392633_bldg_6677_lod2_01.ply"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -811,7 +823,7 @@ if (outputEl) {{
 </pre></div>
 </div>
 <div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># PLYファイル表示(LOD2 - No.5の建物)</span>
-<span class="n">show_ply</span><span class="p">(</span><span class="s2">&quot;/content/drive/MyDrive/13.Colab Notebooks/dataset/citygml_out/53392633_bldg_6677_lod2_05.ply&quot;</span><span class="p">)</span>
+<span class="n">show_ply</span><span class="p">(</span><span class="s2">"/content/drive/MyDrive/13.Colab Notebooks/dataset/citygml_out/53392633_bldg_6677_lod2_05.ply"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -866,7 +878,7 @@ if (outputEl) {{
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-30</div>
+              Last updated on 2026-08-28</div>
           </div>
           <div class="right-details">
             
@@ -886,7 +898,7 @@ if (outputEl) {{
     <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../../../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../../../../_static/copybutton.js?v=940804e7"></script>
     <script src="../../../../../_static/translations.js?v=4755f45a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     </body>

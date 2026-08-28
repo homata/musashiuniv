@@ -10,17 +10,17 @@
 <meta property="og:description" content="MultiIndexの生成: MultiIndexをもつオブジェクトへのアクセス: MultiIndexのグルーピング・アライメント: MultiIndexの階層の変更: MultiIndexのソート:" />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2025_02.programming_advanced_a_python_dataanalysis_files_python_dataanalysis_03-table-data_03-05-multiindex_4a660898.png" />
+<meta property="og:image" content="/None" />
 <meta property="og:image:alt" content="MultiIndexの生成: MultiIndexをもつオブジェクトへのアクセス: MultiIndexのグルーピング・アライメント: MultiIndexの階層の変更: MultiIndexのソート:" />
 <meta name="description" content="MultiIndexの生成: MultiIndexをもつオブジェクトへのアクセス: MultiIndexのグルーピング・アライメント: MultiIndexの階層の変更: MultiIndexのソート:" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="索引" href="../../../../../../genindex.html" /><link rel="search" title="検索" href="../../../../../../search.html" />
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
         <title>階層型インデックス（MultiIndex） - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=949a1ff5" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo-extensions.css?v=302659d7" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/musashiuniv/custom.css" />
@@ -295,6 +295,18 @@
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_01.html">第1回 オリエンテーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_02.html">第2回 オープンデータの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_03.html">第3回 データの種類とデータ加⼯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_04.html">第4回 データ解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_05.html">第5回 Webサービスの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_06.html">第6回 Webサービスの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_07.html">第7回 地理空間情報の基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_08.html">第8回 地理空間データの活⽤1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_09.html">第9回 地理空間データの活⽤2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_13.html">第13回 総合演習</a></li>
 </ul>
 </li>
 </ul>
@@ -359,12 +371,12 @@
 
 <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_tuples</span><span class="p">(</span>
     <span class="p">[</span>
-        <span class="p">[</span><span class="s2">&quot;1年&quot;</span><span class="p">,</span> <span class="s2">&quot;A組&quot;</span><span class="p">],</span>
-        <span class="p">[</span><span class="s2">&quot;1年&quot;</span><span class="p">,</span> <span class="s2">&quot;B組&quot;</span><span class="p">],</span>
-        <span class="p">[</span><span class="s2">&quot;2年&quot;</span><span class="p">,</span> <span class="s2">&quot;A組&quot;</span><span class="p">],</span>
-        <span class="p">[</span><span class="s2">&quot;2年&quot;</span><span class="p">,</span> <span class="s2">&quot;B組&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">"1年"</span><span class="p">,</span> <span class="s2">"A組"</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">"1年"</span><span class="p">,</span> <span class="s2">"B組"</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">"2年"</span><span class="p">,</span> <span class="s2">"A組"</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">"2年"</span><span class="p">,</span> <span class="s2">"B組"</span><span class="p">],</span>
     <span class="p">],</span>
-    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;学年&quot;</span><span class="p">,</span> <span class="s2">&quot;学級&quot;</span><span class="p">],</span>
+    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">"学年"</span><span class="p">,</span> <span class="s2">"学級"</span><span class="p">],</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -388,10 +400,10 @@ MultiIndex([(&#39;1年&#39;, &#39;A組&#39;),
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ix</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span>
     <span class="p">[</span>
-        <span class="p">[</span><span class="s2">&quot;1年&quot;</span><span class="p">,</span> <span class="s2">&quot;2年&quot;</span><span class="p">,</span> <span class="s2">&quot;3年&quot;</span><span class="p">],</span>
-        <span class="p">[</span><span class="s2">&quot;A組&quot;</span><span class="p">,</span> <span class="s2">&quot;B組&quot;</span><span class="p">,</span> <span class="s2">&quot;C組&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">"1年"</span><span class="p">,</span> <span class="s2">"2年"</span><span class="p">,</span> <span class="s2">"3年"</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">"A組"</span><span class="p">,</span> <span class="s2">"B組"</span><span class="p">,</span> <span class="s2">"C組"</span><span class="p">],</span>
     <span class="p">],</span>
-    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;学年&quot;</span><span class="p">,</span> <span class="s2">&quot;学級&quot;</span><span class="p">],</span>
+    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">"学年"</span><span class="p">,</span> <span class="s2">"学級"</span><span class="p">],</span>
 <span class="p">)</span>
 <span class="n">ix</span>
 </pre></div>
@@ -480,8 +492,8 @@ dtype: int64
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="p">{</span>
-        <span class="s2">&quot;国語&quot;</span><span class="p">:</span> <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">9</span><span class="p">),</span>
-        <span class="s2">&quot;数学&quot;</span><span class="p">:</span> <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">9</span><span class="p">),</span>
+        <span class="s2">"国語"</span><span class="p">:</span> <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">9</span><span class="p">),</span>
+        <span class="s2">"数学"</span><span class="p">:</span> <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">9</span><span class="p">),</span>
     <span class="p">},</span>
     <span class="n">index</span><span class="o">=</span><span class="n">ix</span><span class="p">,</span>
 <span class="p">)</span>
@@ -603,7 +615,7 @@ FrozenList([&#39;学年&#39;, &#39;学級&#39;])
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ix</span><span class="o">.</span><span class="n">set_names</span><span class="p">([</span><span class="s2">&quot;grade&quot;</span><span class="p">,</span> <span class="s2">&quot;class&quot;</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ix</span><span class="o">.</span><span class="n">set_names</span><span class="p">([</span><span class="s2">"grade"</span><span class="p">,</span> <span class="s2">"class"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -631,7 +643,7 @@ MultiIndex([(&#39;1年&#39;, &#39;A組&#39;),
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ix</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="c1"># or</span>
-<span class="n">ix</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s2">&quot;学年&quot;</span><span class="p">)</span>
+<span class="n">ix</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s2">"学年"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -650,7 +662,7 @@ Index([&#39;1年&#39;, &#39;1年&#39;, &#39;1年&#39;, &#39;2年&#39;, &#39;2年
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ix</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="c1"># or</span>
-<span class="n">ix</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s2">&quot;学級&quot;</span><span class="p">)</span>
+<span class="n">ix</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s2">"学級"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -669,12 +681,12 @@ Index([&#39;A組&#39;, &#39;B組&#39;, &#39;C組&#39;, &#39;A組&#39;, &#39;B組
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ix</span><span class="o">.</span><span class="n">set_levels</span><span class="p">(</span>
     <span class="p">[</span>
-        <span class="p">[</span><span class="s2">&quot;1年&quot;</span><span class="p">,</span> <span class="s2">&quot;2年&quot;</span><span class="p">,</span> <span class="s2">&quot;3年&quot;</span><span class="p">],</span>
-        <span class="p">[</span><span class="s2">&quot;1組&quot;</span><span class="p">,</span> <span class="s2">&quot;2組&quot;</span><span class="p">,</span> <span class="s2">&quot;3組&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">"1年"</span><span class="p">,</span> <span class="s2">"2年"</span><span class="p">,</span> <span class="s2">"3年"</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">"1組"</span><span class="p">,</span> <span class="s2">"2組"</span><span class="p">,</span> <span class="s2">"3組"</span><span class="p">],</span>
     <span class="p">]</span>
 <span class="p">)</span>
 <span class="c1"># or</span>
-<span class="n">ix</span><span class="o">.</span><span class="n">set_levels</span><span class="p">([</span><span class="s2">&quot;1組&quot;</span><span class="p">,</span> <span class="s2">&quot;2組&quot;</span><span class="p">,</span> <span class="s2">&quot;3組&quot;</span><span class="p">],</span> <span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ix</span><span class="o">.</span><span class="n">set_levels</span><span class="p">([</span><span class="s2">"1組"</span><span class="p">,</span> <span class="s2">"2組"</span><span class="p">,</span> <span class="s2">"3組"</span><span class="p">],</span> <span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -700,7 +712,7 @@ MultiIndex([(&#39;1年&#39;, &#39;1組&#39;),
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s2">&quot;A組&quot;</span><span class="p">:</span> <span class="s2">&quot;1組&quot;</span><span class="p">,</span> <span class="s2">&quot;B組&quot;</span><span class="p">:</span> <span class="s2">&quot;2組&quot;</span><span class="p">,</span> <span class="s2">&quot;C組&quot;</span><span class="p">:</span> <span class="s2">&quot;3組&quot;</span><span class="p">})</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s2">"A組"</span><span class="p">:</span> <span class="s2">"1組"</span><span class="p">,</span> <span class="s2">"B組"</span><span class="p">:</span> <span class="s2">"2組"</span><span class="p">,</span> <span class="s2">"C組"</span><span class="p">:</span> <span class="s2">"3組"</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -801,7 +813,7 @@ MultiIndex([(&#39;1年&#39;, &#39;1組&#39;),
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;grade&quot;</span><span class="p">,</span> <span class="s2">&quot;class&quot;</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"grade"</span><span class="p">,</span> <span class="s2">"class"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -905,7 +917,7 @@ MultiIndex([(&#39;1年&#39;, &#39;1組&#39;),
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;1年&quot;</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"1年"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -926,7 +938,7 @@ dtype: int64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;1年&quot;</span><span class="p">,</span> <span class="p">:]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"1年"</span><span class="p">,</span> <span class="p">:]</span>
 </pre></div>
 </div>
 </div>
@@ -986,7 +998,7 @@ dtype: int64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="s2">&quot;1年&quot;</span><span class="p">,</span> <span class="s2">&quot;B組&quot;</span><span class="p">)]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="s2">"1年"</span><span class="p">,</span> <span class="s2">"B組"</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -1003,7 +1015,7 @@ np.int64(51)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="s2">&quot;1年&quot;</span><span class="p">,</span> <span class="s2">&quot;B組&quot;</span><span class="p">),</span> <span class="p">:]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="s2">"1年"</span><span class="p">,</span> <span class="s2">"B組"</span><span class="p">),</span> <span class="p">:]</span>
 </pre></div>
 </div>
 </div>
@@ -1022,7 +1034,7 @@ Name: (1年, B組), dtype: int64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2年&quot;</span><span class="p">:]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"2年"</span><span class="p">:]</span>
 </pre></div>
 </div>
 </div>
@@ -1046,7 +1058,7 @@ dtype: int64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;1年&quot;</span><span class="p">,</span> <span class="s2">&quot;3年&quot;</span><span class="p">],</span> <span class="p">:]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">"1年"</span><span class="p">,</span> <span class="s2">"3年"</span><span class="p">],</span> <span class="p">:]</span>
 </pre></div>
 </div>
 </div>
@@ -1129,7 +1141,7 @@ dtype: int64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="s2">&quot;B組&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="s2">"B組"</span><span class="p">,</span> <span class="kc">None</span><span class="p">))]</span>
 </pre></div>
 </div>
 </div>
@@ -1153,7 +1165,7 @@ dtype: int64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="s2">&quot;B組&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)),</span> <span class="p">:]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="s2">"B組"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)),</span> <span class="p">:]</span>
 </pre></div>
 </div>
 </div>
@@ -1239,7 +1251,7 @@ dtype: int64
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
     <span class="p">(</span>
         <span class="n">pd</span><span class="o">.</span><span class="n">IndexSlice</span><span class="p">[:],</span>
-        <span class="n">pd</span><span class="o">.</span><span class="n">IndexSlice</span><span class="p">[</span><span class="s2">&quot;B組&quot;</span><span class="p">:],</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">IndexSlice</span><span class="p">[</span><span class="s2">"B組"</span><span class="p">:],</span>
     <span class="p">)</span>
 <span class="p">]</span>
 </pre></div>
@@ -1268,7 +1280,7 @@ dtype: int64
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
     <span class="p">(</span>
         <span class="n">pd</span><span class="o">.</span><span class="n">IndexSlice</span><span class="p">[:],</span>
-        <span class="n">pd</span><span class="o">.</span><span class="n">IndexSlice</span><span class="p">[</span><span class="s2">&quot;B組&quot;</span><span class="p">:],</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">IndexSlice</span><span class="p">[</span><span class="s2">"B組"</span><span class="p">:],</span>
     <span class="p">),</span>
     <span class="p">:,</span>
 <span class="p">]</span>
@@ -1356,8 +1368,8 @@ dtype: int64
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
     <span class="p">(</span>
-        <span class="s2">&quot;3年&quot;</span><span class="p">,</span>
-        <span class="n">pd</span><span class="o">.</span><span class="n">IndexSlice</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;国語&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">],</span>
+        <span class="s2">"3年"</span><span class="p">,</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">IndexSlice</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"国語"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">],</span>
     <span class="p">),</span>
     <span class="p">:,</span>
 <span class="p">]</span>
@@ -1419,7 +1431,7 @@ dtype: int64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;B組&quot;</span><span class="p">:]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"B組"</span><span class="p">:]</span>
 </pre></div>
 </div>
 </div>
@@ -1443,7 +1455,7 @@ dtype: int64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)[:,</span> <span class="s2">&quot;B組&quot;</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)[:,</span> <span class="s2">"B組"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1508,7 +1520,7 @@ dtype: int64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span><span class="s2">&quot;B組&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s2">&quot;学級&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span><span class="s2">"B組"</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s2">"学級"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1529,7 +1541,7 @@ dtype: int64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span><span class="s2">&quot;B組&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s2">&quot;学級&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span><span class="s2">"B組"</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s2">"学級"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1590,8 +1602,8 @@ dtype: int64
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span>
-    <span class="p">(</span><span class="s2">&quot;3年&quot;</span><span class="p">,</span> <span class="s2">&quot;B組&quot;</span><span class="p">),</span>
-    <span class="n">level</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;学年&quot;</span><span class="p">,</span> <span class="s2">&quot;学級&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"3年"</span><span class="p">,</span> <span class="s2">"B組"</span><span class="p">),</span>
+    <span class="n">level</span><span class="o">=</span><span class="p">(</span><span class="s2">"学年"</span><span class="p">,</span> <span class="s2">"学級"</span><span class="p">),</span>
     <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -1612,7 +1624,7 @@ dtype: int64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span><span class="s2">&quot;1年&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span><span class="s2">"1年"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1634,8 +1646,8 @@ dtype: int64
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span>
-    <span class="s2">&quot;B組&quot;</span><span class="p">,</span>
-    <span class="n">level</span><span class="o">=</span><span class="s2">&quot;学級&quot;</span><span class="p">,</span>
+    <span class="s2">"B組"</span><span class="p">,</span>
+    <span class="n">level</span><span class="o">=</span><span class="s2">"学級"</span><span class="p">,</span>
     <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="n">drop_level</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span>
@@ -1706,7 +1718,7 @@ dtype: int64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_by_mean</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s2">&quot;学年&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_by_mean</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s2">"学年"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">group_by_mean</span>
 </pre></div>
 </div>
@@ -1767,7 +1779,7 @@ dtype: int64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_by_mean</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">ix</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s2">&quot;学年&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_by_mean</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">ix</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s2">"学年"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1868,7 +1880,7 @@ dtype: int64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">align1</span><span class="p">,</span> <span class="n">align2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">group_by_mean</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s2">&quot;学年&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">align1</span><span class="p">,</span> <span class="n">align2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">group_by_mean</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s2">"学年"</span><span class="p">)</span>
 <span class="n">align1</span>
 </pre></div>
 </div>
@@ -2074,7 +2086,7 @@ dtype: int64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">swaplevel</span><span class="p">(</span><span class="s2">&quot;学年&quot;</span><span class="p">,</span> <span class="s2">&quot;学級&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">swaplevel</span><span class="p">(</span><span class="s2">"学年"</span><span class="p">,</span> <span class="s2">"学級"</span><span class="p">)</span>
 <span class="c1"># or</span>
 <span class="n">df</span><span class="o">.</span><span class="n">swaplevel</span><span class="p">()</span>
 </pre></div>
@@ -2181,10 +2193,10 @@ dtype: int64
     <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
     <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_tuples</span><span class="p">(</span>
         <span class="p">[</span>
-            <span class="p">[</span><span class="s2">&quot;小学校&quot;</span><span class="p">,</span> <span class="s2">&quot;1年&quot;</span><span class="p">,</span> <span class="s2">&quot;A組&quot;</span><span class="p">],</span>
-            <span class="p">[</span><span class="s2">&quot;中学校&quot;</span><span class="p">,</span> <span class="s2">&quot;2年&quot;</span><span class="p">,</span> <span class="s2">&quot;B組&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">"小学校"</span><span class="p">,</span> <span class="s2">"1年"</span><span class="p">,</span> <span class="s2">"A組"</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">"中学校"</span><span class="p">,</span> <span class="s2">"2年"</span><span class="p">,</span> <span class="s2">"B組"</span><span class="p">],</span>
         <span class="p">],</span>
-        <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;学校&quot;</span><span class="p">,</span> <span class="s2">&quot;学年&quot;</span><span class="p">,</span> <span class="s2">&quot;学級&quot;</span><span class="p">],</span>
+        <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">"学校"</span><span class="p">,</span> <span class="s2">"学年"</span><span class="p">,</span> <span class="s2">"学級"</span><span class="p">],</span>
     <span class="p">),</span>
 <span class="p">)</span>
 <span class="n">school</span>
@@ -2207,7 +2219,7 @@ dtype: int64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">school</span><span class="o">.</span><span class="n">reorder_levels</span><span class="p">([</span><span class="s2">&quot;学年&quot;</span><span class="p">,</span> <span class="s2">&quot;学級&quot;</span><span class="p">,</span> <span class="s2">&quot;学校&quot;</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">school</span><span class="o">.</span><span class="n">reorder_levels</span><span class="p">([</span><span class="s2">"学年"</span><span class="p">,</span> <span class="s2">"学級"</span><span class="p">,</span> <span class="s2">"学校"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -2535,7 +2547,7 @@ dtype: int64
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-30</div>
+              Last updated on 2026-08-28</div>
           </div>
           <div class="right-details">
             
@@ -2578,7 +2590,7 @@ dtype: int64
     <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../../_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../../../../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../../../../../_static/copybutton.js?v=940804e7"></script>
     <script src="../../../../../../_static/translations.js?v=4755f45a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     </body>

@@ -1,0 +1,15 @@
+
+```mermaid
+C4Context
+    title データ分析での流れ
+    
+    System(data, "データ", "CSVファイル、データベース等")
+    System(pandas, "Pandas", "データ入力、データ加工、集計")
+    System(numpy, "NumPy", "ndarrayへ変換、データ保存、数値計算")
+    System(ml, "機械学習など", "データ処理、アルゴリズムなどに適応")
+    
+    Rel(data, pandas, "読み込み")
+    Rel(pandas, numpy, "変換")
+    Rel(numpy, ml, "入力")
+```
+

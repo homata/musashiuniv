@@ -10,17 +10,17 @@
 <meta property="og:description" content="外れ値の確認: 箱ひげ図による外れ値の確認: 分位点による外れ値の確認: 正規分布と 2\sigma 範囲による外れ値の確認: 外れ値への対処方法: 上限値と下限値の設定:" />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2025_02.programming_advanced_a_python_dataanalysis_files_python_dataanalysis_05-evaluation_05-05-outliers_c1b96372.png" />
+<meta property="og:image" content="/None" />
 <meta property="og:image:alt" content="外れ値の確認: 箱ひげ図による外れ値の確認: 分位点による外れ値の確認: 正規分布と 2\sigma 範囲による外れ値の確認: 外れ値への対処方法: 上限値と下限値の設定:" />
 <meta name="description" content="外れ値の確認: 箱ひげ図による外れ値の確認: 分位点による外れ値の確認: 正規分布と 2\sigma 範囲による外れ値の確認: 外れ値への対処方法: 上限値と下限値の設定:" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="索引" href="../../../../../../genindex.html" /><link rel="search" title="検索" href="../../../../../../search.html" />
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
         <title>外れ値、異常値 - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=949a1ff5" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo-extensions.css?v=302659d7" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/musashiuniv/custom.css" />
@@ -295,6 +295,18 @@
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_01.html">第1回 オリエンテーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_02.html">第2回 オープンデータの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_03.html">第3回 データの種類とデータ加⼯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_04.html">第4回 データ解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_05.html">第5回 Webサービスの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_06.html">第6回 Webサービスの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_07.html">第7回 地理空間情報の基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_08.html">第8回 地理空間データの活⽤1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_09.html">第9回 地理空間データの活⽤2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_13.html">第13回 総合演習</a></li>
 </ul>
 </li>
 </ul>
@@ -360,8 +372,8 @@
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;data/penguins.parquet&quot;</span><span class="p">)</span>
-<span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Species_short&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Body_Mass&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">"data/penguins.parquet"</span><span class="p">)</span>
+<span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"Species_short"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"Body_Mass"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -373,10 +385,11 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[1]</span><span class="ansi-green-fg">, line 2</span>
-<span class="ansi-green-fg">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">pandas</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">as</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">pd</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">plotly</span><span class="ansi-blue-intense-fg ansi-bold">.</span><span class="ansi-blue-intense-fg ansi-bold">express</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">as</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">px</span>
-<span class="ansi-green-fg">      4</span> df = pd.read_parquet(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">data/penguins.parquet</span><span class="ansi-yellow-fg">&#34;</span>)
-<span class="ansi-green-fg">      5</span> px.box(df, x=<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Species_short</span><span class="ansi-yellow-fg">&#34;</span>, y=<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Body_Mass</span><span class="ansi-yellow-fg">&#34;</span>)
+<span class="ansi-green-fg">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> pandas <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> pd
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> plotly.express <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> px
+<span class="ansi-green-fg">      3</span>
+<span class="ansi-green-fg">      4</span> df = pd.read_parquet(<span class="ansi-yellow-fg">&#34;data/penguins.parquet&#34;</span>)
+<span class="ansi-green-fg">      5</span> px.box(df, x=<span class="ansi-yellow-fg">&#34;Species_short&#34;</span>, y=<span class="ansi-yellow-fg">&#34;Body_Mass&#34;</span>)
 
 <span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;plotly&#39;
 </pre></div></div>
@@ -388,7 +401,7 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Species_short&quot;</span><span class="p">)[</span><span class="s2">&quot;Body_Mass&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"Species_short"</span><span class="p">)[</span><span class="s2">"Body_Mass"</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span>
     <span class="n">q</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="p">)</span>
 </pre></div>
@@ -402,7 +415,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[2]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">df</span>.groupby(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Species_short</span><span class="ansi-yellow-fg">&#34;</span>)[<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Body_Mass</span><span class="ansi-yellow-fg">&#34;</span>].quantile(
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df.groupby(&#34;Species_short&#34;)[&#34;Body_Mass&#34;].quantile(
 <span class="ansi-green-fg">      2</span>     q=[<span class="ansi-green-fg">0</span>, <span class="ansi-green-fg">0.01</span>, <span class="ansi-green-fg">0.05</span>, <span class="ansi-green-fg">0.95</span>, <span class="ansi-green-fg">0.99</span>, <span class="ansi-green-fg">1</span>]
 <span class="ansi-green-fg">      3</span> )
 
@@ -416,9 +429,9 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_chinstrap</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Species_short&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Chinstrap&quot;</span><span class="p">,</span> <span class="p">:]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_chinstrap</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"Species_short"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Chinstrap"</span><span class="p">,</span> <span class="p">:]</span>
 
-<span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">df_chinstrap</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Body_Mass&quot;</span><span class="p">)</span>
+<span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">df_chinstrap</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"Body_Mass"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -430,8 +443,9 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[3]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df_chinstrap = <span class="ansi-yellow-bg">df</span>.loc[df.loc[:, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Species_short</span><span class="ansi-yellow-fg">&#34;</span>] == <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Chinstrap</span><span class="ansi-yellow-fg">&#34;</span>, :]
-<span class="ansi-green-fg">      3</span> px.histogram(df_chinstrap, x=<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Body_Mass</span><span class="ansi-yellow-fg">&#34;</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df_chinstrap = df.loc[df.loc[:, <span class="ansi-yellow-fg">&#34;Species_short&#34;</span>] == <span class="ansi-yellow-fg">&#34;Chinstrap&#34;</span>, :]
+<span class="ansi-green-fg">      2</span>
+<span class="ansi-green-fg">      3</span> px.histogram(df_chinstrap, x=<span class="ansi-yellow-fg">&#34;Body_Mass&#34;</span>)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
 </pre></div></div>
@@ -442,7 +456,7 @@
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">stats</span>
 
-<span class="n">stats</span><span class="o">.</span><span class="n">shapiro</span><span class="p">(</span><span class="n">df_chinstrap</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Body_Mass&quot;</span><span class="p">])</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">shapiro</span><span class="p">(</span><span class="n">df_chinstrap</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"Body_Mass"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -454,8 +468,9 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[4]</span><span class="ansi-green-fg">, line 3</span>
-<span class="ansi-green-fg">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">scipy</span><span class="ansi-blue-intense-fg ansi-bold">.</span><span class="ansi-blue-intense-fg ansi-bold">stats</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">as</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">stats</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">3</span> stats.shapiro(<span class="ansi-yellow-bg">df_chinstrap</span>.loc[:, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Body_Mass</span><span class="ansi-yellow-fg">&#34;</span>])
+<span class="ansi-green-fg">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> scipy.stats <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> stats
+<span class="ansi-green-fg">      2</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">3</span> stats.shapiro(df_chinstrap.loc[:, <span class="ansi-yellow-fg">&#34;Body_Mass&#34;</span>])
 
 <span class="ansi-red-fg">NameError</span>: name &#39;df_chinstrap&#39; is not defined
 </pre></div></div>
@@ -464,9 +479,9 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigma</span> <span class="o">=</span> <span class="n">df_chinstrap</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Body_Mass&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>  <span class="c1"># 標準偏差</span>
-<span class="n">avg</span> <span class="o">=</span> <span class="n">df_chinstrap</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Body_Mass&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;下限値：</span><span class="si">{</span><span class="n">avg</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sigma</span><span class="si">}</span><span class="s2"> 上限値：</span><span class="si">{</span><span class="n">avg</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sigma</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigma</span> <span class="o">=</span> <span class="n">df_chinstrap</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"Body_Mass"</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>  <span class="c1"># 標準偏差</span>
+<span class="n">avg</span> <span class="o">=</span> <span class="n">df_chinstrap</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"Body_Mass"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"下限値：</span><span class="si">{</span><span class="n">avg</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sigma</span><span class="si">}</span><span class="s2"> 上限値：</span><span class="si">{</span><span class="n">avg</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sigma</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -478,9 +493,9 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[5]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> sigma = <span class="ansi-yellow-bg">df_chinstrap</span>.loc[:, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Body_Mass</span><span class="ansi-yellow-fg">&#34;</span>].std()  <span style="color: rgb(95,135,135)"># 標準偏差</span>
-<span class="ansi-green-fg">      2</span> avg = df_chinstrap.loc[:, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Body_Mass</span><span class="ansi-yellow-fg">&#34;</span>].mean()
-<span class="ansi-green-fg">      3</span> <span style="color: rgb(0,135,0)">print</span>(<span class="ansi-yellow-fg">f</span><span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">下限値：</span><span class="ansi-bold" style="color: rgb(175,95,135)">{</span>avg<span style="color: rgb(188,188,188)"> </span>-<span style="color: rgb(188,188,188)"> </span><span class="ansi-green-fg">2</span><span style="color: rgb(188,188,188)"> </span>*<span style="color: rgb(188,188,188)"> </span>sigma<span class="ansi-bold" style="color: rgb(175,95,135)">}</span><span class="ansi-yellow-fg"> 上限値：</span><span class="ansi-bold" style="color: rgb(175,95,135)">{</span>avg<span style="color: rgb(188,188,188)"> </span>+<span style="color: rgb(188,188,188)"> </span><span class="ansi-green-fg">2</span><span style="color: rgb(188,188,188)"> </span>*<span style="color: rgb(188,188,188)"> </span>sigma<span class="ansi-bold" style="color: rgb(175,95,135)">}</span><span class="ansi-yellow-fg">&#34;</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> sigma = df_chinstrap.loc[:, <span class="ansi-yellow-fg">&#34;Body_Mass&#34;</span>].std()  <span style="color: rgb(95,135,135)"># 標準偏差</span>
+<span class="ansi-green-fg">      2</span> avg = df_chinstrap.loc[:, <span class="ansi-yellow-fg">&#34;Body_Mass&#34;</span>].mean()
+<span class="ansi-green-fg">      3</span> print(f&#34;下限値：{avg - <span class="ansi-green-fg">2</span> * sigma} 上限値：{avg + <span class="ansi-green-fg">2</span> * sigma}&#34;)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;df_chinstrap&#39; is not defined
 </pre></div></div>
@@ -489,7 +504,7 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_chinstrap</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Body_Mass&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="p">[</span><span class="mf">0.025</span><span class="p">,</span> <span class="mf">0.975</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_chinstrap</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"Body_Mass"</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="p">[</span><span class="mf">0.025</span><span class="p">,</span> <span class="mf">0.975</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -501,7 +516,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[6]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">df_chinstrap</span>.loc[:, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Body_Mass</span><span class="ansi-yellow-fg">&#34;</span>].quantile(q=[<span class="ansi-green-fg">0.025</span>, <span class="ansi-green-fg">0.975</span>])
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df_chinstrap.loc[:, <span class="ansi-yellow-fg">&#34;Body_Mass&#34;</span>].quantile(q=[<span class="ansi-green-fg">0.025</span>, <span class="ansi-green-fg">0.975</span>])
 
 <span class="ansi-red-fg">NameError</span>: name &#39;df_chinstrap&#39; is not defined
 </pre></div></div>
@@ -517,7 +532,7 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_chinstrap</span> <span class="o">=</span> <span class="n">df_chinstrap</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
-    <span class="n">Body_Mass_clipped</span><span class="o">=</span><span class="n">df_chinstrap</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Body_Mass&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span>
+    <span class="n">Body_Mass_clipped</span><span class="o">=</span><span class="n">df_chinstrap</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"Body_Mass"</span><span class="p">]</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span>
         <span class="n">lower</span><span class="o">=</span><span class="n">avg</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">,</span>
         <span class="n">upper</span><span class="o">=</span><span class="n">avg</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">,</span>
     <span class="p">)</span>
@@ -533,12 +548,10 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[7]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df_chinstrap = <span class="ansi-yellow-bg">df_chinstrap</span>.assign(
-<span class="ansi-green-fg">      2</span>     Body_Mass_clipped=df_chinstrap.loc[:, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Body_Mass</span><span class="ansi-yellow-fg">&#34;</span>].clip(
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df_chinstrap = df_chinstrap.assign(
+<span class="ansi-green-fg">      2</span>     Body_Mass_clipped=df_chinstrap.loc[:, &#34;Body_Mass&#34;].clip(
 <span class="ansi-green-fg">      3</span>         lower=avg - <span class="ansi-green-fg">2</span> * sigma,
 <span class="ansi-green-fg">      4</span>         upper=avg + <span class="ansi-green-fg">2</span> * sigma,
-<span class="ansi-green-fg">      5</span>     )
-<span class="ansi-green-fg">      6</span> )
 
 <span class="ansi-red-fg">NameError</span>: name &#39;df_chinstrap&#39; is not defined
 </pre></div></div>
@@ -549,11 +562,11 @@
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
     <span class="n">df_chinstrap</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span>
-        <span class="n">id_vars</span><span class="o">=</span><span class="s2">&quot;Individual_ID&quot;</span><span class="p">,</span>
-        <span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Body_Mass&quot;</span><span class="p">,</span> <span class="s2">&quot;Body_Mass_clipped&quot;</span><span class="p">],</span>
+        <span class="n">id_vars</span><span class="o">=</span><span class="s2">"Individual_ID"</span><span class="p">,</span>
+        <span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">"Body_Mass"</span><span class="p">,</span> <span class="s2">"Body_Mass_clipped"</span><span class="p">],</span>
     <span class="p">),</span>
-    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span>
-    <span class="n">facet_col</span><span class="o">=</span><span class="s2">&quot;variable&quot;</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"value"</span><span class="p">,</span>
+    <span class="n">facet_col</span><span class="o">=</span><span class="s2">"variable"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -566,14 +579,10 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[8]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">px</span>.histogram(
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> px.histogram(
 <span class="ansi-green-fg">      2</span>     df_chinstrap.melt(
-<span class="ansi-green-fg">      3</span>         id_vars=<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Individual_ID</span><span class="ansi-yellow-fg">&#34;</span>,
-<span class="ansi-green-fg">      4</span>         value_vars=[<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Body_Mass</span><span class="ansi-yellow-fg">&#34;</span>, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Body_Mass_clipped</span><span class="ansi-yellow-fg">&#34;</span>],
-<span class="ansi-green-fg">      5</span>     ),
-<span class="ansi-green-fg">      6</span>     x=<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">value</span><span class="ansi-yellow-fg">&#34;</span>,
-<span class="ansi-green-fg">      7</span>     facet_col=<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">variable</span><span class="ansi-yellow-fg">&#34;</span>,
-<span class="ansi-green-fg">      8</span> )
+<span class="ansi-green-fg">      3</span>         id_vars=<span class="ansi-yellow-fg">&#34;Individual_ID&#34;</span>,
+<span class="ansi-green-fg">      4</span>         value_vars=[<span class="ansi-yellow-fg">&#34;Body_Mass&#34;</span>, <span class="ansi-yellow-fg">&#34;Body_Mass_clipped&#34;</span>],
 
 <span class="ansi-red-fg">NameError</span>: name &#39;px&#39; is not defined
 </pre></div></div>
@@ -596,7 +605,7 @@
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-30</div>
+              Last updated on 2026-08-28</div>
           </div>
           <div class="right-details">
             
@@ -644,7 +653,7 @@
     <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../../_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../../../../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../../../../../_static/copybutton.js?v=940804e7"></script>
     <script src="../../../../../../_static/translations.js?v=4755f45a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>

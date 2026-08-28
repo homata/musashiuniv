@@ -10,17 +10,17 @@
 <meta property="og:description" content="PythonでExcelファイルを取り扱う: データサンプル: pandasを使う: pandasでデータ加工しExcelファイルに書き込む: Pythonのオブジェクトとして扱う:" />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2025_02.programming_advanced_a_python_dataanalysis_files_python_dataanalysis_02-read-data_02-02-excel_ed64a008.png" />
+<meta property="og:image" content="/None" />
 <meta property="og:image:alt" content="PythonでExcelファイルを取り扱う: データサンプル: pandasを使う: pandasでデータ加工しExcelファイルに書き込む: Pythonのオブジェクトとして扱う:" />
 <meta name="description" content="PythonでExcelファイルを取り扱う: データサンプル: pandasを使う: pandasでデータ加工しExcelファイルに書き込む: Pythonのオブジェクトとして扱う:" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="索引" href="../../../../../../genindex.html" /><link rel="search" title="検索" href="../../../../../../search.html" />
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
         <title>Excel形式 - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=949a1ff5" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo-extensions.css?v=302659d7" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/musashiuniv/custom.css" />
@@ -295,6 +295,18 @@
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_01.html">第1回 オリエンテーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_02.html">第2回 オープンデータの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_03.html">第3回 データの種類とデータ加⼯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_04.html">第4回 データ解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_05.html">第5回 Webサービスの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_06.html">第6回 Webサービスの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_07.html">第7回 地理空間情報の基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_08.html">第8回 地理空間データの活⽤1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_09.html">第9回 地理空間データの活⽤2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_13.html">第13回 総合演習</a></li>
 </ul>
 </li>
 </ul>
@@ -364,7 +376,7 @@
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span>
-    <span class="s2">&quot;data/FEH_00200524_230205132438.xlsx&quot;</span><span class="p">,</span>
+    <span class="s2">"data/FEH_00200524_230205132438.xlsx"</span><span class="p">,</span>
     <span class="n">header</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
     <span class="n">nrows</span><span class="o">=</span><span class="mi">27</span><span class="p">,</span>
 <span class="p">)</span>
@@ -378,84 +390,95 @@
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">D:\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\compat\_optional.py:135</span>, in <span class="ansi-cyan-fg">import_optional_dependency</span><span class="ansi-blue-fg">(name, extra, errors, min_version)</span>
-<span class="ansi-green-fg">    134</span> <span class="ansi-bold" style="color: rgb(0,135,0)">try</span>:
-<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">135</span>     module = <span class="ansi-yellow-bg">importlib</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">import_module</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">name</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg">    136</span> <span class="ansi-bold" style="color: rgb(0,135,0)">except</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ImportError</span>:
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\compat\_optional.py:158</span>, in <span class="ansi-cyan-fg">import_optional_dependency</span><span class="ansi-blue-fg">(name, extra, min_version, errors)</span>
+<span class="ansi-green-fg">    157</span> <span class="ansi-bold" style="color: rgb(0,135,0)">try</span>:
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">158</span>     module = <span class="ansi-black-fg ansi-yellow-bg">importlib</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">import_module</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">name</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    159</span> <span class="ansi-bold" style="color: rgb(0,135,0)">except</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ImportError</span> <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> err:
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\.pyenv\pyenv-win\versions\3.12.10\Lib\importlib\__init__.py:90</span>, in <span class="ansi-cyan-fg">import_module</span><span class="ansi-blue-fg">(name, package)</span>
-<span class="ansi-green-fg">     89</span>         level += <span class="ansi-green-fg">1</span>
-<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">90</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">_bootstrap</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_gcd_import</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">name</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">level</span><span class="ansi-yellow-bg">:</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">package</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">level</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\importlib\__init__.py:88</span>, in <span class="ansi-cyan-fg">import_module</span><span class="ansi-blue-fg">(name, package)</span>
+<span class="ansi-green-fg">     87</span>         level += <span class="ansi-green-fg">1</span>
+<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">88</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-black-fg ansi-yellow-bg">_bootstrap</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">_gcd_import</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">name</span><span class="ansi-black-fg ansi-yellow-bg">[</span><span class="ansi-black-fg ansi-yellow-bg">level</span><span class="ansi-black-fg ansi-yellow-bg">:</span><span class="ansi-black-fg ansi-yellow-bg">]</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">package</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">level</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">&lt;frozen importlib._bootstrap&gt;:1387</span>, in <span class="ansi-cyan-fg">_gcd_import</span><span class="ansi-blue-fg">(name, package, level)</span>
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">&lt;frozen importlib._bootstrap&gt;:1406</span>, in <span class="ansi-cyan-fg">_gcd_import</span><span class="ansi-blue-fg">(name, package, level)</span>
+<span class="ansi-green-fg">   1404</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> level &gt; <span class="ansi-green-fg">0</span>:
+<span class="ansi-green-fg">   1405</span>         name = _resolve_name(name, package, level)
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1406</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> _find_and_load(name, _gcd_import)
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">&lt;frozen importlib._bootstrap&gt;:1360</span>, in <span class="ansi-cyan-fg">_find_and_load</span><span class="ansi-blue-fg">(name, import_)</span>
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">&lt;frozen importlib._bootstrap&gt;:1371</span>, in <span class="ansi-cyan-fg">_find_and_load</span><span class="ansi-blue-fg">(name, import_)</span>
+<span class="ansi-green-fg">   1369</span>             module = sys.modules.get(name, _NEEDS_LOADING)
+<span class="ansi-green-fg">   1370</span>             <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> module <span class="ansi-bold" style="color: rgb(0,135,0)">is</span> _NEEDS_LOADING:
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1371</span>                 <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> _find_and_load_unlocked(name, import_)
+<span class="ansi-green-fg">   1372</span>
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">&lt;frozen importlib._bootstrap&gt;:1324</span>, in <span class="ansi-cyan-fg">_find_and_load_unlocked</span><span class="ansi-blue-fg">(name, import_)</span>
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">&lt;frozen importlib._bootstrap&gt;:1335</span>, in <span class="ansi-cyan-fg">_find_and_load_unlocked</span><span class="ansi-blue-fg">(name, import_)</span>
+<span class="ansi-green-fg">   1333</span>     spec = _find_spec(name, path)
+<span class="ansi-green-fg">   1334</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> spec <span class="ansi-bold" style="color: rgb(0,135,0)">is</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1335</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> ModuleNotFoundError(f&#39;{_ERR_MSG_PREFIX}{name!r}&#39;, name=name)
+<span class="ansi-green-fg">   1336</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">else</span>:
 
 <span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;openpyxl&#39;
 
-During handling of the above exception, another exception occurred:
+The above exception was the direct cause of the following exception:
 
 <span class="ansi-red-fg">ImportError</span>                               Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[1]</span><span class="ansi-green-fg">, line 3</span>
-<span class="ansi-green-fg">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">pandas</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">as</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">pd</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">3</span> df = <span class="ansi-yellow-bg">pd</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">read_excel</span><span class="ansi-yellow-bg">(</span>
-<span class="ansi-green-fg">      4</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-fg ansi-yellow-bg">&#34;</span><span class="ansi-yellow-fg ansi-yellow-bg">data/FEH_00200524_230205132438.xlsx</span><span class="ansi-yellow-fg ansi-yellow-bg">&#34;</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">      5</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">header</span><span class="ansi-yellow-bg">=</span><span class="ansi-green-fg ansi-yellow-bg">12</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">      6</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">nrows</span><span class="ansi-yellow-bg">=</span><span class="ansi-green-fg ansi-yellow-bg">27</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">      7</span> <span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> pandas <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> pd
+<span class="ansi-green-fg">      2</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">3</span> df = pd.read_excel(
+<span class="ansi-green-fg">      4</span>     <span class="ansi-yellow-fg">&#34;data/FEH_00200524_230205132438.xlsx&#34;</span>,
+<span class="ansi-green-fg">      5</span>     header=<span class="ansi-green-fg">12</span>,
+<span class="ansi-green-fg">      6</span>     nrows=<span class="ansi-green-fg">27</span>,
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">D:\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\excel\_base.py:495</span>, in <span class="ansi-cyan-fg">read_excel</span><span class="ansi-blue-fg">(io, sheet_name, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, parse_dates, date_parser, date_format, thousands, decimal, comment, skipfooter, storage_options, dtype_backend, engine_kwargs)</span>
-<span class="ansi-green-fg">    493</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span style="color: rgb(0,135,0)">isinstance</span>(io, ExcelFile):
-<span class="ansi-green-fg">    494</span>     should_close = <span class="ansi-bold" style="color: rgb(0,135,0)">True</span>
-<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">495</span>     io = <span class="ansi-yellow-bg">ExcelFile</span><span class="ansi-yellow-bg">(</span>
-<span class="ansi-green-fg">    496</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">io</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">    497</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">storage_options</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">storage_options</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">    498</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">engine</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">engine</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">    499</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">engine_kwargs</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">engine_kwargs</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">    500</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg">    501</span> <span class="ansi-bold" style="color: rgb(0,135,0)">elif</span> engine <span class="ansi-bold" style="color: rgb(175,0,255)">and</span> engine != io.engine:
-<span class="ansi-green-fg">    502</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ValueError</span>(
-<span class="ansi-green-fg">    503</span>         <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Engine should not be specified when passing </span><span class="ansi-yellow-fg">&#34;</span>
-<span class="ansi-green-fg">    504</span>         <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">an ExcelFile - ExcelFile already has the engine set</span><span class="ansi-yellow-fg">&#34;</span>
-<span class="ansi-green-fg">    505</span>     )
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\excel\_base.py:481</span>, in <span class="ansi-cyan-fg">read_excel</span><span class="ansi-blue-fg">(io, sheet_name, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, parse_dates, date_format, thousands, decimal, comment, skipfooter, storage_options, dtype_backend, engine_kwargs)</span>
+<span class="ansi-green-fg">    479</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span style="color: rgb(0,135,0)">isinstance</span>(io, ExcelFile):
+<span class="ansi-green-fg">    480</span>     should_close = <span class="ansi-bold" style="color: rgb(0,135,0)">True</span>
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">481</span>     io = <span class="ansi-black-fg ansi-yellow-bg">ExcelFile</span><span class="ansi-black-fg ansi-yellow-bg">(</span>
+<span class="ansi-green-fg">    482</span> <span class="ansi-black-fg ansi-yellow-bg">        </span><span class="ansi-black-fg ansi-yellow-bg">io</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    483</span> <span class="ansi-black-fg ansi-yellow-bg">        </span><span class="ansi-black-fg ansi-yellow-bg">storage_options</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">storage_options</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    484</span> <span class="ansi-black-fg ansi-yellow-bg">        </span><span class="ansi-black-fg ansi-yellow-bg">engine</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">engine</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    485</span> <span class="ansi-black-fg ansi-yellow-bg">        </span><span class="ansi-black-fg ansi-yellow-bg">engine_kwargs</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">engine_kwargs</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    486</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    487</span> <span class="ansi-bold" style="color: rgb(0,135,0)">elif</span> engine <span class="ansi-bold" style="color: rgb(175,0,255)">and</span> engine != io.engine:
+<span class="ansi-green-fg">    488</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ValueError</span>(
+<span class="ansi-green-fg">    489</span>         <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Engine should not be specified when passing </span><span class="ansi-yellow-fg">&#34;</span>
+<span class="ansi-green-fg">    490</span>         <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">an ExcelFile - ExcelFile already has the engine set</span><span class="ansi-yellow-fg">&#34;</span>
+<span class="ansi-green-fg">    491</span>     )
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">D:\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\excel\_base.py:1567</span>, in <span class="ansi-cyan-fg">ExcelFile.__init__</span><span class="ansi-blue-fg">(self, path_or_buffer, engine, storage_options, engine_kwargs)</span>
-<span class="ansi-green-fg">   1564</span> <span style="color: rgb(0,135,0)">self</span>.engine = engine
-<span class="ansi-green-fg">   1565</span> <span style="color: rgb(0,135,0)">self</span>.storage_options = storage_options
-<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1567</span> <span style="color: rgb(0,135,0)">self</span>._reader = <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_engines</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">engine</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">(</span>
-<span class="ansi-green-fg">   1568</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_io</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   1569</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">storage_options</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">storage_options</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   1570</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">engine_kwargs</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">engine_kwargs</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   1571</span> <span class="ansi-yellow-bg">)</span>
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\excel\_base.py:1621</span>, in <span class="ansi-cyan-fg">ExcelFile.__init__</span><span class="ansi-blue-fg">(self, path_or_buffer, engine, storage_options, engine_kwargs)</span>
+<span class="ansi-green-fg">   1618</span> <span style="color: rgb(0,135,0)">self</span>.engine = engine
+<span class="ansi-green-fg">   1619</span> <span style="color: rgb(0,135,0)">self</span>.storage_options = storage_options
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1621</span> <span style="color: rgb(0,135,0)">self</span>._reader = <span class="ansi-black-fg ansi-yellow-bg">self</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">_engines</span><span class="ansi-black-fg ansi-yellow-bg">[</span><span class="ansi-black-fg ansi-yellow-bg">engine</span><span class="ansi-black-fg ansi-yellow-bg">]</span><span class="ansi-black-fg ansi-yellow-bg">(</span>
+<span class="ansi-green-fg">   1622</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">self</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">_io</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1623</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">storage_options</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">storage_options</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1624</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">engine_kwargs</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">engine_kwargs</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1625</span> <span class="ansi-black-fg ansi-yellow-bg">)</span>
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">D:\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\excel\_openpyxl.py:552</span>, in <span class="ansi-cyan-fg">OpenpyxlReader.__init__</span><span class="ansi-blue-fg">(self, filepath_or_buffer, storage_options, engine_kwargs)</span>
-<span class="ansi-green-fg">    534</span> <span style="color: rgb(175,0,255)">@doc</span>(storage_options=_shared_docs[<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">storage_options</span><span class="ansi-yellow-fg">&#34;</span>])
-<span class="ansi-green-fg">    535</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-fg">__init__</span>(
-<span class="ansi-green-fg">    536</span>     <span style="color: rgb(0,135,0)">self</span>,
-<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    539</span>     engine_kwargs: <span style="color: rgb(0,135,0)">dict</span> | <span class="ansi-bold" style="color: rgb(0,135,0)">None</span> = <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>,
-<span class="ansi-green-fg">    540</span> ) -&gt; <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
-<span class="ansi-green-fg">    541</span> <span style="color: rgb(188,188,188)">    </span><span class="ansi-yellow-fg">&#34;&#34;&#34;</span>
-<span class="ansi-green-fg">    542</span> <span class="ansi-yellow-fg">    Reader using openpyxl engine.</span>
-<span class="ansi-green-fg">    543</span>
-<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    550</span> <span class="ansi-yellow-fg">        Arbitrary keyword arguments passed to excel engine.</span>
-<span class="ansi-green-fg">    551</span> <span class="ansi-yellow-fg">    &#34;&#34;&#34;</span>
-<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">552</span>     <span class="ansi-yellow-bg">import_optional_dependency</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-fg ansi-yellow-bg">&#34;</span><span class="ansi-yellow-fg ansi-yellow-bg">openpyxl</span><span class="ansi-yellow-fg ansi-yellow-bg">&#34;</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg">    553</span>     <span style="color: rgb(0,135,0)">super</span>().<span class="ansi-blue-fg">__init__</span>(
-<span class="ansi-green-fg">    554</span>         filepath_or_buffer,
-<span class="ansi-green-fg">    555</span>         storage_options=storage_options,
-<span class="ansi-green-fg">    556</span>         engine_kwargs=engine_kwargs,
-<span class="ansi-green-fg">    557</span>     )
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\excel\_openpyxl.py:559</span>, in <span class="ansi-cyan-fg">OpenpyxlReader.__init__</span><span class="ansi-blue-fg">(self, filepath_or_buffer, storage_options, engine_kwargs)</span>
+<span class="ansi-green-fg">    541</span> <span style="color: rgb(175,0,255)">@doc</span>(storage_options=_shared_docs[<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">storage_options</span><span class="ansi-yellow-fg">&#34;</span>])
+<span class="ansi-green-fg">    542</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-fg">__init__</span>(
+<span class="ansi-green-fg">    543</span>     <span style="color: rgb(0,135,0)">self</span>,
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    546</span>     engine_kwargs: <span style="color: rgb(0,135,0)">dict</span> | <span class="ansi-bold" style="color: rgb(0,135,0)">None</span> = <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>,
+<span class="ansi-green-fg">    547</span> ) -&gt; <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg">    548</span> <span style="color: rgb(188,188,188)">    </span><span class="ansi-yellow-fg">&#34;&#34;&#34;</span>
+<span class="ansi-green-fg">    549</span> <span class="ansi-yellow-fg">    Reader using openpyxl engine.</span>
+<span class="ansi-green-fg">    550</span>
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    557</span> <span class="ansi-yellow-fg">        Arbitrary keyword arguments passed to excel engine.</span>
+<span class="ansi-green-fg">    558</span> <span class="ansi-yellow-fg">    &#34;&#34;&#34;</span>
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">559</span>     <span class="ansi-black-fg ansi-yellow-bg">import_optional_dependency</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">&#34;</span><span class="ansi-black-fg ansi-yellow-bg">openpyxl</span><span class="ansi-black-fg ansi-yellow-bg">&#34;</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    560</span>     <span style="color: rgb(0,135,0)">super</span>().<span class="ansi-blue-fg">__init__</span>(
+<span class="ansi-green-fg">    561</span>         filepath_or_buffer,
+<span class="ansi-green-fg">    562</span>         storage_options=storage_options,
+<span class="ansi-green-fg">    563</span>         engine_kwargs=engine_kwargs,
+<span class="ansi-green-fg">    564</span>     )
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">D:\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\compat\_optional.py:138</span>, in <span class="ansi-cyan-fg">import_optional_dependency</span><span class="ansi-blue-fg">(name, extra, errors, min_version)</span>
-<span class="ansi-green-fg">    136</span> <span class="ansi-bold" style="color: rgb(0,135,0)">except</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ImportError</span>:
-<span class="ansi-green-fg">    137</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> errors == <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">raise</span><span class="ansi-yellow-fg">&#34;</span>:
-<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">138</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ImportError</span>(msg)
-<span class="ansi-green-fg">    139</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>
-<span class="ansi-green-fg">    141</span> <span style="color: rgb(95,135,135)"># Handle submodules: if we have submodule, grab parent module from sys.modules</span>
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\compat\_optional.py:161</span>, in <span class="ansi-cyan-fg">import_optional_dependency</span><span class="ansi-blue-fg">(name, extra, min_version, errors)</span>
+<span class="ansi-green-fg">    159</span> <span class="ansi-bold" style="color: rgb(0,135,0)">except</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ImportError</span> <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> err:
+<span class="ansi-green-fg">    160</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> errors == <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">raise</span><span class="ansi-yellow-fg">&#34;</span>:
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">161</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ImportError</span>(msg) <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">err</span>
+<span class="ansi-green-fg">    162</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>
+<span class="ansi-green-fg">    164</span> <span style="color: rgb(95,135,135)"># Handle submodules: if we have submodule, grab parent module from sys.modules</span>
 
-<span class="ansi-red-fg">ImportError</span>: Missing optional dependency &#39;openpyxl&#39;.  Use pip or conda to install openpyxl.
+<span class="ansi-red-fg">ImportError</span>: `Import openpyxl` failed.  Use pip or conda to install the openpyxl package.
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -474,7 +497,7 @@ During handling of the above exception, another exception occurred:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[2]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">df</span>.head()
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df.head()
 
 <span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
 </pre></div></div>
@@ -495,7 +518,7 @@ During handling of the above exception, another exception occurred:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[3]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">df</span>.shape
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df.shape
 
 <span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
 </pre></div></div>
@@ -504,7 +527,7 @@ During handling of the above exception, another exception occurred:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;/男女別&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"/男女別"</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -516,7 +539,7 @@ During handling of the above exception, another exception occurred:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[4]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">df</span>.loc[:, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">/男女別</span><span class="ansi-yellow-fg">&#34;</span>].isna().all()
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df.loc[:, <span class="ansi-yellow-fg">&#34;/男女別&#34;</span>].isna().all()
 
 <span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
 </pre></div></div>
@@ -540,7 +563,7 @@ During handling of the above exception, another exception occurred:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[5]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">df</span>.head()
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df.head()
 
 <span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
 </pre></div></div>
@@ -561,7 +584,7 @@ During handling of the above exception, another exception occurred:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[6]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">df</span>.dtypes
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df.dtypes
 
 <span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
 </pre></div></div>
@@ -572,12 +595,12 @@ During handling of the above exception, another exception occurred:
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cleaned_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
     <span class="p">[</span>
-        <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;年齢5歳階級 コード&quot;</span><span class="p">,</span> <span class="s2">&quot;年齢5歳階級&quot;</span><span class="p">]],</span>
-        <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;男女計&quot;</span><span class="p">,</span> <span class="s2">&quot;男&quot;</span><span class="p">,</span> <span class="s2">&quot;女&quot;</span><span class="p">]]</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">"年齢5歳階級 コード"</span><span class="p">,</span> <span class="s2">"年齢5歳階級"</span><span class="p">]],</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">"男女計"</span><span class="p">,</span> <span class="s2">"男"</span><span class="p">,</span> <span class="s2">"女"</span><span class="p">]]</span>
             <span class="c1"># カンマ(,)を削除</span>
-            <span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>  <span class="c1"># ・・①</span>
-            <span class="c1"># &quot;男女計&quot;, &quot;男&quot;, &quot;女&quot;の3つの列を整数型に変換する</span>
-            <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">),</span>  <span class="c1"># ・・②</span>
+            <span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">","</span><span class="p">,</span> <span class="s2">""</span><span class="p">))</span>  <span class="c1"># ・・①</span>
+            <span class="c1"># "男女計", "男", "女"の3つの列を整数型に変換する</span>
+            <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"int"</span><span class="p">),</span>  <span class="c1"># ・・②</span>
     <span class="p">],</span>
     <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="p">)</span>
@@ -594,15 +617,10 @@ During handling of the above exception, another exception occurred:
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[7]</span><span class="ansi-green-fg">, line 3</span>
 <span class="ansi-green-fg">      1</span> cleaned_df = pd.concat(
 <span class="ansi-green-fg">      2</span>     [
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">3</span>         <span class="ansi-yellow-bg">df</span>.loc[:, [<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">年齢5歳階級 コード</span><span class="ansi-yellow-fg">&#34;</span>, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">年齢5歳階級</span><span class="ansi-yellow-fg">&#34;</span>]],
-<span class="ansi-green-fg">      4</span>         df.loc[:, [<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">男女計</span><span class="ansi-yellow-fg">&#34;</span>, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">男</span><span class="ansi-yellow-fg">&#34;</span>, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">女</span><span class="ansi-yellow-fg">&#34;</span>]]
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">3</span>         df.loc[:, [<span class="ansi-yellow-fg">&#34;年齢5歳階級 コード&#34;</span>, <span class="ansi-yellow-fg">&#34;年齢5歳階級&#34;</span>]],
+<span class="ansi-green-fg">      4</span>         df.loc[:, [<span class="ansi-yellow-fg">&#34;男女計&#34;</span>, <span class="ansi-yellow-fg">&#34;男&#34;</span>, <span class="ansi-yellow-fg">&#34;女&#34;</span>]]
 <span class="ansi-green-fg">      5</span>             <span style="color: rgb(95,135,135)"># カンマ(,)を削除</span>
-<span class="ansi-green-fg">      6</span>             .applymap(<span class="ansi-bold" style="color: rgb(0,135,0)">lambda</span> x: x.replace(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">,</span><span class="ansi-yellow-fg">&#34;</span>, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">&#34;</span>))  <span style="color: rgb(95,135,135)"># ・・①</span>
-<span class="ansi-green-fg">      7</span>             <span style="color: rgb(95,135,135)"># &#34;男女計&#34;, &#34;男&#34;, &#34;女&#34;の3つの列を整数型に変換する</span>
-<span class="ansi-green-fg">      8</span>             .astype(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">int</span><span class="ansi-yellow-fg">&#34;</span>),  <span style="color: rgb(95,135,135)"># ・・②</span>
-<span class="ansi-green-fg">      9</span>     ],
-<span class="ansi-green-fg">     10</span>     axis=<span class="ansi-green-fg">1</span>,
-<span class="ansi-green-fg">     11</span> )
+<span class="ansi-green-fg">      6</span>             .applymap(<span class="ansi-bold" style="color: rgb(0,135,0)">lambda</span> x: x.replace(<span class="ansi-yellow-fg">&#34;,&#34;</span>, <span class="ansi-yellow-fg">&#34;&#34;</span>))  <span style="color: rgb(95,135,135)"># ・・①</span>
 
 <span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
 </pre></div></div>
@@ -612,7 +630,7 @@ During handling of the above exception, another exception occurred:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">processed_df</span> <span class="o">=</span> <span class="n">cleaned_df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
-    <span class="n">女性比率</span><span class="o">=</span><span class="n">cleaned_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;女&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">cleaned_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;男女計&quot;</span><span class="p">]</span>
+    <span class="n">女性比率</span><span class="o">=</span><span class="n">cleaned_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"女"</span><span class="p">]</span> <span class="o">/</span> <span class="n">cleaned_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"男女計"</span><span class="p">]</span>
 <span class="p">)</span>
 <span class="n">processed_df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
@@ -626,8 +644,8 @@ During handling of the above exception, another exception occurred:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[8]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> processed_df = <span class="ansi-yellow-bg">cleaned_df</span>.assign(
-<span class="ansi-green-fg">      2</span>     女性比率=cleaned_df.loc[:, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">女</span><span class="ansi-yellow-fg">&#34;</span>] / cleaned_df.loc[:, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">男女計</span><span class="ansi-yellow-fg">&#34;</span>]
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> processed_df = cleaned_df.assign(
+<span class="ansi-green-fg">      2</span>     女性比率=cleaned_df.loc[:, <span class="ansi-yellow-fg">&#34;女&#34;</span>] / cleaned_df.loc[:, <span class="ansi-yellow-fg">&#34;男女計&#34;</span>]
 <span class="ansi-green-fg">      3</span> )
 <span class="ansi-green-fg">      4</span> processed_df.tail()
 
@@ -638,7 +656,7 @@ During handling of the above exception, another exception occurred:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">processed_df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s2">&quot;data/人口統計.xlsx&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">processed_df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s2">"data/人口統計.xlsx"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -650,7 +668,7 @@ During handling of the above exception, another exception occurred:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[9]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">processed_df</span>.to_excel(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">data/人口統計.xlsx</span><span class="ansi-yellow-fg">&#34;</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> processed_df.to_excel(<span class="ansi-yellow-fg">&#34;data/人口統計.xlsx&#34;</span>)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;processed_df&#39; is not defined
 </pre></div></div>
@@ -664,7 +682,7 @@ During handling of the above exception, another exception occurred:
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">openpyxl</span>
 
-<span class="n">wb</span> <span class="o">=</span> <span class="n">openpyxl</span><span class="o">.</span><span class="n">load_workbook</span><span class="p">(</span><span class="s2">&quot;data/FEH_00200524_230205132438.xlsx&quot;</span><span class="p">)</span>
+<span class="n">wb</span> <span class="o">=</span> <span class="n">openpyxl</span><span class="o">.</span><span class="n">load_workbook</span><span class="p">(</span><span class="s2">"data/FEH_00200524_230205132438.xlsx"</span><span class="p">)</span>
 <span class="n">sheet</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="n">worksheets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># 最初のシートの読み込み</span>
 </pre></div>
 </div>
@@ -677,8 +695,9 @@ During handling of the above exception, another exception occurred:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[10]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">openpyxl</span>
-<span class="ansi-green-fg">      3</span> wb = openpyxl.load_workbook(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">data/FEH_00200524_230205132438.xlsx</span><span class="ansi-yellow-fg">&#34;</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> openpyxl
+<span class="ansi-green-fg">      2</span>
+<span class="ansi-green-fg">      3</span> wb = openpyxl.load_workbook(<span class="ansi-yellow-fg">&#34;data/FEH_00200524_230205132438.xlsx&#34;</span>)
 <span class="ansi-green-fg">      4</span> sheet = wb.worksheets[<span class="ansi-green-fg">0</span>]  <span style="color: rgb(95,135,135)"># 最初のシートの読み込み</span>
 
 <span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;openpyxl&#39;
@@ -688,7 +707,7 @@ During handling of the above exception, another exception occurred:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">sheet</span><span class="p">[</span><span class="s2">&quot;B1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">sheet</span><span class="p">[</span><span class="s2">"B1"</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -700,7 +719,7 @@ During handling of the above exception, another exception occurred:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[11]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span style="color: rgb(0,135,0)">print</span>(<span class="ansi-yellow-bg">sheet</span>[<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">B1</span><span class="ansi-yellow-fg">&#34;</span>].value)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> print(sheet[<span class="ansi-yellow-fg">&#34;B1&#34;</span>].value)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;sheet&#39; is not defined
 </pre></div></div>
@@ -728,9 +747,10 @@ During handling of the above exception, another exception occurred:
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[12]</span><span class="ansi-green-fg">, line 2</span>
 <span class="ansi-green-fg">      1</span> out = []
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> row <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> <span class="ansi-yellow-bg">sheet</span>.iter_rows(min_row=<span class="ansi-green-fg">14</span>, max_row=<span class="ansi-green-fg">40</span>):  <span style="color: rgb(95,135,135)"># ・・①</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> row <span class="ansi-bold" style="color: rgb(0,135,0)">in</span> sheet.iter_rows(min_row=<span class="ansi-green-fg">14</span>, max_row=<span class="ansi-green-fg">40</span>):  <span style="color: rgb(95,135,135)"># ・・①</span>
 <span class="ansi-green-fg">      3</span>     inner = []
-<span class="ansi-green-fg">      4</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> cell <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> row:  <span style="color: rgb(95,135,135)"># ・・②</span>
+<span class="ansi-green-fg">      4</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> cell <span class="ansi-bold" style="color: rgb(0,135,0)">in</span> row:  <span style="color: rgb(95,135,135)"># ・・②</span>
+<span class="ansi-green-fg">      5</span>         inner.append(cell.value)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;sheet&#39; is not defined
 </pre></div></div>
@@ -768,7 +788,7 @@ During handling of the above exception, another exception occurred:
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-30</div>
+              Last updated on 2026-08-28</div>
           </div>
           <div class="right-details">
             
@@ -811,7 +831,7 @@ During handling of the above exception, another exception occurred:
     <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../../_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../../../../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../../../../../_static/copybutton.js?v=940804e7"></script>
     <script src="../../../../../../_static/translations.js?v=4755f45a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     </body>

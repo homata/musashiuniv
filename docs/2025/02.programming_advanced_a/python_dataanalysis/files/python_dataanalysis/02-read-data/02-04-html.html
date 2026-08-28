@@ -10,17 +10,17 @@
 <meta property="og:description" content="Webスクレイピング: データサンプル: データの取得方法: HTMLを取得してタグを解析する方法: pandasでテーブルタグを取得する方法:" />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2025_02.programming_advanced_a_python_dataanalysis_files_python_dataanalysis_02-read-data_02-04-html_da4b8d69.png" />
+<meta property="og:image" content="/None" />
 <meta property="og:image:alt" content="Webスクレイピング: データサンプル: データの取得方法: HTMLを取得してタグを解析する方法: pandasでテーブルタグを取得する方法:" />
 <meta name="description" content="Webスクレイピング: データサンプル: データの取得方法: HTMLを取得してタグを解析する方法: pandasでテーブルタグを取得する方法:" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="索引" href="../../../../../../genindex.html" /><link rel="search" title="検索" href="../../../../../../search.html" />
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
         <title>HTML形式 - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=949a1ff5" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo-extensions.css?v=302659d7" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/musashiuniv/custom.css" />
@@ -295,6 +295,18 @@
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_01.html">第1回 オリエンテーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_02.html">第2回 オープンデータの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_03.html">第3回 データの種類とデータ加⼯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_04.html">第4回 データ解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_05.html">第5回 Webサービスの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_06.html">第6回 Webサービスの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_07.html">第7回 地理空間情報の基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_08.html">第8回 地理空間データの活⽤1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_09.html">第9回 地理空間データの活⽤2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_13.html">第13回 総合演習</a></li>
 </ul>
 </li>
 </ul>
@@ -366,26 +378,26 @@
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">urllib.request</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlopen</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeautifulSoup</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://peps.python.org/&quot;</span>  <span class="c1"># WebサイトのURL</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://peps.python.org/"</span>  <span class="c1"># WebサイトのURL</span>
 <span class="n">attrs</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s2">&quot;type-status&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;number&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;title&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;authors&quot;</span><span class="p">,</span>
+    <span class="s2">"type-status"</span><span class="p">,</span>
+    <span class="s2">"number"</span><span class="p">,</span>
+    <span class="s2">"title"</span><span class="p">,</span>
+    <span class="s2">"authors"</span><span class="p">,</span>
 <span class="p">)</span>  <span class="c1"># 取得するデータの属性名</span>
 
 <span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>  <span class="c1"># urllibでWebサイトにアクセス・・①</span>
     <span class="n">html</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
 <span class="c1"># 取得したHTMLデータを BeautifulSoup で解析</span>
-<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>  <span class="c1"># ・・②</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="s2">"html.parser"</span><span class="p">)</span>  <span class="c1"># ・・②</span>
 <span class="c1"># HTML内のidを指定してデータを取得</span>
-<span class="n">table</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;historical-meta-peps-and-informational-peps&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">table</span>  <span class="c1"># ・・③</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">"historical-meta-peps-and-informational-peps"</span><span class="p">)</span><span class="o">.</span><span class="n">table</span>  <span class="c1"># ・・③</span>
 
 <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">tr</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">tbody</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;tr&quot;</span><span class="p">):</span>  <span class="c1"># HTML tableタグ内の `tr` タグのすべてを取得・・④</span>
+<span class="k">for</span> <span class="n">tr</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">tbody</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">"tr"</span><span class="p">):</span>  <span class="c1"># HTML tableタグ内の `tr` タグのすべてを取得・・④</span>
     <span class="n">line</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">td</span> <span class="ow">in</span> <span class="n">tr</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;td&quot;</span><span class="p">):</span>  <span class="c1"># trタグ内の `td` タグのすべてを取得・・⑤</span>
+    <span class="k">for</span> <span class="n">td</span> <span class="ow">in</span> <span class="n">tr</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">"td"</span><span class="p">):</span>  <span class="c1"># trタグ内の `td` タグのすべてを取得・・⑤</span>
         <span class="n">text</span> <span class="o">=</span> <span class="n">td</span><span class="o">.</span><span class="n">text</span>  <span class="c1"># tdタグの文字列を取得</span>
         <span class="n">line</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>  <span class="c1"># 中間データ用ののリストに追加</span>
 
@@ -511,7 +523,7 @@
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://peps.python.org/&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://peps.python.org/"</span>
 
 <span class="n">tables</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tables</span><span class="p">))</span>
@@ -525,97 +537,116 @@
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">D:\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\compat\_optional.py:135</span>, in <span class="ansi-cyan-fg">import_optional_dependency</span><span class="ansi-blue-fg">(name, extra, errors, min_version)</span>
-<span class="ansi-green-fg">    134</span> <span class="ansi-bold" style="color: rgb(0,135,0)">try</span>:
-<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">135</span>     module = <span class="ansi-yellow-bg">importlib</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">import_module</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">name</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg">    136</span> <span class="ansi-bold" style="color: rgb(0,135,0)">except</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ImportError</span>:
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\compat\_optional.py:158</span>, in <span class="ansi-cyan-fg">import_optional_dependency</span><span class="ansi-blue-fg">(name, extra, min_version, errors)</span>
+<span class="ansi-green-fg">    157</span> <span class="ansi-bold" style="color: rgb(0,135,0)">try</span>:
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">158</span>     module = <span class="ansi-black-fg ansi-yellow-bg">importlib</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">import_module</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">name</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    159</span> <span class="ansi-bold" style="color: rgb(0,135,0)">except</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ImportError</span> <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> err:
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\.pyenv\pyenv-win\versions\3.12.10\Lib\importlib\__init__.py:90</span>, in <span class="ansi-cyan-fg">import_module</span><span class="ansi-blue-fg">(name, package)</span>
-<span class="ansi-green-fg">     89</span>         level += <span class="ansi-green-fg">1</span>
-<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">90</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">_bootstrap</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_gcd_import</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">name</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">level</span><span class="ansi-yellow-bg">:</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">package</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">level</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\importlib\__init__.py:88</span>, in <span class="ansi-cyan-fg">import_module</span><span class="ansi-blue-fg">(name, package)</span>
+<span class="ansi-green-fg">     87</span>         level += <span class="ansi-green-fg">1</span>
+<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">88</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-black-fg ansi-yellow-bg">_bootstrap</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">_gcd_import</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">name</span><span class="ansi-black-fg ansi-yellow-bg">[</span><span class="ansi-black-fg ansi-yellow-bg">level</span><span class="ansi-black-fg ansi-yellow-bg">:</span><span class="ansi-black-fg ansi-yellow-bg">]</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">package</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">level</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">&lt;frozen importlib._bootstrap&gt;:1387</span>, in <span class="ansi-cyan-fg">_gcd_import</span><span class="ansi-blue-fg">(name, package, level)</span>
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">&lt;frozen importlib._bootstrap&gt;:1406</span>, in <span class="ansi-cyan-fg">_gcd_import</span><span class="ansi-blue-fg">(name, package, level)</span>
+<span class="ansi-green-fg">   1404</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> level &gt; <span class="ansi-green-fg">0</span>:
+<span class="ansi-green-fg">   1405</span>         name = _resolve_name(name, package, level)
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1406</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> _find_and_load(name, _gcd_import)
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">&lt;frozen importlib._bootstrap&gt;:1360</span>, in <span class="ansi-cyan-fg">_find_and_load</span><span class="ansi-blue-fg">(name, import_)</span>
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">&lt;frozen importlib._bootstrap&gt;:1371</span>, in <span class="ansi-cyan-fg">_find_and_load</span><span class="ansi-blue-fg">(name, import_)</span>
+<span class="ansi-green-fg">   1369</span>             module = sys.modules.get(name, _NEEDS_LOADING)
+<span class="ansi-green-fg">   1370</span>             <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> module <span class="ansi-bold" style="color: rgb(0,135,0)">is</span> _NEEDS_LOADING:
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1371</span>                 <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> _find_and_load_unlocked(name, import_)
+<span class="ansi-green-fg">   1372</span>
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">&lt;frozen importlib._bootstrap&gt;:1310</span>, in <span class="ansi-cyan-fg">_find_and_load_unlocked</span><span class="ansi-blue-fg">(name, import_)</span>
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">&lt;frozen importlib._bootstrap&gt;:1314</span>, in <span class="ansi-cyan-fg">_find_and_load_unlocked</span><span class="ansi-blue-fg">(name, import_)</span>
+<span class="ansi-green-fg">   1312</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> parent:
+<span class="ansi-green-fg">   1313</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> parent <span class="ansi-bold" style="color: rgb(0,135,0)">not</span> <span class="ansi-bold" style="color: rgb(0,135,0)">in</span> sys.modules:
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1314</span>             _call_with_frames_removed(import_, parent)
+<span class="ansi-green-fg">   1315</span>         <span style="color: rgb(95,135,135)"># Crazy side-effects!</span>
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">&lt;frozen importlib._bootstrap&gt;:488</span>, in <span class="ansi-cyan-fg">_call_with_frames_removed</span><span class="ansi-blue-fg">(f, *args, **kwds)</span>
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">&lt;frozen importlib._bootstrap&gt;:491</span>, in <span class="ansi-cyan-fg">_call_with_frames_removed</span><span class="ansi-blue-fg">(f, *args, **kwds)</span>
+<span class="ansi-green-fg">    489</span>     module code)
+<span class="ansi-green-fg">    490</span>     &#34;&#34;&#34;
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">491</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> f(*args, **kwds)
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">&lt;frozen importlib._bootstrap&gt;:1387</span>, in <span class="ansi-cyan-fg">_gcd_import</span><span class="ansi-blue-fg">(name, package, level)</span>
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">&lt;frozen importlib._bootstrap&gt;:1406</span>, in <span class="ansi-cyan-fg">_gcd_import</span><span class="ansi-blue-fg">(name, package, level)</span>
+<span class="ansi-green-fg">   1404</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> level &gt; <span class="ansi-green-fg">0</span>:
+<span class="ansi-green-fg">   1405</span>         name = _resolve_name(name, package, level)
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1406</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> _find_and_load(name, _gcd_import)
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">&lt;frozen importlib._bootstrap&gt;:1360</span>, in <span class="ansi-cyan-fg">_find_and_load</span><span class="ansi-blue-fg">(name, import_)</span>
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">&lt;frozen importlib._bootstrap&gt;:1371</span>, in <span class="ansi-cyan-fg">_find_and_load</span><span class="ansi-blue-fg">(name, import_)</span>
+<span class="ansi-green-fg">   1369</span>             module = sys.modules.get(name, _NEEDS_LOADING)
+<span class="ansi-green-fg">   1370</span>             <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> module <span class="ansi-bold" style="color: rgb(0,135,0)">is</span> _NEEDS_LOADING:
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1371</span>                 <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> _find_and_load_unlocked(name, import_)
+<span class="ansi-green-fg">   1372</span>
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">&lt;frozen importlib._bootstrap&gt;:1324</span>, in <span class="ansi-cyan-fg">_find_and_load_unlocked</span><span class="ansi-blue-fg">(name, import_)</span>
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">&lt;frozen importlib._bootstrap&gt;:1335</span>, in <span class="ansi-cyan-fg">_find_and_load_unlocked</span><span class="ansi-blue-fg">(name, import_)</span>
+<span class="ansi-green-fg">   1333</span>     spec = _find_spec(name, path)
+<span class="ansi-green-fg">   1334</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> spec <span class="ansi-bold" style="color: rgb(0,135,0)">is</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1335</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> ModuleNotFoundError(f&#39;{_ERR_MSG_PREFIX}{name!r}&#39;, name=name)
+<span class="ansi-green-fg">   1336</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">else</span>:
 
 <span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;lxml&#39;
 
-During handling of the above exception, another exception occurred:
+The above exception was the direct cause of the following exception:
 
 <span class="ansi-red-fg">ImportError</span>                               Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[4]</span><span class="ansi-green-fg">, line 5</span>
-<span class="ansi-green-fg">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">pandas</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">as</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">pd</span>
-<span class="ansi-green-fg">      3</span> url = <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">https://peps.python.org/</span><span class="ansi-yellow-fg">&#34;</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">5</span> tables = <span class="ansi-yellow-bg">pd</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">read_html</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">url</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg">      6</span> <span style="color: rgb(0,135,0)">print</span>(<span style="color: rgb(0,135,0)">len</span>(tables))
+<span class="ansi-green-fg">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> pandas <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> pd
+<span class="ansi-green-fg">      2</span>
+<span class="ansi-green-fg">      3</span> url = <span class="ansi-yellow-fg">&#34;https://peps.python.org/&#34;</span>
+<span class="ansi-green-fg">      4</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">5</span> tables = pd.read_html(url)
+<span class="ansi-green-fg">      6</span> print(len(tables))
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">D:\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\html.py:1240</span>, in <span class="ansi-cyan-fg">read_html</span><span class="ansi-blue-fg">(io, match, flavor, header, index_col, skiprows, attrs, parse_dates, thousands, encoding, decimal, converters, na_values, keep_default_na, displayed_only, extract_links, dtype_backend, storage_options)</span>
-<span class="ansi-green-fg">   1224</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">isinstance</span>(io, <span style="color: rgb(0,135,0)">str</span>) <span class="ansi-bold" style="color: rgb(175,0,255)">and</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span style="color: rgb(0,135,0)">any</span>(
-<span class="ansi-green-fg">   1225</span>     [
-<span class="ansi-green-fg">   1226</span>         is_file_like(io),
-<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">   1230</span>     ]
-<span class="ansi-green-fg">   1231</span> ):
-<span class="ansi-green-fg">   1232</span>     warnings.warn(
-<span class="ansi-green-fg">   1233</span>         <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Passing literal html to </span><span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">read_html</span><span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg"> is deprecated and </span><span class="ansi-yellow-fg">&#34;</span>
-<span class="ansi-green-fg">   1234</span>         <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">will be removed in a future version. To read from a </span><span class="ansi-yellow-fg">&#34;</span>
-<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">   1237</span>         stacklevel=find_stack_level(),
-<span class="ansi-green-fg">   1238</span>     )
-<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1240</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">_parse</span><span class="ansi-yellow-bg">(</span>
-<span class="ansi-green-fg">   1241</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">flavor</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">flavor</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   1242</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">io</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">io</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   1243</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">match</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">match</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   1244</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">header</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">header</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   1245</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">index_col</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">index_col</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   1246</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">skiprows</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">skiprows</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   1247</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">parse_dates</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">parse_dates</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   1248</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">thousands</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">thousands</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   1249</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">attrs</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">attrs</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   1250</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   1251</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">decimal</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">decimal</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   1252</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">converters</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">converters</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   1253</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">na_values</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">na_values</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   1254</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">keep_default_na</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">keep_default_na</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   1255</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">displayed_only</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">displayed_only</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   1256</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">extract_links</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">extract_links</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   1257</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">dtype_backend</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">dtype_backend</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   1258</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">storage_options</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">storage_options</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   1259</span> <span class="ansi-yellow-bg">)</span>
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\html.py:1226</span>, in <span class="ansi-cyan-fg">read_html</span><span class="ansi-blue-fg">(io, match, flavor, header, index_col, skiprows, attrs, parse_dates, thousands, encoding, decimal, converters, na_values, keep_default_na, displayed_only, extract_links, dtype_backend, storage_options)</span>
+<span class="ansi-green-fg">   1222</span> check_dtype_backend(dtype_backend)
+<span class="ansi-green-fg">   1224</span> io = stringify_path(io)
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1226</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-black-fg ansi-yellow-bg">_parse</span><span class="ansi-black-fg ansi-yellow-bg">(</span>
+<span class="ansi-green-fg">   1227</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">flavor</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">flavor</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1228</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">io</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">io</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1229</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">match</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">match</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1230</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">header</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">header</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1231</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">index_col</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">index_col</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1232</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">skiprows</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">skiprows</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1233</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">parse_dates</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">parse_dates</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1234</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">thousands</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">thousands</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1235</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">attrs</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">attrs</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1236</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">encoding</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">encoding</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1237</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">decimal</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">decimal</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1238</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">converters</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">converters</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1239</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">na_values</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">na_values</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1240</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">keep_default_na</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">keep_default_na</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1241</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">displayed_only</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">displayed_only</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1242</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">extract_links</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">extract_links</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1243</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">dtype_backend</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">dtype_backend</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1244</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">storage_options</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">storage_options</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1245</span> <span class="ansi-black-fg ansi-yellow-bg">)</span>
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">D:\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\html.py:971</span>, in <span class="ansi-cyan-fg">_parse</span><span class="ansi-blue-fg">(flavor, io, match, attrs, encoding, displayed_only, extract_links, storage_options, **kwargs)</span>
-<span class="ansi-green-fg">    969</span> retained = <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>
-<span class="ansi-green-fg">    970</span> <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> flav <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> flavor:
-<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">971</span>     parser = <span class="ansi-yellow-bg">_parser_dispatch</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">flav</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg">    972</span>     p = parser(
-<span class="ansi-green-fg">    973</span>         io,
-<span class="ansi-green-fg">    974</span>         compiled_match,
-<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    979</span>         storage_options,
-<span class="ansi-green-fg">    980</span>     )
-<span class="ansi-green-fg">    982</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">try</span>:
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\html.py:967</span>, in <span class="ansi-cyan-fg">_parse</span><span class="ansi-blue-fg">(flavor, io, match, attrs, encoding, displayed_only, extract_links, storage_options, **kwargs)</span>
+<span class="ansi-green-fg">    965</span> retained = <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>
+<span class="ansi-green-fg">    966</span> <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> flav <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> flavor:
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">967</span>     parser = <span class="ansi-black-fg ansi-yellow-bg">_parser_dispatch</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">flav</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    968</span>     p = parser(
+<span class="ansi-green-fg">    969</span>         io,
+<span class="ansi-green-fg">    970</span>         compiled_match,
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    975</span>         storage_options,
+<span class="ansi-green-fg">    976</span>     )
+<span class="ansi-green-fg">    978</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">try</span>:
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">D:\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\html.py:918</span>, in <span class="ansi-cyan-fg">_parser_dispatch</span><span class="ansi-blue-fg">(flavor)</span>
-<span class="ansi-green-fg">    916</span>     import_optional_dependency(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">bs4</span><span class="ansi-yellow-fg">&#34;</span>)
-<span class="ansi-green-fg">    917</span> <span class="ansi-bold" style="color: rgb(0,135,0)">else</span>:
-<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">918</span>     <span class="ansi-yellow-bg">import_optional_dependency</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-fg ansi-yellow-bg">&#34;</span><span class="ansi-yellow-fg ansi-yellow-bg">lxml.etree</span><span class="ansi-yellow-fg ansi-yellow-bg">&#34;</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg">    919</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> _valid_parsers[flavor]
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\html.py:914</span>, in <span class="ansi-cyan-fg">_parser_dispatch</span><span class="ansi-blue-fg">(flavor)</span>
+<span class="ansi-green-fg">    912</span>     import_optional_dependency(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">bs4</span><span class="ansi-yellow-fg">&#34;</span>)
+<span class="ansi-green-fg">    913</span> <span class="ansi-bold" style="color: rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">914</span>     <span class="ansi-black-fg ansi-yellow-bg">import_optional_dependency</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">&#34;</span><span class="ansi-black-fg ansi-yellow-bg">lxml.etree</span><span class="ansi-black-fg ansi-yellow-bg">&#34;</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    915</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> _valid_parsers[flavor]
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">D:\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\compat\_optional.py:138</span>, in <span class="ansi-cyan-fg">import_optional_dependency</span><span class="ansi-blue-fg">(name, extra, errors, min_version)</span>
-<span class="ansi-green-fg">    136</span> <span class="ansi-bold" style="color: rgb(0,135,0)">except</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ImportError</span>:
-<span class="ansi-green-fg">    137</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> errors == <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">raise</span><span class="ansi-yellow-fg">&#34;</span>:
-<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">138</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ImportError</span>(msg)
-<span class="ansi-green-fg">    139</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>
-<span class="ansi-green-fg">    141</span> <span style="color: rgb(95,135,135)"># Handle submodules: if we have submodule, grab parent module from sys.modules</span>
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\compat\_optional.py:161</span>, in <span class="ansi-cyan-fg">import_optional_dependency</span><span class="ansi-blue-fg">(name, extra, min_version, errors)</span>
+<span class="ansi-green-fg">    159</span> <span class="ansi-bold" style="color: rgb(0,135,0)">except</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ImportError</span> <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> err:
+<span class="ansi-green-fg">    160</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> errors == <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">raise</span><span class="ansi-yellow-fg">&#34;</span>:
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">161</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ImportError</span>(msg) <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">err</span>
+<span class="ansi-green-fg">    162</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>
+<span class="ansi-green-fg">    164</span> <span style="color: rgb(95,135,135)"># Handle submodules: if we have submodule, grab parent module from sys.modules</span>
 
-<span class="ansi-red-fg">ImportError</span>: Missing optional dependency &#39;lxml&#39;.  Use pip or conda to install lxml.
+<span class="ansi-red-fg">ImportError</span>: `Import lxml` failed.  Use pip or conda to install the lxml package.
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -635,8 +666,8 @@ During handling of the above exception, another exception occurred:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[5]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span style="color: rgb(0,135,0)">print</span>(<span style="color: rgb(0,135,0)">type</span>(<span class="ansi-yellow-bg">tables</span>))
-<span class="ansi-green-fg">      2</span> <span style="color: rgb(0,135,0)">print</span>([<span style="color: rgb(0,135,0)">type</span>(table) <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> table <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> tables])
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> print(type(tables))
+<span class="ansi-green-fg">      2</span> print([type(table) <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> table <span class="ansi-bold" style="color: rgb(0,135,0)">in</span> tables])
 
 <span class="ansi-red-fg">NameError</span>: name &#39;tables&#39; is not defined
 </pre></div></div>
@@ -658,7 +689,7 @@ During handling of the above exception, another exception occurred:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[6]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df_table = <span class="ansi-yellow-bg">tables</span>[<span class="ansi-green-fg">5</span>]
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df_table = tables[<span class="ansi-green-fg">5</span>]
 <span class="ansi-green-fg">      2</span> df_table.head()
 
 <span class="ansi-red-fg">NameError</span>: name &#39;tables&#39; is not defined
@@ -680,7 +711,7 @@ During handling of the above exception, another exception occurred:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[7]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">df_table</span>.shape
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df_table.shape
 
 <span class="ansi-red-fg">NameError</span>: name &#39;df_table&#39; is not defined
 </pre></div></div>
@@ -690,10 +721,10 @@ During handling of the above exception, another exception occurred:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attrs</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s2">&quot;type-status&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;number&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;title&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;authors&quot;</span><span class="p">,</span>
+    <span class="s2">"type-status"</span><span class="p">,</span>
+    <span class="s2">"number"</span><span class="p">,</span>
+    <span class="s2">"title"</span><span class="p">,</span>
+    <span class="s2">"authors"</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">df_table</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">attrs</span>
 <span class="n">df_table</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -708,13 +739,11 @@ During handling of the above exception, another exception occurred:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[8]</span><span class="ansi-green-fg">, line 7</span>
-<span class="ansi-green-fg">      1</span> attrs = (
-<span class="ansi-green-fg">      2</span>     <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">type-status</span><span class="ansi-yellow-fg">&#34;</span>,
-<span class="ansi-green-fg">      3</span>     <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">number</span><span class="ansi-yellow-fg">&#34;</span>,
-<span class="ansi-green-fg">      4</span>     <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">title</span><span class="ansi-yellow-fg">&#34;</span>,
-<span class="ansi-green-fg">      5</span>     <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">authors</span><span class="ansi-yellow-fg">&#34;</span>,
+<span class="ansi-green-fg">      3</span>     <span class="ansi-yellow-fg">&#34;number&#34;</span>,
+<span class="ansi-green-fg">      4</span>     <span class="ansi-yellow-fg">&#34;title&#34;</span>,
+<span class="ansi-green-fg">      5</span>     <span class="ansi-yellow-fg">&#34;authors&#34;</span>,
 <span class="ansi-green-fg">      6</span> )
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">7</span> <span class="ansi-yellow-bg">df_table</span>.columns = attrs
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">7</span> df_table.columns = attrs
 <span class="ansi-green-fg">      8</span> df_table.head()
 
 <span class="ansi-red-fg">NameError</span>: name &#39;df_table&#39; is not defined
@@ -737,7 +766,7 @@ During handling of the above exception, another exception occurred:
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-30</div>
+              Last updated on 2026-08-28</div>
           </div>
           <div class="right-details">
             
@@ -782,7 +811,7 @@ During handling of the above exception, another exception occurred:
     <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../../_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../../../../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../../../../../_static/copybutton.js?v=940804e7"></script>
     <script src="../../../../../../_static/translations.js?v=4755f45a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     </body>

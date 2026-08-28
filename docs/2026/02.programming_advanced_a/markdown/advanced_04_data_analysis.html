@@ -1,0 +1,875 @@
+<!doctype html>
+<html class="no-js" lang="ja" data-content_root="../../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="第4回 データ解析（100分授業用）" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="2026/02.programming_advanced_a/markdown/advanced_04_data_analysis.html" />
+<meta property="og:site_name" content="musashiuniv" />
+<meta property="og:description" content="皆さん、こんにちは！プログラミング応用A（コンピューティング応用G）、第4回の講義です。担当の教員です。 前回の第3回では、「データの種類（尺度）」を整理し、複数の表を連結・結合したり、時系列データから曜日を抽出したりする高度なデータ加工（前処理）を学びました。 ここまでの授業で、皆さんは「汚いデータを綺麗にし、分析しやすいように並べるスキル」を完全にマスターしました。データ分析の全作業のう..." />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image" content="/None" />
+<meta property="og:image:alt" content="皆さん、こんにちは！プログラミング応用A（コンピューティング応用G）、第4回の講義です。担当の教員です。 前回の第3回では、「データの種類（尺度）」を整理し、複数の表を連結・結合したり、時系列データから曜日を抽出したりする高度なデータ加工（前処理）を学びました。 ここまでの授業で、皆さんは「汚いデータを綺麗にし、..." />
+<meta name="description" content="皆さん、こんにちは！プログラミング応用A（コンピューティング応用G）、第4回の講義です。担当の教員です。 前回の第3回では、「データの種類（尺度）」を整理し、複数の表を連結・結合したり、時系列データから曜日を抽出したりする高度なデータ加工（前処理）を学びました。 ここまでの授業で、皆さんは「汚いデータを綺麗にし、分析しやすいように並べるスキル」を完全にマスターしました。データ分析の全作業のう..." />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" />
+
+    <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
+        <title>第4回 データ解析（100分授業用） - Pythonプログラミング入門</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=949a1ff5" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/musashiuniv/custom.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">Pythonプログラミング入門</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
+  
+  
+  <span class="sidebar-brand-text">Pythonプログラミング入門</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="検索" name="q" aria-label="検索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../2025/index.html">2025年度</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 2025年度</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/index.html">2025年度 プログラミング基礎A/コンピューティング応用E</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 2025年度 プログラミング基礎A/コンピューティング応用E</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/01_intro.html">Pythonをはじめよう</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/02_computer.html">ノイマン型コンピュータ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/03_history.html">Pythonの歴史</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/20_coding.html">コーディング規約</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/21_module.html">モジュール</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/utokyo_ipp/index.html">Pythonプログラミング入門</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Pythonプログラミング入門</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/utokyo_ipp/00_index.html">1. 演習ページ</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/index.html">(補足資料) Python ゼロからはじめるプログラミング</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of (補足資料) Python ゼロからはじめるプログラミング</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/00_index.html">1. Pythonプログラミング</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/01_Python%E3%81%AB%E8%A7%A6%E3%82%8C%E3%82%8B.html">2. 第1章 Pythonに触れる</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/02_Python%E3%81%AE%E5%9F%BA%E6%9C%AC.html">3. 第2章 Pythonの基本</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/03_%E6%9D%A1%E4%BB%B6%E5%88%86%E5%B2%90%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%97.html">4. 第3章 条件分岐と繰り返し</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/04_%E7%B5%84%E3%81%BF%E8%BE%BC%E3%81%BF%E5%9E%8B%E3%81%A8%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88.html">5. 第4章 組み込み型とオブジェクト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/05_%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E5%AE%9A%E7%BE%A9%E9%96%A2%E6%95%B0.html">6. 第5章 ユーザ定義関数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/06_%E3%82%AF%E3%83%A9%E3%82%B9%E3%81%AE%E5%9F%BA%E6%9C%AC.html">7. 第6章 クラスの基本</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/07_%E7%99%BA%E5%B1%95%E3%81%A8%E5%BF%9C%E7%94%A8.html">8. 第7章 発展と応用</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/index.html">(補助資料)Python Boot Camp Text</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of (補助資料)Python Boot Camp Text</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/index.html">Python Boot Camp テキスト</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Python Boot Camp テキスト</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/1_install.html">1. Pythonをはじめる前に</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/2_intro.html">2. Pythonをはじめよう</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/3_types.html">3. Pythonのデータ型（基本編）</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/4_collections.html">4. Pythonのデータ型（コレクション編）</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/5_module.html">5. ファイル操作とモジュール</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/6_venv.html">6. サードパーティ製パッケージと venv</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/7_scraping.html">7. Web API、スクレイピング</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/8_nextstep.html">8. 次のステップ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/99_install.html">参考資料</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/index.html">2025年度 プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of 2025年度 プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/02.programming_advanced_a/01_intro.html">はじめに</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/python_dataanalysis/index.html">Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/python_dataanalysis/00_index.html">1. 資料</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/02.programming_advanced_a/digital_twin/index.html">デジタルツイン</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/index.html">leafmap</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of leafmap</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/01_intro.html">1. leafmapとは</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/01_intro.html#leadmap">2. leadmapのサイト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/01_intro.html#google-colab">3. 演習：Google Colab ファイル</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/index.html">機械学習</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of 機械学習</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/supervised_learning.html">1. 機械学習</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/unsupervised_learning.html">2. 教師なし学習</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/f1score.html">3. 分類問題における正解・不正解のパターン</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../index.html">2026年度</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of 2026年度</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../01.programming_basic_a/index.html">プログラミング基礎A/コンピューティング応用E</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle navigation of プログラミング基礎A/コンピューティング応用E</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_01.html">第1回 オリエンテーション・Google Colabの使い方</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_02.html">第2回 コンピューターとプログラミングとは？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_03.html">第3回 Pythonの基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_04.html">第4回 数値演算と文字列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_05.html">第5回 データ構造（数値、文字列、リスト、辞書）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_06.html">第6回 条件分岐、ファイル入出力の基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_07.html">第7回 テスト・デバッグ、コードスタイル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_08.html">第8回 制御フロー（条件分岐、繰り返し、イテレータ、内包表記）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_09.html">第9回 関数と例外処理（オブジェクト、クラス、例外処理）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_10.html">第10回 Pythonのライブラリ・パッケージ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_11.html">第11回 高階関数とpandasライブラリ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_12.html">第12回 Pythonのライブラリ・パッケージ（グラフ可視化）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_13.html">第13回 総合演習</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="advanced_01.html">第1回 オリエンテーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_02.html">第2回 オープンデータの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_03.html">第3回 データの種類とデータ加⼯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_04.html">第4回 データ解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_05.html">第5回 Webサービスの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_06.html">第6回 Webサービスの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_07.html">第7回 地理空間情報の基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_08.html">第8回 地理空間データの活⽤1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_09.html">第9回 地理空間データの活⽤2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_13.html">第13回 総合演習</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../03.google_colab/index.html">Google Colaboratoryの使い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../04.markdown/index.html">Markdown記法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../05.windows/index.html">Windows 特有の注意点</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../99.references/index.html">ライセンス、参考文献</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle navigation of ライセンス、参考文献</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../99.references/01_basic/basic.html">プログラミング基礎A/コンピューティング応用E [集中] (M1830)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../99.references/02_advanced/advance.html">プログラミング応用A/コンピューティング応用G [集中] (M1850)</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../../_sources/2026/02.programming_advanced_a/markdown/advanced_04_data_analysis.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <!-- Markdownセル -->
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>第4回 データ解析（100分授業用）<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<p>皆さん、こんにちは！プログラミング応用A（コンピューティング応用G）、第4回の講義です。担当の教員です。
+前回の第3回では、「データの種類（尺度）」を整理し、複数の表を連結・結合したり、時系列データから曜日を抽出したりする高度なデータ加工（前処理）を学びました。</p>
+<p>ここまでの授業で、皆さんは「汚いデータを綺麗にし、分析しやすいように並べるスキル」を完全にマスターしました。データ分析の全作業のうち、実に約8割がこの「前処理」だと言われています。つまり、皆さんはすでに山頂のすぐ手前まで来ているのです！</p>
+<p>今日のテーマは、いよいよデータ分析の本番、**「データ解析（Data Analysis）」**です。</p>
+<p>綺麗に整ったデータから、「売上の平均やばらつき（記述統計）」を計算し、「何と何が関係しているのか（相関分析）」を紐解き、データを二次元の表で多角的に集計する「クロス集計（ピボットテーブル）」の手法を学びます。
+「標準偏差」や「相関係数」といった一見難しそうな数学の言葉が出てきますが、<strong>大丈夫です！</strong> 「カフェに来る大富豪の罠」や「アイスの売上と気温の関係」など、身近な例を交えて、数式なしで直感的に理解できるように解説します。</p>
+<p>それでは、データからビジネスや社会の課題を解決する「データアナリスト」への扉を開きましょう！</p>
+<hr class="docutils" />
+<section id="id2">
+<h2>🎯 到達目標 (約5分)<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>この100分の授業が終わるころには、以下のことができるようになります。</p>
+<ol class="arabic simple">
+<li><p><strong>記述統計</strong>（平均値、中央値、最頻値、分散、標準偏差）のビジネスにおける使い分けと意味を説明できる。</p></li>
+<li><p>平均値の落とし穴（外れ値の罠）を理解し、<strong>中央値</strong>を適切に選んで評価できる。</p></li>
+<li><p><strong>クロス集計とピボットテーブル（pivot_table）</strong> を使って、2つの属性（例：顧客タイプ×注文商品）を掛け合わせた複雑なデータ分析ができる。</p></li>
+<li><p><strong>相関分析（相関係数）</strong> の仕組みを理解し、2つの変数の間にある関係（正の相関、負の相関）をデータから見つけ出せる。</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h2>⏱️ 本日のタイムスケジュール (100分授業用)<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><strong>4.1 平均値の罠と記述統計の基本 (約20分)</strong></p>
+<ul class="simple">
+<li><p>平均値、中央値、最頻値、標準偏差の直感的な理解。</p></li>
+</ul>
+</li>
+<li><p><strong>4.2 クロス集計とピボットテーブル (約15分)</strong></p>
+<ul class="simple">
+<li><p>2つのデータをクロスさせて隠れたトレンドをあぶり出す。</p></li>
+</ul>
+</li>
+<li><p><strong>4.3 相関分析：データ同士の関係性を数値化する (約15分)</strong></p>
+<ul class="simple">
+<li><p>相関係数（<span class="math notranslate nohighlight">\(r\)</span>）の意味と、相関 vs 因果の落とし穴。</p></li>
+</ul>
+</li>
+<li><p><strong>💻 演習課題（難易度別5問） (約45分)</strong></p>
+<ul class="simple">
+<li><p>実際のカフェデータ、顧客アンケートデータを使った実践解析。</p></li>
+</ul>
+</li>
+<li><p><strong>💡 解答確認と本日のまとめ (約5分)</strong></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="id4">
+<h2>4.1 平均値の罠と記述統計の基本 (約20分)<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<p>データを分析する際、最初にデータの全体像（代表値とばらつき）を把握します。これを**記述統計（Descriptive Statistics）**と呼びます。</p>
+<section id="id5">
+<h3>① 代表値（平均値、中央値、最頻値）の使い分け<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>平均値 (Mean)</strong>：すべてのデータの合計を件数で割ったもの。最も一般的ですが、<strong>「極端な値（外れ値）」にめちゃくちゃ引っ張られる</strong>という最大の弱点があります。</p></li>
+<li><p><strong>中央値 (Median)</strong>：データを順番に並べたときに、ちょうど<strong>真ん中にくる値</strong>。外れ値の影響を受けません。</p></li>
+<li><p><strong>最頻値 (Mode)</strong>：データの中で<strong>最も多く登場する値</strong>（人気投票の1位のようなもの）。アンケートの回答などに使います。</p></li>
+</ul>
+<p><strong>【大富豪来店！平均値の罠（イメージ）】</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  [ カフェのお客さん5人の所持金 ]
+   佐藤さん: 3000円  │
+   鈴木さん: 5000円  │  この4人の「平均所持金」は、約 4,750円。 (納得のいく数字)
+   田中さん: 6000円  │
+   高橋さん: 5000円  │
+      ＋
+   💰【大富豪】ビル・ゲイツ氏：1兆円！
+  
+  [ 5人集まった結果 ]
+   平均所持金 ──▶  約 2000億円！ (「このカフェの平均顧客はみんな超大金持ち！」となってしまい、現実と激しく乖離する)
+   中央値     ──▶  5000円！ (ちょうど真ん中の佐藤・高橋さんの金額。これが現実の実態を正しく示している)
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">コードセル</span> <span class="o">--&gt;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># カフェのお客さんの滞在時間（分）のデータ</span>
+<span class="c1"># 4人は普通にゆっくりしていますが、1人だけ「朝から夕方まで居座った人（480分）」が混ざっています（外れ値）。</span>
+<span class="n">stay_times</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">480</span><span class="p">]</span>
+
+<span class="n">df_stay</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">stay_times</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"滞在時間"</span><span class="p">])</span>
+
+<span class="c1"># 平均値と中央値を計算して比較してみましょう！</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"平均値 (Mean):"</span><span class="p">,</span> <span class="n">df_stay</span><span class="p">[</span><span class="s2">"滞在時間"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="s2">"分"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"中央値 (Median):"</span><span class="p">,</span> <span class="n">df_stay</span><span class="p">[</span><span class="s2">"滞在時間"</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span> <span class="s2">"分"</span><span class="p">)</span>
+
+<span class="c1"># 平均だと「1人あたり131分」となり、みんな2時間以上いるように見えますが、</span>
+<span class="c1"># 中央値の「45分」の方が、大部分のお客さんの実感値（代表値）に近いですね！</span>
+</pre></div>
+</div>
+</section>
+<section id="standard-deviation">
+<h3>② データの「ばらつき」を表す「標準偏差（Standard Deviation）」<a class="headerlink" href="#standard-deviation" title="Link to this heading">¶</a></h3>
+<p>「平均滞在時間は45分です」と言われても、「全員が40〜50分の間に収まっている」のか、「5分で帰る人と90分いる人が半分ずつ」なのか分かりません。
+この**「データのばらつき（散らばり具合）」を数値化したものが、標準偏差（Std）**です。</p>
+<ul class="simple">
+<li><p>標準偏差が<strong>小さい</strong> ➡ みんな平均値の近くに集まっている（安定している）。</p></li>
+<li><p>標準偏差が<strong>大きい</strong> ➡ データがバラバラに散らばっている。</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id6">
+<h2>4.2 クロス集計とピボットテーブル (約15分)<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<p>データの中に複数のカテゴリがある場合、それらを掛け合わせて集計すると「意外な組み合わせ」が見えてきます。これを<strong>クロス集計</strong>と呼びます。
+Pandasでは、エクセルの機能でおなじみの <strong>ピボットテーブル（<code class="docutils literal notranslate"><span class="pre">pivot_table</span></code>）</strong> が使えます。</p>
+<p><strong>【ピボットテーブルのイメージ】</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  [ 生データ ] ──▶ [ ピボットテーブル集計 ] ──▶ [ 二次元のクロス表 ]
+  顧客区分, 注文商品                              
+  学生,   コーヒー                                     学生    社会人
+  一般,   ケーキ                               コーヒー  12杯     5杯
+  学生,   コーヒー                               ケーキ    2個    15個
+  一般,   コーヒー                               (学生はコーヒー、社会人はケーキを好むと一目でわかる)
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">コードセル</span> <span class="o">--&gt;</span>
+<span class="c1"># カフェの顧客タイプ別の売上履歴データ</span>
+<span class="n">df_cafe_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s2">"学生"</span><span class="p">,</span> <span class="s2">"コーヒー"</span><span class="p">,</span> <span class="mi">450</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"一般"</span><span class="p">,</span> <span class="s2">"コーヒー"</span><span class="p">,</span> <span class="mi">450</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"学生"</span><span class="p">,</span> <span class="s2">"ケーキ"</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"一般"</span><span class="p">,</span> <span class="s2">"ケーキ"</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"学生"</span><span class="p">,</span> <span class="s2">"コーヒー"</span><span class="p">,</span> <span class="mi">450</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"一般"</span><span class="p">,</span> <span class="s2">"ケーキ"</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"一般"</span><span class="p">,</span> <span class="s2">"ケーキ"</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span>
+<span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"顧客区分"</span><span class="p">,</span> <span class="s2">"商品名"</span><span class="p">,</span> <span class="s2">"売上"</span><span class="p">])</span>
+
+<span class="c1"># ピボットテーブルを使って「顧客区分」を横（列）に、「商品名」を縦（行）にして、売上の「個数（count）」を集計します！</span>
+<span class="n">df_pivot</span> <span class="o">=</span> <span class="n">df_cafe_sales</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">values</span><span class="o">=</span><span class="s2">"売上"</span><span class="p">,</span>            <span class="c1"># 集計したい数値の列</span>
+    <span class="n">index</span><span class="o">=</span><span class="s2">"商品名"</span><span class="p">,</span>           <span class="c1"># 縦軸（行）に置く項目</span>
+    <span class="n">columns</span><span class="o">=</span><span class="s2">"顧客区分"</span><span class="p">,</span>       <span class="c1"># 横軸（列）に置く項目</span>
+    <span class="n">aggfunc</span><span class="o">=</span><span class="s2">"count"</span>           <span class="c1"># 集計方法（今回はデータの個数を数える count。合計なら sum、平均なら mean）</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"▼ クロス集計（ピボットテーブル）の結果"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_pivot</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id7">
+<h2>4.3 相関分析：データ同士の関係性を数値化する (約15分)<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<p>データ分析の最もエキサイティングな瞬間、それは「2つのデータがどう関係しているか（相関）」を見つけるときです。</p>
+<section id="correlation-coefficient-r">
+<h3>① 相関係数（Correlation Coefficient: <span class="math notranslate nohighlight">\(r\)</span>）<a class="headerlink" href="#correlation-coefficient-r" title="Link to this heading">¶</a></h3>
+<p>2つのデータの関係性を <strong><code class="docutils literal notranslate"><span class="pre">-1.0</span></code> 〜 <code class="docutils literal notranslate"><span class="pre">+1.0</span></code></strong> の間の数字で表したものです。</p>
+<ul class="simple">
+<li><p><strong>正の相関（0 から 1.0）</strong>：一方が増えると、もう一方も増える関係。</p>
+<ul>
+<li><p><em>例</em>：気温が高くなると、アイスコーヒーの売上が増える（相関係数は +0.8 など強い正の相関）。</p></li>
+</ul>
+</li>
+<li><p><strong>負の相関（-1.0 から 0）</strong>：一方が増えると、もう一方は減る関係。</p>
+<ul>
+<li><p><em>例</em>：気温が高くなると、ホットコーヒーの売上が減る（相関係数は -0.7 など強い負の相関）。</p></li>
+</ul>
+</li>
+<li><p><strong>無相関（0付近）</strong>：お互いに関係がない。</p>
+<ul>
+<li><p><em>例</em>：店長の体重と、コーヒーの売上（相関係数は 0.05 など、無関係）。</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>【相関係数（<span class="math notranslate nohighlight">\(r\)</span>）の基準値】</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0.7</span> <span class="pre">〜</span> <span class="pre">1.0</span></code>（または <code class="docutils literal notranslate"><span class="pre">-0.7</span> <span class="pre">〜</span> <span class="pre">-1.0</span></code>）：<strong>強い相関</strong>がある。信頼できる強い関係。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0.4</span> <span class="pre">〜</span> <span class="pre">0.7</span></code>（または <code class="docutils literal notranslate"><span class="pre">-0.4</span> <span class="pre">〜</span> <span class="pre">-0.7</span></code>）：<strong>中程度の相関</strong>がある。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0.0</span> <span class="pre">〜</span> <span class="pre">0.2</span></code>：<strong>ほとんど相関がない</strong>。</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">コードセル</span> <span class="o">--&gt;</span>
+<span class="c1"># 「その日の最高気温」と「冷たい飲み物の売上数」「温かい飲み物の売上数」のデータ</span>
+<span class="n">df_weather_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">80</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"最高気温"</span><span class="p">,</span> <span class="s2">"冷たい飲料"</span><span class="p">,</span> <span class="s2">"温かい飲料"</span><span class="p">])</span>
+
+<span class="c1"># 相関行列（すべてのペアの相関係数を一瞬で計算する .corr()）</span>
+<span class="n">correlation_matrix</span> <span class="o">=</span> <span class="n">df_weather_sales</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"▼ 相関行列（自分自身との相関は 1.0 になります）"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">correlation_matrix</span><span class="p">)</span>
+
+<span class="c1"># 気温と冷たい飲料の相関係数は「0.99」➡ ほぼ完璧な「強い正の相関」</span>
+<span class="c1"># 気温と温かい飲料の相関係数は「-0.99」➡ ほぼ完璧な「強い負の相関」であることがわかります！</span>
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h3>🚨 注意！「相関関係」と「因果関係」は違う！<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p>データ分析者が一生忘れてはならない超重要な鉄則があります。
+<strong>「相関関係があるからといって、原因と結果（因果関係）があるとは限らない」</strong></p>
+<ul class="simple">
+<li><p><em>有名な例</em>：「交番の数が多い地域ほど、犯罪発生数が多い」というデータがあります。</p>
+<ul>
+<li><p>これを「交番を建てたから、おまわりさんが犯罪を増やしたんだ！交番を壊そう！」と判断するのは間違いですよね。</p></li>
+<li><p>実際には「人口が非常に多い大都市だから、交番も多く、必然的に犯罪も多い」という**「人口」という隠れた原因（交絡因子）**が裏に潜んでいるだけです。</p></li>
+</ul>
+</li>
+</ul>
+<p>データ分析の数字を見る際は、常に「本当にこれが原因なのか？」を論理的に疑う癖をつけましょう。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id9">
+<h2>💻 演習課題 (約45分)<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<p>さあ、今日学んだ「記述統計・代表値、ピボットテーブル、相関分析」を使いこなし、カフェのデータ分析レポートを作成しましょう！
+講義と演習の時間は約半分ずつです。もし「エラーで相関が出ない（数値以外の文字が混ざっている）」等のトラブルが起きたら、第3回で学んだデータ加工（キャスト）を思い出すか、生成AIにエラーを相談してみましょう。</p>
+<p>以下の <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TODO:</span> </code> の部分を書き換えて、プログラムを完成させてください。</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+```python
+# 演習1: 平均値と中央値の算出と比較（難易度：易）
+# カフェに設置した「ご意見箱」に寄せられた、お客様の満足度（5点満点）のデータです。
+# ほとんどの人は満足(4点や5点)していますが、1人だけ「激怒したクレーマー(1点)」がいます。
+# TODO: 満足度の「平均値」と「中央値」を計算して表示し、どちらが全体の「実感（代表値）」に近いか考えてください。
+
+import pandas as pd
+
+satisfaction_scores = [5, 4, 5, 4, 5, 1, 5, 4] # 1点という外れ値が混ざっている
+
+df_satisfaction = pd.DataFrame(satisfaction_scores, columns=["満足度"])
+
+# TODO: 平均値を計算
+mean_score = 
+
+# TODO: 中央値を計算
+median_score = 
+
+print("平均値:", mean_score)
+print("中央値:", median_score)
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習2: クロス集計による男女のメニュー好みの分析（難易度：易）</span>
+<span class="c1"># 顧客の「性別（Gender）」と「注文メニュー（Menu）」のデータフレームがあります。</span>
+<span class="c1"># TODO: pd.crosstab() を使って、性別ごとにどのメニューが何回注文されたかを集計する </span>
+<span class="c1">#       クロス集計表 df_cross を作成し、表示してください。</span>
+<span class="c1"># ※ヒント： pd.crosstab(縦軸に置く列, 横軸に置く列)</span>
+
+<span class="n">df_customers</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s2">"女性"</span><span class="p">,</span> <span class="s2">"パンケーキ"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"男性"</span><span class="p">,</span> <span class="s2">"コーヒー"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"女性"</span><span class="p">,</span> <span class="s2">"コーヒー"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"女性"</span><span class="p">,</span> <span class="s2">"パンケーキ"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"男性"</span><span class="p">,</span> <span class="s2">"コーヒー"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"男性"</span><span class="p">,</span> <span class="s2">"パンケーキ"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"女性"</span><span class="p">,</span> <span class="s2">"コーヒー"</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"性別"</span><span class="p">,</span> <span class="s2">"メニュー"</span><span class="p">])</span>
+
+<span class="c1"># TODO: 性別とメニューのクロス集計（度数分布表）を作成</span>
+<span class="n">df_cross</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"▼ 性別×メニューのクロス集計表"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_cross</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習3: ピボットテーブルを使った店舗別売上平均の集計（難易度：中）</span>
+<span class="c1"># 複数店舗の売上データがあります。</span>
+<span class="c1"># TODO: df_sales.pivot_table() を使って、</span>
+<span class="c1">#       縦軸（index）を「店舗名」、横軸（columns）を「商品カテゴリ」にし、</span>
+<span class="c1">#       「売上」の【平均値（mean）】を集計するピボットテーブル df_sales_pivot を作ってください。</span>
+
+<span class="n">df_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s2">"新宿店"</span><span class="p">,</span> <span class="s2">"ドリンク"</span><span class="p">,</span> <span class="mi">450</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"新宿店"</span><span class="p">,</span> <span class="s2">"フード"</span><span class="p">,</span> <span class="mi">800</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"渋谷店"</span><span class="p">,</span> <span class="s2">"ドリンク"</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"渋谷店"</span><span class="p">,</span> <span class="s2">"フード"</span><span class="p">,</span> <span class="mi">900</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"新宿店"</span><span class="p">,</span> <span class="s2">"ドリンク"</span><span class="p">,</span> <span class="mi">400</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"渋谷店"</span><span class="p">,</span> <span class="s2">"ドリンク"</span><span class="p">,</span> <span class="mi">480</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"店舗名"</span><span class="p">,</span> <span class="s2">"商品カテゴリ"</span><span class="p">,</span> <span class="s2">"売上"</span><span class="p">])</span>
+
+<span class="c1"># TODO: pivot_tableを使って、店舗名×カテゴリの売上「平均（mean）」を集計する</span>
+<span class="n">df_sales_pivot</span> <span class="o">=</span> <span class="n">df_sales</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">values</span><span class="o">=</span> <span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span> <span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span> <span class="p">,</span>
+    <span class="n">aggfunc</span><span class="o">=</span> 
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"▼ 店舗別・カテゴリ別の売上平均ピボットテーブル"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_sales_pivot</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習4: 売上相関行列の算出（難易度：中）</span>
+<span class="c1"># 店舗の「客数（Customers）」「客単価（Avg_Spend）」「天気（Rainy_Days：雨の日の数）」「売上（Total_Sales）」の月次データです。</span>
+<span class="c1"># TODO: .corr() メソッドを使い、すべての項目同士の相関係数を計算した </span>
+<span class="c1">#       相関行列 df_corr を作成して表示してください。</span>
+
+<span class="n">df_monthly_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"客数"</span><span class="p">:</span> <span class="p">,</span>
+    <span class="s2">"客単価"</span><span class="p">:</span> <span class="p">,</span>
+    <span class="s2">"雨の日数"</span><span class="p">:</span> <span class="p">,</span>
+    <span class="s2">"総売上"</span><span class="p">:</span> 
+<span class="p">})</span>
+
+<span class="c1"># TODO: 相関行列を計算</span>
+<span class="n">df_corr</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"▼ 月次売上データの相関行列"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_corr</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習5: 実践！最も強い相関の特定と散布図可視化（難易度：難）</span>
+<span class="c1"># 演習4で計算した相関行列（df_corr）を眺めると、ある項目同士に「強い正の相関」があることがわかります。</span>
+<span class="c1"># TODO: 1. 相関行列の「客数」と「総売上」の相関係数を目視で確認し、以下の print の空欄に数値を書いてください。</span>
+<span class="c1"># TODO: 2. matplotlib.pyplot (plt) の plt.scatter() を使い、</span>
+<span class="c1">#          X軸に「客数」、Y軸に「総売上」を指定した散布図を描画してください。</span>
+<span class="c1">#          （タイトル「客数と総売上の関係」をつけ、plt.show() で画面に表示すること）</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">japanize_matplotlib</span> <span class="c1"># 日本語表示用</span>
+
+<span class="c1"># TODO: 1. 相関係数の値を手動（またはコード）で確認し、表示してください。</span>
+<span class="c1"># ※「客数」と「総売上」の相関係数を確認して、書き換えてみてください。</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"客数と総売上の相関係数は約 [ TODO: ここに数値を書く ] です。"</span><span class="p">)</span>
+
+<span class="c1"># TODO: 2. 散布図を描く</span>
+<span class="c1"># X軸に df_monthly_data["客数"]、Y軸に df_monthly_data["総売上"] を指定して散布図を描く</span>
+<span class="n">plt</span><span class="o">.</span>
+
+<span class="c1"># タイトルと軸ラベルの設定</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"客数と総売上の関係（散布図）"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"客数（人）"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"総売上（円）"</span><span class="p">)</span>
+
+<span class="c1"># 表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># 右上がりのきれいな直線状の点々が描画できれば大正解です！</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id10">
+<h2>💡 演習問題の解答例<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<p>（自分で苦労してコードを書き、エラーを乗り越えた経験こそが、あなたの「データ分析のセンス」を劇的に向上させます。答え合わせをして、理解を深めましょう！）</p>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p><strong>演習1の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mean_score</span> <span class="o">=</span> <span class="n">df_satisfaction</span><span class="p">[</span><span class="s2">"満足度"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">median_score</span> <span class="o">=</span> <span class="n">df_satisfaction</span><span class="p">[</span><span class="s2">"満足度"</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="c1"># 平均値: 4.125, 中央値: 4.5</span>
+<span class="c1"># 1人だけのクレーマー(1点)がいるため平均は4.1点に下がっていますが、</span>
+<span class="c1"># 中央値は4.5点となり、大半のお客様が満足（4点か5点）している実態をよく表しています。</span>
+</pre></div>
+</div>
+<p><strong>演習2の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_cross</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df_customers</span><span class="p">[</span><span class="s2">"性別"</span><span class="p">],</span> <span class="n">df_customers</span><span class="p">[</span><span class="s2">"メニュー"</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><strong>演習3の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_sales_pivot</span> <span class="o">=</span> <span class="n">df_sales</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">values</span><span class="o">=</span><span class="s2">"売上"</span><span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span><span class="s2">"店舗名"</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="s2">"商品カテゴリ"</span><span class="p">,</span>
+    <span class="n">aggfunc</span><span class="o">=</span><span class="s2">"mean"</span> <span class="c1"># 平均値を算出します</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>演習4の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_corr</span> <span class="o">=</span> <span class="n">df_monthly_data</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>演習5の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. 相関係数の確認（演習4の実行結果を見ると、客数と総売上の交点は 0.985... となっています）</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"客数と総売上の相関係数は約 0.99 です。"</span><span class="p">)</span> <span class="c1"># ほぼ完璧な強い正の相関！</span>
+
+<span class="c1"># 2. 散布図の描画</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_monthly_data</span><span class="p">[</span><span class="s2">"客数"</span><span class="p">],</span> <span class="n">df_monthly_data</span><span class="p">[</span><span class="s2">"総売上"</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">"purple"</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id11">
+<h2>📚 第4回のまとめ<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<p>お疲れ様でした！今日は、ただのデータ加工から、データの裏に眠るストーリー（真実）を暴き出す「データ解析」の基礎を学びました。</p>
+<section id="id12">
+<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>記述統計</strong>: 平均値は外れ値（大富豪）に弱いため、実態を正しく掴むには<strong>中央値</strong>も併せて確認する。データのばらつきは<strong>標準偏差</strong>で測る。</p></li>
+<li><p><strong>クロス集計 (crosstab / pivot_table)</strong>: カテゴリ同士を掛け合わせる（例：性別×好み）ことで、特定の層に人気のある商品や、店舗ごとの得意・不得意の傾向をあぶり出せる。</p></li>
+<li><p><strong>相関分析 (.corr)</strong>: 2つのデータの一方が増えればもう一方も増える（正の相関）、あるいは減る（負の相関）という関係を <code class="docutils literal notranslate"><span class="pre">-1.0</span> <span class="pre">〜</span> <span class="pre">+1.0</span></code> の数値で表す。</p></li>
+<li><p><strong>相関 vs 因果の鉄則</strong>: 「相関があるからといって、因果関係（原因と結果）があるとは限らない」を常に意識する。</p></li>
+</ul>
+</section>
+<section id="faq">
+<h3>❓ よくある質問と回答 (FAQ)<a class="headerlink" href="#faq" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Q. 相関係数が「0.3」でした。これは関係がないということですか？</strong></p>
+<ul>
+<li><p><strong>A.</strong> 統計学的には「非常に弱い相関（あるいはほとんど無相関）」と判断されることが多いです。ただし、「本当は2つのデータに関係があるのに、データ件数が少なすぎるために、たまたま低い相関係数になってしまっている（サンプルサイズの問題）」ということもあります。分析をする際は、データ件数（サンプル数）が十分に足りているかも意識しましょう。</p></li>
+</ul>
+</li>
+<li><p><strong>Q. <code class="docutils literal notranslate"><span class="pre">df.corr()</span></code> を実行したらエラー（<code class="docutils literal notranslate"><span class="pre">ValueError:</span> <span class="pre">could</span> <span class="pre">not</span> <span class="pre">convert</span> <span class="pre">string</span> <span class="pre">to</span> <span class="pre">float</span></code>）が出ました。</strong></p>
+<ul>
+<li><p><strong>A.</strong> 相関係数は「数値データ」同士でしか計算できません。データフレームの中に「店舗名」や「日付」などの文字列（テキスト）の列が含まれていませんか？最新のPandasでは、自動的に数値列だけを選んで計算してくれますが、古いバージョンではエラーになるため、<code class="docutils literal notranslate"><span class="pre">df[[&quot;客数&quot;,</span> <span class="pre">&quot;総売上&quot;]].corr()</span></code> のように、<strong>あらかじめ数値列だけを絞り込んでから <code class="docutils literal notranslate"><span class="pre">.corr()</span></code> を呼ぶ</strong>とエラーを確実に回避できます。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="colab">
+<h3>🌟 Colabで試すおすすめコード<a class="headerlink" href="#colab" title="Link to this heading">¶</a></h3>
+<p>ピボットテーブルと並ぶPandasの超強力なクロス集計メソッド <strong><code class="docutils literal notranslate"><span class="pre">pd.crosstab</span></code></strong> に <code class="docutils literal notranslate"><span class="pre">normalize=&quot;index&quot;</span></code> を指定することで、人数ではなく「割合（％）」で男女の好みの差を一撃で比較するプロのテクニックです。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">コードセル</span> <span class="o">--&gt;</span>
+<span class="c1"># 100人のお客様のアンケート（ダミーデータ）</span>
+<span class="n">df_survey_large</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"年代"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"20代"</span><span class="p">,</span> <span class="s2">"30代"</span><span class="p">,</span> <span class="s2">"20代"</span><span class="p">,</span> <span class="s2">"40代"</span><span class="p">,</span> <span class="s2">"30代"</span><span class="p">,</span> <span class="s2">"20代"</span><span class="p">,</span> <span class="s2">"40代"</span><span class="p">,</span> <span class="s2">"20代"</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s2">"利用満足度"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"満足"</span><span class="p">,</span> <span class="s2">"不満"</span><span class="p">,</span> <span class="s2">"満足"</span><span class="p">,</span> <span class="s2">"普通"</span><span class="p">,</span> <span class="s2">"満足"</span><span class="p">,</span> <span class="s2">"不満"</span><span class="p">,</span> <span class="s2">"普通"</span><span class="p">,</span> <span class="s2">"満足"</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="p">})</span>
+
+<span class="c1"># normalize="index" を指定すると、各年代ごとに合計が 1.0 (100%) になる割合で集計してくれます！</span>
+<span class="n">ratio_crosstab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df_survey_large</span><span class="p">[</span><span class="s2">"年代"</span><span class="p">],</span> <span class="n">df_survey_large</span><span class="p">[</span><span class="s2">"利用満足度"</span><span class="p">],</span> <span class="n">normalize</span><span class="o">=</span><span class="s2">"index"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"▼ 年代別の満足度割合（%）"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">ratio_crosstab</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># 100を掛けて％表記にします</span>
+</pre></div>
+</div>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>&lt;!-- Markdownセル --&gt;
+年代別の満足度割合がきれいに％で算出されたでしょうか？これで「どの年代が最も不満を抱えているか」が割合で一目でわかり、具体的な対策が立てられます。
+
+次回（第5回）は、今回学んだ統計量や相関の概念をさらに一歩進め、データから未来を予測する**「相関・回帰・重回帰分析（AI・機械学習の入り口）」**に突入します。
+いよいよデータ分析が「予測の科学」に変わっていきますよ。次回もどうぞお楽しみに！
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            <div class="last-updated">
+              Last updated on 2026-08-28</div>
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">第4回 データ解析（100分授業用）</a><ul>
+<li><a class="reference internal" href="#id2">🎯 到達目標 (約5分)</a></li>
+<li><a class="reference internal" href="#id3">⏱️ 本日のタイムスケジュール (100分授業用)</a></li>
+<li><a class="reference internal" href="#id4">4.1 平均値の罠と記述統計の基本 (約20分)</a><ul>
+<li><a class="reference internal" href="#id5">① 代表値（平均値、中央値、最頻値）の使い分け</a></li>
+<li><a class="reference internal" href="#standard-deviation">② データの「ばらつき」を表す「標準偏差（Standard Deviation）」</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">4.2 クロス集計とピボットテーブル (約15分)</a></li>
+<li><a class="reference internal" href="#id7">4.3 相関分析：データ同士の関係性を数値化する (約15分)</a><ul>
+<li><a class="reference internal" href="#correlation-coefficient-r">① 相関係数（Correlation Coefficient: <span class="math notranslate nohighlight">\(r\)</span>）</a></li>
+<li><a class="reference internal" href="#id8">🚨 注意！「相関関係」と「因果関係」は違う！</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9">💻 演習課題 (約45分)</a></li>
+<li><a class="reference internal" href="#id10">💡 演習問題の解答例</a></li>
+<li><a class="reference internal" href="#id11">📚 第4回のまとめ</a><ul>
+<li><a class="reference internal" href="#id12">✨ 今日の重要ポイントまとめ</a></li>
+<li><a class="reference internal" href="#faq">❓ よくある質問と回答 (FAQ)</a></li>
+<li><a class="reference internal" href="#colab">🌟 Colabで試すおすすめコード</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../_static/documentation_options.js?v=4d4437c9"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=940804e7"></script>
+    <script src="../../../_static/translations.js?v=4755f45a"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </body>
+</html>

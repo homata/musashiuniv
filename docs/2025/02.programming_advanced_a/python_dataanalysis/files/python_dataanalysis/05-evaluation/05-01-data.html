@@ -10,17 +10,17 @@
 <meta property="og:description" content="データ読み込み: 読み込み結果の簡単なチェック: 読み込んだデータの保存:" />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2025_02.programming_advanced_a_python_dataanalysis_files_python_dataanalysis_05-evaluation_05-01-data_9939ee7b.png" />
+<meta property="og:image" content="/None" />
 <meta property="og:image:alt" content="データ読み込み: 読み込み結果の簡単なチェック: 読み込んだデータの保存:" />
 <meta name="description" content="データ読み込み: 読み込み結果の簡単なチェック: 読み込んだデータの保存:" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="索引" href="../../../../../../genindex.html" /><link rel="search" title="検索" href="../../../../../../search.html" />
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
         <title>使用するデータの紹介と読み込み - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=949a1ff5" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo-extensions.css?v=302659d7" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/musashiuniv/custom.css" />
@@ -295,6 +295,18 @@
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_01.html">第1回 オリエンテーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_02.html">第2回 オープンデータの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_03.html">第3回 データの種類とデータ加⼯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_04.html">第4回 データ解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_05.html">第5回 Webサービスの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_06.html">第6回 Webサービスの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_07.html">第7回 地理空間情報の基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_08.html">第8回 地理空間データの活⽤1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_09.html">第9回 地理空間データの活⽤2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_13.html">第13回 総合演習</a></li>
 </ul>
 </li>
 </ul>
@@ -351,7 +363,7 @@
 <h1>使用するデータの紹介と読み込み<a class="headerlink" href="#使用するデータの紹介と読み込み" title="Link to this heading">¶</a></h1>
 <section id="データ読み込み">
 <h2>データ読み込み<a class="headerlink" href="#データ読み込み" title="Link to this heading">¶</a></h2>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
@@ -360,40 +372,40 @@
 
 <span class="n">uris</span> <span class="o">=</span> <span class="p">[</span>
     <span class="c1"># Adelie</span>
-    <span class="s2">&quot;https://pasta.lternet.edu/package/data/eml/knb-lter-pal/219/5/002f3893385f710df69eeebe893144ff&quot;</span><span class="p">,</span>
+    <span class="s2">"https://pasta.lternet.edu/package/data/eml/knb-lter-pal/219/5/002f3893385f710df69eeebe893144ff"</span><span class="p">,</span>
     <span class="c1"># Gentoo</span>
-    <span class="s2">&quot;https://pasta.lternet.edu/package/data/eml/knb-lter-pal/220/7/e03b43c924f226486f2f0ab6709d2381&quot;</span><span class="p">,</span>
+    <span class="s2">"https://pasta.lternet.edu/package/data/eml/knb-lter-pal/220/7/e03b43c924f226486f2f0ab6709d2381"</span><span class="p">,</span>
     <span class="c1"># Chinstrap</span>
-    <span class="s2">&quot;https://pasta.lternet.edu/package/data/eml/knb-lter-pal/221/8/fe853aa8f7a59aa84cdd3197619ef462&quot;</span><span class="p">,</span>
+    <span class="s2">"https://pasta.lternet.edu/package/data/eml/knb-lter-pal/221/8/fe853aa8f7a59aa84cdd3197619ef462"</span><span class="p">,</span>
 <span class="p">]</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">read_data</span><span class="p">(</span><span class="n">uri</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
         <span class="n">uri</span><span class="p">,</span>
-        <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span>
-        <span class="n">quotechar</span><span class="o">=</span><span class="s1">&#39;&quot;&#39;</span><span class="p">,</span>
+        <span class="n">sep</span><span class="o">=</span><span class="s2">","</span><span class="p">,</span>
+        <span class="n">quotechar</span><span class="o">=</span><span class="s1">'"'</span><span class="p">,</span>
         <span class="n">usecols</span><span class="o">=</span><span class="p">[</span>  <span class="c1"># ・・①</span>
-            <span class="s2">&quot;Species&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Island&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Individual ID&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Date Egg&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Culmen Length (mm)&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Culmen Depth (mm)&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Flipper Length (mm)&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Body Mass (g)&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Sex&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Comments&quot;</span><span class="p">,</span>
+            <span class="s2">"Species"</span><span class="p">,</span>
+            <span class="s2">"Island"</span><span class="p">,</span>
+            <span class="s2">"Individual ID"</span><span class="p">,</span>
+            <span class="s2">"Date Egg"</span><span class="p">,</span>
+            <span class="s2">"Culmen Length (mm)"</span><span class="p">,</span>
+            <span class="s2">"Culmen Depth (mm)"</span><span class="p">,</span>
+            <span class="s2">"Flipper Length (mm)"</span><span class="p">,</span>
+            <span class="s2">"Body Mass (g)"</span><span class="p">,</span>
+            <span class="s2">"Sex"</span><span class="p">,</span>
+            <span class="s2">"Comments"</span><span class="p">,</span>
         <span class="p">],</span>
-        <span class="n">na_values</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span>  <span class="c1"># 追加で欠損値として扱う文字列を指定</span>
+        <span class="n">na_values</span><span class="o">=</span><span class="s2">"."</span><span class="p">,</span>  <span class="c1"># 追加で欠損値として扱う文字列を指定</span>
     <span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>  <span class="c1"># ・・②</span>
         <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
-            <span class="s2">&quot;Individual ID&quot;</span><span class="p">:</span> <span class="s2">&quot;Individual_ID&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Date Egg&quot;</span><span class="p">:</span> <span class="s2">&quot;Date_Egg&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Culmen Length (mm)&quot;</span><span class="p">:</span> <span class="s2">&quot;Culmen_Length&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Culmen Depth (mm)&quot;</span><span class="p">:</span> <span class="s2">&quot;Culmen_Depth&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Flipper Length (mm)&quot;</span><span class="p">:</span> <span class="s2">&quot;Flipper_Length&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Body Mass (g)&quot;</span><span class="p">:</span> <span class="s2">&quot;Body_Mass&quot;</span><span class="p">,</span>
+            <span class="s2">"Individual ID"</span><span class="p">:</span> <span class="s2">"Individual_ID"</span><span class="p">,</span>
+            <span class="s2">"Date Egg"</span><span class="p">:</span> <span class="s2">"Date_Egg"</span><span class="p">,</span>
+            <span class="s2">"Culmen Length (mm)"</span><span class="p">:</span> <span class="s2">"Culmen_Length"</span><span class="p">,</span>
+            <span class="s2">"Culmen Depth (mm)"</span><span class="p">:</span> <span class="s2">"Culmen_Depth"</span><span class="p">,</span>
+            <span class="s2">"Flipper Length (mm)"</span><span class="p">:</span> <span class="s2">"Flipper_Length"</span><span class="p">,</span>
+            <span class="s2">"Body Mass (g)"</span><span class="p">:</span> <span class="s2">"Body_Mass"</span><span class="p">,</span>
         <span class="p">}</span>
     <span class="p">)</span>
 
@@ -401,6 +413,131 @@
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">read_data</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span> <span class="k">for</span> <span class="n">uri</span> <span class="ow">in</span> <span class="n">uris</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># ・・③</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">HTTPError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[1]</span><span class="ansi-green-fg">, line 44</span>
+<span class="ansi-green-fg">     40</span>         }
+<span class="ansi-green-fg">     41</span>     )
+<span class="ansi-green-fg">     42</span>
+<span class="ansi-green-fg">     43</span>
+<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">44</span> df = pd.concat([read_data(uri) <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> uri <span class="ansi-bold" style="color: rgb(0,135,0)">in</span> uris], ignore_index=<span class="ansi-bold" style="color: rgb(0,135,0)">True</span>)  <span style="color: rgb(95,135,135)"># ・・③</span>
+
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[1]</span><span class="ansi-green-fg">, line 15</span>, in <span class="ansi-cyan-fg">read_data</span><span class="ansi-blue-fg">(uri)</span>
+<span class="ansi-green-fg">     14</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> read_data(uri):
+<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">15</span>     return pd.read_csv(
+<span class="ansi-green-fg">     16</span>         uri,
+<span class="ansi-green-fg">     17</span>         sep=<span class="ansi-yellow-fg">&#34;,&#34;</span>,
+<span class="ansi-green-fg">     18</span>         quotechar=<span class="ansi-yellow-fg">&#39;&#34;&#39;</span>,
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\parsers\readers.py:873</span>, in <span class="ansi-cyan-fg">read_csv</span><span class="ansi-blue-fg">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, skip_blank_lines, parse_dates, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="ansi-green-fg">    861</span> kwds_defaults = _refine_defaults_read(
+<span class="ansi-green-fg">    862</span>     dialect,
+<span class="ansi-green-fg">    863</span>     delimiter,
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    869</span>     dtype_backend=dtype_backend,
+<span class="ansi-green-fg">    870</span> )
+<span class="ansi-green-fg">    871</span> kwds.update(kwds_defaults)
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">873</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-black-fg ansi-yellow-bg">_read</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">filepath_or_buffer</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">kwds</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\parsers\readers.py:300</span>, in <span class="ansi-cyan-fg">_read</span><span class="ansi-blue-fg">(filepath_or_buffer, kwds)</span>
+<span class="ansi-green-fg">    297</span> _validate_names(kwds.get(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">names</span><span class="ansi-yellow-fg">&#34;</span>, <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>))
+<span class="ansi-green-fg">    299</span> <span style="color: rgb(95,135,135)"># Create the parser.</span>
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">300</span> parser = <span class="ansi-black-fg ansi-yellow-bg">TextFileReader</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">filepath_or_buffer</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">*</span><span class="ansi-black-fg ansi-yellow-bg">*</span><span class="ansi-black-fg ansi-yellow-bg">kwds</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    302</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> chunksize <span class="ansi-bold" style="color: rgb(175,0,255)">or</span> iterator:
+<span class="ansi-green-fg">    303</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> parser
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\parsers\readers.py:1645</span>, in <span class="ansi-cyan-fg">TextFileReader.__init__</span><span class="ansi-blue-fg">(self, f, engine, **kwds)</span>
+<span class="ansi-green-fg">   1642</span>     <span style="color: rgb(0,135,0)">self</span>.options[<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">has_index_names</span><span class="ansi-yellow-fg">&#34;</span>] = kwds[<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">has_index_names</span><span class="ansi-yellow-fg">&#34;</span>]
+<span class="ansi-green-fg">   1644</span> <span style="color: rgb(0,135,0)">self</span>.handles: IOHandles | <span class="ansi-bold" style="color: rgb(0,135,0)">None</span> = <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1645</span> <span style="color: rgb(0,135,0)">self</span>._engine = <span class="ansi-black-fg ansi-yellow-bg">self</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">_make_engine</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">f</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">self</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">engine</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\parsers\readers.py:1904</span>, in <span class="ansi-cyan-fg">TextFileReader._make_engine</span><span class="ansi-blue-fg">(self, f, engine)</span>
+<span class="ansi-green-fg">   1902</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">b</span><span class="ansi-yellow-fg">&#34;</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> mode:
+<span class="ansi-green-fg">   1903</span>         mode += <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">b</span><span class="ansi-yellow-fg">&#34;</span>
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1904</span> <span style="color: rgb(0,135,0)">self</span>.handles = <span class="ansi-black-fg ansi-yellow-bg">get_handle</span><span class="ansi-black-fg ansi-yellow-bg">(</span>
+<span class="ansi-green-fg">   1905</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">f</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1906</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">mode</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1907</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">encoding</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">self</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">options</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">get</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">&#34;</span><span class="ansi-black-fg ansi-yellow-bg">encoding</span><span class="ansi-black-fg ansi-yellow-bg">&#34;</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-intense-fg ansi-yellow-bg ansi-bold">None</span><span class="ansi-black-fg ansi-yellow-bg">)</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1908</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">compression</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">self</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">options</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">get</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">&#34;</span><span class="ansi-black-fg ansi-yellow-bg">compression</span><span class="ansi-black-fg ansi-yellow-bg">&#34;</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-intense-fg ansi-yellow-bg ansi-bold">None</span><span class="ansi-black-fg ansi-yellow-bg">)</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1909</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">memory_map</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">self</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">options</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">get</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">&#34;</span><span class="ansi-black-fg ansi-yellow-bg">memory_map</span><span class="ansi-black-fg ansi-yellow-bg">&#34;</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-intense-fg ansi-yellow-bg ansi-bold">False</span><span class="ansi-black-fg ansi-yellow-bg">)</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1910</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">is_text</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">is_text</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1911</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">errors</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">self</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">options</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">get</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">&#34;</span><span class="ansi-black-fg ansi-yellow-bg">encoding_errors</span><span class="ansi-black-fg ansi-yellow-bg">&#34;</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">&#34;</span><span class="ansi-black-fg ansi-yellow-bg">strict</span><span class="ansi-black-fg ansi-yellow-bg">&#34;</span><span class="ansi-black-fg ansi-yellow-bg">)</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1912</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">storage_options</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">self</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">options</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">get</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">&#34;</span><span class="ansi-black-fg ansi-yellow-bg">storage_options</span><span class="ansi-black-fg ansi-yellow-bg">&#34;</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-intense-fg ansi-yellow-bg ansi-bold">None</span><span class="ansi-black-fg ansi-yellow-bg">)</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   1913</span> <span class="ansi-black-fg ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">   1914</span> <span class="ansi-bold" style="color: rgb(0,135,0)">assert</span> <span style="color: rgb(0,135,0)">self</span>.handles <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>
+<span class="ansi-green-fg">   1915</span> f = <span style="color: rgb(0,135,0)">self</span>.handles.handle
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\common.py:776</span>, in <span class="ansi-cyan-fg">get_handle</span><span class="ansi-blue-fg">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="ansi-green-fg">    773</span>     codecs.lookup_error(errors)
+<span class="ansi-green-fg">    775</span> <span style="color: rgb(95,135,135)"># open URLs</span>
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">776</span> ioargs = <span class="ansi-black-fg ansi-yellow-bg">_get_filepath_or_buffer</span><span class="ansi-black-fg ansi-yellow-bg">(</span>
+<span class="ansi-green-fg">    777</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">path_or_buf</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    778</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">encoding</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">encoding</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    779</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">compression</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">compression</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    780</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">mode</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">mode</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    781</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">storage_options</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">storage_options</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    782</span> <span class="ansi-black-fg ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    784</span> handle = ioargs.filepath_or_buffer
+<span class="ansi-green-fg">    785</span> handles: <span style="color: rgb(0,135,0)">list</span>[BaseBuffer]
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\common.py:405</span>, in <span class="ansi-cyan-fg">_get_filepath_or_buffer</span><span class="ansi-blue-fg">(filepath_or_buffer, encoding, compression, mode, storage_options)</span>
+<span class="ansi-green-fg">    403</span> <span style="color: rgb(95,135,135)"># assuming storage_options is to be interpreted as headers</span>
+<span class="ansi-green-fg">    404</span> req_info = urllib.request.Request(filepath_or_buffer, headers=storage_options)
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">405</span> <span class="ansi-bold" style="color: rgb(0,135,0)">with</span> <span class="ansi-black-fg ansi-yellow-bg">urlopen</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">req_info</span><span class="ansi-black-fg ansi-yellow-bg">)</span> <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> req:
+<span class="ansi-green-fg">    406</span>     content_encoding = req.headers.get(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Content-Encoding</span><span class="ansi-yellow-fg">&#34;</span>, <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>)
+<span class="ansi-green-fg">    407</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> content_encoding == <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">gzip</span><span class="ansi-yellow-fg">&#34;</span>:
+<span class="ansi-green-fg">    408</span>         <span style="color: rgb(95,135,135)"># Override compression based on Content-Encoding header</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\common.py:282</span>, in <span class="ansi-cyan-fg">urlopen</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+<span class="ansi-green-fg">    276</span> <span class="ansi-yellow-fg">&#34;&#34;&#34;</span>
+<span class="ansi-green-fg">    277</span> <span class="ansi-yellow-fg">Lazy-import wrapper for stdlib urlopen, as that imports a big chunk of</span>
+<span class="ansi-green-fg">    278</span> <span class="ansi-yellow-fg">the stdlib.</span>
+<span class="ansi-green-fg">    279</span> <span class="ansi-yellow-fg">&#34;&#34;&#34;</span>
+<span class="ansi-green-fg">    280</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">urllib</span><span class="ansi-blue-intense-fg ansi-bold">.</span><span class="ansi-blue-intense-fg ansi-bold">request</span>
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">282</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-black-fg ansi-yellow-bg">urllib</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">request</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">urlopen</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">*</span><span class="ansi-black-fg ansi-yellow-bg">args</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">*</span><span class="ansi-black-fg ansi-yellow-bg">*</span><span class="ansi-black-fg ansi-yellow-bg">kwargs</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\urllib\request.py:187</span>, in <span class="ansi-cyan-fg">urlopen</span><span class="ansi-blue-fg">(url, data, timeout, context)</span>
+<span class="ansi-green-fg">    185</span> <span class="ansi-bold" style="color: rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg">    186</span>     opener = _opener
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">187</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-black-fg ansi-yellow-bg">opener</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">open</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">url</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">data</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">timeout</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\urllib\request.py:493</span>, in <span class="ansi-cyan-fg">OpenerDirector.open</span><span class="ansi-blue-fg">(self, fullurl, data, timeout)</span>
+<span class="ansi-green-fg">    491</span> <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> processor <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> <span style="color: rgb(0,135,0)">self</span>.process_response.get(protocol, []):
+<span class="ansi-green-fg">    492</span>     meth = <span style="color: rgb(0,135,0)">getattr</span>(processor, meth_name)
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">493</span>     response = <span class="ansi-black-fg ansi-yellow-bg">meth</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">req</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">response</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    495</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> response
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\urllib\request.py:602</span>, in <span class="ansi-cyan-fg">HTTPErrorProcessor.http_response</span><span class="ansi-blue-fg">(self, request, response)</span>
+<span class="ansi-green-fg">    599</span> <span style="color: rgb(95,135,135)"># According to RFC 2616, &#34;2xx&#34; code indicates that the client&#39;s</span>
+<span class="ansi-green-fg">    600</span> <span style="color: rgb(95,135,135)"># request was successfully received, understood, and accepted.</span>
+<span class="ansi-green-fg">    601</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> (<span class="ansi-green-fg">200</span> &lt;= code &lt; <span class="ansi-green-fg">300</span>):
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">602</span>     response = <span class="ansi-black-fg ansi-yellow-bg">self</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">parent</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">error</span><span class="ansi-black-fg ansi-yellow-bg">(</span>
+<span class="ansi-green-fg">    603</span> <span class="ansi-black-fg ansi-yellow-bg">        </span><span class="ansi-black-fg ansi-yellow-bg">&#39;</span><span class="ansi-black-fg ansi-yellow-bg">http</span><span class="ansi-black-fg ansi-yellow-bg">&#39;</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">request</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">response</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">code</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">msg</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">hdrs</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    605</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> response
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\urllib\request.py:531</span>, in <span class="ansi-cyan-fg">OpenerDirector.error</span><span class="ansi-blue-fg">(self, proto, *args)</span>
+<span class="ansi-green-fg">    529</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> http_err:
+<span class="ansi-green-fg">    530</span>     args = (<span style="color: rgb(0,135,0)">dict</span>, <span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">default</span><span class="ansi-yellow-fg">&#39;</span>, <span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">http_error_default</span><span class="ansi-yellow-fg">&#39;</span>) + orig_args
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">531</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-black-fg ansi-yellow-bg">self</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">_call_chain</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">*</span><span class="ansi-black-fg ansi-yellow-bg">args</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\urllib\request.py:464</span>, in <span class="ansi-cyan-fg">OpenerDirector._call_chain</span><span class="ansi-blue-fg">(self, chain, kind, meth_name, *args)</span>
+<span class="ansi-green-fg">    462</span> <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> handler <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> handlers:
+<span class="ansi-green-fg">    463</span>     func = <span style="color: rgb(0,135,0)">getattr</span>(handler, meth_name)
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">464</span>     result = <span class="ansi-black-fg ansi-yellow-bg">func</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">*</span><span class="ansi-black-fg ansi-yellow-bg">args</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    465</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> result <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg">    466</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> result
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\urllib\request.py:611</span>, in <span class="ansi-cyan-fg">HTTPDefaultErrorHandler.http_error_default</span><span class="ansi-blue-fg">(self, req, fp, code, msg, hdrs)</span>
+<span class="ansi-green-fg">    610</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-fg">http_error_default</span>(<span style="color: rgb(0,135,0)">self</span>, req, fp, code, msg, hdrs):
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">611</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> HTTPError(req.full_url, code, msg, hdrs, fp)
+
+<span class="ansi-red-fg">HTTPError</span>: HTTP Error 403: Forbidden
+</pre></div></div>
 </div>
 </section>
 <section id="読み込み結果の簡単なチェック">
@@ -414,12 +551,16 @@
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
-</pre></div>
+<div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-(344, 10)
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[2]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df.shape
+
+<span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -432,109 +573,18 @@
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
-</pre></div>
+<div class="prompt empty docutils container">
 </div>
-<div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[3]</span><span class="ansi-green-fg">, line 2</span>
+<span class="ansi-green-fg">      1</span> <span style="color: rgb(95,135,135)"># 先頭を表示</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> df.head()
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Species</th>
-      <th>Island</th>
-      <th>Individual_ID</th>
-      <th>Date_Egg</th>
-      <th>Culmen_Length</th>
-      <th>Culmen_Depth</th>
-      <th>Flipper_Length</th>
-      <th>Body_Mass</th>
-      <th>Sex</th>
-      <th>Comments</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Adelie Penguin (Pygoscelis adeliae)</td>
-      <td>Torgersen</td>
-      <td>N1A1</td>
-      <td>2007-11-11</td>
-      <td>39.1</td>
-      <td>18.7</td>
-      <td>181.0</td>
-      <td>3750.0</td>
-      <td>MALE</td>
-      <td>Not enough blood for isotopes.</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Adelie Penguin (Pygoscelis adeliae)</td>
-      <td>Torgersen</td>
-      <td>N1A2</td>
-      <td>2007-11-11</td>
-      <td>39.5</td>
-      <td>17.4</td>
-      <td>186.0</td>
-      <td>3800.0</td>
-      <td>FEMALE</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Adelie Penguin (Pygoscelis adeliae)</td>
-      <td>Torgersen</td>
-      <td>N2A1</td>
-      <td>2007-11-16</td>
-      <td>40.3</td>
-      <td>18.0</td>
-      <td>195.0</td>
-      <td>3250.0</td>
-      <td>FEMALE</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Adelie Penguin (Pygoscelis adeliae)</td>
-      <td>Torgersen</td>
-      <td>N2A2</td>
-      <td>2007-11-16</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Adult not sampled.</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Adelie Penguin (Pygoscelis adeliae)</td>
-      <td>Torgersen</td>
-      <td>N3A1</td>
-      <td>2007-11-16</td>
-      <td>36.7</td>
-      <td>19.3</td>
-      <td>193.0</td>
-      <td>3450.0</td>
-      <td>FEMALE</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
+<span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
+</pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -546,221 +596,24 @@
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
-</pre></div>
+<div class="prompt empty docutils container">
 </div>
-<div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[4]</span><span class="ansi-green-fg">, line 2</span>
+<span class="ansi-green-fg">      1</span> <span style="color: rgb(95,135,135)"># 最後を表示</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> df.tail()
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Species</th>
-      <th>Island</th>
-      <th>Individual_ID</th>
-      <th>Date_Egg</th>
-      <th>Culmen_Length</th>
-      <th>Culmen_Depth</th>
-      <th>Flipper_Length</th>
-      <th>Body_Mass</th>
-      <th>Sex</th>
-      <th>Comments</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>339</th>
-      <td>Chinstrap penguin (Pygoscelis antarctica)</td>
-      <td>Dream</td>
-      <td>N98A2</td>
-      <td>2009-11-19</td>
-      <td>55.8</td>
-      <td>19.8</td>
-      <td>207.0</td>
-      <td>4000.0</td>
-      <td>MALE</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>340</th>
-      <td>Chinstrap penguin (Pygoscelis antarctica)</td>
-      <td>Dream</td>
-      <td>N99A1</td>
-      <td>2009-11-21</td>
-      <td>43.5</td>
-      <td>18.1</td>
-      <td>202.0</td>
-      <td>3400.0</td>
-      <td>FEMALE</td>
-      <td>Nest never observed with full clutch.</td>
-    </tr>
-    <tr>
-      <th>341</th>
-      <td>Chinstrap penguin (Pygoscelis antarctica)</td>
-      <td>Dream</td>
-      <td>N99A2</td>
-      <td>2009-11-21</td>
-      <td>49.6</td>
-      <td>18.2</td>
-      <td>193.0</td>
-      <td>3775.0</td>
-      <td>MALE</td>
-      <td>Nest never observed with full clutch.</td>
-    </tr>
-    <tr>
-      <th>342</th>
-      <td>Chinstrap penguin (Pygoscelis antarctica)</td>
-      <td>Dream</td>
-      <td>N100A1</td>
-      <td>2009-11-21</td>
-      <td>50.8</td>
-      <td>19.0</td>
-      <td>210.0</td>
-      <td>4100.0</td>
-      <td>MALE</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>343</th>
-      <td>Chinstrap penguin (Pygoscelis antarctica)</td>
-      <td>Dream</td>
-      <td>N100A2</td>
-      <td>2009-11-21</td>
-      <td>50.2</td>
-      <td>18.7</td>
-      <td>198.0</td>
-      <td>3775.0</td>
-      <td>FEMALE</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
+<span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
+</pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Species            object
-Island             object
-Individual_ID      object
-Date_Egg           object
-Culmen_Length     float64
-Culmen_Depth      float64
-Flipper_Length    float64
-Body_Mass         float64
-Sex                object
-Comments           object
-dtype: object
-</pre></div></div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Date_Egg&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Date_Egg&quot;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Species&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Species&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Island&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Island&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Sex&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Sex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
-
-<span class="n">RE_SHORT</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\w+&quot;</span><span class="p">)</span>  <span class="c1"># 先頭から連続するUnicodeの単語文字にマッチ</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Species_short&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Species&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
-    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">RE_SHORT</span><span class="p">,</span> <span class="n">x</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Species                 category
-Island                  category
-Individual_ID             object
-Date_Egg          datetime64[ns]
-Culmen_Length            float64
-Culmen_Depth             float64
-Flipper_Length           float64
-Body_Mass                float64
-Sex                     category
-Comments                  object
-Species_short           category
-dtype: object
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Species_short&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Index([&#39;Adelie&#39;, &#39;Chinstrap&#39;, &#39;Gentoo&#39;], dtype=&#39;object&#39;)
-</pre></div></div>
-</div>
-</section>
-<section id="読み込んだデータの保存">
-<h2>読み込んだデータの保存<a class="headerlink" href="#読み込んだデータの保存" title="Link to this heading">¶</a></h2>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;data/penguins.parquet&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -770,68 +623,154 @@ Index([&#39;Adelie&#39;, &#39;Chinstrap&#39;, &#39;Gentoo&#39;], dtype=&#39;obje
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ImportError</span>                               Traceback (most recent call last)
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[5]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df.dtypes
+
+<span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"Date_Egg"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"Date_Egg"</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[6]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df[<span class="ansi-yellow-fg">&#34;Date_Egg&#34;</span>] = pd.to_datetime(df.loc[:, <span class="ansi-yellow-fg">&#34;Date_Egg&#34;</span>], format=<span class="ansi-yellow-fg">&#34;%Y-%m-%d&#34;</span>)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"Species"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"Species"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"category"</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"Island"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"Island"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"category"</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"Sex"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"Sex"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"category"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[7]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df[<span class="ansi-yellow-fg">&#34;Species&#34;</span>] = df.loc[:, <span class="ansi-yellow-fg">&#34;Species&#34;</span>].astype(<span class="ansi-yellow-fg">&#34;category&#34;</span>)
+<span class="ansi-green-fg">      2</span> df[<span class="ansi-yellow-fg">&#34;Island&#34;</span>] = df.loc[:, <span class="ansi-yellow-fg">&#34;Island&#34;</span>].astype(<span class="ansi-yellow-fg">&#34;category&#34;</span>)
+<span class="ansi-green-fg">      3</span> df[<span class="ansi-yellow-fg">&#34;Sex&#34;</span>] = df.loc[:, <span class="ansi-yellow-fg">&#34;Sex&#34;</span>].astype(<span class="ansi-yellow-fg">&#34;category&#34;</span>)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="n">RE_SHORT</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"^\w+"</span><span class="p">)</span>  <span class="c1"># 先頭から連続するUnicodeの単語文字にマッチ</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"Species_short"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"Species"</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">RE_SHORT</span><span class="p">,</span> <span class="n">x</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[8]</span><span class="ansi-green-fg">, line 4</span>
+<span class="ansi-green-fg">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> re
+<span class="ansi-green-fg">      2</span>
+<span class="ansi-green-fg">      3</span> RE_SHORT = re.compile(<span class="ansi-yellow-fg">r&#34;^\w+&#34;</span>)  <span style="color: rgb(95,135,135)"># 先頭から連続するUnicodeの単語文字にマッチ</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">4</span> df[&#34;Species_short&#34;] = df.loc[:, &#34;Species&#34;].apply(
+<span class="ansi-green-fg">      5</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">lambda</span> x: re.search(RE_SHORT, x)[<span class="ansi-green-fg">0</span>]
+<span class="ansi-green-fg">      6</span> )
+
+<span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[9]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df.dtypes
+
+<span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"Species_short"</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[10]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df.loc[:, <span class="ansi-yellow-fg">&#34;Species_short&#34;</span>].cat.categories
+
+<span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
+</pre></div></div>
+</div>
+</section>
+<section id="読み込んだデータの保存">
+<h2>読み込んだデータの保存<a class="headerlink" href="#読み込んだデータの保存" title="Link to this heading">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">"data/penguins.parquet"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[11]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">df</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">to_parquet</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-fg ansi-yellow-bg">&#34;</span><span class="ansi-yellow-fg ansi-yellow-bg">data/penguins.parquet</span><span class="ansi-yellow-fg ansi-yellow-bg">&#34;</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df.to_parquet(<span class="ansi-yellow-fg">&#34;data/penguins.parquet&#34;</span>)
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">D:\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\util\_decorators.py:333</span>, in <span class="ansi-cyan-fg">deprecate_nonkeyword_arguments.&lt;locals&gt;.decorate.&lt;locals&gt;.wrapper</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
-<span class="ansi-green-fg">    327</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">len</span>(args) &gt; num_allow_args:
-<span class="ansi-green-fg">    328</span>     warnings.warn(
-<span class="ansi-green-fg">    329</span>         msg.format(arguments=_format_argument_list(allow_args)),
-<span class="ansi-green-fg">    330</span>         <span class="ansi-bold" style="color: rgb(215,95,95)">FutureWarning</span>,
-<span class="ansi-green-fg">    331</span>         stacklevel=find_stack_level(),
-<span class="ansi-green-fg">    332</span>     )
-<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">333</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">func</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
-
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">D:\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\core\frame.py:3118</span>, in <span class="ansi-cyan-fg">DataFrame.to_parquet</span><span class="ansi-blue-fg">(self, path, engine, compression, index, partition_cols, storage_options, **kwargs)</span>
-<span class="ansi-green-fg">   3037</span> <span class="ansi-yellow-fg">&#34;&#34;&#34;</span>
-<span class="ansi-green-fg">   3038</span> <span class="ansi-yellow-fg">Write a DataFrame to the binary parquet format.</span>
-<span class="ansi-green-fg">   3039</span>
-<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">   3114</span> <span class="ansi-yellow-fg">&gt;&gt;&gt; content = f.read()</span>
-<span class="ansi-green-fg">   3115</span> <span class="ansi-yellow-fg">&#34;&#34;&#34;</span>
-<span class="ansi-green-fg">   3116</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">pandas</span><span class="ansi-blue-intense-fg ansi-bold">.</span><span class="ansi-blue-intense-fg ansi-bold">io</span><span class="ansi-blue-intense-fg ansi-bold">.</span><span class="ansi-blue-intense-fg ansi-bold">parquet</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> to_parquet
-<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">3118</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">to_parquet</span><span class="ansi-yellow-bg">(</span>
-<span class="ansi-green-fg">   3119</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   3120</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">path</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   3121</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">engine</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   3122</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">compression</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">compression</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   3123</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">index</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">index</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   3124</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">partition_cols</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">partition_cols</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   3125</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">storage_options</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">storage_options</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   3126</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   3127</span> <span class="ansi-yellow-bg">)</span>
-
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">D:\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\parquet.py:478</span>, in <span class="ansi-cyan-fg">to_parquet</span><span class="ansi-blue-fg">(df, path, engine, compression, index, storage_options, partition_cols, filesystem, **kwargs)</span>
-<span class="ansi-green-fg">    476</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">isinstance</span>(partition_cols, <span style="color: rgb(0,135,0)">str</span>):
-<span class="ansi-green-fg">    477</span>     partition_cols = [partition_cols]
-<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">478</span> impl = <span class="ansi-yellow-bg">get_engine</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">engine</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg">    480</span> path_or_buf: FilePath | WriteBuffer[<span style="color: rgb(0,135,0)">bytes</span>] = io.BytesIO() <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> path <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span> <span class="ansi-bold" style="color: rgb(0,135,0)">else</span> path
-<span class="ansi-green-fg">    482</span> impl.write(
-<span class="ansi-green-fg">    483</span>     df,
-<span class="ansi-green-fg">    484</span>     path_or_buf,
-<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    490</span>     **kwargs,
-<span class="ansi-green-fg">    491</span> )
-
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">D:\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\parquet.py:68</span>, in <span class="ansi-cyan-fg">get_engine</span><span class="ansi-blue-fg">(engine)</span>
-<span class="ansi-green-fg">     65</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">except</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ImportError</span> <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> err:
-<span class="ansi-green-fg">     66</span>             error_msgs += <span class="ansi-yellow-fg">&#34;</span><span class="ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-fg"> - </span><span class="ansi-yellow-fg">&#34;</span> + <span style="color: rgb(0,135,0)">str</span>(err)
-<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">68</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ImportError</span>(
-<span class="ansi-green-fg">     69</span>         <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Unable to find a usable engine; </span><span class="ansi-yellow-fg">&#34;</span>
-<span class="ansi-green-fg">     70</span>         <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">tried using: </span><span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">pyarrow</span><span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">, </span><span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">fastparquet</span><span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">.</span><span class="ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-fg">&#34;</span>
-<span class="ansi-green-fg">     71</span>         <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">A suitable version of </span><span class="ansi-yellow-fg">&#34;</span>
-<span class="ansi-green-fg">     72</span>         <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">pyarrow or fastparquet is required for parquet </span><span class="ansi-yellow-fg">&#34;</span>
-<span class="ansi-green-fg">     73</span>         <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">support.</span><span class="ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-fg">&#34;</span>
-<span class="ansi-green-fg">     74</span>         <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Trying to import the above resulted in these errors:</span><span class="ansi-yellow-fg">&#34;</span>
-<span class="ansi-green-fg">     75</span>         <span class="ansi-yellow-fg">f</span><span class="ansi-yellow-fg">&#34;</span><span class="ansi-bold" style="color: rgb(175,95,135)">{</span>error_msgs<span class="ansi-bold" style="color: rgb(175,95,135)">}</span><span class="ansi-yellow-fg">&#34;</span>
-<span class="ansi-green-fg">     76</span>     )
-<span class="ansi-green-fg">     78</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> engine == <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">pyarrow</span><span class="ansi-yellow-fg">&#34;</span>:
-<span class="ansi-green-fg">     79</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> PyArrowImpl()
-
-<span class="ansi-red-fg">ImportError</span>: Unable to find a usable engine; tried using: &#39;pyarrow&#39;, &#39;fastparquet&#39;.
-A suitable version of pyarrow or fastparquet is required for parquet support.
-Trying to import the above resulted in these errors:
- - Missing optional dependency &#39;pyarrow&#39;. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
- - Missing optional dependency &#39;fastparquet&#39;. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+<span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
 </pre></div></div>
 </div>
 </section>
@@ -851,7 +790,7 @@ Trying to import the above resulted in these errors:
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-30</div>
+              Last updated on 2026-08-28</div>
           </div>
           <div class="right-details">
             
@@ -892,7 +831,7 @@ Trying to import the above resulted in these errors:
     <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../../_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../../../../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../../../../../_static/copybutton.js?v=940804e7"></script>
     <script src="../../../../../../_static/translations.js?v=4755f45a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     </body>

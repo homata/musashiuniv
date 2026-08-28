@@ -5,3 +5,20 @@
 .caption-text {
   margin-left: 0.5em;
 }
+
+/* 例: ノートの背景色を変更 */
+.admonition.note {
+    background-color: #f0f8ff;
+    border-left: 4px solid #2196F3;
+}
+
+/* テーブルのヘッダー（th要素）の背景色を変更 */
+table.docutils.align-default thead tr,
+table.align-center thead tr,
+th {
+    background-color: #34495e; /* 濃紺グレー：落ち着いていて読みやすい */
+    color: #ffffff;
+    font-weight: bold;
+    border: 1px solid #ffffff;
+  }
+

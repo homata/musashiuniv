@@ -10,17 +10,17 @@
 <meta property="og:description" content="統計的な確認: ヒストグラムによる分布の確認: 散布図による分布の確認:" />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2025_02.programming_advanced_a_python_dataanalysis_files_python_dataanalysis_05-evaluation_05-04-distribution_b47e2b7b.png" />
+<meta property="og:image" content="/None" />
 <meta property="og:image:alt" content="統計的な確認: ヒストグラムによる分布の確認: 散布図による分布の確認:" />
 <meta name="description" content="統計的な確認: ヒストグラムによる分布の確認: 散布図による分布の確認:" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="索引" href="../../../../../../genindex.html" /><link rel="search" title="検索" href="../../../../../../search.html" />
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
         <title>データの分布の確認 - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=949a1ff5" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo-extensions.css?v=302659d7" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/musashiuniv/custom.css" />
@@ -295,6 +295,18 @@
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_01.html">第1回 オリエンテーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_02.html">第2回 オープンデータの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_03.html">第3回 データの種類とデータ加⼯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_04.html">第4回 データ解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_05.html">第5回 Webサービスの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_06.html">第6回 Webサービスの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_07.html">第7回 地理空間情報の基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_08.html">第8回 地理空間データの活⽤1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_09.html">第9回 地理空間データの活⽤2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_13.html">第13回 総合演習</a></li>
 </ul>
 </li>
 </ul>
@@ -357,7 +369,7 @@
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;data/penguins.parquet&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">"data/penguins.parquet"</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># 行数と列数</span>
 </pre></div>
 </div>
@@ -370,29 +382,31 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ImportError</span>                               Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[1]</span><span class="ansi-green-fg">, line 3</span>
-<span class="ansi-green-fg">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">pandas</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">as</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">pd</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">3</span> df = <span class="ansi-yellow-bg">pd</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">read_parquet</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-fg ansi-yellow-bg">&#34;</span><span class="ansi-yellow-fg ansi-yellow-bg">data/penguins.parquet</span><span class="ansi-yellow-fg ansi-yellow-bg">&#34;</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> pandas <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> pd
+<span class="ansi-green-fg">      2</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">3</span> df = pd.read_parquet(<span class="ansi-yellow-fg">&#34;data/penguins.parquet&#34;</span>)
 <span class="ansi-green-fg">      4</span> df.shape  <span style="color: rgb(95,135,135)"># 行数と列数</span>
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">D:\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\parquet.py:653</span>, in <span class="ansi-cyan-fg">read_parquet</span><span class="ansi-blue-fg">(path, engine, columns, storage_options, use_nullable_dtypes, dtype_backend, filesystem, filters, **kwargs)</span>
-<span class="ansi-green-fg">    500</span> <span style="color: rgb(175,0,255)">@doc</span>(storage_options=_shared_docs[<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">storage_options</span><span class="ansi-yellow-fg">&#34;</span>])
-<span class="ansi-green-fg">    501</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-fg">read_parquet</span>(
-<span class="ansi-green-fg">    502</span>     path: FilePath | ReadBuffer[<span style="color: rgb(0,135,0)">bytes</span>],
-<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    510</span>     **kwargs,
-<span class="ansi-green-fg">    511</span> ) -&gt; DataFrame:
-<span class="ansi-green-fg">    512</span> <span style="color: rgb(188,188,188)">    </span><span class="ansi-yellow-fg">&#34;&#34;&#34;</span>
-<span class="ansi-green-fg">    513</span> <span class="ansi-yellow-fg">    Load a parquet object from the file path, returning a DataFrame.</span>
-<span class="ansi-green-fg">    514</span>
-<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    650</span> <span class="ansi-yellow-fg">    1    4    9</span>
-<span class="ansi-green-fg">    651</span> <span class="ansi-yellow-fg">    &#34;&#34;&#34;</span>
-<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">653</span>     impl = <span class="ansi-yellow-bg">get_engine</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">engine</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg">    655</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> use_nullable_dtypes <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> lib.no_default:
-<span class="ansi-green-fg">    656</span>         msg = (
-<span class="ansi-green-fg">    657</span>             <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">The argument </span><span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">use_nullable_dtypes</span><span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg"> is deprecated and will be removed </span><span class="ansi-yellow-fg">&#34;</span>
-<span class="ansi-green-fg">    658</span>             <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">in a future version.</span><span class="ansi-yellow-fg">&#34;</span>
-<span class="ansi-green-fg">    659</span>         )
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\parquet.py:668</span>, in <span class="ansi-cyan-fg">read_parquet</span><span class="ansi-blue-fg">(path, engine, columns, storage_options, dtype_backend, filesystem, filters, to_pandas_kwargs, **kwargs)</span>
+<span class="ansi-green-fg">    508</span> <span style="color: rgb(175,0,255)">@set_module</span>(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">pandas</span><span class="ansi-yellow-fg">&#34;</span>)
+<span class="ansi-green-fg">    509</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-fg">read_parquet</span>(
+<span class="ansi-green-fg">    510</span>     path: FilePath | ReadBuffer[<span style="color: rgb(0,135,0)">bytes</span>],
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    518</span>     **kwargs,
+<span class="ansi-green-fg">    519</span> ) -&gt; DataFrame:
+<span class="ansi-green-fg">    520</span> <span style="color: rgb(188,188,188)">    </span><span class="ansi-yellow-fg">&#34;&#34;&#34;</span>
+<span class="ansi-green-fg">    521</span> <span class="ansi-yellow-fg">    Load a parquet object from the file path, returning a DataFrame.</span>
+<span class="ansi-green-fg">    522</span>
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    665</span> <span class="ansi-yellow-fg">    1    4    9</span>
+<span class="ansi-green-fg">    666</span> <span class="ansi-yellow-fg">    &#34;&#34;&#34;</span>
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">668</span>     impl = <span class="ansi-black-fg ansi-yellow-bg">get_engine</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">engine</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    669</span>     check_dtype_backend(dtype_backend)
+<span class="ansi-green-fg">    671</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> impl.read(
+<span class="ansi-green-fg">    672</span>         path,
+<span class="ansi-green-fg">    673</span>         columns=columns,
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    679</span>         **kwargs,
+<span class="ansi-green-fg">    680</span>     )
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">D:\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\parquet.py:68</span>, in <span class="ansi-cyan-fg">get_engine</span><span class="ansi-blue-fg">(engine)</span>
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\parquet.py:68</span>, in <span class="ansi-cyan-fg">get_engine</span><span class="ansi-blue-fg">(engine)</span>
 <span class="ansi-green-fg">     65</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">except</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ImportError</span> <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> err:
 <span class="ansi-green-fg">     66</span>             error_msgs += <span class="ansi-yellow-fg">&#34;</span><span class="ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-fg"> - </span><span class="ansi-yellow-fg">&#34;</span> + <span style="color: rgb(0,135,0)">str</span>(err)
 <span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">68</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ImportError</span>(
@@ -410,15 +424,15 @@
 <span class="ansi-red-fg">ImportError</span>: Unable to find a usable engine; tried using: &#39;pyarrow&#39;, &#39;fastparquet&#39;.
 A suitable version of pyarrow or fastparquet is required for parquet support.
 Trying to import the above resulted in these errors:
- - Missing optional dependency &#39;pyarrow&#39;. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
- - Missing optional dependency &#39;fastparquet&#39;. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+ - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip or conda to install the pyarrow package.
+ - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip or conda to install the fastparquet package.
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Sex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"Sex"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -430,7 +444,7 @@ Trying to import the above resulted in these errors:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[2]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">df</span>.loc[:, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Sex</span><span class="ansi-yellow-fg">&#34;</span>].value_counts(dropna=<span class="ansi-bold" style="color: rgb(0,135,0)">False</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df.loc[:, <span class="ansi-yellow-fg">&#34;Sex&#34;</span>].value_counts(dropna=<span class="ansi-bold" style="color: rgb(0,135,0)">False</span>)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
 </pre></div></div>
@@ -439,7 +453,7 @@ Trying to import the above resulted in these errors:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Sex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"Sex"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -451,7 +465,7 @@ Trying to import the above resulted in these errors:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[3]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">df</span>.loc[:, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Sex</span><span class="ansi-yellow-fg">&#34;</span>].value_counts(ascending=<span class="ansi-bold" style="color: rgb(0,135,0)">True</span>, dropna=<span class="ansi-bold" style="color: rgb(0,135,0)">False</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df.loc[:, <span class="ansi-yellow-fg">&#34;Sex&#34;</span>].value_counts(ascending=<span class="ansi-bold" style="color: rgb(0,135,0)">True</span>, dropna=<span class="ansi-bold" style="color: rgb(0,135,0)">False</span>)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
 </pre></div></div>
@@ -460,7 +474,7 @@ Trying to import the above resulted in these errors:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Sex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"Sex"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -472,7 +486,7 @@ Trying to import the above resulted in these errors:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[4]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">df</span>.loc[:, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Sex</span><span class="ansi-yellow-fg">&#34;</span>].value_counts(sort=<span class="ansi-bold" style="color: rgb(0,135,0)">False</span>, dropna=<span class="ansi-bold" style="color: rgb(0,135,0)">False</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df.loc[:, <span class="ansi-yellow-fg">&#34;Sex&#34;</span>].value_counts(sort=<span class="ansi-bold" style="color: rgb(0,135,0)">False</span>, dropna=<span class="ansi-bold" style="color: rgb(0,135,0)">False</span>)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
 </pre></div></div>
@@ -481,7 +495,7 @@ Trying to import the above resulted in these errors:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Sex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"Sex"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -493,7 +507,7 @@ Trying to import the above resulted in these errors:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[5]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">df</span>.loc[:, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Sex</span><span class="ansi-yellow-fg">&#34;</span>].value_counts(normalize=<span class="ansi-bold" style="color: rgb(0,135,0)">True</span>, dropna=<span class="ansi-bold" style="color: rgb(0,135,0)">False</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df.loc[:, <span class="ansi-yellow-fg">&#34;Sex&#34;</span>].value_counts(normalize=<span class="ansi-bold" style="color: rgb(0,135,0)">True</span>, dropna=<span class="ansi-bold" style="color: rgb(0,135,0)">False</span>)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
 </pre></div></div>
@@ -507,7 +521,7 @@ Trying to import the above resulted in these errors:
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
 
-<span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Flipper_Length&quot;</span><span class="p">)</span>
+<span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"Flipper_Length"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -519,8 +533,9 @@ Trying to import the above resulted in these errors:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[6]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">plotly</span><span class="ansi-blue-intense-fg ansi-bold">.</span><span class="ansi-blue-intense-fg ansi-bold">express</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">as</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">px</span>
-<span class="ansi-green-fg">      3</span> px.histogram(df, x=<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Flipper_Length</span><span class="ansi-yellow-fg">&#34;</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> plotly.express <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> px
+<span class="ansi-green-fg">      2</span>
+<span class="ansi-green-fg">      3</span> px.histogram(df, x=<span class="ansi-yellow-fg">&#34;Flipper_Length&#34;</span>)
 
 <span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;plotly&#39;
 </pre></div></div>
@@ -530,10 +545,10 @@ Trying to import the above resulted in these errors:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flipper_ranges</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Flipper_Length&quot;</span><span class="p">],</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"Flipper_Length"</span><span class="p">],</span>
     <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">205</span><span class="p">,</span> <span class="mi">300</span><span class="p">],</span>
 <span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">flipper_ranges</span><span class="p">)[</span><span class="s2">&quot;Species_short&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">flipper_ranges</span><span class="p">)[</span><span class="s2">"Species_short"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -546,10 +561,10 @@ Trying to import the above resulted in these errors:
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[7]</span><span class="ansi-green-fg">, line 2</span>
 <span class="ansi-green-fg">      1</span> flipper_ranges = pd.cut(
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span>     <span class="ansi-yellow-bg">df</span>.loc[:, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Flipper_Length</span><span class="ansi-yellow-fg">&#34;</span>],
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span>     df.loc[:, <span class="ansi-yellow-fg">&#34;Flipper_Length&#34;</span>],
 <span class="ansi-green-fg">      3</span>     bins=[<span class="ansi-green-fg">0</span>, <span class="ansi-green-fg">205</span>, <span class="ansi-green-fg">300</span>],
 <span class="ansi-green-fg">      4</span> )
-<span class="ansi-green-fg">      5</span> df.groupby(flipper_ranges)[<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Species_short</span><span class="ansi-yellow-fg">&#34;</span>].value_counts()
+<span class="ansi-green-fg">      5</span> df.groupby(flipper_ranges)[<span class="ansi-yellow-fg">&#34;Species_short&#34;</span>].value_counts()
 
 <span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
 </pre></div></div>
@@ -560,12 +575,12 @@ Trying to import the above resulted in these errors:
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
     <span class="n">df</span><span class="p">,</span>
-    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Flipper_Length&quot;</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Species_short&quot;</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"Flipper_Length"</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">"Species_short"</span><span class="p">,</span>
     <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">qualitative</span><span class="o">.</span><span class="n">Dark2</span><span class="p">,</span>
-    <span class="n">pattern_shape</span><span class="o">=</span><span class="s2">&quot;Species_short&quot;</span><span class="p">,</span>
+    <span class="n">pattern_shape</span><span class="o">=</span><span class="s2">"Species_short"</span><span class="p">,</span>
     <span class="n">opacity</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
-    <span class="n">barmode</span><span class="o">=</span><span class="s2">&quot;overlay&quot;</span><span class="p">,</span>
+    <span class="n">barmode</span><span class="o">=</span><span class="s2">"overlay"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -578,15 +593,10 @@ Trying to import the above resulted in these errors:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[8]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">px</span>.histogram(
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> px.histogram(
 <span class="ansi-green-fg">      2</span>     df,
-<span class="ansi-green-fg">      3</span>     x=<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Flipper_Length</span><span class="ansi-yellow-fg">&#34;</span>,
-<span class="ansi-green-fg">      4</span>     color=<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Species_short</span><span class="ansi-yellow-fg">&#34;</span>,
-<span class="ansi-green-fg">      5</span>     color_discrete_sequence=px.colors.qualitative.Dark2,
-<span class="ansi-green-fg">      6</span>     pattern_shape=<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Species_short</span><span class="ansi-yellow-fg">&#34;</span>,
-<span class="ansi-green-fg">      7</span>     opacity=<span class="ansi-green-fg">0.7</span>,
-<span class="ansi-green-fg">      8</span>     barmode=<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">overlay</span><span class="ansi-yellow-fg">&#34;</span>,
-<span class="ansi-green-fg">      9</span> )
+<span class="ansi-green-fg">      3</span>     x=<span class="ansi-yellow-fg">&#34;Flipper_Length&#34;</span>,
+<span class="ansi-green-fg">      4</span>     color=<span class="ansi-yellow-fg">&#34;Species_short&#34;</span>,
 
 <span class="ansi-red-fg">NameError</span>: name &#39;px&#39; is not defined
 </pre></div></div>
@@ -595,7 +605,7 @@ Trying to import the above resulted in these errors:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Flipper_Length&quot;</span><span class="p">,</span> <span class="n">nbins</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"Flipper_Length"</span><span class="p">,</span> <span class="n">nbins</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -607,7 +617,7 @@ Trying to import the above resulted in these errors:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[9]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">px</span>.histogram(df, x=<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Flipper_Length</span><span class="ansi-yellow-fg">&#34;</span>, nbins=<span class="ansi-green-fg">4</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> px.histogram(df, x=<span class="ansi-yellow-fg">&#34;Flipper_Length&#34;</span>, nbins=<span class="ansi-green-fg">4</span>)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;px&#39; is not defined
 </pre></div></div>
@@ -619,8 +629,8 @@ Trying to import the above resulted in these errors:
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram_bin_edges</span><span class="p">(</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Flipper_Length&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span>
-    <span class="n">bins</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"Flipper_Length"</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span>
+    <span class="n">bins</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">))</span>  <span class="c1"># 区間のしきい値の数（両端含む）</span>
 </pre></div>
@@ -634,12 +644,13 @@ Trying to import the above resulted in these errors:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[10]</span><span class="ansi-green-fg">, line 4</span>
-<span class="ansi-green-fg">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">numpy</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">as</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">np</span>
+<span class="ansi-green-fg">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> numpy <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> np
+<span class="ansi-green-fg">      2</span>
 <span class="ansi-green-fg">      3</span> bin_edges = np.histogram_bin_edges(
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">4</span>     <span class="ansi-yellow-bg">df</span>.loc[:, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Flipper_Length</span><span class="ansi-yellow-fg">&#34;</span>].dropna(),
-<span class="ansi-green-fg">      5</span>     bins=<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">auto</span><span class="ansi-yellow-fg">&#34;</span>,
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">4</span>     df.loc[:, <span class="ansi-yellow-fg">&#34;Flipper_Length&#34;</span>].dropna(),
+<span class="ansi-green-fg">      5</span>     bins=<span class="ansi-yellow-fg">&#34;auto&#34;</span>,
 <span class="ansi-green-fg">      6</span> )
-<span class="ansi-green-fg">      7</span> <span style="color: rgb(0,135,0)">print</span>(<span style="color: rgb(0,135,0)">len</span>(bin_edges))  <span style="color: rgb(95,135,135)"># 区間のしきい値の数（両端含む）</span>
+<span class="ansi-green-fg">      7</span> print(len(bin_edges))  <span style="color: rgb(95,135,135)"># 区間のしきい値の数（両端含む）</span>
 
 <span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
 </pre></div></div>
@@ -653,11 +664,11 @@ Trying to import the above resulted in these errors:
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
     <span class="n">df</span><span class="p">,</span>
-    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Culmen_Length&quot;</span><span class="p">,</span>
-    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Flipper_Length&quot;</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Species_short&quot;</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"Culmen_Length"</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">"Flipper_Length"</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">"Species_short"</span><span class="p">,</span>
     <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">qualitative</span><span class="o">.</span><span class="n">Dark2</span><span class="p">,</span>
-    <span class="n">symbol</span><span class="o">=</span><span class="s2">&quot;Species_short&quot;</span><span class="p">,</span>
+    <span class="n">symbol</span><span class="o">=</span><span class="s2">"Species_short"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -670,14 +681,10 @@ Trying to import the above resulted in these errors:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[11]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">px</span>.scatter(
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> px.scatter(
 <span class="ansi-green-fg">      2</span>     df,
-<span class="ansi-green-fg">      3</span>     x=<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Culmen_Length</span><span class="ansi-yellow-fg">&#34;</span>,
-<span class="ansi-green-fg">      4</span>     y=<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Flipper_Length</span><span class="ansi-yellow-fg">&#34;</span>,
-<span class="ansi-green-fg">      5</span>     color=<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Species_short</span><span class="ansi-yellow-fg">&#34;</span>,
-<span class="ansi-green-fg">      6</span>     color_discrete_sequence=px.colors.qualitative.Dark2,
-<span class="ansi-green-fg">      7</span>     symbol=<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Species_short</span><span class="ansi-yellow-fg">&#34;</span>,
-<span class="ansi-green-fg">      8</span> )
+<span class="ansi-green-fg">      3</span>     x=<span class="ansi-yellow-fg">&#34;Culmen_Length&#34;</span>,
+<span class="ansi-green-fg">      4</span>     y=<span class="ansi-yellow-fg">&#34;Flipper_Length&#34;</span>,
 
 <span class="ansi-red-fg">NameError</span>: name &#39;px&#39; is not defined
 </pre></div></div>
@@ -686,7 +693,7 @@ Trying to import the above resulted in these errors:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Species_short&quot;</span><span class="p">)[[</span><span class="s2">&quot;Culmen_Length&quot;</span><span class="p">,</span> <span class="s2">&quot;Flipper_Length&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"Species_short"</span><span class="p">)[[</span><span class="s2">"Culmen_Length"</span><span class="p">,</span> <span class="s2">"Flipper_Length"</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -698,7 +705,7 @@ Trying to import the above resulted in these errors:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[12]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">df</span>.groupby(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Species_short</span><span class="ansi-yellow-fg">&#34;</span>)[[<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Culmen_Length</span><span class="ansi-yellow-fg">&#34;</span>, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Flipper_Length</span><span class="ansi-yellow-fg">&#34;</span>]].corr()
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df.groupby(<span class="ansi-yellow-fg">&#34;Species_short&#34;</span>)[[<span class="ansi-yellow-fg">&#34;Culmen_Length&#34;</span>, <span class="ansi-yellow-fg">&#34;Flipper_Length&#34;</span>]].corr()
 
 <span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
 </pre></div></div>
@@ -720,7 +727,7 @@ Trying to import the above resulted in these errors:
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-30</div>
+              Last updated on 2026-08-28</div>
           </div>
           <div class="right-details">
             
@@ -761,7 +768,7 @@ Trying to import the above resulted in these errors:
     <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../../_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../../../../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../../../../../_static/copybutton.js?v=940804e7"></script>
     <script src="../../../../../../_static/translations.js?v=4755f45a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     </body>

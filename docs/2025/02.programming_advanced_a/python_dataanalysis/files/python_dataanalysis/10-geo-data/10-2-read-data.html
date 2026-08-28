@@ -10,17 +10,17 @@
 <meta property="og:description" content="GeoJSON: シェープファイル: GeoTIFF:" />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2025_02.programming_advanced_a_python_dataanalysis_files_python_dataanalysis_10-geo-data_10-2-read-data_c6bfdce5.png" />
+<meta property="og:image" content="/None" />
 <meta property="og:image:alt" content="GeoJSON: シェープファイル: GeoTIFF:" />
 <meta name="description" content="GeoJSON: シェープファイル: GeoTIFF:" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="索引" href="../../../../../../genindex.html" /><link rel="search" title="検索" href="../../../../../../search.html" />
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
         <title>地理空間データのファイル形式と読み込み - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=949a1ff5" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo-extensions.css?v=302659d7" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/musashiuniv/custom.css" />
@@ -295,6 +295,18 @@
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_01.html">第1回 オリエンテーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_02.html">第2回 オープンデータの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_03.html">第3回 データの種類とデータ加⼯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_04.html">第4回 データ解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_05.html">第5回 Webサービスの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_06.html">第6回 Webサービスの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_07.html">第7回 地理空間情報の基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_08.html">第8回 地理空間データの活⽤1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_09.html">第9回 地理空間データの活⽤2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_13.html">第13回 総合演習</a></li>
 </ul>
 </li>
 </ul>
@@ -357,30 +369,30 @@
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">shapely</span><span class="w"> </span><span class="kn">import</span> <span class="n">from_geojson</span>
 
-<span class="n">geojson</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">    &quot;type&quot;: &quot;FeatureCollection&quot;,</span>
-<span class="s2">    &quot;features&quot;: [</span>
+<span class="n">geojson</span> <span class="o">=</span> <span class="s2">"""{</span>
+<span class="s2">    "type": "FeatureCollection",</span>
+<span class="s2">    "features": [</span>
 <span class="s2">        {</span>
-<span class="s2">            &quot;type&quot;: &quot;Feature&quot;,</span>
-<span class="s2">            &quot;properties&quot;: {</span>
-<span class="s2">                &quot;name&quot;: &quot;yurakucho&quot;</span>
+<span class="s2">            "type": "Feature",</span>
+<span class="s2">            "properties": {</span>
+<span class="s2">                "name": "yurakucho"</span>
 <span class="s2">            },</span>
-<span class="s2">            &quot;geometry&quot;: {</span>
-<span class="s2">                &quot;type&quot;: &quot;Point&quot;,</span>
-<span class="s2">                &quot;coordinates&quot;: [</span>
+<span class="s2">            "geometry": {</span>
+<span class="s2">                "type": "Point",</span>
+<span class="s2">                "coordinates": [</span>
 <span class="s2">                    35.675056,</span>
 <span class="s2">                    139.763333</span>
 <span class="s2">                ]</span>
 <span class="s2">            }</span>
 <span class="s2">        },</span>
 <span class="s2">        {</span>
-<span class="s2">            &quot;type&quot;: &quot;Feature&quot;,</span>
-<span class="s2">            &quot;properties&quot;: {</span>
-<span class="s2">                &quot;name&quot;: &quot;tokyo-kanda&quot;</span>
+<span class="s2">            "type": "Feature",</span>
+<span class="s2">            "properties": {</span>
+<span class="s2">                "name": "tokyo-kanda"</span>
 <span class="s2">            },</span>
-<span class="s2">            &quot;geometry&quot;: {</span>
-<span class="s2">                &quot;type&quot;: &quot;LineString&quot;,</span>
-<span class="s2">                &quot;coordinates&quot;: [</span>
+<span class="s2">            "geometry": {</span>
+<span class="s2">                "type": "LineString",</span>
+<span class="s2">                "coordinates": [</span>
 <span class="s2">                    [</span>
 <span class="s2">                        35.681111,</span>
 <span class="s2">                        139.766667</span>
@@ -393,7 +405,7 @@
 <span class="s2">            }</span>
 <span class="s2">        }</span>
 <span class="s2">    ]</span>
-<span class="s2">}&quot;&quot;&quot;</span>
+<span class="s2">}"""</span>
 <span class="n">geo_collection</span> <span class="o">=</span> <span class="n">from_geojson</span><span class="p">(</span><span class="n">geojson</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -406,13 +418,10 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[1]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">shapely</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> from_geojson
-<span class="ansi-green-fg">      3</span> geojson = <span class="ansi-yellow-fg">&#34;&#34;&#34;</span><span class="ansi-yellow-fg">{</span>
-<span class="ansi-green-fg">      4</span> <span class="ansi-yellow-fg">    </span><span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">type</span><span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">: </span><span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">FeatureCollection</span><span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">,</span>
-<span class="ansi-green-fg">      5</span> <span class="ansi-yellow-fg">    </span><span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">features</span><span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">: [</span>
-<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">     38</span> <span class="ansi-yellow-fg">    ]</span>
-<span class="ansi-green-fg">     39</span> <span class="ansi-yellow-fg">}</span><span class="ansi-yellow-fg">&#34;&#34;&#34;</span>
-<span class="ansi-green-fg">     40</span> geo_collection = from_geojson(geojson)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span> shapely <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> from_geojson
+<span class="ansi-green-fg">      2</span>
+<span class="ansi-green-fg">      3</span> geojson = &#34;&#34;&#34;{
+<span class="ansi-green-fg">      4</span>     <span class="ansi-yellow-fg">&#34;type&#34;</span>: <span class="ansi-yellow-fg">&#34;FeatureCollection&#34;</span>,
 
 <span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;shapely&#39;
 </pre></div></div>
@@ -433,7 +442,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[2]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span style="color: rgb(0,135,0)">type</span>(<span class="ansi-yellow-bg">geo_collection</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> type(geo_collection)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;geo_collection&#39; is not defined
 </pre></div></div>
@@ -456,8 +465,9 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[3]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">shapely</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> to_geojson
-<span class="ansi-green-fg">      3</span> <span style="color: rgb(0,135,0)">print</span>(to_geojson(geo_collection, indent=<span class="ansi-green-fg">4</span>))
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span> shapely <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> to_geojson
+<span class="ansi-green-fg">      2</span>
+<span class="ansi-green-fg">      3</span> print(to_geojson(geo_collection, indent=<span class="ansi-green-fg">4</span>))
 
 <span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;shapely&#39;
 </pre></div></div>
@@ -482,8 +492,9 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[4]</span><span class="ansi-green-fg">, line 2</span>
-<span class="ansi-green-fg">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">io</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> StringIO
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">geopandas</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">as</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">gpd</span>
+<span class="ansi-green-fg">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span> io <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> StringIO
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> geopandas <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> gpd
+<span class="ansi-green-fg">      3</span>
 <span class="ansi-green-fg">      4</span> geojson_gdf = gpd.read_file(StringIO(geojson))
 <span class="ansi-green-fg">      5</span> geojson_gdf
 
@@ -494,7 +505,7 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">geojson_gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">geojson_gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">"geometry"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -506,7 +517,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[5]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span style="color: rgb(0,135,0)">type</span>(<span class="ansi-yellow-bg">geojson_gdf</span>.loc[<span class="ansi-green-fg">0</span>, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">geometry</span><span class="ansi-yellow-fg">&#34;</span>])
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> type(geojson_gdf.loc[<span class="ansi-green-fg">0</span>, <span class="ansi-yellow-fg">&#34;geometry&#34;</span>])
 
 <span class="ansi-red-fg">NameError</span>: name &#39;geojson_gdf&#39; is not defined
 </pre></div></div>
@@ -515,7 +526,7 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geojson_gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geojson_gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">"geometry"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -527,7 +538,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[6]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">geojson_gdf</span>.loc[<span class="ansi-green-fg">0</span>, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">geometry</span><span class="ansi-yellow-fg">&#34;</span>]
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> geojson_gdf.loc[<span class="ansi-green-fg">0</span>, <span class="ansi-yellow-fg">&#34;geometry&#34;</span>]
 
 <span class="ansi-red-fg">NameError</span>: name &#39;geojson_gdf&#39; is not defined
 </pre></div></div>
@@ -536,7 +547,7 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">geojson_gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">geojson_gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"geometry"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -548,7 +559,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[7]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span style="color: rgb(0,135,0)">type</span>(<span class="ansi-yellow-bg">geojson_gdf</span>.loc[<span class="ansi-green-fg">1</span>, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">geometry</span><span class="ansi-yellow-fg">&#34;</span>])
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> type(geojson_gdf.loc[<span class="ansi-green-fg">1</span>, <span class="ansi-yellow-fg">&#34;geometry&#34;</span>])
 
 <span class="ansi-red-fg">NameError</span>: name &#39;geojson_gdf&#39; is not defined
 </pre></div></div>
@@ -557,7 +568,7 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geojson_gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geojson_gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"geometry"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -569,7 +580,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[8]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">geojson_gdf</span>.loc[<span class="ansi-green-fg">1</span>, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">geometry</span><span class="ansi-yellow-fg">&#34;</span>]
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> geojson_gdf.loc[<span class="ansi-green-fg">1</span>, <span class="ansi-yellow-fg">&#34;geometry&#34;</span>]
 
 <span class="ansi-red-fg">NameError</span>: name &#39;geojson_gdf&#39; is not defined
 </pre></div></div>
@@ -590,7 +601,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[9]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span style="color: rgb(0,135,0)">print</span>(<span class="ansi-yellow-bg">geojson_gdf</span>.to_json(indent=<span class="ansi-green-fg">4</span>))
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> print(geojson_gdf.to_json(indent=<span class="ansi-green-fg">4</span>))
 
 <span class="ansi-red-fg">NameError</span>: name &#39;geojson_gdf&#39; is not defined
 </pre></div></div>
@@ -600,8 +611,8 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geojson_gdf</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span>
-    <span class="s2">&quot;./data/yurakucho-kanda.geojson&quot;</span><span class="p">,</span>
-    <span class="n">driver</span><span class="o">=</span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">,</span>
+    <span class="s2">"./data/yurakucho-kanda.geojson"</span><span class="p">,</span>
+    <span class="n">driver</span><span class="o">=</span><span class="s2">"GeoJSON"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -614,9 +625,9 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[10]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">geojson_gdf</span>.to_file(
-<span class="ansi-green-fg">      2</span>     <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">./data/yurakucho-kanda.geojson</span><span class="ansi-yellow-fg">&#34;</span>,
-<span class="ansi-green-fg">      3</span>     driver=<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">GeoJSON</span><span class="ansi-yellow-fg">&#34;</span>,
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> geojson_gdf.to_file(
+<span class="ansi-green-fg">      2</span>     <span class="ansi-yellow-fg">&#34;./data/yurakucho-kanda.geojson&#34;</span>,
+<span class="ansi-green-fg">      3</span>     driver=<span class="ansi-yellow-fg">&#34;GeoJSON&#34;</span>,
 <span class="ansi-green-fg">      4</span> )
 
 <span class="ansi-red-fg">NameError</span>: name &#39;geojson_gdf&#39; is not defined
@@ -638,7 +649,7 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shapefile_gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;./data/yurakucho&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shapefile_gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">"./data/yurakucho"</span><span class="p">)</span>
 <span class="n">shapefile_gdf</span>
 </pre></div>
 </div>
@@ -651,7 +662,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[12]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> shapefile_gdf = <span class="ansi-yellow-bg">gpd</span>.read_file(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">./data/yurakucho</span><span class="ansi-yellow-fg">&#34;</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> shapefile_gdf = gpd.read_file(<span class="ansi-yellow-fg">&#34;./data/yurakucho&#34;</span>)
 <span class="ansi-green-fg">      2</span> shapefile_gdf
 
 <span class="ansi-red-fg">NameError</span>: name &#39;gpd&#39; is not defined
@@ -661,7 +672,7 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shapefile_gdf</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s2">&quot;./data/yurakucho&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shapefile_gdf</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s2">"./data/yurakucho"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -673,7 +684,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[13]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">shapefile_gdf</span>.to_file(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">./data/yurakucho</span><span class="ansi-yellow-fg">&#34;</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> shapefile_gdf.to_file(<span class="ansi-yellow-fg">&#34;./data/yurakucho&#34;</span>)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;shapefile_gdf&#39; is not defined
 </pre></div></div>
@@ -687,7 +698,7 @@
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">rasterio</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;./data/L03-b-14_5236.tif&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"./data/L03-b-14_5236.tif"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -699,8 +710,9 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[14]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">rasterio</span>
-<span class="ansi-green-fg">      3</span> dataset = rasterio.open(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">./data/L03-b-14_5236.tif</span><span class="ansi-yellow-fg">&#34;</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> rasterio
+<span class="ansi-green-fg">      2</span>
+<span class="ansi-green-fg">      3</span> dataset = rasterio.open(<span class="ansi-yellow-fg">&#34;./data/L03-b-14_5236.tif&#34;</span>)
 
 <span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;rasterio&#39;
 </pre></div></div>
@@ -721,7 +733,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[15]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">dataset</span>.bounds
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> dataset.bounds
 
 <span class="ansi-red-fg">NameError</span>: name &#39;dataset&#39; is not defined
 </pre></div></div>
@@ -742,7 +754,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[16]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">dataset</span>.crs
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> dataset.crs
 
 <span class="ansi-red-fg">NameError</span>: name &#39;dataset&#39; is not defined
 </pre></div></div>
@@ -763,7 +775,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[17]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span style="color: rgb(0,135,0)">type</span>(<span class="ansi-yellow-bg">dataset</span>.crs)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> type(dataset.crs)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;dataset&#39; is not defined
 </pre></div></div>
@@ -784,7 +796,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[18]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">dataset</span>.indexes
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> dataset.indexes
 
 <span class="ansi-red-fg">NameError</span>: name &#39;dataset&#39; is not defined
 </pre></div></div>
@@ -805,7 +817,7 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[19]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">dataset</span>.read(<span class="ansi-green-fg">1</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> dataset.read(<span class="ansi-green-fg">1</span>)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;dataset&#39; is not defined
 </pre></div></div>
@@ -828,8 +840,9 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[20]</span><span class="ansi-green-fg">, line 3</span>
-<span class="ansi-green-fg">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">PIL</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> Image
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">3</span> Image.fromarray(<span class="ansi-yellow-bg">dataset</span>.read(<span class="ansi-green-fg">1</span>))
+<span class="ansi-green-fg">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span> PIL <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> Image
+<span class="ansi-green-fg">      2</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">3</span> Image.fromarray(dataset.read(<span class="ansi-green-fg">1</span>))
 
 <span class="ansi-red-fg">NameError</span>: name &#39;dataset&#39; is not defined
 </pre></div></div>
@@ -851,7 +864,7 @@
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-30</div>
+              Last updated on 2026-08-28</div>
           </div>
           <div class="right-details">
             
@@ -892,7 +905,7 @@
     <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../../_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../../../../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../../../../../_static/copybutton.js?v=940804e7"></script>
     <script src="../../../../../../_static/translations.js?v=4755f45a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     </body>

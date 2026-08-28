@@ -10,17 +10,17 @@
 <meta property="og:description" content="要約統計量の確認:" />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2025_02.programming_advanced_a_python_dataanalysis_files_python_dataanalysis_05-evaluation_05-02-quantitative_02e2cc83.png" />
+<meta property="og:image" content="/None" />
 <meta property="og:image:alt" content="要約統計量の確認:" />
 <meta name="description" content="要約統計量の確認:" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="索引" href="../../../../../../genindex.html" /><link rel="search" title="検索" href="../../../../../../search.html" />
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
         <title>定量的評価（統計量） - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=949a1ff5" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo-extensions.css?v=302659d7" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/musashiuniv/custom.css" />
@@ -295,6 +295,18 @@
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_01.html">第1回 オリエンテーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_02.html">第2回 オープンデータの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_03.html">第3回 データの種類とデータ加⼯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_04.html">第4回 データ解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_05.html">第5回 Webサービスの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_06.html">第6回 Webサービスの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_07.html">第7回 地理空間情報の基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_08.html">第8回 地理空間データの活⽤1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_09.html">第9回 地理空間データの活⽤2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_13.html">第13回 総合演習</a></li>
 </ul>
 </li>
 </ul>
@@ -357,7 +369,7 @@
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;data/penguins.parquet&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">"data/penguins.parquet"</span><span class="p">)</span>
 
 <span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
@@ -371,29 +383,32 @@
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ImportError</span>                               Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[1]</span><span class="ansi-green-fg">, line 3</span>
-<span class="ansi-green-fg">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">pandas</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">as</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">pd</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">3</span> df = <span class="ansi-yellow-bg">pd</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">read_parquet</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-fg ansi-yellow-bg">&#34;</span><span class="ansi-yellow-fg ansi-yellow-bg">data/penguins.parquet</span><span class="ansi-yellow-fg ansi-yellow-bg">&#34;</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> pandas <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> pd
+<span class="ansi-green-fg">      2</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">3</span> df = pd.read_parquet(<span class="ansi-yellow-fg">&#34;data/penguins.parquet&#34;</span>)
+<span class="ansi-green-fg">      4</span>
 <span class="ansi-green-fg">      5</span> df.describe()
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">D:\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\parquet.py:653</span>, in <span class="ansi-cyan-fg">read_parquet</span><span class="ansi-blue-fg">(path, engine, columns, storage_options, use_nullable_dtypes, dtype_backend, filesystem, filters, **kwargs)</span>
-<span class="ansi-green-fg">    500</span> <span style="color: rgb(175,0,255)">@doc</span>(storage_options=_shared_docs[<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">storage_options</span><span class="ansi-yellow-fg">&#34;</span>])
-<span class="ansi-green-fg">    501</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-fg">read_parquet</span>(
-<span class="ansi-green-fg">    502</span>     path: FilePath | ReadBuffer[<span style="color: rgb(0,135,0)">bytes</span>],
-<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    510</span>     **kwargs,
-<span class="ansi-green-fg">    511</span> ) -&gt; DataFrame:
-<span class="ansi-green-fg">    512</span> <span style="color: rgb(188,188,188)">    </span><span class="ansi-yellow-fg">&#34;&#34;&#34;</span>
-<span class="ansi-green-fg">    513</span> <span class="ansi-yellow-fg">    Load a parquet object from the file path, returning a DataFrame.</span>
-<span class="ansi-green-fg">    514</span>
-<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    650</span> <span class="ansi-yellow-fg">    1    4    9</span>
-<span class="ansi-green-fg">    651</span> <span class="ansi-yellow-fg">    &#34;&#34;&#34;</span>
-<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">653</span>     impl = <span class="ansi-yellow-bg">get_engine</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">engine</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg">    655</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> use_nullable_dtypes <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> lib.no_default:
-<span class="ansi-green-fg">    656</span>         msg = (
-<span class="ansi-green-fg">    657</span>             <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">The argument </span><span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">use_nullable_dtypes</span><span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg"> is deprecated and will be removed </span><span class="ansi-yellow-fg">&#34;</span>
-<span class="ansi-green-fg">    658</span>             <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">in a future version.</span><span class="ansi-yellow-fg">&#34;</span>
-<span class="ansi-green-fg">    659</span>         )
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\parquet.py:668</span>, in <span class="ansi-cyan-fg">read_parquet</span><span class="ansi-blue-fg">(path, engine, columns, storage_options, dtype_backend, filesystem, filters, to_pandas_kwargs, **kwargs)</span>
+<span class="ansi-green-fg">    508</span> <span style="color: rgb(175,0,255)">@set_module</span>(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">pandas</span><span class="ansi-yellow-fg">&#34;</span>)
+<span class="ansi-green-fg">    509</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-fg">read_parquet</span>(
+<span class="ansi-green-fg">    510</span>     path: FilePath | ReadBuffer[<span style="color: rgb(0,135,0)">bytes</span>],
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    518</span>     **kwargs,
+<span class="ansi-green-fg">    519</span> ) -&gt; DataFrame:
+<span class="ansi-green-fg">    520</span> <span style="color: rgb(188,188,188)">    </span><span class="ansi-yellow-fg">&#34;&#34;&#34;</span>
+<span class="ansi-green-fg">    521</span> <span class="ansi-yellow-fg">    Load a parquet object from the file path, returning a DataFrame.</span>
+<span class="ansi-green-fg">    522</span>
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    665</span> <span class="ansi-yellow-fg">    1    4    9</span>
+<span class="ansi-green-fg">    666</span> <span class="ansi-yellow-fg">    &#34;&#34;&#34;</span>
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">668</span>     impl = <span class="ansi-black-fg ansi-yellow-bg">get_engine</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">engine</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    669</span>     check_dtype_backend(dtype_backend)
+<span class="ansi-green-fg">    671</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> impl.read(
+<span class="ansi-green-fg">    672</span>         path,
+<span class="ansi-green-fg">    673</span>         columns=columns,
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    679</span>         **kwargs,
+<span class="ansi-green-fg">    680</span>     )
 
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">D:\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\parquet.py:68</span>, in <span class="ansi-cyan-fg">get_engine</span><span class="ansi-blue-fg">(engine)</span>
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\io\parquet.py:68</span>, in <span class="ansi-cyan-fg">get_engine</span><span class="ansi-blue-fg">(engine)</span>
 <span class="ansi-green-fg">     65</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">except</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ImportError</span> <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> err:
 <span class="ansi-green-fg">     66</span>             error_msgs += <span class="ansi-yellow-fg">&#34;</span><span class="ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-fg"> - </span><span class="ansi-yellow-fg">&#34;</span> + <span style="color: rgb(0,135,0)">str</span>(err)
 <span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">68</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ImportError</span>(
@@ -411,15 +426,15 @@
 <span class="ansi-red-fg">ImportError</span>: Unable to find a usable engine; tried using: &#39;pyarrow&#39;, &#39;fastparquet&#39;.
 A suitable version of pyarrow or fastparquet is required for parquet support.
 Trying to import the above resulted in these errors:
- - Missing optional dependency &#39;pyarrow&#39;. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
- - Missing optional dependency &#39;fastparquet&#39;. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+ - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip or conda to install the pyarrow package.
+ - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip or conda to install the fastparquet package.
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s2">"all"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -431,7 +446,7 @@ Trying to import the above resulted in these errors:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[2]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">df</span>.describe(include=<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">all</span><span class="ansi-yellow-fg">&#34;</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df.describe(include=<span class="ansi-yellow-fg">&#34;all&#34;</span>)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
 </pre></div></div>
@@ -440,7 +455,7 @@ Trying to import the above resulted in these errors:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Body_Mass&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"Body_Mass"</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -452,7 +467,7 @@ Trying to import the above resulted in these errors:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[3]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">df</span>.loc[:, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Body_Mass</span><span class="ansi-yellow-fg">&#34;</span>].describe()
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df.loc[:, <span class="ansi-yellow-fg">&#34;Body_Mass&#34;</span>].describe()
 
 <span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
 </pre></div></div>
@@ -461,7 +476,7 @@ Trying to import the above resulted in these errors:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Body_Mass&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">([</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"Body_Mass"</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">([</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -473,7 +488,7 @@ Trying to import the above resulted in these errors:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[4]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">df</span>.loc[:, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Body_Mass</span><span class="ansi-yellow-fg">&#34;</span>].quantile([<span class="ansi-green-fg">0.75</span>, <span class="ansi-green-fg">0.8</span>, <span class="ansi-green-fg">0.85</span>, <span class="ansi-green-fg">0.9</span>, <span class="ansi-green-fg">0.95</span>, <span class="ansi-green-fg">0.99</span>, <span class="ansi-green-fg">1</span>])
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df.loc[:, <span class="ansi-yellow-fg">&#34;Body_Mass&#34;</span>].quantile([<span class="ansi-green-fg">0.75</span>, <span class="ansi-green-fg">0.8</span>, <span class="ansi-green-fg">0.85</span>, <span class="ansi-green-fg">0.9</span>, <span class="ansi-green-fg">0.95</span>, <span class="ansi-green-fg">0.99</span>, <span class="ansi-green-fg">1</span>])
 
 <span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
 </pre></div></div>
@@ -482,7 +497,7 @@ Trying to import the above resulted in these errors:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Species_short&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"Species_short"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -494,7 +509,7 @@ Trying to import the above resulted in these errors:
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[5]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">df</span>.loc[:, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Species_short</span><span class="ansi-yellow-fg">&#34;</span>].value_counts()
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> df.loc[:, <span class="ansi-yellow-fg">&#34;Species_short&#34;</span>].value_counts()
 
 <span class="ansi-red-fg">NameError</span>: name &#39;df&#39; is not defined
 </pre></div></div>
@@ -516,7 +531,7 @@ Trying to import the above resulted in these errors:
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-30</div>
+              Last updated on 2026-08-28</div>
           </div>
           <div class="right-details">
             
@@ -555,7 +570,7 @@ Trying to import the above resulted in these errors:
     <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../../_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../../../../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../../../../../_static/copybutton.js?v=940804e7"></script>
     <script src="../../../../../../_static/translations.js?v=4755f45a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     </body>

@@ -10,17 +10,17 @@
 <meta property="og:description" content="ポイントの可視化: ラインの可視化: ポリゴンの可視化:" />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2025_02.programming_advanced_a_python_dataanalysis_files_python_dataanalysis_10-geo-data_10-5-visualization_56be10ba.png" />
+<meta property="og:image" content="/None" />
 <meta property="og:image:alt" content="ポイントの可視化: ラインの可視化: ポリゴンの可視化:" />
 <meta name="description" content="ポイントの可視化: ラインの可視化: ポリゴンの可視化:" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="索引" href="../../../../../../genindex.html" /><link rel="search" title="検索" href="../../../../../../search.html" />
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
         <title>地理空間データの可視化 - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=949a1ff5" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo-extensions.css?v=302659d7" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/musashiuniv/custom.css" />
@@ -295,6 +295,18 @@
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_01.html">第1回 オリエンテーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_02.html">第2回 オープンデータの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_03.html">第3回 データの種類とデータ加⼯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_04.html">第4回 データ解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_05.html">第5回 Webサービスの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_06.html">第6回 Webサービスの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_07.html">第7回 地理空間情報の基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_08.html">第8回 地理空間データの活⽤1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_09.html">第9回 地理空間データの活⽤2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../2026/02.programming_advanced_a/markdown/advanced_13.html">第13回 総合演習</a></li>
 </ul>
 </li>
 </ul>
@@ -357,7 +369,7 @@
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="n">itami_wifi</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/282073publicwirelesslan202204.csv&quot;</span><span class="p">)</span>
+<span class="n">itami_wifi</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/282073publicwirelesslan202204.csv"</span><span class="p">)</span>
 <span class="n">itami_wifi</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -433,7 +445,7 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">itami_center</span> <span class="o">=</span> <span class="n">itami_wifi</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;緯度&quot;</span><span class="p">,</span> <span class="s2">&quot;経度&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">itami_center</span> <span class="o">=</span> <span class="n">itami_wifi</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">"緯度"</span><span class="p">,</span> <span class="s2">"経度"</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">itami_center</span>
 </pre></div>
 </div>
@@ -473,14 +485,10 @@ dtype: float64
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[3]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">folium</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> folium
+<span class="ansi-green-fg">      2</span>
 <span class="ansi-green-fg">      3</span> itami_wifi_map = folium.Map(
 <span class="ansi-green-fg">      4</span>     location=itami_center,
-<span class="ansi-green-fg">      5</span>     zoom_start=<span class="ansi-green-fg">15.2</span>,
-<span class="ansi-green-fg">      6</span>     width=<span class="ansi-green-fg">800</span>,
-<span class="ansi-green-fg">      7</span>     height=<span class="ansi-green-fg">400</span>,
-<span class="ansi-green-fg">      8</span> )
-<span class="ansi-green-fg">      9</span> itami_wifi_map
 
 <span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;folium&#39;
 </pre></div></div>
@@ -489,7 +497,7 @@ dtype: float64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">marker</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="n">itami_wifi</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;緯度&quot;</span><span class="p">,</span> <span class="s2">&quot;経度&quot;</span><span class="p">]])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">marker</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="n">itami_wifi</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="s2">"緯度"</span><span class="p">,</span> <span class="s2">"経度"</span><span class="p">]])</span>
 <span class="n">marker</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">itami_wifi_map</span><span class="p">)</span>
 <span class="n">itami_wifi_map</span>
 </pre></div>
@@ -503,7 +511,7 @@ dtype: float64
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[4]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> marker = <span class="ansi-yellow-bg">folium</span>.Marker(location=itami_wifi.loc[<span class="ansi-green-fg">0</span>, [<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">緯度</span><span class="ansi-yellow-fg">&#34;</span>, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">経度</span><span class="ansi-yellow-fg">&#34;</span>]])
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> marker = folium.Marker(location=itami_wifi.loc[<span class="ansi-green-fg">0</span>, [<span class="ansi-yellow-fg">&#34;緯度&#34;</span>, <span class="ansi-yellow-fg">&#34;経度&#34;</span>]])
 <span class="ansi-green-fg">      2</span> marker.add_to(itami_wifi_map)
 <span class="ansi-green-fg">      3</span> itami_wifi_map
 
@@ -514,7 +522,7 @@ dtype: float64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">itami_wifi</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;緯度&quot;</span><span class="p">,</span> <span class="s2">&quot;経度&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">itami_wifi</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">"緯度"</span><span class="p">,</span> <span class="s2">"経度"</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
     <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">itami_wifi_map</span><span class="p">),</span>
     <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="p">)</span>
@@ -530,49 +538,44 @@ dtype: float64
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[5]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">itami_wifi</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">loc</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">:</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-fg ansi-yellow-bg">&#34;</span><span class="ansi-yellow-fg ansi-yellow-bg">緯度</span><span class="ansi-yellow-fg ansi-yellow-bg">&#34;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-fg ansi-yellow-bg">&#34;</span><span class="ansi-yellow-fg ansi-yellow-bg">経度</span><span class="ansi-yellow-fg ansi-yellow-bg">&#34;</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">apply</span><span class="ansi-yellow-bg">(</span>
-<span class="ansi-green-fg">      2</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">lambda</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">x</span><span class="ansi-yellow-bg">:</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">folium</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">Marker</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">location</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">x</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">add_to</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">itami_wifi_map</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">      3</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">axis</span><span class="ansi-yellow-bg">=</span><span class="ansi-green-fg ansi-yellow-bg">1</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">      4</span> <span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg">      5</span> itami_wifi_map
-
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">D:\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\core\frame.py:10381</span>, in <span class="ansi-cyan-fg">DataFrame.apply</span><span class="ansi-blue-fg">(self, func, axis, raw, result_type, args, by_row, engine, engine_kwargs, **kwargs)</span>
-<span class="ansi-green-fg">  10367</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">pandas</span><span class="ansi-blue-intense-fg ansi-bold">.</span><span class="ansi-blue-intense-fg ansi-bold">core</span><span class="ansi-blue-intense-fg ansi-bold">.</span><span class="ansi-blue-intense-fg ansi-bold">apply</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> frame_apply
-<span class="ansi-green-fg">  10369</span> op = frame_apply(
-<span class="ansi-green-fg">  10370</span>     <span style="color: rgb(0,135,0)">self</span>,
-<span class="ansi-green-fg">  10371</span>     func=func,
-<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">  10379</span>     kwargs=kwargs,
-<span class="ansi-green-fg">  10380</span> )
-<span class="ansi-green-fg">&gt; </span><span class="ansi-green-fg">10381</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">op</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">apply</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>.__finalize__(<span style="color: rgb(0,135,0)">self</span>, method=<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">apply</span><span class="ansi-yellow-fg">&#34;</span>)
-
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">D:\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\core\apply.py:916</span>, in <span class="ansi-cyan-fg">FrameApply.apply</span><span class="ansi-blue-fg">(self)</span>
-<span class="ansi-green-fg">    913</span> <span class="ansi-bold" style="color: rgb(0,135,0)">elif</span> <span style="color: rgb(0,135,0)">self</span>.raw:
-<span class="ansi-green-fg">    914</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span style="color: rgb(0,135,0)">self</span>.apply_raw(engine=<span style="color: rgb(0,135,0)">self</span>.engine, engine_kwargs=<span style="color: rgb(0,135,0)">self</span>.engine_kwargs)
-<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">916</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">apply_standard</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
-
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">D:\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\core\apply.py:1063</span>, in <span class="ansi-cyan-fg">FrameApply.apply_standard</span><span class="ansi-blue-fg">(self)</span>
-<span class="ansi-green-fg">   1061</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-fg">apply_standard</span>(<span style="color: rgb(0,135,0)">self</span>):
-<span class="ansi-green-fg">   1062</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">self</span>.engine == <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">python</span><span class="ansi-yellow-fg">&#34;</span>:
-<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1063</span>         results, res_index = <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">apply_series_generator</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg">   1064</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">else</span>:
-<span class="ansi-green-fg">   1065</span>         results, res_index = <span style="color: rgb(0,135,0)">self</span>.apply_series_numba()
-
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">D:\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\core\apply.py:1081</span>, in <span class="ansi-cyan-fg">FrameApply.apply_series_generator</span><span class="ansi-blue-fg">(self)</span>
-<span class="ansi-green-fg">   1078</span> <span class="ansi-bold" style="color: rgb(0,135,0)">with</span> option_context(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">mode.chained_assignment</span><span class="ansi-yellow-fg">&#34;</span>, <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>):
-<span class="ansi-green-fg">   1079</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> i, v <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> <span style="color: rgb(0,135,0)">enumerate</span>(series_gen):
-<span class="ansi-green-fg">   1080</span>         <span style="color: rgb(95,135,135)"># ignore SettingWithCopy here in case the user mutates</span>
-<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1081</span>         results[i] = <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">func</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">v</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg">   1082</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">isinstance</span>(results[i], ABCSeries):
-<span class="ansi-green-fg">   1083</span>             <span style="color: rgb(95,135,135)"># If we have a view on v, we need to make a copy because</span>
-<span class="ansi-green-fg">   1084</span>             <span style="color: rgb(95,135,135)">#  series_generator will swap out the underlying data</span>
-<span class="ansi-green-fg">   1085</span>             results[i] = results[i].copy(deep=<span class="ansi-bold" style="color: rgb(0,135,0)">False</span>)
-
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[5]</span><span class="ansi-green-fg">, line 2</span>, in <span class="ansi-cyan-fg">&lt;lambda&gt;</span><span class="ansi-blue-fg">(x)</span>
-<span class="ansi-green-fg">      1</span> itami_wifi.loc[:, [<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">緯度</span><span class="ansi-yellow-fg">&#34;</span>, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">経度</span><span class="ansi-yellow-fg">&#34;</span>]].apply(
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">lambda</span> x: <span class="ansi-yellow-bg">folium</span>.Marker(location=x).add_to(itami_wifi_map),
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> itami_wifi.loc[:, [&#34;緯度&#34;, &#34;経度&#34;]].apply(
+<span class="ansi-green-fg">      2</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">lambda</span> x: folium.Marker(location=x).add_to(itami_wifi_map),
 <span class="ansi-green-fg">      3</span>     axis=<span class="ansi-green-fg">1</span>,
 <span class="ansi-green-fg">      4</span> )
-<span class="ansi-green-fg">      5</span> itami_wifi_map
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\core\frame.py:12437</span>, in <span class="ansi-cyan-fg">DataFrame.apply</span><span class="ansi-blue-fg">(self, func, axis, raw, result_type, args, by_row, engine, engine_kwargs, **kwargs)</span>
+<span class="ansi-green-fg">  12433</span>                 engine_kwargs=engine_kwargs,
+<span class="ansi-green-fg">  12434</span>                 args=args,
+<span class="ansi-green-fg">  12435</span>                 kwargs=kwargs,
+<span class="ansi-green-fg">  12436</span>             )
+<span class="ansi-green-fg">&gt; </span><span class="ansi-green-fg">12437</span>             <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> op.apply().__finalize__(self, method=<span class="ansi-yellow-fg">&#34;apply&#34;</span>)
+<span class="ansi-green-fg">  12438</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">elif</span> hasattr(engine, <span class="ansi-yellow-fg">&#34;__pandas_udf__&#34;</span>):
+<span class="ansi-green-fg">  12439</span>             <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> result_type <span class="ansi-bold" style="color: rgb(0,135,0)">is</span> <span class="ansi-bold" style="color: rgb(0,135,0)">not</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg">  12440</span>                 raise NotImplementedError(
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\core\apply.py:1015</span>, in <span class="ansi-cyan-fg">FrameApply.apply</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-fg">   1012</span> <span class="ansi-bold" style="color: rgb(0,135,0)">elif</span> <span style="color: rgb(0,135,0)">self</span>.raw:
+<span class="ansi-green-fg">   1013</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span style="color: rgb(0,135,0)">self</span>.apply_raw(engine=<span style="color: rgb(0,135,0)">self</span>.engine, engine_kwargs=<span style="color: rgb(0,135,0)">self</span>.engine_kwargs)
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1015</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-black-fg ansi-yellow-bg">self</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">apply_standard</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\core\apply.py:1167</span>, in <span class="ansi-cyan-fg">FrameApply.apply_standard</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-fg">   1165</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-fg">apply_standard</span>(<span style="color: rgb(0,135,0)">self</span>):
+<span class="ansi-green-fg">   1166</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">self</span>.engine == <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">python</span><span class="ansi-yellow-fg">&#34;</span>:
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1167</span>         results, res_index = <span class="ansi-black-fg ansi-yellow-bg">self</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">apply_series_generator</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">   1168</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg">   1169</span>         results, res_index = <span style="color: rgb(0,135,0)">self</span>.apply_series_numba()
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~\workspace\musashiuniv\musashiuniv_manuscript\.venv\Lib\site-packages\pandas\core\apply.py:1183</span>, in <span class="ansi-cyan-fg">FrameApply.apply_series_generator</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-fg">   1180</span> results = {}
+<span class="ansi-green-fg">   1182</span> <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> i, v <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> <span style="color: rgb(0,135,0)">enumerate</span>(series_gen):
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1183</span>     results[i] = <span class="ansi-black-fg ansi-yellow-bg">self</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">func</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">v</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">*</span><span class="ansi-black-fg ansi-yellow-bg">self</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">args</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">*</span><span class="ansi-black-fg ansi-yellow-bg">*</span><span class="ansi-black-fg ansi-yellow-bg">self</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">kwargs</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">   1184</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">isinstance</span>(results[i], ABCSeries):
+<span class="ansi-green-fg">   1185</span>         <span style="color: rgb(95,135,135)"># If we have a view on v, we need to make a copy because</span>
+<span class="ansi-green-fg">   1186</span>         <span style="color: rgb(95,135,135)">#  series_generator will swap out the underlying data</span>
+<span class="ansi-green-fg">   1187</span>         results[i] = results[i].copy(deep=<span class="ansi-bold" style="color: rgb(0,135,0)">False</span>)
+
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[5]</span><span class="ansi-green-fg">, line 2</span>, in <span class="ansi-cyan-fg">&lt;lambda&gt;</span><span class="ansi-blue-fg">(x)</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">lambda</span> x: folium.Marker(location=x).add_to(itami_wifi_map),
 
 <span class="ansi-red-fg">NameError</span>: name &#39;folium&#39; is not defined
 </pre></div></div>
@@ -585,12 +588,12 @@ dtype: float64
 
 <span class="n">land_price_gdf</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span>
-        <span class="s2">&quot;https://nlftp.mlit.go.jp/ksj/gml/data/L01/L01-22/L01-22_25_GML.zip&quot;</span>
+        <span class="s2">"https://nlftp.mlit.go.jp/ksj/gml/data/L01/L01-22/L01-22_25_GML.zip"</span>
     <span class="p">)</span>
-    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;L01_005&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s2">&quot;2022&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"L01_005"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s2">"2022"</span><span class="p">)</span>
 <span class="p">)</span>
-<span class="n">land_price_gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;L01_006&quot;</span><span class="p">,</span> <span class="s2">&quot;L01_023&quot;</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">]]</span>
+<span class="n">land_price_gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="s2">"L01_006"</span><span class="p">,</span> <span class="s2">"L01_023"</span><span class="p">,</span> <span class="s2">"geometry"</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -602,13 +605,10 @@ dtype: float64
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[6]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">geopandas</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">as</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">gpd</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> geopandas <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> gpd
+<span class="ansi-green-fg">      2</span>
 <span class="ansi-green-fg">      3</span> land_price_gdf = (
 <span class="ansi-green-fg">      4</span>     gpd.read_file(
-<span class="ansi-green-fg">      5</span>         <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">https://nlftp.mlit.go.jp/ksj/gml/data/L01/L01-22/L01-22_25_GML.zip</span><span class="ansi-yellow-fg">&#34;</span>
-<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">      8</span>     .get_group(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">2022</span><span class="ansi-yellow-fg">&#34;</span>)
-<span class="ansi-green-fg">      9</span> )
-<span class="ansi-green-fg">     10</span> land_price_gdf.loc[:<span class="ansi-green-fg">3</span>, [<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">L01_006</span><span class="ansi-yellow-fg">&#34;</span>, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">L01_023</span><span class="ansi-yellow-fg">&#34;</span>, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">geometry</span><span class="ansi-yellow-fg">&#34;</span>]]
 
 <span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;geopandas&#39;
 </pre></div></div>
@@ -620,9 +620,9 @@ dtype: float64
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">land_price</span> <span class="o">=</span> <span class="n">land_price_gdf</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
     <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
         <span class="p">(</span>
-            <span class="n">s</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
-            <span class="n">s</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
-            <span class="n">s</span><span class="p">[</span><span class="s2">&quot;L01_006&quot;</span><span class="p">],</span>
+            <span class="n">s</span><span class="p">[</span><span class="s2">"geometry"</span><span class="p">]</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+            <span class="n">s</span><span class="p">[</span><span class="s2">"geometry"</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
+            <span class="n">s</span><span class="p">[</span><span class="s2">"L01_006"</span><span class="p">],</span>
         <span class="p">)</span>
     <span class="p">),</span>
     <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
@@ -639,17 +639,10 @@ dtype: float64
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[7]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> land_price = <span class="ansi-yellow-bg">land_price_gdf</span>.apply(
-<span class="ansi-green-fg">      2</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">lambda</span> s: pd.Series(
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> land_price = land_price_gdf.apply(
+<span class="ansi-green-fg">      2</span>     lambda s: pd.Series(
 <span class="ansi-green-fg">      3</span>         (
-<span class="ansi-green-fg">      4</span>             s[<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">geometry</span><span class="ansi-yellow-fg">&#34;</span>].y,
-<span class="ansi-green-fg">      5</span>             s[<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">geometry</span><span class="ansi-yellow-fg">&#34;</span>].x,
-<span class="ansi-green-fg">      6</span>             s[<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">L01_006</span><span class="ansi-yellow-fg">&#34;</span>],
-<span class="ansi-green-fg">      7</span>         )
-<span class="ansi-green-fg">      8</span>     ),
-<span class="ansi-green-fg">      9</span>     axis=<span class="ansi-green-fg">1</span>,
-<span class="ansi-green-fg">     10</span> ).values
-<span class="ansi-green-fg">     11</span> land_price[:<span class="ansi-green-fg">3</span>]
+<span class="ansi-green-fg">      4</span>             s[<span class="ansi-yellow-fg">&#34;geometry&#34;</span>].y,
 
 <span class="ansi-red-fg">NameError</span>: name &#39;land_price_gdf&#39; is not defined
 </pre></div></div>
@@ -661,8 +654,8 @@ dtype: float64
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">folium.plugins</span><span class="w"> </span><span class="kn">import</span> <span class="n">HeatMap</span>
 
 <span class="n">shiga_center</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">land_price_gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
-    <span class="n">land_price_gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+    <span class="n">land_price_gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"geometry"</span><span class="p">]</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+    <span class="n">land_price_gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"geometry"</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
 <span class="p">)</span>
 <span class="n">land_price_map</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span>
     <span class="n">location</span><span class="o">=</span><span class="n">shiga_center</span><span class="p">,</span>
@@ -684,15 +677,10 @@ dtype: float64
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[8]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">folium</span><span class="ansi-blue-intense-fg ansi-bold">.</span><span class="ansi-blue-intense-fg ansi-bold">plugins</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> HeatMap
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span> folium.plugins <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> HeatMap
+<span class="ansi-green-fg">      2</span>
 <span class="ansi-green-fg">      3</span> shiga_center = (
-<span class="ansi-green-fg">      4</span>     land_price_gdf.loc[:, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">geometry</span><span class="ansi-yellow-fg">&#34;</span>].y.mean(),
-<span class="ansi-green-fg">      5</span>     land_price_gdf.loc[:, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">geometry</span><span class="ansi-yellow-fg">&#34;</span>].x.mean(),
-<span class="ansi-green-fg">      6</span> )
-<span class="ansi-green-fg">      7</span> land_price_map = folium.Map(
-<span class="ansi-green-fg">      8</span>     location=shiga_center,
-<span class="ansi-green-fg">      9</span>     zoom_start=<span class="ansi-green-fg">10</span>,
-<span class="ansi-green-fg">     10</span> )
+<span class="ansi-green-fg">      4</span>     land_price_gdf.loc[:, <span class="ansi-yellow-fg">&#34;geometry&#34;</span>].y.mean(),
 
 <span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;folium&#39;
 </pre></div></div>
@@ -704,14 +692,14 @@ dtype: float64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minx</span><span class="p">,</span> <span class="n">miny</span> <span class="o">=</span> <span class="n">land_price_gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">min</span><span class="p">()[</span>
-    <span class="p">[</span><span class="s2">&quot;minx&quot;</span><span class="p">,</span> <span class="s2">&quot;miny&quot;</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minx</span><span class="p">,</span> <span class="n">miny</span> <span class="o">=</span> <span class="n">land_price_gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"geometry"</span><span class="p">]</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">min</span><span class="p">()[</span>
+    <span class="p">[</span><span class="s2">"minx"</span><span class="p">,</span> <span class="s2">"miny"</span><span class="p">]</span>
 <span class="p">]</span>
-<span class="n">maxx</span><span class="p">,</span> <span class="n">maxy</span> <span class="o">=</span> <span class="n">land_price_gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">max</span><span class="p">()[</span>
-    <span class="p">[</span><span class="s2">&quot;maxx&quot;</span><span class="p">,</span> <span class="s2">&quot;maxy&quot;</span><span class="p">]</span>
+<span class="n">maxx</span><span class="p">,</span> <span class="n">maxy</span> <span class="o">=</span> <span class="n">land_price_gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"geometry"</span><span class="p">]</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">max</span><span class="p">()[</span>
+    <span class="p">[</span><span class="s2">"maxx"</span><span class="p">,</span> <span class="s2">"maxy"</span><span class="p">]</span>
 <span class="p">]</span>
 <span class="n">rail_gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span>
-    <span class="s2">&quot;https://nlftp.mlit.go.jp/ksj/gml/data/N02/N02-21/N02-21_GML.zip&quot;</span>
+    <span class="s2">"https://nlftp.mlit.go.jp/ksj/gml/data/N02/N02-21/N02-21_GML.zip"</span>
 <span class="p">)</span><span class="o">.</span><span class="n">cx</span><span class="p">[</span><span class="n">minx</span><span class="p">:</span><span class="n">maxx</span><span class="p">,</span> <span class="n">miny</span><span class="p">:</span><span class="n">maxy</span><span class="p">]</span>
 <span class="n">rail_gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -725,15 +713,10 @@ dtype: float64
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[9]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> minx, miny = <span class="ansi-yellow-bg">land_price_gdf</span>.loc[:, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">geometry</span><span class="ansi-yellow-fg">&#34;</span>].bounds.min()[
-<span class="ansi-green-fg">      2</span>     [<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">minx</span><span class="ansi-yellow-fg">&#34;</span>, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">miny</span><span class="ansi-yellow-fg">&#34;</span>]
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> minx, miny = land_price_gdf.loc[:, &#34;geometry&#34;].bounds.min()[
+<span class="ansi-green-fg">      2</span>     [<span class="ansi-yellow-fg">&#34;minx&#34;</span>, <span class="ansi-yellow-fg">&#34;miny&#34;</span>]
 <span class="ansi-green-fg">      3</span> ]
-<span class="ansi-green-fg">      4</span> maxx, maxy = land_price_gdf.loc[:, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">geometry</span><span class="ansi-yellow-fg">&#34;</span>].bounds.max()[
-<span class="ansi-green-fg">      5</span>     [<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">maxx</span><span class="ansi-yellow-fg">&#34;</span>, <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">maxy</span><span class="ansi-yellow-fg">&#34;</span>]
-<span class="ansi-green-fg">      6</span> ]
-<span class="ansi-green-fg">      7</span> rail_gdf = gpd.read_file(
-<span class="ansi-green-fg">      8</span>     <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">https://nlftp.mlit.go.jp/ksj/gml/data/N02/N02-21/N02-21_GML.zip</span><span class="ansi-yellow-fg">&#34;</span>
-<span class="ansi-green-fg">      9</span> ).cx[minx:maxx, miny:maxy]
+<span class="ansi-green-fg">      4</span> maxx, maxy = land_price_gdf.loc[:, &#34;geometry&#34;].bounds.max()[
 
 <span class="ansi-red-fg">NameError</span>: name &#39;land_price_gdf&#39; is not defined
 </pre></div></div>
@@ -743,7 +726,7 @@ dtype: float64
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 京津線のデータを抽出</span>
-<span class="n">keishinsen</span> <span class="o">=</span> <span class="n">rail_gdf</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;N02_003&quot;</span><span class="p">)[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s2">&quot;京津線&quot;</span><span class="p">)</span>
+<span class="n">keishinsen</span> <span class="o">=</span> <span class="n">rail_gdf</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"N02_003"</span><span class="p">)[</span><span class="s2">"geometry"</span><span class="p">]</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s2">"京津線"</span><span class="p">)</span>
 <span class="c1"># 中心となる座標</span>
 <span class="n">keishinsen_center</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">keishinsen</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
@@ -762,12 +745,10 @@ dtype: float64
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[10]</span><span class="ansi-green-fg">, line 2</span>
 <span class="ansi-green-fg">      1</span> <span style="color: rgb(95,135,135)"># 京津線のデータを抽出</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> keishinsen = <span class="ansi-yellow-bg">rail_gdf</span>.groupby(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">N02_003</span><span class="ansi-yellow-fg">&#34;</span>)[<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">geometry</span><span class="ansi-yellow-fg">&#34;</span>].get_group(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">京津線</span><span class="ansi-yellow-fg">&#34;</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> keishinsen = rail_gdf.groupby(<span class="ansi-yellow-fg">&#34;N02_003&#34;</span>)[<span class="ansi-yellow-fg">&#34;geometry&#34;</span>].get_group(<span class="ansi-yellow-fg">&#34;京津線&#34;</span>)
 <span class="ansi-green-fg">      3</span> <span style="color: rgb(95,135,135)"># 中心となる座標</span>
 <span class="ansi-green-fg">      4</span> keishinsen_center = (
 <span class="ansi-green-fg">      5</span>     keishinsen.map(<span class="ansi-bold" style="color: rgb(0,135,0)">lambda</span> p: p.centroid.y).mean(),
-<span class="ansi-green-fg">      6</span>     keishinsen.map(<span class="ansi-bold" style="color: rgb(0,135,0)">lambda</span> p: p.centroid.x).mean(),
-<span class="ansi-green-fg">      7</span> )
 
 <span class="ansi-red-fg">NameError</span>: name &#39;rail_gdf&#39; is not defined
 </pre></div></div>
@@ -802,17 +783,13 @@ dtype: float64
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[11]</span><span class="ansi-green-fg">, line 4</span>
-<span class="ansi-green-fg">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">numpy</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">as</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">np</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">4</span> keishinsen_map = <span class="ansi-yellow-bg">folium</span>.Map(
+<span class="ansi-green-fg">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> numpy <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> np
+<span class="ansi-green-fg">      2</span>
+<span class="ansi-green-fg">      3</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">4</span> keishinsen_map = folium.Map(
 <span class="ansi-green-fg">      5</span>     location=keishinsen_center,
 <span class="ansi-green-fg">      6</span>     zoom_start=<span class="ansi-green-fg">14</span>,
 <span class="ansi-green-fg">      7</span> )
-<span class="ansi-green-fg">      8</span> keishinsen.apply(
-<span class="ansi-green-fg">      9</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">lambda</span> s: folium.PolyLine(
-<span class="ansi-green-fg">     10</span>         <span style="color: rgb(95,135,135)"># 緯度, 経度の順番に変換、fliplr関数で順序を反転</span>
-<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">     13</span>     ).add_to(keishinsen_map)
-<span class="ansi-green-fg">     14</span> )
-<span class="ansi-green-fg">     15</span> keishinsen_map
 
 <span class="ansi-red-fg">NameError</span>: name &#39;folium&#39; is not defined
 </pre></div></div>
@@ -838,12 +815,10 @@ dtype: float64
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[12]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> rail_map = <span class="ansi-yellow-bg">folium</span>.Map(
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> rail_map = folium.Map(
 <span class="ansi-green-fg">      2</span>     location=shiga_center,
 <span class="ansi-green-fg">      3</span>     zoom_start=<span class="ansi-green-fg">10</span>,
 <span class="ansi-green-fg">      4</span> )
-<span class="ansi-green-fg">      5</span> folium.features.GeoJson(rail_gdf).add_to(rail_map)
-<span class="ansi-green-fg">      6</span> rail_map
 
 <span class="ansi-red-fg">NameError</span>: name &#39;folium&#39; is not defined
 </pre></div></div>
@@ -855,7 +830,7 @@ dtype: float64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">did_gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;./data/A16-15_25_DID.geojson&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">did_gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">"./data/A16-15_25_DID.geojson"</span><span class="p">)</span>
 <span class="n">did_gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -868,7 +843,7 @@ dtype: float64
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[13]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> did_gdf = <span class="ansi-yellow-bg">gpd</span>.read_file(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">./data/A16-15_25_DID.geojson</span><span class="ansi-yellow-fg">&#34;</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> did_gdf = gpd.read_file(<span class="ansi-yellow-fg">&#34;./data/A16-15_25_DID.geojson&#34;</span>)
 <span class="ansi-green-fg">      2</span> did_gdf.head()
 
 <span class="ansi-red-fg">NameError</span>: name &#39;gpd&#39; is not defined
@@ -895,12 +870,10 @@ dtype: float64
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[14]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> did_map = <span class="ansi-yellow-bg">folium</span>.Map(
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> did_map = folium.Map(
 <span class="ansi-green-fg">      2</span>     location=shiga_center,
 <span class="ansi-green-fg">      3</span>     zoom_start=<span class="ansi-green-fg">10</span>,
 <span class="ansi-green-fg">      4</span> )
-<span class="ansi-green-fg">      5</span> folium.GeoJson(did_gdf).add_to(did_map)
-<span class="ansi-green-fg">      6</span> did_map
 
 <span class="ansi-red-fg">NameError</span>: name &#39;folium&#39; is not defined
 </pre></div></div>
@@ -916,9 +889,9 @@ dtype: float64
 <span class="n">folium</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">Choropleth</span><span class="p">(</span>
     <span class="n">geo_data</span><span class="o">=</span><span class="n">did_gdf</span><span class="p">,</span>
     <span class="n">data</span><span class="o">=</span><span class="n">did_gdf</span><span class="p">,</span>
-    <span class="n">key_on</span><span class="o">=</span><span class="s2">&quot;feature.properties.DIDid&quot;</span><span class="p">,</span>
-    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;DIDid&quot;</span><span class="p">,</span> <span class="s2">&quot;人口&quot;</span><span class="p">],</span>
-    <span class="n">legend_name</span><span class="o">=</span><span class="s2">&quot;人口&quot;</span><span class="p">,</span>
+    <span class="n">key_on</span><span class="o">=</span><span class="s2">"feature.properties.DIDid"</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"DIDid"</span><span class="p">,</span> <span class="s2">"人口"</span><span class="p">],</span>
+    <span class="n">legend_name</span><span class="o">=</span><span class="s2">"人口"</span><span class="p">,</span>
 <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">did_choroplethmap</span><span class="p">)</span>
 <span class="n">did_choroplethmap</span>
 </pre></div>
@@ -932,16 +905,10 @@ dtype: float64
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
 <span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[15]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> did_choroplethmap = <span class="ansi-yellow-bg">folium</span>.Map(
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> did_choroplethmap = folium.Map(
 <span class="ansi-green-fg">      2</span>     location=shiga_center,
 <span class="ansi-green-fg">      3</span>     zoom_start=<span class="ansi-green-fg">10</span>,
 <span class="ansi-green-fg">      4</span> )
-<span class="ansi-green-fg">      5</span> folium.features.Choropleth(
-<span class="ansi-green-fg">      6</span>     geo_data=did_gdf,
-<span class="ansi-green-fg">      7</span>     data=did_gdf,
-<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">     10</span>     legend_name=<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">人口</span><span class="ansi-yellow-fg">&#34;</span>,
-<span class="ansi-green-fg">     11</span> ).add_to(did_choroplethmap)
-<span class="ansi-green-fg">     12</span> did_choroplethmap
 
 <span class="ansi-red-fg">NameError</span>: name &#39;folium&#39; is not defined
 </pre></div></div>
@@ -963,7 +930,7 @@ dtype: float64
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-07-30</div>
+              Last updated on 2026-08-28</div>
           </div>
           <div class="right-details">
             
@@ -1004,7 +971,7 @@ dtype: float64
     <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../../_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../../../../../_static/copybutton.js?v=ccdb6887"></script>
+    <script src="../../../../../../_static/copybutton.js?v=940804e7"></script>
     <script src="../../../../../../_static/translations.js?v=4755f45a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     </body>
