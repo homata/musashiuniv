@@ -189,11 +189,21 @@
 
 ## オープンデータのカタログ
 
-代表的な「オープンデータ」を公開しているサイトを共有します。
+代表的な「オープンデータ」を公開しているサイトです。
 
 * [デジタル庁 - オープンデータ](https://www.digital.go.jp/resources/open_data/)
-* [政府CIOポータル - オープンデータ](https://cio.go.jp/policy-opendata)
 * [総務省 - 地方公共団体のオープンデータの推進](https://www.soumu.go.jp/menu_seisaku/ictseisaku/ictriyou/opendata/)
+
+----
+
+### 自治体標準オープンデータセットの対象となる組織
+
+```{figure} images/02.numpy_pandas/99.PNG
+:width: 100%
+```
+
+*1 一部事務組合等(広域連合など含む)については様々な連携ケースが存在しているため、総務省で想定している広域行政を参考に選択している。https://www.soumu.go.jp/main_content/000658630.pdf
+
 
 ----
 
@@ -208,13 +218,14 @@
 * [RESAS - 地域経済分析システム](https://resas.go.jp/)
 * [RAIDA - 地方創生データ分析評価プラットフォーム](https://raida.go.jp/)
 * デジタル庁
+    * [自治体標準オープンデータセット（正式版）](https://www.digital.go.jp/resources/open_data/municipal-standard-data-set-test)
     * [地域幸福度（Well-Being）指標サイト](https://well-being.digital.go.jp/)
-        - [SCI-Japan指標サイト](https://www.sci-japan.or.jp/LWCI/index.html)
+        - [SCI-Japan指標サイト - 一般社団法人スマートシティ・インスティテュート｜地域幸福度(Well-Being) 指標](https://www.sci-japan.or.jp/LWCI/index.html)
     * [Japan Dashboard（経済・財政・人口と暮らしに関するダッシュボード）](https://www.digital.go.jp/resources/japandashboard)
 
 ----
 
-### 民間
+### 公的機関・その他
 
 #### データカタログ
 * [オープンデータ BODIK公式サイト - 九州先端科学技術研究所](https://www.bodik.jp/)

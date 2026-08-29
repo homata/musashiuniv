@@ -7,10 +7,12 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="2026/02.programming_advanced_a/markdown/advanced_03.html" />
 <meta property="og:site_name" content="musashiuniv" />
+<meta property="og:description" content="「データの種類（尺度）とデータ加工（Data Processing）」について学びます． 🎯 到達目標: データ加工の必要性を説明できる。, 「4つのデータ尺度」 （名義尺度、順序尺度、間隔尺度、比例尺度）を区別し、それぞれに適したデータ分析のアプローチを説明できる。, 複数のデータフレームを、**縦に連結（concat） したり、共通のキーで 横に結合（merge）**して統合できる。, ..." />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
 <meta property="og:image" content="/None" />
-<meta property="og:image:alt" content="" />
+<meta property="og:image:alt" content="「データの種類（尺度）とデータ加工（Data Processing）」について学びます． 🎯 到達目標: データ加工の必要性を説明できる。, 「4つのデータ尺度」 （名義尺度、順序尺度、間隔尺度、比例尺度）を区別し、それぞれに適したデータ分析のアプローチを説明できる。, 複数のデータフレームを、**縦に連結（co..." />
+<meta name="description" content="「データの種類（尺度）とデータ加工（Data Processing）」について学びます． 🎯 到達目標: データ加工の必要性を説明できる。, 「4つのデータ尺度」 （名義尺度、順序尺度、間隔尺度、比例尺度）を区別し、それぞれに適したデータ分析のアプローチを説明できる。, 複数のデータフレームを、**縦に連結（concat） したり、共通のキーで 横に結合（merge）**して統合できる。, ..." />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" /><link rel="next" title="第4回 データ解析" href="advanced_04.html" /><link rel="prev" title="第2回 オープンデータの基本" href="advanced_02.html" />
 
@@ -189,7 +191,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -350,7 +352,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -358,6 +360,1968 @@
         <article role="main" id="furo-main-content">
           <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>第3回 データの種類とデータ加⼯<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<p>「データの種類（尺度）とデータ加工（Data Processing）」について学びます．</p>
+<hr class="docutils" />
+<section id="id2">
+<h2>🎯 到達目標<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>データ加工の必要性を説明できる。</p></li>
+<li><p><strong>「4つのデータ尺度」</strong>（名義尺度、順序尺度、間隔尺度、比例尺度）を区別し、それぞれに適したデータ分析のアプローチを説明できる。</p></li>
+<li><p>複数のデータフレームを、**縦に連結（concat）<strong>したり、共通のキーで</strong>横に結合（merge）**して統合できる。</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">apply()</span></code> メソッドとラムダ式（lambda）</strong> を組み合わせて、データフレームの列に対して複雑なカスタムデータ変換を行える。</p></li>
+<li><p>日付文字列を <strong>時系列データ（datetimeオブジェクト）</strong> に変換し、曜日や月などの情報を自在に抽出・集計できる。</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h2>データ加工の必要性<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>世の中にあるデータは、ノイズがあったりや余分なデータが含まれていることが多い</p></li>
+<li><p>欲しいデータが取り出しやすい形になっていない</p></li>
+<li><p>データをある程度加工し適切なデータとなっている必要がある</p></li>
+</ul>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/01.png"><img alt="../../../_images/01.png" src="../../../_images/01.png" style="width: 100%;" />
+</a>
+</figure>
+<hr class="docutils" />
+<section id="id4">
+<h3>データ加工の実情<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>データ処理の中で最も時間がかかり、苦労するタスクがデータ前処理だといわれている</p></li>
+<li><p>諸説あるが、一般的に70％から80％のタスクがデータ前処理作業だといわれている</p></li>
+<li><p>データ前処理には、データのクリーニング、データの変換、データの結合、データの集約などがある</p></li>
+<li><p>データ前処理の出来上がりによって、後処理の結果が大きく変わることもある</p></li>
+</ul>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/021.png"><img alt="../../../_images/021.png" src="../../../_images/021.png" style="width: 100%;" />
+</a>
+</figure>
+<p>データ加工のイメージ (汚いデータを何回か加工をしてきれいにしていく)</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id5">
+<h2>データの「尺度（データ型）」<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<p>データ分析を行う前に、「そのデータがどういう性質のものか」を見極める必要があります。
+これを統計学では「4つの尺度（測定尺度）」と呼びます。データのもつ性質や情報量を分類する基準であり、
+名義尺度・順序尺度・間隔尺度・比例尺度の4種類があります。下位から上位へ行くほど情報量が豊かになり、
+扱える統計的処理の範囲が広がります。</p>
+<p><strong>【4つの尺度のビジュアル図解】</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  [ 4つの尺度 ]
+   ├── 1. 名義尺度 (分類のみ)  ──▶ 「コーヒー」「紅茶」（足し引きできない）
+   ├── 2. 順序尺度 (順番に意味) ──▶ 「大・中・小」「顧客満足度：1〜5」（差は不均等）
+   ├── 3. 間隔尺度 (ゼロに意味なし) ──▶ 「気温（℃）」（0度は『温度がない』ではない）
+   └── 4. 比例尺度 (絶対的なゼロ) ──▶ 「価格（円）」「来客数」（0は『存在しない』。2倍が計算できる）
+</pre></div>
+</div>
+<p><strong>4つの尺度の特徴と具体例</strong><br />
+質的変数：離散的な値をとり、数値で表現できない変数</p>
+<ol class="arabic simple">
+<li><p><strong>名義尺度（Nominal Scale）</strong>：</p>
+<ul class="simple">
+<li><p>特徴: 同じか違うか（区別）の区別しか意味を持たず、大小関係や順序はありません。計算はできません。</p></li>
+<li><p>使える統計量: 度数、最頻値（さいひんち）</p></li>
+<li><p>具体例: 性別、血液型、背番号、都道府県名、商品カテゴリ（ドリンク、フード）、性別、店舗名</p></li>
+</ul>
+</li>
+<li><p><strong>順序尺度（順位）（Ordinal Scale）</strong>：</p>
+<ul class="simple">
+<li><p>特徴: 分類に加えて、値の大小・順位関係に意味がありますが、数値の「差」の大きさに等間隔の意味はありません（「差」が均等でない）。</p></li>
+<li><p>使える統計量: 中央値、四分位数、順位相関係数</p></li>
+<li><p>具体例: 満足度調査（5段階評価）、順位（1位、2位、3位），顧客満足度（5:大満足、4:満足...）、コーヒーのサイズ（S, M, L）。「SとMの差」と「MとLの差」は同じとは限りません。</p></li>
+</ul>
+</li>
+</ol>
+<p>量的変数：数や量で測れる変数</p>
+<ol class="arabic simple" start="3">
+<li><p><strong>間隔尺度（差）（Interval Scale）</strong>：</p>
+<ul class="simple">
+<li><p>特徴: 大小関係と値の「差」に意味がありますが、基準となる「0（ゼロ）」は便宜的なものであり、本当のゼロ（無）ではありません（負の値も取ります）。倍率の計算（比）はできません。「0（ゼロ）」が絶対的な無を意味しないデータです。</p></li>
+<li><p>使える統計量: 平均値、標準偏差</p></li>
+<li><p>具体例: 摂氏温度（℃）、西暦、偏差値、気温（℃）。「30℃は15℃の2倍暑い」とは言えません（0℃は熱が完全に無い絶対零度ではないため）</p></li>
+</ul>
+</li>
+<li><p><strong>比例尺度（Ratio Scale）</strong>：</p>
+<ul class="simple">
+<li><p>特徴: 数値の「差」にも「比」にも意味があります。差の計算に加え、絶対的な「0（ゼロ）」が存在し（何もない状態）、値の比率（〜倍）に意味を持ちます。もっとも情報量が多い尺度です。「0」は「何もない」ことを示します。データ分析で最も扱いやすい形です。</p></li>
+<li><p>使える統計量: 幾何平均、変動係数、比率</p></li>
+<li><p>具体例: 身長、体重、値段、距離、価格、売上数、客数。「0円」はタダ（お金がない）ですし、「1000円は500円の2倍」と言えます。</p></li>
+</ul>
+</li>
+</ol>
+<p>Pandasでデータを加工するときは、この尺度が「文字列（object）」、「カテゴリ（category）」、「数値（int/float）」のどのデータ型に変換すべきかを意識します。</p>
+</section>
+<hr class="docutils" />
+<section id="eda-exploratory-data-analysis">
+<h2>EDA（Exploratory Data Analysis）<a class="headerlink" href="#eda-exploratory-data-analysis" title="Link to this heading">¶</a></h2>
+<section id="eda">
+<h3>EDAとは？<a class="headerlink" href="#eda" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>EDAは「Exploratory Data Analysis」の略</p></li>
+<li><p>日本語では「探索的データ分析」と呼ばれている</p></li>
+<li><p>EDAは、データの特徴や構造を理解し、仮説を生成、検証するための一連の手法</p></li>
+<li><p>データを探索し、視覚化や統計を活用してデータの特徴や傾向を理解する</p></li>
+</ul>
+</section>
+<section id="id6">
+<h3>EDAの主な目的<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>データの全体像を把握する</p></li>
+<li><p>変数間の関係性を明らかにする</p></li>
+<li><p>異常値や欠損値を発見する</p></li>
+<li><p>データの質を評価する</p></li>
+<li><p>仮説を生成し検証する</p></li>
+</ol>
+<ul class="simple">
+<li><p>EDAは、データクリーニング、データ変換、統計的分析、可視化など、多岐にわたる手法を組み合わせて行われいる</p></li>
+<li><p>他のデータ分析手法と比べ、EDAは特に探索的な性質が強く、データの “理解” に重点を置いている</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id7">
+<h2>主なライブラリ<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<section id="id8">
+<h3>主なライブラリ<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p>主なライブラリの機能</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/07.png"><img alt="../../../_images/07.png" src="../../../_images/07.png" style="width: 100%;" />
+</a>
+</figure>
+</section>
+<section id="numpy">
+<h3>主なライブラリ - NumPy<a class="headerlink" href="#numpy" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>配列構造をデータ型と提供し、数値演算や可能の機能を持つ</p></li>
+<li><p>Pythonにおけるデータ分析の基礎となるライブラリ</p></li>
+</ul>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/08.png"><img alt="../../../_images/08.png" src="../../../_images/08.png" style="width: 100%;" />
+</a>
+</figure>
+</section>
+<section id="pandas">
+<h3>主なライブラリ - pandas<a class="headerlink" href="#pandas" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>データ加工ライブラリとして、1・2次元のデータ構造を提供する</p></li>
+<li><p>データ加工やデータ読み書きなどの豊富な機能を持ち</p></li>
+<li><p>Pythonでデータ分析を行うときにもっとも使われるライブラリ</p></li>
+</ul>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/09.png"><img alt="../../../_images/09.png" src="../../../_images/09.png" style="width: 100%;" />
+</a>
+</figure>
+</section>
+<section id="matplotlib">
+<h3>主なライブラリ - Matplotlib<a class="headerlink" href="#matplotlib" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Pythonの可視化ライブラリで、グラフを描画する</p></li>
+</ul>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/101.png"><img alt="../../../_images/101.png" src="../../../_images/101.png" style="width: 100%;" />
+</a>
+</figure>
+</section>
+<section id="plotly">
+<h3>主なライブラリ - Plotly<a class="headerlink" href="#plotly" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>インタラクティブなグラフ描画を得意とする可視化ライブラリ</p></li>
+</ul>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/111.png"><img alt="../../../_images/111.png" src="../../../_images/111.png" style="width: 100%;" />
+</a>
+</figure>
+</section>
+<section id="scikit-learn">
+<h3>主なライブラリ - scikit-learn<a class="headerlink" href="#scikit-learn" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>オープンソースの機械学習ライブラリ</p></li>
+<li><p>機械学習ならscikit-learnからはじめるのがおススメ</p></li>
+</ul>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/122.png"><img alt="../../../_images/122.png" src="../../../_images/122.png" style="width: 100%;" />
+</a>
+</figure>
+</section>
+<section id="scipy">
+<h3>主なライブラリ - SciPy<a class="headerlink" href="#scipy" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>科学技術計算ライブラリ</p></li>
+<li><p>微分方程式の数値解析やフーリエ変換など演算・計算をサポート</p></li>
+</ul>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/131.png"><img alt="../../../_images/131.png" src="../../../_images/131.png" style="width: 100%;" />
+</a>
+</figure>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id9">
+<h2>代表的なデータ形式<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<section id="id10">
+<h3>データ形式 - 表形式<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>データを整理する際に最も使われる形式</p></li>
+<li><p>データを行と列の2次元で管理する方法。テーブル形式とも呼ばれる。</p></li>
+<li><p>Microsoft Excelなどの表計算ソフトで扱うデータのイメージ</p></li>
+<li><p>pandasのDataFrame形式で扱う</p></li>
+</ul>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/03.png"><img alt="../../../_images/03.png" src="../../../_images/03.png" style="width: 70%;" />
+</a>
+</figure>
+<p>表形式の例</p>
+</section>
+<section id="id11">
+<h3>データ形式 – ツリー形式<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>データを親子関係で管理する方法</p></li>
+<li><p>列方向という概念はない</p></li>
+<li><p>PCのフォルダでファイルを管理するイメージ</p></li>
+<li><p>JSON形式で扱う</p></li>
+</ul>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/04.png"><img alt="../../../_images/04.png" src="../../../_images/04.png" style="width: 50%;" />
+</a>
+</figure>
+<p>ツリー形式の例</p>
+</section>
+<section id="id12">
+<h3>データ形式 – リレーション形式<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>リレーショナルデータベース(RDB)で扱うデータ</p></li>
+<li><p>表形式の2次元のデータと関連性をもつ</p></li>
+<li><p>複数の表を関連させて、複雑なデータを表現</p></li>
+</ul>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/05.png"><img alt="../../../_images/05.png" src="../../../_images/05.png" style="width: 70%;" />
+</a>
+</figure>
+<p>リレーション形式の例</p>
+</section>
+<section id="id13">
+<h3>データ形式 – グラフデータ<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>データを点と線で表現をする</p></li>
+<li><p>点を「ノード(点)」「エッジ(線)」「プロパティ(属性)」の3つで表現</p></li>
+<li><p>データ間の関係性の構造を持つ</p></li>
+<li><p>プロパティはグラフの各要素（ノード、エッジ）が持つ情報</p></li>
+</ul>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/06.png"><img alt="../../../_images/06.png" src="../../../_images/06.png" style="width: 70%;" />
+</a>
+</figure>
+<p>グラフデータの例</p>
+</section>
+<section id="id14">
+<h3>データ形式 – 文書データ<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>文章のテキスト形式のデータ</p></li>
+<li><p>文字の羅列や定型フォーマットなど，自由に作成されている</p></li>
+<li><p>人間が読みやすい形式となっている</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>お打ち合わせのお願い
+
+お客様各位
+
+〇〇株式会社
+〇〇様
+
+いつもお世話になっております。
+株式会社〇〇の〇〇です。
+
+このたび、〇〇に関するご提案について、ぜひ一度お打ち合わせの機会をいただきたく、ご連絡いたしました。
+：
+：
+</pre></div>
+</div>
+<p>サンプル文章</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id15">
+<h2>ファイルのデータ形式<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
+<section id="python">
+<h3>Pythonのファイルのデータ形式<a class="headerlink" href="#python" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Pythonには多くのデータ形式に対応する</p></li>
+<li><p>pandasは多くのデータ形式の読み書きが可能で、データ分析へ活用することが可能</p></li>
+</ul>
+<p>代表的なデータ(ファイル形式)
+・CSV形式 	・HTML形式	・画像データ 	 ・pickle形式
+・Excel形式	・XML形式 	・音声データ 	 ・parquet形式
+・JSON形式 	・文書データ	・RDBデータ</p>
+</section>
+<hr class="docutils" />
+<section id="csv">
+<h3>CSV形式<a class="headerlink" href="#csv" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>CSVは「Comma Separated Values（カンマ区切りバリュー）」の略</p></li>
+<li><p>CSV形式は、カンマ（,）で列を区切り、改行コードで行を区切るデータ形式</p></li>
+<li><p>2次元の表形式のデータをテキストで表す</p></li>
+<li><p>テキストファイルとして扱え汎用的で多くの場面で使われるデータ形式</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>"表章項目","人口","概算値","全国","時間軸（年月日現在）","年齢5歳階級","/男女別","男女計","男","女"
+"人口【万人】","総人口","概算値","全国","2021年12月","総数","","12,547","6,099","6,448"
+"人口【万人】","総人口","概算値","全国","2021年12月","0～4歳","","437","224","214"
+"人口【万人】","総人口","概算値","全国","2021年12月","5～9歳","","503","258","245"
+"人口【万人】","総人口","概算値","全国","2021年12月","10～14歳","","535","274","261"
+"人口【万人】","総人口","概算値","全国","2021年12月","15～19歳","","559","287","272"
+:
+</pre></div>
+</div>
+<p>※1 データ<br />
+「政府統計の総合窓口 e-Stat」「人口推計」データ<br />
+https://www.e-stat.go.jp/stat-search/files?page=1&amp;toukei=00200524&amp;tstat=000000090001</p>
+<hr class="docutils" />
+<section id="csv-open">
+<h4>CSV形式 - open()<a class="headerlink" href="#csv-open" title="Link to this heading">¶</a></h4>
+<p>open()関数とfor文でデータを1行ずつ読み込む</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>with open("data/FEH_00200524_230205124938.csv", "r", encoding="cp932") as f:　←①
+ 　　for i, row in enumerate(f):　←②
+ 　　　　for col in row.strip().split(","):　←③ 
+　　　　　　print(col, end="|")　←④
+ 　　　　print()
+ 　　　　print("===") 
+　　　　 if i &gt; 1:　←⑤
+ 　　　　　　break
+
+① open()関数のキーワード引数でencoding="cp932"と与えている
+　 サンプルのCSVファイルの文字エンコーディングが、Python標準で使うUTF-8ではなく、CP932（Shift-JISの拡張）
+　 なので文字エンコーディングを指定 　
+② 読み込んだテキストファイルを1行ずつ取り出す
+③ カンマ（,）で分割
+④ パイプ|で区切って出力
+⑤ CSVファイルの先頭3行を出力するように指定
+</pre></div>
+</div>
+<p>出力</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>"表章項目"|"人口"|"概算値"|"全国"|"時間軸（年月日現在）"|"年齢5歳階級"|"/男女別"|"男女計"|"男"|"女"|
+===
+"人口【万人】"|"総人口"|"概算値"|"全国"|"2021年12月"|"総数"|""|"12|547"|"6|099"|"6|448"|
+===
+"人口【万人】"|"総人口"|"概算値"|"全国"|"2021年12月"|"0～4歳"|""|"437"|"224"|"214"|
+===
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id16">
+<h4>文字コード<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>文字コードは、コンピュータが文字を正しく認識・処理するために欠かせない「文字と数字の変換ルール」</p></li>
+<li><p>コンピュータは、0と1の数字しかわからない</p></li>
+<li><p>言語などにより複数の変換ルールがある</p>
+<ul>
+<li><p>例：</p>
+<ul>
+<li><p>日本語：「41」は「あ」</p></li>
+<li><p>英語：  「41」は「A」</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>文字コードが違うと、正しい文字が表示されず、意味不明な記号になる</p></li>
+<li><p>文字化けを防ぐためには、データの作成時と読み込み時で同じ文字コードを使用することが非常に重要</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="shift-jis-cp932-utf-8">
+<h4>日本語の文字コードである「Shift_JIS (cp932)」と「UTF-8」<a class="headerlink" href="#shift-jis-cp932-utf-8" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>Shift_JIS (cp932)</strong></p>
+<ul>
+<li><p>Shift_JISは主にWindowsやmacOSの<strong>古いバージョン</strong>での<strong>日本語</strong>の標準文字コード</p></li>
+<li><p>Windowsでは後方互換性の為にまだ有効となっている</p></li>
+<li><p>cp932（Code Page 932）: Shift_JISの中でMicrosoftが独自に拡張したもの</p>
+<ul>
+<li><p>NEC特殊文字、IBM拡張文字、外字領域などが含まれており、Shift_JISとほぼ同じ意味で使われている</p></li>
+</ul>
+</li>
+<li><p>CSV形式はMs-Excelのからの流れでShift_JISのデータが多い</p></li>
+</ul>
+</li>
+<li><p><strong>UTF-8</strong></p>
+<ul>
+<li><p>UTF-8は、現在インターネットや多くのシステムで世界標準となっている文字コード</p></li>
+<li><p>世界中のほとんどの文字（アルファベット、日本語、中国語、アラビア語など）が扱える</p></li>
+<li><p>Shift_JISとは異なり、どの文字もバイト列の先頭から判別できる仕組みになっている</p></li>
+<li><p>UTF-8のファイルには、「BOM付き」と「BOMなし」の2種類がある</p>
+<ul>
+<li><p>BOMは「Byte Order Mark（バイト・オーダー・マーク）」の略で、ファイルの先頭に付けらて「このファイルはUTF-8で書かれていますよ」という目印が付与される場合がある</p></li>
+<li><p>プログラミングの世界では「BOMなし」と「BOM付き」のファイルもある</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>新しいウェブサイトやプログラムは今ではUTF-8が世界的に標準となっている</p>
+</section>
+<hr class="docutils" />
+<section id="csv-pandas">
+<h4>CSV形式 - pandas<a class="headerlink" href="#csv-pandas" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>pandasでCSV形式のファイルを読み込むにはread_csv()関数を利用する</p></li>
+<li><p>読み込んだデータはDataFrameになる</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import pandas as pd 
+
+df = pd.read_csv("data/FEH_00200524_230205124938.csv", encoding="cp932")
+</pre></div>
+</div>
+<p>データが適切に読めていることを確認するときに、head()メソッドやtail()メソッドがよく使う</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>df.head()
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像1.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F1.png" src="../../../_images/%E7%94%BB%E5%83%8F1.png" style="width: 80%;" />
+</a>
+</figure>
+<p>データの行と列を確認</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>df.shape
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像2.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F2.png" src="../../../_images/%E7%94%BB%E5%83%8F2.png" style="width: 20%;" />
+</a>
+</figure>
+</section>
+</section>
+<hr class="docutils" />
+<section id="excel">
+<h3>Excel形式<a class="headerlink" href="#excel" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Microsoft Excel (拡張子.xlsx)は表形式のデータをシートとし、複数のシートをブック形式で扱うデータ形式</p></li>
+<li><p>内部的にはXMLファイルをZIP圧縮したファイル</p></li>
+<li><p>CSV形式のデータとは異なり、セルごとに色や表示形式などの書式を設定でき複雑な表現ができるデータ形式です</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import pandas as pd 
+
+df = pd.read_excel(“data/FEH_00200524_230205132438.xlsx”, header=12,  nrows=27, )
+</pre></div>
+</div>
+<p>read_excel()関数の主なキーワード引数</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>引数名</p></th>
+<th class="head"><p>説明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>sheet_name</p></td>
+<td><p>シート名またはシートのインデックス番号を指定。リストで複数のシートを指定することも可能。 デフォルトでは0となっているので、最初のシートが読み込まれる。</p></td>
+</tr>
+<tr class="row-odd"><td><p>header</p></td>
+<td><p>列名に使うヘッダ行を0から始まるインデックス番号で指定。 デフォルトは0。</p></td>
+</tr>
+<tr class="row-even"><td><p>nrows</p></td>
+<td><p>読み込む行数を指定。デフォルトはNoneで、すべての行を読み込む。</p></td>
+</tr>
+<tr class="row-odd"><td><p>skiprows</p></td>
+<td><p>読み込みをスキップする行の0から始まるインデックス番号のリストで指定、もしくは最初の何行を読み飛ばすかを整数で指定。デフォルトのNoneで、スキップしない。</p></td>
+</tr>
+<tr class="row-even"><td><p>index_col</p></td>
+<td><p>DataFrameのIndexに使う列を指定。0から始めるインデックス番号で指定。デフォルトのNoneで、インデックス指定なし</p></td>
+</tr>
+<tr class="row-odd"><td><p>usecols</p></td>
+<td><p>読み込む列を列名または列の0から始まるインデックス番号のリストを指定。デフォルトのNoneで，すべての列を読み込む。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="json">
+<h3>JSON形式<a class="headerlink" href="#json" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>JSON形式のデータは、JavaScriptのオブジェクトを文字列表現したテキストファイル</p></li>
+<li><p>JavaScriptの文字列や数値を、配列やオブジェクトとして表現できる形式で、構造化したデータを扱える</p></li>
+<li><p>階層があるツリー構造などをテキストファイルに書き出せる</p></li>
+</ul>
+<p>JSONのデータをjsonライブラリのload()関数を使い読み込む。dict形式で読み込まれる</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import json 
+
+with open("data/population-202302.json", "r") as f:
+    data = json.load(f)
+</pre></div>
+</div>
+<p>JSONファイル</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
+ "GET_STATS_DATA": {
+    RESULT": {
+         "STATUS": 0,
+         "ERROR_MSG": "正常に終了しました。",
+         "DATE": "2023-02-05T22:36:51.330+09:00"
+      },
+      "PARAMETER": {
+         "LANG": "J",
+         "STATS_DATA_ID": "0003443838",
+         "DATA_FORMAT": "J",
+         :
+      }
+   }
+}
+</pre></div>
+</div>
+<p>json_normalize関数：JSONデータをフラットなテーブル形式（DataFrame）に正規化する機能</p>
+</section>
+<hr class="docutils" />
+<section id="html">
+<h3>HTML形式<a class="headerlink" href="#html" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>HTML (Hyper Text Markup Language)形式とは 主にWebページ作成に用いられる</p></li>
+<li><p>文字の装飾（色、サイズ、フォント）や、画像、動画などの配置して Webサイトを表現するために作られたフォーマット</p></li>
+<li><p>HTMLデータは、タグ(&lt;&gt;)で囲われたデータ構造のマークアップ言語でテキストファイル1である</p></li>
+</ul>
+<p>HTMLファイル</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+  &lt;head&gt;
+    &lt;title&gt;ホームページ&lt;/title&gt;
+     :
+  &lt;/head&gt;
+  &lt;body&gt;
+    本文
+    :
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="xml">
+<h3>XML形式<a class="headerlink" href="#xml" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>XML（Extensible Markup Language）形式とは、データを構造化し、人間と機械の両方が理解できるテキスト形式で表現するマークアップ言語</p></li>
+<li><p>定義されたタグ(&lt;&gt;)を用いてデータの意味や関係性を明確に示せる</p></li>
+<li><p>HTML形式とマークアップ言語という共通点があるが、目的が異なる</p></li>
+<li><p>HTMLは「ウェブページを美しく表示する」ための言語であり、XMLは「データを効率的にやり取りする」ための言語</p></li>
+</ul>
+<p>XMLファイル</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;?xml version="1.0" encoding="UTF-8"?&gt; 
+&lt;library&gt; 
+  &lt;book id="bk101"&gt; 
+    &lt;title&gt;タイトル&lt;/title&gt; 
+    &lt;author&gt;著者&lt;/author&gt; 
+    &lt;description&gt;説明&lt;/description&gt; 
+  &lt;/book&gt;
+&lt;/library&gt;
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id17">
+<h3>文書データ<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>文書データは、人が読むための文章（テキスト）情報のファイル</p></li>
+<li><p>Microsoft WordやPDFのようなアプリケーションで作られたファイルは「バイナリ形式」である</p></li>
+<li><p>メモ帳のようなテキストエディタで読み書き可能なものを「テキスト形式」または「テキストファイル」と呼ぶ</p></li>
+<li><p>テキスト形式 (Text Format)は、人間が読める文字で構成されている</p></li>
+<li><p>バイナリ形式 (Binary Format)は、コンピュータが効率的に処理できるように数字データで構成されている。表示用のアプリケーションでしか表示できない</p></li>
+</ul>
+<p>文書データ（テキスト形式）ファイル</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>購入リスト
+
+・牛乳
+・パン
+・卵
+・りんご
+</pre></div>
+</div>
+<p>文書データ（バイナリ形式）ファイル</p>
+<p>アプリケーションで表示</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像4.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F4.png" src="../../../_images/%E7%94%BB%E5%83%8F4.png" style="width: 70%;" />
+</a>
+</figure>
+<p>実際のファイルの内容</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像5.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F5.png" src="../../../_images/%E7%94%BB%E5%83%8F5.png" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="id18">
+<h3>画像データ<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>画像データは、JPEGやPNGなどの画像のファイル形式</p></li>
+<li><p>バイナリ形式のファイル</p></li>
+<li><p>RGB（光の三原色：赤緑青）やCMYK（印刷用途：シアン、マゼンタ、イエロー、ブラック）などの色を表す数値や形状の情報を持っている</p></li>
+</ul>
+<p>画像データ</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像9.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F9.png" src="../../../_images/%E7%94%BB%E5%83%8F9.png" style="width: 50%;" />
+</a>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="id19">
+<h3>音声データ<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>音声データとは、音をデジタル化して保存・再生するためのバイナリ形式のデータ</p></li>
+<li><p>音楽やポッドキャスト、電話の録音、ボイスメモなどは音声データ</p></li>
+<li><p>音のアナログな波をコンピュータで扱えるように、デジタル化として、「サンプリング（標本化）」し「量子化」したデータ</p></li>
+</ul>
+<p>アナログ波形</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像10.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F10.png" src="../../../_images/%E7%94%BB%E5%83%8F10.png" style="width: 70%;" />
+</a>
+</figure>
+<p>デジタルデータ(量子化)</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像11.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F11.png" src="../../../_images/%E7%94%BB%E5%83%8F11.png" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="rdb">
+<h3>RDBデータ<a class="headerlink" href="#rdb" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>RDBデータ（リレーショナルデータベース(Relational Database)）は、データを「テーブル」と呼ばれる表形式のデータを複数のテーブルを関連付けて（リレーションさせて）データを扱うデータベースの形式</p></li>
+<li><p>バイナリ形式のデータ</p></li>
+</ul>
+<p>テーブルデータ</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像12.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F12.png" src="../../../_images/%E7%94%BB%E5%83%8F12.png" style="width: 80%;" />
+</a>
+</figure>
+<p>テーブルデータの関係図(ER図)</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像13.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F13.png" src="../../../_images/%E7%94%BB%E5%83%8F13.png" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="pickle">
+<h3>pickle形式<a class="headerlink" href="#pickle" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>pickle形式は、Pythonのオブジェクトをそのままファイルに書き出せるPython専用の形式</p></li>
+<li><p>Pythonのオブジェクトをストレージに保存したり、データのやりとりに使える。</p></li>
+<li><p>Pythonオブジェクトそのものを保存</p></li>
+<li><p>バイナリ形式のデータ</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="parquet">
+<h3>parquet形式<a class="headerlink" href="#parquet" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>parquet形式は、Apache Parquetプロジェクトのデータ形式</p></li>
+<li><p>表形式データを効率よく読み書きして高い圧縮率で保存できるデータ形式</p></li>
+<li><p>Python以外にも、JavaやC++やRなど多くのプログラミング言語で利用可能</p></li>
+<li><p>バイナリ形式のデータ</p></li>
+<li><p>pickle形式との違いは、pickle形式はPythonのオブジェクトをそのままバイナリ化したものでPythonでのみ利用可能</p></li>
+<li><p>parquet形式はデータ仕様に基づいて効率的にしたデータで汎用性がある</p></li>
+</ul>
+<p>pickle形式とparquet形式</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像14.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F14.png" src="../../../_images/%E7%94%BB%E5%83%8F14.png" style="width: 100%;" />
+</a>
+</figure>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id20">
+<h2>データの連結／結合<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>DataFrameのデータの連結／結合方法</p></li>
+<li><p>複数のデータを1つにまとめる</p></li>
+<li><p>concat, join, merge関数を使う</p></li>
+</ul>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像15.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F15.png" src="../../../_images/%E7%94%BB%E5%83%8F15.png" style="width: 100%;" />
+</a>
+</figure>
+<hr class="docutils" />
+<section id="dataframe">
+<h3>DataFrameの連結<a class="headerlink" href="#dataframe" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>「連結」とはデータを行（縦）方向または列（横）方向に接続する処理を指す</p></li>
+<li><p>行方向の連結はDataFrameに行を追加</p></li>
+<li><p>列方向の連結はDataFrameに列を追加</p></li>
+</ul>
+<p>行(縦)方向の連結</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像16.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F16.png" src="../../../_images/%E7%94%BB%E5%83%8F16.png" style="width: 60%;" />
+</a>
+</figure>
+<!--
+列(横)方向の連結
+```{figure} images/03.data_processing/画像17.png
+:width: 30%
+```
+-->
+</section>
+<hr class="docutils" />
+<section id="id21">
+<h3>DataFrameの結合<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>「結合」とはキーを持つデータから特定のキーをもとに要素を取り出し、結合する処理を指す</p></li>
+<li><p>結合処理はマージ処理とも呼ばれる</p></li>
+<li><p>結合した結果、キーに該当する要素が存在しない場合は、欠損値として扱われる</p></li>
+</ul>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像18.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F18.png" src="../../../_images/%E7%94%BB%E5%83%8F18.png" style="width: 100%;" />
+</a>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="concat-dataframe">
+<h3>concat()関数によるDataFrameの連結<a class="headerlink" href="#concat-dataframe" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>concat()関数は、第1引数に渡したリストに含まれたDataFrameを連結して返す</p></li>
+<li><p>引数axisに0を渡すと行方向（デフォルト）に連結する</p></li>
+<li><p>引数axisに1を渡すと列方向列方向に連結する</p></li>
+<li><p>ignore_index=Trueを指定すると元のDataFrameのインデックスを無視して0から始まる連番に振り直す</p></li>
+<li><p>ignore_index=Trueを指定しない場合は、結合されたDataFrameのインデックスは元のDataFrameのものが維持される</p></li>
+</ul>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像19.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F19.png" src="../../../_images/%E7%94%BB%E5%83%8F19.png" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="id22">
+<h3>concat()関数によるDataFrameの結合<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>concat()関数を実行してDataFrameを列方向に結合する場合は、引数axisに1を渡す</p></li>
+<li><p>インデックスがキーになる</p></li>
+<li><p>デフォルトの結合方法は、外部結合（&quot;outer&quot;）</p>
+<ul>
+<li><p>inner：内部結合 結合対象のキーがすべて存在する要素を結合</p></li>
+<li><p>outer：外部結合 結合対象のすべての要素を結合</p></li>
+<li><p>内部結合する場合は、concat()関数の引数joinに“inner”を渡す</p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像20.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F20.png" src="../../../_images/%E7%94%BB%E5%83%8F20.png" style="width: 40%;" />
+</a>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="join-dataframe">
+<h3>join()メソッドによるDataFrameの結合<a class="headerlink" href="#join-dataframe" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>DataFrameのjoin()メソッドの引数に、結合対象のDataFrameを渡し、2つのDataFrameを結合して返す</p></li>
+<li><p>join()メソッドの結合方法はデフォルトで左外部結合（&quot;left&quot;）結合方法は引数howで指定</p>
+<ul>
+<li><p>left：左外部結合 結合元の結合対象のキーが存在する要素を結合</p></li>
+<li><p>right：右外部結合 結合先の結合対象のキーが存在する要素を結合</p></li>
+<li><p>inner：内部結合</p></li>
+<li><p>outer：外部結合</p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像21.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F21.png" src="../../../_images/%E7%94%BB%E5%83%8F21.png" style="width: 90%;" />
+</a>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="merge-dataframe">
+<h3>merge()関数によるDataFrameの結合<a class="headerlink" href="#merge-dataframe" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>merge()関数の第1引数（left）および第2引数（right）を結合して返す</p></li>
+<li><p>デフォルトで内部結合（“inner”）。結合方法は引数howで指定</p>
+<ul>
+<li><p>left：左外部結合</p></li>
+<li><p>right：右外部結合</p></li>
+<li><p>inner：内部結合</p></li>
+<li><p>outer：外部結合</p></li>
+</ul>
+</li>
+<li><p>merge()関数は、デフォルトでは引数onに渡した列をキーとして結合する</p></li>
+</ul>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像22.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F22.png" src="../../../_images/%E7%94%BB%E5%83%8F22.png" style="width: 90%;" />
+</a>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="id23">
+<h3>重複したキーの検証<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>merge()関数の引数validateに“one_to_one”を渡すと、キーの値が1：1であることを検証する</p></li>
+<li><p>重複があるとMergeError例外が送出される</p></li>
+<li><p>merge()関数の引数validateに“one_to_many”を渡すと、キーの値が1：n（マージ元のキーが一意）であることを検証する</p></li>
+</ul>
+<p>例）one_to_one</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pd.merge(df1, df5, on="A", validate="one_to_one")
+</pre></div>
+</div>
+<p>例）one_to_many</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pd.merge(df1, df5, on=“A”,  validate="one_to_many" )
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id24">
+<h3>近い値での結合<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>merge_asof()関数は、引数onで指定した列の値が近い要素を結合</p></li>
+<li><p>引数toleranceに結合するための公差（基準値と許容される範囲の最大値と最小値の差）を指定</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pd.merge_asof(
+    ts_df1,
+    ts_df2,
+    on="timestamp",
+    tolerance=pd.Timedelta("2s"),
+)
+</pre></div>
+</div>
+<p>「timestamp」列から2秒以内の値の要素を結合したDataFrameを生成している</p>
+</section>
+<hr class="docutils" />
+<section id="id25">
+<h3>DataFrame結合時の関数／メソッドの選び方<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h3>
+<p>concat()関数、join()メソッド、merge()関数は、DataFrameの構造や結合条件に応じて使い分ける</p>
+<ul class="simple">
+<li><p>concat()関数</p>
+<ul>
+<li><p>DataFrameのインデックスがキーとして使える場合は、concat()関数を検討する</p></li>
+<li><p>インデックスをキーとすることで、高速な処理が期待できる</p></li>
+<li><p>concat()関数に渡すリストには3つ以上のDataFrameを入れられるため、多数のデータをまとめて処理する場合にも使える</p></li>
+</ul>
+</li>
+<li><p>join()メソッド</p>
+<ul>
+<li><p>DataFrameのインデックスがキーとして使え、より複雑な条件で結合処理をする場合はjoin()メソッドを検討する</p></li>
+<li><p>キーが列とインデックスの組み合わせの場合もjoin()メソッドが使える</p></li>
+</ul>
+</li>
+<li><p>merge()関数</p>
+<ul>
+<li><p>DataFrameの列をキーとして結合する場合は、merge()関数が使える</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id26">
+<h2>データの変形<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h2>
+<hr class="docutils" />
+<section id="id27">
+<h3>ピボットとアンピボット<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>ピボットは、表形式データの列の値に基づいてデータを再形成する処理</p></li>
+<li><p>アンピボットは、ピボットされたデータを解除する処理</p></li>
+<li><p>「名前」を行にとり、「科目」を列にとって変形した処理が「ピボット」になり、その逆の処理が「アンピボット」になる</p></li>
+</ul>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像23.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F23.png" src="../../../_images/%E7%94%BB%E5%83%8F23.png" style="width: 90%;" />
+</a>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="id28">
+<h3>ピボット<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>ピボット処理は、pivot()メソッドやpivot_table()メソッドで行う</p></li>
+<li><p>crosstab()関数は、pivot_table()メソッドと同様の処理を行える</p></li>
+<li><p>引数index、columns、valuesにarray-likeを渡すことで集計する</p>
+<ul>
+<li><p>data（第一引数）: 元データのpandas.DataFrameオブジェクトを指定</p></li>
+<li><p>index: 元データの列名を指定。結果の行見出しとなる</p></li>
+<li><p>columns: 元データの列名を指定。結果の列見出しとなる</p></li>
+</ul>
+</li>
+<li><p>引数aggfuncを省略すると、平均値（numpy.mean）を算出する</p></li>
+<li><p>引数aggfunc=“median”は中央値を算出する</p></li>
+<li><p>引数aggfunc=“count”はデータ個数を数え上げる</p></li>
+<li><p>引数marginsをTrueとすると、各カテゴリごとの結果（小計）および全体の結果（総計）が算出できる</p></li>
+<li><p>crosstab()関数を使うとクロス集計分析ができる</p>
+<ul>
+<li><p>normalize=True を指定すると、クロス集計結果が全体の合計値が1になるように規格化（正規化）される</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id29">
+<h3>アンピボット<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>アンピボットは、ピボットされたデータを解除する処理</p></li>
+<li><p>ピボットされたデータをアンピボットするには、DataFrameからmelt()メソッドで実行する</p></li>
+</ul>
+<p>melt()メソッドの引数</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>引数名</p></th>
+<th class="head"><p>説明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id_vars</p></td>
+<td><p>列として識別する列名</p></td>
+</tr>
+<tr class="row-odd"><td><p>value_vars</p></td>
+<td><p>ピボットを解除する列名、指定しない場合はすべての列に使用する</p></td>
+</tr>
+<tr class="row-even"><td><p>var_name</p></td>
+<td><p>value_varsにつける列名</p></td>
+</tr>
+<tr class="row-odd"><td><p>value_name</p></td>
+<td><p>値の列につける列名、省略すると&quot;value&quot;が付けられる</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id30">
+<h3>スタックとアンスタック<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>スタックは、複数列から構成されるデータを1次元に積み上げる処理</p></li>
+<li><p>アンスタックは、階層化されたインデックスを列に展開する処理</p></li>
+<li><p>スタックしたデータはアンスタックすると、元のデータに戻る</p></li>
+</ul>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像24.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F24.png" src="../../../_images/%E7%94%BB%E5%83%8F24.png" style="width: 70%;" />
+</a>
+</figure>
+<ul class="simple">
+<li><p>スタック</p>
+<ul>
+<li><p>データをスタックするには、DataFrameのstack()メソッドを実行する</p></li>
+<li><p>列名が各要素のインデックスになり、元のインデックスを親階層に持つMultiIndexになる</p></li>
+</ul>
+</li>
+<li><p>アンスタック</p>
+<ul>
+<li><p>データをアンスタックするには、DataFrameのunstack()メソッドを実行する</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="multiindex">
+<h3>MultiIndexのスタック・アンスタック<a class="headerlink" href="#multiindex" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>DataFrameをグループ化し、MultiIndexを持つDataFrameを生成</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>groupby_time = tips.groupby("time")[  # ①time列でグルーピング
+    # ①グループ化したオブジェクトから列を選択
+    ["total_bill", "tip"]
+].agg(
+    ("mean", "median")
+)  # ①平均値と中央値を算出
+groupby_time.columns.names = (
+    "value",
+    "agg",
+)  # ②インデックスに名前を設定
+groupby_time
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像25.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F25.png" src="../../../_images/%E7%94%BB%E5%83%8F25.png" style="width: 70%;" />
+</a>
+</figure>
+<p>①の処理では、DataFrameを「total_bill」列と「tip」列でグループ化し、平均値と中央値を算出している<br />
+②の処理では、MultiIndexの各階層に名前を付けている。</p>
+</section>
+<hr class="docutils" />
+<section id="id31">
+<h3>ダミー変数<a class="headerlink" href="#id31" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>ダミー変数とは、カテゴリーデータ（質的変数）をTrue（1）または False（0）の2値に変換した変数</p></li>
+<li><p>ダミー変数はカテゴリー数に応じて増加し、pandasから利用する場合は各変数が列に展開される</p></li>
+<li><p>機械学習などのフレームワークやライブラリ（scikit-learnなど）によっては、カテゴリーデータをダミー変数に変換して入力する</p></li>
+<li><p>get_dummies()関数は、カテゴリーデータをダミー変数に変換する</p></li>
+</ul>
+<p>データの分類</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像26.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F26.png" src="../../../_images/%E7%94%BB%E5%83%8F26.png" style="width: 90%;" />
+</a>
+</figure>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像27.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F27.png" src="../../../_images/%E7%94%BB%E5%83%8F27.png" style="width: 50%;" />
+</a>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="id32">
+<h3>要素の展開<a class="headerlink" href="#id32" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>explode()メソッドは、ネストされた（各要素がリストやタプルなどの複数要素を持つ）データを展開して1次元のデータに変換する</p></li>
+</ul>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像28.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F28.png" src="../../../_images/%E7%94%BB%E5%83%8F28.png" style="width: 90%;" />
+</a>
+</figure>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id33">
+<h2>カテゴリーデータ<a class="headerlink" href="#id33" title="Link to this heading">¶</a></h2>
+<hr class="docutils" />
+<section id="id34">
+<h3>カテゴリーデータの処理<a class="headerlink" href="#id34" title="Link to this heading">¶</a></h3>
+<p>質的変数をcategory型で処理すること</p>
+<ul class="simple">
+<li><p>カテゴリー上は存在するが、データには存在しない値の処理が行える</p></li>
+<li><p>順序尺度の処理（比較、ソートなど）が行える</p></li>
+<li><p>グループ化処理が高速化する</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id35">
+<h3>尺度水準<a class="headerlink" href="#id35" title="Link to this heading">¶</a></h3>
+<p>データは、質的変数（カテゴリー変数）、量的変数（連続変数）に分類される</p>
+<p>データの分類</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像26.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F26.png" src="../../../_images/%E7%94%BB%E5%83%8F26.png" style="width: 90%;" />
+</a>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="id36">
+<h3>カテゴリーデータの生成<a class="headerlink" href="#id36" title="Link to this heading">¶</a></h3>
+<p>SeriesおよびDataFrameで、引数dtypeに“category”を渡すことで、category型を生成できる</p>
+<p>「非常に満足、満足、普通、不満、非常に不満」の5段階の満足度を示す、category型のSeries「survey_ser」を生成</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+
+survey_data = [
+    "満足",
+    "普通",
+    "普通",
+    "非常に不満",
+    "不満",
+]
+survey_ser = pd.Series(survey_data, dtype="category")
+survey_ser
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>0       満足
+1       普通
+2       普通
+3    非常に不満
+4       不満
+
+dtype: category
+Categories (4, object): ['不満', '普通', '満足', '非常に不満']
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id37">
+<h3>カテゴリーデータへの型変換<a class="headerlink" href="#id37" title="Link to this heading">¶</a></h3>
+<p>Seriesをcategory型に変換するには、astype()メソッドの引数に“category”を渡して実行する</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pd.Series(survey_data).astype("category").dtype
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>CategoricalDtype(categories=['不満', '普通', '満足', '非常に不満'], ordered=False)
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id38">
+<h3>カテゴリーデータの順序付け<a class="headerlink" href="#id38" title="Link to this heading">¶</a></h3>
+<p>survey_serをsort_values()とし、ソートすると、str型と同じ基準でソートされる</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>survey_ser.sort_values()
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>4       不満
+1       普通
+2       普通
+0       満足
+3    非常に不満
+dtype: category
+Categories (4, object): ['不満', '普通', '満足', '非常に不満']
+</pre></div>
+</div>
+<p>value_counts()メソッドでカテゴリーごとの度数を集計</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>survey_ser.value_counts()
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>普通       2
+不満       1
+満足       1
+非常に不満    1
+Name: count, dtype: int64
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>CategoricalDtypeクラスは、あらかじめカテゴリーを設定し、さらに順序付けできるcategory型を定義できる</p></li>
+<li><p>引数categoriesにカテゴリー変数となる一意でかつNULL値を含まないシーケンス型を渡す</p></li>
+<li><p>引数orderedにTrueを渡すことで、カテゴリーを引数categoriesの要素の順序で順序付けが可能となる</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>rating = pd.CategoricalDtype(
+    categories=[
+        "非常に不満",
+        "不満",
+        "普通",
+        "満足",
+        "非常に満足",
+    ],
+    ordered=True,
+)
+new_survey_ser = pd.Series(survey_data, dtype=rating)
+new_survey_ser
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>0       満足
+1       普通
+2       普通
+3    非常に不満
+4       不満
+
+dtype: category
+Categories (5, object): ['非常に不満' &lt; '不満' &lt; '普通' &lt; '満足' &lt; '非常に満足']
+</pre></div>
+</div>
+<p>.cat.ordered属性から、順番が設定されているかを確認できる</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>new_survey_ser.cat.ordered
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+<p>sort_values()メソッドの実行結果から、カテゴリーを設定した順序でソートされたことが確認できる</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>new_survey_ser.sort_values()
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>3    非常に不満
+4       不満
+1       普通
+2       普通
+0       満足
+
+dtype: category
+Categories (5, object): ['非常に不満' &lt; '不満' &lt; '普通' &lt; '満足' &lt; '非常に満足']
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>順序付けされたカテゴリーデータは、min()メソッドでカテゴリーの先頭を取り出し、max()メソッドでカテゴリーの末尾を取り出せる</p></li>
+<li><p>value_counts()メソッドで集計した場合に、データが存在しないカテゴリーは度数が0となる</p></li>
+<li><p>describe()メソッドを実行すると、category型に適した記述統計量が算出される</p></li>
+<li><p>カテゴリーのインデックス（数値）を取得するには、.cat.codes属性にアクセスする</p></li>
+<li><p>欠損値（NaN）が含まれたカテゴリーは、カテゴリーのインデックス値が-1になる</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id39">
+<h3>データの離散化によるカテゴリーデータの生成<a class="headerlink" href="#id39" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>cut()関数、qcut()関数は量的変数を離散化し、質的変数（カテゴリーデータ）に変換する</p></li>
+<li><p>第1引数xには、データとなる配列を渡し、引数binsにはビン（区間のしきい値）の数を定義する</p></li>
+<li><p>返り値はcategory型になり、順序付けされる</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>rng = np.random.default_rng(1)
+score = rng.integers(low=0, high=100, size=10)
+satisfaction = pd.cut(
+    score,
+    bins=[0, 20, 40, 60, 80, 101],  # ①
+    right=False,  # ②
+    labels=[
+        "非常に不満",
+        "不満",
+        "普通",
+        "満足",
+        "非常に満足",
+    ],  # ③
+)
+survey_df = pd.DataFrame({"satisfaction": satisfaction, "score": score})
+survey_df
+</pre></div>
+</div>
+<p>コードでは、cut()関数を利用して、満足度を示す1から100までの数値（「score」列）と、これを5段階に分割したデータ（「satisfaction」列）を列としたDataFrame（survey_df）を生成する</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像29.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F29.png" src="../../../_images/%E7%94%BB%E5%83%8F29.png" style="width: 30%;" />
+</a>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="pandas-qcutpandas-cut">
+<h3>pandas.qcut関数とpandas.cut関数<a class="headerlink" href="#pandas-qcutpandas-cut" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>連続的なデータを離散的なビン（区間）に分割するための2つの重要な関数、qcut と cut がある</p>
+<ul>
+<li><p>qcut関数：指定した数だけデータを等分する</p></li>
+<li><p>cut関数：指定した領域ごとにデータを分割する</p></li>
+</ul>
+</li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>特徴</th>
+<th>pandas.cut</th>
+<th>pandas.qcut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分割基準</td>
+<td>等間隔または指定された境界</td>
+<td>各ビンに均等なデータ数が含まれるように</td>
+</tr>
+<tr>
+<td>ビンのサイズ</td>
+<td>各ビンの幅がほぼ等しい</td>
+<td>各ビンのデータ数がほぼ等しい</td>
+</tr>
+<tr>
+<td>ビンの境界</td>
+<td>ユーザーが指定、または自動的に等間隔に決定</td>
+<td>データの分布に基づいて自動的に決定</td>
+</tr>
+<tr>
+<td>使いどころ</td>
+<td>事前に決まったルールでデータを分類したい時</td>
+<td>データの分布が偏っている時に、均等なサイズのグループを作りたい時</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>https://pandas.pydata.org/docs/reference/api/pandas.qcut.html</p></li>
+<li><p>https://pandas.pydata.org/docs/reference/api/pandas.cut.html</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="cat">
+<h3>.cat アクセサ<a class="headerlink" href="#cat" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Seriesには、アクセサと呼ばれる、各要素に簡潔にアクセスできる仕組みがある。</p></li>
+<li><p>.catアクセサは、category型の要素にアクセスするアクセサ</p></li>
+<li><p>category型の順序付けを解除するには.cat.as_unordered()メソッドを実行する</p></li>
+<li><p>順序を指定するには.cat.as_ordered()メソッドを実行する</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>unordered_satisfaction = survey_df.loc[:, "satisfaction"].cat.as_unordered()
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>unordered_satisfaction.cat.as_ordered()
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="categoricalindex">
+<h3>CategoricalIndex<a class="headerlink" href="#categoricalindex" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>CategoricalIndexは、CategoricalDtype型のインデックス</p></li>
+<li><p>インデックスに重複した要素を持つデータをカテゴリー化することで、重複したインデックスを効率よく処理できる</p></li>
+<li><p>順序付けされたcategory型を利用することで、インデックスからソートした場合にカテゴリーの順序でソートできる</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>new_survey_df = survey_df.set_index("satisfaction")
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像30.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F30.png" src="../../../_images/%E7%94%BB%E5%83%8F30.png" style="width: 30%;" />
+</a>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="id40">
+<h3>カテゴリーデータの結合<a class="headerlink" href="#id40" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>類似した複数のカテゴリーデータを統合する場合がある</p></li>
+<li><p>カテゴリーデータを結合するには、union_categoricals()関数を実行する</p></li>
+<li><p>引数にカテゴリーデータを要素にしたリストを渡す</p></li>
+<li><p>順序付けされたカテゴリーデータのすべての要素が合致しない場合は、TypeError例外を送出してエラーになる</p></li>
+<li><p>union_categoricals()関数の引数ignore_orderにTrueを渡し、順序付けをしないカテゴリーデータにすることで結合できる</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ordered_cat1 = pd.Categorical(
+    [
+        "普通",
+        "満足",
+        "非常に満足",
+    ],
+    ordered=True,
+)
+ordered_cat2 = pd.Categorical(
+    [
+        "非常に不満",
+        "不満",
+        "普通",
+    ],
+    ordered=True,
+)
+union_categoricals([ordered_cat1, ordered_cat2], ignore_order=True,)
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>['普通', '満足', '非常に満足', '非常に不満', '不満', '普通’]
+
+Categories (5, object): ['普通', '満足', '非常に満足', '不満', '非常に不満']
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id41">
+<h2>データのグループ化<a class="headerlink" href="#id41" title="Link to this heading">¶</a></h2>
+<hr class="docutils" />
+<section id="id42">
+<h3>データのグループ化<a class="headerlink" href="#id42" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>データによっては、分類して集計する場合がある</p></li>
+<li><p>たとえば、学力テストの点数が学年や学級に分類されているケースが挙げられる</p></li>
+<li><p>データをカテゴリーごとにグループ化し、グループ化されたデータを処理する方法について解説する</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="groupby">
+<h3>GroupByオブジェクト<a class="headerlink" href="#groupby" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>SeriesおよびDataFrameのgroupby()メソッドを実行すると、SeriesGroupByオブジェクトおよびDataFrameGroupByオブジェクトを生成する</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+
+tips = pd.read_csv(
+    "https://raw.githubusercontent.com/plotly/datasets/master/tips.csv",
+    dtype={
+        "sex": "category",
+        "smoker": "category",
+        "day": "category",
+        "time": "category",
+    },
+)
+tips_groupby_time = tips.groupby("time")
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像31.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F31.png" src="../../../_images/%E7%94%BB%E5%83%8F31.png" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="id43">
+<h3>データの集約<a class="headerlink" href="#id43" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>GroupByオブジェクトから、記述統計量などを算出するメソッドを実行すると、グループごとの算出結果を返す</p></li>
+<li><p>数値データの列だけを集約するには、引数numeric_onlyにTrueを渡す</p></li>
+</ul>
+<p>GroupByオブジェクトの代表的な集約メソッド</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>メソッド</th>
+<th>機能概要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mean()</td>
+<td>平均</td>
+</tr>
+<tr>
+<td>sum()</td>
+<td>合計</td>
+</tr>
+<tr>
+<td>size()</td>
+<td>行数（データ数）</td>
+</tr>
+<tr>
+<td>count()</td>
+<td>欠損値を除いた度数</td>
+</tr>
+<tr>
+<td>nunique()</td>
+<td>一意の要素数</td>
+</tr>
+<tr>
+<td>std()</td>
+<td>標準偏差</td>
+</tr>
+<tr>
+<td>var()</td>
+<td>分散</td>
+</tr>
+<tr>
+<td>sem()</td>
+<td>標準誤差</td>
+</tr>
+<tr>
+<td>describe()</td>
+<td>要約統計量</td>
+</tr>
+<tr>
+<td>first()</td>
+<td>最初の値</td>
+</tr>
+<tr>
+<td>last()</td>
+<td>最後の値</td>
+</tr>
+<tr>
+<td>nth()</td>
+<td>n番目の値</td>
+</tr>
+<tr>
+<td>min()</td>
+<td>最小値</td>
+</tr>
+<tr>
+<td>max()</td>
+<td>最大値</td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="id44">
+<h3>GroupByオブジェクトのフィルタリング<a class="headerlink" href="#id44" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>GroupByオブジェクトのfilter()メソッドの引数にbool型を返す関数を渡すことで、グループ化したデータに対してフィルタリングを行える</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>over3 = tips.groupby("day").filter(lambda x: x["tip"].mean() &gt; 3)
+</pre></div>
+</div>
+<p>「day」列でグループ化し、この中から「tip」列の平均値が3より大きいデータを抽出</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像32.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F32.png" src="../../../_images/%E7%94%BB%E5%83%8F32.png" style="width: 100%;" />
+</a>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="id45">
+<h3>GroupByオブジェクトのデータの可視化<a class="headerlink" href="#id45" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>GroupByオブジェクトには、グループ化したデータを可視化するメソッドが用意されている</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tips.groupby("time").boxplot();
+</pre></div>
+</div>
+<p>tipsを「time」列でグループ化し、GroupByオブジェクトのboxplot()メソッドを実行して箱ひげ図を描画している</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/画像33.png"><img alt="../../../_images/%E7%94%BB%E5%83%8F33.png" src="../../../_images/%E7%94%BB%E5%83%8F33.png" style="width: 60%;" />
+</a>
+</figure>
+</section>
+</section>
+<hr class="docutils" />
+<section id="concat-merge">
+<h2>データの連結（concat）と結合（merge）<a class="headerlink" href="#concat-merge" title="Link to this heading">¶</a></h2>
+<p>複数のバラバラの表を1つに統合する</p>
+<section id="pd-concat">
+<h3>表を縦につなげる「連結（<code class="docutils literal notranslate"><span class="pre">pd.concat</span></code>）」<a class="headerlink" href="#pd-concat" title="Link to this heading">¶</a></h3>
+<p>例えば、「月曜日の売上表」と「火曜日の売上表」のように、**「同じ項目の表を、縦に単純に繋げたい」**ときは、<code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> を使います。</p>
+<p><strong>【連結（concat）のイメージ】</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  [ 月曜の表 ]
+  │ A店 │ 10万円 │
+  │ B店 │  8万円 │
+  　　　+  
+   [ 火曜の表 ]
+  │ A店 │ 12万円 │
+  │ B店 │  9万円 │
+        ↓
+     concat 
+        ↓　(縦に繋がる！)
+  │ A店 │ 10万円 │
+  │ B店 │  8万円 │
+  │ A店 │ 12万円 │
+  │ B店 │  9万円 │
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># 月曜日の売上</span>
+<span class="n">df_monday</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s2">"A店"</span><span class="p">,</span> <span class="mi">100000</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"B店"</span><span class="p">,</span> <span class="mi">80000</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"店舗名"</span><span class="p">,</span> <span class="s2">"売上"</span><span class="p">])</span>
+
+<span class="c1"># 火曜日の売上</span>
+<span class="n">df_tuesday</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s2">"A店"</span><span class="p">,</span> <span class="mi">120000</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"B店"</span><span class="p">,</span> <span class="mi">90000</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"店舗名"</span><span class="p">,</span> <span class="s2">"売上"</span><span class="p">])</span>
+
+<span class="c1"># 縦に連結（リストに入れて渡します。ignore_index=True をつけると、インデックス番号が0,1,2,3と綺麗に振り直されます）</span>
+<span class="n">df_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_monday</span><span class="p">,</span> <span class="n">df_tuesday</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"縦に連結した売上データ"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_all</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="pd-merge">
+<h3>共通のキーでつなげる「結合（<code class="docutils literal notranslate"><span class="pre">pd.merge</span></code>）」<a class="headerlink" href="#pd-merge" title="Link to this heading">¶</a></h3>
+<p>例えば、「売上データ」に「各店舗の住所や店長名」が載っている「店舗マスタ」を合体させたいとき、共通するキーワード（この場合は「店舗名」）を軸にして横に合体させるのが <code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code> です。これはエクセルでいう <strong>VLOOKUP関数</strong> の動きをします</p>
+<p><strong>【結合（merge）のイメージ】</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  [ 売上表 ]  
+  │ 店舗名 │ 売上   │
+  │ A店    │ 10万円 │
+  │ B店    │  8万円 │
+             + 
+  [ 店舗マスタ ]
+  │ 店舗名 │ エリア  │ 店長名 │
+  │ A店    │ 杉並区  │ 山田   │
+  │ B店    │ 武蔵野市│ 佐藤   │
+            ↓
+     merge (on="店舗名") 
+            ↓　(横に拡張される！)
+  │ 店舗名 │ 売上   │ エリア  │ 店長名 │
+  │ A店    │ 10万円 │ 杉並区  │ 山田   │
+  │ B店    │  8万円 │ 武蔵野市│ 佐藤   │
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 店舗別の売上データ</span>
+<span class="n">df_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s2">"A店"</span><span class="p">,</span> <span class="mi">100000</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"B店"</span><span class="p">,</span> <span class="mi">80000</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"C店"</span><span class="p">,</span> <span class="mi">150000</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"店舗名"</span><span class="p">,</span> <span class="s2">"売上"</span><span class="p">])</span>
+
+<span class="c1"># 店舗マスタ（住所と店長情報）</span>
+<span class="n">df_master</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s2">"A店"</span><span class="p">,</span> <span class="s2">"東京都杉並区"</span><span class="p">,</span> <span class="s2">"山田店長"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"B店"</span><span class="p">,</span> <span class="s2">"東京都武蔵野市"</span><span class="p">,</span> <span class="s2">"佐藤店長"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"C店"</span><span class="p">,</span> <span class="s2">"東京都練馬区"</span><span class="p">,</span> <span class="s2">"鈴木店長"</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"店舗名"</span><span class="p">,</span> <span class="s2">"所在地"</span><span class="p">,</span> <span class="s2">"責任者"</span><span class="p">])</span>
+
+<span class="c1"># 「店舗名」を基準キーにして、横にスマートに合体！</span>
+<span class="n">df_merged</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_sales</span><span class="p">,</span> <span class="n">df_master</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">"店舗名"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"横に結合した店舗詳細売上データ"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_merged</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="apply-lambda">
+<h2>apply() とラムダ式（lambda）による高度なカスタム変換<a class="headerlink" href="#apply-lambda" title="Link to this heading">¶</a></h2>
+<p>エクセルで「10万円以上の売上には『目標達成』、未満には『未達成』と隣の列に書く」という処理をする場合、IF関数（<code class="docutils literal notranslate"><span class="pre">=IF(B2&gt;=100000,</span> <span class="pre">&quot;目標達成&quot;,</span> <span class="pre">&quot;未達成&quot;)</span></code>）を使います。</p>
+<p>Pandasでこのような**「全データ（各行・各列）に対して、自分だけのオリジナルルール（関数）を適用したい」<strong>ときに使うのが、</strong><code class="docutils literal notranslate"><span class="pre">apply()</span></code> メソッド** と <strong><code class="docutils literal notranslate"><span class="pre">lambda（ラムダ式）</span></code></strong> です。</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">apply(関数)</span></code></strong>：列のデータすべてに、指定した関数を「適用（apply）」する。</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">lambda（ラムダ式）</span></code></strong>：「名前のない1行限りの使い捨て関数」。</p></li>
+</ul>
+<p><strong>【apply と lambda のイメージ】</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  [ データの列 ] ──▶ [ フィルター (apply + lambda) ] ──▶ [ 新しい列 ]
+    150,000 円           「x &gt;= 100000 なら 達成！」       目標達成
+     80,000 円           「そうでなければ 未達成！」       未達成
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 売上データ</span>
+<span class="n">df_eval</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s2">"東京本店"</span><span class="p">,</span> <span class="mi">120000</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"大阪支店"</span><span class="p">,</span> <span class="mi">95000</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"名古屋店"</span><span class="p">,</span> <span class="mi">80000</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"福岡支店"</span><span class="p">,</span> <span class="mi">150000</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"店舗名"</span><span class="p">,</span> <span class="s2">"売上"</span><span class="p">])</span>
+
+<span class="c1"># applyとlambdaを使って、「売上(x)が 100000 以上なら『達成』、未満なら『未達成』」という評価列を1行で作ります！</span>
+<span class="n">df_eval</span><span class="p">[</span><span class="s2">"売上評価"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_eval</span><span class="p">[</span><span class="s2">"売上"</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">"目標達成"</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">100000</span> <span class="k">else</span> <span class="s2">"未達成"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"apply()とラムダ式を使って評価を追加したデータフレーム"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_eval</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="datetime">
+<h2>時系列データ（datetime型）の扱いと曜日抽出<a class="headerlink" href="#datetime" title="Link to this heading">¶</a></h2>
+<p>オープンデータや店舗のレジデータには「日付（2026-08-27）」が含まれることがあります。
+しかし、読み込んだ直後はただの「文字列（テキストデータ）」として扱われているため、Pythonは「これが木曜日なのか、何月なのか、何時なのか」を理解できません。</p>
+<p>そこで、文字列を <strong>時系列データ（<code class="docutils literal notranslate"><span class="pre">datetime</span></code>オブジェクト）</strong> に変換します。</p>
+<ul class="simple">
+<li><p>変換：<code class="docutils literal notranslate"><span class="pre">pd.to_datetime(df[&quot;日付列&quot;])</span></code></p></li>
+<li><p>曜日の取り出し：<code class="docutils literal notranslate"><span class="pre">df[&quot;日付列&quot;].dt.day_name()</span></code> (英語表記) または <code class="docutils literal notranslate"><span class="pre">.dt.weekday</span></code> (0=月曜〜6=日曜の数値)</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 日付が「文字列」の売上データ</span>
+<span class="n">df_daily_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s2">"2026-08-01"</span><span class="p">,</span> <span class="mi">120000</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"2026-08-02"</span><span class="p">,</span> <span class="mi">150000</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"2026-08-03"</span><span class="p">,</span> <span class="mi">85000</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"2026-08-04"</span><span class="p">,</span> <span class="mi">90000</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"売上日"</span><span class="p">,</span> <span class="s2">"売上金額"</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 変換前のデータ型 ---"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_daily_sales</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span> <span class="c1"># 「売上日」が「object（文字列）」になっている</span>
+
+<span class="c1"># 1. 日付文字列を「datetime型（時系列オブジェクト）」に変換！</span>
+<span class="n">df_daily_sales</span><span class="p">[</span><span class="s2">"売上日"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_daily_sales</span><span class="p">[</span><span class="s2">"売上日"</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">--- 変換後のデータ型 ---"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_daily_sales</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span> <span class="c1"># 「datetime64[ns]（時系列型）」に変わりました！</span>
+
+<span class="c1"># 2. datetime型になると、日付から「曜日」を一瞬で抽出できます（.dtプロパティを使います）</span>
+<span class="c1"># 英語の曜日名を取得</span>
+<span class="n">df_daily_sales</span><span class="p">[</span><span class="s2">"曜日（英語）"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_daily_sales</span><span class="p">[</span><span class="s2">"売上日"</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day_name</span><span class="p">()</span>
+
+<span class="c1"># 日本語の曜日に変換する簡単な辞書</span>
+<span class="n">weekday_jp</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s2">"月"</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">"火"</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">"水"</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s2">"木"</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s2">"金"</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s2">"土"</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="s2">"日"</span><span class="p">}</span>
+<span class="c1"># .dt.weekday は 0から6の数字を返すので、mapで日本語に置き換えます</span>
+<span class="n">df_daily_sales</span><span class="p">[</span><span class="s2">"曜日"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_daily_sales</span><span class="p">[</span><span class="s2">"売上日"</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">weekday</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">weekday_jp</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">曜日情報を追加した売上データ"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_daily_sales</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id46">
+<h2>📝 練習問題<a class="headerlink" href="#id46" title="Link to this heading">¶</a></h2>
+<hr class="docutils" />
+<section id="id47">
+<h3>練習問題 1: データの「4つの尺度」を見極めよう（理論）<a class="headerlink" href="#id47" title="Link to this heading">¶</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>あなたが店長を務めるカフェの顧客データベースには、以下のようなデータが記録されています。
+これらは統計学の「4つの尺度（名義・順序・間隔・比例）」のうち、それぞれどれに該当するか答えてください。
+
+1. 支払方法：`["現金", "クレジットカード", "QRコード決済"]`
+2. コーヒーの温度：`["75.5℃", "80.0℃", "15.0℃"]`
+3. セットメニューのサイズ：`["Sサイズ", "Mサイズ", "Lサイズ"]`
+4. 会計の合計金額：`["450円", "1,200円", "0円（クーポンで無料）"]`
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<ol class="arabic simple">
+<li><p><strong>支払方法</strong> ➡ <strong>名義尺度</strong></p>
+<ul class="simple">
+<li><p><em>解説</em>: 単なる「分類や名前」であり、順序に意味はなく、足し算や引き算もできません。</p></li>
+</ul>
+</li>
+<li><p><strong>コーヒーの温度</strong> ➡ <strong>間隔尺度</strong></p>
+<ul class="simple">
+<li><p><em>解説</em>: 「温度の差」には意味がありますが、「0℃」は「温度がこの世に存在しない（無）」を意味するわけではない（0℃より冷たいマイナスの温度も存在するため）ため、間隔尺度になります。「80℃は40℃の2倍熱い」とは言えません。</p></li>
+</ul>
+</li>
+<li><p><strong>セットメニューのサイズ</strong> ➡ <strong>順序尺度</strong></p>
+<ul class="simple">
+<li><p><em>解説</em>: <code class="docutils literal notranslate"><span class="pre">S</span> <span class="pre">&lt;</span> <span class="pre">M</span> <span class="pre">&lt;</span> <span class="pre">L</span></code> のように「順番（大小関係）」には意味がありますが、SとMの容積の差と、MとLの容積の差が全く同じとは限らない（差が等間隔ではない）ため、順序尺度になります。</p></li>
+</ul>
+</li>
+<li><p><strong>会計の合計金額</strong> ➡ <strong>比例（比率）尺度</strong></p>
+<ul class="simple">
+<li><p><em>解説</em>: 「0円」は絶対的な「無（お金を払っていない）」を意味し、「1,200円は400円の3倍」というように、掛け算や割り算（比率）の計算が完全に成り立ちます。</p></li>
+</ul>
+</li>
+</ol>
+</details>
+</section>
+<hr class="docutils" />
+<section id="pandas-concat">
+<h3>練習問題 2: Pandasの連結（concat）とインデックス番号の整理（コード）<a class="headerlink" href="#pandas-concat" title="Link to this heading">¶</a></h3>
+<p>金曜日の売上表 <code class="docutils literal notranslate"><span class="pre">df_fri</span></code> と、土曜日の売上表 <code class="docutils literal notranslate"><span class="pre">df_sat</span></code> という同じ列名を持つ2つのデータフレームがあります。
+この2つの表を**「縦に連結」**し、インデックス番号（行番号）が <code class="docutils literal notranslate"><span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">2...</span></code> と途切れずに綺麗に振り直された新しいデータフレーム <code class="docutils literal notranslate"><span class="pre">df_weekend</span></code> を作成するコードを完成させてください。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># 金曜日のデータ</span>
+<span class="n">df_fri</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"商品名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"コーヒー"</span><span class="p">,</span> <span class="s2">"紅茶"</span><span class="p">],</span> <span class="s2">"売上数"</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">]})</span>
+<span class="c1"># 土曜日のデータ</span>
+<span class="n">df_sat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"商品名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"コーヒー"</span><span class="p">,</span> <span class="s2">"ケーキ"</span><span class="p">],</span> <span class="s2">"売上数"</span><span class="p">:</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">25</span><span class="p">]})</span>
+
+<span class="c1"># TODO: 2つの表を縦に連結し、インデックス番号を振り直してください</span>
+<span class="n">df_weekend</span> <span class="o">=</span> 
+
+<span class="n">display</span><span class="p">(</span><span class="n">df_weekend</span><span class="p">)</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">df_weekend</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_fri</span><span class="p">,</span> <span class="n">df_sat</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>表を縦に繋げるには pd.concat() を使います。
+このとき、デフォルトのままだと df_fri の [0, 1] と df_sat の [0, 1] というインデックス番号がそのまま引き継がれてしまい、
+同じ番号が重複してしまいます。
+ignore_index=True（インデックスを無視する）を指定することで、自動的に 0, 1, 2, 3 と通し番号を振り直してくれます</p>
+</details>
+</section>
+<hr class="docutils" />
+<section id="inner-left">
+<h3>練習問題 3: 内部結合（inner）と左結合（left）の動きの違い（理論＆コード）<a class="headerlink" href="#inner-left" title="Link to this heading">¶</a></h3>
+<p>ここに、店舗の「売上履歴（df_sales）」と「商品単価マスタ（df_master）」があります。 売上履歴には、マスタ登録がまだ終わっていないテスト販売の新商品コード（&quot;N01&quot;）が1件混ざっています。
+how=&quot;inner&quot;（内部結合） でマージした場合、結合後のデータはどうなるでしょうか？
+新商品の売上を1行も消さずに、単価マスタにない部分は NaN（欠損）として残すために、**指定すべき結合方式（how）**は何でしょうか？実際にコードを書いて確かめてください。</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># 売上履歴</span>
+<span class="n">df_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"商品コード"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"C01"</span><span class="p">,</span> <span class="s2">"T01"</span><span class="p">,</span> <span class="s2">"N01"</span><span class="p">],</span> <span class="s2">"個数"</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]})</span>
+<span class="c1"># 商品単価マスタ</span>
+<span class="n">df_master</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"商品コード"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"C01"</span><span class="p">,</span> <span class="s2">"T01"</span><span class="p">],</span> <span class="s2">"単価"</span><span class="p">:</span> <span class="p">[</span><span class="mi">400</span><span class="p">,</span> <span class="mi">450</span><span class="p">]})</span>
+
+<span class="c1"># TODO: df_sales をベースに、新商品の売上を消さない結合方法(how)を指定して結合してください</span>
+<span class="n">df_merged</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_sales</span><span class="p">,</span> <span class="n">df_master</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">"商品コード"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span>       <span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">df_merged</span><span class="p">)</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 3（解答）<br />
+how=&quot;inner&quot;（デフォルト）でマージした場合:
+両方に共通して存在する &quot;C01&quot; と &quot;T01&quot; だけが残り、マスタに登録がない新商品 &quot;N01&quot; の売上履歴（2個）は、**警告も出ずに表から静かに消滅（消失）**してしまいます。
+新商品を消さないために指定すべき結合方式: how=&quot;left&quot;（左結合）</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">df_merged</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_sales</span><span class="p">,</span> <span class="n">df_master</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">"商品コード"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>実務のデータ分析で最も恐ろしいのは、マスタに登録漏れがあるだけで、本来あるべき売上データが自動的に消え去ってしまうことです。売上の「行」をすべて守るためには、主となるテーブル（左側にある売上表）をすべて残す &quot;left&quot; 結合を常に意識して使いましょう！</p>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id48">
+<h3>練習問題 4: apply ✕ lambda でお買い物サービス特典を判定しよう（コード）<a class="headerlink" href="#id48" title="Link to this heading">¶</a></h3>
+<p>カフェのお客様の「お買い物合計金額」の表があります。 お客様への感謝特典として、**「合計金額が 1,000円 以上の人には『クッキー無料』、1,000円未満の人には『なし』」**という文字列を判定して、新しい列「サービス」を追加したいです。 apply() メソッドと lambda、そして if-else 文を組み合わせたコードを完成させてください。 ※ヒント：行全体に対して処理を適用するため、Pandasの「方向の指定」を忘れないようにしましょう！</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">df_bill</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"顧客名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"山田"</span><span class="p">,</span> <span class="s2">"佐藤"</span><span class="p">,</span> <span class="s2">"鈴木"</span><span class="p">],</span>
+    <span class="s2">"合計金額"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">1500</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># TODO: 1000円以上は 「クッキー無料」、そうでない場合は 「なし」 とする処理を apply で書いてください</span>
+<span class="c1"># ※ direction（方向）の指定を忘れずに！</span>
+<span class="n">df_bill</span><span class="p">[</span><span class="s2">"サービス"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_bill</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="s2">"クッキー無料"</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"合計金額"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">1000</span> <span class="k">else</span> <span class="s2">"なし"</span><span class="p">,</span>
+    <span class="n">axis</span><span class="o">=</span>
+<span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">df_bill</span><span class="p">)</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 4（解答）</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">df_bill</span><span class="p">[</span><span class="s2">"サービス"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_bill</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="s2">"クッキー無料"</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"合計金額"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">1000</span> <span class="k">else</span> <span class="s2">"なし"</span><span class="p">,</span>
+    <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>データフレームの「行（横一行ずつ）」を row という変数として受け取って条件判定をするため、必ず axis=1 を指定する必要があります。
+もし axis=1 を書き忘れてしまうと、Pandasは縦（列方向）に合計金額を探そうとしてしまい、KeyError などのバグが発生します。apply を使って新しい列を作る時は、「おまじない」のように axis=1 を最後に書き添えましょう！</p>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id49">
+<h3>練習問題 5: 時系列データから「週末（土日）」を自動判定しよう（コード）<a class="headerlink" href="#id49" title="Link to this heading">¶</a></h3>
+<p>売上のあった「日付」データがあります。
+現在ただの文字になっている日付を pd.to_datetime() を使って日付型（datetimeオブジェクト）に変換してください。
+その日付が**「週末（土曜日・日曜日）」か「平日」**かを判定し、新しい列「週末フラグ」を作成してください。 ※ヒント：.dt.weekday を使うと、月曜日=0、火曜日=1……土曜日=5、日曜日=6 という数値が取得できます。</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">df_date</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"日付"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"2026-08-28"</span><span class="p">,</span> <span class="s2">"2026-08-29"</span><span class="p">,</span> <span class="s2">"2026-08-30"</span><span class="p">]</span> <span class="c1"># 8/28=金, 8/29=土, 8/30=日</span>
+<span class="p">})</span>
+
+<span class="c1"># TODO: 1. 日付列を datetime 型に変換してください</span>
+<span class="n">df_date</span><span class="p">[</span><span class="s2">"日付"</span><span class="p">]</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 2. dt.weekday の数値が 5以上（土・日）なら「週末」、そうでないなら「平日」とする列を作成してください</span>
+<span class="n">df_date</span><span class="p">[</span><span class="s2">"週末フラグ"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_date</span><span class="p">[</span><span class="s2">"日付"</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">weekday</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">"週末"</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">5</span> <span class="k">else</span> <span class="s2">"平日"</span>
+<span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">df_date</span><span class="p">)</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p>練習問題 5（解答）</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">df_date</span><span class="p">[</span><span class="s2">"日付"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_date</span><span class="p">[</span><span class="s2">"日付"</span><span class="p">])</span>
+<span class="n">df_date</span><span class="p">[</span><span class="s2">"週末フラグ"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_date</span><span class="p">[</span><span class="s2">"日付"</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">weekday</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">"週末"</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">5</span> <span class="k">else</span> <span class="s2">"平日"</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>日付文字列を pd.to_datetime() で変換すると、強力な .dt 属性が使えるようになります。
+.dt.weekday は、日付から「曜日を表す数値（0=月〜6=日）」を一瞬で取り出してくれます。
+今回は、土曜日(5)と日曜日(6)を判定したいため、ラムダ式の中で x &gt;= 5 ならば &quot;週末&quot;、それ以外（0〜4の平日）ならば &quot;平日&quot; とする条件分けを行い、見事に週末判定が完了しました！</p>
+</details>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id50">
+<h2>💻 演習課題<a class="headerlink" href="#id50" title="Link to this heading">¶</a></h2>
+<p>以下の <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TODO:</span> </code> の部分を書き換えて、プログラムを完成させてください。</p>
+<p>演習1: 複数店舗の売上データ連結（難易度：易）</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 「新宿店」と「渋谷店」の売上データ（データフレーム）がそれぞれあります。</span>
+<span class="c1"># TODO: pd.concat() を使って、これらを縦に連結し、</span>
+<span class="c1">#       インデックスをリセット（ignore_index=True）した新しい表 df_total_sales を作ってください。</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">shinjuku_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s2">"新宿店"</span><span class="p">,</span> <span class="s2">"コーヒー"</span><span class="p">,</span> <span class="mi">450</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"新宿店"</span><span class="p">,</span> <span class="s2">"ケーキ"</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"店舗"</span><span class="p">,</span> <span class="s2">"商品名"</span><span class="p">,</span> <span class="s2">"単価"</span><span class="p">])</span>
+
+<span class="n">shibuya_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s2">"渋谷店"</span><span class="p">,</span> <span class="s2">"紅茶"</span><span class="p">,</span> <span class="mi">400</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"渋谷店"</span><span class="p">,</span> <span class="s2">"クッキー"</span><span class="p">,</span> <span class="mi">350</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"店舗"</span><span class="p">,</span> <span class="s2">"商品名"</span><span class="p">,</span> <span class="s2">"単価"</span><span class="p">])</span>
+
+<span class="c1"># TODO: 縦に連結する</span>
+<span class="n">df_total_sales</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"連結後の全店データ"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_total_sales</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>演習2: 売上データと商品マスタの横結合（難易度：易）</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 注文履歴のデータ df_orders がありますが、こちらには商品の「価格」が載っていません。</span>
+<span class="c1"># 別途用意された商品価格表 df_prices（商品マスタ）があります。</span>
+<span class="c1"># TODO: pd.merge() を使い、共通キー「商品名」で2つの表を横に結合した df_receipt を作成してください。</span>
+
+<span class="n">df_orders</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s2">"山田さん"</span><span class="p">,</span> <span class="s2">"コーヒー"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"佐藤さん"</span><span class="p">,</span> <span class="s2">"ケーキ"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"鈴木さん"</span><span class="p">,</span> <span class="s2">"コーヒー"</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"顧客名"</span><span class="p">,</span> <span class="s2">"商品名"</span><span class="p">])</span>
+
+<span class="n">df_prices</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s2">"コーヒー"</span><span class="p">,</span> <span class="mi">450</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"ケーキ"</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"紅茶"</span><span class="p">,</span> <span class="mi">400</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"商品名"</span><span class="p">,</span> <span class="s2">"単価"</span><span class="p">])</span>
+
+<span class="c1"># TODO: 「商品名」をキーにして横に結合する</span>
+<span class="n">df_receipt</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"結合したレシートデータ"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_receipt</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>演習3: datetime変換と「月」の抽出（難易度：中）</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 売上データの「日付（Date）」列は現在、文字列（object）です。</span>
+<span class="c1"># TODO: 1. pd.to_datetime() を使って、日付列をdatetime型に変換してください。</span>
+<span class="c1"># TODO: 2. datetime型から「月（month）」の数字だけを取り出し、新しい列「売上月」を作ってください。</span>
+<span class="c1">#        ※ヒント： dtプロパティを使って、.dt.month と書くと「月」の数字だけを取得できます。</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">df_date_sample</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s2">"2026/04/15"</span><span class="p">,</span> <span class="mi">80000</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"2026/05/20"</span><span class="p">,</span> <span class="mi">95000</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"2026/06/05"</span><span class="p">,</span> <span class="mi">110000</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"日付"</span><span class="p">,</span> <span class="s2">"売上金額"</span><span class="p">])</span>
+
+<span class="c1"># TODO: 1. 日付列を datetime型 に変換</span>
+<span class="n">df_date_sample</span><span class="p">[</span><span class="s2">"日付"</span><span class="p">]</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 2. 「日付」列から「月」情報を抽出して新しい列「売上月」を作成する</span>
+<span class="n">df_date_sample</span><span class="p">[</span><span class="s2">"売上月"</span><span class="p">]</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"データ型:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">df_date_sample</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">月情報を追加したデータフレーム"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_date_sample</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>演習4: apply() とラムダ式による税率計算（難易度：中）</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># カフェの商品は、テイクアウト（お持ち帰り）かイートイン（店内飲食）かで税率が変わります。</span>
+<span class="c1"># イートイン（区分が"店内"）なら税率 10% (1.1倍)、テイクアウト（区分が"持ち帰り"）なら税率 8% (1.08倍) とします。</span>
+<span class="c1"># TODO: apply() メソッドと lambda（ラムダ式）を使い、各行（各データ）の「区分」に応じて、</span>
+<span class="c1">#       価格を税込みにした「支払金額」列を新しく作成してください。</span>
+<span class="c1"># ※ヒント： lambda row: row["価格"] * 1.1 if row["区分"] == "店内" else row["価格"] * 1.08</span>
+<span class="c1">#           このように行全体に適用する場合は、apply(..., axis=1) と axis=1 を指定するのが鉄則です。</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">df_cafe_orders</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s2">"コーヒー"</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="s2">"店内"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"サンドイッチ"</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">"持ち帰り"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"ケーキ"</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="s2">"店内"</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"商品名"</span><span class="p">,</span> <span class="s2">"価格"</span><span class="p">,</span> <span class="s2">"区分"</span><span class="p">])</span>
+
+<span class="c1"># TODO: apply()とラムダ式、そして axis=1 を使って「支払金額」列を作成する</span>
+<span class="n">df_cafe_orders</span><span class="p">[</span><span class="s2">"支払金額"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_cafe_orders</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span>                          <span class="p">,</span>
+    <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"税込み支払金額を計算した注文データ"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_cafe_orders</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>演習5: 実践！日付変換・曜日追加から曜日別グループ集計（難易度：難）</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1週間のカフェの売上履歴があります。</span>
+<span class="c1"># TODO: 1. 「売上日」をdatetime型に変換してください。</span>
+<span class="c1"># TODO: 2. 「売上日」から、0=月〜6=日の「曜日番号」列「曜日コード」を新しく作ってください（.dt.weekday）。</span>
+<span class="c1"># TODO: 3. groupby("曜日コード") を使って、曜日ごとの「売上金額」の【合計(sum)】を計算し、表示してください。</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">df_weekly_history</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s2">"2026-08-24"</span><span class="p">,</span> <span class="mi">80000</span><span class="p">],</span>  <span class="c1"># 月曜</span>
+    <span class="p">[</span><span class="s2">"2026-08-25"</span><span class="p">,</span> <span class="mi">85000</span><span class="p">],</span>  <span class="c1"># 火曜</span>
+    <span class="p">[</span><span class="s2">"2026-08-26"</span><span class="p">,</span> <span class="mi">90000</span><span class="p">],</span>  <span class="c1"># 水曜</span>
+    <span class="p">[</span><span class="s2">"2026-08-27"</span><span class="p">,</span> <span class="mi">75000</span><span class="p">],</span>  <span class="c1"># 木曜</span>
+    <span class="p">[</span><span class="s2">"2026-08-28"</span><span class="p">,</span> <span class="mi">110000</span><span class="p">],</span> <span class="c1"># 金曜</span>
+    <span class="p">[</span><span class="s2">"2026-08-29"</span><span class="p">,</span> <span class="mi">150000</span><span class="p">],</span> <span class="c1"># 土曜</span>
+    <span class="p">[</span><span class="s2">"2026-08-30"</span><span class="p">,</span> <span class="mi">160000</span><span class="p">]</span>  <span class="c1"># 日曜</span>
+<span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"売上日"</span><span class="p">,</span> <span class="s2">"売上金額"</span><span class="p">])</span>
+
+<span class="c1"># TODO: 1. 「売上日」を datetime型に変換</span>
+<span class="n">df_weekly_history</span><span class="p">[</span><span class="s2">"売上日"</span><span class="p">]</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 2. dt.weekday を使って「曜日コード」列を新規作成</span>
+<span class="n">df_weekly_history</span><span class="p">[</span><span class="s2">"曜日コード"</span><span class="p">]</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 3. groupby を使って「曜日コード」ごとの「売上金額」の合計を集計する</span>
+<span class="n">sales_by_weekday</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 曜日コードごとの売上合計（0:月曜 〜 6:日曜） ---"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sales_by_weekday</span><span class="p">)</span>
+<span class="c1"># 曜日コード5(土曜:150,000円)や6(日曜:160,000円)の売上が高い傾向が一目で分かれば完璧です！</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id51">
+<h2>💡 演習問題の解答例<a class="headerlink" href="#id51" title="Link to this heading">¶</a></h2>
+<p>（つまずいた部分やエラーの原因を確認し、コードを1行ずつじっくり読んで論理的な流れを掴んでくださいね。）</p>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<p><strong>演習1の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_total_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">shinjuku_df</span><span class="p">,</span> <span class="n">shibuya_df</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>演習2の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_receipt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_orders</span><span class="p">,</span> <span class="n">df_prices</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">"商品名"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>演習3の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. datetimeへの型変換</span>
+<span class="n">df_date_sample</span><span class="p">[</span><span class="s2">"日付"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_date_sample</span><span class="p">[</span><span class="s2">"日付"</span><span class="p">])</span>
+<span class="c1"># 2. 月情報の抽出</span>
+<span class="n">df_date_sample</span><span class="p">[</span><span class="s2">"売上月"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_date_sample</span><span class="p">[</span><span class="s2">"日付"</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+</pre></div>
+</div>
+<p><strong>演習4の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 行全体から「価格」と「区分」を参照し、条件分岐で掛け算を分けます。</span>
+<span class="n">df_cafe_orders</span><span class="p">[</span><span class="s2">"支払金額"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_cafe_orders</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s2">"価格"</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1.1</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"区分"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"店内"</span> <span class="k">else</span> <span class="n">row</span><span class="p">[</span><span class="s2">"価格"</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1.08</span><span class="p">,</span>
+    <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>解説</strong>: <code class="docutils literal notranslate"><span class="pre">apply</span></code>の引数に <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> を指定すると、関数（ラムダ式）に「1つの行（横方向の塊）」が <code class="docutils literal notranslate"><span class="pre">row</span></code> という変数として順番に渡されます。これにより、<code class="docutils literal notranslate"><span class="pre">row[&quot;価格&quot;]</span></code> や <code class="docutils literal notranslate"><span class="pre">row[&quot;区分&quot;]</span></code> のように、複数の列の値を掛け合わせた柔軟な条件計算ができるようになります。</p></li>
+</ul>
+<p><strong>演習5の解答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. datetimeへの変換</span>
+<span class="n">df_weekly_history</span><span class="p">[</span><span class="s2">"売上日"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_weekly_history</span><span class="p">[</span><span class="s2">"売上日"</span><span class="p">])</span>
+
+<span class="c1"># 2. 曜日コード(0〜6の数字)の抽出</span>
+<span class="n">df_weekly_history</span><span class="p">[</span><span class="s2">"曜日コード"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_weekly_history</span><span class="p">[</span><span class="s2">"売上日"</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">weekday</span>
+
+<span class="c1"># 3. 曜日コードでグループ集計</span>
+<span class="n">sales_by_weekday</span> <span class="o">=</span> <span class="n">df_weekly_history</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"曜日コード"</span><span class="p">)[</span><span class="s2">"売上金額"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id52">
+<h2>📚 まとめ<a class="headerlink" href="#id52" title="Link to this heading">¶</a></h2>
+<section id="id53">
+<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id53" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>データの4つの尺度</strong>: 名義（分類）、順序（大小）、間隔（差）、比例（ゼロに意味あり）。データがどの尺度に属しているかで、適切な加工・計算のアプローチが変わる。</p></li>
+<li><p><strong>連結 (pd.concat)</strong>: 同じ列名を持つ複数の表を、縦に単純に合体する。</p></li>
+<li><p><strong>結合 (pd.merge)</strong>: エクセルのVLOOKUPのように、共通の「キー列」を使って、2つの異なる表を横に合体・拡張する。</p></li>
+<li><p><strong>apply() と ラムダ式</strong>: <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> を指定することで、各行に対して「もし店内飲食なら10%、テイクアウトなら8%」といった複雑なオリジナル計算を一瞬で適用できる。</p></li>
+<li><p><strong>時系列データ(datetime)</strong>: 文字列を時系列データに変換することで、曜日(<code class="docutils literal notranslate"><span class="pre">.dt.weekday</span></code>)や月（<code class="docutils literal notranslate"><span class="pre">.dt.month</span></code>）などを自在に取り出せるようになる。</p></li>
+</ul>
+</section>
+</section>
 </section>
 
         </article>
@@ -392,7 +2356,7 @@
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-08-28</div>
+              Last updated on 2026-08-30</div>
           </div>
           <div class="right-details">
             
@@ -401,8 +2365,140 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">第3回 データの種類とデータ加⼯</a><ul>
+<li><a class="reference internal" href="#id2">🎯 到達目標</a></li>
+<li><a class="reference internal" href="#id3">データ加工の必要性</a><ul>
+<li><a class="reference internal" href="#id4">データ加工の実情</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">データの「尺度（データ型）」</a></li>
+<li><a class="reference internal" href="#eda-exploratory-data-analysis">EDA（Exploratory Data Analysis）</a><ul>
+<li><a class="reference internal" href="#eda">EDAとは？</a></li>
+<li><a class="reference internal" href="#id6">EDAの主な目的</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">主なライブラリ</a><ul>
+<li><a class="reference internal" href="#id8">主なライブラリ</a></li>
+<li><a class="reference internal" href="#numpy">主なライブラリ - NumPy</a></li>
+<li><a class="reference internal" href="#pandas">主なライブラリ - pandas</a></li>
+<li><a class="reference internal" href="#matplotlib">主なライブラリ - Matplotlib</a></li>
+<li><a class="reference internal" href="#plotly">主なライブラリ - Plotly</a></li>
+<li><a class="reference internal" href="#scikit-learn">主なライブラリ - scikit-learn</a></li>
+<li><a class="reference internal" href="#scipy">主なライブラリ - SciPy</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9">代表的なデータ形式</a><ul>
+<li><a class="reference internal" href="#id10">データ形式 - 表形式</a></li>
+<li><a class="reference internal" href="#id11">データ形式 – ツリー形式</a></li>
+<li><a class="reference internal" href="#id12">データ形式 – リレーション形式</a></li>
+<li><a class="reference internal" href="#id13">データ形式 – グラフデータ</a></li>
+<li><a class="reference internal" href="#id14">データ形式 – 文書データ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id15">ファイルのデータ形式</a><ul>
+<li><a class="reference internal" href="#python">Pythonのファイルのデータ形式</a></li>
+<li><a class="reference internal" href="#csv">CSV形式</a><ul>
+<li><a class="reference internal" href="#csv-open">CSV形式 - open()</a></li>
+<li><a class="reference internal" href="#id16">文字コード</a></li>
+<li><a class="reference internal" href="#shift-jis-cp932-utf-8">日本語の文字コードである「Shift_JIS (cp932)」と「UTF-8」</a></li>
+<li><a class="reference internal" href="#csv-pandas">CSV形式 - pandas</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#excel">Excel形式</a></li>
+<li><a class="reference internal" href="#json">JSON形式</a></li>
+<li><a class="reference internal" href="#html">HTML形式</a></li>
+<li><a class="reference internal" href="#xml">XML形式</a></li>
+<li><a class="reference internal" href="#id17">文書データ</a></li>
+<li><a class="reference internal" href="#id18">画像データ</a></li>
+<li><a class="reference internal" href="#id19">音声データ</a></li>
+<li><a class="reference internal" href="#rdb">RDBデータ</a></li>
+<li><a class="reference internal" href="#pickle">pickle形式</a></li>
+<li><a class="reference internal" href="#parquet">parquet形式</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id20">データの連結／結合</a><ul>
+<li><a class="reference internal" href="#dataframe">DataFrameの連結</a></li>
+<li><a class="reference internal" href="#id21">DataFrameの結合</a></li>
+<li><a class="reference internal" href="#concat-dataframe">concat()関数によるDataFrameの連結</a></li>
+<li><a class="reference internal" href="#id22">concat()関数によるDataFrameの結合</a></li>
+<li><a class="reference internal" href="#join-dataframe">join()メソッドによるDataFrameの結合</a></li>
+<li><a class="reference internal" href="#merge-dataframe">merge()関数によるDataFrameの結合</a></li>
+<li><a class="reference internal" href="#id23">重複したキーの検証</a></li>
+<li><a class="reference internal" href="#id24">近い値での結合</a></li>
+<li><a class="reference internal" href="#id25">DataFrame結合時の関数／メソッドの選び方</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id26">データの変形</a><ul>
+<li><a class="reference internal" href="#id27">ピボットとアンピボット</a></li>
+<li><a class="reference internal" href="#id28">ピボット</a></li>
+<li><a class="reference internal" href="#id29">アンピボット</a></li>
+<li><a class="reference internal" href="#id30">スタックとアンスタック</a></li>
+<li><a class="reference internal" href="#multiindex">MultiIndexのスタック・アンスタック</a></li>
+<li><a class="reference internal" href="#id31">ダミー変数</a></li>
+<li><a class="reference internal" href="#id32">要素の展開</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id33">カテゴリーデータ</a><ul>
+<li><a class="reference internal" href="#id34">カテゴリーデータの処理</a></li>
+<li><a class="reference internal" href="#id35">尺度水準</a></li>
+<li><a class="reference internal" href="#id36">カテゴリーデータの生成</a></li>
+<li><a class="reference internal" href="#id37">カテゴリーデータへの型変換</a></li>
+<li><a class="reference internal" href="#id38">カテゴリーデータの順序付け</a></li>
+<li><a class="reference internal" href="#id39">データの離散化によるカテゴリーデータの生成</a></li>
+<li><a class="reference internal" href="#pandas-qcutpandas-cut">pandas.qcut関数とpandas.cut関数</a></li>
+<li><a class="reference internal" href="#cat">.cat アクセサ</a></li>
+<li><a class="reference internal" href="#categoricalindex">CategoricalIndex</a></li>
+<li><a class="reference internal" href="#id40">カテゴリーデータの結合</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id41">データのグループ化</a><ul>
+<li><a class="reference internal" href="#id42">データのグループ化</a></li>
+<li><a class="reference internal" href="#groupby">GroupByオブジェクト</a></li>
+<li><a class="reference internal" href="#id43">データの集約</a></li>
+<li><a class="reference internal" href="#id44">GroupByオブジェクトのフィルタリング</a></li>
+<li><a class="reference internal" href="#id45">GroupByオブジェクトのデータの可視化</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#concat-merge">データの連結（concat）と結合（merge）</a><ul>
+<li><a class="reference internal" href="#pd-concat">表を縦につなげる「連結（<code class="docutils literal notranslate"><span class="pre">pd.concat</span></code>）」</a></li>
+<li><a class="reference internal" href="#pd-merge">共通のキーでつなげる「結合（<code class="docutils literal notranslate"><span class="pre">pd.merge</span></code>）」</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#apply-lambda">apply() とラムダ式（lambda）による高度なカスタム変換</a></li>
+<li><a class="reference internal" href="#datetime">時系列データ（datetime型）の扱いと曜日抽出</a></li>
+<li><a class="reference internal" href="#id46">📝 練習問題</a><ul>
+<li><a class="reference internal" href="#id47">練習問題 1: データの「4つの尺度」を見極めよう（理論）</a></li>
+<li><a class="reference internal" href="#pandas-concat">練習問題 2: Pandasの連結（concat）とインデックス番号の整理（コード）</a></li>
+<li><a class="reference internal" href="#inner-left">練習問題 3: 内部結合（inner）と左結合（left）の動きの違い（理論＆コード）</a></li>
+<li><a class="reference internal" href="#id48">練習問題 4: apply ✕ lambda でお買い物サービス特典を判定しよう（コード）</a></li>
+<li><a class="reference internal" href="#id49">練習問題 5: 時系列データから「週末（土日）」を自動判定しよう（コード）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id50">💻 演習課題</a></li>
+<li><a class="reference internal" href="#id51">💡 演習問題の解答例</a></li>
+<li><a class="reference internal" href="#id52">📚 まとめ</a><ul>
+<li><a class="reference internal" href="#id53">✨ 今日の重要ポイントまとめ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
