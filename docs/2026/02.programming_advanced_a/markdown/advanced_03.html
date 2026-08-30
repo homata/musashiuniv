@@ -2052,13 +2052,16 @@ how=&quot;inner&quot;（デフォルト）でマージした場合:
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">df_merged</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_sales</span><span class="p">,</span> <span class="n">df_master</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">"商品コード"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>実務のデータ分析で最も恐ろしいのは、マスタに登録漏れがあるだけで、本来あるべき売上データが自動的に消え去ってしまうことです。売上の「行」をすべて守るためには、主となるテーブル（左側にある売上表）をすべて残す &quot;left&quot; 結合を常に意識して使いましょう！</p>
+<p>実務のデータ分析で最も恐ろしいのは、マスタに登録漏れがあるだけで、本来あるべき売上データが自動的に消え去ってしまうことです。
+売上の「行」をすべて守るためには、主となるテーブル（左側にある売上表）をすべて残す &quot;left&quot; 結合を使います。</p>
 </details>
 </section>
 <hr class="docutils" />
 <section id="id48">
 <h3>練習問題 4: apply ✕ lambda でお買い物サービス特典を判定しよう（コード）<a class="headerlink" href="#id48" title="Link to this heading">¶</a></h3>
-<p>カフェのお客様の「お買い物合計金額」の表があります。 お客様への感謝特典として、**「合計金額が 1,000円 以上の人には『クッキー無料』、1,000円未満の人には『なし』」**という文字列を判定して、新しい列「サービス」を追加したいです。 apply() メソッドと lambda、そして if-else 文を組み合わせたコードを完成させてください。 ※ヒント：行全体に対して処理を適用するため、Pandasの「方向の指定」を忘れないようにしましょう！</p>
+<p>カフェのお客様の「お買い物合計金額」の表があります。<br />
+お客様への感謝特典として、**「合計金額が 1,000円 以上の人には『クッキー無料』、1,000円未満の人には『なし』」**という文字列を判定して、新しい列「サービス」を追加したいです。<br />
+apply() メソッドと lambda、そして if-else 文を組み合わせたコードを完成させてください。 ※ヒント：行全体に対して処理を適用するため、Pandasの「方向の指定」に気を付けてください。</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df_bill</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
@@ -2086,7 +2089,8 @@ how=&quot;inner&quot;（デフォルト）でマージした場合:
 </pre></div>
 </div>
 <p>データフレームの「行（横一行ずつ）」を row という変数として受け取って条件判定をするため、必ず axis=1 を指定する必要があります。
-もし axis=1 を書き忘れてしまうと、Pandasは縦（列方向）に合計金額を探そうとしてしまい、KeyError などのバグが発生します。apply を使って新しい列を作る時は、「おまじない」のように axis=1 を最後に書き添えましょう！</p>
+もし axis=1 を書き忘れてしまうと、Pandasは縦（列方向）に合計金額を探そうとしてしまい、KeyError などのバグが発生します。<br />
+apply を使って新しい列を作る時は、「おまじない」のように axis=1 を最後に書き添えます。</p>
 </details>
 </section>
 <hr class="docutils" />
@@ -2094,7 +2098,8 @@ how=&quot;inner&quot;（デフォルト）でマージした場合:
 <h3>練習問題 5: 時系列データから「週末（土日）」を自動判定しよう（コード）<a class="headerlink" href="#id49" title="Link to this heading">¶</a></h3>
 <p>売上のあった「日付」データがあります。
 現在ただの文字になっている日付を pd.to_datetime() を使って日付型（datetimeオブジェクト）に変換してください。
-その日付が**「週末（土曜日・日曜日）」か「平日」**かを判定し、新しい列「週末フラグ」を作成してください。 ※ヒント：.dt.weekday を使うと、月曜日=0、火曜日=1……土曜日=5、日曜日=6 という数値が取得できます。</p>
+その日付が**「週末（土曜日・日曜日）」か「平日」**かを判定し、新しい列「週末フラグ」を作成してください。<br />
+※ヒント：.dt.weekday を使うと、月曜日=0、火曜日=1……土曜日=5、日曜日=6 という数値が取得できます。</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df_date</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
@@ -2122,8 +2127,8 @@ how=&quot;inner&quot;（デフォルト）でマージした場合:
 </pre></div>
 </div>
 <p>日付文字列を pd.to_datetime() で変換すると、強力な .dt 属性が使えるようになります。
-.dt.weekday は、日付から「曜日を表す数値（0=月〜6=日）」を一瞬で取り出してくれます。
-今回は、土曜日(5)と日曜日(6)を判定したいため、ラムダ式の中で x &gt;= 5 ならば &quot;週末&quot;、それ以外（0〜4の平日）ならば &quot;平日&quot; とする条件分けを行い、見事に週末判定が完了しました！</p>
+.dt.weekday は、日付から「曜日を表す数値（0=月〜6=日）」を一瞬で取り出してくれます。<br />
+今回は、土曜日(5)と日曜日(6)を判定したいため、ラムダ式の中で x &gt;= 5 ならば &quot;週末&quot;、それ以外（0〜4の平日）ならば &quot;平日&quot; とする条件分けを行い、見事に週末判定が完了します</p>
 </details>
 </section>
 </section>

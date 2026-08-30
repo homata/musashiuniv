@@ -1,0 +1,850 @@
+# 第6回 Webサービスの活用2：Streamlitによるインタラクティブなデータダッシュボード（講義100分版）
+
+皆さん、こんにちは！プログラミング応用A（コンピューティング応用G）、第6回の講義です。担当の教員です。
+前回（第5回）は、PythonだけでWebアプリを構築できる画期的なライブラリ **Streamlit（ストリームリット）** の基本を学び、ボタンやスライダーなどの部品（ウィジェット）を画面に配置して、ユーザーの入力に応じて動的に画面が変化する基本的なおまじないを習得しました。また、Google Colabから手元のブラウザへ通信を通す「トンネリング（localtunnel）」という黄金の起動儀式も無事にクリアできましたね！
+
+第6回となる本日のテーマは、これまでに学んだすべてのスキルの「大合体」です！
+具体的には、第3回・第4回で格闘してきた **「Pandasによるデータ前処理・フィルタリング」** と **「Matplotlibによるグラフ可視化」** の技術を、StreamlitのUIとガッチャンコさせ、企業や店舗の経営者が意思決定を行う際に用いる **「インタラクティブ・データダッシュボード」** を自分の手で完成させます！
+
+「エクセルの表をただ見せるだけ」「静止画のグラフをメールで送るだけ」のデータ分析は、今日で卒業です。
+ユーザーがサイドバーで「江古田店」をクリックした瞬間に、画面中央の売上推移グラフが再描画され、平均客単価や総売上といった重要指標（KPI）が一瞬で再計算されるプロ級のシステムを構築していきます。
+
+データ、ロジック、UIの3つがパズルのように噛み合う、データサイエンスの真の楽しさを体感する100分間にしましょう！
+
+---
+## 🎯 本日の到達目標 (約5分)
+1. **ダッシュボードの画面設計（UI/UX）**において、サイドバー（`st.sidebar`）やカラム分割（`st.columns`）を使い分け、直感的で見やすいレイアウトを設計できる。
+2. ユーザーが画面上で選択した値（セレクトボックスやスライダー）を変数として受け取り、**Pandasの条件抽出（フィルタリング）とリアルタイムに連動**させることができる。
+3. フィルタリングされた動的なデータフレームを、**Matplotlibのグラフオブジェクトと連携させて、Web画面に瞬時に再描画（`st.pyplot`）**できる。
+4. **ファイルアップローダー（`st.file_uploader`）**を搭載し、ユーザーが手持ちのCSVファイルをブラウザに投げ込むだけで全自動解析が始まる汎用データ分析ツールを構築できる。
+5. **Rerun（再実行）システム**における「データの流れ」を理解し、操作のたびに裏側でPythonプログラムがどう走っているのかを論理的に説明できる。
+
+---
+## ⏱️ 本日のタイムテーブル (計100分)
+本講義は、解説とColab上でのコード書き出し・Web起動を交互に繰り返しながら進行します。
+
+| 時間帯 | 所要時間 | セクション | 学習内容 |
+| :--- | :---: | :--- | :--- |
+| **00:00 - 00:05** | 5分 | **導入** | 本日のゴール確認、前回の復習（Rerunの仕組み） |
+| **00:05 - 00:25** | 20分 | **6.1 カラムとサイドバー** | `st.sidebar` と `st.columns()` による画面の整理整頓とレイアウトの美学 |
+| **00:25 - 00:45** | 20分 | **6.2 Pandas ✕ UI** | 選択されたUI部品（変数）を使った、Pandasデータのリアルタイム・フィルタリング |
+| **00:45 - 01:10** | 25分 | **6.3 グラフ ✕ UI ✕ アップローダー** | `st.pyplot` によるグラフの動的更新、`st.file_uploader` による汎用ツール化 |
+| **01:10 - 01:25** | 15分 | **確認練習問題** | 理解度チェックのための理論・挙動確認クイズ（5問） |
+| **01:25 - 01:55** | 30分 | **💻 総合演習課題** | 難易度別演習（5問）、複数店舗経営ダッシュボードの完全自力ビルド |
+| **01:55 - 02:00** | 5分 | **まとめ** | 本日の総括、次回からの「地理空間情報（GIS）編」への架け橋 |
+
+---
+## 6.1 ダッシュボードの画面設計：サイドバーとカラム分割 (約20分)
+
+優れたデータダッシュボードとは、**「見たい情報（KPIやグラフ）が1つの画面にスッキリ整理され、直感的に操作できる画面」**を指します。
+Streamlitには、HTMLやCSSの知識がなくても、コード数行でプロ級のレイアウトが作れる強力な機能が標準装備されています。
+
+### 6.1.1 操作盤は左側に格納する：`st.sidebar`
+前回のアプリでは、スライダーやセレクトボックスを画面中央に配置したため、増えてくると縦に長くなり、データやグラフが下に追いやられてしまいました。
+これを解決するのが **サイドバー（`st.sidebar`）** です。
+
+通常のコマンドの頭に、ドット（`.`）を挟んで **`st.sidebar.〇〇`** と書くだけで、画面の左端にグレーのオシャレな「折りたたみ式の操作サイドバー」が自動生成されます。
+
+```python
+# 通常の配置（画面中央に表示される）
+selected_shop = st.selectbox("店舗名:", ["江古田店", "白山店"])
+
+# サイドバーへの配置（画面の左端に格納される！）
+selected_shop = st.sidebar.selectbox("分析する店舗を選択してください:", ["江古田店", "白山店"])
+```
+
+### 6.1.2 指標やグラフを横に並べる：`st.columns()`
+Streamlitは標準ではパーツを「上から下へ縦一列」にしか並べられません。しかし、売上の金額や客数のような **主要指標（KPI: Key Performance Indicator）** は、横並びで一目で確認できるようにしたいですよね。
+
+これを実現するのが **`st.columns(個数)`** です。この関数を使うと、画面の幅を縦に等分割（カラム化）して、パーツを横並びに配置できます。
+
+**【ダッシュボードの理想的なレイアウト（アスキーアート）】**
+```text
+  ┌────────────────────────────────────────────────────────┐
+  │  [ ☕ 武蔵カフェ運営ダッシュボード ]                     │ 💻 画面中央（メイン領域）
+  ├──────────────┬─────────────────────────────────────────┤
+  │ ⚙️ 操作盤   │  [ KPI 1: 総売上 ]   [ KPI 2: 来客数 ]     │ ・ st.columns で横並び配置
+  │ (sidebar)    │  1,200,000 円        2,500 人           │
+  │              ├─────────────────────────────────────────┤
+  │ ・店舗を選ぶ │  [ 📈 リアルタイム売上推移グラフ ]      │ ・ st.pyplot で
+  │ ・日付を選ぶ │                                         │   動的なグラフを描画
+  │              │    ───○───────○──                      │
+  └──────────────┴─────────────────────────────────────────┘
+```
+
+#### Columnsの基本文法（アンパッキングと with 構文）
+`st.columns(3)` を実行すると、3つの「カラムオブジェクト」がリスト形式で返ってきます。これをPythonの変数展開（アンパッキング）を使って受け取り、`with` 構文を用いて「どのカラムに何を表示するか」を指定します。
+
+*   ※このコードセルを実行して、Colab上に `app.py` を書き出してみましょう。
+```python
+%%writefile app.py
+import streamlit as st
+
+# 1. サイドバーの設定（ st.sidebar.〇〇 と書くのがポイント！）
+st.sidebar.title("⚙️ 操作メニュー")
+st.sidebar.write("分析の設定をここで変更します。")
+selected_branch = st.sidebar.selectbox("店舗を選択してください:", ["江古田店", "白山店", "池袋店"])
+
+# 2. メイン画面の設定
+st.title("📊 武蔵カフェ 経営分析ポータル")
+st.write(f"現在、**{selected_branch}** の最新営業データを表示しています。")
+
+# 3. 画面を横に3等分（3つのカラムを作成）
+col1, col2, col3 = st.columns(3)
+
+# with カラム名: を使うことで、それぞれの枠の中に部品を流し込みます！
+with col1:
+    # st.metric は、ラベル・数値・変化量を美しく表示する専用部品です
+    st.metric(label="期間内の総売上", value="354,000 円", delta="+12,000円")
+with col2:
+    st.metric(label="期間内の総客数", value="720 人", delta="+45人")
+with col3:
+    st.metric(label="平均客単価", value="491 円", delta="-15円", delta_color="inverse") # delta_color="inverse"でマイナスを青に（経費削減等の評価用）
+```
+
+*   ※前回導入した起動コマンドをColabの別のセルで実行し、ブラウザでレイアウトを確認してみましょう。
+```bash
+# （準備：もし前回の実行でポートが塞がっている場合は、一度リセットします）
+!pkill streamlit
+!pkill lt
+
+# あなたのColab環境のIPアドレス（パスワード）を表示します
+!wget -qO- ipv4.icanhazip.com
+
+# アプリをバックグラウンドで起動
+!streamlit run app.py &>/dev/null &
+!npx localtunnel --port 8501
+```
+
+---
+## 6.2 Pandas ✕ UI：連動データのフィルタリング (約20分)
+
+画面のレイアウトが整ったら、次はいよいよ **「データとUIのガッチャンコ（連動）」** に挑みます！
+「ドロップダウンメニュー（UI）で選ばれた値」を使って、「Pandasのデータフレーム（データ）」を即座に絞り込み、画面に出力します。
+
+### 6.2.1 仕組み：変数の連動
+Streamlitの優れた特徴は、**「ユーザーが操作した瞬間、そのUIが持つ値が変数に自動代入され、コード全体が上から下まで超高速で再実行（Rerun）される」**点にあります。
+
+これを利用して、Pandasの条件抽出の「抽出条件（右辺）」の部分に、**UIの戻り値を代入した変数を指定**してあげます。
+
+```python
+# ----------------------------------------------------
+# 従来のPandas（静的）: 
+# 「白山店」という特定の文字列でしか絞り込めない。
+# ----------------------------------------------------
+df_filtered = df[df["店舗名"] == "白山店"]
+
+# ----------------------------------------------------
+# Streamlitとの連動（動的）:
+# ユーザーが画面上で選んだ文字列が shop という変数に入り、
+# その変数を使ってデータフレームがリアルタイムに絞り込まれる！
+# ----------------------------------------------------
+shop = st.sidebar.selectbox("店舗選択", ["江古田店", "白山店"])
+
+df_filtered = df[df["店舗名"] == shop] # 🌟 運命の連動！
+```
+
+実際にこの動きをするコードを `app.py` に書き出し、ブラウザをリロードしてみましょう。左側の店舗を選ぶと、画面中央のデータフレームの中身と、上のKPIメーターの数字が瞬時に再計算されて変化するはずです！
+
+```python
+%%writefile app.py
+import streamlit as st
+import pandas as pd
+
+# 1. 模擬の売上データフレームを作成（本当はCSVを読み込みますが、まずはコード内でダミー作成）
+df_sales = pd.DataFrame({
+    "日付": ["7/1", "7/1", "7/2", "7/2", "7/3", "7/3", "7/4", "7/4"],
+    "店舗名": ["江古田店", "白山店", "江古田店", "白山店", "江古田店", "白山店", "江古田店", "白山店"],
+    "売上額 (円)": [120000, 80000, 150000, 95000, 110000, 75000, 130000, 85000],
+    "来客数 (人)": [240, 180, 300, 210, 220, 160, 260, 170]
+})
+
+st.sidebar.title("⚙️ 操作メニュー")
+# ユーザーが店舗を選ぶ（選んだ文字が shop 変数に代入される）
+shop = st.sidebar.selectbox("分析対象の店舗を選択してください:", ["江古田店", "白山店"])
+
+st.title("📊 店舗別・リアルタイム売上ダッシュボード")
+st.write(f"現在、**{shop}** の抽出データを営業分析しています。")
+
+# 🌟 フィルタリング処理（選ばれた shop に応じて Pandas が瞬時にスライス！）
+df_filtered = df_sales[df_sales["店舗名"] == shop]
+
+# 2. 画面を2分割して、絞り込まれたデータの統計量を表示
+col1, col2 = st.columns(2)
+with col1:
+    total_sales = df_filtered["売上額 (円)"].sum()
+    st.metric(label="期間内の総売上額", value=f"{total_sales:,} 円") # :, で3桁カンマ区切り
+with col2:
+    total_customers = df_filtered["来客数 (人)"].sum()
+    st.metric(label="期間内の総来客数", value=f"{total_customers:,} 人")
+
+# 3. 画面の下部に、絞り込まれた表そのものを美しく表示
+st.subheader(f"📋 {shop} の生データ一覧")
+st.dataframe(df_filtered) # st.dataframe はスクロール可能なエクセル風の表を表示します
+```
+
+---
+## 6.3 グラフ ✕ UI ✕ アップローダー：リアルタイム可視化と汎用ツール化 (約25分)
+
+データとKPIメーターの連動ができたら、次はビジュアル（グラフ）の連動、そして「手持ちのデータをその場で放り込んで分析できるアップローダー機能」を搭載しましょう。
+
+### 6.3.1 リアルタイムグラフの描画（Matplotlibの埋め込み）
+第4回で学んだMatplotlibによるグラフ作成コードを、Streamlitに埋め込むのは非常に簡単です。
+普段、グラフを描く際に作成している `fig`（Figureオブジェクト）を、最後に **`st.pyplot(fig)`** というコマンドに渡すだけで、Web画面上に美しい高解像度のグラフがリアルタイムにプロットされます。
+
+```python
+# （グラフ連動のイメージ）
+# 1. Pandasで絞り込んだデータを使って、いつも通りMatplotlibでグラフを描く
+fig, ax = plt.subplots()
+ax.plot(df_filtered["日付"], df_filtered["売上額 (円)"], marker="o")
+
+# 2. 最後に st.pyplot() にそのグラフを渡すだけで、Webに自動で埋め込まれる！
+st.pyplot(fig)
+```
+
+### 6.3.2 📁 究極の汎用化：`st.file_uploader`
+ここまでは、プログラムコードの中に直接売上データを書き込んでいました。
+しかし、本物のデータ分析アプリなら、「ユーザーが自分で持っている店舗の売上CSVファイルをブラウザにドラッグ＆ドロップしたら、自動でその場で集計してグラフ化してくれる」ようにしたいですよね。
+
+Streamlitを使えば、ファイルを読み込むためのカッコいいアップローダー画面を、わずか1行で設置できます！
+
+```python
+# ファイルアップローダーを画面に設置
+uploaded_file = st.file_uploader("ここに店舗売上のCSVファイルをドラッグ＆ドロップしてください", type="csv")
+
+if uploaded_file is not None:
+    # アップロードされたファイルを、Pandasで即座に読み込み可能！
+    df_user = pd.read_csv(uploaded_file)
+    st.success("ファイルの読み込みに成功しました！")
+    st.dataframe(df_user.head(3))
+```
+
+それでは、これらを統合した **「売上グラフ連動＋全自動CSV読み込み」の完全なプログラム** を `app.py` に書き出してみましょう。
+
+*   ※このコードセルを実行してブラウザの動作を確認してください。
+```python
+%%writefile app.py
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+import japanize_matplotlib # 日本語文字化け防止用ライブラリ
+
+# タイトル
+st.title("📁 汎用店舗売上分析ダッシュボード")
+st.write("お手持ちの売上CSVファイルをアップロードすると、自動でKPIメーターと折れ線グラフを生成します。")
+
+# 1. ファイルアップローダーの設置（CSVファイルのみを受け取ります）
+uploaded_file = st.file_uploader("売上CSVファイルをアップロードしてください", type="csv")
+
+# 2. もしファイルがアップロードされたら（Noneではない場合）
+if uploaded_file is not None:
+    # アップロードされたバイトデータを直接Pandasに読み込ませます！
+    df = pd.read_csv(uploaded_file)
+    st.success("🎉 ファイルの展開に成功しました！データを分析します。")
+    
+    # 読み込んだデータの店舗一覧を取得して、サイドバーの選択肢にする
+    shop_list = df["店舗名"].unique()
+    selected_shop = st.sidebar.selectbox("分析対象の店舗を選択:", shop_list)
+    
+    # 選ばれた店舗でデータをフィルタリング
+    df_filtered = df[df["店舗名"] == selected_shop]
+    
+    # メイン画面にKPIを表示
+    st.subheader(f"🏠 {selected_shop} の重要指標")
+    col1, col2 = st.columns(2)
+    with col1:
+        total_sales = df_filtered["売上額 (円)"].sum()
+        st.metric(label="総売上額", value=f"{total_sales:,} 円")
+    with col2:
+        total_customers = df_filtered["来客数 (人)"].sum()
+        st.metric(label="総客数", value=f"{total_customers:,} 人")
+        
+    # メイン画面に折れ線グラフを描画
+    st.subheader("📈 日次売上推移グラフ")
+    
+    # いつも通りのMatplotlibコード
+    fig, ax = plt.subplots(figsize=(8, 4))
+    ax.plot(df_filtered["日付"], df_filtered["売上額 (円)"], marker="o", color="royalblue", linewidth=2)
+    ax.set_title(f"{selected_shop} 売上推移", fontsize=14)
+    ax.set_xlabel("日付")
+    ax.set_ylabel("売上額（円）")
+    ax.grid(True, linestyle=":")
+    
+    # 🌟 グラフをWeb画面へ埋め込む
+    st.pyplot(fig)
+    
+    # データの詳細表
+    st.subheader("📋 抽出データ詳細")
+    st.dataframe(df_filtered)
+
+else:
+    # まだファイルがアップロードされていない場合のアドバイス表示
+    st.info("👆 上のアップローダーエリアにCSVファイルをドロップしてください。")
+    st.write("※テスト用の模擬データが必要な場合は、以下のダミーCSVデータをメモ帳などにコピペして `dummy_sales.csv` という名前で保存して使ってみてくださいね。")
+    
+    # ダミーCSVのテキストを表示
+    st.code(\"\"\"日付,店舗名,売上額 (円),来客数 (人)
+7/1,江古田店,120000,240
+7/1,白山店,80000,180
+7/2,江古田店,150000,300
+7/2,白山店,95000,210
+7/3,江古田店,110000,220
+7/3,白山店,75000,160
+\"\"\", language=\"csv\")
+```
+
+---
+## 📝 第6回 練習問題（理論・挙動確認用：5問）
+
+本講義で学んだダッシュボード構築のルールや、StreamlitのデータとUIの連動ロジックについて復習しましょう。頭の中で答えを決めてから、クリックして解説を確認してくださいね。
+
+### 練習問題 1: `st.sidebar` の利点と記述ルール
+スライダーやセレクトボックスを、画面中央ではなく「サイドバー（画面左側の専用枠）」に表示させることのUI（デザイン）上の利点と、それを実現するためのPythonコードの最も一般的な記述ルールを答えてください。
+
+<details>
+<summary>👉 練習問題 1 の解答と解説を見る</summary>
+
+*   **UI上の利点**: 入力パーツ（操作盤）を左端にスッキリまとめることで、画面中央（メイン領域）に表示させたい「本番の売上データフレーム」や「巨大な売上グラフ」などの邪魔をせず、広い画面スペースを有効に活用できるため。
+*   **記述ルール**: 通常の Streamlit コマンド（例：`st.selectbox()` や `st.slider()`）の頭に、ドットを挟んで **`st.sidebar.selectbox()`** や **`st.sidebar.slider()`** のように `.sidebar.` を書き添えて呼び出します。
+
+</details>
+
+---
+
+### 練習問題 2: `st.columns()` の戻り値と `with` 構文
+画面を横方向に3分割して、3つの異なるデータを並列（横並び）で表示したいです。
+1. `st.columns(3)` を実行したときに返ってくる「戻り値」の正体（データ型）は何でしょうか？
+2. 返ってきた枠の中に、それぞれの数値を流し込む（表示させる）ために用いる、Pythonの構文を答えてください。
+
+<details>
+<summary>👉 練習問題 2 の解答と解説を見る</summary>
+
+*   **正解**:
+    1.  **戻り値の正体**: 3つの「カラム（列のコンテナ）オブジェクト」が格納された **Pythonのリスト（List）**。
+    2.  **用いる構文**: **`with` 構文**（例：`with col1:`）
+*   **解説**:
+    *   `col1, col2, col3 = st.columns(3)` のように、アンパッキング（複数変数への展開代入）でリストから各列を個別の変数として取り出します。
+    *   その後、`with col1:` のように記述してインデント（字下げ）を下げた中に `st.write()` や `st.metric()` を書くことで、その特定の列の中にパーツを配置することができます。
+
+</details>
+
+---
+
+### 練習問題 3: `st.metric()` の仕様と表現力
+主要指標を美しく表示する `st.metric(label, value, delta)` コマンドですが、
+1. 引数 `label` と `value` には、それぞれどのような値を指定しますか？
+2. 引数 `delta` を指定すると、画面上で数値の右側にどのような追加情報がビジュアル表示されますか？
+
+<details>
+<summary>👉 練習問題 3 の解答と解説を見る</summary>
+
+*   **正解**:
+    1.  **`label`**: 「前月の総売上」「現在の客単価」といった指標の名前（タイトル文字列）。
+        **`value`**: 「1,540,000円」や「240人」といった、最も目立たせて大きく表示したい本番の数値（または文字列）。
+    2.  **`delta` の役割**: 前日比や前月比、前年比などの「差分（変化量）」。指定すると、自動的に数値の右隣に **「▲（プラス：緑色の矢印）」** や **「▼（マイナス：赤色の矢印）」** がオシャレなカラー付きで自動描画されます。
+*   **解説**:
+    *   データの増減を一瞬で把握できるため、経営者用の役員資料ダッシュボードなどでは絶対に欠かせないStreamlitの看板ビジュアル部品です。
+
+</details>
+
+---
+
+### 練習問題 4: `st.file_uploader()` と Pandas の連携
+ユーザーがブラウザ上でドラッグ＆ドロップしたCSVファイルを受け取るために、`uploaded_file = st.file_uploader("アップロード", type="csv")` と記述しました。
+1. ファイルが正常にアップロードされた場合、変数 `uploaded_file` にはどのような型のオブジェクトが入りますか？（Pythonの通常のファイルパスを表す「ただのファイル名の文字列」が入るのでしょうか？）
+2. この受け取った `uploaded_file` を、Pandasでデータフレームとして読み込ませるためのコードを記述してください。
+
+<details>
+<summary>👉 練習問題 4 の解答と解説を見る</summary>
+
+*   **正解**:
+    1.  **オブジェクトの正体**: ファイルのパス名（文字列）ではなく、アップロードされたファイルの中身（バイナリデータ）が直接格納された **「バッファオブジェクト（BytesIO型などの特殊なファイル風オブジェクト）」** が入ります。
+    2.  **Pandasでの読み込みコード**:
+        ```python
+        df = pd.read_csv(uploaded_file)
+        ```
+*   **解説**:
+    *   Pandasの `pd.read_csv()` は、パソコンの中の「ファイルパス文字列」だけでなく、この「ファイル風オブジェクト（BytesIO）」もそのまま直接受け取って読み込むことができる非常に賢い仕様になっています。そのため、1行記述するだけで、アップロードされたWeb上のデータを即座に表に展開できます。
+
+</details>
+
+---
+
+### 練習問題 5: 操作のたびに起きる「Rerun（再実行）」と st.button の罠（理論・最重要）
+Streamlitは、スライダーを動かしたりドロップダウンを選んだりするたびに、裏側で「Pythonコードが1行目から最後まで全部自動で再実行（Rerun）される」という仕組みを持っています。
+
+このとき、**「st.button('計算実行') をクリックした中の処理で、さらにセレクトボックスを操作すると、さっきクリックして実行したはずの計算結果が画面から一瞬で消えてしまう」**というバグが初心者の間で100%発生します。
+なぜ計算結果が消えてしまうのか、再実行（Rerun）時の「ボタンの状態の判定」に触れながら、その理由を説明してください。
+
+<details>
+<summary>👉 練習問題 5 の解答と解説を見る</summary>
+
+*   **正解**:
+    *   ユーザーがボタンをクリックした「その瞬間」の実行時のみ、`st.button` の判定は `True` になります。
+    *   しかし、その後、ユーザーが別のセレクトボックスを操作すると、Streamlitは再びコードを1行目から実行し直します（Rerun）。
+    *   この再実行の際、「ボタンはたった今クリックされたわけではない（別の場所が操作された）」と判定されるため、`st.button` の戻り値は自動的に **`False`（押されていない状態）** に戻ってしまいます。
+    *   結果として、`if st.button(...):` の中に書いていた計算処理や表示処理が丸ごとスキップされてしまうため、画面から計算結果が一瞬で消え去ってしまうのです。
+*   **解説**:
+    *   これがStreamlitの「再実行システム」の最も重要なクセです。
+    *   ボタンを押した結果をずっと残したり、複数の操作をまたいでデータを保持したい場合は、次回以降で学ぶ「状態保持（`st.session_state`）」というプロの技術を使う必要があります。
+
+</details>
+
+---
+## 💻 総合演習課題（難易度別：5問）
+
+さあ、ここからはあなたがデータ分析コンサルタントとして、カフェや企業の売上状況を分析するダッシュボードを自力で開発する番です！
+これまでに学んだ「Pandas」「Matplotlib」「Streamlit」をすべて合体させ、実際に動くアプリを完成させましょう。
+
+どうしてもエラーが出たら、セルの `%%writefile app.py` を上書き実行して、ブラウザ画面の「Rerun」または「Always rerun」を押し、コードの変化を確認しながら試行錯誤してくださいね！
+
+---
+
+### 演習 1: サイドバーでのスライダーの活用とリアルタイム割引シミュレーション（難易度：易）
+サイドバーに「割引率」を調整するスライダーを配置し、メイン画面のメニュー価格がその割引率に応じてリアルタイムにディスカウントされるシミュレーターを作成してください。
+
+```python
+# ※このセルにコードを書き込んで、Colabで実行してください。
+%%writefile app.py
+import streamlit as st
+
+st.sidebar.title("⚙️ シミュレーション設定")
+
+# TODO: 1. サイドバーに st.sidebar.slider を使って、
+#          「割引率(%)」（最小値: 0、最大値: 50、初期値: 10、ステップ: 5）のスライダーを配置し、
+#          変数 discount_rate に代入してください。
+discount_rate = 
+
+st.title("☕ カフェ割引お会計シミュレーター")
+st.write("サイドバーのスライダーを動かすと、リアルタイムで割引後の価格が計算されます。")
+
+base_price = 500 # コーヒーの基本価格（500円）
+
+# TODO: 2. 基本価格から、スライダーで設定された discount_rate(%) 分を割り引いた
+#          「割引後価格（整数キャスト：int）」を計算してください。
+discounted_price = 
+
+st.subheader("📋 お見積り結果")
+st.write(f"コーヒーの基本価格: **{base_price} 円**")
+st.write(f"設定された割引率: **{discount_rate} %**")
+st.write(f"🎉 割引後のご提供価格: **{discounted_price} 円**")
+```
+
+---
+
+### 演習 2: Pandasデータのリアルタイム条件抽出と KPI メーター連動（難易度：易）
+メニューデータフレームから、ユーザーがセレクトボックスで選択した「カテゴリ」の商品だけをPandasで抽出し、その該当商品の「平均価格」を `st.metric()` で画面に大きく表示するアプリを完成させてください。
+
+```python
+# ※このセルにコードを書き込んで、Colabで実行してください。
+%%writefile app.py
+import streamlit as st
+import pandas as pd
+
+# メニュー表データ
+df_menu = pd.DataFrame({
+    "商品名": ["ブレンドコーヒー", "カフェラテ", "チョコケーキ", "アップルパイ", "タマゴサンド", "カツサンド"],
+    "カテゴリ": ["ドリンク", "ドリンク", "デザート", "デザート", "フード", "フード"],
+    "価格": [400, 450, 500, 480, 550, 700]
+})
+
+st.title("🍔 メニュー価格リアルタイム分析ツール")
+st.write("ドロップダウンで選択したカテゴリのデータ抽出と、平均価格を自動計算します。")
+
+# TODO: 1. セレクトボックス（st.selectbox）を使って「ドリンク」「デザート」「フード」から
+#          カテゴリを選択できるようにし、変数 selected_category に代入してください。
+selected_category = 
+
+# TODO: 2. 選択された selected_category に合致する行だけを df_menu から抽出し、
+#          df_filtered に代入してください。
+df_filtered = 
+
+# TODO: 3. 抽出された df_filtered の「価格」列の【平均値（mean）】を算出し、
+#          変数 mean_price に代入してください。
+mean_price = 
+
+# 画面への表示処理
+st.subheader(f"📋 {selected_category} の商品一覧")
+st.dataframe(df_filtered)
+
+# KPIメーターの表示
+st.subheader("📊 統計アナリティクス")
+st.metric(label=f"{selected_category} カテゴリの平均価格", value=f"{mean_price:.0f} 円")
+```
+
+---
+
+### 演習 3: 動的目標ライン棒グラフ（Matplotlib ✕ st.slider の連動）（難易度：中）
+ユーザーがスライダーで「売上目標（万円）」を動かすと、その目標金額を達成した曜日だけの緑色の棒グラフにリアルタイムで描き直され、かつ「目標ライン（赤い点線）」がグラフ上を上下に移動するビジュアルダッシュボードを作成してください。
+
+```python
+# ※このセルにコードを書き込んで、Colabで実行してください。
+%%writefile app.py
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+import japanize_matplotlib # 日本語文字化け防止
+
+# 曜日別の売上額データ（万円）
+df_sales = pd.DataFrame({
+    "曜日": ["月", "火", "水", "木", "金", "土", "日"],
+    "売上額 (万円)": [45, 52, 48, 60, 75, 110, 120]
+})
+
+st.title("📈 売上目標達成日のリアルタイム可視化")
+st.write("スライダーを動かして目標ラインを設定すると、達成した曜日だけがグラフに抽出されます。")
+
+# TODO: 1. スライダー（st.slider）を使って、「目標売上高（万円）」（最小: 40, 最大: 120, 初期値: 60）を
+#          入力できるようにし、変数 target に代入してください。
+target = 
+
+# TODO: 2. 売上額 (万円) が target 以上の曜日データだけを Pandas で抽出し、
+#          df_achieved に代入してください。
+df_achieved = 
+
+st.write(f"📊 目標売上 **{target} 万円** をクリアした曜日の売上実績")
+
+# --- Matplotlib によるグラフ描画 ---
+fig, ax = plt.subplots(figsize=(8, 4))
+# 目標クリアした曜日データのみを棒グラフでプロット
+ax.bar(df_achieved["曜日"], df_achieved["売上額 (万円)"], color="lightgreen", edgecolor="darkgreen")
+
+# グラフ上に「目標ライン（赤い破線）」を水平に1本引く
+ax.axhline(y=target, color="red", linestyle="--", linewidth=2, label=f"目標線 ({target}万円)")
+ax.set_ylim(0, 130) # Y軸の範囲を固定して、グラフがガタガタ動くのを防ぐ
+ax.set_ylabel("売上（万円）")
+ax.legend()
+ax.grid(True, linestyle=":")
+
+# TODO: 3. 作成した fig を Streamlit 画面上に描画する st.pyplot() を記述してください。
+
+```
+
+---
+
+### 演習 4: ドラッグ＆ドロップ型全自動CSVデータテーブル変換器（難易度：中）
+ユーザーがブラウザにアップロードした任意のCSVファイルを読み込み、データの件数、先頭の5行、およびPandasの記述統計（`.describe()`）を自動で算出して展開するデータアナリティクスツールを作成してください。
+
+```python
+# ※このセルにコードを書き込んで、Colabで実行してください。
+%%writefile app.py
+import streamlit as st
+import pandas as pd
+
+st.title("📂 エクセル不要！全自動CSVテーブル解析器 📂")
+st.write("お手持ちのCSVファイルを以下にドラッグ＆ドロップしてください。")
+
+# TODO: 1. st.file_uploader を用いて、「売上データのCSVファイルをアップロードしてください」という
+#          案内メッセージでCSVファイルをアップロードできる枠を設置し、
+#          変数 uploaded_file に代入してください。ファイルタイプは csv に制限してください。
+uploaded_file = 
+
+# TODO: 2. uploaded_file がアップロードされた（Noneではない）場合の、条件分岐(if文)を記述してください。
+if 
+    # TODO: 3. pd.read_csv() を使ってアップロードされたファイルをデータフレーム df として読み込んでください。
+    df = 
+    
+    st.success("🎉 CSVデータを正常に展開・デコードしました！")
+    
+    # 画面に基本情報を表示
+    st.write(f"データの総行数: **{len(df)} 行**  /  総列数: **{len(df.columns)} 列**")
+    
+    st.subheader("📋 データの先頭5行")
+    st.dataframe(df.head(5))
+    
+    # TODO: 4. df.describe() を使って、数値データの要約統計量（平均や四分位数）を計算し、
+    #          st.subheader(\"📊 数値データの要約統計量\") の下に st.dataframe() で表示してください。
+    st.subheader("📊 数値データの要約統計量")
+    
+```
+
+---
+
+### 演習 5: 【前半戦・集大成】武蔵カフェ・複数店舗経営売上分析ダッシュボードの構築（難易度：難）
+これまでに学んだ「サイドバー」「Columns分割」「Pandas抽出」「Matplotlib折れ線グラフ」のすべての力を結集させ、実務の店舗オペレーションでもそのまま役立てることができる本格的な店舗経営ダッシュボードを自力で組み上げてください。
+
+```python
+# ※このセルにコードを書き込んで、Colabで実行してください。
+%%writefile app.py
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+import japanize_matplotlib # 日本語文字化け防止
+
+# (準備) 2つの店舗の1か月間の売上データを読み込みます
+# ※ネットワークがオフラインでも動くように、バックアップ用データフレームを構築しています。
+try:
+    url = "https://raw.githubusercontent.com/homata/musashiuniv/main/data/cafe_monthly_sales.csv"
+    df = pd.read_csv(url)
+except Exception:
+    # 接続に失敗した場合は、こちらのローカルデータが自動使用されます
+    df = pd.DataFrame({
+        "日付": ["7/1", "7/2", "7/3", "7/4", "7/5", "7/1", "7/2", "7/3", "7/4", "7/5"],
+        "店舗名": ["江古田店", "江古田店", "江古田店", "江古田店", "江古田店", "白山店", "白山店", "白山店", "白山店", "白山店"],
+        "売上額 (円)": [45000, 52000, 48000, 60000, 75000, 38000, 41000, 39000, 45000, 50000],
+        "客数 (人)": [90, 110, 95, 120, 150, 85, 90, 80, 100, 110]
+    })
+
+# ==========================================
+# 1. サイドバー（操作パネル）の構築
+# ==========================================
+st.sidebar.title("⚙️ ダッシュボード設定")
+st.sidebar.write("分析したい店舗を切り替えてください。")
+
+# TODO: ① サイドバーのセレクトボックス（st.sidebar.selectbox）を使って「店舗名」を選べるようにし、
+#          変数 shop に代入してください。選択肢は 「江古田店」 と 「白山店」 です。
+shop = 
+
+# ==========================================
+# 2. データのリアルタイム連動フィルタリング
+# ==========================================
+# TODO: ② 選ばれた店舗名（shop）の行だけをデータフレーム df から抽出し、
+#          df_filtered に代入してください。
+df_filtered = 
+
+# ==========================================
+# 3. メイン画面の構築
+# ==========================================
+st.title("☕ Musashi Cafe Business Dashboard 📊")
+st.write(f"現在、**{shop}** の営業分析ダッシュボードをリアルタイムに集計・表示しています。")
+
+# --- Columnsによる主要指標（KPI）の横並び表示 ---
+col1, col2, col3 = st.columns(3)
+
+# TODO: ③ フィルタリング後のデータ（df_filtered）から統計量を計算し、
+#          3つのカラムに st.metric() でそれぞれ表示してください。
+# - col1 (期間内の総売上額の合計値): st.metric(label="期間内 総売上", value=f"{total_sales:,} 円")
+# - col2 (期間内の総来客数の合計値): st.metric(label="期間内 総来客数", value=f"{total_customers:,} 人")
+# - col3 (平均客単価 = 総売上額 ÷ 総来客数 [整数 int にキャスト]): st.metric(label="平均客単価", value=f"{avg_spend:,} 円")
+
+with col1:
+    total_sales = 
+    st.metric(label="期間内 総売上", value=f"{total_sales:,} 円")
+
+with col2:
+    total_customers = 
+    st.metric(label="期間内 総来客数", value=f"{total_customers:,} 人")
+
+with col3:
+    avg_spend = 
+    st.metric(label="平均客単価", value=f"{avg_spend:,} 円")
+
+# ==========================================
+# 4. リアルタイム売上推移グラフの描画
+# ==========================================
+st.subheader("📈 日次売上推移グラフ")
+
+# TODO: ④ df_filtered を用いて、X軸に「日付」、Y軸に「売上額 (円)」をプロットした
+#          折れ線グラフ（Matplotlib）を描画してください。
+fig, ax = plt.subplots(figsize=(8, 3.5))
+ax.plot(          ,           , marker="o", color="tomato", linewidth=2.5, label="日次売上")
+ax.set_xlabel("日付")
+ax.set_ylabel("売上額（円）")
+ax.grid(True, linestyle=":")
+ax.legend()
+
+# TODO: ⑤ 作成したグラフオブジェクト fig を Streamlit 画面に埋め込むコマンドを記述してください。
+
+
+# 最下部にデータの詳細表を表示
+st.subheader("📋 分析データ詳細表")
+st.dataframe(df_filtered)
+```
+
+---
+## 💡 総合演習課題の解答例
+
+（ついに全てがカチッと連動する、実務レベルのダッシュボードを自力で組み上げることができましたね！答え合わせをして、なぜそのコードで動くのか、論理を1行ずつじっくり復習しましょう。）
+
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+
+### 演習 1 の解答
+```python
+%%writefile app.py
+import streamlit as st
+
+st.sidebar.title("⚙️ シミュレーション設定")
+discount_rate = st.sidebar.slider("割引率(%)を設定してください:", 0, 50, 10, 5)
+
+st.title("☕ カフェ割引お会計シミュレーター")
+st.write("サイドバーのスライダーを動かすと、リアルタイムで割引後の価格が計算されます。")
+
+base_price = 500 # コーヒーの基本価格（500円）
+# 割引後の価格を計算
+discounted_price = int(base_price * (1 - discount_rate / 100))
+
+st.subheader("📋 お見積り結果")
+st.write(f"コーヒーの基本価格: **{base_price} 円**")
+st.write(f"設定された割引率: **{discount_rate} %**")
+st.write(f"🎉 割引後のご提供価格: **{discounted_price} 円**")
+```
+
+### 演習 2 の解答
+```python
+%%writefile app.py
+import streamlit as st
+import pandas as pd
+
+df_menu = pd.DataFrame({
+    "商品名": ["ブレンドコーヒー", "カフェラテ", "チョコケーキ", "アップルパイ", "タマゴサンド", "カツサンド"],
+    "カテゴリ": ["ドリンク", "ドリンク", "デザート", "デザート", "フード", "フード"],
+    "価格": [400, 450, 500, 480, 550, 700]
+})
+
+st.title("🍔 メニュー価格リアルタイム分析ツール")
+selected_category = st.selectbox("カテゴリを選択してください:", ["ドリンク", "デザート", "フード"])
+
+df_filtered = df_menu[df_menu["カテゴリ"] == selected_category]
+mean_price = df_filtered["価格"].mean()
+
+st.subheader(f"📋 {selected_category} の商品一覧")
+st.dataframe(df_filtered)
+
+st.subheader("📊 統計アナリティクス")
+st.metric(label=f"{selected_category} カテゴリの平均価格", value=f"{mean_price:.0f} 円")
+```
+
+### 演習 3 の解答
+```python
+%%writefile app.py
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+df_sales = pd.DataFrame({
+    "曜日": ["月", "火", "水", "木", "金", "土", "日"],
+    "売上額 (万円)": [45, 52, 48, 60, 75, 110, 120]
+})
+
+st.title("📈 売上目標達成日のリアルタイム可視化")
+target = st.slider("目標売上高を設定してください（万円）:", 40, 120, 60)
+
+df_achieved = df_sales[df_sales["売上額 (万円)"] >= target]
+st.write(f"📊 目標売上 **{target} 万円** をクリアした曜日の売上実績")
+
+fig, ax = plt.subplots(figsize=(8, 4))
+ax.bar(df_achieved["曜日"], df_achieved["売上額 (万円)"], color="lightgreen", edgecolor="darkgreen")
+ax.axhline(y=target, color="red", linestyle="--", linewidth=2, label=f"目標線 ({target}万円)")
+ax.set_ylim(0, 130)
+ax.set_ylabel("売上（万円）")
+ax.legend()
+ax.grid(True, linestyle=":")
+
+st.pyplot(fig) # グラフの描画
+```
+
+### 演習 4 の解答
+```python
+%%writefile app.py
+import streamlit as st
+import pandas as pd
+
+st.title("📂 エクセル不要！全自動CSVテーブル解析器 📂")
+uploaded_file = st.file_uploader("売上データのCSVファイルをアップロードしてください", type="csv")
+
+if uploaded_file is not None:
+    df = pd.read_csv(uploaded_file)
+    st.success("🎉 CSVデータを正常に展開・デコードしました！")
+    
+    st.write(f"データの総行数: **{len(df)} 行**  /  総列数: **{len(df.columns)} 列**")
+    
+    st.subheader("📋 データの先頭5行")
+    st.dataframe(df.head(5))
+    
+    st.subheader("📊 数値データの要約統計量")
+    st.dataframe(df.describe())
+```
+
+### 演習 5 の解答
+```python
+%%writefile app.py
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+import japanize_matplotlib
+
+try:
+    url = "https://raw.githubusercontent.com/homata/musashiuniv/main/data/cafe_monthly_sales.csv"
+    df = pd.read_csv(url)
+except Exception:
+    df = pd.DataFrame({
+        "日付": ["7/1", "7/2", "7/3", "7/4", "7/5", "7/1", "7/2", "7/3", "7/4", "7/5"],
+        "店舗名": ["江古田店", "江古田店", "江古田店", "江古田店", "江古田店", "白山店", "白山店", "白山店", "白山店", "白山店"],
+        "売上額 (円)": [45000, 52000, 48000, 60000, 75000, 38000, 41000, 39000, 45000, 50000],
+        "客数 (人)": [90, 110, 95, 120, 150, 85, 90, 80, 100, 110]
+    })
+
+# 1. サイドバー設定
+st.sidebar.title("⚙️ ダッシュボード設定")
+shop = st.sidebar.selectbox("分析する店舗を選択してください:", ["江古田店", "白山店"])
+
+# 2. フィルタリング
+df_filtered = df[df["店舗名"] == shop]
+
+# 3. メイン画面タイトル
+st.title("☕ Musashi Cafe Business Dashboard 📊")
+st.write(f"現在、**{shop}** の営業分析ダッシュボードをリアルタイムに集計・表示しています。")
+
+# Columns
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    total_sales = df_filtered["売上額 (円)"].sum()
+    st.metric(label="期間内 総売上", value=f"{total_sales:,} 円")
+
+with col2:
+    total_customers = df_filtered["客数 (人)"].sum()
+    st.metric(label="期間内 総来客数", value=f"{total_customers:,} 人")
+
+with col3:
+    avg_spend = int(total_sales / total_customers)
+    st.metric(label="平均客単価", value=f"{avg_spend:,} 円")
+
+# 4. 折れ線グラフ
+st.subheader("📈 日次売上推移グラフ")
+fig, ax = plt.subplots(figsize=(8, 3.5))
+ax.plot(df_filtered["日付"], df_filtered["売上額 (円)"], marker="o", color="tomato", linewidth=2.5, label="日次売上")
+ax.set_xlabel("日付")
+ax.set_ylabel("売上額（円）")
+ax.grid(True, linestyle=":")
+ax.legend()
+
+# グラフの埋め込み
+st.pyplot(fig)
+
+# 詳細表
+st.subheader("📋 分析データ詳細表")
+st.dataframe(df_filtered)
+```
+
+</details>
+
+---
+## 📚 第6回のまとめと、次回の「地理空間情報」へ向けて (約5分)
+
+お疲れ様でした！これまでに学んできたすべてのデータお掃除（Pandas）と可視化技術（Matplotlib）、そして前回のWeb技術（Streamlit）が完全に一体化し、動的に動く「経営データダッシュボード」が完成しました。
+
+### ✨ 今日の重要キーワード
+*   **st.sidebar**：画面中央を広く使うために、操作ドロップダウンなどのウィジェットを画面の左端にスッキリ格納する。
+*   **st.columns**：画面を縦に複数分割し、総売上や来客数などの主要指標（KPI）を横並びに美しく並べる。
+*   **st.metric**：経営指標の「現在の値」と、前日比・前月比などの「変化（delta：矢印）」を自動色付きでオシャレに表示する。
+*   **Pandas ✕ UI連動**：ユーザーが画面で選択した値（変数）を、Pandasの条件抽出の条件式に流し込むことで、瞬時に全データと連動してグラフや集計値が再実行される。
+*   **st.file_uploader**：ドラッグ＆ドロップで任意のCSVファイルを取り込み、データ構造を即座にダッシュボードに反映させる。
+
+---
+## ❓ よくある質問と回答 (FAQ)
+*   **Q. `st.file_uploader` にエクセル（.xlsx）のファイルを投げるとエラーになります。**
+    *   **A.** 非常によくある疑問です！今回のコードは `pd.read_csv()` を使ってCSV（カンマ区切りテキスト）を読み込むように設計しています。エクセルファイルをそのまま読み込ませたい場合は、ライブラリのインストール（`!pip install openpyxl`）を済ませた上で、コード部分を **`pd.read_excel(uploaded_file)`** に変更してあげれば、エクセルファイルもその場でドラッグ＆ドロップして全く同じようにダッシュボードに展開することができますよ！
+*   **Q. 毎回サイドバーを切り替えるたびに画面がリロードされて、グラフが再描画されるのは重くないですか？**
+    *   **A.** その通りです！現在はデータ量が少ないため一瞬で再計算（Rerun）されますが、実務で何百万行もの巨大なデータを扱う場合、毎回上から下までコードを走らせるとアプリの動きが重くなってしまいます。これを解決するために、Streamlitには **`st.cache_data`** という「一度読み込んだ巨大なデータフレームを一時記憶して使い回す、プロ用の高速化おまじない」が用意されています。興味がある方は、ぜひ「Streamlit キャッシュ」で調べてみてくださいね。
+
+---
+## 🗺️ 次回からの新しい冒険：地理空間情報（GIS）の世界へ！
+これまでの第2回〜第6回で、私たちは「オープンデータの取得」「データ前処理」「データ解析（記述統計・相関）」「Webアプリによるダッシュボード化」という、データサイエンティストとしての最強の一連の武器を完全に手にしました。
+
+次回（第7回）からは、この強力な分析力を **「地理空間情報（GIS）」** という現実世界の位置データと合体させていきます。
+緯度・経度を含む店舗データや地域の人口統計データを、このStreamlitの中に「美しく動くデジタルマップ（leafmap / folium）」として埋め込んで、真のエリアマーケティング・防災計画アプリを作ります。
+
+次なるワクワクする冒険へ、一緒に進んでいきましょう。今日もお疲れ様でした！

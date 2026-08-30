@@ -1,0 +1,1406 @@
+<!doctype html>
+<html class="no-js" lang="ja" data-content_root="../../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="第13回 総合演習：データ活用パイプラインの完全連動（200分大講義＆集大成演習）" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="2026/02.programming_advanced_a/markdown/advanced_13_comprehensive_exercises-v3_200min.html" />
+<meta property="og:site_name" content="musashiuniv" />
+<meta property="og:description" content="皆さん、お疲れ様でした！プログラミング応用A（コンピューティング応用G）、ついに最終回（第13回）を迎えました。 基礎クラスから始まり、この応用クラスで皆さんが取り組んできた内容は、プロのデータサイエンティストやシビックテック（市民技術）の第一線、ITベンチャーのエンジニアが現場で毎日格闘している最先端のスキルそのものです。 「Pandasでデータをクレンジングし、記述統計で傾向を見出し、W..." />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image" content="/_images/social_previews/summary_2026_02.programming_advanced_a_markdown_advanced_13_comprehensive_exercises-v3_200min_00d0ca25.png" />
+<meta property="og:image:alt" content="皆さん、お疲れ様でした！プログラミング応用A（コンピューティング応用G）、ついに最終回（第13回）を迎えました。 基礎クラスから始まり、この応用クラスで皆さんが取り組んできた内容は、プロのデータサイエンティストやシビックテック（市民技術）の第一線、ITベンチャーのエンジニアが現場で毎日格闘している最先端のスキルそ..." />
+<meta name="description" content="皆さん、お疲れ様でした！プログラミング応用A（コンピューティング応用G）、ついに最終回（第13回）を迎えました。 基礎クラスから始まり、この応用クラスで皆さんが取り組んできた内容は、プロのデータサイエンティストやシビックテック（市民技術）の第一線、ITベンチャーのエンジニアが現場で毎日格闘している最先端のスキルそのものです。 「Pandasでデータをクレンジングし、記述統計で傾向を見出し、W..." />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" />
+
+    <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
+        <title>第13回 総合演習：データ活用パイプラインの完全連動（200分大講義＆集大成演習） - Pythonプログラミング入門</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=949a1ff5" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/musashiuniv/custom.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">Pythonプログラミング入門</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
+  
+  
+  <span class="sidebar-brand-text">Pythonプログラミング入門</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="検索" name="q" aria-label="検索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../2025/index.html">2025年度</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 2025年度</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/index.html">2025年度 プログラミング基礎A/コンピューティング応用E</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 2025年度 プログラミング基礎A/コンピューティング応用E</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/01_intro.html">Pythonをはじめよう</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/02_computer.html">ノイマン型コンピュータ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/03_history.html">Pythonの歴史</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/20_coding.html">コーディング規約</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/21_module.html">モジュール</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/utokyo_ipp/index.html">Pythonプログラミング入門</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Pythonプログラミング入門</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/utokyo_ipp/00_index.html">1. 演習ページ</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/index.html">(補足資料) Python ゼロからはじめるプログラミング</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of (補足資料) Python ゼロからはじめるプログラミング</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/00_index.html">1. Pythonプログラミング</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/01_Python%E3%81%AB%E8%A7%A6%E3%82%8C%E3%82%8B.html">2. 第1章 Pythonに触れる</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/02_Python%E3%81%AE%E5%9F%BA%E6%9C%AC.html">3. 第2章 Pythonの基本</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/03_%E6%9D%A1%E4%BB%B6%E5%88%86%E5%B2%90%E3%81%A8%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%97.html">4. 第3章 条件分岐と繰り返し</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/04_%E7%B5%84%E3%81%BF%E8%BE%BC%E3%81%BF%E5%9E%8B%E3%81%A8%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88.html">5. 第4章 組み込み型とオブジェクト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/05_%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E5%AE%9A%E7%BE%A9%E9%96%A2%E6%95%B0.html">6. 第5章 ユーザ定義関数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/06_%E3%82%AF%E3%83%A9%E3%82%B9%E3%81%AE%E5%9F%BA%E6%9C%AC.html">7. 第6章 クラスの基本</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/01.programming_basic_a/programming_zero/07_%E7%99%BA%E5%B1%95%E3%81%A8%E5%BF%9C%E7%94%A8.html">8. 第7章 発展と応用</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/index.html">(補助資料)Python Boot Camp Text</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of (補助資料)Python Boot Camp Text</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/index.html">Python Boot Camp テキスト</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Python Boot Camp テキスト</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/1_install.html">1. Pythonをはじめる前に</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/2_intro.html">2. Pythonをはじめよう</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/3_types.html">3. Pythonのデータ型（基本編）</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/4_collections.html">4. Pythonのデータ型（コレクション編）</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/5_module.html">5. ファイル操作とモジュール</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/6_venv.html">6. サードパーティ製パッケージと venv</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/7_scraping.html">7. Web API、スクレイピング</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../2025/01.programming_basic_a/pycamp/textbook/8_nextstep.html">8. 次のステップ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/01.programming_basic_a/99_install.html">参考資料</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/index.html">2025年度 プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of 2025年度 プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/02.programming_advanced_a/01_intro.html">はじめに</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/python_dataanalysis/index.html">Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Pythonデータ分析 実践ハンドブック　実務で使えるデータ加工のテクニック</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/python_dataanalysis/00_index.html">1. 資料</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../2025/02.programming_advanced_a/digital_twin/index.html">デジタルツイン</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/index.html">leafmap</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of leafmap</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/01_intro.html">1. leafmapとは</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/01_intro.html#leadmap">2. leadmapのサイト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/leafmap/01_intro.html#google-colab">3. 演習：Google Colab ファイル</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/index.html">機械学習</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of 機械学習</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/supervised_learning.html">1. 機械学習</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/unsupervised_learning.html">2. 教師なし学習</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../2025/02.programming_advanced_a/machine_learning/f1score.html">3. 分類問題における正解・不正解のパターン</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../index.html">2026年度</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of 2026年度</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../01.programming_basic_a/index.html">プログラミング基礎A/コンピューティング応用E</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle navigation of プログラミング基礎A/コンピューティング応用E</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_01.html">第1回 オリエンテーション・Google Colabの使い方</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_02.html">第2回 コンピューターとプログラミングとは？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_03.html">第3回 Pythonの基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_04.html">第4回 数値演算と文字列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_05.html">第5回 データ構造（数値、文字列、リスト、辞書）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_06.html">第6回 条件分岐、ファイル入出力の基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_07.html">第7回 テスト・デバッグ、コードスタイル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_08.html">第8回 制御フロー（条件分岐、繰り返し、イテレータ、内包表記）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_09.html">第9回 関数と例外処理（オブジェクト、クラス、例外処理）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_10.html">第10回 Pythonのライブラリ・パッケージ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_11.html">第11回 高階関数とpandasライブラリ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_12.html">第12回 Pythonのライブラリ・パッケージ（グラフ可視化）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.programming_basic_a/markdown/basic_13.html">第13回 総合演習</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../index.html">プログラミング応用A/コンピューティング応用G</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of プログラミング応用A/コンピューティング応用G</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="advanced_01.html">第1回 オリエンテーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_02.html">第2回 オープンデータの基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_03.html">第3回 データの種類とデータ加⼯</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_04.html">第4回 データ解析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_05.html">第5回 Webサービスの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_06.html">第6回 Webサービスの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_07.html">第7回 地理空間情報の基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_08.html">第8回 地理空間データの活⽤1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_09.html">第9回 地理空間データの活⽤2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_13.html">第13回 総合演習</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../03.google_colab/index.html">Google Colaboratoryの使い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../04.markdown/index.html">Markdown記法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../05.windows/index.html">Windows 特有の注意点</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../99.references/index.html">ライセンス、参考文献</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle navigation of ライセンス、参考文献</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../99.references/01_basic/basic.html">プログラミング基礎A/コンピューティング応用E [集中] (M1830)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../99.references/02_advanced/advance.html">プログラミング応用A/コンピューティング応用G [集中] (M1850)</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../../_sources/2026/02.programming_advanced_a/markdown/advanced_13_comprehensive_exercises-v3_200min.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>第13回 総合演習：データ活用パイプラインの完全連動（200分大講義＆集大成演習）<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<p>皆さん、お疲れ様でした！プログラミング応用A（コンピューティング応用G）、ついに最終回（第13回）を迎えました。
+基礎クラスから始まり、この応用クラスで皆さんが取り組んできた内容は、プロのデータサイエンティストやシビックテック（市民技術）の第一線、ITベンチャーのエンジニアが現場で毎日格闘している最先端のスキルそのものです。</p>
+<p>「Pandasでデータをクレンジングし、記述統計で傾向を見出し、Webダッシュボード(Streamlit)を立ち上げ、地理空間情報(GIS)としてインタラクティブ地図にマッピングし、AI(scikit-learn)で未来の予測や顧客分類を行い、ChatGPTと呼吸を合わせてスペルミスなく爆速開発する(Vibe Coding)」</p>
+<p>文系出身でプログラミング未経験だった皆さんが、わずか1学期間でこれだけ膨大かつ多様な技術を自分の手で動かし、社会課題やビジネス課題を解く術を身につけたことは、現代のデジタル社会において極めて強固な「武器」となります。ぜひ誇りを持って、この最終回に臨んでください！</p>
+<p>今日の最終講義は、200分（2コマ連続、あるいは集中講義）という大枠をフルに活用し、これまでのバラバラだった12個の点（技術）を1本の頑丈なデータ活用パイプラインへと繋ぎ直す**「超詳細総復習（大講義）」<strong>、授業内での最終確認を兼ねた</strong>「練習問題（5問）」<strong>で構成されています。
+また、講義時間外（宿題、期末レポート、実技試験等）でじっくりと取り組むための、実務直結型の最高峰の</strong>「演習課題（5問）」**を完備しています。</p>
+<p>これまでに作成したすべてのColabノートブック、お守りコード、そしてAIアシスタントを駆使し、最後の開発バイブスを最大に高めていきましょう！</p>
+<hr class="docutils" />
+<section id="id2">
+<h2>🎯 到達目標<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><strong>データ活用パイプライン</strong>（データ加工 ➡ 統計解析 ➡ GIS ➡ AI ➡ Webアプリ）の連動性を体系的・論理的に説明できる。</p></li>
+<li><p><strong>授業内練習問題5問</strong>のクイズを自力で解くことで、座標系変換やAIの過学習、Streamlitの再実行(Rerun)挙動などの理論的本質を完全に体得する。</p></li>
+<li><p><strong>授業外演習課題5問</strong>（100%ダミーデータ自己内包型、教員用採点基準付き）の実装を通じて、実務データのお掃除から重回帰予測、セグメンテーションまでを完結させられる自立した開発能力を証明する。</p></li>
+<li><p>技術の「文法暗記」から脱却し、AIの出力コードをレビューして正しさを検証し、社会を良くするシステムをディレクションする**「市民データサイエンティスト」としての開発マインド**を確立する。</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h2>⏱️ 200分授業の進行スケジュール（タイムテーブル）<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p>リクエストに基づき、学生の集中力を維持しながら深い納得感を提供できるよう、講義と理解度確認（練習問題）で200分を構成しています。実技の「演習課題5問」は、授業後の宿題や期末レポート課題として枠外に切り離しています。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>【前半：データ加工、統計解析、地理空間情報の完全総復習（100分）】
+  00:00 - 00:15 (15分) ：オープニング ＆ プログラミング応用A 全貌技術マップ
+  00:15 - 00:55 (40分) ：【テーマ1＆2】データの高度な加工（Pandas）＆統計解析（記述統計）の核心と実務デバッグ
+  00:55 - 01:35 (40分) ：【テーマ3】地理空間情報（GIS：GeoPandas）とインタラクティブWebマップの重ね合わせ技術
+  01:35 - 01:45 (10分) ：前半の質疑応答 ＆ 10分間の中間小休止
+
+【後半：AI構築、Web実装、バイブコーディング、最終確認（100分）】
+  01:45 - 02:25 (40分) ：【テーマ4】AI・機械学習（scikit-learn：予測と分類）の全手順、評価指標、標準化
+  02:25 - 03:00 (35分) ：【テーマ5】Streamlitによる社会実装 ✕ Vibe Coding（生成AI協働）の審美眼（レビュー戦略）
+  03:00 - 03:25 (25分) ：第13回 授業内確認練習問題（理論5問）の解答＆解説、および自習用演習課題5問の取り組み方説明
+  03:25 - 03:30 (05分) ：クロージング ＆ 市民データサイエンティスト修了授与（マインドセット）
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id4">
+<h2>13.1 全12回の技術マップ（大講義：170分）<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<p>私たちがプログラミング応用A（コンピューティング応用G）で学んできたスキルは、お互いにバラバラなものではなく、**「1つのデータ活用パイプライン」**として完璧に繋がっています。</p>
+<p>本セクションでは、全12回の講義で得た5つのコアテーマ（データ加工、統計、GIS、AI、Web実装）について、現場で即戦力となる理論、コードの核心、そして初学者が必ずつまずく「罠とデバッグ方法」を極めて詳細に総ざらいします。</p>
+<p><strong>【データ活用パイプラインの全体像】</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  [ 📥 データの取得と加工（第2〜3回）]
+    ・オープンデータの収集（Webから直接読込：Shift-JIS対策）
+    ・データの連結(concat)・結合(merge)
+    ・日付データ(datetime)の曜日・月抽出、apply ✕ lambda による複雑な列計算
+            │
+            ▼
+  [ 📊 データ解析・統計（第4回）]
+    ・記述統計（平均値の罠、中央値、データのばらつきを測る標準偏差）
+    ・クロス集計(crosstab)とピボットテーブル(pivot_table)によるセグメント分析
+    ・相関係数(corr)による変数間の関係性の数値化と可視化
+            │
+            ▼
+  [ 🗺️ 地理空間情報（GIS）の分析（第7〜9回）]
+    ・GeoDataFrameの作成、座標系（経緯度 vs メートル単位投影）の変換
+    ・商圏バッファ（.buffer()）、行政区ポリゴンへの空間結合（.sjoin()）
+    ・folium / leafmap による動的Webマップ、条件付き色分けピンのプロット
+            │
+            ▼
+  [ 🤖 AI・機械学習による予測と分類（第10〜11回）]
+    ・学習用とテスト用の分割（過学習の防止）、線形回帰（重回帰）による売上予測
+    ・決定木によるYes/No自動ルール判定、K-meansによる顧客層の自動クラスタリング
+            │
+            ▼
+  [ 🚀 Webアプリとして社会へ提供（第5〜6回、第12回）]
+    ・Streamlitを用いた、UI（サイドバー、スライダー）✕ Pandas ✕ グラフ ✕ AI の完全連動
+    ・Vibe Coding（AIと協働し、完璧な設計図プロンプトから爆速でアプリを自動生成する）
+</pre></div>
+</div>
+<p>実務でデータを使って価値を出す（ビジネス、シビックテックなど）とは、まさにこのパイプラインを上から下まで、自分のアイデアに沿って通すことに他ありません。</p>
+<hr class="docutils" />
+<section id="id5">
+<h3>1. 【テーマ1】 データの取得・高度な加工（第2回〜第3回）: パイプラインの「水源」<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p>データ分析は、分析するための「綺麗に整ったデータ（原油をガソリンにするための精製）」がなければ始まりません。データ加工は全工程の8割以上の時間を占める、最も泥臭くも価値の高いステップです。</p>
+<section id="shift-jis">
+<h4>(1) 文字コード（Shift-JIS）との死闘<a class="headerlink" href="#shift-jis" title="Link to this heading">¶</a></h4>
+<p>日本の官公庁や自治体が公開するオープンデータの多くは、Windows（Microsoft Excel）で作成されており、文字コードが <strong><code class="docutils literal notranslate"><span class="pre">Shift-JIS</span> <span class="pre">(cp932)</span></code></strong> になっています。これをPythonの標準（UTF-8）のまま <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> で読み込もうとすると、100%の確率で以下のエラーが発生します。
+<code class="docutils literal notranslate"><span class="pre">UnicodeDecodeError:</span> <span class="pre">'utf-8'</span> <span class="pre">codec</span> <span class="pre">can't</span> <span class="pre">decode</span> <span class="pre">byte</span> <span class="pre">...</span></code></p>
+<section id="id6">
+<h5>🚨 対策コードの極意：<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h5>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="c1"># 自治体データを読み込む際の鉄則（cp932を指定することで、Excel独自の特殊文字も巻き込んで解決）</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data.csv"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"cp932"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="concat-merge">
+<h4>(2) 「縦の連結」と「横の結合」：concat と merge<a class="headerlink" href="#concat-merge" title="Link to this heading">¶</a></h4>
+<p>バラバラな複数のファイルを合体させて1つの大きな表にする方法には、2つのアプローチがあります。</p>
+<ul class="simple">
+<li><p><strong>連結（<code class="docutils literal notranslate"><span class="pre">pd.concat</span></code>）</strong>：形が同じ表を「縦（または横）」に単純に糊付けします。インデックス番号が重複するのを防ぐため、必ず <code class="docutils literal notranslate"><span class="pre">ignore_index=True</span></code> を指定してきれいに通し番号を振り直すのがマナーです。</p></li>
+<li><p><strong>結合（<code class="docutils literal notranslate"><span class="pre">pd.merge</span></code>）</strong>：共通の鍵（キー）をベースに、横に拡張します（ExcelのVLOOKUPと同等）。</p></li>
+</ul>
+<section id="inner-silent-data-loss">
+<h5>🚨 内部結合（inner）による「Silent Data Loss（静かなデータ消失）」の恐怖：<a class="headerlink" href="#inner-silent-data-loss" title="Link to this heading">¶</a></h5>
+<p><code class="docutils literal notranslate"><span class="pre">pd.merge(sales_df,</span> <span class="pre">product_df,</span> <span class="pre">on=&quot;商品ID&quot;)</span></code> のようにオプションを省略すると、デフォルトで <strong><code class="docutils literal notranslate"><span class="pre">how=&quot;inner&quot;</span></code>（内部結合）</strong> になります。これは、両方の表に共通して存在する商品IDしか残しません。もし売上履歴の中に「新商品（まだマスタに登録されていないID）」が含まれていた場合、<strong>その売上データは合致するマスタがないため、警告もなく自動的に消去されてしまいます。</strong>
+売上履歴などの元データを絶対に減らしたくない場合は、必ず <strong><code class="docutils literal notranslate"><span class="pre">how=&quot;left&quot;</span></code>（左結合）</strong> を指定しなければなりません。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># データを消さないための左結合（マスタにない部分は NaN になるが、行は維持される）</span>
+<span class="n">merged_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">sales_df</span><span class="p">,</span> <span class="n">product_df</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">"商品ID"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="apply-lambda">
+<h4>(3) 複雑な行ごとの計算：apply ✕ lambda<a class="headerlink" href="#apply-lambda" title="Link to this heading">¶</a></h4>
+<p>「もし深夜22時以降の注文なら10%割増し、テイクアウトなら軽減税率8%、店内飲食なら10%」といった、if文を含む複雑な1行ごとの計算を行いたい場合、for文を使うと非常に低速になります。そこで、Pandasの <strong><code class="docutils literal notranslate"><span class="pre">apply()</span></code> と <code class="docutils literal notranslate"><span class="pre">lambda</span></code>（名無しの使い捨て関数）</strong> を組み合わせます。</p>
+<section id="axis-1">
+<h5>🚨 初心者が100%つまずく <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> の指定漏れ：<a class="headerlink" href="#axis-1" title="Link to this heading">¶</a></h5>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ❌ 動かない：axis=1 がないと、Pandasは「列方向（縦）」に処理をしようとしてエラーになる</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"税込み価格"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s2">"価格"</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1.1</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"区分"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"店内"</span> <span class="k">else</span> <span class="n">row</span><span class="p">[</span><span class="s2">"価格"</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1.08</span><span class="p">)</span>
+
+<span class="c1"># ⭕ 正しい：axis=1 を明記することで、1行（横方向のレコード）ずつ処理してくれる</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"税込み価格"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s2">"価格"</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1.1</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"区分"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"店内"</span> <span class="k">else</span> <span class="n">row</span><span class="p">[</span><span class="s2">"価格"</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1.08</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="datetime">
+<h4>(4) 時系列（DateTime型）を支配する<a class="headerlink" href="#datetime" title="Link to this heading">¶</a></h4>
+<p>日付は最初はただの「文字列（2026-08-27）」として読み込まれます。これを <strong><code class="docutils literal notranslate"><span class="pre">pd.to_datetime()</span></code></strong> で日付型に変換することで、曜日や月の集計が劇的に楽になります。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 日付型への変換</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"日付"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"日付"</span><span class="p">])</span>
+
+<span class="c1"># 曜日を数値（0=月, 1=火... 6=日）として取り出し、日本語曜日に変換する</span>
+<span class="n">weekday_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"月"</span><span class="p">,</span> <span class="s2">"火"</span><span class="p">,</span> <span class="s2">"水"</span><span class="p">,</span> <span class="s2">"木"</span><span class="p">,</span> <span class="s2">"金"</span><span class="p">,</span> <span class="s2">"土"</span><span class="p">,</span> <span class="s2">"日"</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"曜日"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"日付"</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">weekday</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">weekday_list</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+
+<span class="c1"># 月だけを取り出す</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"月"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"日付"</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id7">
+<h3>2. 【テーマ2】 データ解析・記述統計（第4回）: データの「本質」を見極めるレンズ<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p>データが綺麗になったら、次は「記述統計（データの客観的な要約）」によって、データの中に隠れた傾向を見出します。</p>
+<section id="id8">
+<h4>(1) 「平均値」の甘い罠と「中央値」<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
+<p>「我がカフェの平均客単価は3,000円です。だから全員にお金持ち向けのメニューを売りましょう！」という意思決定は、時として壊滅的なミスを招きます。
+例えば、客単価1,000円のお客様が9人と、ビル・ゲイツ氏（客単価20,000円）が1人来店した場合、平均値は <code class="docutils literal notranslate"><span class="pre">(1000*9</span> <span class="pre">+</span> <span class="pre">20000)</span> <span class="pre">/</span> <span class="pre">10</span> <span class="pre">=</span> <span class="pre">2,900円</span></code> に跳ね上がります。しかし、ゲイツ氏以外のお客様は全員1,000円しか使っていません。</p>
+<section id="id9">
+<h5>💡 対策：<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h5>
+<p>このような極端なデータ（外れ値）が混ざる可能性がある場合は、データを順番に並べたときの真ん中の値である <strong><code class="docutils literal notranslate"><span class="pre">中央値（median）</span></code></strong> を見るべきです（この場合は1,000円になり、実態を捉えられます）。</p>
+</section>
+</section>
+<section id="standard-deviation-sigma">
+<h4>(2) データのばらつきを測る「標準偏差（Standard Deviation: <span class="math notranslate nohighlight">\(\sigma\)</span>）」<a class="headerlink" href="#standard-deviation-sigma" title="Link to this heading">¶</a></h4>
+<p>「平均値が同じ50点」の2つのクラス（A組とB組）があるとします。</p>
+<ul class="simple">
+<li><p><strong>A組</strong>：全員が48点〜52点（ばらつきが小さく、均質）</p></li>
+<li><p><strong>B組</strong>：100点満点が半分、0点満点が半分（ばらつきが極めて大きい）</p></li>
+</ul>
+<p>このデータの「ばらつき具合」を数値化したものが**標準偏差（<code class="docutils literal notranslate"><span class="pre">.std()</span></code>）<strong>です。
+標準偏差とは、直感的に言うと</strong>「全員のデータが、平均値から平均してどれくらい離れているか（平均距離）」**を表します。</p>
+<ul class="simple">
+<li><p>標準偏差が <strong>小さい</strong> ➡ 平均値の近くにデータがギュッと固まっている。</p></li>
+<li><p>標準偏差が <strong>大きい</strong> ➡ データが広範囲に散らばっている（平均値があまり信用できない）。</p></li>
+</ul>
+</section>
+<section id="crosstab-pivot-table">
+<h4>(3) クロス集計（crosstab）とピボットテーブル（pivot_table）<a class="headerlink" href="#crosstab-pivot-table" title="Link to this heading">¶</a></h4>
+<p>2つのカテゴリカルなデータを掛け合わせて、セグメント（客層）ごとの特徴を暴き出すときに使います。</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">pd.crosstab(行,</span> <span class="pre">列)</span></code></strong>：データの「件数（度数）」を数えるのに適しています。</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">pd.pivot_table(データ,</span> <span class="pre">index=row,</span> <span class="pre">columns=col,</span> <span class="pre">values=val,</span> <span class="pre">aggfunc=集計方法)</span></code></strong>：売上の「合計（sum）」や「平均（mean）」をセルごとに算出するのに適しています。</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 店舗別×曜日別の売上合計ピボットテーブル</span>
+<span class="n">pivot_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">"店舗名"</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">"曜日"</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">"売上金額"</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s2">"sum"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h4>(4) 相関分析：関係性を数値化する<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h4>
+<p>「客数（X）」と「売上高（Y）」など、2つの数値データの関係性を <strong>-1.0 から +1.0</strong> の間の数値で表したものが <strong>相関係数（<code class="docutils literal notranslate"><span class="pre">.corr()</span></code>）</strong> です。</p>
+<ul class="simple">
+<li><p><strong>+1.0 に近い</strong> ➡ <strong>正の相関</strong>（客数が増えると、売上もきれいに増える）。</p></li>
+<li><p><strong>-1.0 に近い</strong> ➡ <strong>負の相関</strong>（気温が上がると、ホットコーヒーの売上がきれいに減る）。</p></li>
+<li><p><strong>0.0 に近い</strong> ➡ <strong>無相関</strong>（降水量とケーキの注文数には、何の関係もない）。</p></li>
+</ul>
+<section id="id11">
+<h5>⚠️ データ分析者最大のタブー：相関関係と因果関係の混同<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h5>
+<p>「交番が多い地域ほど、犯罪発生数が多い（強い正の相関 <span class="math notranslate nohighlight">\(r = 0.8\)</span>）」というデータが出たとします。これを見て「犯罪を減らすために交番をすべて壊そう！」と判断するのは致命的な誤りです。
+実際には、**「人口が多い地域（第3の要因）」**だからこそ、交番も多く、結果として犯罪件数も多くなっているだけです。
+「相関がある（データ上、連動している）」からといって、「原因と結果（因果関係）がある」とは限りません。データ分析では常にこの「擬似相関」を疑う冷静な視点が必要です。</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="gis-79">
+<h3>3. 【テーマ3】 地理空間情報（GIS）分析（第7回〜第9回）: データの「場所」を重ね合わせる<a class="headerlink" href="#gis-79" title="Link to this heading">¶</a></h3>
+<p>現実社会のデータのほとんどには、緯度・経度などの「位置情報」が含まれています。これを可視化・分析するのがGISの役割です。</p>
+<section id="crs">
+<h4>(1) 丸い地球を無理やり平らにする「座標系（CRS）」の不思議<a class="headerlink" href="#crs" title="Link to this heading">¶</a></h4>
+<p>私たちはスマホで「緯度・経度（35.7371, 139.6732）」という数値を扱っています。これは地球を球体として捉えた角度の値（<strong>地理座標系：<code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code></strong>）です。
+しかし、この状態で「店舗から500メートル以内の商圏」を作ろうとして、<code class="docutils literal notranslate"><span class="pre">.buffer(500)</span></code> を実行するとどうなるでしょうか？
+システムは「半径『500度』の円」を作ろうとしてしまい、地球を何周も包む巨大な円が生成され、画面がバグります。</p>
+<section id="id12">
+<h5>💡 解決策：<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h5>
+<p>長さを「メートル」単位で正しく計算するためには、丸い地球を特定の地域に最適化して平らに投影した <strong>「投影座標系（日本の平面直角座標系：関東地方は <code class="docutils literal notranslate"><span class="pre">EPSG:6677</span></code>）」</strong> に <strong><code class="docutils literal notranslate"><span class="pre">.to_crs()</span></code></strong> で変換する必要があります。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="c1"># 1. 経緯度(EPSG:4326)でGeoDataFrameを作成</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">gpd</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"経度"</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">"緯度"</span><span class="p">]),</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">)</span>
+
+<span class="c1"># 2. 空間演算をする前に、メートル単位(EPSG:6677)に変換！</span>
+<span class="n">gdf_meter</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">6677</span><span class="p">)</span>
+
+<span class="c1"># 3. これで、正しい半径500メートルの商圏バッファ（ポリゴン）が作れる！</span>
+<span class="n">gdf_meter</span><span class="p">[</span><span class="s2">"商圏ポリゴン"</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf_meter</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="spatial-join">
+<h4>(2) 空間結合（Spatial Join）：ピンをバケツに自動で投げ入れる<a class="headerlink" href="#spatial-join" title="Link to this heading">¶</a></h4>
+<p>データ分析で「この店舗の緯度経度データ（Point）」が、「東京のどの市区町村ポリゴン（Polygon）」に含まれているかを判定したいとします。何万件もの緯度経度に対してこれを手書きのfor文でループ判定すると、パソコンが何時間もフリーズします。
+これを一瞬で（インデックス技術を使ってミリ秒単位で）解決してくれるのが、<strong>空間結合（<code class="docutils literal notranslate"><span class="pre">.sjoin()</span></code>）</strong> です。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 点データ(gdf_shops)が、面データ(gdf_districts)のどれに「含まれるか(intersects/within)」を全自動で判定して結合</span>
+<span class="n">joined_gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">sjoin</span><span class="p">(</span><span class="n">gdf_shops</span><span class="p">,</span> <span class="n">gdf_districts</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="s2">"intersects"</span><span class="p">)</span>
+<span class="c1"># 結果：各店舗の行に、その店が存在する「区名」が瞬時に合体する！</span>
+</pre></div>
+</div>
+</section>
+<section id="web-folium-leafmap">
+<h4>(3) 動的Webマップ（folium / leafmap）による感動的な可視化<a class="headerlink" href="#web-folium-leafmap" title="Link to this heading">¶</a></h4>
+<p>matplotlibで描くグラフは単なる「静止画」です。
+<strong><code class="docutils literal notranslate"><span class="pre">folium</span></code></strong> や <strong><code class="docutils literal notranslate"><span class="pre">leafmap</span></code></strong> を使うと、拡大・縮小ができ、ピンをクリックすると吹き出し（Popup）が出る、Google Mapsのような動的マップをPythonだけで一瞬で構築できます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
+<span class="c1"># 中心座標と初期ズームを指定してベースマップを作成</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">35.73</span><span class="p">,</span> <span class="mf">139.67</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="c1"># ピンを立てる（PopupにはHTMLも記述可能！）</span>
+<span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span>
+    <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">35.7371</span><span class="p">,</span> <span class="mf">139.6732</span><span class="p">],</span>
+    <span class="n">popup</span><span class="o">=</span><span class="s2">"&lt;b&gt;江古田店&lt;/b&gt;&lt;br&gt;割引クーポン配布中！"</span><span class="p">,</span>
+    <span class="n">icon</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">Icon</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">icon</span><span class="o">=</span><span class="s2">"coffee"</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">"fa"</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="ai-1011">
+<h3>4. 【テーマ4】 AI・機械学習（第10回〜第11回）: 過去から「未来」を先回りする<a class="headerlink" href="#ai-1011" title="Link to this heading">¶</a></h3>
+<p>「今の売上」を可視化するだけでなく、これまでのデータをもとに「明日の売上を予測する（回帰）」、あるいは「似たようなお客様を自動でグループ分けする（分類・クラスタリング）」のが、AI（<code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>）の役割です。</p>
+<section id="id13">
+<h4>(1) 機械学習の「黄金のルール」：過去問の丸暗記を許すな<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h4>
+<p>用意した100件のデータをすべてAIの学習用（<code class="docutils literal notranslate"><span class="pre">.fit</span></code>）に使って学習させ、同じ100件のデータを予測（<code class="docutils literal notranslate"><span class="pre">.predict</span></code>）させたところ、精度が100%になりました。しかし、このAIモデルを実務に導入して「新しい明日のお客様」を予測させたところ、ひどいエラーになりました。
+これが <strong>過学習（オーバーフィッティング）</strong> です。
+AIが「過去のデータの偶然起きたノイズ」まで完璧なルールとして記憶してしまったために、新しいデータに対して応用が効かなくなってしまったのです。</p>
+<section id="id14">
+<h5>💡 解決策：<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h5>
+<p>データを必ず、学習用の <strong>「訓練データ（7割〜8割）」</strong> と、AIには一切見せない <strong>「テストデータ（2割〜3割）」</strong> に事前に分割（<strong><code class="docutils literal notranslate"><span class="pre">train_test_split</span></code></strong>）し、テストデータに対する実力テストの点数をAIの本当の通信簿とします。</p>
+</section>
+</section>
+<section id="id15">
+<h4>(2) 回帰と分類：予測したいのは「数値」か「カテゴリ」か？<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>回帰（Regression）</strong>：明日の売上高や来客数などの「連続する数値」を予測します。</p>
+<ul>
+<li><p>代表格：<strong>線形回帰（Linear Regression）</strong>（散布図の点々の中心を通る、最もズレの少ない1本の直線を引く）。説明変数が2列以上の場合は**重回帰（Multiple Regression）**と呼びます。</p></li>
+<li><p>AIの通信簿（評価）：決定係数 <strong><span class="math notranslate nohighlight">\(R^2\)</span></strong>（1.0に近づくほど完璧な予測）や、平均絶対誤差 <strong>MAE</strong>（予測値が平均して何円ズレているか）。</p></li>
+</ul>
+</li>
+<li><p><strong>分類（Classification）</strong>：このお客様は「リピートする（Yes）」か「しない（No）」かなどの「カテゴリ」を予測します。</p>
+<ul>
+<li><p>代表格：<strong>決定木（Decision Tree）</strong>（「年齢が30歳以上か？」「来店回数が3回以上か？」といったフローチャート式のルールをAIが自動構築する）。</p></li>
+<li><p>AIの通信簿（評価）：<strong>正解率（Accuracy）</strong>（100人中、何人の予測が的中したか）、見逃しを防ぐ<strong>再現率（Recall）</strong>、空振りを減らす<strong>適合率（Precision）</strong>。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="aik-means">
+<h4>(3) 教師なし学習：正解を教えずにAIに自動整理させる「K-means」<a class="headerlink" href="#aik-means" title="Link to this heading">¶</a></h4>
+<p>「このお客様は優良顧客です」といったラベル（答え）を人間が実データに与えず、AIに顧客の「客単価（X軸）」と「年間来店回数（Y軸）」のデータだけを渡し、「似ている人を自動で3つのグループに分けて」とだけ指示するのが <strong>K-meansクラスタリング（教師なし学習）</strong> です。
+AIは各グループの「中心点（重心：セントロイド）」を数学的に計算し、データ全体を最もきれいに切り分けるクラスターを自動構築します。
+※スケールの違い（購入額の1万円と、来店数の1回では桁が違う）を正すため、事前に平均0、標準偏差1にデータを整える <strong><code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>（標準化）</strong> を噛ませることが鉄則です。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="web-5612">
+<h3>5. 【テーマ5】 Webアプリとして社会実装（第5回〜第6回、第12回）: 「すべての合体」とバイブコーディング<a class="headerlink" href="#web-5612" title="Link to this heading">¶</a></h3>
+<p>どんなに優れたデータ加工、統計解析、GIS、AIモデルを作っても、それがColabの黒い画面とコードの中に埋もれていては、パソコンが使えないカフェの店長やビジネスのクライアントは誰も使えません。
+データサイエンスの最後のステップは、**「誰でもボタンやスライダーで簡単に操作できるWebアプリ（ダッシュボード）にして、社会に届けること」**です。</p>
+<section id="streamlit-htmljavascriptweb">
+<h4>(1) Streamlit：HTML・JavaScript不要の驚異的Webフレームワーク<a class="headerlink" href="#streamlit-htmljavascriptweb" title="Link to this heading">¶</a></h4>
+<p>通常、Webアプリを作るには、HTML, CSS, JavaScript, サーバー構築といった膨大な勉強が必要です。しかし、<strong><code class="docutils literal notranslate"><span class="pre">Streamlit</span></code></strong> を使えば、**「今まで書いてきたPythonのデータ分析コードに、<code class="docutils literal notranslate"><span class="pre">st.sidebar</span></code> や <code class="docutils literal notranslate"><span class="pre">st.slider</span></code> を書き足すだけ」**で、プロ並みの動的Webダッシュボードが数分で構築されます。</p>
+<section id="id16">
+<h5>🔄 リアクティブ・プログラミングの仕組み：<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h5>
+<p>Streamlitの最大の魅力は、ユーザーが画面のスライダーを動かした瞬間、**「Pythonスクリプトが上から下まで自動で超高速に再実行される（Rerun）」**ことです。</p>
+<ol class="arabic simple">
+<li><p>スライダーを動かして「客数 150人」にする。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">visitors</span> <span class="pre">=</span> <span class="pre">st.slider(...)</span></code> の変数に即座に <code class="docutils literal notranslate"><span class="pre">150</span></code> が代入される。</p></li>
+<li><p>その下にある <code class="docutils literal notranslate"><span class="pre">pred_sales</span> <span class="pre">=</span> <span class="pre">model.predict([[visitors]])</span></code> が150人をベースに再計算される。</p></li>
+<li><p>折れ線グラフが瞬時に再描画され、画面が勝手に動き出す！</p></li>
+</ol>
+</section>
+</section>
+<section id="vibe-coding-ai">
+<h4>(2) バイブコーディング（Vibe Coding）の本質：AI時代の開発マインド<a class="headerlink" href="#vibe-coding-ai" title="Link to this heading">¶</a></h4>
+<p>第12回で、私たちは「完璧な設計図となるプロンプト」をChatGPTに投げ、200行を超えるStreamlit✕AIダッシュボードアプリを、わずか15秒で自動生成（Vibe Coding）させました。</p>
+<p>「AIがすべてのコードを一瞬で正確に書いてくれるなら、私たちは何のためにこんなプログラミングを勉強したのだろう？」と思うかもしれません。</p>
+<p>それこそが、**本コースを修了した皆さんの「最大の価値（審美眼）」**になります。</p>
+<ul class="simple">
+<li><p>AIは完璧に見えるコードを出力しますが、時として「全く見当違いな数式のバグ」や「座標系の指定順の間違い（経緯度の順序が逆になり、店舗が宇宙に飛んでいくバグ）」などを平気で埋め込んできます（ハルシネーション）。</p></li>
+<li><p>プログラミングの基礎と、Pandas・GIS・AIの**「内部の仕組み・基礎理論」を体得しているあなた**だけが、AIの書いたコードをレビューし、バグを見破り、「このライブラリを使って、この設計で実装し直して」と、正しい論理でAIを指揮（ディレクション）することができます。</p></li>
+</ul>
+<p>これからの時代に求められるのは、**「暗記した文法を必死に打ち込むタイピスト」<strong>ではなく、</strong>「基礎理論を理解した上で、AIをフルに指揮し、社会課題を解決するサービスを爆速で設計・提供できる『市民データサイエンティスト（ディレクター）』」**です。</p>
+<p>皆さんはまさに、そのための「最強の審美眼」と「マインドセット」を手に入れたのです！</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id17">
+<h2>13.2 授業内練習問題（理論確認用：5問：約25分）<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h2>
+<p>まずはウォーミングアップです。これまでの講義を象徴する重要な理論問題5問に挑戦しましょう。クラス全員でシンキングタイムをとり、ディスカッションを交えて解答・解説を確認してください。</p>
+<section id="id18">
+<h3>練習問題 1: データの尺度と統計指標<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<p>「コーヒー(100円), 紅茶(120円), ジュース(150円)」という商品別の「価格」は <strong>( A ) 尺度</strong>であり、その代表値として平均値を計算することに意味があります。一方、「1:非常に満足, 2:満足, 3:普通, 4:不満」というアンケートの評価値は <strong>( B ) 尺度</strong>であり、代表値としては「中央値」や「最頻値」が適しています。
+空欄(A)と(B)に入る尺度の名称の組み合わせを答えてください。</p>
+<details>
+<summary>👉 練習問題 1 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p><strong>正解</strong>: <strong>( A ) = 比例（比率）尺度、( B ) = 順序尺度</strong></p></li>
+<li><p><strong>解説</strong>:</p>
+<ul>
+<li><p>価格は、0円が「無（お金が存在しない）」を意味し、100円の2倍は200円という「掛け算・割り算（比率）」に意味があるため<strong>比例尺度</strong>です。平均値を計算できます。</p></li>
+<li><p>満足度アンケートは、1から4の数字に「順序（大小関係）」はありますが、「満足(2)と満足(1)の差が、不満(4)と普通(3)の差と全く等しい」とは言えず、割り算もできないため<strong>順序尺度</strong>です。アンケート結果を単純に「平均2.3」と出すのは厳密には不適切で、中央値（真ん中の人）や最頻値（最も多い回答）で見るのが基本です。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="pandas-merge">
+<h3>練習問題 2: Pandasの結合（merge）とデータ消失<a class="headerlink" href="#pandas-merge" title="Link to this heading">¶</a></h3>
+<p>Pandasで売上履歴データフレーム <code class="docutils literal notranslate"><span class="pre">df_sales</span></code>（1万行）と、商品マスタデータフレーム <code class="docutils literal notranslate"><span class="pre">df_products</span></code>（50件）を、共通の「商品ID」を使って <code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code> で結合しようとしています。
+しかし、結合オプションを何も指定せずにマージしたところ、売上履歴が8000行に減ってしまいました。この原因として最も適切なものはどれでしょうか？</p>
+<ol class="arabic simple">
+<li><p>結合方式が標準で「外部結合(outer)」になっており、商品マスタに存在しない商品IDの売上が消去されたから。</p></li>
+<li><p>結合方式が標準で「内部結合(inner)」になっており、商品マスタに登録されていない商品IDの売上が、合致しないため消去されたから。</p></li>
+<li><p>売上履歴に「重複」があったため、結合時にPandasが自動的に重複をクレンジング（削除）したから。</p></li>
+</ol>
+<details>
+<summary>👉 練習問題 2 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p><strong>正解</strong>: <strong>2</strong></p></li>
+<li><p><strong>解説</strong>: <code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code> のデフォルト（標準）の結合方式は <strong><code class="docutils literal notranslate"><span class="pre">how=&quot;inner&quot;</span></code>（内部結合）</strong> です。これは「両方のデータフレームに共通して存在するキー（商品ID）のみを残す」というお約束です。そのため、売上履歴の中に「まだ商品マスタに登録されていない、お試し新商品のID」などが混ざっていると、合致するものがマスタ側にないため、売上データ自体が丸ごと消去されてしまいます。売上を1行も消したくない場合は、**<code class="docutils literal notranslate"><span class="pre">how=&quot;left&quot;</span></code>（左結合＝売上履歴をすべて残し、マスタにない部分はNaNにする）**を指定する必要があります。</p></li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="gis">
+<h3>練習問題 3: GISの座標系と単位の罠<a class="headerlink" href="#gis" title="Link to this heading">¶</a></h3>
+<p>GeoPandasで、ある店舗から「半径500m」の商圏ポリゴンを <code class="docutils literal notranslate"><span class="pre">.buffer(500)</span></code> で作成しようとしています。
+しかし、店舗データのGeoDataFrameの座標系（CRS）が「EPSG:4326（世界測地系・経緯度）」のままで <code class="docutils literal notranslate"><span class="pre">.buffer(500)</span></code> を実行してしまいました。このとき発生する不具合として正しいものはどれでしょうか？</p>
+<ol class="arabic simple">
+<li><p>エラーが発生して、プログラムがその場で強制終了する。</p></li>
+<li><p>エラーは出ないが、単位が「メートル」ではなく「度」として処理されるため、日本（地球）のサイズを遥かに超える巨大な（半径500度の）ポリゴンが生成されてしまう。</p></li>
+<li><p>プログラムが自動でメートルに変換して処理してくれるため、何の問題もなく正しい500mの円が作られる。</p></li>
+</ol>
+<details>
+<summary>👉 練習問題 3 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p><strong>正解</strong>: <strong>2</strong></p></li>
+<li><p><strong>解説</strong>: これもGIS分析で初心者が最も犯しやすい恐ろしい罠です。GeoPandasの空間演算（<code class="docutils literal notranslate"><span class="pre">.buffer()</span></code> や距離計算など）は、**「そのデータフレームが今持っている座標系の単位」**をそのまま使います。</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code> の単位は <strong>「度（Degree）」</strong> です。</p></li>
+<li><p>そのため、この状態のまま <code class="docutils literal notranslate"><span class="pre">.buffer(500)</span></code> を実行すると、システムは「半径500度（地球は1周360度なので、地球を何周も包む巨大な円）」を作ろうとしてしまい、地図上が真っ青（巨大ポリゴンで埋まる）になります。</p></li>
+<li><p>空間演算を行う前には、必ず <strong><code class="docutils literal notranslate"><span class="pre">.to_crs(epsg=6677)</span></code></strong>（平面直角座標系第9系などのメートル単位の平面座標系）に変換するステップが絶対必要です！</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="overfitting">
+<h3>練習問題 4: 機械学習の「過学習（Overfitting）」とホールドアウト<a class="headerlink" href="#overfitting" title="Link to this heading">¶</a></h3>
+<p>機械学習において、用意したデータすべてをAIの学習用（<code class="docutils literal notranslate"><span class="pre">.fit</span></code>）に使ってモデルを構築し、同じデータを使ってモデルの精度（決定係数など）を測定したところ、100%（完璧）の精度が出ました。
+しかし、このAIモデルを実務に導入して「新しくやってきた明日のお客様の売上」を予測させたところ、全く当たらないひどい予測になってしまいました。この現象を何と呼ぶでしょうか？また、これを防ぐための機械学習の黄金のルールは何でしょうか？</p>
+<details>
+<summary>👉 練習問題 4 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p><strong>正解</strong>:</p>
+<ul>
+<li><p>現象名：<strong>過学習（オーバーフィッティング）</strong></p></li>
+<li><p>黄金のルール：<strong>学習データ（訓練データ）と、テストデータ（評価データ）の分割（ホールドアウト法）</strong></p></li>
+</ul>
+</li>
+<li><p><strong>解説</strong>:</p>
+<ul>
+<li><p>過去のデータを丸暗記（過学習）したAIは、過去の「たまたま起きたノイズ（その日だけ天気が大荒れだったなど）」まで完璧なルールとして記憶してしまいます。そのため、まだ見ぬ未来（未知のデータ）に対する予測力が極端に低下します（学校のテスト問題と答えを丸暗記したため、応用問題が解けない生徒と同じ状態です）。</p></li>
+<li><p>これを防ぐため、データをあらかじめ <strong>「学習用（7割〜8割）」</strong> と <strong>「テスト用（2割〜3割）」</strong> に分割し（<code class="docutils literal notranslate"><span class="pre">train_test_split</span></code>）、学習にはテストデータを見せず、評価の時にだけ「実力テスト」として解かせることで、本当の予測実力を測定します。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="streamlit-rerun">
+<h3>練習問題 5: Streamlitの再実行システム（Rerun）とボタンの罠<a class="headerlink" href="#streamlit-rerun" title="Link to this heading">¶</a></h3>
+<p>Streamlitで「支払合計」を表示するアプリを作成しています。
+画面に「お会計を計算する」ボタン（<code class="docutils literal notranslate"><span class="pre">st.button(&quot;お会計を計算する&quot;)</span></code>）を設置し、そのボタンが押された（True）ときに、客数と客単価を掛け算して「合計金額：3,500円」と画面に表示するコードを書きました。
+しかし、このボタンを押して金額を表示させたあと、サイドバーに配置された「割引クーポン」のチェックボックスにチェックを入れたところ、<strong>先ほど画面に表示されていた「合計金額：3,500円」の表示が一瞬で消えてしまいました。</strong>
+この現象が発生する「Streamlitの仕組み上の原因」を説明してください。</p>
+<details>
+<summary>👉 練習問題 5 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p><strong>正解</strong>: <strong>「ユーザーが画面を操作するたびに、Streamlitはコードを上から下まで再実行（Rerun）し、その際にボタンのクリック状態は『False（押されていない）』に戻ってしまうから」</strong></p></li>
+<li><p><strong>解説</strong>:</p>
+<ul>
+<li><p>Streamlitは「画面に動きがある（チェックボックスを操作するなど）たびに、Pythonコード全体を最初から完全に読み込み直す」というシステム（リアクティブ・フレームワーク）を持っています。</p></li>
+<li><p>そして、<code class="docutils literal notranslate"><span class="pre">st.button</span></code> という部品は、**「まさにその瞬間（ボタンがカチッと押された瞬間）だけ一時的に True になり、次の再実行（Rerun）時には強制的に False に戻る」**という仕様（デザイン・パターン）を持っています。</p></li>
+<li><p>そのため、ボタンが押された中のインデント処理の中に合計金額を出すコードを書いてしまうと、そのあとに別の操作（クーポンのチェックなど）をしてコードが再実行された際、ボタンの状態が False に戻り、計算処理そのものがスキップされてしまうため、表示されていた金額が消滅します。</p></li>
+<li><p>実務でこれに対処するには、ボタンの中に計算処理を書くのではなく、チェックボックスやスライダーの状態変化そのものをRerunシステムに直接検知させる（ボタンでの判定に頼らない）設計にするのが定石です。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id19">
+<h2>💻 総合演習課題（授業外実習・期末評価宿題：5問）<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h2>
+<p>ここからは、皆さんがこれまでに身につけたすべてのデータスキルを試す「最高峰の総合演習課題」です！
+すべての課題は、**「Google Colabのセルにコードをコピー＆ペーストすれば、外部ファイル（CSV等）を用意しなくても、その場でダミーデータを自動生成して動作する」**ように設計されています。</p>
+<p>実務に即した5つのテーマに挑戦し、穴埋め（<code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TODO:</span></code> の部分）を完成させてプログラムを完成させてください。
+各問題には、教員向けの10点満点詳細評価・採点基準を掲載しています。</p>
+<hr class="docutils" />
+<section id="pandas-apply-lambda">
+<h3>課題 1: Pandasによる複数データの結合 ✕ 複雑条件のapply-lambda計算<a class="headerlink" href="#pandas-apply-lambda" title="Link to this heading">¶</a></h3>
+<p>カフェの「新宿店売上履歴（sales_df）」と「商品マスタ（product_df）」が別々のデータフレームにあります。</p>
+<ol class="arabic simple">
+<li><p>共通キーである「商品コード（Item_Code）」を使って、sales_df に product_df を**左結合（how=&quot;left&quot;）**で合体させてください。</p></li>
+<li><p>合体したデータフレームに対し、apply() と lambda、if-else分岐を使い、**「曜日が『土曜』または『日曜』の場合は、週末サービス料として税込み支払金額（Price * Amount）を1.1倍（10%増し）、平日の場合はそのまま（1.0倍）」**とする新しい列「請求金額」を作成してください。
+※注意：行全体をまたぐ計算のため、<code class="docutils literal notranslate"><span class="pre">axis=1</span></code> を指定することを忘れないでください。</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># =====================================================================</span>
+<span class="c1"># 課題 1: テンプレートコード（Colabに貼り付けて実行可能）</span>
+<span class="c1"># =====================================================================</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># 1. 新宿店売上履歴</span>
+<span class="n">sales_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"注文ID"</span><span class="p">:</span> <span class="p">[</span><span class="mi">101</span><span class="p">,</span> <span class="mi">102</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">104</span><span class="p">],</span>
+    <span class="s2">"Item_Code"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"C01"</span><span class="p">,</span> <span class="s2">"T01"</span><span class="p">,</span> <span class="s2">"C01"</span><span class="p">,</span> <span class="s2">"K01"</span><span class="p">],</span> <span class="c1"># C01=コーヒー, T01=紅茶, K01=マスタ未登録</span>
+    <span class="s2">"Amount"</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="s2">"曜日"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"金曜"</span><span class="p">,</span> <span class="s2">"土曜"</span><span class="p">,</span> <span class="s2">"日曜"</span><span class="p">,</span> <span class="s2">"月曜"</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># 2. 商品マスタ（単価）</span>
+<span class="n">product_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"Item_Code"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"C01"</span><span class="p">,</span> <span class="s2">"T01"</span><span class="p">,</span> <span class="s2">"C02"</span><span class="p">],</span>
+    <span class="s2">"商品名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"コーヒー"</span><span class="p">,</span> <span class="s2">"紅茶"</span><span class="p">,</span> <span class="s2">"カフェラテ"</span><span class="p">],</span>
+    <span class="s2">"Price"</span><span class="p">:</span> <span class="p">[</span><span class="mi">400</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># TODO: (1) sales_df をベースに、product_df を "Item_Code" キーで左結合(how="left")してください</span>
+<span class="n">merged_df</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: (2) apply と lambda を使い、「曜日」が「土曜」または「日曜」の場合は (Price * Amount) * 1.1、</span>
+<span class="c1">#           そうでない場合は Price * Amount を適用して、新しい列「請求金額」を作成してください。</span>
+<span class="c1">#           ※マスタ未登録等で Price が NaN(欠損値)の場合は、あらかじめ 0 で埋める(fillna(0))処理を入れておくと頑丈です。</span>
+<span class="n">merged_df</span><span class="p">[</span><span class="s2">"Price"</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged_df</span><span class="p">[</span><span class="s2">"Price"</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># 欠損値対策</span>
+
+<span class="n">merged_df</span><span class="p">[</span><span class="s2">"請求金額"</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span>                          <span class="k">if</span>                                           <span class="k">else</span>                          <span class="p">,</span>
+    <span class="n">axis</span><span class="o">=</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 課題 1: 最終処理結果のデータフレーム ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">merged_df</span><span class="p">)</span>
+</pre></div>
+</div>
+<details>
+<summary>🔑 課題 1 の模範解答コードを表示</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># (1) 結合処理</span>
+<span class="n">merged_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">sales_df</span><span class="p">,</span> <span class="n">product_df</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">"Item_Code"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span>
+
+<span class="c1"># (2) 週末深夜割増計算（apply ✕ lambda）</span>
+<span class="n">merged_df</span><span class="p">[</span><span class="s2">"Price"</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged_df</span><span class="p">[</span><span class="s2">"Price"</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># NaNを0に変換</span>
+<span class="n">merged_df</span><span class="p">[</span><span class="s2">"請求金額"</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"Price"</span><span class="p">]</span> <span class="o">*</span> <span class="n">row</span><span class="p">[</span><span class="s2">"Amount"</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1.1</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"曜日"</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"土曜"</span><span class="p">,</span> <span class="s2">"日曜"</span><span class="p">]</span> <span class="k">else</span> <span class="n">row</span><span class="p">[</span><span class="s2">"Price"</span><span class="p">]</span> <span class="o">*</span> <span class="n">row</span><span class="p">[</span><span class="s2">"Amount"</span><span class="p">],</span>
+    <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</details>
+<details>
+<summary>🎓 教員用10点満点採点・減点基準</summary>
+<ul class="simple">
+<li><p><strong>【結合の正確性：4点】</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">how=&quot;left&quot;</span></code> を正しく指定して結合できているか。<code class="docutils literal notranslate"><span class="pre">how=&quot;inner&quot;</span></code> などの指定間違い、あるいは結合キー <code class="docutils literal notranslate"><span class="pre">on=&quot;Item_Code&quot;</span></code> のタイポ、または省略して意図しない結果を招いている場合は <strong>2点減点</strong>。</p></li>
+</ul>
+</li>
+<li><p><strong>【apply ✕ lambdaの構文：4点】</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">lambda</span> <span class="pre">row:</span> <span class="pre">...</span></code> を使って、土日判定（<code class="docutils literal notranslate"><span class="pre">row[&quot;曜日&quot;]</span> <span class="pre">in</span> <span class="pre">[&quot;土曜&quot;,</span> <span class="pre">&quot;日曜&quot;]</span></code> または <code class="docutils literal notranslate"><span class="pre">row[&quot;曜日&quot;]</span> <span class="pre">==</span> <span class="pre">&quot;土曜&quot;</span> <span class="pre">or</span> <span class="pre">row[&quot;曜日&quot;]</span> <span class="pre">==</span> <span class="pre">&quot;日曜&quot;</span></code>) および掛け算の条件分岐を正確に記述できているか。条件式や戻り値の不備は <strong>2点減点</strong>。</p></li>
+<li><p>行全体に適用するお守りパラメータ <strong><code class="docutils literal notranslate"><span class="pre">axis=1</span></code> を書き忘れてエラーを出している場合は、3点減点。</strong></p></li>
+</ul>
+</li>
+<li><p><strong>【欠損値(NaN)のハンドリング：2点】</strong></p>
+<ul>
+<li><p>マスタ未登録の商品「K01（PriceがNaN）」に対して、掛け算が正常に動くよう考慮できているか（模範解答通り <code class="docutils literal notranslate"><span class="pre">fillna(0)</span></code> をしていれば加点。NaNのまま計算して結果がNaN、あるいは浮動小数点数型エラーを起こしている場合は <strong>1点減点</strong>）。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id20">
+<h3>課題 2: 時系列日付からの月・日本語曜日抽出 ✕ クロス集計ピボットテーブル<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<p>売上日を含む複数店舗の売上データフレームがあります。</p>
+<ol class="arabic simple">
+<li><p>ただの文字列になっている「売上日」列を <strong><code class="docutils literal notranslate"><span class="pre">pd.to_datetime()</span></code></strong> で日付オブジェクト型に変換してください。</p></li>
+<li><p>その日付データから、曜日を数値（0=月〜6=日）として取り出し、日本語の「月曜」「火曜」…「日曜」の文字に変換した新しい列「曜日」を作成してください。</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">pd.pivot_table()</span></code></strong> を使い、**「縦軸（行）に『店舗名』、横軸（列）に『曜日』、集計値に『売上金額』の合計（sum）」**を配置し、売上データがない店舗・曜日は <code class="docutils literal notranslate"><span class="pre">0</span></code> で埋める（<code class="docutils literal notranslate"><span class="pre">fill_value=0</span></code>）クロス集計表 <code class="docutils literal notranslate"><span class="pre">pivot_sales</span></code> を作成してください。</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># =====================================================================</span>
+<span class="c1"># 課題 2: テンプレートコード（Colabに貼り付けて実行可能）</span>
+<span class="c1"># =====================================================================</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># 店舗の売上データ（ダミー）</span>
+<span class="n">raw_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"店舗名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">,</span> <span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">,</span> <span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">,</span> <span class="s2">"江古田店"</span><span class="p">],</span>
+    <span class="s2">"売上日"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"2026-08-24"</span><span class="p">,</span> <span class="s2">"2026-08-25"</span><span class="p">,</span> <span class="s2">"2026-08-26"</span><span class="p">,</span> <span class="s2">"2026-08-27"</span><span class="p">,</span> <span class="s2">"2026-08-28"</span><span class="p">,</span> <span class="s2">"2026-08-29"</span><span class="p">,</span> <span class="s2">"2026-08-30"</span><span class="p">],</span>
+    <span class="s2">"売上金額"</span><span class="p">:</span> <span class="p">[</span><span class="mi">120000</span><span class="p">,</span> <span class="mi">95000</span><span class="p">,</span> <span class="mi">110000</span><span class="p">,</span> <span class="mi">85000</span><span class="p">,</span> <span class="mi">150000</span><span class="p">,</span> <span class="mi">180000</span><span class="p">,</span> <span class="mi">195000</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># TODO: (1) 「売上日」列を datetime 型に変換してください</span>
+<span class="n">raw_sales</span><span class="p">[</span><span class="s2">"売上日"</span><span class="p">]</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: (2) 日付から「曜日名（月曜〜日曜）」を抽出する</span>
+<span class="c1">#           ※ヒント：.dt.weekday で0〜6を取得し、対応する日本語曜日リストとマッピング（apply）させる。</span>
+<span class="n">weekday_jp_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"月曜"</span><span class="p">,</span> <span class="s2">"火曜"</span><span class="p">,</span> <span class="s2">"水曜"</span><span class="p">,</span> <span class="s2">"木曜"</span><span class="p">,</span> <span class="s2">"金曜"</span><span class="p">,</span> <span class="s2">"土曜"</span><span class="p">,</span> <span class="s2">"日曜"</span><span class="p">]</span>
+<span class="n">raw_sales</span><span class="p">[</span><span class="s2">"曜日"</span><span class="p">]</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: (3) pd.pivot_table を使って、縦=店舗名、横=曜日、値=売上金額の合計(sum)を集計してください</span>
+<span class="c1">#           ※売上がないセルは 0 で埋める(fill_value=0)オプションを指定すること</span>
+<span class="n">pivot_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">raw_sales</span><span class="p">,</span>
+    <span class="n">values</span><span class="o">=</span>      <span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span>      <span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span>      <span class="p">,</span>
+    <span class="n">aggfunc</span><span class="o">=</span>      <span class="p">,</span>
+    <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 課題 2: 曜日・店舗別の売上ピボットテーブル ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">pivot_sales</span><span class="p">)</span>
+</pre></div>
+</div>
+<details>
+<summary>🔑 課題 2 の模範解答コードを表示</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># (1) 日付型変換</span>
+<span class="n">raw_sales</span><span class="p">[</span><span class="s2">"売上日"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">raw_sales</span><span class="p">[</span><span class="s2">"売上日"</span><span class="p">])</span>
+
+<span class="c1"># (2) 日本語曜日抽出</span>
+<span class="n">weekday_jp_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"月曜"</span><span class="p">,</span> <span class="s2">"火曜"</span><span class="p">,</span> <span class="s2">"水曜"</span><span class="p">,</span> <span class="s2">"木曜"</span><span class="p">,</span> <span class="s2">"金曜"</span><span class="p">,</span> <span class="s2">"土曜"</span><span class="p">,</span> <span class="s2">"日曜"</span><span class="p">]</span>
+<span class="n">raw_sales</span><span class="p">[</span><span class="s2">"曜日"</span><span class="p">]</span> <span class="o">=</span> <span class="n">raw_sales</span><span class="p">[</span><span class="s2">"売上日"</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">weekday</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">weekday_jp_list</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+
+<span class="c1"># (3) ピボットテーブル作成</span>
+<span class="n">pivot_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">raw_sales</span><span class="p">,</span>
+    <span class="n">values</span><span class="o">=</span><span class="s2">"売上金額"</span><span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span><span class="s2">"店舗名"</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="s2">"曜日"</span><span class="p">,</span>
+    <span class="n">aggfunc</span><span class="o">=</span><span class="s2">"sum"</span><span class="p">,</span>
+    <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</details>
+<details>
+<summary>🎓 教員用10点満点採点・減点基準</summary>
+<ul class="simple">
+<li><p><strong>【時系列変換：3点】</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pd.to_datetime()</span></code> で売上日を正しく変換できているか。文字列のまま処理を続けようとしてエラーを起こしている場合は <strong>2点減点</strong>。</p></li>
+</ul>
+</li>
+<li><p><strong>【日本語曜日抽出：3点】</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">.dt.weekday</span></code> （あるいは <code class="docutils literal notranslate"><span class="pre">.dt.dayofweek</span></code>）を用いて、0〜6の数値を経由し、配列 <code class="docutils literal notranslate"><span class="pre">weekday_jp_list</span></code> と正しくマッピングできているか。曜日の定義や対応が崩れている場合は <strong>1.5点減点</strong>。</p></li>
+</ul>
+</li>
+<li><p><strong>【ピボットテーブル構築：4点】</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">values=&quot;売上金額&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">index=&quot;店舗名&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">columns=&quot;曜日&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">aggfunc=&quot;sum&quot;</span></code> を正しく設定できているか。行と列（indexとcolumns）が逆になっている、集計関数が <code class="docutils literal notranslate"><span class="pre">&quot;mean&quot;</span></code> などに間違っている場合は <strong>2点減点</strong>。</p></li>
+<li><p>売上なしをゼロで埋める <code class="docutils literal notranslate"><span class="pre">fill_value=0</span></code> が抜けており、一部のセルが NaN のまま美しくない状態で放置されている場合は <strong>1点減点</strong>。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="geodataframe-spatial-join">
+<h3>課題 3: GeoDataFrameの構築 ✕ メートル座標変換 ✕ 空間結合（Spatial Join）<a class="headerlink" href="#geodataframe-spatial-join" title="Link to this heading">¶</a></h3>
+<p>緯度経度付きの新規出店候補地の表データがあります。</p>
+<ol class="arabic simple">
+<li><p>経度と緯度から <code class="docutils literal notranslate"><span class="pre">Point</span></code> オブジェクトのリストを作成し、初期座標参照系を <strong><code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code>（世界測地系・度単位）</strong> に指定した地理情報データフレーム <code class="docutils literal notranslate"><span class="pre">gdf_candidates</span></code> を作成してください。</p></li>
+<li><p>作成したGeoDataFrameを、メートル単位で距離や面積が正しく計算できるよう、<strong>日本の平面直角座標系第9系（<code class="docutils literal notranslate"><span class="pre">EPSG:6677</span></code>：関東地方）</strong> にプロジェクション変換（<code class="docutils literal notranslate"><span class="pre">.to_crs()</span></code>）してください。</p></li>
+<li><p>事前に用意された行政区画ポリゴン <code class="docutils literal notranslate"><span class="pre">gdf_regions_meter</span></code>（これも <code class="docutils literal notranslate"><span class="pre">EPSG:6677</span></code>）と、変換した店舗候補地 <code class="docutils literal notranslate"><span class="pre">gdf_candidates_meter</span></code> を、<strong>空間結合（<code class="docutils literal notranslate"><span class="pre">gpd.sjoin()</span></code>）</strong> させて、「どの店舗が、どの区に物理的に存在するか」を自動判定し、結合結果を表示してください。</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># =====================================================================</span>
+<span class="c1"># 課題 3: テンプレートコード（Colabに貼り付けて実行可能）</span>
+<span class="c1"># =====================================================================</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span><span class="p">,</span> <span class="n">Polygon</span>
+
+<span class="c1"># 1. 出店候補地データ（経度 Lng, 緯度 Lat の順に注意！）</span>
+<span class="n">candidates_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"候補地ID"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"A-Site"</span><span class="p">,</span> <span class="s2">"B-Site"</span><span class="p">],</span>
+    <span class="s2">"経度"</span><span class="p">:</span> <span class="p">[</span><span class="mf">139.7111</span><span class="p">,</span> <span class="mf">139.7523</span><span class="p">],</span>
+    <span class="s2">"緯度"</span><span class="p">:</span> <span class="p">[</span><span class="mf">35.7292</span><span class="p">,</span> <span class="mf">35.7215</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># 2. （準備）豊島区と文京区の簡易行政区画ポリゴン（メートル座標系 EPSG:6677 で定義）</span>
+<span class="c1"># ※授業中にネットワークエラーが出ないよう、自動でポリゴンを作成します（直さなくてOK）</span>
+<span class="n">poly_1</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([(</span><span class="mi">391200</span><span class="p">,</span> <span class="mi">3954000</span><span class="p">),</span> <span class="p">(</span><span class="mi">393900</span><span class="p">,</span> <span class="mi">3954000</span><span class="p">),</span> <span class="p">(</span><span class="mi">393900</span><span class="p">,</span> <span class="mi">3956200</span><span class="p">),</span> <span class="p">(</span><span class="mi">391200</span><span class="p">,</span> <span class="mi">3956200</span><span class="p">)])</span> <span class="c1"># 豊島区周辺</span>
+<span class="n">poly_2</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([(</span><span class="mi">394800</span><span class="p">,</span> <span class="mi">3953100</span><span class="p">),</span> <span class="p">(</span><span class="mi">397500</span><span class="p">,</span> <span class="mi">3953100</span><span class="p">),</span> <span class="p">(</span><span class="mi">397500</span><span class="p">,</span> <span class="mi">3955300</span><span class="p">),</span> <span class="p">(</span><span class="mi">394800</span><span class="p">,</span> <span class="mi">3955300</span><span class="p">)])</span> <span class="c1"># 文京区周辺</span>
+<span class="n">gdf_regions_meter</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">({</span>
+    <span class="s2">"区名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"豊島区"</span><span class="p">,</span> <span class="s2">"文京区"</span><span class="p">]</span>
+<span class="p">},</span> <span class="n">geometry</span><span class="o">=</span><span class="p">[</span><span class="n">poly_1</span><span class="p">,</span> <span class="n">poly_2</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:6677"</span><span class="p">)</span>
+
+<span class="c1"># TODO: (1) 候補地データの「経度」「緯度」から Point のリストを作り、</span>
+<span class="c1">#           CRSを「EPSG:4326」に指定して GeoDataFrame 「gdf_candidates」を構築してください。</span>
+<span class="n">geometry_list</span> <span class="o">=</span> 
+<span class="n">gdf_candidates</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">candidates_data</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span>          <span class="p">,</span> <span class="n">crs</span><span class="o">=</span>          <span class="p">)</span>
+
+<span class="c1"># TODO: (2) 空間演算に備え、メートル単位の座標系「EPSG:6677」に座標変換してください。</span>
+<span class="n">gdf_candidates_meter</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: (3) gpd.sjoin を使い、候補地(gdf_candidates_meter)に区画(gdf_regions_meter)を空間結合してください。</span>
+<span class="c1">#           ※結合の方向は「左外部(how='left')」、空間条件は「交差(predicate='intersects')」を指定してください。</span>
+<span class="n">joined_analysis</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">sjoin</span><span class="p">(</span>
+    <span class="n">df_points</span> <span class="o">=</span> <span class="p">,</span> <span class="c1"># 左</span>
+    <span class="n">df_polygons</span> <span class="o">=</span> <span class="p">,</span> <span class="c1"># 右</span>
+    <span class="n">how</span><span class="o">=</span> <span class="p">,</span>
+    <span class="n">predicate</span><span class="o">=</span> 
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 課題 3: 空間結合による区名自動判定結果 ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">joined_analysis</span><span class="p">[[</span><span class="s2">"候補地ID"</span><span class="p">,</span> <span class="s2">"区名"</span><span class="p">,</span> <span class="s2">"geometry"</span><span class="p">]])</span>
+</pre></div>
+</div>
+<details>
+<summary>🔑 課題 3 の模範解答コードを表示</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># (1) GeoDataFrame作成（Pointリスト構築、度単位CRS指定）</span>
+<span class="n">geometry_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">Point</span><span class="p">(</span><span class="n">xy</span><span class="p">)</span> <span class="k">for</span> <span class="n">xy</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">candidates_data</span><span class="p">[</span><span class="s2">"経度"</span><span class="p">],</span> <span class="n">candidates_data</span><span class="p">[</span><span class="s2">"緯度"</span><span class="p">])]</span>
+<span class="n">gdf_candidates</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">candidates_data</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">geometry_list</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">)</span>
+
+<span class="c1"># (2) 投影座標系 EPSG:6677 (メートル単位) への変換</span>
+<span class="n">gdf_candidates_meter</span> <span class="o">=</span> <span class="n">gdf_candidates</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">6677</span><span class="p">)</span>
+
+<span class="c1"># (3) 空間結合 (gpd.sjoin)</span>
+<span class="n">joined_analysis</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">sjoin</span><span class="p">(</span>
+    <span class="n">gdf_candidates_meter</span><span class="p">,</span>
+    <span class="n">gdf_regions_meter</span><span class="p">,</span>
+    <span class="n">how</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span>
+    <span class="n">predicate</span><span class="o">=</span><span class="s2">"intersects"</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</details>
+<details>
+<summary>🎓 教員用10点満点採点・減点基準</summary>
+<ul class="simple">
+<li><p><strong>【Pointの順序とGeoDataFrame化：3点】</strong></p>
+<ul>
+<li><p>Pointを定義する際、<strong><code class="docutils literal notranslate"><span class="pre">Point(経度,</span> <span class="pre">緯度)</span></code> すなわち <code class="docutils literal notranslate"><span class="pre">Point(X,</span> <span class="pre">Y)</span></code> の順序ルールを正しく守れているか。</strong> 緯度経度を逆順で指定してしまっている場合は、店舗位置が南極大陸付近や宇宙に吹き飛ぶため <strong>2.5点減点（重大ミス）</strong>。</p></li>
+<li><p>初期座標系 <code class="docutils literal notranslate"><span class="pre">crs=&quot;EPSG:4326&quot;</span></code> を正しく設定しているか。</p></li>
+</ul>
+</li>
+<li><p><strong>【座標投影変換：3点】</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">.to_crs(epsg=6677)</span></code> を用いてメートル投影座標系への変換が完璧に記述できているか。度単位のまま結合しようとした場合は、単位の不一致により位置が合わず結合結果がすべて NaN になるため、<strong>2点減点</strong>。</p></li>
+</ul>
+</li>
+<li><p><strong>【空間結合の指定：4点】</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">gpd.sjoin()</span></code> を使い、第一引数に点データ、第二引数に面データを渡し、<code class="docutils literal notranslate"><span class="pre">how=&quot;left&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">predicate=&quot;intersects&quot;</span></code> を正しく指定して交差判定できているか。引数の順序ミスや条件指定間違いは <strong>2点減点</strong>。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="ai-train-test-split-r2mae">
+<h3>課題 4: AI売上予測（重回帰モデル）の構築 ✕ train_test_split ✕ モデル評価(R²・MAE)<a class="headerlink" href="#ai-train-test-split-r2mae" title="Link to this heading">¶</a></h3>
+<p>複数の店舗の特徴量（客数、駅から距離、メニューカテゴリのワンホットフラグ）から、日次売上高（円）を予測する、実務直結型の<strong>重回帰分析予測AI</strong>を構築します。</p>
+<ol class="arabic simple">
+<li><p>データを「学習用（80%）」と「テスト用（20%）」に分割してください（ホールドアウト法）。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> の <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> を用いて、学習用データでモデルを訓練（<code class="docutils literal notranslate"><span class="pre">.fit()</span></code>）させてください。</p></li>
+<li><p>テストデータに対して予測（<code class="docutils literal notranslate"><span class="pre">.predict()</span></code>）を実行し、AIの総合得点である <strong>「決定係数 (R^2)」</strong> と、具体的な平均的なズレを示す <strong>「平均絶対誤差（MAE）」</strong> を計算してモデルを評価してください。</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># =====================================================================</span>
+<span class="c1"># 課題 4: テンプレートコード（Colabに貼り付けて実行可能）</span>
+<span class="c1"># =====================================================================</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">r2_score</span><span class="p">,</span> <span class="n">mean_absolute_error</span>
+
+<span class="c1"># 1. カフェ営業履歴データフレーム（ダミー50日分：あらかじめ文字列「カテゴリ」をワンホット変換した特徴量）</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">days</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">customers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="n">days</span><span class="p">)</span> <span class="c1"># 客数 (50〜250人)</span>
+<span class="n">distance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="n">days</span><span class="p">)</span>    <span class="c1"># 駅からの距離 (1〜15分)</span>
+<span class="n">is_sweets_fair</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">days</span><span class="p">)</span> <span class="c1"># スイーツフェア開催中フラグ (0か1)</span>
+
+<span class="c1"># 売上 = 客数 * 2200 - 距離 * 5000 + フェア中なら * 1.2 + ノイズ</span>
+<span class="n">sales</span> <span class="o">=</span> <span class="n">customers</span> <span class="o">*</span> <span class="mi">2200</span> <span class="o">-</span> <span class="n">distance</span> <span class="o">*</span> <span class="mi">5000</span> <span class="o">+</span> <span class="n">is_sweets_fair</span> <span class="o">*</span> <span class="mi">30000</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15000</span><span class="p">,</span> <span class="n">days</span><span class="p">)</span>
+
+<span class="n">df_business</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"客数"</span><span class="p">:</span> <span class="n">customers</span><span class="p">,</span>
+    <span class="s2">"駅距離"</span><span class="p">:</span> <span class="n">distance</span><span class="p">,</span>
+    <span class="s2">"スイーツフェア"</span><span class="p">:</span> <span class="n">is_sweets_fair</span><span class="p">,</span>
+    <span class="s2">"売上高"</span><span class="p">:</span> <span class="n">sales</span>
+<span class="p">})</span>
+
+<span class="c1"># 予測のヒント（説明変数X：3列）と、予測ターゲット（目的変数y：売上高）の切り分け</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_business</span><span class="p">[[</span><span class="s2">"客数"</span><span class="p">,</span> <span class="s2">"駅距離"</span><span class="p">,</span> <span class="s2">"スイーツフェア"</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_business</span><span class="p">[</span><span class="s2">"売上高"</span><span class="p">]</span>
+
+<span class="c1"># TODO: (1) データを「学習用80%：テスト用20%」の比率で分割してください。</span>
+<span class="c1">#           ※random_state=42 を指定すること</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: (2) 線形回帰（LinearRegression）を my_reg_ai という名前で定義し、学習用データを使って学習させてください。</span>
+<span class="n">my_reg_ai</span> <span class="o">=</span> 
+
+
+<span class="c1"># TODO: (3) テスト用データ（X_test）を使って、AIの売上予測を実行し、結果を y_pred に格納してください。</span>
+<span class="n">y_pred</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: (4) 決定係数(R2) と 平均絶対誤差(MAE) を算出し、my_r2, my_mae にそれぞれ代入してください。</span>
+<span class="n">my_r2</span> <span class="o">=</span> 
+<span class="n">my_mae</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 課題 4: 重回帰予測AIモデルの評価結果 ---"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"決定係数 (R²): </span><span class="si">{</span><span class="n">my_r2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">  (1.0に近いほど優秀)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"平均的なズレ (MAE): </span><span class="si">{</span><span class="n">my_mae</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> 円  (小さいほどズレが少なく優秀)"</span><span class="p">)</span>
+</pre></div>
+</div>
+<details>
+<summary>🔑 課題 4 の模範解答コードを表示</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># (1) データの分割 (80:20)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># (2) 重回帰モデル定義 ＆ 学習</span>
+<span class="n">my_reg_ai</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">my_reg_ai</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># (3) 予測の実行</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">my_reg_ai</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># (4) 評価指標の算出</span>
+<span class="n">my_r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">my_mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+<details>
+<summary>🎓 教員用10点満点採点・減点基準</summary>
+<ul class="simple">
+<li><p><strong>【データ分割：3点】</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> にて <code class="docutils literal notranslate"><span class="pre">test_size=0.2</span></code>（テスト割合20%）および <code class="docutils literal notranslate"><span class="pre">random_state=42</span></code> を過不足なく設定できているか。変数の代入順序（<code class="docutils literal notranslate"><span class="pre">X_train,</span> <span class="pre">X_test,</span> <span class="pre">y_train,</span> <span class="pre">y_test</span></code>）がズレており、その後の学習で致命的なデータリーケージやエラーを起こしている場合は <strong>2点減点</strong>。</p></li>
+</ul>
+</li>
+<li><p><strong>【モデル定義と学習：3点】</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">LinearRegression()</span></code> インスタンスを作成し、<strong>学習用（<code class="docutils literal notranslate"><span class="pre">X_train,</span> <span class="pre">y_train</span></code>）</strong> を使って <code class="docutils literal notranslate"><span class="pre">.fit</span></code> させているか。ここでうっかりテストデータを渡してカンニング（リーケージ）学習をさせている場合は、重大バグのため <strong>2.5点減点</strong>。</p></li>
+</ul>
+</li>
+<li><p><strong>【予測の実行：2点】</strong></p>
+<ul>
+<li><p>テスト用の説明変数 <code class="docutils literal notranslate"><span class="pre">X_test</span></code> のみを入力して <code class="docutils literal notranslate"><span class="pre">.predict</span></code> を正確に実行できているか。</p></li>
+</ul>
+</li>
+<li><p><strong>【評価指標の算出：2点】</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">r2_score(y_test,</span> <span class="pre">y_pred)</span></code> と <code class="docutils literal notranslate"><span class="pre">mean_absolute_error(y_test,</span> <span class="pre">y_pred)</span></code> を正しい引数順（正解データ, AI予測データ）で比較できているか。引数の順序間違いや、変数の渡し間違いは <strong>1点減点</strong>。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="standardscaler-k-means">
+<h3>課題 5: データの標準化(StandardScaler) ✕ K-means 顧客自動クラスタリング ✕ エルボー法<a class="headerlink" href="#standardscaler-k-means" title="Link to this heading">¶</a></h3>
+<p>100人のお客様の「年間お買い物合計額（千円）」と「来店回数（回）」のデータフレームがあります。二つの特徴量は「千円（数万の規模）」と「回数（数回の規模）」でスケールが著しく異なるため、標準化せずにクラスタリングをすると、AIは金額のスケールばかりを気にして、来店回数を無視した不細工なグループを作ってしまいます。</p>
+<ol class="arabic simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code></strong> を使って、2つの特徴量を平均0、標準偏差1に**標準化（スケールを統一）**してください。</p></li>
+<li><p>標準化したデータを用いて、顧客を特徴ごとに自動で <strong>「3つのクラスター（n_clusters=3）」</strong> にセグメンテーション（クラスタリング）し、所属グループラベルを取得してください。</p></li>
+<li><p>【最上級】1クラスターから5クラスターまでK-meansモデルの数を変化させる for ループを回し、各クラスタ数におけるモデルの歪み（データ全体のばらつき：<code class="docutils literal notranslate"><span class="pre">model.inertia_</span></code>）を記録して、グループ分けの切りが一番良くなるポイント（肘の折れ曲がり点）を見極めるための<strong>エルボー法データ</strong> <code class="docutils literal notranslate"><span class="pre">distortions</span></code> のリストを完成させてください。</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># =====================================================================</span>
+<span class="c1"># 課題 5: テンプレートコード（Colabに貼り付けて実行可能）</span>
+<span class="c1"># =====================================================================</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
+
+<span class="c1"># 顧客営業履歴データ（ダミー100人分：購入額(千円)と来店回数(回)）</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">spend</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1"># 年間購入額 (1万〜15万円)</span>
+<span class="n">visits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>   <span class="c1"># 来店回数 (1〜24回)</span>
+
+<span class="n">df_customers</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"年間購入額"</span><span class="p">:</span> <span class="n">spend</span><span class="p">,</span>
+    <span class="s2">"来店回数"</span><span class="p">:</span> <span class="n">visits</span>
+<span class="p">})</span>
+
+<span class="c1"># TODO: (1) StandardScaler を使い、df_customers の2つの特徴量を標準化して、</span>
+<span class="c1">#           変数 customers_scaled_array (NumPy配列になります) に代入してください。</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">customers_scaled_array</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: (2) KMeans を使って、クラスタ数「3」で顧客をグループ分けしてください。</span>
+<span class="c1">#           学習と予測を同時に行い、各顧客の所属グループ番号(0,1,2)の配列を labels に格納してください。</span>
+<span class="c1">#           ※random_state=42, n_init=10 を指定すること。</span>
+<span class="n">km_model</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span>          <span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">km_model</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">customers_scaled_array</span><span class="p">)</span>
+
+<span class="n">df_customers</span><span class="p">[</span><span class="s2">"グループ番号"</span><span class="p">]</span> <span class="o">=</span> <span class="n">labels</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 課題 5: K-means 自動セグメンテーション結果（先頭5人） ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_customers</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># TODO: (3) エルボー法：クラスタ数 k を 1 から 5 まで変化させ、</span>
+<span class="c1">#           各 KMeans モデルの歪み（inertia_）を計測して、リスト distortions にアペンドするループを完成させてください。</span>
+<span class="n">distortions</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="c1"># k-meansモデルを定義（クラスタ数k）</span>
+    <span class="n">test_model</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="c1"># 標準化したデータ customers_scaled_array を使って学習させる</span>
+    
+    <span class="c1"># 歪み（ばらつきの指標：test_model.inertia_）を distortions に追加する</span>
+    <span class="n">distortions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>          <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">--- 各クラスタ数におけるデータの歪み（エルボー法用データ） ---"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">dist</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">distortions</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"グループ数 </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: データのばらつき度 = </span><span class="si">{</span><span class="n">dist</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<details>
+<summary>🔑 課題 5 の模範解答コードを表示</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># (1) データの標準化</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">customers_scaled_array</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_customers</span><span class="p">)</span>
+
+<span class="c1"># (2) クラスタ数3で K-means の実行</span>
+<span class="n">km_model</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">km_model</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">customers_scaled_array</span><span class="p">)</span>
+
+<span class="c1"># (3) エルボー法のループ</span>
+<span class="n">distortions</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="n">test_model</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">test_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">customers_scaled_array</span><span class="p">)</span>
+    <span class="n">distortions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_model</span><span class="o">.</span><span class="n">inertia_</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+<details>
+<summary>🎓 教員用10点満点採点・減点基準</summary>
+<ul class="simple">
+<li><p><strong>【StandardScalerによる標準化：3点】</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> を作成し、<code class="docutils literal notranslate"><span class="pre">.fit_transform()</span></code> または <code class="docutils literal notranslate"><span class="pre">.fit()</span></code> ➡ <code class="docutils literal notranslate"><span class="pre">.transform()</span></code> で2次元データを標準化できているか。生データのままK-meansに放り込んでクラスタリングしている場合は、スケール違いにより不適切な結果となるため <strong>2点減点</strong>。</p></li>
+</ul>
+</li>
+<li><p><strong>【K-Means(K=3)の構築：3点】</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">KMeans(n_clusters=3,</span> <span class="pre">random_state=42,</span> <span class="pre">n_init=10)</span></code> を定義し、<code class="docutils literal notranslate"><span class="pre">.fit_predict()</span></code> で標準化後のデータを与えてラベルを正確に取得できているか。パラメータ設定や変数指定の間違いは <strong>1.5点減点</strong>。</p></li>
+</ul>
+</li>
+<li><p><strong>【エルボー法のループ実装：4点】</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">k</span> <span class="pre">in</span> <span class="pre">range(1,</span> <span class="pre">6):</span></code>（あるいは 1から5 をカバーする範囲）を回し、各ループ内で定義した <code class="docutils literal notranslate"><span class="pre">KMeans(n_clusters=k)</span></code> に対して標準化データを <code class="docutils literal notranslate"><span class="pre">.fit()</span></code> させ、そのモデルの <code class="docutils literal notranslate"><span class="pre">test_model.inertia_</span></code>（歪みの指標）を取り出して <code class="docutils literal notranslate"><span class="pre">distortions</span></code> リストに <code class="docutils literal notranslate"><span class="pre">.append</span></code> できているか。</p></li>
+<li><p>ループ範囲の間違い、テストモデルへの学習用データの渡し忘れ、<code class="docutils literal notranslate"><span class="pre">test_model.inertia_</span></code> を正しくアペンドできていないなどの不備は <strong>1点につき1点減点（最大3点減点）</strong>。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id21">
+<h2>💡 修了メッセージ：これからのデータサイエンスとあなたへのアドバイス<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h2>
+<p>全13回にわたるプログラミング応用A（コンピューティング応用G）を無事に完走した皆さん、本当におめでとうございます！</p>
+<p>皆さんは、この授業を通して「プログラムを書く技術」のさらに先にある、**「データを用いて事実を暴き、誰にでも使いやすい形で社会やビジネスに価値を提供するパイプラインのディレクション力」**を手に入れました。</p>
+<p>これからのビジネス、あるいは学術研究の現場では、「AIが自動生成した分析データ」が溢れかえるようになります。
+しかし、そのデータの裏に潜む「平均値の罠」や「擬似相関」、「座標系の不整合」に気づけず、AIの出力をそのまま信じてしまう人は非常に多くいます。</p>
+<p>これまでの13回で、自分の手を動かし、たくさんのエラーに直面し、それをAIと対話し解決してきた皆さんは、もう「データの表面だけをなぞる人」ではありません。
+コードの内部の仕組みを理解し、AIを最高の右腕として動かせる、新時代のリーダー（市民データサイエンティスト）です。</p>
+<p>この授業で得た自信と、何より「試行錯誤して自分で解決する習慣」を胸に、これからの未来でご自身のデータ活用の旅をさらに広げていってください。1学期間、本当にお疲れ様でした！またどこかで皆さんの素晴らしいアプリに出会えることを楽しみにしています！</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            <div class="last-updated">
+              Last updated on 2026-08-30</div>
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">第13回 総合演習：データ活用パイプラインの完全連動（200分大講義＆集大成演習）</a><ul>
+<li><a class="reference internal" href="#id2">🎯 到達目標</a></li>
+<li><a class="reference internal" href="#id3">⏱️ 200分授業の進行スケジュール（タイムテーブル）</a></li>
+<li><a class="reference internal" href="#id4">13.1 全12回の技術マップ（大講義：170分）</a><ul>
+<li><a class="reference internal" href="#id5">1. 【テーマ1】 データの取得・高度な加工（第2回〜第3回）: パイプラインの「水源」</a><ul>
+<li><a class="reference internal" href="#shift-jis">(1) 文字コード（Shift-JIS）との死闘</a><ul>
+<li><a class="reference internal" href="#id6">🚨 対策コードの極意：</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#concat-merge">(2) 「縦の連結」と「横の結合」：concat と merge</a><ul>
+<li><a class="reference internal" href="#inner-silent-data-loss">🚨 内部結合（inner）による「Silent Data Loss（静かなデータ消失）」の恐怖：</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#apply-lambda">(3) 複雑な行ごとの計算：apply ✕ lambda</a><ul>
+<li><a class="reference internal" href="#axis-1">🚨 初心者が100%つまずく <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> の指定漏れ：</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#datetime">(4) 時系列（DateTime型）を支配する</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">2. 【テーマ2】 データ解析・記述統計（第4回）: データの「本質」を見極めるレンズ</a><ul>
+<li><a class="reference internal" href="#id8">(1) 「平均値」の甘い罠と「中央値」</a><ul>
+<li><a class="reference internal" href="#id9">💡 対策：</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#standard-deviation-sigma">(2) データのばらつきを測る「標準偏差（Standard Deviation: <span class="math notranslate nohighlight">\(\sigma\)</span>）」</a></li>
+<li><a class="reference internal" href="#crosstab-pivot-table">(3) クロス集計（crosstab）とピボットテーブル（pivot_table）</a></li>
+<li><a class="reference internal" href="#id10">(4) 相関分析：関係性を数値化する</a><ul>
+<li><a class="reference internal" href="#id11">⚠️ データ分析者最大のタブー：相関関係と因果関係の混同</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gis-79">3. 【テーマ3】 地理空間情報（GIS）分析（第7回〜第9回）: データの「場所」を重ね合わせる</a><ul>
+<li><a class="reference internal" href="#crs">(1) 丸い地球を無理やり平らにする「座標系（CRS）」の不思議</a><ul>
+<li><a class="reference internal" href="#id12">💡 解決策：</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#spatial-join">(2) 空間結合（Spatial Join）：ピンをバケツに自動で投げ入れる</a></li>
+<li><a class="reference internal" href="#web-folium-leafmap">(3) 動的Webマップ（folium / leafmap）による感動的な可視化</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ai-1011">4. 【テーマ4】 AI・機械学習（第10回〜第11回）: 過去から「未来」を先回りする</a><ul>
+<li><a class="reference internal" href="#id13">(1) 機械学習の「黄金のルール」：過去問の丸暗記を許すな</a><ul>
+<li><a class="reference internal" href="#id14">💡 解決策：</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id15">(2) 回帰と分類：予測したいのは「数値」か「カテゴリ」か？</a></li>
+<li><a class="reference internal" href="#aik-means">(3) 教師なし学習：正解を教えずにAIに自動整理させる「K-means」</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#web-5612">5. 【テーマ5】 Webアプリとして社会実装（第5回〜第6回、第12回）: 「すべての合体」とバイブコーディング</a><ul>
+<li><a class="reference internal" href="#streamlit-htmljavascriptweb">(1) Streamlit：HTML・JavaScript不要の驚異的Webフレームワーク</a><ul>
+<li><a class="reference internal" href="#id16">🔄 リアクティブ・プログラミングの仕組み：</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#vibe-coding-ai">(2) バイブコーディング（Vibe Coding）の本質：AI時代の開発マインド</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id17">13.2 授業内練習問題（理論確認用：5問：約25分）</a><ul>
+<li><a class="reference internal" href="#id18">練習問題 1: データの尺度と統計指標</a></li>
+<li><a class="reference internal" href="#pandas-merge">練習問題 2: Pandasの結合（merge）とデータ消失</a></li>
+<li><a class="reference internal" href="#gis">練習問題 3: GISの座標系と単位の罠</a></li>
+<li><a class="reference internal" href="#overfitting">練習問題 4: 機械学習の「過学習（Overfitting）」とホールドアウト</a></li>
+<li><a class="reference internal" href="#streamlit-rerun">練習問題 5: Streamlitの再実行システム（Rerun）とボタンの罠</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id19">💻 総合演習課題（授業外実習・期末評価宿題：5問）</a><ul>
+<li><a class="reference internal" href="#pandas-apply-lambda">課題 1: Pandasによる複数データの結合 ✕ 複雑条件のapply-lambda計算</a></li>
+<li><a class="reference internal" href="#id20">課題 2: 時系列日付からの月・日本語曜日抽出 ✕ クロス集計ピボットテーブル</a></li>
+<li><a class="reference internal" href="#geodataframe-spatial-join">課題 3: GeoDataFrameの構築 ✕ メートル座標変換 ✕ 空間結合（Spatial Join）</a></li>
+<li><a class="reference internal" href="#ai-train-test-split-r2mae">課題 4: AI売上予測（重回帰モデル）の構築 ✕ train_test_split ✕ モデル評価(R²・MAE)</a></li>
+<li><a class="reference internal" href="#standardscaler-k-means">課題 5: データの標準化(StandardScaler) ✕ K-means 顧客自動クラスタリング ✕ エルボー法</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id21">💡 修了メッセージ：これからのデータサイエンスとあなたへのアドバイス</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../_static/documentation_options.js?v=4d4437c9"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=940804e7"></script>
+    <script src="../../../_static/translations.js?v=4755f45a"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </body>
+</html>

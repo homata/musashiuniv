@@ -7,10 +7,12 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="2026/02.programming_advanced_a/markdown/advanced_04.html" />
 <meta property="og:site_name" content="musashiuniv" />
+<meta property="og:description" content="データの裏側に隠された「真実」をあぶり出すため「データ解析（データ分析）」を学習します 🎯 到達目標: 「平均値の罠」を理解し、データに極端な値（外れ値）が含まれる場合に「中央値（メディアン）」を正しく選択・算出できる。, データのばらつき度合いを示す「標準偏差（Standard Deviation）」の直感的な意味を説明でき、Pandasで算出できる。, 2つのグループの属性（例：性別 ✕..." />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
 <meta property="og:image" content="/None" />
-<meta property="og:image:alt" content="" />
+<meta property="og:image:alt" content="データの裏側に隠された「真実」をあぶり出すため「データ解析（データ分析）」を学習します 🎯 到達目標: 「平均値の罠」を理解し、データに極端な値（外れ値）が含まれる場合に「中央値（メディアン）」を正しく選択・算出できる。, データのばらつき度合いを示す「標準偏差（Standard Deviation）」の直感的な..." />
+<meta name="description" content="データの裏側に隠された「真実」をあぶり出すため「データ解析（データ分析）」を学習します 🎯 到達目標: 「平均値の罠」を理解し、データに極端な値（外れ値）が含まれる場合に「中央値（メディアン）」を正しく選択・算出できる。, データのばらつき度合いを示す「標準偏差（Standard Deviation）」の直感的な意味を説明でき、Pandasで算出できる。, 2つのグループの属性（例：性別 ✕..." />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" /><link rel="next" title="第5回 Webサービスの活用1" href="advanced_05.html" /><link rel="prev" title="第3回 データの種類とデータ加⼯" href="advanced_03.html" />
 
@@ -189,7 +191,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -350,7 +352,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -358,6 +360,2294 @@
         <article role="main" id="furo-main-content">
           <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>第4回 データ解析<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<p>データの裏側に隠された「真実」をあぶり出すため「データ解析（データ分析）」を学習します</p>
+<hr class="docutils" />
+<section id="id2">
+<h2>🎯 到達目標<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>「平均値の罠」を理解し、データに極端な値（外れ値）が含まれる場合に「中央値（メディアン）」を正しく選択・算出できる。</p></li>
+<li><p>データのばらつき度合いを示す「標準偏差（Standard Deviation）」の直感的な意味を説明でき、Pandasで算出できる。</p></li>
+<li><p>2つのグループの属性（例：性別 ✕ 購入商品）を掛け合わせた「クロス集計（<code class="docutils literal notranslate"><span class="pre">pd.crosstab</span></code>）」や、店舗別のマトリクス表を作る「ピボットテーブル（<code class="docutils literal notranslate"><span class="pre">pd.pivot_table</span></code>）」が作成できる。</p></li>
+<li><p>2つのデータの関係性の強さを表す「相関係数」を理解し、Pandasで相関行列を計算して正しく解釈できる。</p></li>
+<li><p>データ分析最大のタブーである「相関関係と因果関係の混同（疑似相関）」を見破り、第三の要因を疑う「データリテラシー（クリティカルシンキング）」を学ぶ。</p></li>
+<li><p>位置情報や属性の背景にアプローチする「定性的評価」と、統計量で裏付ける「定量的評価」の2つのアプローチを組み合わせたデータ評価が理解している。</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h2>記述統計とは<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p>記述統計とは、手元にあるデータの特徴や傾向を分かりやすく整理し、要約するための統計手法です。</p>
+<section id="id4">
+<h3>記述統計の主な目的データの可視化:<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>表やグラフ（ヒストグラムや箱ひげ図など）を使って、データの全体像を目で見て分かりやすくする。</p></li>
+<li><p>数値による要約: 代表値や散らばりの指標を用いて、データを少数の数値で表す。</p></li>
+</ul>
+</section>
+<section id="id5">
+<h3>主な指標（記述統計量）<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>代表値（中心の位置）:</p>
+<ul>
+<li><p>平均値: すべてのデータの値を足して、データの数で割った値</p></li>
+<li><p>中央値: データを大きさ順に並べたときに真ん中に来る値</p></li>
+<li><p>最頻値(さいひんち): データの中で最も多く現れる値</p></li>
+</ul>
+</li>
+<li><p>散らばりの指標（バラツキ）:</p>
+<ul>
+<li><p>分散: 平均値からのズレの2乗を平均した値</p></li>
+<li><p>標準偏差: 分散の正の平方根で、平均からどれくらいデータが散らばっているかを示す</p></li>
+<li><p>最小値・最大値: データの範囲を把握するための両端の値</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id6">
+<h3>平均客単価の罠<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<p>あるカフェの「商品の購入金額」は、普段は 300円〜500円 の範囲でした。
+しかし、そのうちの1人が、お店に壁に飾ってあった2億円の絵画をキャッシュで購入していきました。</p>
+<p>この日の客単価データは以下のようになります。
+<code class="docutils literal notranslate"><span class="pre">[350円,</span> <span class="pre">400円,</span> <span class="pre">380円,</span> <span class="pre">450円,</span> <span class="pre">300円,</span> <span class="pre">420円,</span> <span class="pre">390円,</span> <span class="pre">360円,</span> <span class="pre">410円,</span> <span class="pre">200,000,000円（絵画）]</span></code></p>
+<p>このデータをPandasに入力し、「平均値（Mean）」と「中央値（Median）」を計算して比較してみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># 10人のお客様の購入金額データ</span>
+<span class="n">sales_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">350</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">380</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">420</span><span class="p">,</span> <span class="mi">390</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">410</span><span class="p">,</span> <span class="mi">200000000</span><span class="p">])</span>
+
+<span class="c1"># 平均値（Mean）の計算</span>
+<span class="n">mean_val</span> <span class="o">=</span> <span class="n">sales_data</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># 中央値（Median）の計算</span>
+<span class="n">median_val</span> <span class="o">=</span> <span class="n">sales_data</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"平均客単価: </span><span class="si">{</span><span class="n">mean_val</span><span class="si">:</span><span class="s2">,.1f</span><span class="si">}</span><span class="s2"> 円 (全員が2000万円も使った？)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"中央客単価: </span><span class="si">{</span><span class="n">median_val</span><span class="si">:</span><span class="s2">,.1f</span><span class="si">}</span><span class="s2"> 円 (普段通り約400円)"</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>平均値（<code class="docutils literal notranslate"><span class="pre">.mean()</span></code>）</strong></p>
+<ul>
+<li><p>「全員の合計金額を人数で割る」という計算をするため、1件でも異常な値（<strong>外れ値：Outlier</strong>）が混ざると、強烈にその数値に引っ張られてしまい、実態を全く表さなくなります。</p></li>
+</ul>
+</li>
+<li><p><strong>中央値（<code class="docutils literal notranslate"><span class="pre">.median()</span></code>）</strong></p>
+<ul>
+<li><p>データを小さい順に並べ替えたときに「ちょうど真ん中の順位（50%の位置）にくる値」です。どれほど極端な外れ値が混ざっていても、順位自体は1つしかズレないため、外れ値の影響を受けずに、「普段の姿」を映し出すことができます。</p></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<div><p><strong>⚠️ データリテラシー</strong>:
+ニュースで「日本の平均年収は450万円です」と言われた際、多くの人が「自分は平均以下だ…」と思います。しかし、実際は一部の超高所得層（大企業の社長やスポーツ選手など）が平均値を強烈に引き上げています。実態に近い年収（日本人のちょうど真ん中の人の年収＝中央値）を調べると、約360万円〜380万円付近になり、平均値より約100万円近く低くなります。データを見るときは、常に「平均値の罠」を疑い、中央値も同時に確認する癖をつけましょう！</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="standard-deviation">
+<h3>データのばらつきを測る「標準偏差（Standard Deviation）」<a class="headerlink" href="#standard-deviation" title="Link to this heading">¶</a></h3>
+<p>平均値や中央値といった「真ん中の値」が分かったら、次に知りたいのは「データはどのくらい散らばっているのか？（個人差が大きいのか、全員同じくらいなのか）」という情報です。</p>
+<p>ここに、1日の総売上高がどちらも「ピッタリ30万円」である2つの店舗があります。</p>
+<ul class="simple">
+<li><p><strong>A店（安定型）</strong>：来店するお客様全員が、ほぼ均一に「300円〜400円」のコーヒーとパンを頼む。</p></li>
+<li><p><strong>B店（波乱万丈型）</strong>：100円のガム1個だけを買う極端な顧客もいれば、一度に2万円分のギフト用コーヒー豆をまとめ買いする顧客もいる。</p></li>
+</ul>
+<p>この2つの店の「個人差（ばらつき）」を数値化したものが「標準偏差（Standard Deviation）」です。
+数式は難しそうに見えますが、直感的な意味は極めてシンプルです。</p>
+<blockquote>
+<div><p><strong>💡 標準偏差の直感的な定義</strong>：
+<strong>「全員のデータが、平均値から平均して『どれくらいの距離（金額）』離れているかを表す指標」</strong></p>
+</div></blockquote>
+<p><strong>【標準偏差（ばらつき）のビジュアル図解】</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  【 A店 (標準偏差が小さい) 】             【 B店 (標準偏差が大きい) 】
+      
+       |      ●●●                    　 |   ●
+       |    ●●●●●                     　|   ●      ●       ●
+  ─────┼──────●───────▶             ────┼──────●───────▶
+       |    (平均350円)                　|    (平均350円)
+    (全員が平均のすぐ近くにいる)            (平均から遠く離れた人が多い)
+</pre></div>
+</div>
+<p>Pandasでこの「ばらつき」を計算してみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># A店とB店の顧客ごとの購入額データ（各10人）</span>
+<span class="n">shop_A</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">350</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">340</span><span class="p">,</span> <span class="mi">350</span><span class="p">,</span> <span class="mi">370</span><span class="p">,</span> <span class="mi">330</span><span class="p">,</span> <span class="mi">350</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">340</span><span class="p">,</span> <span class="mi">350</span><span class="p">])</span> <span class="c1"># 平均350円</span>
+<span class="n">shop_B</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span>  <span class="mi">50</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">350</span><span class="p">,</span>  <span class="mi">50</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">1000</span><span class="p">])</span> <span class="c1"># 平均350円</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"A店の平均値: </span><span class="si">{</span><span class="n">shop_A</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> 円 / 標準偏差(std): </span><span class="si">{</span><span class="n">shop_A</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"B店の平均値: </span><span class="si">{</span><span class="n">shop_B</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> 円 / 標準偏差(std): </span><span class="si">{</span><span class="n">shop_B</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>A店</strong>の標準偏差は <strong>11.5</strong> です。これは「顧客全員の金額が、平均350円からプラスマイナス11.5円程度の非常に狭い範囲にギュッと集まっている（ばらつきが極めて小さい）」ことを示しています。</p></li>
+<li><p><strong>B店</strong>の標準偏差は <strong>333.3</strong> です。これは「顧客全員の金額が、平均350円から平均して約333円も遠く離れた、非常に激しいバラバラな状態にある（ばらつきが極めて大きい）」ことを意味します。</p></li>
+</ul>
+<p>ビジネスにおいて、標準偏差を知ることは「仕入れや在庫の安定性」を予測する上で、平均値と同じくらい極めて重要な意味を持ちます。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id7">
+<h2>クロス集計とピボットテーブル：多角的なデータ分析<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<p>データ全体の平均やばらつきがつかめたら、次は「データをグループ（属性）ごとに切り分けて比較する」ステップに進みます。　　
+これを行うのが「クロス集計」と「ピボットテーブル」です。</p>
+<section id="pd-crosstab">
+<h3>属性ごとの割合をあぶり出す「クロス集計（<code class="docutils literal notranslate"><span class="pre">pd.crosstab</span></code>）」<a class="headerlink" href="#pd-crosstab" title="Link to this heading">¶</a></h3>
+<p>例えば、あなたがカフェの購入データを持っており、「男性と女性で、注文する商品カテゴリ（ドリンク、デザート、フード）に違いはあるか？」を調べたいとします。
+Pandasの <code class="docutils literal notranslate"><span class="pre">pd.crosstab(行に並べる列,</span> <span class="pre">列に並べる列)</span></code> を使うと、掛け合わせの度数（人数）を集計する「クロス集計表」が作れます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 会員顧客データ（15人分のダミー）</span>
+<span class="n">df_members</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"性別"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"女性"</span><span class="p">,</span> <span class="s2">"男性"</span><span class="p">,</span> <span class="s2">"女性"</span><span class="p">,</span> <span class="s2">"女性"</span><span class="p">,</span> <span class="s2">"男性"</span><span class="p">,</span> <span class="s2">"女性"</span><span class="p">,</span> <span class="s2">"男性"</span><span class="p">,</span> <span class="s2">"女性"</span><span class="p">,</span> <span class="s2">"女性"</span><span class="p">,</span> <span class="s2">"男性"</span><span class="p">,</span> <span class="s2">"女性"</span><span class="p">,</span> <span class="s2">"男性"</span><span class="p">,</span> <span class="s2">"女性"</span><span class="p">,</span> <span class="s2">"女性"</span><span class="p">,</span> <span class="s2">"男性"</span><span class="p">],</span>
+    <span class="s2">"注文カテゴリ"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"デザート"</span><span class="p">,</span> <span class="s2">"ドリンク"</span><span class="p">,</span> <span class="s2">"デザート"</span><span class="p">,</span> <span class="s2">"フード"</span><span class="p">,</span> <span class="s2">"ドリンク"</span><span class="p">,</span> <span class="s2">"デザート"</span><span class="p">,</span> <span class="s2">"フード"</span><span class="p">,</span> <span class="s2">"デザート"</span><span class="p">,</span> <span class="s2">"ドリンク"</span><span class="p">,</span> <span class="s2">"デザート"</span><span class="p">,</span> <span class="s2">"フード"</span><span class="p">,</span> <span class="s2">"ドリンク"</span><span class="p">,</span> <span class="s2">"デザート"</span><span class="p">,</span> <span class="s2">"フード"</span><span class="p">,</span> <span class="s2">"ドリンク"</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># 性別と注文カテゴリのクロス集計表（度数＝人数）を作成します</span>
+<span class="n">cross_table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df_members</span><span class="p">[</span><span class="s2">"性別"</span><span class="p">],</span> <span class="n">df_members</span><span class="p">[</span><span class="s2">"注文カテゴリ"</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"性別 ✕ 注文カテゴリ のクロス集計（人数）"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">cross_table</span><span class="p">)</span>
+
+<span class="c1"># 人数ではなく、横一行を100%とした「比率（割合）」で表示したい場合は normalize="index" をつけます</span>
+<span class="n">cross_ratio</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df_members</span><span class="p">[</span><span class="s2">"性別"</span><span class="p">],</span> <span class="n">df_members</span><span class="p">[</span><span class="s2">"注文カテゴリ"</span><span class="p">],</span> <span class="n">normalize</span><span class="o">=</span><span class="s2">"index"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">割合（％）で表示したクロス集計（女性の何％がデザートを頼むか？）"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">cross_ratio</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">"</span><span class="si">{:.1%}</span><span class="s2">"</span><span class="p">))</span> <span class="c1"># パーセント表示に綺麗に整える</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="pd-pivot-table">
+<h3>複数店舗✕商品カテゴリの売上を一発集計「ピボットテーブル（<code class="docutils literal notranslate"><span class="pre">pd.pivot_table</span></code>）」<a class="headerlink" href="#pd-pivot-table" title="Link to this heading">¶</a></h3>
+<p>クロス集計は「人数（度数）」を数えるのに適していますが、「金額の合計や平均」をマトリクス（縦横の表）で集計したい場合は、<strong>「ピボットテーブル（<code class="docutils literal notranslate"><span class="pre">pd.pivot_table</span></code>）」</strong> を使います。</p>
+<p>「どの店舗（縦軸）が、どのメニューカテゴリ（横軸）で、いくら（値）売り上げたか」を一撃でマトリクス表に集計してみます</p>
+<p><strong>【ピボットテーブルのイメージ】</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  [ 生の売上データ ]              [ ピボットテーブル (pd.pivot_table) ]
+  江古田店 | ドリンク | 450円                  ドリンク   デザート   フード
+  白山店   | フード   | 800円        江古田店   900円      600円    750円
+  江古田店 | ドリンク | 450円  ──▶   白山店     500円      550円    800円
+  白山店   | デザート | 550円
+  江古田店 | デザート | 600円
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># カフェの複数店舗における詳細な売上履歴</span>
+<span class="n">df_shop_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"店舗名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">,</span> <span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">,</span> <span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">],</span>
+    <span class="s2">"カテゴリ"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"ドリンク"</span><span class="p">,</span> <span class="s2">"デザート"</span><span class="p">,</span> <span class="s2">"ドリンク"</span><span class="p">,</span> <span class="s2">"フード"</span><span class="p">,</span> <span class="s2">"フード"</span><span class="p">,</span> <span class="s2">"デザート"</span><span class="p">,</span> <span class="s2">"ドリンク"</span><span class="p">,</span> <span class="s2">"フード"</span><span class="p">],</span>
+    <span class="s2">"売上金額"</span><span class="p">:</span> <span class="p">[</span><span class="mi">450</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">750</span><span class="p">,</span> <span class="mi">550</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="mi">900</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># ピボットテーブルの作成</span>
+<span class="c1"># values: 集計する数値の列, index: 縦軸(行), columns: 横軸(列), aggfunc: 集計方法（合計=sum, 平均=mean）</span>
+<span class="n">pivot_result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">df_shop_sales</span><span class="p">,</span> 
+    <span class="n">values</span><span class="o">=</span><span class="s2">"売上金額"</span><span class="p">,</span> 
+    <span class="n">index</span><span class="o">=</span><span class="s2">"店舗名"</span><span class="p">,</span> 
+    <span class="n">columns</span><span class="o">=</span><span class="s2">"カテゴリ"</span><span class="p">,</span> 
+    <span class="n">aggfunc</span><span class="o">=</span><span class="s2">"sum"</span><span class="p">,</span>
+    <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span> <span class="c1"># 売上が存在しない箇所（NaN）を0で埋める</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"店舗別・カテゴリ別の総売上ピボットテーブル"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">pivot_result</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>生のデータから、<code class="docutils literal notranslate"><span class="pre">pd.pivot_table</span></code> をわずか1行実行するだけで、各店舗ごとの強み・弱みがビジュアルとして一瞬で把握できる綺麗なマトリクス表にまとめることができます。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id8">
+<h2>相関分析：2つの変数の関係性を数値化する<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+<p>データ分析の最大の醍醐味の一つが、「2つのデータ（変数）の間に、どのような関係性（連動する波）があるか？」を調べることです。　　
+これを**「相関分析（Correlation Analysis）」と呼びます。</p>
+<section id="id9">
+<h3>相関係数 の読み解き方<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<p>2つのデータがどれくらい連動して動いているかを、<strong><code class="docutils literal notranslate"><span class="pre">-1.0</span> <span class="pre">〜</span> <span class="pre">+1.0</span></code></strong> の範囲の数値で表したものを「相関係数（Correlation Coefficient: \(r\)）」と呼びます。</p>
+<p><strong>【相関係数の波のイメージ】</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  【 ① 正の相関 (r が +1 に近い) 】        【 ② 負の相関 (r が -1 に近い) 】
+       Y (かき氷の売上)                        Y (ホットコーヒーの売上)
+       │      ●                                │  ●
+       │    ●  ●                               │    ●  ●
+       │  ●                                    │        ●  ●
+       └──────────────▶ X (最高気温)            └──────────────▶ X (最高気温)
+      「気温が上がると、売上も上がる」           「気温が上がると、売上は下がる」
+
+  【 ③ 無相関 (r が 0 に近い) 】
+       Y (お客様の支払金額)
+       │   ●     ●
+       │      ●      ●
+       │   ●     ●
+       └──────────────▶ X (お客様の「生まれ月」)
+      「生まれ月と、お会計金額には関係がない（バラバラ）」
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>強さの目安</strong>：</p>
+<ul>
+<li><p><strong>0.7 〜 1.0</strong>：非常に強い正の相関（一方が増えれば、もう一方も確実に増える）</p></li>
+<li><p><strong>0.4 〜 0.7</strong>：中程度の正の相関（連動する傾向がある）</p></li>
+<li><p><strong>-0.2 〜 0.2</strong>：ほぼ無相関（お互いに関係が全く見られない）</p></li>
+<li><p><strong>-0.4 〜 -0.7</strong>：中程度の負の相関（一方が増えると、もう一方は減る傾向がある）</p></li>
+<li><p><strong>-0.7 〜 -1.0</strong>：非常に強い負の相関（一方が増えれば、もう一方は確実に減る）</p></li>
+</ul>
+</li>
+</ul>
+<p>Pandasのデータフレームに対して <strong><code class="docutils literal notranslate"><span class="pre">.corr(numeric_only=True)</span></code></strong> メソッドを適用すると、すべての数値列同士の相関係数を一瞬でマトリクス表（相関行列）にして計算してくれます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># カフェの日ごとのデータ（最高気温、客数、アイスコーヒー売上、ホットコーヒー売上、生まれ月（無関係））</span>
+<span class="n">df_weather_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"最高気温"</span><span class="p">:</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">32</span><span class="p">],</span>
+    <span class="s2">"客数"</span><span class="p">:</span> <span class="p">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">150</span><span class="p">],</span>
+    <span class="s2">"アイス売上"</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">120</span><span class="p">],</span>
+    <span class="s2">"ホット売上"</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+    <span class="s2">"スタッフ生まれ月"</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span> <span class="c1"># 売上とは何の関係もない</span>
+<span class="p">})</span>
+
+<span class="c1"># 相関行列の作成</span>
+<span class="n">correlation_matrix</span> <span class="o">=</span> <span class="n">df_weather_sales</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"すべての数値データの組み合わせの相関行列"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">correlation_matrix</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">background_gradient</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s2">"coolwarm"</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># 関係性を色の濃淡で美しく見せる</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>「最高気温」と「アイス売上」の相関係数は <strong>0.95</strong>（非常に強い正の相関）。</p></li>
+<li><p>「最高気温」と「ホット売上」の相関係数は <strong>-0.97</strong>（非常に強い負の相関）。</p></li>
+<li><p>「最高気温」と「スタッフの生まれ月」は <strong>0.06</strong>（ほぼ完全な無相関＝関係なし）。</p></li>
+<li><p>この相関係数を調べることで、「どのデータを参考にすれば、未来の売上予測ができるか」を科学的に見極めることができます。</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id10">
+<h3>⚠️ データ分析者最大のタブー：「相関関係」と「因果関係」は違う！<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<p>データ分析の世界において、よく犯す、かつ最も致命的な間違いが**「相関関係（Correlation）」と「因果関係（Causation）」の混同（擬似相関）**です。</p>
+<p>ある新聞に、以下のような主張の記事が載っていたとしましょう。</p>
+<blockquote>
+<div><p>「独自に日本全国の地域データを収集して分析した結果、各地域の『交番の数』と『犯罪発生件数』の間には、相関係数 (r = 0.85) という非常に強い正の相関関係があることが分かった。これは大変な事実である。街の犯罪を減らすためには、今すぐ街中にある交番をすべて撤去して無くしてしまえばよい。」</p>
+</div></blockquote>
+<p>この主張のロジックは、正しいでしょうか？それともおかしいでしょうか？</p>
+<p><strong>【間違いの図解（擬似相関）】</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  【 間違った解釈 (直接の因果だと勘違い) 】
+   [ 🏛️ 交番の数が多い ]  ────(原因 ➡ 結果！？)───▶  [ 🚨 犯罪件数が多い ]  (交番を壊そう！)
+                                                                   ▲
+                                                                   │
+  【 正しい解釈 (裏に潜む「第三の要因：人口」が本当の原因) 】      │ (原因)
+         ┌─────────────────── [ 👥 地域の人口が多い (都会) ] ──────┘
+         │
+         ▼ (原因)
+   [ 🏛️ 交番をたくさん建てる ]
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>この記事の著者は、データが連動している（相関関係がある）からといって、勝手に**「交番があるから、犯罪が起きる（因果関係）」**と決めつけてしまっています。</p></li>
+<li><p>しかし、実際には裏に潜んでいる本当の原因（第三の要因）として**「その地域の人口（あるいは都会度）」**が存在します。</p></li>
+<li><p>人口が多い地域（都会）ほど、当然たくさんの交番が設置されますし、同時に人が多いため犯罪件数も多くなります。人口が少ない地域は交番も犯罪も少なくなります。</p></li>
+<li><p>交番をすべて撤去したところで地域の人口が減るわけではないため、犯罪は減るどころか、警察官がいなくなることで治安が劇的に悪化し、犯罪が爆発的に増加してしまいます。</p></li>
+</ul>
+<blockquote>
+<div><p><strong>🌟 データ分析者として最も大事なマインドセット</strong>：
+「AとBの数字が連動して動いている（相関がある）」からといって、安易に「Aが原因で、Bが結果だ（因果関係）」と判断してはなりません。常に**「その裏に、全体を操っている『第三の要因（隠れた変数）』が潜んでいないか？」**と、データに騙されずにクリティカルに疑いを持つことこそがデータサイエンスの真の価値です。</p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id11">
+<h2>データ評価<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>データの加工と同時にデータの評価は重要である</p></li>
+<li><p>加工するデータや分析するデータ、機械学習モデルに投入するデータの中身を把握することなく先に進むことはできない</p></li>
+<li><p>表形式データの定量的および定性的なチェック方法と、外れ値や欠損値、値の重複への対処方法を解説していきます</p></li>
+</ul>
+<p><strong>データの評価のイメージ</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>大まかなチェック         問題点の把握と対処
+ 定量（要約統計量）　➡　　データの分布
+ 定性（可視化）　　　　　　外れ値、異常値
+　　　　　　　　　　　　　 欠陥値
+                         値の重複
+</pre></div>
+</div>
+<hr class="docutils" />
+<section id="id12">
+<h3>定量的評価と定性的評価<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<p>データ分析から実社会に役立つ知見（意思決定）を導き出すとき、「データ評価（Data Evaluation）」とをします。
+この評価には、2つのアプローチが存在します。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>       【 📊 データ評価の2大アプローチ 】
+        ├── 1. 定量的評価 (Quantitative): 「数値」で測る。客観的、全体像の把握。
+        └── 2. 定性的評価 (Qualitative): 「背景・文脈」を探る。主観、理由・動機の探索。
+</pre></div>
+</div>
+<section id="quantitative-evaluation">
+<h4>定量的評価（Quantitative Evaluation）<a class="headerlink" href="#quantitative-evaluation" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>特徴</p>
+<ul>
+<li><p>すべてのデータを「数値（数量）」に変換し、統計量やグラフを用いて客観的に評価する。</p></li>
+</ul>
+</li>
+<li><p>メリット</p>
+<ul>
+<li><p>主観を排除し、誰が見ても同じ結論に至る。大規模なデータの「全体像」を捉える。</p></li>
+</ul>
+</li>
+<li><p>よく使う道具</p>
+<ul>
+<li><p>平均値、中央値、標準偏差、相関係数、売上高、パーセント比率など。</p></li>
+</ul>
+</li>
+<li><p>限界</p>
+<ul>
+<li><p>なぜその数値になったのか」という、人間の感情や偶発的な現場のトラブルなどの「裏の理由」を説明することはできない。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="qualitative-evaluation">
+<h4>定性的評価（Qualitative Evaluation）<a class="headerlink" href="#qualitative-evaluation" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>特徴</p>
+<ul>
+<li><p>数値にできない「言語、状況、背景、感情、歴史的コンテキスト」に注目し、深く評価する。</p></li>
+</ul>
+</li>
+<li><p>メリット</p>
+<ul>
+<li><p>「なぜそうなったのか」という根本的な原因やプロセス、データの収集過程における現場の制約などを解き明かす。</p></li>
+</ul>
+</li>
+<li><p>よく使う道具</p>
+<ul>
+<li><p>インタビュー、行動観察、歴史的背景の調査、エラーや欠損データの発生原因の推測などをする。</p></li>
+</ul>
+</li>
+<li><p>限界</p>
+<ul>
+<li><p>客観的な比較や、大規模なデータ全体に対して「本当にそれが代表的な意見か」を一般化することが難しく、評価者の主観が入りやすい。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id13">
+<h3>実データでのデータ評価：「南極パーマー半島のペンギン調査データ」<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<p>「定量的評価」と「定性的評価」を、南極パーマー半島に生息するペンギンの体格などを2007年から2009年にかけて調査したデータ「ペンギンの体格調査データ（Palmer Penguins）」を使います。
+このデータは、アデリー（Adelie）、ヒゲ（Chinstrap）、ジェンツー（Gentoo）という3種類のペンギンの体格を測定した、世界中のデータサイエンス教材で有名なデータです。</p>
+<p>「南極のペンギンに関するデータ」の出典／データソース／ライセンス</p>
+<ul class="simple">
+<li><p>原出典</p>
+<ul>
+<li><p>Gorman KB, Williams TD, Fraser WR (2014). Ecological Sexual Dimorphism and Environmental Variability within a Community of Antarctic Penguins（Genus Pygoscelis). PLoS ONE 9(3):e90081.</p></li>
+<li><p>https://doi.org/10.1371/journal.pone.0090081</p></li>
+</ul>
+</li>
+<li><p>データソース</p>
+<ul>
+<li><p>Adélie penguins: Palmer Station Antarctica LTER and K. Gorman. 2020. Structural size measurements and isotopic signatures of foraging among adult male and female Adélie penguins (Pygoscelis adeliae) nesting along the Palmer Archipelago near Palmer Station, 2007-2009 ver 5. Environmental Data Initiative.</p>
+<ul>
+<li><p>https://doi.org/10.6073/pasta/98b16d7d563f265cb52372c8ca99e60f</p></li>
+</ul>
+</li>
+<li><p>Gentoo penguins: Palmer Station Antarctica LTER and K. Gorman. 2020. Structural size measurements and isotopic signatures of foraging among adult male and female gentoo penguins (Pygoscelis papua) nesting along the Palmer Archipelago near Palmer Station, 2007-2009 ver 7. Environmental Data Initiative.</p>
+<ul>
+<li><p>https://doi.org/10.6073/pasta/9fc8f9b5a2fa28bdca96516649b6599b</p></li>
+</ul>
+</li>
+<li><p>Chinstrap penguins: Palmer Station Antarctica LTER and K. Gorman. 2020. Structural size measurements and isotopic signatures of foraging among adult male and female Chinstrap penguins (Pygoscelis antarcticus) nesting along the Palmer Archipelago near Palmer Station, 2007-2009 ver 8. Environmental Data Initiative.</p>
+<ul>
+<li><p>https://doi.org/10.6073/pasta/ce9b4713bb8c065a8fcfd7f50bf30dde</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ライセンス</p>
+<ul>
+<li><p>CC-0（Palmer Station LTER Data PolicyおよびLTER Data Access Policy for Type I dataに基づく）</p></li>
+</ul>
+</li>
+<li><p>ペンギンの種類</p>
+<ul>
+<li><p>Adelie penguin（Pygoscelis adeliae）：アデリーペンギン</p></li>
+<li><p>Gentoo penguin（Pygoscelis papua)　：ジェンツーペンギン</p></li>
+<li><p>Chinstrap penguin（Pygoscelis antarctica)：ヒゲペンギン</p></li>
+</ul>
+</li>
+</ul>
+<p>※ このデータが南極のパーマー基地周辺で収集されたことにちなんで、パーマーペンギン（Palmer Penguins）のデータと呼ばれることがある。ただし、そのようなペンギンの種は存在しない。</p>
+<p>利用するペンギンデータ</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/mwaskom/seaborn-data/blob/master/penguins.csv">penguins.csv - seabornのサンプルデータセット</a></p></li>
+<li><p><a class="reference external" href="https://zenn.dev/omochimaru/articles/ce050eb1fe1add">【Python】seabornのpenguins datasetを使って分類問題をといてみる</a></p></li>
+</ul>
+<p>ペンギンデータの内容</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>列名</p></th>
+<th class="head"><p>説明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>species</p></td>
+<td><p>ペンギンの種類('Adelie', 'Chinstrap', 'Gentoo')</p></td>
+</tr>
+<tr class="row-odd"><td><p>island</p></td>
+<td><p>ペンギンが生息する島の名前('Torgersen', 'Biscoe', 'Dream')</p></td>
+</tr>
+<tr class="row-even"><td><p>bill_length_mm</p></td>
+<td><p>ペンギンのくちばしの長さ(mm)</p></td>
+</tr>
+<tr class="row-odd"><td><p>bill_depth_mm</p></td>
+<td><p>ペンギンのくちばしの奥行き(mm)</p></td>
+</tr>
+<tr class="row-even"><td><p>flipper_length_mm</p></td>
+<td><p>ペンギンのヒレの長さ(mm)</p></td>
+</tr>
+<tr class="row-odd"><td><p>body_mass_g</p></td>
+<td><p>ペンギンの体重(g)</p></td>
+</tr>
+<tr class="row-even"><td><p>sex</p></td>
+<td><p>ペンギンの性別('Male', 'Female')</p></td>
+</tr>
+<tr class="row-odd"><td><p>year</p></td>
+<td><p>データが収集された年</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>ペンギンデータ読み込み</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://raw.githubusercontent.com/mwaskom/seaborn-data/master/penguins.csv"</span>
+<span class="n">df_penguins</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_penguins</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>index</p></th>
+<th class="head"><p>species</p></th>
+<th class="head"><p>island</p></th>
+<th class="head"><p>bill_length_mm</p></th>
+<th class="head"><p>bill_depth_mm</p></th>
+<th class="head"><p>flipper_length_mm</p></th>
+<th class="head"><p>body_mass_g</p></th>
+<th class="head"><p>sex</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Adelie</p></td>
+<td><p>Torgersen</p></td>
+<td><p>39.1</p></td>
+<td><p>18.7</p></td>
+<td><p>181.0</p></td>
+<td><p>3750.0</p></td>
+<td><p>MALE</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Adelie</p></td>
+<td><p>Torgersen</p></td>
+<td><p>39.5</p></td>
+<td><p>17.4</p></td>
+<td><p>186.0</p></td>
+<td><p>3800.0</p></td>
+<td><p>FEMALE</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Adelie</p></td>
+<td><p>Torgersen</p></td>
+<td><p>40.3</p></td>
+<td><p>18.0</p></td>
+<td><p>195.0</p></td>
+<td><p>3250.0</p></td>
+<td><p>FEMALE</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Adelie</p></td>
+<td><p>Torgersen</p></td>
+<td><p>NaN</p></td>
+<td><p>NaN</p></td>
+<td><p>NaN</p></td>
+<td><p>NaN</p></td>
+<td><p>NaN</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Adelie</p></td>
+<td><p>Torgersen</p></td>
+<td><p>36.7</p></td>
+<td><p>19.3</p></td>
+<td><p>193.0</p></td>
+<td><p>3450.0</p></td>
+<td><p>FEMALE</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>行数と列数を表示</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>df_penguins.shape
+</pre></div>
+</div>
+<p>(344, 7)</p>
+<p>先頭を表示</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>df_penguins.head()
+</pre></div>
+</div>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>index</p></th>
+<th class="head"><p>species</p></th>
+<th class="head"><p>island</p></th>
+<th class="head"><p>bill_length_mm</p></th>
+<th class="head"><p>bill_depth_mm</p></th>
+<th class="head"><p>flipper_length_mm</p></th>
+<th class="head"><p>body_mass_g</p></th>
+<th class="head"><p>sex</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Adelie</p></td>
+<td><p>Torgersen</p></td>
+<td><p>39.1</p></td>
+<td><p>18.7</p></td>
+<td><p>181.0</p></td>
+<td><p>3750.0</p></td>
+<td><p>MALE</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Adelie</p></td>
+<td><p>Torgersen</p></td>
+<td><p>39.5</p></td>
+<td><p>17.4</p></td>
+<td><p>186.0</p></td>
+<td><p>3800.0</p></td>
+<td><p>FEMALE</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Adelie</p></td>
+<td><p>Torgersen</p></td>
+<td><p>40.3</p></td>
+<td><p>18.0</p></td>
+<td><p>195.0</p></td>
+<td><p>3250.0</p></td>
+<td><p>FEMALE</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Adelie</p></td>
+<td><p>Torgersen</p></td>
+<td><p>NaN</p></td>
+<td><p>NaN</p></td>
+<td><p>NaN</p></td>
+<td><p>NaN</p></td>
+<td><p>NaN</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Adelie</p></td>
+<td><p>Torgersen</p></td>
+<td><p>36.7</p></td>
+<td><p>19.3</p></td>
+<td><p>193.0</p></td>
+<td><p>3450.0</p></td>
+<td><p>FEMALE</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>最後を表示</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>df_penguins.tail()
+</pre></div>
+</div>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>index</p></th>
+<th class="head"><p>species</p></th>
+<th class="head"><p>island</p></th>
+<th class="head"><p>bill_length_mm</p></th>
+<th class="head"><p>bill_depth_mm</p></th>
+<th class="head"><p>flipper_length_mm</p></th>
+<th class="head"><p>body_mass_g</p></th>
+<th class="head"><p>sex</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>339</p></td>
+<td><p>Gentoo</p></td>
+<td><p>Biscoe</p></td>
+<td><p>NaN</p></td>
+<td><p>NaN</p></td>
+<td><p>NaN</p></td>
+<td><p>NaN</p></td>
+<td><p>NaN</p></td>
+</tr>
+<tr class="row-odd"><td><p>340</p></td>
+<td><p>Gentoo</p></td>
+<td><p>Biscoe</p></td>
+<td><p>46.8</p></td>
+<td><p>14.3</p></td>
+<td><p>215.0</p></td>
+<td><p>4850.0</p></td>
+<td><p>FEMALE</p></td>
+</tr>
+<tr class="row-even"><td><p>341</p></td>
+<td><p>Gentoo</p></td>
+<td><p>Biscoe</p></td>
+<td><p>50.4</p></td>
+<td><p>15.7</p></td>
+<td><p>222.0</p></td>
+<td><p>5750.0</p></td>
+<td><p>MALE</p></td>
+</tr>
+<tr class="row-odd"><td><p>342</p></td>
+<td><p>Gentoo</p></td>
+<td><p>Biscoe</p></td>
+<td><p>45.2</p></td>
+<td><p>14.8</p></td>
+<td><p>212.0</p></td>
+<td><p>5200.0</p></td>
+<td><p>FEMALE</p></td>
+</tr>
+<tr class="row-even"><td><p>343</p></td>
+<td><p>Gentoo</p></td>
+<td><p>Biscoe</p></td>
+<td><p>49.9</p></td>
+<td><p>16.1</p></td>
+<td><p>213.0</p></td>
+<td><p>5400.0</p></td>
+<td><p>MALE</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>データのタイプを表示</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>df_penguins.dtypes
+</pre></div>
+</div>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>species</p></td>
+<td><p>object</p></td>
+</tr>
+<tr class="row-odd"><td><p>island</p></td>
+<td><p>object</p></td>
+</tr>
+<tr class="row-even"><td><p>bill_length_mm</p></td>
+<td><p>float64</p></td>
+</tr>
+<tr class="row-odd"><td><p>bill_depth_mm</p></td>
+<td><p>float64</p></td>
+</tr>
+<tr class="row-even"><td><p>flipper_length_mm</p></td>
+<td><p>float64</p></td>
+</tr>
+<tr class="row-odd"><td><p>body_mass_g</p></td>
+<td><p>float64</p></td>
+</tr>
+<tr class="row-even"><td><p>sex</p></td>
+<td><p>object</p></td>
+</tr>
+<tr class="row-odd"><td><p>dtype: object</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>読み込んだデータの保存</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>df_penguins.to_parquet("penguins.parquet")
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id14">
+<h3>定量的評価（統計量）<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<p>要約統計量の確認</p>
+<ul class="simple">
+<li><p>DataFrameやSeriesからdescribe()メソッドを使うと一度に計算できる</p></li>
+<li><p>DataFrameでは、各列についての要約統計量を計算する</p></li>
+</ul>
+<p>主な要約統計量</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>対応するpandasのメソッド</p></th>
+<th class="head"><p>種類</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>describe()</p></td>
+<td><p>各列の要約統計量をまとめて計算</p></td>
+</tr>
+<tr class="row-odd"><td><p>count()</p></td>
+<td><p>データの総数（欠損値を除く）</p></td>
+</tr>
+<tr class="row-even"><td><p>max()</p></td>
+<td><p>最大値</p></td>
+</tr>
+<tr class="row-odd"><td><p>min()</p></td>
+<td><p>最小値</p></td>
+</tr>
+<tr class="row-even"><td><p>mean()</p></td>
+<td><p>平均値</p></td>
+</tr>
+<tr class="row-odd"><td><p>median()</p></td>
+<td><p>中央値. データを小さい順に並べたときに真ん中に位置する値</p></td>
+</tr>
+<tr class="row-even"><td><p>std()</p></td>
+<td><p>標準偏差</p></td>
+</tr>
+<tr class="row-odd"><td><p>nunique()</p></td>
+<td><p>重複を除いたユニークな要素の数（種類数）</p></td>
+</tr>
+<tr class="row-even"><td><p>mode()</p></td>
+<td><p>データの中で最も多く出現する値 (最頻値)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">df_penguins</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">"penguins.parquet"</span><span class="p">)</span>
+<span class="n">df_penguins</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>index</p></th>
+<th class="head"><p>bill_length_mm</p></th>
+<th class="head"><p>bill_depth_mm</p></th>
+<th class="head"><p>flipper_length_mm</p></th>
+<th class="head"><p>body_mass_g</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>count</p></td>
+<td><p>342.0</p></td>
+<td><p>342.0</p></td>
+<td><p>342.0</p></td>
+<td><p>342.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>mean</p></td>
+<td><p>43.9219298245614</p></td>
+<td><p>17.151169590643278</p></td>
+<td><p>200.91520467836258</p></td>
+<td><p>4201.754385964912</p></td>
+</tr>
+<tr class="row-even"><td><p>std</p></td>
+<td><p>5.459583713926532</p></td>
+<td><p>1.9747931568167816</p></td>
+<td><p>14.061713679356894</p></td>
+<td><p>801.9545356980954</p></td>
+</tr>
+<tr class="row-odd"><td><p>min</p></td>
+<td><p>32.1</p></td>
+<td><p>13.1</p></td>
+<td><p>172.0</p></td>
+<td><p>2700.0</p></td>
+</tr>
+<tr class="row-even"><td><p>25%</p></td>
+<td><p>39.225</p></td>
+<td><p>15.6</p></td>
+<td><p>190.0</p></td>
+<td><p>3550.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>50%</p></td>
+<td><p>44.45</p></td>
+<td><p>17.3</p></td>
+<td><p>197.0</p></td>
+<td><p>4050.0</p></td>
+</tr>
+<tr class="row-even"><td><p>75%</p></td>
+<td><p>48.5</p></td>
+<td><p>18.7</p></td>
+<td><p>213.0</p></td>
+<td><p>4750.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>max</p></td>
+<td><p>59.6</p></td>
+<td><p>21.5</p></td>
+<td><p>231.0</p></td>
+<td><p>6300.0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>主な統計量（数値データの場合）</p>
+<ul class="simple">
+<li><p>count: データの総数（欠損値を除く）</p></li>
+<li><p>mean: 平均値</p></li>
+<li><p>std: 標準偏差</p></li>
+<li><p>min: 最小値</p></li>
+<li><p>25%: 第1四分位数（25パーセンタイル）</p></li>
+<li><p>50%: 中央値（50パーセンタイル）</p></li>
+<li><p>75%: 第3四分位数（75パーセンタイル）</p></li>
+<li><p>max: 最大値</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id15">
+<h3>定性的評価（可視化）<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>定量的な評価だけでは把握しにくい分布の形状や値の変化、複数の変数の関係などを可視化する</p></li>
+<li><p>グラフを描くことでデータの内容を視覚的に把握することができる</p></li>
+</ul>
+<section id="id16">
+<h4>データ可視化のためのライブラリ<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h4>
+<p>Python環境でデータを可視化するために使われる主なライブラリとして、pandas、Matplotlib、Plotlyなどがある</p>
+<section id="pandas-dataframeplot">
+<h5>pandas.DataFrameのplot()<a class="headerlink" href="#pandas-dataframeplot" title="Link to this heading">¶</a></h5>
+<p>pandas.DataFrameのplot()で、ペンギンのくちばしの長さbill_length_mmとひれの長さflipper_length_mmの関係を散布図に描画する</p>
+<p>pandasの主な描画機能</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>種類</p></th>
+<th class="head"><p>引数 kindの値</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>散布図</p></td>
+<td><p>&quot;scatter&quot;</p></td>
+</tr>
+<tr class="row-odd"><td><p>折れ線グラフ</p></td>
+<td><p>&quot;line&quot; (デフォルト)</p></td>
+</tr>
+<tr class="row-even"><td><p>棒グラフ</p></td>
+<td><p>&quot;bar&quot;</p></td>
+</tr>
+<tr class="row-odd"><td><p>ヒストグラム</p></td>
+<td><p>&quot;hist&quot;</p></td>
+</tr>
+<tr class="row-even"><td><p>箱ひげ図</p></td>
+<td><p>&quot;box&quot;</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>ペンギンのくちばしの長さ（横軸）とひれの長さ（縦軸）の散布図</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">df_penguins</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">"penguins.parquet"</span><span class="p">)</span>
+
+<span class="c1"># ペンギンのくちばしの長さ（横軸）とひれの長さ（縦軸）の散布図</span>
+<span class="n">df_penguins</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+  <span class="n">x</span><span class="o">=</span><span class="s2">"bill_length_mm"</span><span class="p">,</span>
+  <span class="n">y</span><span class="o">=</span><span class="s2">"flipper_length_mm"</span><span class="p">,</span>
+  <span class="n">kind</span><span class="o">=</span><span class="s2">"scatter"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/pandas_scatter.png"><img alt="../../../_images/pandas_scatter.png" src="../../../_images/pandas_scatter.png" style="width: 60%;" />
+</a>
+</figure>
+</section>
+<section id="matplotlib">
+<h5>Matplotlibを使ったグラフ描画<a class="headerlink" href="#matplotlib" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p>Matplotlibは、Python環境におけるデータ可視化の代表的なライブラリ</p></li>
+<li><p>Matplotlibを使ってDataFrameの値を描画するには、pyplotモジュールを使うことが一般的</p></li>
+<li><p>Axesインスタンスからグラフの種類に応じたメソッドを呼び出します。</p></li>
+</ul>
+<p>Matplotlibの主な描画メソッド</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>種類</p></th>
+<th class="head"><p>メソッド</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>散布図</p></td>
+<td><p>scatter()</p></td>
+</tr>
+<tr class="row-odd"><td><p>折れ線グラフ</p></td>
+<td><p>plot()</p></td>
+</tr>
+<tr class="row-even"><td><p>棒グラフ</p></td>
+<td><p>bar()</p></td>
+</tr>
+<tr class="row-odd"><td><p>ヒストグラム</p></td>
+<td><p>hist()</p></td>
+</tr>
+<tr class="row-even"><td><p>箱ひげ図</p></td>
+<td><p>boxplot()</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>ペンギンのくちばしの長さ（横軸）とひれの長さ（縦軸）の散布図</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">df_penguins</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">"penguins.parquet"</span><span class="p">)</span>
+
+<span class="c1"># 準備（subplotsコンストラクターを呼び出してAxesクラスのインスタンスを生成）</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1"># くちばしの長さ（横軸）とひれの長さ（縦軸）の散布図</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+  <span class="n">x</span><span class="o">=</span><span class="n">df_penguins</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"bill_length_mm"</span><span class="p">],</span>
+  <span class="n">y</span><span class="o">=</span><span class="n">df_penguins</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"flipper_length_mm"</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/matplotlib_scatter.png"><img alt="../../../_images/matplotlib_scatter.png" src="../../../_images/matplotlib_scatter.png" style="width: 60%;" />
+</a>
+</figure>
+</section>
+<section id="plotly">
+<h5>Plotlyを使ったグラフ描画<a class="headerlink" href="#plotly" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p>Plotlyは、簡潔なコードでインタラクティブなデータ可視化を実現できるライブラリ</p></li>
+<li><p>例えば、Plotly Expressというインタフェースを通してグラフの種類に応じた関数を使う</p></li>
+</ul>
+<p>Plotlyの主な描画関数</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>種類</p></th>
+<th class="head"><p>関数</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>散布図</p></td>
+<td><p>scatter()</p></td>
+</tr>
+<tr class="row-odd"><td><p>折れ線グラフ</p></td>
+<td><p>line()</p></td>
+</tr>
+<tr class="row-even"><td><p>棒グラフ</p></td>
+<td><p>bar()</p></td>
+</tr>
+<tr class="row-odd"><td><p>ヒストグラム</p></td>
+<td><p>histogram()</p></td>
+</tr>
+<tr class="row-even"><td><p>箱ひげ図</p></td>
+<td><p>box()</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
+
+<span class="n">df_penguins</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">"penguins.parquet"</span><span class="p">)</span>
+
+<span class="c1"># くちばしの長さ（横軸）とひれの長さ（縦軸）の散布図</span>
+<span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+  <span class="n">df_penguins</span><span class="p">,</span>
+  <span class="n">x</span><span class="o">=</span><span class="s2">"bill_length_mm"</span><span class="p">,</span>
+  <span class="n">y</span><span class="o">=</span><span class="s2">"flipper_length_mm"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/plotly_scatter.png"><img alt="../../../_images/plotly_scatter.png" src="../../../_images/plotly_scatter.png" style="width: 70%;" />
+</a>
+</figure>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id17">
+<h3>グラフの種類<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<p>データを可視化するは代表的なグラフは下記となる。</p>
+<ul class="simple">
+<li><p>散布図： 2つの数値型の列どうしの関係を把握するために使う</p></li>
+<li><p>折れ線グラフ: どのように変化するかを把握するために使う</p></li>
+<li><p>棒グラフ: どのように異なるかを比較するために使う</p></li>
+<li><p>ヒストグラム: 1つの数値の列の値の度数分布を棒グラフとして表示する</p></li>
+<li><p>箱ひげ図: ヒストグラムと同様に1つの数値列の値の分布を分位点について表したもの</p></li>
+</ul>
+<section id="id18">
+<h4>散布図<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>散布図は、2つの数値型の列どうしの関係を把握するために使う</p></li>
+</ul>
+<p>くちばしの長さ（横軸）とひれの長さ（縦軸）の散布図</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+  <span class="n">df_penguins</span><span class="p">,</span>
+  <span class="n">x</span><span class="o">=</span><span class="s2">"bill_length_mm"</span><span class="p">,</span>
+  <span class="n">y</span><span class="o">=</span><span class="s2">"flipper_length_mm"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/scatter1.png"><img alt="../../../_images/scatter1.png" src="../../../_images/scatter1.png" style="width: 70%;" />
+</a>
+</figure>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+  <span class="n">df_penguins</span><span class="p">,</span>
+  <span class="n">x</span><span class="o">=</span><span class="s2">"bill_length_mm"</span><span class="p">,</span>
+  <span class="n">y</span><span class="o">=</span><span class="s2">"flipper_length_mm"</span><span class="p">,</span>
+  <span class="n">color</span><span class="o">=</span><span class="s2">"species"</span><span class="p">,</span>
+  <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">qualitative</span><span class="o">.</span><span class="n">Dark2</span><span class="p">,</span>
+  <span class="n">symbol</span><span class="o">=</span><span class="s2">"species"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/scatter2.png"><img alt="../../../_images/scatter2.png" src="../../../_images/scatter2.png" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<section id="id19">
+<h4>折れ線グラフ<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h4>
+<p>ペンギンの個体番号順に body_mass_g を並べることで、折れ線グラフでペンギンの体重(g)がどのように変化するかを把握する</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 必要なデータだけ残す</span>
+<span class="n">df_penguins</span> <span class="o">=</span> <span class="n">df_penguins</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">"body_mass_g"</span><span class="p">,</span> <span class="s2">"species"</span><span class="p">])</span>
+
+<span class="c1"># 種類ごとに個体番号を振る</span>
+<span class="c1"># cumcount() は、グループごとに「何番目のデータか」を数える pandas の関数</span>
+<span class="n">df_penguins</span><span class="p">[</span><span class="s2">"individual"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_penguins</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"species"</span><span class="p">)</span><span class="o">.</span><span class="n">cumcount</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="c1"># 折れ線グラフ</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span>
+    <span class="n">df_penguins</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"individual"</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">"body_mass_g"</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">"species"</span><span class="p">,</span>
+    <span class="n">markers</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/line.png"><img alt="../../../_images/line.png" src="../../../_images/line.png" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<section id="id20">
+<h4>棒グラフ<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h4>
+<p>棒グラフは、1つの数値型の列（縦軸）の値がもう1つのカテゴリー値の列（横軸）の値に応じて、どのように異なるかを比較するために使う。
+原則として、縦軸の最小値は0にする</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 平均体重の計算</span>
+<span class="n">df_avg_weight_island</span> <span class="o">=</span> <span class="n">df_penguins</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">"species"</span><span class="p">,</span> <span class="s2">"island"</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)[</span><span class="s2">"body_mass_g"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># 棒グラフの描画</span>
+<span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span>
+    <span class="n">df_avg_weight_island</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"species"</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">"body_mass_g"</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">"island"</span><span class="p">,</span>
+    <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">qualitative</span><span class="o">.</span><span class="n">Dark2</span><span class="p">,</span>
+    <span class="n">pattern_shape</span><span class="o">=</span><span class="s2">"island"</span><span class="p">,</span>
+    <span class="n">barmode</span><span class="o">=</span><span class="s2">"group"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/bar.png"><img alt="../../../_images/bar.png" src="../../../_images/bar.png" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<section id="id21">
+<h4>ヒストグラム<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h4>
+<p>ヒストグラムは、1つの数値の列の値の度数分布を棒グラフとして表したもの</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
+    <span class="n">df_penguins</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"body_mass_g"</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">"species"</span><span class="p">,</span>
+    <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="n">px</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">qualitative</span><span class="o">.</span><span class="n">Dark2</span><span class="p">,</span>
+    <span class="n">pattern_shape</span><span class="o">=</span><span class="s2">"species"</span><span class="p">,</span>
+    <span class="n">opacity</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+    <span class="n">barmode</span><span class="o">=</span><span class="s2">"overlay"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/histogram1.png"><img alt="../../../_images/histogram1.png" src="../../../_images/histogram1.png" style="width: 70%;" />
+</a>
+</figure>
+<p>種ごとのヒストグラムを横に並べる</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="c1"># 種ごとのヒストグラムを横に並べる</span>
+<span class="n">fig_col</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
+  <span class="n">df_penguins</span><span class="p">,</span>
+  <span class="n">x</span><span class="o">=</span><span class="s2">"body_mass_g"</span><span class="p">,</span>
+  <span class="n">facet_col</span><span class="o">=</span><span class="s2">"species"</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># species=」に続く任意の文字列にマッチ</span>
+<span class="n">RE_TITLE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(?&lt;=species=).+"</span><span class="p">)</span> 
+
+<span class="n">fig_col</span><span class="o">.</span><span class="n">for_each_annotation</span><span class="p">(</span>
+  <span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">RE_TITLE</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">text</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+<span class="p">)</span>
+<span class="n">fig_col</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/histogram2.png"><img alt="../../../_images/histogram2.png" src="../../../_images/histogram2.png" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<section id="id22">
+<h4>箱ひげ図<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>箱ひげ図は、ヒストグラムと同様に1つの数値列の値の分布を分位点について表したもの。</p></li>
+<li><p>ヒストグラムが分布の詳細（階級ごとの度数）を表すのに対し、箱ひげ図は第1四分位点（25%点）、中央値（第2四分位点、50%点）、第3四分位点（75%点）などを模式的に表す</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"species"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"body_mass_g"</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/box.png"><img alt="../../../_images/box.png" src="../../../_images/box.png" style="width: 70%;" />
+</a>
+</figure>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id23">
+<h3>外れ値、異常値<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h3>
+<section id="id24">
+<h4>外れ値、異常値<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>データの外れ値や異常値を、統計的、視覚的に把握する方法と対処方法について学習する</p></li>
+<li><p>外れ値がデータ分析や機械学習モデル構築に影響を及ぼす要因をチェックするために、不可欠なステップ</p></li>
+<li><p>外れ値とは、データ全体の分布から見て、ほかの値から大きく外れた値のこと</p></li>
+<li><p>一方、異常値とは、データの測定時や記録時のエラーによって発生した特異な値のこと</p></li>
+<li><p>ただし、どちらも、ほかの値より離れた範囲に存在することが多いため、ここではまとめて「外れ値」と呼ぶ</p></li>
+</ul>
+</section>
+<section id="id25">
+<h4>外れ値の確認<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>箱ひげ図やヒストグラムを描画することで定性的に外れ値の存在を把握できる</p></li>
+<li><p>定量的に確認するには次の方法がある</p>
+<ul>
+<li><p>分位点</p>
+<ul>
+<li><p>正規分布と2σ範囲</p>
+<ul>
+<li><p>σ(シグマ)は標準偏差を表す記号</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>統計ではよく使われる記号</strong></p>
+<ul class="simple">
+<li><p>σ（シグマ） → 標準偏差</p></li>
+<li><p>μ（ミュー） → 平均値</p></li>
+</ul>
+<p>例えば、</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>平均 ± 2σ（シグマ）
+</pre></div>
+</div>
+<p>なら、「平均から標準偏差2個分の範囲」という意味</p>
+<section id="id26">
+<h5>箱ひげ図による外れ値の確認<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p>箱ひげ図はその名前のとおり、「箱」と「ひげ」（箱から出る線）でデータの分布を簡単に表現した図</p></li>
+<li><p>箱は、下記からなる</p>
+<ul>
+<li><p>第1四分位点（25％点）</p></li>
+<li><p>中央値（第2四分位点、50％点）、</p></li>
+<li><p>第3四分位点（75％点）</p></li>
+</ul>
+</li>
+<li><p>ひげの長さは、よく使われる指標で、Plotlyやpandas、Matplotlibの箱ひげ図では箱の長さの最大1.5倍である</p></li>
+<li><p>箱ひげ図では、ひげの外側にある値を外れ値とみなす</p></li>
+<li><p>次の分位点による外れ値の確認で解説するquantile()メソッドを使って第1四分位点と第3四分位点の値を求めると、箱ひげ図のひげの長さが計算できる</p></li>
+</ul>
+<p>箱ひげ図による外れ値の確認</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
+
+<span class="n">df_penguins</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">"penguins.parquet"</span><span class="p">)</span>
+<span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">df_penguins</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"species"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"body_mass_g"</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/outlier1.png"><img alt="../../../_images/outlier1.png" src="../../../_images/outlier1.png" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<section id="id27">
+<h5>分位点による外れ値の確認<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p>外れ値を定量的に見つける代表的な手段として、分位点（％点）がある</p></li>
+<li><p>分位点とは、データのサンプルサイズを100としたときに小さいほうから数えて何番目に当たるかを表したもの</p></li>
+<li><p>最小値が0％点、中央値が50％点、最大値が100％点となる</p></li>
+<li><p>100%を4等分した25％点を第1四分位点、50％点を第2四分位点、75％点を第3四分位点と呼ぶ</p></li>
+<li><p>pandasのSeriesはquantile()メソッドを使って分位点の値を計算できる。計算したい分位点を0から1の範囲の値としてリストで第1引数qに渡す</p></li>
+</ul>
+<p>例として、ペンギンの種ごとに、体重の0、1、5、95、99、100の各％点を計算する<br />
+ここではデフォルトの線形補間を使い、引数interpolationは指定しない</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_penguins</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"species"</span><span class="p">)[</span><span class="s2">"body_mass_g"</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span>
+  <span class="n">q</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>species</th>
+<th>%</th>
+<th>body_mass_g</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Adelie</td>
+<td>0.00</td>
+<td>2850.0</td>
+</tr>
+<tr>
+<td></td>
+<td>0.01</td>
+<td>2875.0</td>
+</tr>
+<tr>
+<td></td>
+<td>0.05</td>
+<td>3000.0</td>
+</tr>
+<tr>
+<td></td>
+<td>0.95</td>
+<td>4487.5</td>
+</tr>
+<tr>
+<td></td>
+<td>0.99</td>
+<td>4712.5</td>
+</tr>
+<tr>
+<td></td>
+<td>1.00</td>
+<td>4775.0</td>
+</tr>
+<tr>
+<td>Chinstrap</td>
+<td>0.00</td>
+<td>2700.0</td>
+</tr>
+<tr>
+<td></td>
+<td>0.01</td>
+<td>2834.0</td>
+</tr>
+<tr>
+<td></td>
+<td>0.05</td>
+<td>3250.0</td>
+</tr>
+<tr>
+<td></td>
+<td>0.95</td>
+<td>4432.5</td>
+</tr>
+<tr>
+<td></td>
+<td>0.99</td>
+<td>4632.5</td>
+</tr>
+<tr>
+<td></td>
+<td>1.00</td>
+<td>4800.0</td>
+</tr>
+<tr>
+<td>Gentoo</td>
+<td>0.00</td>
+<td>3950.0</td>
+</tr>
+<tr>
+<td></td>
+<td>0.01</td>
+<td>4111.0</td>
+</tr>
+<tr>
+<td></td>
+<td>0.05</td>
+<td>4300.0</td>
+</tr>
+<tr>
+<td></td>
+<td>0.95</td>
+<td>5850.0</td>
+</tr>
+<tr>
+<td></td>
+<td>0.99</td>
+<td>6039.0</td>
+</tr>
+<tr>
+<td></td>
+<td>1.00</td>
+<td>6300.0</td>
+</tr>
+</tbody>
+</table>
+<p>もし外れ値がないとすると、0％点（最小値）と1％点と5%点、95％点と99％点と100％点（最大値）はほぼ同じ値のはずです。<br />
+しかし、この場合、ChinstrapとGentooの95％点、99％点、100％点の値をそれぞれ比べると、100％点の値が大きく異なっていて、外れ値である可能性がある</p>
+</section>
+<section id="id28">
+<h5>正規分布と2σ範囲による外れ値の確認<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p>分布の正規性を仮定できる場合、標準偏差σ(シグマ)に基づいて外れ値を特定できる</p></li>
+<li><p>正規分布において平均値から±2σの範囲には約95.5%のデータが含まれるので、この範囲外にある値は外れ値と考えて問題ない</p></li>
+</ul>
+<p>箱ひげ図との比較のために、Chinstrapの体重のヒストグラムを描く</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>df_chinstrap = df_penguins.loc[df_penguins.loc[:, "species"] == "Chinstrap", :]
+px.histogram(df_chinstrap, x="body_mass_g")
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/outlier3.png"><img alt="../../../_images/outlier3.png" src="../../../_images/outlier3.png" style="width: 70%;" />
+</a>
+</figure>
+</section>
+<section id="id29">
+<h5>外れ値への対処方法<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h5>
+<p>外れ値が特定できたら、次のいずれかの方法で処理する</p>
+<ul class="simple">
+<li><p>データ（行）の削除</p></li>
+<li><p>上限値と下限値の設定</p></li>
+</ul>
+</section>
+<section id="id30">
+<h5>データ（行）の削除<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p>外れ値が何らかのエラーによるもの（異常値）と見なせる場合で、かつ、サンプルサイズが十分に大きい場合には、外れ値を含むデータ（行）を削除してもよい</p></li>
+<li><p>表のように、非常に大きいか小さい身長の値は、「データ記録時に0を1つ多くまたは少なく入力してしまった」など何らかのエラーが発生したと考えられる</p></li>
+<li><p>原因が明らかである場合には、値そのものを修正することも対処方法の1つ</p></li>
+<li><p>そもそもこのような外れ値が多い場合には、データそのものの品質が低く、データ分析や機械学習モデル構築に適していない可能性が高いので、あらためてデータの取得、入手から始めるほうが安全である</p></li>
+</ul>
+<p>成人の身長の表 (入力エラーが疑われる例)</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>id</th>
+<th>身長</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>140</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1700</td>
+</tr>
+<tr>
+<td>3</td>
+<td>180</td>
+</tr>
+<tr>
+<td>4</td>
+<td>19</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id31">
+<h5>上限値と下限値の設定<a class="headerlink" href="#id31" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p>2σ範囲のしきい値か分位点より大きいか小さい値を外れ値と見なせる場合、その外れ値をしきい値か分位点の値で置き換えることも、外れ値に対する有効な対処方法である</p></li>
+<li><p>たとえば、speciesのclip()メソッドを使って、先ほどのChinstrapの体重の外れ値を2σ範囲のしきい値で置き換える。引数lowerに下限値、引数upperに上限値を渡す</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 種類ごとに個体番号を振る</span>
+<span class="c1"># cumcount() は、グループごとに「何番目のデータか」を数える pandas の関数</span>
+<span class="n">df_penguins</span><span class="p">[</span><span class="s2">"individual"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_penguins</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"species"</span><span class="p">)</span><span class="o">.</span><span class="n">cumcount</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">df_chinstrap</span> <span class="o">=</span> <span class="n">df_penguins</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_penguins</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"species"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Chinstrap"</span><span class="p">,</span> <span class="p">:]</span>
+
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">df_chinstrap</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"body_mass_g"</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>  <span class="c1"># 標準偏差</span>
+<span class="n">avg</span> <span class="o">=</span> <span class="n">df_chinstrap</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"body_mass_g"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>  <span class="c1"># 平均</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"下限値：</span><span class="si">{</span><span class="n">avg</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sigma</span><span class="si">}</span><span class="s2"> 上限値：</span><span class="si">{</span><span class="n">avg</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sigma</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="n">df_chinstrap</span> <span class="o">=</span> <span class="n">df_chinstrap</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+  <span class="n">body_mass_g_clipped</span><span class="o">=</span><span class="n">df_chinstrap</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">"body_mass_g"</span><span class="p">]</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span>
+    <span class="n">lower</span><span class="o">=</span><span class="n">avg</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">,</span>
+    <span class="n">upper</span><span class="o">=</span><span class="n">avg</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">,</span>
+  <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
+  <span class="n">df_chinstrap</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span>
+      <span class="n">id_vars</span><span class="o">=</span><span class="s2">"individual"</span><span class="p">,</span>
+      <span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">"body_mass_g"</span><span class="p">,</span> <span class="s2">"body_mass_g_clipped"</span><span class="p">],</span>
+  <span class="p">),</span>
+  <span class="n">x</span><span class="o">=</span><span class="s2">"value"</span><span class="p">,</span>
+  <span class="n">facet_col</span><span class="o">=</span><span class="s2">"variable"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>下限値：2964.418072519735 上限値：4501.7583980685</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/outlier4.png"><img alt="../../../_images/outlier4.png" src="../../../_images/outlier4.png" style="width: 70%;" />
+</a>
+</figure>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id32">
+<h3>欠損値<a class="headerlink" href="#id32" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>実務上、何らか値の欠損があるデータを扱うことがある</p></li>
+<li><p>欠損値のない入力データを前提としている機械学習モデルは多く、欠損値の取り扱いは最終的な分析結果やモデルに大きな影響を与える</p></li>
+<li><p>とりうる手段を理解し適切に処理することが重要である</p></li>
+<li><p>欠損値のデータ型の性質と、データの欠損値を把握して対処する方法について解説する</p></li>
+</ul>
+<section id="id33">
+<h4>欠損値の基礎知識<a class="headerlink" href="#id33" title="Link to this heading">¶</a></h4>
+<p><strong>データ型</strong><br />
+pandasとNumPyで扱う場合のデータ型に応じて欠損値として扱われるデータは下記のとおり</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>表記</th>
+<th>データ型</th>
+<th>クラス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NaN</td>
+<td>float型</td>
+<td>numpy.nan</td>
+</tr>
+<tr>
+<td>NA</td>
+<td>Int型</td>
+<td>pandas.NA</td>
+</tr>
+<tr>
+<td>欠損値のデータ型</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>※ pandas.NAクラスは、Experimentalという扱いであり、仕様が変わる可能性がある</p>
+</section>
+<section id="id34">
+<h4>欠損値の生成<a class="headerlink" href="#id34" title="Link to this heading">¶</a></h4>
+<p>欠損値（NaN）を含むfloat型のSeriesを生成</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">float_ser</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">float_ser</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0.511822</td>
+</tr>
+<tr>
+<td>1</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.950464</td>
+</tr>
+<tr>
+<td>3</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+<p>dtype: float64</p>
+<p>int型のSeriesは、欠損値が含まれるとfloat型に型変換される<br />
+欠損値（NaT）を含むdatetime型のSeriesを生成</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dt_ser</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">"2023-01-01"</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
+    <span class="n">index</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+<span class="p">)</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">dt_ser</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2023-01-01</td>
+</tr>
+<tr>
+<td>1</td>
+<td>NaT</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2023-01-02</td>
+</tr>
+<tr>
+<td>3</td>
+<td>NaT</td>
+</tr>
+</tbody>
+</table>
+<p>dtype: datetime64[ns]</p>
+<p>引数dtypeにpandas.Int64Dtypeを渡すことで、欠損値（NA）を含むint型のSeriesを生成</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">int_ser</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
+    <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="n">index</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Int64Dtype</span><span class="p">(),</span>
+<span class="p">)</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">int_ser</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>&lt;NA&gt;</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>&lt;NA&gt;</td>
+</tr>
+</tbody>
+</table>
+<p>dtype: Int64</p>
+</section>
+<section id="id35">
+<h4>データの型変換<a class="headerlink" href="#id35" title="Link to this heading">¶</a></h4>
+<p>pandasでは、int型およびbool型のデータに欠損値が含まれている場合は、自動的に型変換が行われる</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>データ型</th>
+<th>変換後のデータ型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int型</td>
+<td>float型</td>
+</tr>
+<tr>
+<td>bool型</td>
+<td>object型</td>
+</tr>
+<tr>
+<td>float型</td>
+<td>float型</td>
+</tr>
+<tr>
+<td>object型</td>
+<td>object型</td>
+</tr>
+</tbody>
+</table>
+<p>欠損値が含まれたデータの型変換</p>
+</section>
+<section id="id36">
+<h4>欠損値を含むデータの評価<a class="headerlink" href="#id36" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>NaNどうし、またはNaTどうしの比較演算は、Falseが返る</p></li>
+<li><p>NAどうしの比較演算は、NAが返る</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>np.nan == np.nan # False
+np.nan &gt; np.nan  # False
+pd.NaT == pd.NaT # False
+pd.NA == pd.NA   # &lt;NA&gt;
+</pre></div>
+</div>
+</section>
+<section id="id37">
+<h4>欠損値を含むデータの演算<a class="headerlink" href="#id37" title="Link to this heading">¶</a></h4>
+<p>欠損値であるかどうかを確認するには、isna()またはisnull()関数（またはメソッド）を使う</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">float_ser</span><span class="p">)</span>
+<span class="c1"># or</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">float_ser</span><span class="p">)</span>
+<span class="c1"># or</span>
+<span class="n">float_ser</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+<span class="c1"># or</span>
+<span class="n">float_ser</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>1</td>
+<td>True</td>
+</tr>
+<tr>
+<td>2</td>
+<td>False</td>
+</tr>
+<tr>
+<td>3</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<p>dtype: bool</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>int_ser.isna()
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>1</td>
+<td>True</td>
+</tr>
+<tr>
+<td>2</td>
+<td>False</td>
+</tr>
+<tr>
+<td>3</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<p>dtype: bool</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dt_ser</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>False</td>
+</tr>
+<tr>
+<td>1</td>
+<td>True</td>
+</tr>
+<tr>
+<td>2</td>
+<td>False</td>
+</tr>
+<tr>
+<td>3</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<p>dtype: bool</p>
+</section>
+<section id="id38">
+<h4>欠損値を含むデータの演算<a class="headerlink" href="#id38" title="Link to this heading">¶</a></h4>
+<p>欠損値を含むSeriesに対して、記述統計を行うメソッドを実行した場合やグループ化した場合は、次のような処理になる</p>
+<ul class="simple">
+<li><p>データを集計する場合、欠損値は0として扱われる</p></li>
+<li><p>すべてのデータが欠損値の場合は0となる</p></li>
+<li><p>累積演算（cumsum()、cumprod()など）では欠損値を無視する</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">int_ser</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>np.int64(5)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">int_ser</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>&lt;NA&gt;</td>
+</tr>
+<tr>
+<td>2</td>
+<td>5</td>
+</tr>
+<tr>
+<td>3</td>
+<td>&lt;NA&gt;</td>
+</tr>
+</tbody>
+</table>
+<p>dtype: Int64</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">int_ser</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>&lt;NA&gt;</p>
+</section>
+<section id="id39">
+<h4>欠損値の発生パターン（メカニズム）と対処方法<a class="headerlink" href="#id39" title="Link to this heading">¶</a></h4>
+<p>実世界のデータに欠損値が生じるパターンと対処方法について解説する。<br />
+ここでは、欠損値の発生は、次の3パターンに分けられる</p>
+<ul class="simple">
+<li><p>MCAR（Missing Completely At Random）：完全にランダムに発生する場合</p>
+<ul>
+<li><p>ある列の欠損値の発生がほかの列の値によらない場合</p></li>
+<li><p>欠損値が仮に欠損値ではなかった場合の分布がもともと欠損ではない値の分布と同じだと見なせる</p></li>
+<li><p>つまり、この場合の欠損値は無視できる</p></li>
+</ul>
+</li>
+<li><p>MAR（Missing At Random）：条件はあるがランダムに発生する場合</p>
+<ul>
+<li><p>ある条件下ではMCARである場合</p></li>
+<li><p>その条件についてのみ考える場合には欠損を無視できるが、そうでない場合には無視できない</p></li>
+</ul>
+</li>
+<li><p>NMAR（Not Missing At Random）：ランダムには発生しない場合</p>
+<ul>
+<li><p>系統的に欠損値が発生する場合、欠損値を無視できない。</p></li>
+<li><p>実務上はMCARであることはあまりなく、MARまたはNMARであることが多い</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id40">
+<h4>欠損値の確認<a class="headerlink" href="#id40" title="Link to this heading">¶</a></h4>
+<p>例として、南極のペンギンに関するデータを使用する</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">"penguins.parquet"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>species</td>
+<td>0</td>
+</tr>
+<tr>
+<td>island</td>
+<td>0</td>
+</tr>
+<tr>
+<td>bill_length_mm</td>
+<td>2</td>
+</tr>
+<tr>
+<td>bill_depth_mm</td>
+<td>2</td>
+</tr>
+<tr>
+<td>flipper_length_mm</td>
+<td>2</td>
+</tr>
+<tr>
+<td>body_mass_g</td>
+<td>2</td>
+</tr>
+<tr>
+<td>sex</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<p>bill_length_mm、bill_depth_mm、flipper_length_mm、body_mass_gは2個ずつ、sexは11個の欠損値があることがわかる</p>
+</section>
+<section id="mcar">
+<h4>欠損値の発生が完全にランダム（MCAR）な場合<a class="headerlink" href="#mcar" title="Link to this heading">¶</a></h4>
+<p>MCARの場合には、欠損値を無視する、つまり欠損値を含む行を次の2つの方法で削除できる</p>
+<ul class="simple">
+<li><p>ペアワイズ：対象とする列のいずれかに欠損がある行を削除</p>
+<ul>
+<li><p>DataFrameのdropna()メソッドの引数subsetに列名をリストとして渡す</p></li>
+</ul>
+</li>
+<li><p>完全セット（リストワイズ）：対象としないものも含めて、いずれかの列に欠損がある行を削除</p>
+<ul>
+<li><p>DataFrameのdropna()メソッドの引数subsetを指定しない（Noneを渡す）</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id41">
+<h4>欠損値の発生が何らかの原因による場合<a class="headerlink" href="#id41" title="Link to this heading">¶</a></h4>
+<p>MARやNMARの場合、欠損の発生が何らかの原因によるものと考えられるので、欠損値を補完することを解説する</p>
+<p>単変量補完と多変量補完</p>
+<ul class="simple">
+<li><p>単変量補完：単純に「その列だけ」で埋める（平均・中央値など）</p></li>
+<li><p>多変量補完：他の列の情報も利用して「より妥当な値」を埋める。</p></li>
+</ul>
+</section>
+<section id="id42">
+<h4>単変量補完と多変量補完<a class="headerlink" href="#id42" title="Link to this heading">¶</a></h4>
+<p>単変量補完（univariate imputation）、欠損値補完（missing value imputation）の一種で「その変数だけの情報を使って欠損を埋める方法</p>
+<p><strong>代表的な手法</strong></p>
+<ul class="simple">
+<li><p>平均値補完：欠損をその列の平均値で埋める。</p></li>
+<li><p>中央値補完：外れ値の影響を避けたいときに中央値を使う。</p></li>
+<li><p>最頻値補完：カテゴリデータに多い方法で、一番よく出てくる値で埋める。</p></li>
+<li><p>固定値補完：0や&quot;Unknown&quot;など、任意の一定値で埋める。</p></li>
+</ul>
+</section>
+<section id="id43">
+<h4>単変量補完と多変量補完<a class="headerlink" href="#id43" title="Link to this heading">¶</a></h4>
+<p>多変量補完（multivariate imputation）<br />
+欠損している変数を他の変数との関係を利用して補完する方法。単変量補完と違い、対象の列だけでなく、データセット全体の相関構造を考慮する点が特徴</p>
+<p><strong>代表的な手法</strong></p>
+<ul class="simple">
+<li><p>回帰補完</p>
+<ul>
+<li><p>欠損した列を目的変数とみなし、他の変数から回帰モデルを作って推定値を補完。</p></li>
+<li><p>（例：年収が欠損 → 年齢・学歴・職業から回帰して推定）</p></li>
+</ul>
+</li>
+<li><p>多重代入法（MICE: Multiple Imputation by Chained Equations）</p>
+<ul>
+<li><p>複数の変数に欠損がある場合、連鎖的に1つずつ補完し、これを何回も繰り返して不確実性を反映させる。機械学習や統計解析でよく使われる。</p></li>
+</ul>
+</li>
+<li><p>機械学習を使った補完</p>
+<ul>
+<li><p>ランダムフォレスト、k近傍法（kNN）、ベイズモデルなどを用いて欠損を推定。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id44">
+<h4>行どうしに順序がある場合の補間<a class="headerlink" href="#id44" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>時系列データなど、欠損値のある行とその前後の行の値が何らかの関係性を持っていることを仮定できる場合、その関係性に基づいて欠損値を補間できる</p></li>
+<li><p>欠損値を削除するよりも、合理的に多くのデータを分析やモデル構築に使える</p></li>
+<li><p>ただし、欠損区間が長い場合は、最初にその原因を調査する</p></li>
+<li><p>前後いずれかの行の値による補間</p>
+<ul>
+<li><p>前の行の値による補間をforward fillingと呼ぶ</p></li>
+<li><p>後ろの行の値による補間をbackward fillingと呼ぶ</p></li>
+</ul>
+</li>
+<li><p>線形補間</p>
+<ul>
+<li><p>欠損区間において、値の変化が単調であることを前提とする</p></li>
+<li><p>欠損が1か所の場合は、前後の行の値の平均値と同等</p></li>
+<li><p>線形補間以外にも多項式補間など、さまざまな手法がある</p></li>
+</ul>
+</li>
+</ul>
+<!--
+| species | ペンギンの種類('Adelie', 'Chinstrap', 'Gentoo') |
+| island  | ペンギンが生息する島の名前('Torgersen', 'Biscoe', 'Dream') |
+| bill_length_mm | ペンギンのくちばしの長さ(mm) |
+| bill_depth_mm | ペンギンのくちばしの奥行き(mm) |
+| flipper_length_mm | ペンギンのヒレの長さ(mm) |
+| body_mass_g | ペンギンの体重(g) |
+| sex | ペンギンの性別('Male', 'Female') |
+| year | データが収集された年 |
+-->
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id45">
+<h2>📝 練習問題<a class="headerlink" href="#id45" title="Link to this heading">¶</a></h2>
+<p>「記述統計（データの代表値やばらつき）」や「ピボットテーブル」「相関関係の読み解き方」を練習します。</p>
+<hr class="docutils" />
+<section id="id46">
+<h3>練習問題 1: 平均値の「甘い罠」と中央値の重要性（理論）<a class="headerlink" href="#id46" title="Link to this heading">¶</a></h3>
+<p>あなたが店長を務めるカフェで、ある日の「お客様10人の購入金額」を調べたところ、以下のようになりました。</p>
+<p><code class="docutils literal notranslate"><span class="pre">[350円,</span> <span class="pre">400円,</span> <span class="pre">380円,</span> <span class="pre">450円,</span> <span class="pre">300円,</span> <span class="pre">420円,</span> <span class="pre">390円,</span> <span class="pre">360円,</span> <span class="pre">410円,</span> <span class="pre">200,000円（超高額の絵画を購入した大富豪）]</span></code></p>
+<ol class="arabic simple">
+<li><p>この10人のデータの**「平均値」**を計算すると、実態（普段の客単価）とかけ離れた非常に高い金額になってしまいます。その理由を説明してください。</p></li>
+<li><p>このような極端な値（外れ値）に影響されず、普段の「一般的なお客様の購入感覚」を正しく表すために、平均値の代わりに使うべき**「代表値（統計指標）」**は何でしょうか？</p></li>
+</ol>
+<details>
+<summary>👉 練習問題 1 の解答と解説を見る</summary>
+<ol class="arabic simple">
+<li><p><strong>平均値が跳ね上がる理由</strong>: 平均値は「全員の合計金額を人数で割る」という計算をするため、1件だけ混ざっている <code class="docutils literal notranslate"><span class="pre">200,000円</span></code> という「外れ値（極端に巨大な値）」に強く引っ張られてしまい、全員が数万円使ったかのような不自然な結果になるから。</p></li>
+<li><p><strong>代わりに使うべき代表値</strong>: <strong>「中央値（メディアン：Median）」</strong></p></li>
+</ol>
+<p><strong>解説</strong>:</p>
+<ul class="simple">
+<li><p>中央値は、データを小さい順（または大きい順）に並べ替えたときに、ちょうど<strong>真ん中にくる値</strong>（この場合は 390円 と 400円 の間付近）を指します。</p></li>
+<li><p>どれほど大きな外れ値が1件混ざっていても、真ん中の順位の値はほとんど変わらないため、「普段の一般的なお客様の姿」を実態に即して捉えることができます。ニュースでよく見る「平均年収」と「中央値の年収」に大きなズレがあるのも、全く同じ理由（一部の超富裕層が平均値を引き上げているため）です。</p></li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id47">
+<h3>練習問題 2: 標準偏差（データのばらつき）の直感的理解（理論）<a class="headerlink" href="#id47" title="Link to this heading">¶</a></h3>
+<p>ここに、1日の売上合計がどちらも「ぴったり30万円」である2つの店舗（A店、B店）があります。
+それぞれの店の「お客様1人あたりの購入金額」のばらつき方を調べたところ、以下のような特徴がありました。</p>
+<ul class="simple">
+<li><p><strong>A店</strong>：来店する全員が、ほぼ全員「300円〜400円」のコーヒーとパンを均等に買っていく。</p></li>
+<li><p><strong>B店</strong>：100円のガム1個だけを買う人もいれば、1回で2万円分のコーヒー豆をまとめ買いする人もいる。</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>A店とB店の購入金額データの**「標準偏差（Standard Deviation）」**を比較したとき、数値がより大きくなるのはどちらの店舗でしょうか？</p></li>
+<li><p>「標準偏差が小さい（ゼロに近い）」とは、データがどのような状態であることを意味するか、説明してください。</p></li>
+</ol>
+<details>
+<summary>👉 練習問題 2 の解答と解説を見る</summary>
+<ol class="arabic simple">
+<li><p>標準偏差が大きくなる店舗：<strong>B店</strong></p></li>
+<li><p>標準偏差が小さい（ゼロに近い）意味：<strong>「データ全体のばらつき（個人差）が小さく、全員の値が平均値のすぐ近くにギュッと集まっている状態」</strong>。</p></li>
+</ol>
+<p><strong>解説</strong>:</p>
+<ul class="simple">
+<li><p>**標準偏差（std）<strong>とは、数式を排して直感的に言うと、</strong>「全員のデータが、平均値から平均してどれくらい離れているか（平均的な距離）」**を表す指標です。</p></li>
+<li><p>A店は全員が平均（約350円）のすぐ近くにいるため、平均からの距離が短く、標準偏差は非常に小さくなります。</p></li>
+<li><p>B店は平均値からもの凄く離れた人（100円の人や2万円の人）が多いため、平均からの距離が長くなり、標準偏差の数値は大きくなります。</p></li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="pivot-table">
+<h3>練習問題 3: pivot_table を使ってクロス集計表を作ろう（コード）<a class="headerlink" href="#pivot-table" title="Link to this heading">¶</a></h3>
+<p>カフェの複数店舗における、曜日別の売上履歴データ <code class="docutils literal notranslate"><span class="pre">df_cafe</span></code> があります。
+Pandasの <strong><code class="docutils literal notranslate"><span class="pre">pd.pivot_table()</span></code></strong> を使い、**「縦軸（行）に『店舗名』、横軸（列）に『曜日』、集計する値に『売上金額』の【合計（sum）】」**を配置した、マトリクス表（クロス集計表）を作成するコードを完成させてください。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">df_cafe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"店舗名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">,</span> <span class="s2">"江古田店"</span><span class="p">],</span>
+    <span class="s2">"曜日"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"土曜"</span><span class="p">,</span> <span class="s2">"日曜"</span><span class="p">,</span> <span class="s2">"土曜"</span><span class="p">,</span> <span class="s2">"日曜"</span><span class="p">,</span> <span class="s2">"土曜"</span><span class="p">],</span>
+    <span class="s2">"売上金額"</span><span class="p">:</span>
+<span class="p">})</span>
+
+<span class="c1"># TODO: pd.pivot_table を使って、縦=店舗名、横=曜日、値=売上金額の合計(sum)を集計してください。</span>
+<span class="c1"># ※値がないセルは0で埋めるオプション fill_value=0 も追加しましょう。</span>
+<span class="n">pivot_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">df_cafe</span><span class="p">,</span>
+    <span class="n">values</span><span class="o">=</span>      <span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span>      <span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span>      <span class="p">,</span>
+    <span class="n">aggfunc</span><span class="o">=</span>      <span class="p">,</span>
+    <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">pivot_df</span><span class="p">)</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 練習問題 3 の解答と解説を見る</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pivot_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">df_cafe</span><span class="p">,</span>
+    <span class="n">values</span><span class="o">=</span><span class="s2">"売上金額"</span><span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span><span class="s2">"店舗名"</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="s2">"曜日"</span><span class="p">,</span>
+    <span class="n">aggfunc</span><span class="o">=</span><span class="s2">"sum"</span><span class="p">,</span>
+    <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>解説</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">values</span></code> には「集計したい数値の列（売上金額）」を指定します。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">index</span></code> には「縦軸に並べたいグループ名（店舗名）」、<code class="docutils literal notranslate"><span class="pre">columns</span></code> には「横軸に並べたいグループ名（曜日）」を指定します。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aggfunc=&quot;sum&quot;</span></code>（集計関数）を指定することで、各グループに該当する売上金額を「足し算（合計）」してくれます（他には <code class="docutils literal notranslate"><span class="pre">&quot;mean&quot;</span></code> で平均を出すこともできます）。</p></li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="r">
+<h3>練習問題 4: 相関係数 \(r\) の読み取り（理論）<a class="headerlink" href="#r" title="Link to this heading">¶</a></h3>
+<p>2つのデータ（変数）の関係性を表す**「相関係数（Correlation Coefficient: \(r\)）」**を計算したところ、それぞれ以下のような数値になりました。これらが表す「データの関係性（相関）」の説明として最も適切な組み合わせを選んでください。</p>
+<ol class="arabic simple">
+<li><p><strong>「その日の最高気温」と「かき氷の売上」の相関係数：\(r = 0.85\)</strong></p></li>
+<li><p><strong>「その日の最高気温」と「ホットコーヒーの売上」の相関係数：\(r = -0.78\)</strong></p></li>
+<li><p><strong>「お会計の金額」と「お客様の生まれ月」の相関係数：\(r = 0.02\)</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>【選択肢】</strong></p>
+<ul>
+<li><p>(ア) 強い負の相関（一方が増えると、もう一方は減る関係）</p></li>
+<li><p>(イ) ほぼ無相関（お互いに関係がない）</p></li>
+<li><p>(ウ) 強い正の相関（一方が増えると、もう一方も増える関係）</p></li>
+</ul>
+</li>
+</ul>
+<details>
+<summary>👉 練習問題 4 の解答と解説を見る</summary>
+<ol class="arabic simple">
+<li><p>最高気温と「かき氷の売上」(\(r = 0.85\)) ➡ <strong>(ウ) 強い正の相関</strong></p></li>
+<li><p>最高気温と「ホットコーヒー」(\(r = -0.78\)) ➡ <strong>(ア) 強い負の相関</strong></p></li>
+<li><p>会計金額と「生まれ月」(\(r = 0.02\)) ➡ <strong>(イ) ほぼ無相関</strong></p></li>
+</ol>
+<p><strong>解説</strong>:</p>
+<ul class="simple">
+<li><p>相関係数 \(r\) は、必ず <strong>-1.0 から +1.0 の間</strong>の数値になります。</p></li>
+<li><p>+1に近づくほど「右上がりの点々（正の相関）」、-1に近づくほど「右下がりの点々（負の相関）」になります。</p></li>
+<li><p>0の近く（おおむね -0.2 〜 +0.2 の間）は「バラバラの丸い点々」になり、2つのデータには関係がない（無相関）と判断できます。生まれ月によってカフェで使う金額が変わるわけはないので、見事に 0 に近い無相関になっていますね。</p></li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id48">
+<h3>練習問題 5: 「相関関係」と「因果関係」は違う！（データリテラシー）<a class="headerlink" href="#id48" title="Link to this heading">¶</a></h3>
+<p>ある新聞に、以下のようなデータ分析結果に基づいた記事が掲載されていました。</p>
+<blockquote>
+<div><p><strong>「調査の結果、地域ごとの『交番の数』と『犯罪発生件数』の間には、\(r = 0.82\) という非常に強い正の相関関係があることが分かった。したがって、街の犯罪を減らすためには、交番をすべて撤去して無くしてしまえばよい。」</strong></p>
+</div></blockquote>
+<p>この主張には、データ分析者として見過ごすことのできない致命的な誤りがあります。
+「相関関係」と「因果関係」という言葉の違い、および**「第3の要因（潜んでいる本当の変数）」**に触れながら、この記事のロジックのどこがおかしいのか説明してください。</p>
+<details>
+<summary>👉 練習問題 5 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p>この記事は、2つのデータに「相関関係（連動して動く関係）」があるからといって、勝手に**「因果関係（原因と結果の関係：交番があるから、犯罪が起きる）」があると決めつけてしまっている点**が誤り。</p></li>
+<li><p>裏に潜んでいる本当の第3の要因は**「その地域の人口（あるいは都会度）」**である。</p></li>
+<li><p>「人口が多い地域（都会）」ほど、当然たくさんの交番が設置されますし、同時に人が多いため犯罪件数も多くなります。</p></li>
+<li><p>交番を撤去したところで人口が減るわけではないため、犯罪は減るどころか治安が悪化して増える可能性が高く、この記事の「交番を無くせば犯罪が減る」という結論は、データ分析の致命的な誤読（擬似相関）である。</p></li>
+</ul>
+<p><strong>解説</strong>:</p>
+<ul class="simple">
+<li><p>データサイエンスを学ぶ上で、最も重要なモラルがこの <strong>「相関関係 ＝ 因果関係 ではない」</strong> という鉄則です。</p></li>
+<li><p>数字が連動して動いている（相関がある）からといって、安易に「原因と結果（因果）」だと判断せず、「裏に何か別の要因（人口など）が隠れていないか？」と疑いを持つことが大切です。</p></li>
+</ul>
+</details>
+```
+</section>
+</section>
+<hr class="docutils" />
+<section id="id49">
+<h2>💻 演習課題（難易度別：5問）<a class="headerlink" href="#id49" title="Link to this heading">¶</a></h2>
+<p>データ解析を使って、カフェの顧客・営業データを分析してみます</p>
+<p>（準備）演習で使うダミーの営業データフレームを作成します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># このセルを最初に実行してください。</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">df_analytics</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"顧客名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"山田"</span><span class="p">,</span> <span class="s2">"佐藤"</span><span class="p">,</span> <span class="s2">"鈴木"</span><span class="p">,</span> <span class="s2">"高橋"</span><span class="p">,</span> <span class="s2">"田中"</span><span class="p">,</span> <span class="s2">"渡辺"</span><span class="p">,</span> <span class="s2">"伊藤"</span><span class="p">,</span> <span class="s2">"中村"</span><span class="p">,</span> <span class="s2">"小林"</span><span class="p">,</span> <span class="s2">"加藤"</span><span class="p">],</span>
+    <span class="s2">"性別"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"女性"</span><span class="p">,</span> <span class="s2">"男性"</span><span class="p">,</span> <span class="s2">"女性"</span><span class="p">,</span> <span class="s2">"男性"</span><span class="p">,</span> <span class="s2">"女性"</span><span class="p">,</span> <span class="s2">"女性"</span><span class="p">,</span> <span class="s2">"男性"</span><span class="p">,</span> <span class="s2">"女性"</span><span class="p">,</span> <span class="s2">"男性"</span><span class="p">,</span> <span class="s2">"女性"</span><span class="p">],</span>
+    <span class="s2">"滞在時間（分）"</span><span class="p">:</span> <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">48</span><span class="p">],</span> <span class="c1"># 4番目と9番目が長時間の勉強学生(外れ値)</span>
+    <span class="s2">"注文商品"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"コーヒー"</span><span class="p">,</span> <span class="s2">"ケーキ"</span><span class="p">,</span> <span class="s2">"コーヒー"</span><span class="p">,</span> <span class="s2">"コーヒー"</span><span class="p">,</span> <span class="s2">"ケーキ"</span><span class="p">,</span> <span class="s2">"紅茶"</span><span class="p">,</span> <span class="s2">"ケーキ"</span><span class="p">,</span> <span class="s2">"コーヒー"</span><span class="p">,</span> <span class="s2">"ケーキ"</span><span class="p">,</span> <span class="s2">"コーヒー"</span><span class="p">],</span>
+    <span class="s2">"最高気温（℃）"</span><span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">19</span><span class="p">],</span>
+    <span class="s2">"支払金額（円）"</span><span class="p">:</span> <span class="p">[</span><span class="mi">450</span><span class="p">,</span> <span class="mi">950</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">950</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mi">450</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"分析対象のカフェ顧客営業データ:"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_analytics</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>演習1: 平均値と中央値の比較、標準偏差の計算（難易度：易）</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># カフェのお客様の「滞在時間（分）」列には、勉強で長時間居座った一部のお客様（180分）という外れ値が含まれています。</span>
+<span class="c1"># TODO: 1. 「滞在時間（分）」列の 平均値(`.mean()`) と 中央値(`.median()`) を算出して表示し、比較してください。</span>
+<span class="c1"># TODO: 2. 「滞在時間（分）」列の 標準偏差(`.std()`) を算出して表示してください。</span>
+
+<span class="c1"># TODO: 平均値、中央値、標準偏差を計算して print する</span>
+<span class="n">stay_mean</span> <span class="o">=</span> 
+<span class="n">stay_median</span> <span class="o">=</span> 
+<span class="n">stay_std</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"滞在時間の平均値: </span><span class="si">{</span><span class="n">stay_mean</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> 分"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"滞在時間の中央値: </span><span class="si">{</span><span class="n">stay_median</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> 分"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"滞在時間の標準偏差(ばらつき): </span><span class="si">{</span><span class="n">stay_std</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>演習2: crosstab を用いた属性掛け合わせクロス集計（難易度：易）</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 「性別」と「注文商品」の組み合わせから、どの性別の人が何を注文しやすいのか、度数（人数）を集計したいです。</span>
+<span class="c1"># TODO: pd.crosstab() を使い、「性別」を行（縦軸）、「注文商品」を列（横軸）に指定したクロス集計表を作成してください。</span>
+
+<span class="c1"># TODO: クロス集計を実行</span>
+<span class="n">cross_gender_item</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 性別 ✕ 注文商品のクロス集計 ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">cross_gender_item</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>#演習3: pivot_table による複数グループの平均支払金額集計（難易度：中）</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 各「注文商品」と「性別」の掛け合わせにおいて、1回あたりの「平均支払金額」がいくらになっているかをマトリクスで出したいです。</span>
+<span class="c1"># TODO: pd.pivot_table() を使い、縦軸(index)に「注文商品」、横軸(columns)に「性別」、</span>
+<span class="c1">#       集計する値(values)に「支払金額（円）」、集計関数(aggfunc)に平均「"mean"」を指定したピボットテーブルを作成してください。</span>
+
+<span class="c1"># TODO: ピボットテーブルを実行</span>
+<span class="n">pivot_price</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">df_analytics</span><span class="p">,</span>
+    <span class="n">values</span><span class="o">=</span>      <span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span>      <span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span>      <span class="p">,</span>
+    <span class="n">aggfunc</span><span class="o">=</span>      
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 注文商品 ✕ 性別 の平均支払金額ピボット表 ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">pivot_price</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>演習4: corr() による相関係数の算出（相関行列）（難易度：中）</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># データフレーム内の数値列（「滞在時間（分）」「最高気温（℃）」「支払金額（円）」）の間の関係性を一瞬で調べたいです。</span>
+<span class="c1"># TODO: データフレームの .corr() メソッドを使い、相関行列を算出してください。</span>
+<span class="c1"># ※注意：数値以外の文字列（性別など）が含まれているため、引数に `numeric_only=True` を指定するのを忘れないでください。</span>
+
+<span class="c1"># TODO: 相関行列を計算して表示する</span>
+<span class="n">correlation_result</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 数値データの相関行列 ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">correlation_result</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>演習5: 実践！Matplotlibを用いた「最高気温」と「支払金額」の関係性の可視化（難易度：難）</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 4.3で学んだ相関分析を目で見て直感的に確かめるため、散布図を描画します。</span>
+<span class="c1"># TODO: plt.scatter() を使い、X軸に「最高気温（℃）」、Y軸に「支払金額（円）」を指定して散布図を描画してください。</span>
+<span class="c1"># TODO: グラフのタイトルを「最高気温と支払金額の相関関係」に設定してください（日本語文字化け対策モジュールは導入済みです）。</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">japanize_matplotlib</span> <span class="c1"># 日本語表示用</span>
+
+<span class="c1"># グラフキャンバスの用意</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># TODO: 1. 散布図を描画（X軸: 最高気温(℃), Y軸: 支払金額(円)）</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    
+<span class="p">)</span>
+
+<span class="c1"># TODO: 2. グラフタイトルをつける</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span>
+
+<span class="p">)</span>
+
+<span class="c1"># 軸ラベルの設定</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"最高気温（℃）"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"支払金額（円）"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">":"</span><span class="p">)</span>
+
+<span class="c1"># 画面に表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># グラフを見て、「気温が高いほど支払金額が多い（あるいは少ない、関係がない）」のどれに該当するか確認してみましょう！</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id50">
+<h2>💡 演習問題の解答例と解説<a class="headerlink" href="#id50" title="Link to this heading">¶</a></h2>
+<details>
+<summary>👉 解答例を見る（ここをクリックして展開）</summary>
+<section id="id51">
+<h3>演習1の解答<a class="headerlink" href="#id51" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stay_mean</span> <span class="o">=</span> <span class="n">df_analytics</span><span class="p">[</span><span class="s2">"滞在時間（分）"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">stay_median</span> <span class="o">=</span> <span class="n">df_analytics</span><span class="p">[</span><span class="s2">"滞在時間（分）"</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">stay_std</span> <span class="o">=</span> <span class="n">df_analytics</span><span class="p">[</span><span class="s2">"滞在時間（分）"</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>解説</strong>: 平均値（約64.3分）が、一部の居座り学生（180分）によって大きく引き上げられているのに対し、中央値（49.0分）は実態に則した値を捉えています。標準偏差が55.1分と非常に大きく、滞在時間の個人差（ばらつき）が極めて激しいことが分かります。</p></li>
+</ul>
+</section>
+<section id="id52">
+<h3>演習2の解答<a class="headerlink" href="#id52" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cross_gender_item</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df_analytics</span><span class="p">[</span><span class="s2">"性別"</span><span class="p">],</span> <span class="n">df_analytics</span><span class="p">[</span><span class="s2">"注文商品"</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="id53">
+<h3>演習3の解答<a class="headerlink" href="#id53" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pivot_price</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">df_analytics</span><span class="p">,</span>
+    <span class="n">values</span><span class="o">=</span><span class="s2">"支払金額（円）"</span><span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span><span class="s2">"注文商品"</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="s2">"性別"</span><span class="p">,</span>
+    <span class="n">aggfunc</span><span class="o">=</span><span class="s2">"mean"</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id54">
+<h3>演習4の解答<a class="headerlink" href="#id54" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">correlation_result</span> <span class="o">=</span> <span class="n">df_analytics</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>解説</strong>: 相関行列を見ると、「最高気温（℃）」と「支払金額（円）」の相関係数は <strong>0.75</strong> になり、非常に強い正の相関（気温が高い日ほど、高額な商品（ケーキセットなど）が売れ、売上が高くなる関係）が隠されていることが科学的に証明されました！</p></li>
+</ul>
+</section>
+<section id="id55">
+<h3>演習5の解答<a class="headerlink" href="#id55" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_analytics</span><span class="p">[</span><span class="s2">"最高気温（℃）"</span><span class="p">],</span> <span class="n">df_analytics</span><span class="p">[</span><span class="s2">"支払金額（円）"</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">"coral"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"最高気温と支払金額の相関関係"</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>解説</strong>: 描画された散布図は「右上がり（正の相関）」の点々になっています。気温が高くなるにつれて支払金額が綺麗に上昇していく様子が、目の前のビジュアルとして美しく証明されました。これこそがデータ分析（可視化と解析の連動）の醍醐味です！</p></li>
+</ul>
+</details>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id56">
+<h2>📚 まとめ<a class="headerlink" href="#id56" title="Link to this heading">¶</a></h2>
+<section id="id57">
+<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id57" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>平均値の罠と中央値</strong>: 極端な外れ値が混ざるデータは、平均値が嘘をつきます。真ん中の順位の値である「中央値（median）」を併用するのが鉄則です。</p></li>
+<li><p><strong>標準偏差 (std)</strong>: データが平均値から平均してどれくらい離れているかを示す、データの「ばらつき（個人差）」の指標。</p></li>
+<li><p><strong>クロス集計 (crosstab) と ピボット表 (pivot_table)</strong>: カテゴリデータを多角的に掛け合わせて人数や金額の合計・平均を可視化する最強の集計ツール。</p></li>
+<li><p><strong>相関係数 (r)</strong>: -1.0から+1.0の範囲で、2つのデータがどれくらい連動しているかを測る。</p></li>
+<li><p><strong>相関と因果の混同禁止</strong>: 「数字が連動している（相関）」からといって、そこに「直接の原因と結果（因果）」があるとは限らない。裏に潜む「第三の要因」を疑うことが大切。</p></li>
+<li><p><strong>定性的評価」と定量的評価</strong>: データ評価には2つのアプローチがある。</p></li>
+</ul>
+</section>
+</section>
 </section>
 
         </article>
@@ -392,7 +2682,7 @@
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-08-28</div>
+              Last updated on 2026-08-31</div>
           </div>
           <div class="right-details">
             
@@ -401,8 +2691,121 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">第4回 データ解析</a><ul>
+<li><a class="reference internal" href="#id2">🎯 到達目標</a></li>
+<li><a class="reference internal" href="#id3">記述統計とは</a><ul>
+<li><a class="reference internal" href="#id4">記述統計の主な目的データの可視化:</a></li>
+<li><a class="reference internal" href="#id5">主な指標（記述統計量）</a></li>
+<li><a class="reference internal" href="#id6">平均客単価の罠</a></li>
+<li><a class="reference internal" href="#standard-deviation">データのばらつきを測る「標準偏差（Standard Deviation）」</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">クロス集計とピボットテーブル：多角的なデータ分析</a><ul>
+<li><a class="reference internal" href="#pd-crosstab">属性ごとの割合をあぶり出す「クロス集計（<code class="docutils literal notranslate"><span class="pre">pd.crosstab</span></code>）」</a></li>
+<li><a class="reference internal" href="#pd-pivot-table">複数店舗✕商品カテゴリの売上を一発集計「ピボットテーブル（<code class="docutils literal notranslate"><span class="pre">pd.pivot_table</span></code>）」</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8">相関分析：2つの変数の関係性を数値化する</a><ul>
+<li><a class="reference internal" href="#id9">相関係数 の読み解き方</a></li>
+<li><a class="reference internal" href="#id10">⚠️ データ分析者最大のタブー：「相関関係」と「因果関係」は違う！</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id11">データ評価</a><ul>
+<li><a class="reference internal" href="#id12">定量的評価と定性的評価</a><ul>
+<li><a class="reference internal" href="#quantitative-evaluation">定量的評価（Quantitative Evaluation）</a></li>
+<li><a class="reference internal" href="#qualitative-evaluation">定性的評価（Qualitative Evaluation）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id13">実データでのデータ評価：「南極パーマー半島のペンギン調査データ」</a></li>
+<li><a class="reference internal" href="#id14">定量的評価（統計量）</a></li>
+<li><a class="reference internal" href="#id15">定性的評価（可視化）</a><ul>
+<li><a class="reference internal" href="#id16">データ可視化のためのライブラリ</a><ul>
+<li><a class="reference internal" href="#pandas-dataframeplot">pandas.DataFrameのplot()</a></li>
+<li><a class="reference internal" href="#matplotlib">Matplotlibを使ったグラフ描画</a></li>
+<li><a class="reference internal" href="#plotly">Plotlyを使ったグラフ描画</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id17">グラフの種類</a><ul>
+<li><a class="reference internal" href="#id18">散布図</a></li>
+<li><a class="reference internal" href="#id19">折れ線グラフ</a></li>
+<li><a class="reference internal" href="#id20">棒グラフ</a></li>
+<li><a class="reference internal" href="#id21">ヒストグラム</a></li>
+<li><a class="reference internal" href="#id22">箱ひげ図</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id23">外れ値、異常値</a><ul>
+<li><a class="reference internal" href="#id24">外れ値、異常値</a></li>
+<li><a class="reference internal" href="#id25">外れ値の確認</a><ul>
+<li><a class="reference internal" href="#id26">箱ひげ図による外れ値の確認</a></li>
+<li><a class="reference internal" href="#id27">分位点による外れ値の確認</a></li>
+<li><a class="reference internal" href="#id28">正規分布と2σ範囲による外れ値の確認</a></li>
+<li><a class="reference internal" href="#id29">外れ値への対処方法</a></li>
+<li><a class="reference internal" href="#id30">データ（行）の削除</a></li>
+<li><a class="reference internal" href="#id31">上限値と下限値の設定</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id32">欠損値</a><ul>
+<li><a class="reference internal" href="#id33">欠損値の基礎知識</a></li>
+<li><a class="reference internal" href="#id34">欠損値の生成</a></li>
+<li><a class="reference internal" href="#id35">データの型変換</a></li>
+<li><a class="reference internal" href="#id36">欠損値を含むデータの評価</a></li>
+<li><a class="reference internal" href="#id37">欠損値を含むデータの演算</a></li>
+<li><a class="reference internal" href="#id38">欠損値を含むデータの演算</a></li>
+<li><a class="reference internal" href="#id39">欠損値の発生パターン（メカニズム）と対処方法</a></li>
+<li><a class="reference internal" href="#id40">欠損値の確認</a></li>
+<li><a class="reference internal" href="#mcar">欠損値の発生が完全にランダム（MCAR）な場合</a></li>
+<li><a class="reference internal" href="#id41">欠損値の発生が何らかの原因による場合</a></li>
+<li><a class="reference internal" href="#id42">単変量補完と多変量補完</a></li>
+<li><a class="reference internal" href="#id43">単変量補完と多変量補完</a></li>
+<li><a class="reference internal" href="#id44">行どうしに順序がある場合の補間</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id45">📝 練習問題</a><ul>
+<li><a class="reference internal" href="#id46">練習問題 1: 平均値の「甘い罠」と中央値の重要性（理論）</a></li>
+<li><a class="reference internal" href="#id47">練習問題 2: 標準偏差（データのばらつき）の直感的理解（理論）</a></li>
+<li><a class="reference internal" href="#pivot-table">練習問題 3: pivot_table を使ってクロス集計表を作ろう（コード）</a></li>
+<li><a class="reference internal" href="#r">練習問題 4: 相関係数 \(r\) の読み取り（理論）</a></li>
+<li><a class="reference internal" href="#id48">練習問題 5: 「相関関係」と「因果関係」は違う！（データリテラシー）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id49">💻 演習課題（難易度別：5問）</a></li>
+<li><a class="reference internal" href="#id50">💡 演習問題の解答例と解説</a><ul>
+<li><a class="reference internal" href="#id51">演習1の解答</a></li>
+<li><a class="reference internal" href="#id52">演習2の解答</a></li>
+<li><a class="reference internal" href="#id53">演習3の解答</a></li>
+<li><a class="reference internal" href="#id54">演習4の解答</a></li>
+<li><a class="reference internal" href="#id55">演習5の解答</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id56">📚 まとめ</a><ul>
+<li><a class="reference internal" href="#id57">✨ 今日の重要ポイントまとめ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
