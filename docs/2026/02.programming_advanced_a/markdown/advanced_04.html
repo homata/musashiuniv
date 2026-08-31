@@ -438,19 +438,19 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><strong>平均値（<code class="docutils literal notranslate"><span class="pre">.mean()</span></code>）</strong></p>
+<li><p>平均値（<code class="docutils literal notranslate"><span class="pre">.mean()</span></code>）</p>
 <ul>
-<li><p>「全員の合計金額を人数で割る」という計算をするため、1件でも異常な値（<strong>外れ値：Outlier</strong>）が混ざると、強烈にその数値に引っ張られてしまい、実態を全く表さなくなります。</p></li>
+<li><p>「全員の合計金額を人数で割る」という計算をするため、1件でも異常な値（外れ値：Outlier）が混ざると、強烈にその数値に引っ張られてしまい、実態を全く表さなくなります。</p></li>
 </ul>
 </li>
-<li><p><strong>中央値（<code class="docutils literal notranslate"><span class="pre">.median()</span></code>）</strong></p>
+<li><p>中央値（<code class="docutils literal notranslate"><span class="pre">.median()</span></code>）</p>
 <ul>
 <li><p>データを小さい順に並べ替えたときに「ちょうど真ん中の順位（50%の位置）にくる値」です。どれほど極端な外れ値が混ざっていても、順位自体は1つしかズレないため、外れ値の影響を受けずに、「普段の姿」を映し出すことができます。</p></li>
 </ul>
 </li>
 </ul>
 <blockquote>
-<div><p><strong>⚠️ データリテラシー</strong>:
+<div><p>⚠️ データリテラシー:
 ニュースで「日本の平均年収は450万円です」と言われた際、多くの人が「自分は平均以下だ…」と思います。しかし、実際は一部の超高所得層（大企業の社長やスポーツ選手など）が平均値を強烈に引き上げています。実態に近い年収（日本人のちょうど真ん中の人の年収＝中央値）を調べると、約360万円〜380万円付近になり、平均値より約100万円近く低くなります。データを見るときは、常に「平均値の罠」を疑い、中央値も同時に確認する癖をつけましょう！</p>
 </div></blockquote>
 </section>
@@ -460,16 +460,16 @@
 <p>平均値や中央値といった「真ん中の値」が分かったら、次に知りたいのは「データはどのくらい散らばっているのか？（個人差が大きいのか、全員同じくらいなのか）」という情報です。</p>
 <p>ここに、1日の総売上高がどちらも「ピッタリ30万円」である2つの店舗があります。</p>
 <ul class="simple">
-<li><p><strong>A店（安定型）</strong>：来店するお客様全員が、ほぼ均一に「300円〜400円」のコーヒーとパンを頼む。</p></li>
-<li><p><strong>B店（波乱万丈型）</strong>：100円のガム1個だけを買う極端な顧客もいれば、一度に2万円分のギフト用コーヒー豆をまとめ買いする顧客もいる。</p></li>
+<li><p>A店（安定型）：来店するお客様全員が、ほぼ均一に「300円〜400円」のコーヒーとパンを頼む。</p></li>
+<li><p>B店（波乱万丈型）：100円のガム1個だけを買う極端な顧客もいれば、一度に2万円分のギフト用コーヒー豆をまとめ買いする顧客もいる。</p></li>
 </ul>
 <p>この2つの店の「個人差（ばらつき）」を数値化したものが「標準偏差（Standard Deviation）」です。
 数式は難しそうに見えますが、直感的な意味は極めてシンプルです。</p>
 <blockquote>
-<div><p><strong>💡 標準偏差の直感的な定義</strong>：
-<strong>「全員のデータが、平均値から平均して『どれくらいの距離（金額）』離れているかを表す指標」</strong></p>
+<div><p>💡 標準偏差の直感的な定義：
+「全員のデータが、平均値から平均して『どれくらいの距離（金額）』離れているかを表す指標」</p>
 </div></blockquote>
-<p><strong>【標準偏差（ばらつき）のビジュアル図解】</strong></p>
+<p>【標準偏差（ばらつき）のビジュアル図解】</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  【 A店 (標準偏差が小さい) 】             【 B店 (標準偏差が大きい) 】
       
        |      ●●●                    　 |   ●
@@ -489,8 +489,8 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><strong>A店</strong>の標準偏差は <strong>11.5</strong> です。これは「顧客全員の金額が、平均350円からプラスマイナス11.5円程度の非常に狭い範囲にギュッと集まっている（ばらつきが極めて小さい）」ことを示しています。</p></li>
-<li><p><strong>B店</strong>の標準偏差は <strong>333.3</strong> です。これは「顧客全員の金額が、平均350円から平均して約333円も遠く離れた、非常に激しいバラバラな状態にある（ばらつきが極めて大きい）」ことを意味します。</p></li>
+<li><p>A店の標準偏差は 11.5 です。これは「顧客全員の金額が、平均350円からプラスマイナス11.5円程度の非常に狭い範囲にギュッと集まっている（ばらつきが極めて小さい）」ことを示しています。</p></li>
+<li><p>B店の標準偏差は 333.3 です。これは「顧客全員の金額が、平均350円から平均して約333円も遠く離れた、非常に激しいバラバラな状態にある（ばらつきが極めて大きい）」ことを意味します。</p></li>
 </ul>
 <p>ビジネスにおいて、標準偏差を知ることは「仕入れや在庫の安定性」を予測する上で、平均値と同じくらい極めて重要な意味を持ちます。</p>
 </section>
@@ -527,9 +527,9 @@ Pandasの <code class="docutils literal notranslate"><span class="pre">pd.crosst
 <hr class="docutils" />
 <section id="pd-pivot-table">
 <h3>複数店舗✕商品カテゴリの売上を一発集計「ピボットテーブル（<code class="docutils literal notranslate"><span class="pre">pd.pivot_table</span></code>）」<a class="headerlink" href="#pd-pivot-table" title="Link to this heading">¶</a></h3>
-<p>クロス集計は「人数（度数）」を数えるのに適していますが、「金額の合計や平均」をマトリクス（縦横の表）で集計したい場合は、<strong>「ピボットテーブル（<code class="docutils literal notranslate"><span class="pre">pd.pivot_table</span></code>）」</strong> を使います。</p>
+<p>クロス集計は「人数（度数）」を数えるのに適していますが、「金額の合計や平均」をマトリクス（縦横の表）で集計したい場合は、「ピボットテーブル（<code class="docutils literal notranslate"><span class="pre">pd.pivot_table</span></code>）」 を使います。</p>
 <p>「どの店舗（縦軸）が、どのメニューカテゴリ（横軸）で、いくら（値）売り上げたか」を一撃でマトリクス表に集計してみます</p>
-<p><strong>【ピボットテーブルのイメージ】</strong></p>
+<p>【ピボットテーブルのイメージ】</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  [ 生の売上データ ]              [ ピボットテーブル (pd.pivot_table) ]
   江古田店 | ドリンク | 450円                  ドリンク   デザート   フード
   白山店   | フード   | 800円        江古田店   900円      600円    750円
@@ -567,11 +567,11 @@ Pandasの <code class="docutils literal notranslate"><span class="pre">pd.crosst
 <section id="id8">
 <h2>相関分析：2つの変数の関係性を数値化する<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
 <p>データ分析の最大の醍醐味の一つが、「2つのデータ（変数）の間に、どのような関係性（連動する波）があるか？」を調べることです。　　
-これを**「相関分析（Correlation Analysis）」と呼びます。</p>
+これを「相関分析（Correlation Analysis）」と呼びます。</p>
 <section id="id9">
 <h3>相関係数 の読み解き方<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
-<p>2つのデータがどれくらい連動して動いているかを、<strong><code class="docutils literal notranslate"><span class="pre">-1.0</span> <span class="pre">〜</span> <span class="pre">+1.0</span></code></strong> の範囲の数値で表したものを「相関係数（Correlation Coefficient: \(r\)）」と呼びます。</p>
-<p><strong>【相関係数の波のイメージ】</strong></p>
+<p>2つのデータがどれくらい連動して動いているかを、<code class="docutils literal notranslate"><span class="pre">-1.0</span> <span class="pre">〜</span> <span class="pre">+1.0</span></code> の範囲の数値で表したものを「相関係数（Correlation Coefficient: \(r\)）」と呼びます。</p>
+<p>【相関係数の波のイメージ】</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  【 ① 正の相関 (r が +1 に近い) 】        【 ② 負の相関 (r が -1 に近い) 】
        Y (かき氷の売上)                        Y (ホットコーヒーの売上)
        │      ●                                │  ●
@@ -590,17 +590,17 @@ Pandasの <code class="docutils literal notranslate"><span class="pre">pd.crosst
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><strong>強さの目安</strong>：</p>
+<li><p>強さの目安：</p>
 <ul>
-<li><p><strong>0.7 〜 1.0</strong>：非常に強い正の相関（一方が増えれば、もう一方も確実に増える）</p></li>
-<li><p><strong>0.4 〜 0.7</strong>：中程度の正の相関（連動する傾向がある）</p></li>
-<li><p><strong>-0.2 〜 0.2</strong>：ほぼ無相関（お互いに関係が全く見られない）</p></li>
-<li><p><strong>-0.4 〜 -0.7</strong>：中程度の負の相関（一方が増えると、もう一方は減る傾向がある）</p></li>
-<li><p><strong>-0.7 〜 -1.0</strong>：非常に強い負の相関（一方が増えれば、もう一方は確実に減る）</p></li>
+<li><p>0.7 〜 1.0：非常に強い正の相関（一方が増えれば、もう一方も確実に増える）</p></li>
+<li><p>0.4 〜 0.7：中程度の正の相関（連動する傾向がある）</p></li>
+<li><p>-0.2 〜 0.2：ほぼ無相関（お互いに関係が全く見られない）</p></li>
+<li><p>-0.4 〜 -0.7：中程度の負の相関（一方が増えると、もう一方は減る傾向がある）</p></li>
+<li><p>-0.7 〜 -1.0：非常に強い負の相関（一方が増えれば、もう一方は確実に減る）</p></li>
 </ul>
 </li>
 </ul>
-<p>Pandasのデータフレームに対して <strong><code class="docutils literal notranslate"><span class="pre">.corr(numeric_only=True)</span></code></strong> メソッドを適用すると、すべての数値列同士の相関係数を一瞬でマトリクス表（相関行列）にして計算してくれます。</p>
+<p>Pandasのデータフレームに対して <code class="docutils literal notranslate"><span class="pre">.corr(numeric_only=True)</span></code> メソッドを適用すると、すべての数値列同士の相関係数を一瞬でマトリクス表（相関行列）にして計算してくれます。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># カフェの日ごとのデータ（最高気温、客数、アイスコーヒー売上、ホットコーヒー売上、生まれ月（無関係））</span>
 <span class="n">df_weather_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s2">"最高気温"</span><span class="p">:</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">32</span><span class="p">],</span>
@@ -618,22 +618,22 @@ Pandasの <code class="docutils literal notranslate"><span class="pre">pd.crosst
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>「最高気温」と「アイス売上」の相関係数は <strong>0.95</strong>（非常に強い正の相関）。</p></li>
-<li><p>「最高気温」と「ホット売上」の相関係数は <strong>-0.97</strong>（非常に強い負の相関）。</p></li>
-<li><p>「最高気温」と「スタッフの生まれ月」は <strong>0.06</strong>（ほぼ完全な無相関＝関係なし）。</p></li>
+<li><p>「最高気温」と「アイス売上」の相関係数は 0.95（非常に強い正の相関）。</p></li>
+<li><p>「最高気温」と「ホット売上」の相関係数は -0.97（非常に強い負の相関）。</p></li>
+<li><p>「最高気温」と「スタッフの生まれ月」は 0.06（ほぼ完全な無相関＝関係なし）。</p></li>
 <li><p>この相関係数を調べることで、「どのデータを参考にすれば、未来の売上予測ができるか」を科学的に見極めることができます。</p></li>
 </ul>
 </section>
 <hr class="docutils" />
 <section id="id10">
 <h3>⚠️ データ分析者最大のタブー：「相関関係」と「因果関係」は違う！<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
-<p>データ分析の世界において、よく犯す、かつ最も致命的な間違いが**「相関関係（Correlation）」と「因果関係（Causation）」の混同（擬似相関）**です。</p>
+<p>データ分析の世界において、よく犯す、かつ最も致命的な間違いが「相関関係（Correlation）」と「因果関係（Causation）」の混同（擬似相関）です。</p>
 <p>ある新聞に、以下のような主張の記事が載っていたとしましょう。</p>
 <blockquote>
 <div><p>「独自に日本全国の地域データを収集して分析した結果、各地域の『交番の数』と『犯罪発生件数』の間には、相関係数 (r = 0.85) という非常に強い正の相関関係があることが分かった。これは大変な事実である。街の犯罪を減らすためには、今すぐ街中にある交番をすべて撤去して無くしてしまえばよい。」</p>
 </div></blockquote>
 <p>この主張のロジックは、正しいでしょうか？それともおかしいでしょうか？</p>
-<p><strong>【間違いの図解（擬似相関）】</strong></p>
+<p>【間違いの図解（擬似相関）】</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  【 間違った解釈 (直接の因果だと勘違い) 】
    [ 🏛️ 交番の数が多い ]  ────(原因 ➡ 結果！？)───▶  [ 🚨 犯罪件数が多い ]  (交番を壊そう！)
                                                                    ▲
@@ -646,14 +646,14 @@ Pandasの <code class="docutils literal notranslate"><span class="pre">pd.crosst
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>この記事の著者は、データが連動している（相関関係がある）からといって、勝手に**「交番があるから、犯罪が起きる（因果関係）」**と決めつけてしまっています。</p></li>
-<li><p>しかし、実際には裏に潜んでいる本当の原因（第三の要因）として**「その地域の人口（あるいは都会度）」**が存在します。</p></li>
+<li><p>この記事の著者は、データが連動している（相関関係がある）からといって、勝手に「交番があるから、犯罪が起きる（因果関係）」と決めつけてしまっています。</p></li>
+<li><p>しかし、実際には裏に潜んでいる本当の原因（第三の要因）として「その地域の人口（あるいは都会度）」が存在します。</p></li>
 <li><p>人口が多い地域（都会）ほど、当然たくさんの交番が設置されますし、同時に人が多いため犯罪件数も多くなります。人口が少ない地域は交番も犯罪も少なくなります。</p></li>
 <li><p>交番をすべて撤去したところで地域の人口が減るわけではないため、犯罪は減るどころか、警察官がいなくなることで治安が劇的に悪化し、犯罪が爆発的に増加してしまいます。</p></li>
 </ul>
 <blockquote>
-<div><p><strong>🌟 データ分析者として最も大事なマインドセット</strong>：
-「AとBの数字が連動して動いている（相関がある）」からといって、安易に「Aが原因で、Bが結果だ（因果関係）」と判断してはなりません。常に**「その裏に、全体を操っている『第三の要因（隠れた変数）』が潜んでいないか？」**と、データに騙されずにクリティカルに疑いを持つことこそがデータサイエンスの真の価値です。</p>
+<div><p>🌟 データ分析者として最も大事なマインドセット：
+「AとBの数字が連動して動いている（相関がある）」からといって、安易に「Aが原因で、Bが結果だ（因果関係）」と判断してはなりません。常に「その裏に、全体を操っている『第三の要因（隠れた変数）』が潜んでいないか？」と、データに騙されずにクリティカルに疑いを持つことこそがデータサイエンスの真の価値です。</p>
 </div></blockquote>
 </section>
 </section>
@@ -665,7 +665,7 @@ Pandasの <code class="docutils literal notranslate"><span class="pre">pd.crosst
 <li><p>加工するデータや分析するデータ、機械学習モデルに投入するデータの中身を把握することなく先に進むことはできない</p></li>
 <li><p>表形式データの定量的および定性的なチェック方法と、外れ値や欠損値、値の重複への対処方法を解説していきます</p></li>
 </ul>
-<p><strong>データの評価のイメージ</strong></p>
+<p>データの評価のイメージ</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>大まかなチェック         問題点の把握と対処
  定量（要約統計量）　➡　　データの分布
  定性（可視化）　　　　　　外れ値、異常値
@@ -1549,7 +1549,7 @@ Pandasの <code class="docutils literal notranslate"><span class="pre">pd.crosst
 </ul>
 </li>
 </ul>
-<p><strong>統計ではよく使われる記号</strong></p>
+<p>統計ではよく使われる記号</p>
 <ul class="simple">
 <li><p>σ（シグマ） → 標準偏差</p></li>
 <li><p>μ（ミュー） → 平均値</p></li>
@@ -1822,7 +1822,7 @@ px.histogram(df_chinstrap, x="body_mass_g")
 </ul>
 <section id="id33">
 <h4>欠損値の基礎知識<a class="headerlink" href="#id33" title="Link to this heading">¶</a></h4>
-<p><strong>データ型</strong><br />
+<p>データ型<br />
 pandasとNumPyで扱う場合のデータ型に応じて欠損値として扱われるデータは下記のとおり</p>
 <table border="1" class="docutils">
 <thead>
@@ -2255,7 +2255,7 @@ pd.NA == pd.NA   # &lt;NA&gt;
 <section id="id42">
 <h4>単変量補完と多変量補完<a class="headerlink" href="#id42" title="Link to this heading">¶</a></h4>
 <p>単変量補完（univariate imputation）、欠損値補完（missing value imputation）の一種で「その変数だけの情報を使って欠損を埋める方法</p>
-<p><strong>代表的な手法</strong></p>
+<p>代表的な手法</p>
 <ul class="simple">
 <li><p>平均値補完：欠損をその列の平均値で埋める。</p></li>
 <li><p>中央値補完：外れ値の影響を避けたいときに中央値を使う。</p></li>
@@ -2267,7 +2267,7 @@ pd.NA == pd.NA   # &lt;NA&gt;
 <h4>単変量補完と多変量補完<a class="headerlink" href="#id43" title="Link to this heading">¶</a></h4>
 <p>多変量補完（multivariate imputation）<br />
 欠損している変数を他の変数との関係を利用して補完する方法。単変量補完と違い、対象の列だけでなく、データセット全体の相関構造を考慮する点が特徴</p>
-<p><strong>代表的な手法</strong></p>
+<p>代表的な手法</p>
 <ul class="simple">
 <li><p>回帰補完</p>
 <ul>
@@ -2330,18 +2330,18 @@ pd.NA == pd.NA   # &lt;NA&gt;
 <p>あなたが店長を務めるカフェで、ある日の「お客様10人の購入金額」を調べたところ、以下のようになりました。</p>
 <p><code class="docutils literal notranslate"><span class="pre">[350円,</span> <span class="pre">400円,</span> <span class="pre">380円,</span> <span class="pre">450円,</span> <span class="pre">300円,</span> <span class="pre">420円,</span> <span class="pre">390円,</span> <span class="pre">360円,</span> <span class="pre">410円,</span> <span class="pre">200,000円（超高額の絵画を購入した大富豪）]</span></code></p>
 <ol class="arabic simple">
-<li><p>この10人のデータの**「平均値」**を計算すると、実態（普段の客単価）とかけ離れた非常に高い金額になってしまいます。その理由を説明してください。</p></li>
-<li><p>このような極端な値（外れ値）に影響されず、普段の「一般的なお客様の購入感覚」を正しく表すために、平均値の代わりに使うべき**「代表値（統計指標）」**は何でしょうか？</p></li>
+<li><p>この10人のデータの「平均値」を計算すると、実態（普段の客単価）とかけ離れた非常に高い金額になってしまいます。その理由を説明してください。</p></li>
+<li><p>このような極端な値（外れ値）に影響されず、普段の「一般的なお客様の購入感覚」を正しく表すために、平均値の代わりに使うべき「代表値（統計指標）」は何でしょうか？</p></li>
 </ol>
 <details>
 <summary>👉 練習問題 1 の解答と解説を見る</summary>
 <ol class="arabic simple">
-<li><p><strong>平均値が跳ね上がる理由</strong>: 平均値は「全員の合計金額を人数で割る」という計算をするため、1件だけ混ざっている <code class="docutils literal notranslate"><span class="pre">200,000円</span></code> という「外れ値（極端に巨大な値）」に強く引っ張られてしまい、全員が数万円使ったかのような不自然な結果になるから。</p></li>
-<li><p><strong>代わりに使うべき代表値</strong>: <strong>「中央値（メディアン：Median）」</strong></p></li>
+<li><p>平均値が跳ね上がる理由: 平均値は「全員の合計金額を人数で割る」という計算をするため、1件だけ混ざっている <code class="docutils literal notranslate"><span class="pre">200,000円</span></code> という「外れ値（極端に巨大な値）」に強く引っ張られてしまい、全員が数万円使ったかのような不自然な結果になるから。</p></li>
+<li><p>代わりに使うべき代表値: 「中央値（メディアン：Median）」</p></li>
 </ol>
-<p><strong>解説</strong>:</p>
+<p>解説:</p>
 <ul class="simple">
-<li><p>中央値は、データを小さい順（または大きい順）に並べ替えたときに、ちょうど<strong>真ん中にくる値</strong>（この場合は 390円 と 400円 の間付近）を指します。</p></li>
+<li><p>中央値は、データを小さい順（または大きい順）に並べ替えたときに、ちょうど真ん中にくる値（この場合は 390円 と 400円 の間付近）を指します。</p></li>
 <li><p>どれほど大きな外れ値が1件混ざっていても、真ん中の順位の値はほとんど変わらないため、「普段の一般的なお客様の姿」を実態に即して捉えることができます。ニュースでよく見る「平均年収」と「中央値の年収」に大きなズレがあるのも、全く同じ理由（一部の超富裕層が平均値を引き上げているため）です。</p></li>
 </ul>
 </details>
@@ -2352,22 +2352,22 @@ pd.NA == pd.NA   # &lt;NA&gt;
 <p>ここに、1日の売上合計がどちらも「ぴったり30万円」である2つの店舗（A店、B店）があります。
 それぞれの店の「お客様1人あたりの購入金額」のばらつき方を調べたところ、以下のような特徴がありました。</p>
 <ul class="simple">
-<li><p><strong>A店</strong>：来店する全員が、ほぼ全員「300円〜400円」のコーヒーとパンを均等に買っていく。</p></li>
-<li><p><strong>B店</strong>：100円のガム1個だけを買う人もいれば、1回で2万円分のコーヒー豆をまとめ買いする人もいる。</p></li>
+<li><p>A店：来店する全員が、ほぼ全員「300円〜400円」のコーヒーとパンを均等に買っていく。</p></li>
+<li><p>B店：100円のガム1個だけを買う人もいれば、1回で2万円分のコーヒー豆をまとめ買いする人もいる。</p></li>
 </ul>
 <ol class="arabic simple">
-<li><p>A店とB店の購入金額データの**「標準偏差（Standard Deviation）」**を比較したとき、数値がより大きくなるのはどちらの店舗でしょうか？</p></li>
+<li><p>A店とB店の購入金額データの「標準偏差（Standard Deviation）」を比較したとき、数値がより大きくなるのはどちらの店舗でしょうか？</p></li>
 <li><p>「標準偏差が小さい（ゼロに近い）」とは、データがどのような状態であることを意味するか、説明してください。</p></li>
 </ol>
 <details>
 <summary>👉 練習問題 2 の解答と解説を見る</summary>
 <ol class="arabic simple">
-<li><p>標準偏差が大きくなる店舗：<strong>B店</strong></p></li>
-<li><p>標準偏差が小さい（ゼロに近い）意味：<strong>「データ全体のばらつき（個人差）が小さく、全員の値が平均値のすぐ近くにギュッと集まっている状態」</strong>。</p></li>
+<li><p>標準偏差が大きくなる店舗：B店</p></li>
+<li><p>標準偏差が小さい（ゼロに近い）意味：「データ全体のばらつき（個人差）が小さく、全員の値が平均値のすぐ近くにギュッと集まっている状態」。</p></li>
 </ol>
-<p><strong>解説</strong>:</p>
+<p>解説:</p>
 <ul class="simple">
-<li><p>**標準偏差（std）<strong>とは、数式を排して直感的に言うと、</strong>「全員のデータが、平均値から平均してどれくらい離れているか（平均的な距離）」**を表す指標です。</p></li>
+<li><p>標準偏差（std）とは、数式を排して直感的に言うと、「全員のデータが、平均値から平均してどれくらい離れているか（平均的な距離）」を表す指標です。</p></li>
 <li><p>A店は全員が平均（約350円）のすぐ近くにいるため、平均からの距離が短く、標準偏差は非常に小さくなります。</p></li>
 <li><p>B店は平均値からもの凄く離れた人（100円の人や2万円の人）が多いため、平均からの距離が長くなり、標準偏差の数値は大きくなります。</p></li>
 </ul>
@@ -2377,7 +2377,7 @@ pd.NA == pd.NA   # &lt;NA&gt;
 <section id="pivot-table">
 <h3>練習問題 3: pivot_table を使ってクロス集計表を作ろう（コード）<a class="headerlink" href="#pivot-table" title="Link to this heading">¶</a></h3>
 <p>カフェの複数店舗における、曜日別の売上履歴データ <code class="docutils literal notranslate"><span class="pre">df_cafe</span></code> があります。
-Pandasの <strong><code class="docutils literal notranslate"><span class="pre">pd.pivot_table()</span></code></strong> を使い、**「縦軸（行）に『店舗名』、横軸（列）に『曜日』、集計する値に『売上金額』の【合計（sum）】」**を配置した、マトリクス表（クロス集計表）を作成するコードを完成させてください。</p>
+Pandasの <code class="docutils literal notranslate"><span class="pre">pd.pivot_table()</span></code> を使い、「縦軸（行）に『店舗名』、横軸（列）に『曜日』、集計する値に『売上金額』の【合計（sum）】」を配置した、マトリクス表（クロス集計表）を作成するコードを完成させてください。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df_cafe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
@@ -2412,7 +2412,7 @@ Pandasの <strong><code class="docutils literal notranslate"><span class="pre">p
 <span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>解説</strong>:</p>
+<p>解説:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">values</span></code> には「集計したい数値の列（売上金額）」を指定します。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">index</span></code> には「縦軸に並べたいグループ名（店舗名）」、<code class="docutils literal notranslate"><span class="pre">columns</span></code> には「横軸に並べたいグループ名（曜日）」を指定します。</p></li>
@@ -2423,14 +2423,14 @@ Pandasの <strong><code class="docutils literal notranslate"><span class="pre">p
 <hr class="docutils" />
 <section id="r">
 <h3>練習問題 4: 相関係数 \(r\) の読み取り（理論）<a class="headerlink" href="#r" title="Link to this heading">¶</a></h3>
-<p>2つのデータ（変数）の関係性を表す**「相関係数（Correlation Coefficient: \(r\)）」**を計算したところ、それぞれ以下のような数値になりました。これらが表す「データの関係性（相関）」の説明として最も適切な組み合わせを選んでください。</p>
+<p>2つのデータ（変数）の関係性を表す「相関係数（Correlation Coefficient: \(r\)）」を計算したところ、それぞれ以下のような数値になりました。これらが表す「データの関係性（相関）」の説明として最も適切な組み合わせを選んでください。</p>
 <ol class="arabic simple">
-<li><p><strong>「その日の最高気温」と「かき氷の売上」の相関係数：\(r = 0.85\)</strong></p></li>
-<li><p><strong>「その日の最高気温」と「ホットコーヒーの売上」の相関係数：\(r = -0.78\)</strong></p></li>
-<li><p><strong>「お会計の金額」と「お客様の生まれ月」の相関係数：\(r = 0.02\)</strong></p></li>
+<li><p>「その日の最高気温」と「かき氷の売上」の相関係数：\(r = 0.85\)</p></li>
+<li><p>「その日の最高気温」と「ホットコーヒーの売上」の相関係数：\(r = -0.78\)</p></li>
+<li><p>「お会計の金額」と「お客様の生まれ月」の相関係数：\(r = 0.02\)</p></li>
 </ol>
 <ul class="simple">
-<li><p><strong>【選択肢】</strong></p>
+<li><p>【選択肢】</p>
 <ul>
 <li><p>(ア) 強い負の相関（一方が増えると、もう一方は減る関係）</p></li>
 <li><p>(イ) ほぼ無相関（お互いに関係がない）</p></li>
@@ -2441,13 +2441,13 @@ Pandasの <strong><code class="docutils literal notranslate"><span class="pre">p
 <details>
 <summary>👉 練習問題 4 の解答と解説を見る</summary>
 <ol class="arabic simple">
-<li><p>最高気温と「かき氷の売上」(\(r = 0.85\)) ➡ <strong>(ウ) 強い正の相関</strong></p></li>
-<li><p>最高気温と「ホットコーヒー」(\(r = -0.78\)) ➡ <strong>(ア) 強い負の相関</strong></p></li>
-<li><p>会計金額と「生まれ月」(\(r = 0.02\)) ➡ <strong>(イ) ほぼ無相関</strong></p></li>
+<li><p>最高気温と「かき氷の売上」(\(r = 0.85\)) ➡ (ウ) 強い正の相関</p></li>
+<li><p>最高気温と「ホットコーヒー」(\(r = -0.78\)) ➡ (ア) 強い負の相関</p></li>
+<li><p>会計金額と「生まれ月」(\(r = 0.02\)) ➡ (イ) ほぼ無相関</p></li>
 </ol>
-<p><strong>解説</strong>:</p>
+<p>解説:</p>
 <ul class="simple">
-<li><p>相関係数 \(r\) は、必ず <strong>-1.0 から +1.0 の間</strong>の数値になります。</p></li>
+<li><p>相関係数 \(r\) は、必ず -1.0 から +1.0 の間の数値になります。</p></li>
 <li><p>+1に近づくほど「右上がりの点々（正の相関）」、-1に近づくほど「右下がりの点々（負の相関）」になります。</p></li>
 <li><p>0の近く（おおむね -0.2 〜 +0.2 の間）は「バラバラの丸い点々」になり、2つのデータには関係がない（無相関）と判断できます。生まれ月によってカフェで使う金額が変わるわけはないので、見事に 0 に近い無相関になっていますね。</p></li>
 </ul>
@@ -2458,21 +2458,21 @@ Pandasの <strong><code class="docutils literal notranslate"><span class="pre">p
 <h3>練習問題 5: 「相関関係」と「因果関係」は違う！（データリテラシー）<a class="headerlink" href="#id48" title="Link to this heading">¶</a></h3>
 <p>ある新聞に、以下のようなデータ分析結果に基づいた記事が掲載されていました。</p>
 <blockquote>
-<div><p><strong>「調査の結果、地域ごとの『交番の数』と『犯罪発生件数』の間には、\(r = 0.82\) という非常に強い正の相関関係があることが分かった。したがって、街の犯罪を減らすためには、交番をすべて撤去して無くしてしまえばよい。」</strong></p>
+<div><p>「調査の結果、地域ごとの『交番の数』と『犯罪発生件数』の間には、\(r = 0.82\) という非常に強い正の相関関係があることが分かった。したがって、街の犯罪を減らすためには、交番をすべて撤去して無くしてしまえばよい。」</p>
 </div></blockquote>
 <p>この主張には、データ分析者として見過ごすことのできない致命的な誤りがあります。
-「相関関係」と「因果関係」という言葉の違い、および**「第3の要因（潜んでいる本当の変数）」**に触れながら、この記事のロジックのどこがおかしいのか説明してください。</p>
+「相関関係」と「因果関係」という言葉の違い、および「第3の要因（潜んでいる本当の変数）」に触れながら、この記事のロジックのどこがおかしいのか説明してください。</p>
 <details>
 <summary>👉 練習問題 5 の解答と解説を見る</summary>
 <ul class="simple">
-<li><p>この記事は、2つのデータに「相関関係（連動して動く関係）」があるからといって、勝手に**「因果関係（原因と結果の関係：交番があるから、犯罪が起きる）」があると決めつけてしまっている点**が誤り。</p></li>
-<li><p>裏に潜んでいる本当の第3の要因は**「その地域の人口（あるいは都会度）」**である。</p></li>
+<li><p>この記事は、2つのデータに「相関関係（連動して動く関係）」があるからといって、勝手に「因果関係（原因と結果の関係：交番があるから、犯罪が起きる）」があると決めつけてしまっている点が誤り。</p></li>
+<li><p>裏に潜んでいる本当の第3の要因は「その地域の人口（あるいは都会度）」である。</p></li>
 <li><p>「人口が多い地域（都会）」ほど、当然たくさんの交番が設置されますし、同時に人が多いため犯罪件数も多くなります。</p></li>
 <li><p>交番を撤去したところで人口が減るわけではないため、犯罪は減るどころか治安が悪化して増える可能性が高く、この記事の「交番を無くせば犯罪が減る」という結論は、データ分析の致命的な誤読（擬似相関）である。</p></li>
 </ul>
-<p><strong>解説</strong>:</p>
+<p>解説:</p>
 <ul class="simple">
-<li><p>データサイエンスを学ぶ上で、最も重要なモラルがこの <strong>「相関関係 ＝ 因果関係 ではない」</strong> という鉄則です。</p></li>
+<li><p>データサイエンスを学ぶ上で、最も重要なモラルがこの 「相関関係 ＝ 因果関係 ではない」 という鉄則です。</p></li>
 <li><p>数字が連動して動いている（相関がある）からといって、安易に「原因と結果（因果）」だと判断せず、「裏に何か別の要因（人口など）が隠れていないか？」と疑いを持つことが大切です。</p></li>
 </ul>
 </details>
@@ -2603,7 +2603,7 @@ Pandasの <strong><code class="docutils literal notranslate"><span class="pre">p
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><strong>解説</strong>: 平均値（約64.3分）が、一部の居座り学生（180分）によって大きく引き上げられているのに対し、中央値（49.0分）は実態に則した値を捉えています。標準偏差が55.1分と非常に大きく、滞在時間の個人差（ばらつき）が極めて激しいことが分かります。</p></li>
+<li><p>解説: 平均値（約64.3分）が、一部の居座り学生（180分）によって大きく引き上げられているのに対し、中央値（49.0分）は実態に則した値を捉えています。標準偏差が55.1分と非常に大きく、滞在時間の個人差（ばらつき）が極めて激しいことが分かります。</p></li>
 </ul>
 </section>
 <section id="id52">
@@ -2630,7 +2630,7 @@ Pandasの <strong><code class="docutils literal notranslate"><span class="pre">p
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><strong>解説</strong>: 相関行列を見ると、「最高気温（℃）」と「支払金額（円）」の相関係数は <strong>0.75</strong> になり、非常に強い正の相関（気温が高い日ほど、高額な商品（ケーキセットなど）が売れ、売上が高くなる関係）が隠されていることが科学的に証明されました！</p></li>
+<li><p>解説: 相関行列を見ると、「最高気温（℃）」と「支払金額（円）」の相関係数は 0.75 になり、非常に強い正の相関（気温が高い日ほど、高額な商品（ケーキセットなど）が売れ、売上が高くなる関係）が隠されていることが科学的に証明されました！</p></li>
 </ul>
 </section>
 <section id="id55">
@@ -2640,7 +2640,7 @@ Pandasの <strong><code class="docutils literal notranslate"><span class="pre">p
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><strong>解説</strong>: 描画された散布図は「右上がり（正の相関）」の点々になっています。気温が高くなるにつれて支払金額が綺麗に上昇していく様子が、目の前のビジュアルとして美しく証明されました。これこそがデータ分析（可視化と解析の連動）の醍醐味です！</p></li>
+<li><p>解説: 描画された散布図は「右上がり（正の相関）」の点々になっています。気温が高くなるにつれて支払金額が綺麗に上昇していく様子が、目の前のビジュアルとして美しく証明されました。これこそがデータ分析（可視化と解析の連動）の醍醐味です！</p></li>
 </ul>
 </details>
 </section>
@@ -2651,12 +2651,12 @@ Pandasの <strong><code class="docutils literal notranslate"><span class="pre">p
 <section id="id57">
 <h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id57" title="Link to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><strong>平均値の罠と中央値</strong>: 極端な外れ値が混ざるデータは、平均値が嘘をつきます。真ん中の順位の値である「中央値（median）」を併用するのが鉄則です。</p></li>
-<li><p><strong>標準偏差 (std)</strong>: データが平均値から平均してどれくらい離れているかを示す、データの「ばらつき（個人差）」の指標。</p></li>
-<li><p><strong>クロス集計 (crosstab) と ピボット表 (pivot_table)</strong>: カテゴリデータを多角的に掛け合わせて人数や金額の合計・平均を可視化する最強の集計ツール。</p></li>
-<li><p><strong>相関係数 (r)</strong>: -1.0から+1.0の範囲で、2つのデータがどれくらい連動しているかを測る。</p></li>
-<li><p><strong>相関と因果の混同禁止</strong>: 「数字が連動している（相関）」からといって、そこに「直接の原因と結果（因果）」があるとは限らない。裏に潜む「第三の要因」を疑うことが大切。</p></li>
-<li><p><strong>定性的評価」と定量的評価</strong>: データ評価には2つのアプローチがある。</p></li>
+<li><p>平均値の罠と中央値: 極端な外れ値が混ざるデータは、平均値が嘘をつきます。真ん中の順位の値である「中央値（median）」を併用するのが鉄則です。</p></li>
+<li><p>標準偏差 (std): データが平均値から平均してどれくらい離れているかを示す、データの「ばらつき（個人差）」の指標。</p></li>
+<li><p>クロス集計 (crosstab) と ピボット表 (pivot_table): カテゴリデータを多角的に掛け合わせて人数や金額の合計・平均を可視化する最強の集計ツール。</p></li>
+<li><p>相関係数 (r): -1.0から+1.0の範囲で、2つのデータがどれくらい連動しているかを測る。</p></li>
+<li><p>相関と因果の混同禁止: 「数字が連動している（相関）」からといって、そこに「直接の原因と結果（因果）」があるとは限らない。裏に潜む「第三の要因」を疑うことが大切。</p></li>
+<li><p>定性的評価」と定量的評価: データ評価には2つのアプローチがある。</p></li>
 </ul>
 </section>
 </section>

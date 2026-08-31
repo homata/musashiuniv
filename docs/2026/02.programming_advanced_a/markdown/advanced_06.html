@@ -7,10 +7,12 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="2026/02.programming_advanced_a/markdown/advanced_06.html" />
 <meta property="og:site_name" content="musashiuniv" />
+<meta property="og:description" content="StreamlitのWebアプリを改善していきます 🎯 到達目標: ダッシュボードのデザイン原則（操作盤をサイドバーへ集約し、重要指標をメイン画面上部へ配置する構成）を理解し、見やすいアプリ画面を設計できる。, st.sidebar を使って、メイン画面の邪魔をしないオシャレな左側操作パネルを構築できる。, st.columns() による画面分割を習得し、総売上や来客数などの「主要業績評価..." />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
 <meta property="og:image" content="/None" />
-<meta property="og:image:alt" content="" />
+<meta property="og:image:alt" content="StreamlitのWebアプリを改善していきます 🎯 到達目標: ダッシュボードのデザイン原則（操作盤をサイドバーへ集約し、重要指標をメイン画面上部へ配置する構成）を理解し、見やすいアプリ画面を設計できる。, st.sidebar を使って、メイン画面の邪魔をしないオシャレな左側操作パネルを構築できる。, st..." />
+<meta name="description" content="StreamlitのWebアプリを改善していきます 🎯 到達目標: ダッシュボードのデザイン原則（操作盤をサイドバーへ集約し、重要指標をメイン画面上部へ配置する構成）を理解し、見やすいアプリ画面を設計できる。, st.sidebar を使って、メイン画面の邪魔をしないオシャレな左側操作パネルを構築できる。, st.columns() による画面分割を習得し、総売上や来客数などの「主要業績評価..." />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" /><link rel="next" title="第7回 地理空間情報の基礎" href="advanced_07.html" /><link rel="prev" title="第5回 Webサービスの活用1" href="advanced_05.html" />
 
@@ -189,7 +191,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -350,7 +352,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -358,6 +360,1092 @@
         <article role="main" id="furo-main-content">
           <section class="tex2jax_ignore mathjax_ignore" id="web2">
 <h1>第6回 Webサービスの活用2<a class="headerlink" href="#web2" title="Link to this heading">¶</a></h1>
+<p>StreamlitのWebアプリを改善していきます</p>
+<hr class="docutils" />
+<section id="id1">
+<h2>🎯 到達目標<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>ダッシュボードのデザイン原則（操作盤をサイドバーへ集約し、重要指標をメイン画面上部へ配置する構成）を理解し、見やすいアプリ画面を設計できる。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.sidebar</span></code> を使って、メイン画面の邪魔をしないオシャレな左側操作パネルを構築できる。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.columns()</span></code> による画面分割を習得し、総売上や来客数などの「主要業績評価指標（KPI）」を矢印付きで横並びに配置できる。</p></li>
+<li><p>ユーザーが画面上で選択した条件に基づいて、Pandasのデータフレームをバックグラウンドでリアルタイムにフィルタリング（データ抽出）できる。</p></li>
+<li><p>フィルタリングされたデータをもとに、MatplotlibのグラフをWebアプリ上に瞬時に動的描画（<code class="docutils literal notranslate"><span class="pre">st.pyplot</span></code>）できる。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.file_uploader</span></code>（ファイルアップローダー）を搭載し、ユーザーが手持ちの任意のCSVファイルを投げ込むだけで、全自動でクリーニング・集計・可視化を行う「汎用データ解析ダッシュボード」を自力で構築できる。</p></li>
+</ol>
+<hr class="docutils" />
+<section id="google-colab">
+<h3>練習問題のGoogle Colab起動<a class="headerlink" href="#google-colab" title="Link to this heading">¶</a></h3>
+<p><a class="reference external" href="https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exercises/2026/02.programming_advanced_a/advanced_06.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<ol class="arabic simple">
+<li><p>上記の「Open In Colab」をクリックして、Google Colabを起動させてください</p></li>
+<li><p>[ファイル] → [ドライブにコピーを保存] を選択して、Googleドライブにコピーを保存してください</p></li>
+<li><p>保存が成功すると，Googleドライブの「マイドライブ」 →「Colab Notebooks」にコピーしたファイルが保存されます。</p></li>
+<li><p>GoogleドライブにコピーしたGoogle ColabのNotebooksを開いてください</p></li>
+<li><p>開いたGoogle ColabのNotebooksで作業をしてください</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id2">
+<h2>ダッシュボードの画面レイアウト設計<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>ダッシュボードは、ただ情報を画面に並べれば良いわけではありません。経営陣や現場のスタッフが「一瞬で状況を把握でき、迷わず操作できる」ように情報が美しく整理整頓されている必要があります。
+Streamlitには、画面をスッキリ整理するための便利なレイアウト機能が標準装備されています。</p>
+<section id="st-sidebar">
+<h3>操作盤は左側にまとめて隠す：<code class="docutils literal notranslate"><span class="pre">st.sidebar</span></code><a class="headerlink" href="#st-sidebar" title="Link to this heading">¶</a></h3>
+<p>入力用のボタンやスライダー、セレクトボックスを画面中央に置いてしまうと、肝心のグラフやテーブルの邪魔になり、非常に見づらい画面になってしまいます。
+Streamlitでは、通常のコマンドの前に <code class="docutils literal notranslate"><span class="pre">.sidebar</span></code> を挟んで <code class="docutils literal notranslate"><span class="pre">st.sidebar.〇〇</span></code> と書くだけで、画面の左端にオシャレな「開閉式の操作サイドバー」を自動構築できます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 画面中央（メイン領域）に表示される</span>
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"メイン画面です"</span><span class="p">)</span>
+
+<span class="c1"># 画面の左側（サイドバー領域）に表示される</span>
+<span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"⚙️ 操作メニュー"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="st-columns">
+<h3>指標やグラフを横に並べる：<code class="docutils literal notranslate"><span class="pre">st.columns()</span></code><a class="headerlink" href="#st-columns" title="Link to this heading">¶</a></h3>
+<p>標準状態のStreamlitでは、書いたコードの順番通りにパーツが縦一列に並んでいきます。しかし、これでは画面の下の方まで何度もスクロールしなければならず不便です。
+<code class="docutils literal notranslate"><span class="pre">st.columns(個数)</span></code> を使うと、画面を縦に等分割（カラム化）し、複数の重要データを横並びで表示できます。</p>
+</section>
+<section id="st-metric">
+<h3>変化が際立つ重要指標パネル：<code class="docutils literal notranslate"><span class="pre">st.metric()</span></code><a class="headerlink" href="#st-metric" title="Link to this heading">¶</a></h3>
+<p>主要業績評価指標（KPI：売上や来客数など）を目立たせて表示するための専用コマンドが <code class="docutils literal notranslate"><span class="pre">st.metric()</span></code> です。
+数値だけでなく、<code class="docutils literal notranslate"><span class="pre">delta</span></code>（デルタ）引数 を使うことで、前日比や目標値からの「増加・減少（緑色や赤色の矢印）」を自動で計算・装飾して表示してくれます。</p>
+<p>【ダッシュボードの理想的なプロ級レイアウト（アスキーアート）】</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  ┌────────────────────────────────────────────────────────┐
+  │  [ ☕ カフェ運営ダッシュボード ]                        │ 💻 画面中央（メイン領域）
+  ├──────────────┬─────────────────────────────────────────┤
+  │ ⚙️ 操作盤   │  [ KPI 1: 総売上 ]   [ KPI 2: 来客数 ]     │ ・ st.columns で横並び配置
+  │ (sidebar)    │  1,200,000 円        2,500 人           │
+  │              ├─────────────────────────────────────────┤
+  │ ・店舗を選ぶ │  [ 📈 リアルタイム売上推移グラフ ]      │ ・ st.pyplot で
+  │ ・日付を選ぶ │                                         │   動的なグラフを描画
+  │              │    ───○───────○──                      │
+  └──────────────┴─────────────────────────────────────────┘
+</pre></div>
+</div>
+<p>それでは、このレイアウトを実際に構築してみましょう。
+以下のコードセルをGoogle Colabで実行して、ファイル <code class="docutils literal notranslate"><span class="pre">app_layout.py</span></code> を書き出します。</p>
+<p>Streamlitインストール</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="n">streamlit</span>
+</pre></div>
+</div>
+<p>cloudflaredインストール</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">cloudflare</span><span class="o">/</span><span class="n">cloudflared</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">cloudflared</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">amd64</span><span class="o">.</span><span class="n">deb</span>
+<span class="err">!</span><span class="n">dpkg</span> <span class="o">-</span><span class="n">i</span> <span class="n">cloudflared</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">amd64</span><span class="o">.</span><span class="n">deb</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app_layout</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="c1"># ==========================================</span>
+<span class="c1"># 1. サイドバー（左側操作盤）の設定</span>
+<span class="c1"># ==========================================</span>
+<span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"⚙️ 操作メニュー"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">"絞り込み設定"</span><span class="p">)</span>
+
+<span class="c1"># サイドバーにセレクトボックスを配置</span>
+<span class="n">selected_branch</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span>
+    <span class="s2">"分析する店舗を選択してください:"</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">"東京本店"</span><span class="p">,</span> <span class="s2">"大阪支店"</span><span class="p">,</span> <span class="s2">"名古屋店"</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># サイドバーにスライダーを配置</span>
+<span class="n">target_sales</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span>
+    <span class="s2">"目標売上（万円）を設定してください:"</span><span class="p">,</span>
+    <span class="n">min_value</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">max_value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">50</span> <span class="c1"># 初期値</span>
+<span class="p">)</span>
+
+<span class="c1"># ==========================================</span>
+<span class="c1"># 2. メイン画面（中央領域）の設定</span>
+<span class="c1"># ==========================================</span>
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"📊 カフェ売上状況ダッシュボード"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"現在、</span><span class="si">{</span><span class="n">selected_branch</span><span class="si">}</span><span class="s2"> のリアルタイム経営状況を表示しています。"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"本日の設定目標売上：</span><span class="si">{</span><span class="n">target_sales</span><span class="si">}</span><span class="s2"> 万円"</span><span class="p">)</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">"---"</span><span class="p">)</span> <span class="c1"># 区切り線</span>
+
+<span class="c1"># ==========================================</span>
+<span class="c1"># 3. カラム分割（画面を横に3分割する）</span>
+<span class="c1"># ==========================================</span>
+<span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">col3</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># withブロックを使うことで、指定したカラムの中にコンテンツを流し込みます</span>
+<span class="k">with</span> <span class="n">col1</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">"本日の総売上"</span><span class="p">,</span> 
+        <span class="n">value</span><span class="o">=</span><span class="s2">"154,000 円"</span><span class="p">,</span> 
+        <span class="n">delta</span><span class="o">=</span><span class="s2">"+12,400 円（前日比）"</span> <span class="c1"># プラスは自動で「緑色」になります</span>
+    <span class="p">)</span>
+<span class="k">with</span> <span class="n">col2</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">"本日の来客数"</span><span class="p">,</span> 
+        <span class="n">value</span><span class="o">=</span><span class="s2">"350 人"</span><span class="p">,</span> 
+        <span class="n">delta</span><span class="o">=</span><span class="s2">"+25 人（前日比）"</span>
+    <span class="p">)</span>
+<span class="k">with</span> <span class="n">col3</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">"平均客単価"</span><span class="p">,</span> 
+        <span class="n">value</span><span class="o">=</span><span class="s2">"440 円"</span><span class="p">,</span> 
+        <span class="n">delta</span><span class="o">=</span><span class="s2">"-15 円（前日比）"</span><span class="p">,</span> <span class="c1"># マイナスは自動で「赤色」になります</span>
+        <span class="n">delta_color</span><span class="o">=</span><span class="s2">"inverse"</span> <span class="c1"># inverseを指定すると、マイナス（減少）を緑、プラスを赤にするなど、コスト評価等に役立ちます</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>🔑 起動<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p>以下のセルを実行してアプリを起動させてください。</p>
+<p>Streamlitとcloudflared tunnelを実行します</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">streamlit</span> <span class="n">run</span> <span class="n">app_layout</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">server</span><span class="o">.</span><span class="n">port</span> <span class="mi">8501</span> <span class="o">&amp;</span> \
+<span class="n">sleep</span> <span class="mi">5</span> <span class="o">&amp;</span> \
+<span class="n">cloudflared</span> <span class="n">tunnel</span> <span class="o">--</span><span class="n">url</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8501</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">autoupdate</span>
+</pre></div>
+</div>
+<p>Streamlit起動</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash<span class="w"> </span>--bg
+streamlit<span class="w"> </span>run<span class="w"> </span>app_layout.py<span class="w"> </span>&gt;<span class="w"> </span>debug.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</pre></div>
+</div>
+<p>cloudflaredを起動</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash<span class="w"> </span>--bg
+sleep<span class="w"> </span><span class="m">3</span>
+cloudflared<span class="w"> </span>tunnel<span class="w"> </span>--url<span class="w"> </span>http://localhost:8501<span class="w"> </span>--no-autoupdate<span class="w"> </span>&gt;<span class="w"> </span>tunnel.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</pre></div>
+</div>
+<p>アクセスURLを調べる</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!grep<span class="w"> </span>-o<span class="w"> </span><span class="s1">'https://[a-zA-Z0-9-]*\.trycloudflare\.com'</span><span class="w"> </span>tunnel.log
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="pandas-ui">
+<h2>Pandas ✕ UI：データのリアルタイム連動抽出<a class="headerlink" href="#pandas-ui" title="Link to this heading">¶</a></h2>
+<p>画面レイアウトが完成したら、次はいよいよ「生きたデータ」を背後で動かします。</p>
+<p>これまでのPandasの実習では、特定の店舗データを抽出する際、以下のようにコード内に固定の文字（ハードコーディング）を指定していました。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 固定データでの抽出（これではユーザーが操作できない）</span>
+<span class="n">df_filtered</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">"店舗名"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"東京本店"</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Streamlitを組み合わせると、この右辺の「&quot;東京本店&quot;」という文字の部分を、セレクトボックスやスライダーの値を代入した「変数」に置き換えるだけで、すべてのデータ連動が完成します！</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. ユーザーが画面上で選んだ文字列が変数 branch_choice に代入される</span>
+<span class="n">branch_choice</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">"店舗名:"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"東京本店"</span><span class="p">,</span> <span class="s2">"大阪支店"</span><span class="p">])</span>
+
+<span class="c1"># 2. 変数を使ってデータフレームを条件抽出する（選ばれた店舗が自動で適用される！）</span>
+<span class="n">df_filtered</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">"店舗名"</span><span class="p">]</span> <span class="o">==</span> <span class="n">branch_choice</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>ユーザーがセレクトボックスを切り替えた瞬間、Streamlitはプログラムを上から下まで自動で再実行（Rerun）するため、背後のPandasデータフレームは瞬時に切り替わり、画面の集計テーブルや主要指標（st.metric）の値もリアルタイムに再計算されて書き換わります。</p>
+<p>それでは、この連動処理の感動を実際に動かして体験しましょう！
+以下のコードをColabで実行し、<code class="docutils literal notranslate"><span class="pre">app_pandas.py</span></code> を書き出して起動します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app_pandas</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># (準備) 3店舗の1週間分のダミー売上データを構築します</span>
+<span class="c1"># --------------------------------------------------</span>
+<span class="n">df_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"日付"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"7/1"</span><span class="p">,</span> <span class="s2">"7/1"</span><span class="p">,</span> <span class="s2">"7/1"</span><span class="p">,</span> <span class="s2">"7/2"</span><span class="p">,</span> <span class="s2">"7/2"</span><span class="p">,</span> <span class="s2">"7/2"</span><span class="p">,</span> <span class="s2">"7/3"</span><span class="p">,</span> <span class="s2">"7/3"</span><span class="p">,</span> <span class="s2">"7/3"</span><span class="p">,</span> <span class="s2">"7/4"</span><span class="p">,</span> <span class="s2">"7/4"</span><span class="p">,</span> <span class="s2">"7/4"</span><span class="p">],</span>
+    <span class="s2">"店舗名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"東京本店"</span><span class="p">,</span> <span class="s2">"大阪支店"</span><span class="p">,</span> <span class="s2">"名古屋店"</span><span class="p">,</span> <span class="s2">"東京本店"</span><span class="p">,</span> <span class="s2">"大阪支店"</span><span class="p">,</span> <span class="s2">"名古屋店"</span><span class="p">,</span> <span class="s2">"東京本店"</span><span class="p">,</span> <span class="s2">"大阪支店"</span><span class="p">,</span> <span class="s2">"名古屋店"</span><span class="p">,</span> <span class="s2">"東京本店"</span><span class="p">,</span> <span class="s2">"大阪支店"</span><span class="p">,</span> <span class="s2">"名古屋店"</span><span class="p">],</span>
+    <span class="s2">"売上金額 (円)"</span><span class="p">:</span> <span class="p">[</span><span class="mi">120000</span><span class="p">,</span> <span class="mi">80000</span><span class="p">,</span> <span class="mi">45000</span><span class="p">,</span> <span class="mi">150000</span><span class="p">,</span> <span class="mi">95000</span><span class="p">,</span> <span class="mi">52000</span><span class="p">,</span> <span class="mi">110000</span><span class="p">,</span> <span class="mi">75000</span><span class="p">,</span> <span class="mi">39000</span><span class="p">,</span> <span class="mi">165000</span><span class="p">,</span> <span class="mi">110000</span><span class="p">,</span> <span class="mi">68000</span><span class="p">],</span>
+    <span class="s2">"来客数 (人)"</span><span class="p">:</span> <span class="p">[</span><span class="mi">240</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">310</span><span class="p">,</span> <span class="mi">230</span><span class="p">,</span> <span class="mi">140</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># --- 1. 左側サイドバーの設定 ---</span>
+<span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"⚙️ データフィルター"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"見たいデータを選択してください。"</span><span class="p">)</span>
+
+<span class="c1"># ユーザーに店舗を選ばせる（変数 shop に選んだ文字が入る）</span>
+<span class="n">shop</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span>
+    <span class="s2">"表示する店舗名を選択してください:"</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">"東京本店"</span><span class="p">,</span> <span class="s2">"大阪支店"</span><span class="p">,</span> <span class="s2">"名古屋店"</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># ユーザーに客数の最小値を設定させる（スライダーで客数を絞り込む）</span>
+<span class="n">min_customers</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span>
+    <span class="s2">"来客数（人）の最低ラインを指定:"</span><span class="p">,</span>
+    <span class="n">min_value</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">max_value</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">100</span>
+<span class="p">)</span>
+
+<span class="c1"># --- 2. データのリアルタイム抽出・集計（Pandasの魔法） ---</span>
+<span class="c1"># 条件1: 選択された店舗名と一致する</span>
+<span class="n">cond_shop</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_sales</span><span class="p">[</span><span class="s2">"店舗名"</span><span class="p">]</span> <span class="o">==</span> <span class="n">shop</span><span class="p">)</span>
+<span class="c1"># 条件2: 指定された来客数以上である</span>
+<span class="n">cond_cust</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_sales</span><span class="p">[</span><span class="s2">"来客数 (人)"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">min_customers</span><span class="p">)</span>
+
+<span class="c1"># 2つの条件を掛け合わせてデータフレームを抽出！</span>
+<span class="n">df_filtered</span> <span class="o">=</span> <span class="n">df_sales</span><span class="p">[</span><span class="n">cond_shop</span> <span class="o">&amp;</span> <span class="n">cond_cust</span><span class="p">]</span>
+
+<span class="c1"># --- 3. メイン画面への結果表示 ---</span>
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"🏆 カフェ店舗実績・連動分析ツール"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"現在、</span><span class="si">{</span><span class="n">shop</span><span class="si">}</span><span class="s2"> の、来客数 </span><span class="si">{</span><span class="n">min_customers</span><span class="si">}</span><span class="s2">名以上 の営業日を抽出しています。"</span><span class="p">)</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">"---"</span><span class="p">)</span>
+
+<span class="c1"># 抽出した結果、該当するデータが1件もない場合の安全対策（エラー防止）</span>
+<span class="k">if</span> <span class="n">df_filtered</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"⚠️ 条件に一致する営業日データがありません。スライダーの数値を下げてみてください。"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># 統計集計をその場で計算！</span>
+    <span class="n">total_sales</span> <span class="o">=</span> <span class="n">df_filtered</span><span class="p">[</span><span class="s2">"売上金額 (円)"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">total_customers</span> <span class="o">=</span> <span class="n">df_filtered</span><span class="p">[</span><span class="s2">"来客数 (人)"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">avg_customers</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">df_filtered</span><span class="p">[</span><span class="s2">"来客数 (人)"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+    <span class="n">avg_spend</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">total_sales</span> <span class="o">/</span> <span class="n">total_customers</span><span class="p">)</span> <span class="c1"># 平均客単価を算出</span>
+
+    <span class="c1"># KPIメーターを画面上部に横並びで表示</span>
+    <span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">col3</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">col1</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"抽出期間 累計売上"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">total_sales</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span> <span class="c1"># :, で3桁カンマ区切り</span>
+    <span class="k">with</span> <span class="n">col2</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"抽出期間 累計来客数"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">total_customers</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 人"</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">col3</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"平均客単価 (期間)"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">avg_spend</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+
+    <span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">"📋 抽出されたデータ詳細表"</span><span class="p">)</span>
+    <span class="c1"># st.dataframe() を使うと、スクロールやソートができるオシャレな表が埋め込まれます</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span><span class="n">df_filtered</span><span class="p">,</span> <span class="n">use_container_width</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>以下のセルを実行して、<code class="docutils literal notranslate"><span class="pre">app_pandas.py</span></code> を起動してみましょう</p>
+<p>Streamlit停止</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!pkill<span class="w"> </span>streamlit
+print<span class="o">(</span><span class="s2">"streamlit を安全に終了しました。"</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>Streamlit起動</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash<span class="w"> </span>--bg
+streamlit<span class="w"> </span>run<span class="w"> </span>app_pandas.py<span class="w"> </span>&gt;<span class="w"> </span>debug.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="ui-matplotlib">
+<h2>グラフ ✕ UI：リアルタイムMatplotlibグラフ描画<a class="headerlink" href="#ui-matplotlib" title="Link to this heading">¶</a></h2>
+<p>これまでの売上集計表とKPIメーターに加えて、ダッシュボードの最大の見せ場である「ビジュアルグラフ」を追加します。</p>
+<p>Matplotlibを使って折れ線グラフや棒グラフを描画するロジックは、第4回で学んだ記述統計のときと全く同じです。
+唯一異なるのは、グラフを描画した後に <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> を呼び出す代わりに、Streamlitの専用コマンドである <code class="docutils literal notranslate"><span class="pre">st.pyplot(fig)</span></code> にグラフオブジェクトを渡してあげる点です。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. グラフの台紙（fig）とペン（ax）を準備</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1"># 2. axに対して、条件抽出後のデータを使ってグラフを描画する</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_filtered</span><span class="p">[</span><span class="s2">"日付"</span><span class="p">],</span> <span class="n">df_filtered</span><span class="p">[</span><span class="s2">"売上金額 (円)"</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">)</span>
+
+<span class="c1"># 3. Streamlitに「このグラフをここに埋め込んで！」と命令する</span>
+<span class="n">st</span><span class="o">.</span><span class="n">pyplot</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>これをプログラムに組み込むと、ユーザーがサイドバーで店舗を切り替えるたびに、グラフの形（推移線や棒の高さ）が波打つように一瞬で切り替わる「インタラクティブグラフ」が完成します。</p>
+<p>それでは、グラフ描画と日本語フォント対策（<code class="docutils literal notranslate"><span class="pre">japanize_matplotlib</span></code>）を含んだ完全なデータ可視化ダッシュボードを構築しましょう。
+以下のコードセルを実行し、<code class="docutils literal notranslate"><span class="pre">app_visual.py</span></code> を書き出して起動します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app_visual</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">japanize_matplotlib</span> <span class="c1"># 日本語化</span>
+
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># (準備) 複数店舗のダミーデータ</span>
+<span class="c1"># --------------------------------------------------</span>
+<span class="n">df_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"日付"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"7/1"</span><span class="p">,</span> <span class="s2">"7/1"</span><span class="p">,</span> <span class="s2">"7/1"</span><span class="p">,</span> <span class="s2">"7/2"</span><span class="p">,</span> <span class="s2">"7/2"</span><span class="p">,</span> <span class="s2">"7/2"</span><span class="p">,</span> <span class="s2">"7/3"</span><span class="p">,</span> <span class="s2">"7/3"</span><span class="p">,</span> <span class="s2">"7/3"</span><span class="p">,</span> <span class="s2">"7/4"</span><span class="p">,</span> <span class="s2">"7/4"</span><span class="p">,</span> <span class="s2">"7/4"</span><span class="p">],</span>
+    <span class="s2">"店舗名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"東京本店"</span><span class="p">,</span> <span class="s2">"大阪支店"</span><span class="p">,</span> <span class="s2">"名古屋店"</span><span class="p">,</span> <span class="s2">"東京本店"</span><span class="p">,</span> <span class="s2">"大阪支店"</span><span class="p">,</span> <span class="s2">"名古屋店"</span><span class="p">,</span> <span class="s2">"東京本店"</span><span class="p">,</span> <span class="s2">"大阪支店"</span><span class="p">,</span> <span class="s2">"名古屋店"</span><span class="p">,</span> <span class="s2">"東京本店"</span><span class="p">,</span> <span class="s2">"大阪支店"</span><span class="p">,</span> <span class="s2">"名古屋店"</span><span class="p">],</span>
+    <span class="s2">"売上金額 (円)"</span><span class="p">:</span> <span class="p">[</span><span class="mi">120000</span><span class="p">,</span> <span class="mi">80000</span><span class="p">,</span> <span class="mi">45000</span><span class="p">,</span> <span class="mi">150000</span><span class="p">,</span> <span class="mi">95000</span><span class="p">,</span> <span class="mi">52000</span><span class="p">,</span> <span class="mi">110000</span><span class="p">,</span> <span class="mi">75000</span><span class="p">,</span> <span class="mi">39000</span><span class="p">,</span> <span class="mi">165000</span><span class="p">,</span> <span class="mi">110000</span><span class="p">,</span> <span class="mi">68000</span><span class="p">],</span>
+    <span class="s2">"来客数 (人)"</span><span class="p">:</span> <span class="p">[</span><span class="mi">240</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">310</span><span class="p">,</span> <span class="mi">230</span><span class="p">,</span> <span class="mi">140</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># --- 1. 左側サイドバーの設定 ---</span>
+<span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"⚙️ 店舗表示設定"</span><span class="p">)</span>
+<span class="n">shop</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">"分析する店舗を選択してください:"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"東京本店"</span><span class="p">,</span> <span class="s2">"大阪支店"</span><span class="p">,</span> <span class="s2">"名古屋店"</span><span class="p">])</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">"---"</span><span class="p">)</span>
+<span class="c1"># 線の色をユーザーに選ばせるカスタマイズウィジェット</span>
+<span class="n">line_color</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">color_picker</span><span class="p">(</span><span class="s2">"グラフの線の色を選んでください:"</span><span class="p">,</span> <span class="s2">"#FF5733"</span><span class="p">)</span>
+
+<span class="c1"># --- 2. メイン領域のデザイン ---</span>
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"📈 カフェ店舗別・日次売上動的推移ダッシュボード"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"現在、</span><span class="si">{</span><span class="n">shop</span><span class="si">}</span><span class="s2"> の売上と客数の関係性をリアルタイム分析しています。"</span><span class="p">)</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">"---"</span><span class="p">)</span>
+
+<span class="c1"># データのフィルタリング</span>
+<span class="n">df_filtered</span> <span class="o">=</span> <span class="n">df_sales</span><span class="p">[</span><span class="n">df_sales</span><span class="p">[</span><span class="s2">"店舗名"</span><span class="p">]</span> <span class="o">==</span> <span class="n">shop</span><span class="p">]</span>
+
+<span class="c1"># 画面を左右に2等分して、片方にKPI、もう片方に詳細データを配置</span>
+<span class="n">left_col</span><span class="p">,</span> <span class="n">right_col</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">left_col</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">"📊 主要業績指標 (KPI)"</span><span class="p">)</span>
+    <span class="n">total_sales</span> <span class="o">=</span> <span class="n">df_filtered</span><span class="p">[</span><span class="s2">"売上金額 (円)"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">total_cust</span> <span class="o">=</span> <span class="n">df_filtered</span><span class="p">[</span><span class="s2">"来客数 (人)"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"期間内 累計売上高"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">total_sales</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="s2">"+15% (目標比)"</span><span class="p">)</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"期間内 累計来客数"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">total_cust</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 人"</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="s2">"+8% (目標比)"</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">right_col</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">"📋 期間内データ詳細"</span><span class="p">)</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span><span class="n">df_filtered</span><span class="p">,</span> <span class="n">use_container_width</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">"---"</span><span class="p">)</span>
+
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># 3. インタラクティブなMatplotlibグラフの描画</span>
+<span class="c1"># --------------------------------------------------</span>
+<span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">"📈 日次売上推移グラフ（動的）"</span><span class="p">)</span>
+
+<span class="c1"># グラフ領域の生成</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># プロットを実行（ユーザーが選んだ線の色 line_color を適用します！）</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">df_filtered</span><span class="p">[</span><span class="s2">"日付"</span><span class="p">],</span> 
+    <span class="n">df_filtered</span><span class="p">[</span><span class="s2">"売上金額 (円)"</span><span class="p">],</span> 
+    <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> 
+    <span class="n">color</span><span class="o">=</span><span class="n">line_color</span><span class="p">,</span> 
+    <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">shop</span><span class="si">}</span><span class="s2"> 売上推移"</span>
+<span class="p">)</span>
+
+<span class="c1"># グラフの装飾（日本語フォント対応）</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">shop</span><span class="si">}</span><span class="s2"> 日次売上トレンド"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">"bold"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"営業日"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"売上（円）"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span> <span class="c1"># グリッド線を追加</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># ⚠️ グラフの上限・下限を少し広げて、見やすくするための工夫（Padding）</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">df_filtered</span><span class="p">[</span><span class="s2">"売上金額 (円)"</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">df_filtered</span><span class="p">[</span><span class="s2">"売上金額 (円)"</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.2</span><span class="p">)</span>
+
+<span class="c1"># Streamlitの画面に描画したグラフを配置</span>
+<span class="n">st</span><span class="o">.</span><span class="n">pyplot</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>以下のセルを実行して、<code class="docutils literal notranslate"><span class="pre">app_visual.py</span></code> を起動してみましょう！</p>
+<p>Streamlit停止</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!pkill<span class="w"> </span>streamlit
+print<span class="o">(</span><span class="s2">"streamlit を安全に終了しました。"</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>Streamlit起動</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash<span class="w"> </span>--bg
+streamlit<span class="w"> </span>run<span class="w"> </span>app_visual.py<span class="w"> </span>&gt;<span class="w"> </span>debug.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="st-file-uploadercsv">
+<h2>汎用化への道：st.file_uploaderによる全自動CSV解析<a class="headerlink" href="#st-file-uploadercsv" title="Link to this heading">¶</a></h2>
+<p>ここまでのアプリは、あらかじめプログラムのコード内に「ダミーデータ」を埋め込んで動かしていました。
+しかし、本物の実務用データ分析アプリなら、「手元にある実際の売上データ（CSV）をドラッグ＆ドロップするだけで、その場で全自動でダッシュボードにしてくれる」方が圧倒的に便利ですよね。</p>
+<p>それを叶えるStreamlit最強のウィジェットが、<code class="docutils literal notranslate"><span class="pre">st.file_uploader()</span></code>（ファイルアップローダー）です。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ファイルのアップロードボタンを設置（CSVファイルのみを受け付ける設定）</span>
+<span class="n">uploaded_file</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">file_uploader</span><span class="p">(</span><span class="s2">"売上データのCSVファイルをアップロードしてください"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"csv"</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="id4">
+<h3>🚨 エラーを防ぐための「防護壁（条件分岐）」<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p>ファイルアップローダーを設置した際、最も気をつけなければならないのは、「ユーザーがまだファイルをアップロードしていない（空白の）瞬間」に、Pandasが無理やり読み込もうとしてプログラムが赤文字のエラーを吐き出して止まってしまうことです。</p>
+<p>これを完全に防ぐため、必ず「ファイルが空ではない（<code class="docutils literal notranslate"><span class="pre">is</span> <span class="pre">not</span> <span class="pre">None</span></code>）の場合のみ、中の処理（Pandas読み込みやグラフ化）を行う」という防護用の条件分岐を挟むのがプロの鉄則です。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 安全な防護壁</span>
+<span class="k">if</span> <span class="n">uploaded_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># ファイルがアップロードされている場合のみ実行される安全なゾーン</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">uploaded_file</span><span class="p">)</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># ファイルが空の時の優しい案内</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"📂 画面から売上データのCSVファイルを選択、またはドロップしてください。"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>それでは、この全自動CSV解析機能を備えた「汎用データ解析ダッシュボード」を構築しましょう。
+以下のコードセルを実行し、<code class="docutils literal notranslate"><span class="pre">app_uploader.py</span></code> を書き出して起動します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app_uploader</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">japanize_matplotlib</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">set_page_config</span><span class="p">(</span><span class="n">page_title</span><span class="o">=</span><span class="s2">"全自動CSVデータ解析ダッシュボード"</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="s2">"wide"</span><span class="p">)</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"📂 全自動・店舗データ解析ダッシュボード"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"お手持ちの売上CSVデータをドラッグ＆ドロップするだけで、主要指標の集計と折れ線グラフを全自動生成します。"</span><span class="p">)</span>
+
+<span class="c1"># ==========================================</span>
+<span class="c1"># 1. ファイルアップローダーの設置</span>
+<span class="c1"># ==========================================</span>
+<span class="n">uploaded_file</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">file_uploader</span><span class="p">(</span>
+    <span class="s2">"分析したいCSVファイルをドロップしてください（対応形式：.csv）"</span><span class="p">,</span> 
+    <span class="nb">type</span><span class="o">=</span><span class="s2">"csv"</span>
+<span class="p">)</span>
+
+<span class="c1"># ==========================================</span>
+<span class="c1"># 2. 防護壁（ファイルがアップロードされたかの判定）</span>
+<span class="c1"># ==========================================</span>
+<span class="k">if</span> <span class="n">uploaded_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># ファイルの読み込み（Shift-JISのエラーにも強い cp932 を指定します）</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">uploaded_file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"cp932"</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">uploaded_file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
+    
+    <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="s2">"✨ ファイルの読み込みに無事成功しました！自動データ解析を開始します。"</span><span class="p">)</span>
+    
+    <span class="c1"># 読み込んだデータの列名一覧を取得して表示（バグチェック用）</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+    
+    <span class="c1"># ------------------------------------------</span>
+    <span class="c1"># データの適合確認（必要な列が揃っているか？）</span>
+    <span class="c1"># ------------------------------------------</span>
+    <span class="n">required_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"日付"</span><span class="p">,</span> <span class="s2">"売上金額"</span><span class="p">,</span> <span class="s2">"来客数"</span><span class="p">]</span>
+    <span class="c1"># 集合（set）を使って、必要な列がすべて含まれているか一瞬でチェック</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">set</span><span class="p">(</span><span class="n">required_cols</span><span class="p">)</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">):</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"🚨 アップロードされたCSVに必要な列（ </span><span class="si">{</span><span class="n">required_cols</span><span class="si">}</span><span class="s2"> ）が含まれていません。列名を確認してください。"</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"現在のCSVの列名:"</span><span class="p">,</span> <span class="n">cols</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># --- 3. 自動KPI集計 ---</span>
+        <span class="n">total_sales</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"売上金額"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="n">total_cust</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"来客数"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="n">avg_spend</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">total_sales</span> <span class="o">/</span> <span class="n">total_cust</span><span class="p">)</span>
+        
+        <span class="c1"># 画面を横並びで配置</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">"📊 自動計算された主要指標 (KPI)"</span><span class="p">)</span>
+        <span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">col3</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">col1</span><span class="p">:</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"全期間 累計売上"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">total_sales</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">col2</span><span class="p">:</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"全期間 累計来客数"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">total_cust</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 人"</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">col3</span><span class="p">:</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"全期間 平均客単価"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">avg_spend</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+            
+        <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">"---"</span><span class="p">)</span>
+        
+        <span class="c1"># 画面を左右2等分にして、左にグラフ、右に生データを配置</span>
+        <span class="n">left_col</span><span class="p">,</span> <span class="n">right_col</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        
+        <span class="k">with</span> <span class="n">left_col</span><span class="p">:</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">"📈 自動売上トレンド可視化"</span><span class="p">)</span>
+            <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"日付"</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">"売上金額"</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"s"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"teal"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"日付別売上推移（全期間）"</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">"bold"</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"日付"</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"売上高 (円)"</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">":"</span><span class="p">)</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">pyplot</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+            
+        <span class="k">with</span> <span class="n">right_col</span><span class="p">:</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">"📋 アップロードされたデータ詳細（先頭10行）"</span><span class="p">)</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">use_container_width</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># ファイルがアップロードされていない場合、優しいプレースホルダーと「デモ用データ」を表示してイメージを沸かせます</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"👆 上記のエリアに、分析したいCSVデータをドロップしてください。"</span><span class="p">)</span>
+    
+    <span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">"💡 アップロード用CSVデータの推奨フォーマット例"</span><span class="p">)</span>
+    <span class="n">demo_format</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s2">"日付"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"7/1"</span><span class="p">,</span> <span class="s2">"7/2"</span><span class="p">,</span> <span class="s2">"7/3"</span><span class="p">],</span>
+        <span class="s2">"売上金額"</span><span class="p">:</span> <span class="p">[</span><span class="mi">120000</span><span class="p">,</span> <span class="mi">150000</span><span class="p">,</span> <span class="mi">95000</span><span class="p">],</span>
+        <span class="s2">"来客数"</span><span class="p">:</span> <span class="p">[</span><span class="mi">240</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">190</span><span class="p">]</span>
+    <span class="p">})</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span><span class="n">demo_format</span><span class="p">,</span> <span class="n">use_container_width</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>以下のセルを実行して、<code class="docutils literal notranslate"><span class="pre">app_uploader.py</span></code> を起動してみましょう！</p>
+<p>Streamlit停止</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!pkill<span class="w"> </span>streamlit
+print<span class="o">(</span><span class="s2">"streamlit を安全に終了しました。"</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>Streamlit起動</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash<span class="w"> </span>--bg
+streamlit<span class="w"> </span>run<span class="w"> </span>app_uploader.py<span class="w"> </span>&gt;<span class="w"> </span>debug.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id5">
+<h2>練習問題（5問）<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<section id="id6">
+<h3>練習問題 1: 画面レイアウトのカラム分割（理論）<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<p>Streamlitにおいて、主要業績指標（KPI）を3つ、画面上に横一列に並列して表示したいと考えています。
+この「カラム分割」を実現するための正しい関数呼び出しと、コンテンツ流し込みのための構文ルール（with文の使い方）を説明してください。</p>
+<details>
+<summary>👉 練習問題 1 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p>正解:</p>
+<ul>
+<li><p>関数: <code class="docutils literal notranslate"><span class="pre">st.columns(3)</span></code> を呼び出して、3つの変数（例：<code class="docutils literal notranslate"><span class="pre">col1,</span> <span class="pre">col2,</span> <span class="pre">col3</span></code>）に展開（アンパック）する。</p></li>
+<li><p>構文: <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">col1:</span></code>、<code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">col2:</span></code>、<code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">col3:</span></code> というブロックをそれぞれ作成し、インデント（下げ字）を下げた状態で各カラム内に表示したいコード（<code class="docutils literal notranslate"><span class="pre">st.metric</span></code> など）を記述する。</p></li>
+</ul>
+</li>
+<li><p>解説:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">col1,</span> <span class="pre">col2,</span> <span class="pre">col3</span> <span class="pre">=</span> <span class="pre">st.columns(3)</span></code> と書くことで、画面が均等に3分割され、それぞれのカラム領域を表すオブジェクトが変数に格納されます。<code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">col1:</span></code> などのブロック内に書かれた処理だけが、その縦列の領域の中に美しく収まるようになります。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id7">
+<h3>練習問題 2: <code class="docutils literal notranslate"><span class="pre">st.metric()</span></code> の差分表示（理論・コード）<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p>主要指標を表示する <code class="docutils literal notranslate"><span class="pre">st.metric()</span></code> で、以下のようなメーターを作りたいです。</p>
+<ul class="simple">
+<li><p>タイトル：<code class="docutils literal notranslate"><span class="pre">&quot;今月の平均来客数&quot;</span></code></p></li>
+<li><p>数値：<code class="docutils literal notranslate"><span class="pre">&quot;480名&quot;</span></code></p></li>
+<li><p>前月との差：<code class="docutils literal notranslate"><span class="pre">&quot;+45名&quot;</span></code> （プラス値は自動的に緑色に、上昇矢印付きで表示させる）</p></li>
+</ul>
+<p>このメーターを出力する正しいコードの1行を書いてください。</p>
+<details>
+<summary>👉 練習問題 2 の解答と解説を見る</summary>
+<ul>
+<li><p>正解コード:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"今月の平均来客数"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s2">"480名"</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="s2">"+45名"</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>解説:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">label</span></code> 引数に指標のタイトル（文字列）、<code class="docutils literal notranslate"><span class="pre">value</span></code> 引数に現在の数値（文字列）、そして <code class="docutils literal notranslate"><span class="pre">delta</span></code> 引数 に変化量や前月との差を表す文字列を指定します。<code class="docutils literal notranslate"><span class="pre">delta</span></code> に <code class="docutils literal notranslate"><span class="pre">+</span></code> の記号を書いておくと、Streamlitが自動的にテキストを鮮やかな緑色に装飾し、上向きの矢印（▲）を美しく表示してくれます。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id8">
+<h3>練習問題 3: リアルタイムデータ連動の仕組み（理論）<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p>ユーザーがサイドバーに配置された <code class="docutils literal notranslate"><span class="pre">selectbox</span></code> から店舗名「大阪支店」を選びました。
+このとき、背後に読み込んであるデータフレーム <code class="docutils literal notranslate"><span class="pre">df</span></code> から、大阪支店のデータだけを画面に絞り込んで再計算・再プロットするため、プログラムの内部ではどのような「処理プロセス（挙動ルール）」が瞬時に動いているでしょうか？ 「Rerun（再実行）」という言葉を用いて説明してください。</p>
+<details>
+<summary>👉 練習問題 3 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p>正解:</p>
+<ul>
+<li><p>ユーザーがセレクトボックスで選択肢を切り替えた瞬間、Streamlitは「プログラムのソースコード（Pythonファイル）を、上から下まで一番最初の1行目から全自動で丸ごと再実行（Rerun）」する。</p></li>
+<li><p>再実行される際、セレクトボックスの戻り値を受け取る変数（例：<code class="docutils literal notranslate"><span class="pre">shop</span></code>）の中身が、新しく選ばれた <code class="docutils literal notranslate"><span class="pre">&quot;大阪支店&quot;</span></code> に更新された状態で実行されるため、その下にあるPandasの条件抽出式（<code class="docutils literal notranslate"><span class="pre">df[df[&quot;店舗&quot;]</span> <span class="pre">==</span> <span class="pre">shop]</span></code>）も自動的に大阪支店のデータにスライスされ、グラフやKPIメーターも新しい値をベースにリアルタイムで上書き更新される。</p></li>
+</ul>
+</li>
+<li><p>解説:</p>
+<ul>
+<li><p>通常のWebアプリ開発（JavaScriptなど）では、「選ばれたら、その部分のHTMLだけを書き換えるコード」を細かく指示して書く必要があります。しかし、Streamlitは「選ばれた瞬間に、何事もなかったかのようにPythonを最初から走り直させる」という力業（Rerunシステム）を採用しているため、初心者でも一筋縄で動的連動が作れるようになっています。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="st-button">
+<h3>練習問題 4: 「st.button の罠」（理論）<a class="headerlink" href="#st-button" title="Link to this heading">¶</a></h3>
+<p>以下のような「確定ボタンを押すと計算結果が出る」アプリを作りました。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"店舗計算機"</span><span class="p">)</span>
+<span class="n">num</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">"数量を選んでください:"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># 確定ボタンを設置</span>
+<span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">"計算を実行する"</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">num</span> <span class="o">*</span> <span class="mi">450</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"お会計は </span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2"> 円です。"</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>最初、スライダーが初期値の「5」の状態で「計算を実行する」ボタンを押すと、画面に「お会計は 2250 円です。」と正常に表示されました。</p></li>
+<li><p>次に、ボタンは触らずに、スライダーの数値を「8」に変更しました。</p></li>
+<li><p>このとき、画面に表示されていた「お会計は 2250 円です。」（または 3600円 という新しいお会計）のテキストはどうなってしまうでしょうか？ その理由と併せて答えてください。</p></li>
+</ol>
+<details>
+<summary>👉 練習問題 4 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p>正解:</p>
+<ul>
+<li><p>結果: 画面からお会計のテキストは「一瞬で跡形もなく消え去ってしまう」。</p></li>
+<li><p>理由: スライダーの数値を「8」に動かした瞬間、Streamlitの「Rerun（最初から再実行）」が走る。この再実行時、ユーザーは「ボタンを押していない（スライダーを動かしただけ）」であるため、<code class="docutils literal notranslate"><span class="pre">st.button(&quot;計算を実行する&quot;)</span></code> の判定結果は強制的に <code class="docutils literal notranslate"><span class="pre">False</span></code>（押されていない状態）に戻る。</p></li>
+<li><p>その結果、if文の中の処理（<code class="docutils literal notranslate"><span class="pre">total</span></code> の計算やお会計テキストの出力）は実行されずにスキップされ、画面から消滅してしまう。</p></li>
+</ul>
+</li>
+<li><p>解説:</p>
+<ul>
+<li><p>これが、Streamlitを使い始めた人が全員必ず直面して大混乱する「ボタンの罠（ワンショット・トリガー問題）」です。</p></li>
+<li><p>ボタンは「押したその瞬間（Rerunの1回分）」しか <code class="docutils literal notranslate"><span class="pre">True</span></code> を返しません。これを知らないと、「ボタンを押した後に、別の入力部品を触ったら中身が消えた！」とバグを疑うことになります。</p></li>
+<li><p>解決策としては、「ボタン」を計算のトリガーにするのではなく、スライダーを動かしただけで自動的にお会計がリアルタイムに再計算されるように、「if button なしでそのまま変数計算させる（＝ボタンをそもそも使わない）」のが最もStreamlitらしくて頑丈な設計になります。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="none">
+<h3>練習問題 5: アップローダーでの「None」バグ回避（理論・コード）<a class="headerlink" href="#none" title="Link to this heading">¶</a></h3>
+<p>ユーザーがファイルをアップロードした際に自動でPandasを使って読み込むアプリを作りました。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">uploaded_file</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">file_uploader</span><span class="p">(</span><span class="s2">"CSVを選択してください"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"csv"</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">uploaded_file</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>このコードを実行すると、アプリを起動した直後（まだユーザーがファイルを1枚もアップロードしていない状態）に、画面に真っ赤な文字で <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> や <code class="docutils literal notranslate"><span class="pre">AttributeError</span></code> などの大パニックエラーが表示され、アプリが正常に動作しません。</p>
+<ol class="arabic simple">
+<li><p>なぜ、ファイルを選ぶ前の段階でこのようなエラーが発生してしまうのでしょうか？</p></li>
+<li><p>このエラーを完全に回避するために追加すべき、Pythonの条件分岐（防護壁）の正しい構文を答えてください。</p></li>
+</ol>
+<details>
+<summary>👉 練習問題 5 の解答と解説を見る</summary>
+<ul>
+<li><p>正解:</p>
+<ol class="arabic">
+<li><p>エラーの原因: ファイルがアップロードされていない起動直後の段階では、<code class="docutils literal notranslate"><span class="pre">uploaded_file</span></code> という変数の中身は空っぽを意味する <code class="docutils literal notranslate"><span class="pre">None</span></code> になっている。この <code class="docutils literal notranslate"><span class="pre">None</span></code>（何もない空文字オブジェクト）に対して、Pandasの <code class="docutils literal notranslate"><span class="pre">pd.read_csv(None)</span></code> を実行しようとしたため、Pandasが「読み込むべきデータがどこにもありません！」と怒ってエラーを吐き出し、プログラム全体を停止させてしまったため。</p></li>
+<li><p>回避するための防護壁コード:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># uploaded_file が None（空）ではない場合のみ、読み込み処理を行う</span>
+<span class="k">if</span> <span class="n">uploaded_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">uploaded_file</span><span class="p">)</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"📂 CSVファイルをアップロードしてください。"</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+<li><p>解説:</p>
+<ul class="simple">
+<li><p>外部からデータを読み込む際、「まだデータが存在しない状態（初期状態）」を想定してあらかじめ防護用のif文を敷いておくことは、Web開発やシステム開発における最も初歩的かつ強力な「バグ回避テクニック（例外処理）」です。この1行を書き添えるだけで、アプリは起動直後から優しくスマートな画面として動き始めます。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id9">
+<h2>💻 演習課題（5問）<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<p>下記を使ってStreamlitを起動してください。
+前のStreamlitが動作している場合があるので、Streamlit停止してから起動をしてください</p>
+<p>Streamlit停止</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!pkill<span class="w"> </span>streamlit
+print<span class="o">(</span><span class="s2">"streamlit を安全に終了しました。"</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>Streamlit起動</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash<span class="w"> </span>--bg
+streamlit<span class="w"> </span>run<span class="w"> </span>&lt;アプリ名&gt;<span class="w"> </span>&gt;<span class="w"> </span>debug.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<section id="id10">
+<h3>演習課題 1: スライダーによる「店舗割引価格」リアルタイム見積器（難易度：易）<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<p>サイドバーに割引率を調整するスライダーを設置し、ユーザーが割引率を動かすと、基本価格からリアルタイムに割引された「お支払い金額」を算出してメイン画面に表示するアプリを構築してください。</p>
+<section id="id11">
+<h4>【要件】<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h4>
+<ol class="arabic simple">
+<li><p>サイドバーに <code class="docutils literal notranslate"><span class="pre">st.sidebar.slider</span></code> を使って、ラベル <code class="docutils literal notranslate"><span class="pre">&quot;割引率</span> <span class="pre">(%)&quot;</span></code>、最小値 <code class="docutils literal notranslate"><span class="pre">0</span></code>、最大値 <code class="docutils literal notranslate"><span class="pre">50</span></code>、初期値 <code class="docutils literal notranslate"><span class="pre">10</span></code> のスライダーを配置し、変数 <code class="docutils literal notranslate"><span class="pre">discount_pct</span></code> に格納すること。</p></li>
+<li><p>メイン画面のタイトルに <code class="docutils literal notranslate"><span class="pre">&quot;カフェ割引シミュレーター&quot;</span></code>、ヘッダーに現在の基本価格 <code class="docutils literal notranslate"><span class="pre">&quot;通常価格:</span> <span class="pre">500</span> <span class="pre">円&quot;</span></code> を表示すること。</p></li>
+<li><p>計算式 <code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">*</span> <span class="pre">(1</span> <span class="pre">-</span> <span class="pre">discount_pct</span> <span class="pre">/</span> <span class="pre">100)</span></code> に基づいて割引後の価格を算出し、整数キャスト（<code class="docutils literal notranslate"><span class="pre">int()</span></code>）を施して変数 <code class="docutils literal notranslate"><span class="pre">discounted_price</span></code> に代入すること。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.metric()</span></code> を使い、ラベルを <code class="docutils literal notranslate"><span class="pre">&quot;割引後の特別価格&quot;</span></code>、値を <code class="docutils literal notranslate"><span class="pre">f&quot;{discounted_price}</span> <span class="pre">円&quot;</span></code> として大きく表示すること。さらに、delta引数に割引された金額（例：<code class="docutils literal notranslate"><span class="pre">-50</span> <span class="pre">円</span></code>）を自動算出（<code class="docutils literal notranslate"><span class="pre">discounted_price</span> <span class="pre">-</span> <span class="pre">500</span></code>）して表示すること。</p></li>
+</ol>
+<details>
+<summary>👉 演習課題 1 の解答コードを見る（クリックで展開）</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app_challenge1</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="c1"># 1. サイドバーにスライダーを設定</span>
+<span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"⚙️ 特典設定"</span><span class="p">)</span>
+<span class="n">discount_pct</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span>
+    <span class="s2">"割引率 (%)"</span><span class="p">,</span> 
+    <span class="n">min_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+    <span class="n">max_value</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> 
+    <span class="n">value</span><span class="o">=</span><span class="mi">10</span>
+<span class="p">)</span>
+
+<span class="c1"># 2. メイン画面の文字表示</span>
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"☕ カフェ割引シミュレーター"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">"通常価格: 500 円"</span><span class="p">)</span>
+
+<span class="c1"># 3. 割引金額の計算</span>
+<span class="n">discounted_price</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">500</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">discount_pct</span> <span class="o">/</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">delta_value</span> <span class="o">=</span> <span class="n">discounted_price</span> <span class="o">-</span> <span class="mi">500</span>
+
+<span class="c1"># 4. metricによる主要指標表示</span>
+<span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"割引後の特別価格"</span><span class="p">,</span>
+    <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">discounted_price</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">,</span>
+    <span class="n">delta</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">delta_value</span><span class="si">}</span><span class="s2"> 円"</span> <span class="c1"># 自動的にマイナス表記になり、赤字で表示されます</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</details>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id12">
+<h3>演習課題 2: セレクトボックスによる「カテゴリ別平均価格」の算出（難易度：易）<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<p>Pandasのデータフレームにあらかじめ定義されたメニュー表から、ユーザーが選んだカテゴリ（ドリンク or デザート）のデータだけをリアルタイムに条件抽出し、平均価格を算出して表示するアプリを構築してください。</p>
+<section id="id13">
+<h4>【要件】<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h4>
+<ol class="arabic">
+<li><p>セルの先頭に <code class="docutils literal notranslate"><span class="pre">%%writefile</span> <span class="pre">app_challenge2.py</span></code> を記述すること。</p></li>
+<li><p>以下のデータフレーム <code class="docutils literal notranslate"><span class="pre">df_menu</span></code> をプログラム内に記述すること。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_menu</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"商品名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"ブレンドコーヒー"</span><span class="p">,</span> <span class="s2">"カフェラテ"</span><span class="p">,</span> <span class="s2">"宇治抹茶ラテ"</span><span class="p">,</span> <span class="s2">"チョコブラウニー"</span><span class="p">,</span> <span class="s2">"アップルパイ"</span><span class="p">,</span> <span class="s2">"濃厚チーズケーキ"</span><span class="p">],</span>
+    <span class="s2">"カテゴリ"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"ドリンク"</span><span class="p">,</span> <span class="s2">"ドリンク"</span><span class="p">,</span> <span class="s2">"ドリンク"</span><span class="p">,</span> <span class="s2">"デザート"</span><span class="p">,</span> <span class="s2">"デザート"</span><span class="p">,</span> <span class="s2">"デザート"</span><span class="p">],</span>
+    <span class="s2">"価格"</span><span class="p">:</span> <span class="p">[</span><span class="mi">400</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">550</span><span class="p">]</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</li>
+<li><p>ユーザーがセレクトボックスで「ドリンク」か「デザート」を選べるようにし、変数 <code class="docutils literal notranslate"><span class="pre">selected_cat</span></code> に格納すること。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df_menu</span></code> から、カテゴリ列が <code class="docutils literal notranslate"><span class="pre">selected_cat</span></code> と一致する行だけを条件抽出して <code class="docutils literal notranslate"><span class="pre">df_filtered</span></code> に代入すること。</p></li>
+<li><p>フィルタリング後の <code class="docutils literal notranslate"><span class="pre">df_filtered</span></code> の「価格」の平均値を <code class="docutils literal notranslate"><span class="pre">.mean()</span></code> で計算し、<code class="docutils literal notranslate"><span class="pre">mean_price</span></code> に代入すること。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.dataframe()</span></code> を使って、抽出されたデータフレーム一覧を表示すること。さらに、<code class="docutils literal notranslate"><span class="pre">st.metric()</span></code> を使って「このカテゴリの平均価格」を大きく表示すること。</p></li>
+</ol>
+<details>
+<summary>👉 演習課題 2 の解答コードを見る（クリックで展開）</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app_challenge2</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># 1. データの定義</span>
+<span class="n">df_menu</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"商品名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"ブレンドコーヒー"</span><span class="p">,</span> <span class="s2">"カフェラテ"</span><span class="p">,</span> <span class="s2">"宇治抹茶ラテ"</span><span class="p">,</span> <span class="s2">"チョコブラウニー"</span><span class="p">,</span> <span class="s2">"アップルパイ"</span><span class="p">,</span> <span class="s2">"濃厚チーズケーキ"</span><span class="p">],</span>
+    <span class="s2">"カテゴリ"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"ドリンク"</span><span class="p">,</span> <span class="s2">"ドリンク"</span><span class="p">,</span> <span class="s2">"ドリンク"</span><span class="p">,</span> <span class="s2">"デザート"</span><span class="p">,</span> <span class="s2">"デザート"</span><span class="p">,</span> <span class="s2">"デザート"</span><span class="p">],</span>
+    <span class="s2">"価格"</span><span class="p">:</span> <span class="p">[</span><span class="mi">400</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">550</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"🍰 カフェメニュー・価格スマート分析"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"カテゴリを選択すると、該当するメニューの一覧と平均価格をリアルタイム計算します。"</span><span class="p">)</span>
+
+<span class="c1"># 2. セレクトボックスの配置</span>
+<span class="n">selected_cat</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span>
+    <span class="s2">"分析したいカテゴリを選択してください:"</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">"ドリンク"</span><span class="p">,</span> <span class="s2">"デザート"</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># 3. 条件抽出の実行</span>
+<span class="n">df_filtered</span> <span class="o">=</span> <span class="n">df_menu</span><span class="p">[</span><span class="n">df_menu</span><span class="p">[</span><span class="s2">"カテゴリ"</span><span class="p">]</span> <span class="o">==</span> <span class="n">selected_cat</span><span class="p">]</span>
+
+<span class="c1"># 4. 平均値の計算</span>
+<span class="n">mean_price</span> <span class="o">=</span> <span class="n">df_filtered</span><span class="p">[</span><span class="s2">"価格"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># 5. 結果表示</span>
+<span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">"---"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="sa">f</span><span class="s2">"📋 </span><span class="si">{</span><span class="n">selected_cat</span><span class="si">}</span><span class="s2"> カテゴリの登録メニュー一覧"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span><span class="n">df_filtered</span><span class="p">,</span> <span class="n">use_container_width</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 平均価格をオシャレに表示</span>
+<span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span>
+    <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"選択された </span><span class="si">{</span><span class="n">selected_cat</span><span class="si">}</span><span class="s2"> の平均価格"</span><span class="p">,</span>
+    <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">mean_price</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> 円"</span> <span class="c1"># :.0f で小数点を丸めて表示</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</details>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id14">
+<h3>演習課題 3: 目標ライン付き「売上目標達成日」の動的棒グラフ化（難易度：中）<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<p>ユーザーがスライダーを使って「目標売上高（万円）」を設定すると、その目標金額を達成した曜日だけの営業データをデータフレームからリアルタイムに条件抽出し、Matplotlibで美しいグリーンの棒グラフを描いて画面に埋め込むアプリを構築してください。</p>
+<section id="id15">
+<h4>【要件】<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h4>
+<ol class="arabic">
+<li><p>セルの先頭に <code class="docutils literal notranslate"><span class="pre">%%writefile</span> <span class="pre">app_challenge3.py</span></code> を記述すること。</p></li>
+<li><p>以下の1週間の売上データフレーム <code class="docutils literal notranslate"><span class="pre">df_sales</span></code> をプログラム内に記述すること。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"曜日"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"月"</span><span class="p">,</span> <span class="s2">"火"</span><span class="p">,</span> <span class="s2">"水"</span><span class="p">,</span> <span class="s2">"木"</span><span class="p">,</span> <span class="s2">"金"</span><span class="p">,</span> <span class="s2">"土"</span><span class="p">,</span> <span class="s2">"日"</span><span class="p">],</span>
+    <span class="s2">"売上額 (万円)"</span><span class="p">:</span> <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">120</span><span class="p">]</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</li>
+<li><p>スライダー <code class="docutils literal notranslate"><span class="pre">st.slider</span></code> を使って、ラベル <code class="docutils literal notranslate"><span class="pre">&quot;日次目標売上高</span> <span class="pre">(万円)&quot;</span></code>、最小値 <code class="docutils literal notranslate"><span class="pre">40</span></code>、最大値 <code class="docutils literal notranslate"><span class="pre">100</span></code>、初期値 <code class="docutils literal notranslate"><span class="pre">60</span></code> のスライダーを配置し、変数 <code class="docutils literal notranslate"><span class="pre">target</span></code> に代入すること。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df_sales</span></code> から、売上額が <code class="docutils literal notranslate"><span class="pre">target</span></code> 以上のデータ（行）だけを条件抽出して、変数 <code class="docutils literal notranslate"><span class="pre">df_achieved</span></code> に代入すること。</p></li>
+<li><p>グラフの台紙 <code class="docutils literal notranslate"><span class="pre">fig,</span> <span class="pre">ax</span> <span class="pre">=</span> <span class="pre">plt.subplots()</span></code> を生成し、<code class="docutils literal notranslate"><span class="pre">df_achieved[&quot;曜日&quot;]</span></code> をX軸、<code class="docutils literal notranslate"><span class="pre">df_achieved[&quot;売上額</span> <span class="pre">(万円)&quot;]</span></code> をY軸とした棒グラフ（色は自由、例：<code class="docutils literal notranslate"><span class="pre">color=&quot;skyblue&quot;</span></code>）を描画すること。</p></li>
+<li><p>グラフ内に目標ラインを示す赤い点線（<code class="docutils literal notranslate"><span class="pre">ax.axhline(y=target,</span> <span class="pre">color=&quot;red&quot;,</span> <span class="pre">linestyle=&quot;--&quot;,</span> <span class="pre">label=&quot;目標ライン&quot;)</span></code>）を追加し、凡例（<code class="docutils literal notranslate"><span class="pre">ax.legend()</span></code>）を表示すること。</p></li>
+<li><p>作成した <code class="docutils literal notranslate"><span class="pre">fig</span></code> を <code class="docutils literal notranslate"><span class="pre">st.pyplot(fig)</span></code> を使ってメイン画面にプロットすること。</p></li>
+</ol>
+<details>
+<summary>👉 演習課題 3 の模範解答コードを見る（クリックで展開）</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app_challenge3</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">japanize_matplotlib</span> <span class="c1"># 日本語フォント化</span>
+
+<span class="c1"># 1. データの定義</span>
+<span class="n">df_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"曜日"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"月"</span><span class="p">,</span> <span class="s2">"火"</span><span class="p">,</span> <span class="s2">"水"</span><span class="p">,</span> <span class="s2">"木"</span><span class="p">,</span> <span class="s2">"金"</span><span class="p">,</span> <span class="s2">"土"</span><span class="p">,</span> <span class="s2">"日"</span><span class="p">],</span>
+    <span class="s2">"売上額 (万円)"</span><span class="p">:</span> <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">120</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"🎯 売上目標・達成日動的可視化システム"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"設定した日次売上目標を超えた曜日だけを抽出し、その場での自動グラフ化を行います。"</span><span class="p">)</span>
+
+<span class="c1"># 2. スライダーの設定</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span>
+    <span class="s2">"日次目標売上高 (万円) を設定してください:"</span><span class="p">,</span>
+    <span class="n">min_value</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+    <span class="n">max_value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">60</span>
+<span class="p">)</span>
+
+<span class="c1"># 3. 条件抽出の実行</span>
+<span class="n">df_achieved</span> <span class="o">=</span> <span class="n">df_sales</span><span class="p">[</span><span class="n">df_sales</span><span class="p">[</span><span class="s2">"売上額 (万円)"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">target</span><span class="p">]</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">"---"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"📊 売上目標（</span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s2">万円）以上の曜日データ"</span><span class="p">)</span>
+
+<span class="c1"># データが空の場合のエラー防止策</span>
+<span class="k">if</span> <span class="n">df_achieved</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"⚠️ 目標が高すぎます！達成した曜日が1日もありません。目標設定を下げてください。"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># 左右にカラムを分けて、左にグラフ、右に数値を表示</span>
+    <span class="n">col_left</span><span class="p">,</span> <span class="n">col_right</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="c1"># [2, 1]を指定すると、2:1の比率で横幅が分かれます</span>
+    
+    <span class="k">with</span> <span class="n">col_left</span><span class="p">:</span>
+        <span class="c1"># 4. グラフの描画</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">df_achieved</span><span class="p">[</span><span class="s2">"曜日"</span><span class="p">],</span> <span class="n">df_achieved</span><span class="p">[</span><span class="s2">"売上額 (万円)"</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">"lightgreen"</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"black"</span><span class="p">)</span>
+        
+        <span class="c1"># 目標基準線を引く</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"目標線 (</span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s2">万)"</span><span class="p">)</span>
+        
+        <span class="c1"># 装飾</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"曜日別目標達成状況"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">"bold"</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"曜日"</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"売上（万円）"</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">140</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+        
+        <span class="c1"># Streamlitへ埋め込み</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">pyplot</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+        
+    <span class="k">with</span> <span class="n">col_right</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"達成営業日数"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df_achieved</span><span class="p">)</span><span class="si">}</span><span class="s2"> 日"</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df_achieved</span><span class="p">)</span><span class="o">-</span><span class="mi">7</span><span class="si">}</span><span class="s2"> 日（全体比）"</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span><span class="n">df_achieved</span><span class="p">,</span> <span class="n">use_container_width</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+</section>
+</section>
+<hr class="docutils" />
+<section id="csv">
+<h3>演習課題 4: 全自動・要約統計量CSVデータ解析機（難易度：中）<a class="headerlink" href="#csv" title="Link to this heading">¶</a></h3>
+<p>ユーザーがアップロードした任意のCSVファイルを、Pandasで読み込み、データに欠損値（NaN）がないか自動チェック。さらに、データの「基本統計量（記述統計）」である平均値や最大・最小値（<code class="docutils literal notranslate"><span class="pre">.describe()</span></code>）を自動算出して画面に美しく配置する、本格的な汎用ツールを作成してください。</p>
+<section id="id16">
+<h4>【要件】<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h4>
+<ol class="arabic simple">
+<li><p>セルの先頭に <code class="docutils literal notranslate"><span class="pre">%%writefile</span> <span class="pre">app_challenge4.py</span></code> を記述すること。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.file_uploader</span></code> を設置し、CSVファイルのみを許可すること。</p></li>
+<li><p>初期起動エラーを防ぐため、<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">uploaded_file</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">None:</span></code> という防護壁を記述すること。</p></li>
+<li><p>アップロードされたファイルを、<code class="docutils literal notranslate"><span class="pre">pd.read_csv(uploaded_file)</span></code> で読み込み、データフレーム <code class="docutils literal notranslate"><span class="pre">df</span></code> に代入すること。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.describe()</span></code>（記述統計の基本セット）を実行し、算出された統計データフレームを <code class="docutils literal notranslate"><span class="pre">st.subheader(&quot;📊</span> <span class="pre">データの要要約統計量&quot;)</span></code> とともに <code class="docutils literal notranslate"><span class="pre">st.dataframe()</span></code> で出力すること。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.metric()</span></code> を使い、アップロードされたデータの「総レコード件数（データの行数）」を表示すること（<code class="docutils literal notranslate"><span class="pre">len(df)</span></code> で算出）。</p></li>
+</ol>
+<details>
+<summary>👉 演習課題 4 の採点・減点基準を見る（教員用）</summary>
+<ul class="simple">
+<li><p>【10点満点での評価基準】</p>
+<ul>
+<li><p>アップローダーと防護壁（3点）：アップローダーを正しく設置し、<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">None:</span></code> による起動時のNoneオブジェクトエラーを完全にシャットアウトしている。防護壁が無い場合は -3点減点。</p></li>
+<li><p>PandasでのCSV読込（2点）：ファイルを正常にPandasに読み込ませている。</p></li>
+<li><p>describeの活用（3点）：<code class="docutils literal notranslate"><span class="pre">.describe()</span></code> 関数を正しく実行し、要約統計量を美しく画面に出力している。</p></li>
+<li><p>統計量の表示（2点）：<code class="docutils literal notranslate"><span class="pre">len(df)</span></code> を用いてデータの総行数を計算し、metricなどの分かりやすいウィジェットで画面に出力している。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+<details>
+<summary>👉 演習課題 4 の模範解答コードを見る（クリックで展開）</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app_challenge4</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">set_page_config</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="s2">"wide"</span><span class="p">)</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"📂 全自動・CSV要約統計解析シミュレーター"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"お手持ちのあらゆる数値CSVデータを投げ込むだけで、統計上の代表値（平均、中央、ばらつき）を自動算出します。"</span><span class="p">)</span>
+
+<span class="c1"># 1. アップローダーの設置</span>
+<span class="n">uploaded_file</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">file_uploader</span><span class="p">(</span>
+    <span class="s2">"解析したいCSVデータを選択してください:"</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s2">"csv"</span>
+<span class="p">)</span>
+
+<span class="c1"># 2. 防護壁の設定</span>
+<span class="k">if</span> <span class="n">uploaded_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># データの読み込み</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">uploaded_file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"cp932"</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">uploaded_file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
+        
+    <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="s2">"🎉 CSVの自動読み込みに成功しました！"</span><span class="p">)</span>
+    
+    <span class="c1"># 画面を横分割</span>
+    <span class="n">col_left</span><span class="p">,</span> <span class="n">col_right</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    
+    <span class="k">with</span> <span class="n">col_left</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">"📏 データの全体規模"</span><span class="p">)</span>
+        <span class="c1"># レコード数と列数の表示</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"総データ件数（行数）"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 件"</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"データのカラム数（列数）"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 列"</span><span class="p">)</span>
+        
+        <span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">"📋 データの列名一覧"</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>
+
+    <span class="k">with</span> <span class="n">col_right</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">"📊 データの要約統計量 (describe)"</span><span class="p">)</span>
+        <span class="c1"># 数値データに対する describe を取得して表示</span>
+        <span class="n">df_desc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span><span class="n">df_desc</span><span class="p">,</span> <span class="n">use_container_width</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        
+        <span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">"🔍 生データプレビュー (先頭5行)"</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">use_container_width</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># ファイルが無い時の案内</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"👆 解析したいCSVファイルを上にドラッグ＆ドロップしてください。"</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id17">
+<h3>演習課題 5: 実践！武蔵カフェ・複数店舗経営リアルタイムダッシュボード（難易度：難）<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<p>本日学んだ「サイドバー」「Columns」「Pandas連動フィルタリング」「Matplotlib折れ線グラフ」のすべての知識を総動員し、カフェ経営者になったつもりで「江古田店」と「白山店」の1か月間のデータをリアルタイムで分析・評価する、応用クラス前半戦の金字塔となるダッシュボードアプリを完成させてください。</p>
+<section id="id18">
+<h4>【要件】<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h4>
+<ol class="arabic">
+<li><p>セルの先頭に <code class="docutils literal notranslate"><span class="pre">%%writefile</span> <span class="pre">app_challenge5.py</span></code> を記述すること。</p></li>
+<li><p>以下の「3店舗の1か月間の経営ダミーデータ」を読み込むコードをプログラム内に記述すること（ネット環境がオフラインでも動くように、自動生成フォールバックコードを内蔵すること）。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">"https://raw.githubusercontent.com/homata/musashiuniv/main/data/cafe_monthly_sales.csv"</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s2">"日付"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"7/1"</span><span class="p">,</span> <span class="s2">"7/2"</span><span class="p">,</span> <span class="s2">"7/3"</span><span class="p">,</span> <span class="s2">"7/4"</span><span class="p">,</span> <span class="s2">"7/5"</span><span class="p">,</span> <span class="s2">"7/1"</span><span class="p">,</span> <span class="s2">"7/2"</span><span class="p">,</span> <span class="s2">"7/3"</span><span class="p">,</span> <span class="s2">"7/4"</span><span class="p">,</span> <span class="s2">"7/5"</span><span class="p">],</span>
+        <span class="s2">"店舗名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">],</span>
+        <span class="s2">"売上額 (円)"</span><span class="p">:</span> <span class="p">[</span><span class="mi">45000</span><span class="p">,</span> <span class="mi">52000</span><span class="p">,</span> <span class="mi">48000</span><span class="p">,</span> <span class="mi">60000</span><span class="p">,</span> <span class="mi">75000</span><span class="p">,</span> <span class="mi">38000</span><span class="p">,</span> <span class="mi">41000</span><span class="p">,</span> <span class="mi">39000</span><span class="p">,</span> <span class="mi">45000</span><span class="p">,</span> <span class="mi">50000</span><span class="p">],</span>
+        <span class="s2">"客数 (人)"</span><span class="p">:</span> <span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">110</span><span class="p">]</span>
+    <span class="p">})</span>
+</pre></div>
+</div>
+</li>
+<li><p>左側サイドバー（<code class="docutils literal notranslate"><span class="pre">st.sidebar</span></code>）に、分析する対象店舗を選ぶセレクトボックスを設置し、初期選択肢として <code class="docutils literal notranslate"><span class="pre">&quot;江古田店&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;白山店&quot;</span></code> が選べるようにし、変数 <code class="docutils literal notranslate"><span class="pre">shop</span></code> に代入すること。</p></li>
+<li><p>変数 <code class="docutils literal notranslate"><span class="pre">shop</span></code> を用いて、データフレーム <code class="docutils literal notranslate"><span class="pre">df</span></code> から店舗名が一致する行だけを抽出し、<code class="docutils literal notranslate"><span class="pre">df_filtered</span></code> に代入すること。</p></li>
+<li><p>カラムを3分割（<code class="docutils literal notranslate"><span class="pre">st.columns(3)</span></code>）し、<code class="docutils literal notranslate"><span class="pre">df_filtered</span></code> から算出した以下の3つの主要業績評価指標（KPI）を美しく表示すること。</p>
+<ul class="simple">
+<li><p>col1: 期間内の「総売上額」（金額合計、カンマ区切り表示）</p></li>
+<li><p>col2: 期間内の「総来客数」（客数合計、カンマ区切り表示）</p></li>
+<li><p>col3: 期間内の「平均客単価」（<code class="docutils literal notranslate"><span class="pre">総売上額</span> <span class="pre">÷</span> <span class="pre">総来客数</span></code> で計算し、最後に <code class="docutils literal notranslate"><span class="pre">int()</span></code> で整数にキャスト。カンマ区切り表示）</p></li>
+</ul>
+</li>
+<li><p>メイン画面中央に、横軸（X軸）に <code class="docutils literal notranslate"><span class="pre">&quot;日付&quot;</span></code>、縦軸（Y軸）に <code class="docutils literal notranslate"><span class="pre">&quot;売上額</span> <span class="pre">(円)&quot;</span></code> をプロットした、マーカー付き折れ線グラフ（色は自由、例：トマト色）を Matplotlib で描画し、<code class="docutils literal notranslate"><span class="pre">st.pyplot(fig)</span></code> で表示すること。</p></li>
+<li><p>グラフの真下には、<code class="docutils literal notranslate"><span class="pre">st.dataframe(df_filtered)</span></code> を使って、現在絞り込まれている売上データの詳細テーブルを表示すること。</p></li>
+</ol>
+<details>
+<summary>👉 演習課題 5 の模範解答コードを見る（クリックで展開）</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app_challenge5</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">japanize_matplotlib</span> <span class="c1"># 日本語フォント対応</span>
+
+<span class="c1"># 1. データのインポート（フォールバック付き）</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">"https://raw.githubusercontent.com/homata/musashiuniv/main/data/cafe_monthly_sales.csv"</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s2">"日付"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"7/1"</span><span class="p">,</span> <span class="s2">"7/2"</span><span class="p">,</span> <span class="s2">"7/3"</span><span class="p">,</span> <span class="s2">"7/4"</span><span class="p">,</span> <span class="s2">"7/5"</span><span class="p">,</span> <span class="s2">"7/1"</span><span class="p">,</span> <span class="s2">"7/2"</span><span class="p">,</span> <span class="s2">"7/3"</span><span class="p">,</span> <span class="s2">"7/4"</span><span class="p">,</span> <span class="s2">"7/5"</span><span class="p">],</span>
+        <span class="s2">"店舗名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">],</span>
+        <span class="s2">"売上額 (円)"</span><span class="p">:</span> <span class="p">[</span><span class="mi">45000</span><span class="p">,</span> <span class="mi">52000</span><span class="p">,</span> <span class="mi">48000</span><span class="p">,</span> <span class="mi">60000</span><span class="p">,</span> <span class="mi">75000</span><span class="p">,</span> <span class="mi">38000</span><span class="p">,</span> <span class="mi">41000</span><span class="p">,</span> <span class="mi">39000</span><span class="p">,</span> <span class="mi">45000</span><span class="p">,</span> <span class="mi">50000</span><span class="p">],</span>
+        <span class="s2">"客数 (人)"</span><span class="p">:</span> <span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">110</span><span class="p">]</span>
+    <span class="p">})</span>
+
+<span class="c1"># --- 2. サイドバーの設定 ---</span>
+<span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"⚙️ ダッシュボード設定"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"店舗を切り替えると、背後ですべてのデータ分析とグラフ描画がリアルタイムで連動計算されます。"</span><span class="p">)</span>
+
+<span class="n">shop</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span>
+    <span class="s2">"分析対象店舗を選んでください:"</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># --- 3. Pandasによる連動データの抽出 ---</span>
+<span class="n">df_filtered</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">"店舗名"</span><span class="p">]</span> <span class="o">==</span> <span class="n">shop</span><span class="p">]</span>
+
+<span class="c1"># --- 4. メイン画面のデザイン ---</span>
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"☕ Musashi Cafe Business Dashboard 📊"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"現在、</span><span class="si">{</span><span class="n">shop</span><span class="si">}</span><span class="s2"> の店舗経営指標ダッシュボードを表示しています。"</span><span class="p">)</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">"---"</span><span class="p">)</span>
+
+<span class="c1"># --- 5. カラム分割による主要業績指標 (KPI) ---</span>
+<span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">col3</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># 統計量を計算</span>
+<span class="n">total_sales</span> <span class="o">=</span> <span class="n">df_filtered</span><span class="p">[</span><span class="s2">"売上額 (円)"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">total_cust</span> <span class="o">=</span> <span class="n">df_filtered</span><span class="p">[</span><span class="s2">"客数 (人)"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">avg_spend</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">total_sales</span> <span class="o">/</span> <span class="n">total_cust</span><span class="p">)</span> <span class="c1"># 客単価（整数丸め）</span>
+
+<span class="k">with</span> <span class="n">col1</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"期間内 累計売上"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">total_sales</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">col2</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"期間内 累計来客数"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">total_cust</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 人"</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">col3</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"期間内 平均客単価"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">avg_spend</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">"---"</span><span class="p">)</span>
+
+<span class="c1"># 画面を横に分割して、左にグラフ、右に生データをスッキリ配置</span>
+<span class="n">left_col</span><span class="p">,</span> <span class="n">right_col</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+
+<span class="k">with</span> <span class="n">left_col</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">"📈 日次売上推移グラフ"</span><span class="p">)</span>
+    <span class="c1"># --- 6. リアルタイムMatplotlibグラフの描画 ---</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">df_filtered</span><span class="p">[</span><span class="s2">"日付"</span><span class="p">],</span> 
+        <span class="n">df_filtered</span><span class="p">[</span><span class="s2">"売上額 (円)"</span><span class="p">],</span> 
+        <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> 
+        <span class="n">color</span><span class="o">=</span><span class="s2">"tomato"</span><span class="p">,</span> 
+        <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
+        <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">shop</span><span class="si">}</span><span class="s2"> 売上"</span>
+    <span class="p">)</span>
+    <span class="c1"># グラフ装飾</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">shop</span><span class="si">}</span><span class="s2"> 日次売上トレンド（1か月間）"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">"bold"</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"営業日"</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"売上額 (円)"</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    
+    <span class="c1"># 画面に埋め込み</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">pyplot</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">right_col</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">"📋 分析データ詳細表"</span><span class="p">)</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span><span class="n">df_filtered</span><span class="p">,</span> <span class="n">use_container_width</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id19">
+<h2>📚 まとめ<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h2>
+<section id="id20">
+<h3>✨ 今日の重要ポイントまとめ<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>st.sidebar：画面をスッキリ整理するため、操作メニューを画面左側の専用折りたたみパネルに一括集約する。</p></li>
+<li><p>st.columns / st.metric：画面を縦列に等分割し、主要な指標（KPI）を変化量の矢印（delta）付きで横並びで美しく配置する。</p></li>
+<li><p>データとUIのリアルタイム連動：セレクトボックスやスライダーなどの「入力部品（変数）」と「Pandasの条件抽出式」を合体させることで、ユーザーの操作にすべてのグラフや数値が瞬時に再計算されて波打つ「Rerun（再実行）の仕組み」を理解する。</p></li>
+<li><p>st.file_uploader：ドラッグ＆ドロップで任意のCSVファイルを取り込み、データ構造を即座にダッシュボードに反映させる機能。初期エラーを防ぐための <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">file</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">None:</span></code> による「防護壁（例外処理）」の設計。</p></li>
+</ul>
+</section>
+</section>
 </section>
 
         </article>
@@ -392,7 +1480,7 @@
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-08-28</div>
+              Last updated on 2026-09-01</div>
           </div>
           <div class="right-details">
             
@@ -401,8 +1489,78 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">第6回 Webサービスの活用2</a><ul>
+<li><a class="reference internal" href="#id1">🎯 到達目標</a><ul>
+<li><a class="reference internal" href="#google-colab">練習問題のGoogle Colab起動</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">ダッシュボードの画面レイアウト設計</a><ul>
+<li><a class="reference internal" href="#st-sidebar">操作盤は左側にまとめて隠す：<code class="docutils literal notranslate"><span class="pre">st.sidebar</span></code></a></li>
+<li><a class="reference internal" href="#st-columns">指標やグラフを横に並べる：<code class="docutils literal notranslate"><span class="pre">st.columns()</span></code></a></li>
+<li><a class="reference internal" href="#st-metric">変化が際立つ重要指標パネル：<code class="docutils literal notranslate"><span class="pre">st.metric()</span></code></a></li>
+<li><a class="reference internal" href="#id3">🔑 起動</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pandas-ui">Pandas ✕ UI：データのリアルタイム連動抽出</a></li>
+<li><a class="reference internal" href="#ui-matplotlib">グラフ ✕ UI：リアルタイムMatplotlibグラフ描画</a></li>
+<li><a class="reference internal" href="#st-file-uploadercsv">汎用化への道：st.file_uploaderによる全自動CSV解析</a><ul>
+<li><a class="reference internal" href="#id4">🚨 エラーを防ぐための「防護壁（条件分岐）」</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">練習問題（5問）</a><ul>
+<li><a class="reference internal" href="#id6">練習問題 1: 画面レイアウトのカラム分割（理論）</a></li>
+<li><a class="reference internal" href="#id7">練習問題 2: <code class="docutils literal notranslate"><span class="pre">st.metric()</span></code> の差分表示（理論・コード）</a></li>
+<li><a class="reference internal" href="#id8">練習問題 3: リアルタイムデータ連動の仕組み（理論）</a></li>
+<li><a class="reference internal" href="#st-button">練習問題 4: 「st.button の罠」（理論）</a></li>
+<li><a class="reference internal" href="#none">練習問題 5: アップローダーでの「None」バグ回避（理論・コード）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9">💻 演習課題（5問）</a><ul>
+<li><a class="reference internal" href="#id10">演習課題 1: スライダーによる「店舗割引価格」リアルタイム見積器（難易度：易）</a><ul>
+<li><a class="reference internal" href="#id11">【要件】</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id12">演習課題 2: セレクトボックスによる「カテゴリ別平均価格」の算出（難易度：易）</a><ul>
+<li><a class="reference internal" href="#id13">【要件】</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id14">演習課題 3: 目標ライン付き「売上目標達成日」の動的棒グラフ化（難易度：中）</a><ul>
+<li><a class="reference internal" href="#id15">【要件】</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#csv">演習課題 4: 全自動・要約統計量CSVデータ解析機（難易度：中）</a><ul>
+<li><a class="reference internal" href="#id16">【要件】</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id17">演習課題 5: 実践！武蔵カフェ・複数店舗経営リアルタイムダッシュボード（難易度：難）</a><ul>
+<li><a class="reference internal" href="#id18">【要件】</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id19">📚 まとめ</a><ul>
+<li><a class="reference internal" href="#id20">✨ 今日の重要ポイントまとめ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
