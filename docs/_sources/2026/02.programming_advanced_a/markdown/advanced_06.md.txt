@@ -144,13 +144,6 @@ with col3:
 ### 🔑 起動
 以下のセルを実行してアプリを起動させてください。
 
-Streamlitとcloudflared tunnelを実行します
-```python
-!streamlit run app_layout.py --server.port 8501 & \
-sleep 5 & \
-cloudflared tunnel --url http://localhost:8501 --no-autoupdate
-```
-
 Streamlit起動
 ```bash
 %%bash --bg
