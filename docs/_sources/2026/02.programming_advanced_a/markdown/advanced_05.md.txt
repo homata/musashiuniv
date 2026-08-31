@@ -35,6 +35,21 @@ Streamlitは、データ分析や機械学習のスクリプトを、わずか�
 * [Streamlit](https://streamlit.io/)
 * [API reference](https://docs.streamlit.io/develop/api-reference)
 
+streamlit公式ページ
+```{figure} images/05.web_service/streamlit.PNG
+:width: 80%
+```
+
+streamlit公式ドキュメント
+```{figure} images/05.web_service/streamlit_api.PNG
+:width: 80%
+```
+
+streamlit公式ドキュメント（チャット画面）
+```{figure} images/05.web_service/streamlit_api_ask_ai.PNG
+:width: 80%
+```
+
 ---
 
 ### Streamlitの画面を外部からアクセス可能にする
