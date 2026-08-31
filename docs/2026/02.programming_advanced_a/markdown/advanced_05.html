@@ -7,10 +7,12 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="2026/02.programming_advanced_a/markdown/advanced_05.html" />
 <meta property="og:site_name" content="musashiuniv" />
+<meta property="og:description" content="PythonでWebアプリケーションを構築できるStreamlitによるWebアプリ開発の基礎を学びます 🎯 到達目標: データのWebアプリ化（ダッシュボード化）の目的と意義 （なぜデータを静止画やExcelではなく、アプリとして公開するのか）をビジネスや社会の視点から説明できる。, Google Colab上でStreamlitを安全に起動 し、ローカルトンネルの仕組みを用いて、スマート..." />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/None" />
-<meta property="og:image:alt" content="" />
+<meta property="og:image" content="/_images/social_previews/summary_2026_02.programming_advanced_a_markdown_advanced_05_a82fd910.png" />
+<meta property="og:image:alt" content="PythonでWebアプリケーションを構築できるStreamlitによるWebアプリ開発の基礎を学びます 🎯 到達目標: データのWebアプリ化（ダッシュボード化）の目的と意義 （なぜデータを静止画やExcelではなく、アプリとして公開するのか）をビジネスや社会の視点から説明できる。, Google Colab上..." />
+<meta name="description" content="PythonでWebアプリケーションを構築できるStreamlitによるWebアプリ開発の基礎を学びます 🎯 到達目標: データのWebアプリ化（ダッシュボード化）の目的と意義 （なぜデータを静止画やExcelではなく、アプリとして公開するのか）をビジネスや社会の視点から説明できる。, Google Colab上でStreamlitを安全に起動 し、ローカルトンネルの仕組みを用いて、スマート..." />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" /><link rel="next" title="第6回 Webサービスの活用2" href="advanced_06.html" /><link rel="prev" title="第4回 データ解析" href="advanced_04.html" />
 
@@ -189,7 +191,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -350,7 +352,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -358,6 +360,1073 @@
         <article role="main" id="furo-main-content">
           <section class="tex2jax_ignore mathjax_ignore" id="web1">
 <h1>第5回 Webサービスの活用1<a class="headerlink" href="#web1" title="Link to this heading">¶</a></h1>
+<p>PythonでWebアプリケーションを構築できるStreamlitによるWebアプリ開発の基礎を学びます</p>
+<hr class="docutils" />
+<section id="id1">
+<h2>🎯 到達目標<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><strong>データのWebアプリ化（ダッシュボード化）の目的と意義</strong>（なぜデータを静止画やExcelではなく、アプリとして公開するのか）をビジネスや社会の視点から説明できる。</p></li>
+<li><p><strong>Google Colab上でStreamlitを安全に起動</strong>し、ローカルトンネルの仕組みを用いて、スマートフォンや外部ブラウザからアクセス可能な公開URLを発行できる。</p></li>
+<li><p><strong>Streamlitの基本出力コマンド</strong>（タイトル、見出し、テキスト、マークダウン）を使い分けて、Web画面のレイアウトを美しく構成できる。</p></li>
+<li><p><strong>様々な入力部品（ウィジェット）</strong>（ボタン、スライダー、セレクトボックス、チェックボックス、テキスト入力）を自由自在に配置できる。</p></li>
+<li><p>**Streamlit特有の動作システム「Rerun（再実行）」<strong>と</strong>「st.buttonの消える罠」**の仕組みをロジカルに説明し、バグのない対話型（インタラクティブ）アプリを設計できる。</p></li>
+</ol>
+<hr class="docutils" />
+<section id="google-colab">
+<h3>練習問題のGoogle Colab起動<a class="headerlink" href="#google-colab" title="Link to this heading">¶</a></h3>
+<p><a class="reference external" href="https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exercises/2026/02.programming_advanced_a/advanced_05.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<ol class="arabic simple">
+<li><p>上記の「Open In Colab」をクリックして、Google Colabを起動させてください</p></li>
+<li><p>[ファイル] → [ドライブにコピーを保存] を選択して、Googleドライブにコピーを保存してください</p></li>
+<li><p>保存が成功すると，Googleドライブの「マイドライブ」 →「Colab Notebooks」にコピーしたファイルが保存されます。</p></li>
+<li><p>GoogleドライブにコピーしたGoogle ColabのNotebooksを開いてください</p></li>
+<li><p>開いたGoogle ColabのNotebooksで作業をしてください</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id2">
+<h2>なぜデータを「アプリ」にするのか？（ダッシュボード化の意義）<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<section id="id3">
+<h3>データ分析を「社会や現場に届ける」最後の壁<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p>データを収集し、Pandasで集計し、Matplotlibでグラフを描くことができるようになりました。
+しかし、その分析結果を「会社の上司、店舗マネージャー、あるいは外部の人」に見せたいとき、どう共有すればよいのか？</p>
+<ul class="simple">
+<li><p><strong>「Pythonのコードと、グラフの画像ファイルをメールで送る」</strong></p>
+<ul>
+<li><p><strong>問題点</strong>：相手はPythonを実行できません。また、画像は「静止画」なので、相手が「特定の店舗だけ」「特定の年代だけ」に絞り込んだデータを見たいと思っても、拡大したり、条件を変えることができません。</p></li>
+</ul>
+</li>
+<li><p><strong>「Excelファイルを共有する」</strong></p>
+<ul>
+<li><p><strong>問題点</strong>：共有された相手が誤って関数や数式を壊して（消して）しまったり、スマートフォンからだと画面が崩れて操作しづらかったりします。</p></li>
+</ul>
+</li>
+</ul>
+<p>解決策として、<strong>「誰でもスマホやパソコンのブラウザからアクセスして、ボタン一つでデータを絞り込める『Webアプリケーション』にすることです。このようにデータと操作盤が合体した画面を持つなWebデータとアプリケーションを</strong>「ダッシュボード」**と呼びます。</p>
+<p><strong>【ダッシュボードの開発イメージ】</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>▼ 昔の開発方法（学習コスト：大）
+  Python(分析) ＋ HTML/CSS(画面デザイン) ＋ JavaScript(動き) ＋ サーバー構築
+  ➡ 覚えることが多すぎて、画面を作る前に挫折してしまいます。
+
+▼ Streamlitを使った開発（学習コスト：小 ）
+  [ Pythonコード数行 ] ──▶  [ Streamlitが自動変換 ] ──▶ [ Webアプリ ]
+  ➡ HTMLもサーバーの知識も不要！いつものPythonコードでアプリが作成できます。
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="google-colabweb">
+<h2>Google ColabにおけるWebアプリ開発の壁とトンネリング技術<a class="headerlink" href="#google-colabweb" title="Link to this heading">¶</a></h2>
+<p>通常、Streamlitは手元のパソコン（ローカル環境）のターミナル（黒い画面）で起動します。
+今回は、インストールの手間がない <strong>Google Colab</strong> を利用しています。</p>
+<p>ここで1つ、ネットワーク上の重大な問題が発生します。
+Google Colabは、**「Googleが管理する、インターネットの向こう側（クラウド）にある仮想パソコン」**です。
+Colabの中で「Webアプリ（Streamlit）」を起動しても、そのアプリはクラウドの奥深くに隠れているため、手元にあるあなたのパソコンのブラウザ（Google Chromeなど）から、直接住所（URL）を入力して覗きに行くことができません。</p>
+<p><strong>【Colabと手元のブラウザの距離（イメージ図）】</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  [ 💻 あなたのパソコン ]                      [ 🏛️ Google Colab（クラウド） ]
+  ┌───────────────────┐                      ┌────────────────────────────┐
+  │  Chromeブラウザ    │  ──(見に行けない)──▶ │   Streamlit起動！          │
+  │  (手元)           │  ⚠️ 壁（ファイアウォール）│   (ポート: 8501)           │
+  └───────────────────┘                      └────────────────────────────┘
+</pre></div>
+</div>
+<p>この「壁」を突破し、一時的に外からアプリを覗き見するための安全な通路（トンネル）を作ってくれるツールが、<strong>localtunnel（ローカルトンネル）</strong> です。</p>
+<ol class="arabic simple">
+<li><p>Colabの中でStreamlitアプリを起動します（内部ポート <strong><code class="docutils literal notranslate"><span class="pre">8501</span></code></strong> 番という窓口で待機します）。</p></li>
+<li><p>localtunnelが、8501番の窓口と、世界中からアクセスできる一時的なWebアドレス（<code class="docutils literal notranslate"><span class="pre">https://xxxx.loca.lt</span></code>）を直結します。</p></li>
+<li><p>あなたがその一時的アドレスにアクセスすると、トンネルを通って、Colabの中のStreamlitアプリの画面が手元のブラウザに映し出されます。</p></li>
+</ol>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  [ 手元のブラウザ ] ──▶ [ https://xxxx.loca.lt (トンネルURL) ] ──▶ [ Colabの8501番窓口 ] ──▶ [ アプリ画面 ]
+</pre></div>
+</div>
+<section id="ip">
+<h3>セキュリティの鍵「IPアドレス」<a class="headerlink" href="#ip" title="Link to this heading">¶</a></h3>
+<p>トンネルを開通してアクセスする際、不審なハッカーの侵入を防ぐため、localtunnelから「接続先Colabのセキュリティキー（パスワード）」を入力するよう求められます。
+このキーとして使用するのが、あなたのColab環境に割り当てられた <strong>「IPアドレス（4つの数字の羅列）」</strong> です。これは後ほど、手順の中で実際に取得します。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="hello-world-a-b-c-40">
+<h2>5.3 実践ハンズオン：Hello Worldアプリの起動（手順A, B, C） (約40分)<a class="headerlink" href="#hello-world-a-b-c-40" title="Link to this heading">¶</a></h2>
+<p>それでは、実際に手を動かして、あなた専用の最初のWebアプリをインターネット上に誕生させてみましょう！
+以下の「黄金の3ステップ」を順番に実行していきます。</p>
+<section id="id4">
+<h3>ステップ 1: 必要なライブラリのインストール<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p>まずは、Colabのセルに以下のコマンドを入力して実行し、Streamlitと、トンネリングツール（localtunnel）をColabの仮想パソコンにインストールします。
+※コマンドの先頭についている「<code class="docutils literal notranslate"><span class="pre">!</span></code>」は、PythonではなくColabのシステムに命令を下すおまじないです。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 必要なパッケージをインストールします（1回実行すればOKです）</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="n">streamlit</span>
+<span class="err">!</span><span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">localtunnel</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="a-writefile">
+<h3>🚀 手順A: アプリのソースコードを書き出す（<code class="docutils literal notranslate"><span class="pre">%%writefile</span></code>）<a class="headerlink" href="#a-writefile" title="Link to this heading">¶</a></h3>
+<p>Colabは通常、セル単位でプログラムを実行しますが、Webアプリを起動するためには、プログラムを「1つの独立したファイル（<code class="docutils literal notranslate"><span class="pre">app.py</span></code>）」として保存する必要があります。</p>
+<p>セルの1行目に <strong><code class="docutils literal notranslate"><span class="pre">%%writefile</span> <span class="pre">app.py</span></code></strong> と書くと、そのセルに記述されたコードが、Colabのフォルダ内に <code class="docutils literal notranslate"><span class="pre">app.py</span></code> という名前のファイルとして自動で書き出され、保存されます。</p>
+<p>以下のコードを新しいセルにコピペして、実行してみましょう！</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="c1"># ここに書いたコードが、そのまま「app.py」というファイルに書き出されます</span>
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="c1"># アプリのタイトルを表示</span>
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Musashi Cafe アプリ ☕"</span><span class="p">)</span>
+
+<span class="c1"># メッセージを表示</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"プログラミング応用Aの授業で作成した、私の最初のWebアプリです！"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"スライダーやボタンを追加して、これからPOSレジやダッシュボードに進化させていきます。"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>実行後、Colabの画面左側にある「フォルダ（ファイル）」アイコンをクリックすると、<code class="docutils literal notranslate"><span class="pre">app.py</span></code> というファイルが生成されていることを確認してください。</em></p>
+</section>
+<hr class="docutils" />
+<section id="b-ip">
+<h3>🔑 手順B: トンネルの鍵（あなたのIPアドレス）を確認する<a class="headerlink" href="#b-ip" title="Link to this heading">¶</a></h3>
+<p>次に、トンネルを開くためのセキュリティパスワード（Colabの外部IPアドレス）を取得します。
+以下のコマンドを実行すると、数字の羅列（例：<code class="docutils literal notranslate"><span class="pre">34.125.12.34</span></code>）が表示されます。<strong>この数字をコピーしてメモ帳などに貼り付けておいてください。</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># あなたのColab環境のIPアドレス（パスワード）を表示します</span>
+<span class="err">!</span><span class="n">wget</span> <span class="o">-</span><span class="n">qO</span><span class="o">-</span> <span class="n">ipv4</span><span class="o">.</span><span class="n">icanhazip</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="c">
+<h3>🌐 手順C: アプリをバックグラウンドで起動し、トンネルを開通する！<a class="headerlink" href="#c" title="Link to this heading">¶</a></h3>
+<p>いよいよアプリを裏側で起動させ、世界に公開します。
+以下のコマンドを実行してください。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Streamlitをバックグラウンド（裏側）で実行し、ログファイルを保存します</span>
+<span class="err">!</span><span class="n">streamlit</span> <span class="n">run</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span> <span class="o">&amp;&gt;/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span> <span class="o">&amp;</span>
+
+<span class="c1"># 2. ポート8501番（Streamlitの標準ポート）を外部に公開するトンネルを開通します</span>
+<span class="err">!</span><span class="n">npx</span> <span class="n">localtunnel</span> <span class="o">--</span><span class="n">port</span> <span class="mi">8501</span>
+</pre></div>
+</div>
+<p><strong>【接続のやり方（超重要）】</strong></p>
+<ol class="arabic simple">
+<li><p>上記のセルを実行すると、数秒後に画面下に <strong><code class="docutils literal notranslate"><span class="pre">your</span> <span class="pre">url</span> <span class="pre">is:</span> <span class="pre">https://xxxx.loca.lt</span></code></strong> という青いリンクが表示されます。このリンクをクリックしてください。</p></li>
+<li><p>画面が切り替わり、「<strong>Friendly Reminder</strong>」という英文のセキュリティ画面（または「Tunnel Password」入力画面）が開きます。</p></li>
+<li><p>画面中央の <strong>「Tunnel Password」</strong> という入力欄に、先ほどの <strong>【手順Bで確認したIPアドレス（数字の羅列）】</strong> をそのまま貼り付け（ペースト）してください。</p></li>
+<li><p>その下にある <strong>「Click to Submit」</strong>（またはSubmit）ボタンをクリックします。</p></li>
+<li><p>画面が読み込まれ、あなたが作った <strong>「Musashi Cafe アプリ ☕」</strong> の真っ白で美しいWeb画面が目の前に起動します！</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="streamlit-30">
+<h2>5.4 Streamlitの表示系コマンドと入力部品ウィジェット (約30分)<a class="headerlink" href="#streamlit-30" title="Link to this heading">¶</a></h2>
+<p>最初のアプリが起動したことに感動したら、今度はアプリの中身を豪華に、そしてインタラクティブにしていきましょう！
+アプリのファイルを書き換えるときは、常に <strong>「手順A（%%writefile app.py）のセルを書き換えて実行」➡「開いているWebアプリ画面の右上にある『Always rerun（またはRerun）』ボタンを押す」</strong> という開発サイクルを回します。</p>
+<section id="id5">
+<h3>1. 情報を伝える表示系コマンド<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p>Streamlitには、文字を綺麗にデザインして表示するためのコマンドがたくさん用意されています。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"大きなタイトル"</span><span class="p">)</span> <span class="c1"># ページの一番上に置く大見出し</span>
+<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">"中見出し"</span><span class="p">)</span>      <span class="c1"># セクションの区切りに使う見出し</span>
+<span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">"小見出し"</span><span class="p">)</span>   <span class="c1"># さらに細かい段落の見出し</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"通常のテキスト。Pandasの表やグラフもこれ1つで綺麗に表示できます。"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">"**太字** や *斜体*、[リンク](https://...) などを自由に書くためのマークダウン。"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3>2. ユーザーの入力を受け取るウィジェット（入力部品）<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<p>ここからがStreamlitの真骨頂です。エクセルや通常のWebサイトにあるような操作部品を、たった1行で設置できます。
+ユーザーが操作した結果（選択した文字や数値）は、<strong>そのまま左辺の変数にリアルタイムに代入されます。</strong></p>
+<section id="st-selectbox">
+<h4>① ドロップダウンメニュー（<code class="docutils literal notranslate"><span class="pre">st.selectbox</span></code>）<a class="headerlink" href="#st-selectbox" title="Link to this heading">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># st.selectbox("ラベル名", [選択肢のリスト])</span>
+<span class="n">selected_item</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span>
+    <span class="s2">"ご注文の商品を選んでください:"</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">"ブレンドコーヒー (450円)"</span><span class="p">,</span> <span class="s2">"ダージリン紅茶 (400円)"</span><span class="p">,</span> <span class="s2">"チョコケーキ (550円)"</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="c1"># ユーザーが「チョコケーキ (550円)」を選ぶと、変数 selected_item にその文字列が代入されます。</span>
+</pre></div>
+</div>
+</section>
+<section id="st-slider">
+<h4>② 数値調整スライダー（<code class="docutils literal notranslate"><span class="pre">st.slider</span></code>）<a class="headerlink" href="#st-slider" title="Link to this heading">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># st.slider("ラベル名", 最小値, 最大値, 初期値)</span>
+<span class="n">quantity</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">"数量を選択してください:"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1"># ユーザーがスライダーを「3」に合わせると、変数 quantity に 3 という数値が代入されます。</span>
+</pre></div>
+</div>
+</section>
+<section id="st-checkbox">
+<h4>③ チェックボックス（<code class="docutils literal notranslate"><span class="pre">st.checkbox</span></code>）<a class="headerlink" href="#st-checkbox" title="Link to this heading">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># st.checkbox("ラベル名")</span>
+<span class="c1"># チェックが入ると True、外れていると False という真偽値（boolean）が代入されます。</span>
+<span class="n">add_whipped_cream</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span><span class="s2">"ホイップクリームを追加しますか？ (+50円)"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="pos-30">
+<h2>5.5 ハンズオン：自動計算POSレジアプリの作成 (約30分)<a class="headerlink" href="#pos-30" title="Link to this heading">¶</a></h2>
+<p>それでは、これまでに学んだ「表示系コマンド」と「入力部品」を組み合わせ、ユーザーの選択に応じて合計代金を自動で計算し、お見積書を画面に表示する「自動POSレジアプリ」を作ってみましょう！</p>
+<p>手順Aのセル（<code class="docutils literal notranslate"><span class="pre">app.py</span></code> を書き出すセル）の中身を、以下のコードで丸ごと上書きして実行し、ブラウザ画面の右上にある「Rerun（再読み込み）」をクリックしてください。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="c1"># 1. ページのヘッダーと見出し</span>
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"カフェ自動POSレジアプリ ☕"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"商品の選択と数量、トッピングを選択すると、自動でお会計を瞬時に計算します。"</span><span class="p">)</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">"🛒 お会計シミュレーター"</span><span class="p">)</span>
+
+<span class="c1"># 2. セレクトボックス（商品の選択）</span>
+<span class="n">selected_item</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span>
+    <span class="s2">"ご注文の商品を選んでください:"</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">"ブレンドコーヒー (450円)"</span><span class="p">,</span> <span class="s2">"アイスティー (400円)"</span><span class="p">,</span> <span class="s2">"抹茶パフェ (600円)"</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># 選択肢に応じて「基本単価」をPythonの条件分岐で設定します</span>
+<span class="k">if</span> <span class="s2">"コーヒー"</span> <span class="ow">in</span> <span class="n">selected_item</span><span class="p">:</span>
+    <span class="n">base_price</span> <span class="o">=</span> <span class="mi">450</span>
+<span class="k">elif</span> <span class="s2">"アイスティー"</span> <span class="ow">in</span> <span class="n">selected_item</span><span class="p">:</span>
+    <span class="n">base_price</span> <span class="o">=</span> <span class="mi">400</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">base_price</span> <span class="o">=</span> <span class="mi">600</span>
+
+<span class="c1"># 3. スライダー（数量の選択）</span>
+<span class="n">quantity</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">"個数を選択してください:"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 4. チェックボックス（トッピングの選択）</span>
+<span class="n">add_cream</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span><span class="s2">"ホイップクリームを追加する (+50円/個)"</span><span class="p">)</span>
+
+<span class="c1"># トッピング料金の加算判定</span>
+<span class="n">topping_price</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">if</span> <span class="n">add_cream</span><span class="p">:</span>
+    <span class="n">topping_price</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="c1"># 5. 計算ロジック（単価 ✕ 数量 ＝ 合計金額）</span>
+<span class="n">total_price</span> <span class="o">=</span> <span class="p">(</span><span class="n">base_price</span> <span class="o">+</span> <span class="n">topping_price</span><span class="p">)</span> <span class="o">*</span> <span class="n">quantity</span>
+
+<span class="c1"># 6. 結果の表示（st.metric というオシャレなKPIメーターを使います！）</span>
+<span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">"💳 お会計結果"</span><span class="p">)</span>
+
+<span class="n">col1</span><span class="p">,</span> <span class="n">col2</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># 画面を2分割して横並びにする</span>
+<span class="k">with</span> <span class="n">col1</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"**ご注文商品**: </span><span class="si">{</span><span class="n">selected_item</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"**数量**: </span><span class="si">{</span><span class="n">quantity</span><span class="si">}</span><span class="s2"> 個"</span><span class="p">)</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"**トッピング**: </span><span class="si">{</span><span class="s1">'あり'</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">add_cream</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">'なし'</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">col2</span><span class="p">:</span>
+    <span class="c1"># st.metric(タイトル, 数値) で、ダッシュボード風のカッコいい表示になります</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"合計お支払金額 (税込)"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">total_price</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+
+<span class="c1"># お礼のメッセージ</span>
+<span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="s2">"お買い上げありがとうございます！"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>スライダーを「5」に動かしたり、トッピングにチェックを入れたり外したりしてみてください。
+<strong>カチカチと動かすたびに、画面右側の「合計お支払金額」の数値が一瞬で、1ミリの遅れもなく連動して再計算されたでしょうか？</strong></p>
+<p>これが、データをWebアプリにして価値を提供する「対話型ダッシュボード」の第一歩です！</p>
+</section>
+<hr class="docutils" />
+<section id="streamlitrerunst-button-30">
+<h2>5.6 最重要：Streamlitの動作メカニズム「Rerunシステム」と「st.buttonの罠」 (約30分)<a class="headerlink" href="#streamlitrerunst-button-30" title="Link to this heading">¶</a></h2>
+<p>Streamlitは非常に簡単にアプリが作れますが、他のプログラミング言語とは全く異なる**「特有の動作ルール（動作システム）」**を持っています。
+これを知らないと、今後「なぜかアプリが思い通りに動かない！」という深刻な泥沼（バグ）にはまることになります。200分集中講義の後半の主役として、この仕組みを完璧に脳に叩き込みましょう！</p>
+<section id="rerun">
+<h3>1. 「Rerun（再実行）」システムの真実<a class="headerlink" href="#rerun" title="Link to this heading">¶</a></h3>
+<p>通常のPythonスクリプトは、上から下まで実行したら、そこでプログラムは「終了」して消えてしまいます。
+しかし、Streamlitは違います。</p>
+<blockquote>
+<div><p><strong>🌟 Streamlitの鉄則：</strong>
+ユーザーが画面上の何か（スライダー、セレクトボックス、チェックボックスなど）を**「1ミリでも動かした瞬間」<strong>、Streamlitは裏側で、記述されたPythonプログラム（<code class="docutils literal notranslate"><span class="pre">app.py</span></code>）を</strong>「1行目から最後（一番下）まで、毎回すべて丸ごと再実行（Rerun）」**します。</p>
+</div></blockquote>
+<p><strong>【Rerun（再実行）の流れ】</strong></p>
+<ol class="arabic simple">
+<li><p>スライダーを「2」から「3」に動かす。</p></li>
+<li><p>Pythonが「よっしゃ、もう一度1行目からやり直すぞ！」と立ち上がる。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">quantity</span> <span class="pre">=</span> <span class="pre">st.slider(...)</span></code> の行に来たとき、画面のスライダーが「3」であることを読み取って、変数 <code class="docutils literal notranslate"><span class="pre">quantity</span></code> に <code class="docutils literal notranslate"><span class="pre">3</span></code> を代入する。</p></li>
+<li><p>下の行の <code class="docutils literal notranslate"><span class="pre">total_price</span> <span class="pre">=</span> <span class="pre">...</span></code> を計算し直し、画面全体の数値を書き換える。</p></li>
+<li><p>プログラムの最後まで到達したら、一時停止して次の操作をじっと待つ。</p></li>
+</ol>
+<p>この「毎回、最初からすべてをやり直す」というシンプルな豪快さがあるからこそ、私たちは面倒な「画面の書き換え処理」を一切書かなくても、常に最新の計算結果を画面に表示できるのです。</p>
+</section>
+<hr class="docutils" />
+<section id="st-button">
+<h3>2. 初心者が100%はまる「st.button の消える罠」<a class="headerlink" href="#st-button" title="Link to this heading">¶</a></h3>
+<p>この「毎回最初からやり直す（Rerun）」という仕組みが原因で、ボタン（<code class="docutils literal notranslate"><span class="pre">st.button</span></code>）を扱う際に、初心者が100%パニックを起こす「罠」が発生します。</p>
+<p>例えば、以下のようなアプリを思い浮かべてください。</p>
+<ul class="simple">
+<li><p>「送信」ボタンを押すと、画面に「お見積もりを送信しました！」とメッセージが出る。</p></li>
+<li><p>その下には、数量を調整するスライダーがある。</p></li>
+</ul>
+<p>実際にこのコード（バグのある例）を実行したと仮定して、何が起きるか見てみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⚠️ バグのあるプログラムのイメージ</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"お見積もり送信アプリ"</span><span class="p">)</span>
+<span class="n">quantity</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">"数量を選んでください"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># ボタンの設置</span>
+<span class="c1"># ボタンがクリックされた「その瞬間だけ」、st.button は「True（真）」になります</span>
+<span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">"お見積もりを確定して送信"</span><span class="p">):</span>
+    <span class="c1"># ユーザーがクリックした瞬間だけ、この中身が実行されます</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="s2">"🎉 メールを送信しました！"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>【バグの発生プロセス（なぜ消えるのか？）】</strong></p>
+<ol class="arabic simple">
+<li><p><strong>初期画面</strong>：</p>
+<ul class="simple">
+<li><p>ユーザーが画面を開く。プログラムが上から下まで走り、ボタンは押されていないので <code class="docutils literal notranslate"><span class="pre">st.button</span></code> は <code class="docutils literal notranslate"><span class="pre">False</span></code>。画面にはスライダーとボタンだけがある。</p></li>
+</ul>
+</li>
+<li><p><strong>確定ボタンをクリックする</strong>：</p>
+<ul class="simple">
+<li><p>クリックした瞬間、Rerun（再実行）が発生！</p></li>
+<li><p>1行目から再実行され、<code class="docutils literal notranslate"><span class="pre">st.button</span></code> の判定部分に来る。</p></li>
+<li><p>「今、クリックされた瞬間」なので、<code class="docutils literal notranslate"><span class="pre">st.button</span></code> は <strong><code class="docutils literal notranslate"><span class="pre">True</span></code></strong> を返す。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span></code> の中に入り、画面に <strong>「🎉 メールを送信しました！」</strong> という緑のボックスが表示される。<strong>（ここまでは大成功）</strong></p></li>
+</ul>
+</li>
+<li><p><strong>スライダーを動かして個数を変更する</strong>：</p>
+<ul class="simple">
+<li><p>個数を変更した瞬間、またRerun（再実行）が発生！</p></li>
+<li><p>1行目から再びプログラムが走り始める。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.button</span></code> の判定部分に来る。</p></li>
+<li><p>しかし、今回のRerunのきっかけは「スライダーの移動」であり、「ボタンのクリック」ではありません。</p></li>
+<li><p>したがって、<code class="docutils literal notranslate"><span class="pre">st.button</span></code> は <strong><code class="docutils literal notranslate"><span class="pre">False</span></code></strong>（押されていない）に戻ってしまいます！</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span></code> の中の処理はスキップされ、<strong>画面から「🎉 メールを送信しました！」というメッセージが、煙のように綺麗に消え去ってしまいます。</strong></p></li>
+</ul>
+</li>
+</ol>
+<p><strong>【st.buttonの消える罠（イメージ図）】</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  【ボタンを押した瞬間】                    【スライダーを動かした瞬間】
+  1. Rerun発生（ボタン押された）             1. Rerun発生（スライダー動いた）
+  2. st.button が True になる                2. st.button が False に戻る
+  3. [🎉 送信完了！] ──▶ 表示される！       3. [🎉 送信完了！] ──▶ 画面から消滅する！😱
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h3>どうやって対策するのか？<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p>ボタンを押した「状態」を維持するためには、画面が再起動（Rerun）してもデータが消えない特別な保管庫である <strong>「セッション状態（<code class="docutils literal notranslate"><span class="pre">st.session_state</span></code>）」</strong> という高度な仕組みを使う必要があります。
+今回の基礎クラス（第5回）では、「ボタンは、押したその瞬間の一時的なアクション（おまじないを実行するなど）にのみ使い、計算結果の表示などの状態キープにはスライダーやチェックボックスを主役に使う！」というルールを覚えておきましょう。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id8">
+<h2>📝 授業内確認練習問題（理論・挙動チェック：5問） (約20分)<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+<p>後半の講義で学んだ「Streamlitの仕組み（Rerun）」や「ウィジェットの挙動」を復習しましょう。
+頭の中で答えを決定してから、クリックして解答と解説を確認してください。</p>
+<section id="web">
+<h3>練習問題 1: 従来のWeb開発との最大の違い<a class="headerlink" href="#web" title="Link to this heading">¶</a></h3>
+<p>従来の一般的なWebサイト制作では、画面にオシャレなボタンを配置したり、入力された数値を取得して画面を書き換えるために「HTML」や「CSS」に加えて「JavaScript」という言語を書く必要がありました。
+Streamlitを使う場合、それらの知識が一切不要であるのはなぜでしょうか？ 仕組みを説明してください。</p>
+<details>
+<summary>👉 練習問題 1 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p><strong>解答例</strong>:</p>
+<ul>
+<li><p>Streamlitが、記述された<strong>Pythonコードを読み取り、対応するWeb用の画面デザイン（HTML/CSS）や動作プログラム（JavaScript）へと、裏側で全自動で「翻訳（コンパイル）」してブラウザに送信してくれているから。</strong></p></li>
+</ul>
+</li>
+<li><p><strong>解説</strong>:</p>
+<ul>
+<li><p>この自動翻訳のおかげで、私たちは「データの分析（Python）」に100%集中したまま、プロ級のWebアプリケーション画面を瞬時に手に入れることができます。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="colab">
+<h3>練習問題 2: Colab特有の「窓口」と「トンネル」<a class="headerlink" href="#colab" title="Link to this heading">¶</a></h3>
+<p>Google ColabでStreamlitを動かす際、<code class="docutils literal notranslate"><span class="pre">!npx</span> <span class="pre">localtunnel</span> <span class="pre">--port</span> <span class="pre">8501</span></code> というコマンドを実行しました。</p>
+<ol class="arabic simple">
+<li><p>この <strong>「<code class="docutils literal notranslate"><span class="pre">8501</span></code>」</strong> という数字は何を表しているでしょうか？</p></li>
+<li><p>なぜ、ただ起動するだけでなく「localtunnel」という追加のツールを使う必要があるのか、理由を説明してください。</p></li>
+</ol>
+<details>
+<summary>👉 練習問題 2 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p><strong>正解</strong>:</p>
+<ol class="arabic simple">
+<li><p><strong>8501</strong>: Streamlitアプリが起動したときに、データを受信するためにColab内で開く「標準の窓口番号（ポート番号）」のこと。</p></li>
+<li><p><strong>localtunnelが必要な理由</strong>: Google Colabのパソコンは「Googleのクラウド内部（プライベートネットワーク）」にあり、外からのアクセスを遮断する壁があるため、手元のブラウザから直接アクセスできない。localtunnelを使うことで、8501番窓口から手元のブラウザを直結する「一時的な公開トンネルURL」を発行できるから。</p></li>
+</ol>
+</li>
+<li><p><strong>解説</strong>:</p>
+<ul>
+<li><p>「起動する窓口（ポート：8501）」と「そこへ繋ぐ外の道路（localtunnel）」がセットになることで、世界中のどこからでも（自分のスマホからでも！）Colab上のアプリを動かせるようになります。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id9">
+<h3>練習問題 3: スライダーを動かした時の「Rerun」の動き<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<p>Streamlitアプリ上で、ユーザーが数量調整スライダーを <code class="docutils literal notranslate"><span class="pre">2</span></code> から <code class="docutils literal notranslate"><span class="pre">5</span></code> に変更しました。
+この時、裏側でPythonプログラム（<code class="docutils literal notranslate"><span class="pre">app.py</span></code>）はどのようなステップで実行され、画面が書き換わるでしょうか？ Streamlitのルール（鉄則）に沿って説明してください。</p>
+<details>
+<summary>👉 練習問題 3 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p><strong>解答例</strong>:</p>
+<ol class="arabic simple">
+<li><p>スライダーが動いた瞬間、裏側で**Rerun（自動再実行）**がトリガーされる。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app.py</span></code> というPythonファイルが、<strong>「1行目から一番最後の行まで、最初から丸ごと実行し直される」</strong>。</p></li>
+<li><p>スライダーのコードの行に来たとき、画面上のスライダーが「5」に合わされていることをシステムが検知し、変数に <code class="docutils literal notranslate"><span class="pre">5</span></code> が代入される。</p></li>
+<li><p>それ以降の合計金額の計算や画面表示コードが新しい「5」を使って再計算され、ブラウザの画面が一瞬で最新の状態に更新される。</p></li>
+</ol>
+</li>
+<li><p><strong>解説</strong>:</p>
+<ul>
+<li><p>「上から下まで、毎回全部やり直す」というシンプルな豪快さこそが、Streamlitの俊敏なリアルタイム連動（リアクティブ）の秘密です。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id10">
+<h3>練習問題 4: チェックボックスの「戻り値（データ型）」<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<p>チェックボックスを設置する <code class="docutils literal notranslate"><span class="pre">is_takeout</span> <span class="pre">=</span> <span class="pre">st.checkbox(&quot;お持ち帰りですか？&quot;)</span></code> というコードを実行した際、変数 <code class="docutils literal notranslate"><span class="pre">is_takeout</span></code> の中に代入されるデータは、次のうちどれでしょうか？</p>
+<ol class="arabic simple">
+<li><p>チェックが入っている場合は <code class="docutils literal notranslate"><span class="pre">&quot;お持ち帰りですか？&quot;</span></code> という文字列、入っていない場合は <code class="docutils literal notranslate"><span class="pre">None</span></code>。</p></li>
+<li><p>チェックが入っている場合は <code class="docutils literal notranslate"><span class="pre">True</span></code>、入っていない場合は <code class="docutils literal notranslate"><span class="pre">False</span></code> という真偽値（boolean型）。</p></li>
+<li><p>チェックが入っている場合は <code class="docutils literal notranslate"><span class="pre">1</span></code>、入っていない場合は <code class="docutils literal notranslate"><span class="pre">0</span></code> という整数値。</p></li>
+</ol>
+<details>
+<summary>👉 練習問題 4 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p><strong>正解</strong>: <strong>2</strong></p>
+<ul>
+<li><p>チェックが入っている時は <strong><code class="docutils literal notranslate"><span class="pre">True</span></code></strong>、外れている時は <strong><code class="docutils literal notranslate"><span class="pre">False</span></code></strong> という「真偽値（boolean型）」が変数に代入されます。</p></li>
+</ul>
+</li>
+<li><p><strong>解説</strong>:</p>
+<ul>
+<li><p>戻り値が <code class="docutils literal notranslate"><span class="pre">True</span></code> / <code class="docutils literal notranslate"><span class="pre">False</span></code> のため、その後の条件分岐で <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">is_takeout:</span></code>（もしお持ち帰りなら）というように、非常にシンプルで美しい条件分岐コードを書くことができます。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id11">
+<h3>練習問題 5: 「ボタンが消えるバグ」のデバッグ<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<p>以下のコードは、ボタンを押した際に「注文を受け付けました！」と画面に緑の文字で表示し、その下でスライダーを使ってトッピングの量を調整するアプリです。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"注文システム"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">"この内容で注文する"</span><span class="p">):</span>
+    <span class="c1"># 注文処理</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="s2">"🎉 注文を受け付けました！"</span><span class="p">)</span>
+
+<span class="c1"># トッピング量</span>
+<span class="n">topping_qty</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">"トッピングの量 (g)"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>このアプリを実行し、ユーザーが以下の操作を行いました。</p>
+<ul class="simple">
+<li><p>手順①：画面を開き、「この内容で注文する」ボタンをクリックした。
+➡ 画面に「🎉 注文を受け付けました！」と正しく表示された。</p></li>
+<li><p>手順②：次に、その下にあるスライダーを動かして <code class="docutils literal notranslate"><span class="pre">20g</span></code> に変更した。
+➡ その瞬間、画面から「🎉 注文を受け付けました！」という緑のメッセージが<strong>消えてしまった。</strong></p></li>
+</ul>
+<p>なぜ手順②の操作をした瞬間に、メッセージが消えてしまったのでしょうか？ 理由を説明してください。</p>
+<details>
+<summary>👉 練習問題 5 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p><strong>解答例</strong>:</p>
+<ul>
+<li><p>スライダーを動かした瞬間、<strong>アプリ全体の再実行（Rerun）が1行目から走り出すため。</strong></p></li>
+<li><p>再実行が走った際、今回の実行トリガーは「スライダーの移動」であり「ボタンのクリック」ではないため、<code class="docutils literal notranslate"><span class="pre">st.button</span></code> の判定は <strong><code class="docutils literal notranslate"><span class="pre">False</span></code></strong>（押されていない）に戻ってしまう。</p></li>
+<li><p>その結果、<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">st.button</span></code> の中の <code class="docutils literal notranslate"><span class="pre">st.success</span></code> 処理がスキップされ、画面から消滅してしまう。</p></li>
+</ul>
+</li>
+<li><p><strong>解説</strong>:</p>
+<ul>
+<li><p>これがStreamlit開発における「最大の罠」です。ボタンは「押したその一瞬だけしか True にならない」という性質をしっかりと理解しておきましょう。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id12">
+<h2>💻 総合演習課題（難易度別5問：時間外用）<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
+<p>ここからは、皆さんがこれまでに身につけたすべてのPythonおよびStreamlitのスキルを試す「最終評価課題」です。
+すべての課題は、**「Google Colabのセルに記述して実行すれば、その場で <code class="docutils literal notranslate"><span class="pre">app.py</span></code> というファイルに書き出され、手順Cを実行することでブラウザ上で即座に動作テストを行える」**ように設計されています。</p>
+<p>1行ずつコードを確認しながら、穴埋め（<code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TODO:</span></code> の部分）を完成させてください。</p>
+<hr class="docutils" />
+<section id="id13">
+<h3>課題 1: 割引率調整スライダーと価格シミュレーター（難易度：易）<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<p>カフェのお会計において、サイドバーに設置したスライダーで「割引率（%）」を自由に調整し、その割引が適用された「割引後の支払金額」をメイン画面にリアルタイム表示するアプリを作成してください。</p>
+<ul class="simple">
+<li><p><strong>【要件】</strong></p>
+<ol class="arabic simple">
+<li><p>サイドバー（<code class="docutils literal notranslate"><span class="pre">st.sidebar.slider</span></code>）に、割引率を設定するスライダーを配置（最小: 0%, 最大: 50%, 初期値: 10%）。</p></li>
+<li><p>基本価格は <strong>500円</strong> とする。</p></li>
+<li><p>合計支払金額は <code class="docutils literal notranslate"><span class="pre">基本価格</span> <span class="pre">✕</span> <span class="pre">(1</span> <span class="pre">-</span> <span class="pre">割引率</span> <span class="pre">÷</span> <span class="pre">100)</span></code> で求め、整数（<code class="docutils literal notranslate"><span class="pre">int</span></code>）にキャストする。</p></li>
+<li><p>計算結果を画面に <code class="docutils literal notranslate"><span class="pre">st.metric</span></code> を用いて美しく表示する。</p></li>
+</ol>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"カフェ割引シミュレーター ☕"</span><span class="p">)</span>
+
+<span class="c1"># 基本価格</span>
+<span class="n">base_price</span> <span class="o">=</span> <span class="mi">500</span>
+
+<span class="c1"># TODO: 1. サイドバーに 0%〜50% の範囲を1%刻みで選べるスライダー「st.sidebar.slider」を設置し、変数 discount に代入する。初期値は 10% とすること。</span>
+<span class="n">discount</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 2. 割引後の金額を計算する（基本価格 ✕ (1 - 割引率/100)）。最後に int() で整数値に変換すること。</span>
+<span class="n">discount_price</span> <span class="o">=</span> 
+
+<span class="c1"># 画面への出力</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"通常価格: </span><span class="si">{</span><span class="n">base_price</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+
+<span class="c1"># TODO: 3. st.metric を使い、ラベルを「割引適用後の価格」、値を「〇〇 円」の形式で表示する。</span>
+<span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span>                               <span class="p">)</span>
+</pre></div>
+</div>
+<section id="id14">
+<h4>🛠️ 課題1：教員用採点基準（10点満点）<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>10点</strong>: 完璧に動作する。サイドバーへのスライダー配置、計算ロジック、metricの表示がすべて正しい。</p></li>
+<li><p><strong>8点</strong>: スライダーは配置できているが、割引率の計算ロジックが誤っており、価格が正しく引かれない。</p></li>
+<li><p><strong>6点</strong>: スライダーをサイドバー（<code class="docutils literal notranslate"><span class="pre">st.sidebar.slider</span></code>）ではなく、メイン画面（<code class="docutils literal notranslate"><span class="pre">st.slider</span></code>）に配置してしまっている。</p></li>
+<li><p><strong>4点</strong>: 計算後の <code class="docutils literal notranslate"><span class="pre">int()</span></code> キャストを忘れており、金額が <code class="docutils literal notranslate"><span class="pre">450.0</span> <span class="pre">円</span></code> のように少数表示になってしまっている（減点-2点）。</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id15">
+<h3>課題 2: カテゴリ選択に応じたメニューの動的絞り込み（難易度：易）<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<p>あらかじめ用意されたデータ（カフェのメニュー）から、ユーザーがセレクトボックスで選択したカテゴリ（ドリンク、またはデザート）に属する商品だけを画面に動的に表示する、簡易データベース検索アプリを作成してください。</p>
+<ul class="simple">
+<li><p><strong>【要件】</strong></p>
+<ol class="arabic simple">
+<li><p>セレクトボックス（<code class="docutils literal notranslate"><span class="pre">st.selectbox</span></code>）で、「ドリンク」または「デザート」を選択できるようにする。</p></li>
+<li><p>選択されたカテゴリに応じて、表示するリストを切り替える。</p>
+<ul>
+<li><p>ドリンクの場合：<code class="docutils literal notranslate"><span class="pre">[&quot;ブレンドコーヒー&quot;,</span> <span class="pre">&quot;宇治抹茶ラテ&quot;,</span> <span class="pre">&quot;キャラメルマキアート&quot;]</span></code></p></li>
+<li><p>デザートの場合：<code class="docutils literal notranslate"><span class="pre">[&quot;ベイクドチーズケーキ&quot;,</span> <span class="pre">&quot;窯焼きアップルパイ&quot;,</span> <span class="pre">&quot;特製クラシックプリン&quot;]</span></code></p></li>
+</ul>
+</li>
+<li><p>切り替えたリストを、画面に <code class="docutils literal notranslate"><span class="pre">st.write</span></code>（またはリスト表示）で綺麗に表示する。</p></li>
+</ol>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"メニュー検索カタログ 📖"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"カテゴリを選ぶと、おすすめ商品の一覧を自動で切り替えます。"</span><span class="p">)</span>
+
+<span class="c1"># TODO: 1. セレクトボックス「st.selectbox」を配置し、ユーザーに「ドリンク」か「デザート」を選択させる。選ばれた文字をカテゴリ変数「category」に代入。</span>
+<span class="n">category</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 2. if-else文を使い、categoryが「ドリンク」の場合と「デザート」の場合で、表示するリストを変数「items」に代入する。</span>
+<span class="k">if</span>                     <span class="p">:</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"ブレンドコーヒー"</span><span class="p">,</span> <span class="s2">"宇治抹茶ラテ"</span><span class="p">,</span> <span class="s2">"キャラメルマキアート"</span><span class="p">]</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"ベイクドチーズケーキ"</span><span class="p">,</span> <span class="s2">"窯焼きアップルパイ"</span><span class="p">,</span> <span class="s2">"特製クラシックプリン"</span><span class="p">]</span>
+
+<span class="c1"># 3. 画面に選ばれたおすすめ商品を表示</span>
+<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="sa">f</span><span class="s2">"✨ おすすめの</span><span class="si">{</span><span class="n">category</span><span class="si">}</span><span class="s2">一覧"</span><span class="p">)</span>
+
+<span class="c1"># リストの商品を1つずつ表示</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"- </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="id16">
+<h4>🛠️ 課題2：教員用採点基準（10点満点）<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>10点</strong>: セレクトボックスが正しく設置され、if文によるリストの切り替え、forループによる個別描画が完璧に動作している。</p></li>
+<li><p><strong>8点</strong>: リストの切り替えはできているが、for文のインデントミスやタイポがあり、画面描画にエラーが発生する。</p></li>
+<li><p><strong>6点</strong>: セレクトボックスの選択肢に「ドリンク」「デザート」以外の不要な文字が混ざっており、if文の判定（完全一致）が機能せずにデザート側しか表示されない。</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id17">
+<h3>課題 3: 店舗売上目標達成判定チェッカー（難易度：中）<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<p>その日の「実績売上」をスライダーで入力し、あらかじめ設定した「目標売上」に到達しているかどうかをAI（プログラム）が自動で判定し、目標値までの「残り金額」と、達成・未達成のステータスを表示するアプリを作成してください。</p>
+<ul class="simple">
+<li><p><strong>【要件】</strong></p>
+<ol class="arabic simple">
+<li><p>目標売上は固定で <strong>200,000円</strong> とする。</p></li>
+<li><p>画面中央のスライダー（<code class="docutils literal notranslate"><span class="pre">st.slider</span></code>）で、本日の売上実績を入力（範囲: 0円〜300,000円, 1万刻み、初期値: 150,000円）。</p></li>
+<li><p>もし、実績売上が目標売上（200,000円）以上の場合は、画面に <code class="docutils literal notranslate"><span class="pre">st.success(&quot;🎉</span> <span class="pre">目標達成！おめでとうございます！&quot;)</span></code> と表示。</p></li>
+<li><p>目標売上未満の場合は、画面に <code class="docutils literal notranslate"><span class="pre">st.warning(&quot;⚠️</span> <span class="pre">目標未達成。目標まであと〇〇円足りません。&quot;)</span></code> と引き算した不足金額を表示。</p></li>
+</ol>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"店舗売上目標達成チェッカー 📈"</span><span class="p">)</span>
+
+<span class="c1"># 目標売上（固定値）</span>
+<span class="n">target_sales</span> <span class="o">=</span> <span class="mi">200000</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="sa">f</span><span class="s2">"🎯 本日の目標売上: </span><span class="si">{</span><span class="n">target_sales</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+
+<span class="c1"># TODO: 1. スライダーを設置し、本日の売上実績を 0〜300,000円、10,000円刻みで入力させる。初期値は 150,000円 とし、変数 actual_sales に入れる。</span>
+<span class="c1"># ※ヒント: step=10000 オプションを指定すると、1万刻みの調整ができます。</span>
+<span class="n">actual_sales</span> <span class="o">=</span> 
+
+<span class="c1"># 画面への現在の状況表示</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"現在の実績売上: </span><span class="si">{</span><span class="n">actual_sales</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+
+<span class="c1"># TODO: 2. if-else文を使い、目標を達成しているかどうかの自動判定と、不足額の計算・警告表示を行う</span>
+<span class="k">if</span> <span class="n">actual_sales</span> <span class="o">&gt;=</span> <span class="n">target_sales</span><span class="p">:</span>
+    <span class="c1"># TODO: 達成時のメッセージを st.success で出力</span>
+    
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># TODO: 不足金額（目標 - 実績）を計算する</span>
+    <span class="n">deficit</span> <span class="o">=</span> 
+    <span class="c1"># TODO: 不足時の警告メッセージを st.warning で出力。メッセージ内に deficit のカンマ区切り値を入れること。</span>
+    
+</pre></div>
+</div>
+<section id="id18">
+<h4>🛠️ 課題3：教員用採点基準（10点満点）<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>10点</strong>: 1万刻みのスライダーの設定、金額計算、if文によるメッセージの切り替えが美しく動作している。カンマ表記（<code class="docutils literal notranslate"><span class="pre">:,</span></code>）も適切に扱えている。</p></li>
+<li><p><strong>8点</strong>: 1万刻みの設定（<code class="docutils literal notranslate"><span class="pre">step=10000</span></code>）を忘れているため、1円単位でのスライダー調整になり、非常に操作しづらくなっている（減点-2点）。</p></li>
+<li><p><strong>6点</strong>: <code class="docutils literal notranslate"><span class="pre">st.success</span></code> と <code class="docutils literal notranslate"><span class="pre">st.warning</span></code> を逆に使っている、または不足額の計算が <code class="docutils literal notranslate"><span class="pre">actual_sales</span> <span class="pre">-</span> <span class="pre">target_sales</span></code> になっており、マイナスの金額が表示されてしまっている。</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="pos">
+<h3>課題 4: チェックボックスによる複数トッピング複数加算POSレジ（難易度：中）<a class="headerlink" href="#pos" title="Link to this heading">¶</a></h3>
+<p>基本の「パンケーキ（600円）」に対し、3つのトッピング（ホイップ、チョコ、アイス）をチェックボックスで複数自由にトッピングし、数量を掛け合わせた「お見積もり合計金額」をリアルタイムで算出するオシャレなPOSシステムを構築してください。</p>
+<ul class="simple">
+<li><p><strong>【要件】</strong></p>
+<ol class="arabic simple">
+<li><p>基本価格は <strong>600円</strong> とする。</p></li>
+<li><p>3つのチェックボックス（<code class="docutils literal notranslate"><span class="pre">st.checkbox</span></code>）を設置する。</p>
+<ul>
+<li><p>「バニラアイス (+150円)」</p></li>
+<li><p>「チョコレートシロップ (+80円)」</p></li>
+<li><p>「完熟バナナスライス (+120円)」</p></li>
+</ul>
+</li>
+<li><p>チェックが入ったトッピングの料金を加算し、最後にスライダーで選択された「数量（1〜10個）」を掛け算して、総支払金額を算出する。</p></li>
+<li><p>計算結果を <code class="docutils literal notranslate"><span class="pre">st.metric</span></code> で見やすくメイン画面に表示する。</p></li>
+</ol>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"🥞 プレミアム・パンケーキPOSレジ 🥞"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"トッピングを自由に組み合わせて、オリジナルのカスタムパンケーキをお見積もりできます。"</span><span class="p">)</span>
+
+<span class="n">base_price</span> <span class="o">=</span> <span class="mi">600</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"プレーンパンケーキ基本価格: </span><span class="si">{</span><span class="n">base_price</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">"🧀 トッピングの選択"</span><span class="p">)</span>
+
+<span class="c1"># TODO: 1. 3つのトッピングチェックボックスを設置し、それぞれ変数に代入する（戻り値は True/False）</span>
+<span class="n">add_ice</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span><span class="s2">"バニラアイス (+150円)"</span><span class="p">)</span>
+<span class="n">add_chocolate</span> <span class="o">=</span> 
+<span class="n">add_banana</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 2. if文を組み合わせ、チェックが入っている（True）のトッピング料金を合計して「topping_total」を計算する</span>
+<span class="n">topping_total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">if</span> <span class="n">add_ice</span><span class="p">:</span>
+    <span class="n">topping_total</span> <span class="o">+=</span> <span class="mi">150</span>
+<span class="k">if</span> <span class="n">add_chocolate</span><span class="p">:</span>
+    
+<span class="k">if</span> <span class="n">add_banana</span><span class="p">:</span>
+    
+
+<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">"🔢 数量の選択"</span><span class="p">)</span>
+<span class="c1"># TODO: 3. 数量（1〜10個、初期値1個）を選択するスライダー「quantity」を設置する</span>
+<span class="n">quantity</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 4. 総支払金額（(基本価格 ＋ トッピング合計単価) ✕ 数量）を計算する</span>
+<span class="n">total</span> <span class="o">=</span> 
+
+<span class="c1"># 画面表示</span>
+<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">"💳 お見積書（合計金額）"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"パンケーキセット 合計支払金額"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">total</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="id19">
+<h4>🛠️ 課題4：教員用採点基準（10点満点）<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>10点</strong>: 3つのチェックボックスの値が適切に加算ロジックに反映され、数量の掛け算も含めて完璧な見積もりPOSアプリに仕上がっている。</p></li>
+<li><p><strong>8点</strong>: トッピングの加算処理で <code class="docutils literal notranslate"><span class="pre">topping_total</span> <span class="pre">+=</span> <span class="pre">150</span></code> とすべきところを、<code class="docutils literal notranslate"><span class="pre">topping_total</span> <span class="pre">=</span> <span class="pre">150</span></code> と代入（<code class="docutils literal notranslate"><span class="pre">=</span></code>）で書いてしまっているため、最後にチェックを入れたトッピング代金しか計算に反映されない（減点-2点）。</p></li>
+<li><p><strong>6点</strong>: 計算順序（優先順位）を間違えて <code class="docutils literal notranslate"><span class="pre">base_price</span> <span class="pre">+</span> <span class="pre">topping_total</span> <span class="pre">*</span> <span class="pre">quantity</span></code> と括弧なしで計算したため、トッピング代金にだけ数量が掛けられ、パンケーキの基本代金が1個分しか支払いに加算されないバグがある（減点-4点）。</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id20">
+<h3>課題 5: 【最上級・集大成】武蔵大学学園祭総合POS見積システム（難易度：難）<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<p>これまでに学んだすべてのStreamlit要素（テキスト入力、セレクトボックス、スライダー、チェックボックス、カラム分割、KPIメーター表示、お祝い/エラー表示）を完全合体させ、学園祭のカフェ出店でiPadレジとしてそのまま実戦投入できる「総合POSシステム」を構築してください。</p>
+<ul class="simple">
+<li><p><strong>【要件】</strong></p>
+<ol class="arabic simple">
+<li><p><strong>顧客名の入力</strong>: <code class="docutils literal notranslate"><span class="pre">st.text_input</span></code> を使い、お客様のお名前（例: <code class="docutils literal notranslate"><span class="pre">&quot;山田様&quot;</span></code>)を入力させる（初期値: <code class="docutils literal notranslate"><span class="pre">&quot;ゲスト様&quot;</span></code>）。</p></li>
+<li><p><strong>メインメニューの選択</strong>: <code class="docutils literal notranslate"><span class="pre">st.selectbox</span></code> で3つの商品から選ばせる。</p>
+<ul>
+<li><p>「タピオカミルクティー (500円)」</p></li>
+<li><p>「自家製レモネード (450円)」</p></li>
+<li><p>「宇治抹茶宇治金時 (600円)」
+（商品名に応じて、Python側で「基本価格」を自動判定する）</p></li>
+</ul>
+</li>
+<li><p><strong>数量の選択</strong>: <code class="docutils literal notranslate"><span class="pre">st.slider</span></code> で、1個から20個（初期値: 1個）の範囲で個数を選ばせる。</p></li>
+<li><p><strong>会員割引特典（チェックボックス）</strong>: <code class="docutils literal notranslate"><span class="pre">st.checkbox</span></code> を設置し、「武蔵大学の学生・教職員割引 (10%OFF)」にチェックが入った場合、お会計総額から一律10%（0.9倍）を割引する。</p></li>
+<li><p><strong>深夜営業割増（チェックボックス）</strong>: <code class="docutils literal notranslate"><span class="pre">st.checkbox</span></code> を設置し、「夜間営業対応 (+100円/個)」にチェックが入った場合、トッピングのように1個あたり100円を加算する。</p></li>
+<li><p><strong>画面の構築（Columns）</strong>: <code class="docutils literal notranslate"><span class="pre">st.columns(3)</span></code> を使って画面を3分割し、主要な指標（①お名前と商品詳細、②会員割引ステータス、③割引適用後の最終お支払総額 [st.metricでカンマ区切り表示]）を美しく横一列に並列表示する。</p></li>
+<li><p><strong>エラーハンドリング</strong>: もし、お客様のお名前が空欄（空の文字列 <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>）のまま注文しようとした場合、画面に <code class="docutils literal notranslate"><span class="pre">st.error(&quot;🚨</span> <span class="pre">エラー:</span> <span class="pre">お客様のお名前を入力してください（空欄は不可です）。&quot;)</span></code> という警告を表示して、お会計画面を非表示（または処理を一時停止）にする。</p></li>
+</ol>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="c1"># ページのタイトルとウェルカムメッセージ</span>
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"🎪 武蔵大学学園祭 総合POSシステム ☕"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"学園祭カフェ出店「しらきじカフェ」のiPad POSレジお見積もりシステムです。"</span><span class="p">)</span>
+
+<span class="c1"># ==========================================</span>
+<span class="c1"># 1. 入力部品の配置（データの入力）</span>
+<span class="c1"># ==========================================</span>
+<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">"📋 注文入力"</span><span class="p">)</span>
+
+<span class="c1"># TODO: ① st.text_input を使い、お客様の名前を「お客様名を入力してください」というラベルで入力させる。初期値は "ゲスト様" とする。</span>
+<span class="n">customer_name</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: ② st.selectbox を使い、商品を「メニューの選択」というラベルでドロップダウン選択させる。</span>
+<span class="n">menu_item</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span>
+    <span class="s2">"メニューを選択してください:"</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">"タピオカミルクティー (500円)"</span><span class="p">,</span> <span class="s2">"自家製レモネード (450円)"</span><span class="p">,</span> <span class="s2">"宇治抹茶宇治金時 (600円)"</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># メニュー名から単価の自動判定</span>
+<span class="k">if</span> <span class="s2">"タピオカ"</span> <span class="ow">in</span> <span class="n">menu_item</span><span class="p">:</span>
+    <span class="n">base_price</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="k">elif</span> <span class="s2">"レモネード"</span> <span class="ow">in</span> <span class="n">menu_item</span><span class="p">:</span>
+    <span class="n">base_price</span> <span class="o">=</span> <span class="mi">450</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">base_price</span> <span class="o">=</span> <span class="mi">600</span>
+
+<span class="c1"># TODO: ③ st.slider を使い、個数を 1個〜20個（初期値 1個）の範囲で入力させる。</span>
+<span class="n">qty</span> <span class="o">=</span> 
+
+<span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">"⚙️ 特典・追加オプション設定"</span><span class="p">)</span>
+<span class="c1"># TODO: ④ st.checkbox を使い、「武蔵大学の学生・教職員割引 (10%OFF)」のチェックボックスを設置。変数「is_student」に代入。</span>
+<span class="n">is_student</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: ⑤ st.checkbox を使い、「夜間営業割増 (+100円/個)」のチェックボックスを設置。変数「is_night」に代入。</span>
+<span class="n">is_night</span> <span class="o">=</span> 
+
+<span class="c1"># ==========================================</span>
+<span class="c1"># 2. 計算ロジック（データの処理）</span>
+<span class="c1"># ==========================================</span>
+<span class="c1"># 夜間割増単価の加算</span>
+<span class="n">night_charge</span> <span class="o">=</span> <span class="mi">100</span> <span class="k">if</span> <span class="n">is_night</span> <span class="k">else</span> <span class="mi">0</span>
+<span class="n">subtotal</span> <span class="o">=</span> <span class="p">(</span><span class="n">base_price</span> <span class="o">+</span> <span class="n">night_charge</span><span class="p">)</span> <span class="o">*</span> <span class="n">qty</span>
+
+<span class="c1"># 会員（学割）10%OFFの適用</span>
+<span class="k">if</span> <span class="n">is_student</span><span class="p">:</span>
+    <span class="n">total_amount</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">subtotal</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">total_amount</span> <span class="o">=</span> <span class="n">subtotal</span>
+
+<span class="c1"># ==========================================</span>
+<span class="c1"># 3. 画面のレイアウトと出力（データの表示）</span>
+<span class="c1"># ==========================================</span>
+<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">"🧾 お会計明細票"</span><span class="p">)</span>
+
+<span class="c1"># TODO: ⑥ 名前が空欄（""）の場合のエラーハンドリングを記述する</span>
+<span class="k">if</span> <span class="n">customer_name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">""</span><span class="p">:</span>
+    <span class="c1"># エラーメッセージを表示して、処理をストップ</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"🚨 エラー：お名前が空欄です。お会計明細を処理できません。"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># 正常にお名前が入力されている場合のみ、お見積書をcolumnsで表示</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="sa">f</span><span class="s2">"--- </span><span class="si">{</span><span class="n">customer_name</span><span class="si">}</span><span class="s2"> のご注文お見積書を正常に出力しました ---"</span><span class="p">)</span>
+    
+    <span class="c1"># columnsで3等分割</span>
+    <span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">col3</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    
+    <span class="k">with</span> <span class="n">col1</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"**👤 お客様情報**"</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"お名前: </span><span class="si">{</span><span class="n">customer_name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"選択商品: </span><span class="si">{</span><span class="n">menu_item</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"単価: </span><span class="si">{</span><span class="n">base_price</span><span class="si">}</span><span class="s2"> 円 ✕ </span><span class="si">{</span><span class="n">qty</span><span class="si">}</span><span class="s2">個"</span><span class="p">)</span>
+        
+    <span class="k">with</span> <span class="n">col2</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"**🎟️ 特典・割増ステータス**"</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"学割10%OFF: </span><span class="si">{</span><span class="s1">'適用(10%引き)'</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">is_student</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">'なし'</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"夜間営業割増: </span><span class="si">{</span><span class="s1">'適用(+100円/個)'</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">is_night</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">'なし'</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        
+    <span class="k">with</span> <span class="n">col3</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"**💰 お支払総額**"</span><span class="p">)</span>
+        <span class="c1"># TODO: ⑦ st.metric を使い、ラベル「最終ご請求金額」、値「〇〇 円」をカンマ区切りで表示する。</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span>                                            <span class="p">)</span>
+</pre></div>
+</div>
+<section id="id21">
+<h4>🛠️ 課題5：教員用採点基準（10点満点）<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>10点</strong>: エラーハンドリング（お名前が空欄の際の判定・処理分岐）、基本ウィジェットの配置、学割計算、夜間割増加算、カラム分割配置、すべての要件が1マスのバグもなく完璧に実装されている。</p></li>
+<li><p><strong>8点</strong>: カラム分割や計算ロジックはできているが、お名前の空欄判定で <code class="docutils literal notranslate"><span class="pre">.strip()</span> <span class="pre">==</span> <span class="pre">&quot;&quot;</span></code> などの例外処理をしていないため、スペースだけが入力された際に見積書がスカスカの状態で出力されてしまう（減点-2点）。</p></li>
+<li><p><strong>6点</strong>: 学割の割引率計算で、<code class="docutils literal notranslate"><span class="pre">int(subtotal</span> <span class="pre">*</span> <span class="pre">0.9)</span></code> とキャストするのを忘れたため、割り引いた合計金額が小数点付き（小数型）でmetricに表示されてしまい、見た目の美しさが損なわれている（減点-4点）。</p></li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id22">
+<h2>💡 総合演習課題の解答例（教員用・自習用）<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h2>
+<p>（自分でたくさんタイポし、エラー画面と睨み合い、AIにアドバイスをもらってデバッグできたプロセスこそが、あなたの「開発力」を急成長させます。答えをコピーする前に、一度じっくり自力で試行錯誤しましょう！）</p>
+<details>
+<summary>👉 課題1〜5の模範解答コードを見る（ここをクリックして展開）</summary>
+<section id="id23">
+<h3>課題 1 の解答例<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"カフェ割引シミュレーター ☕"</span><span class="p">)</span>
+
+<span class="n">base_price</span> <span class="o">=</span> <span class="mi">500</span>
+
+<span class="c1"># 1. スライダーの設定</span>
+<span class="n">discount</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">"割引率(%)を設定してください:"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># 2. 割引後価格の計算</span>
+<span class="n">discount_price</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">base_price</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">discount</span> <span class="o">/</span> <span class="mi">100</span><span class="p">))</span>
+
+<span class="c1"># 3. 画面の出力</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"通常価格: </span><span class="si">{</span><span class="n">base_price</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"割引適用後の価格"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">discount_price</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id24">
+<h3>課題 2 の解答例<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"メニュー検索カタログ 📖"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"カテゴリを選ぶと、おすすめ商品の一覧を自動で切り替えます。"</span><span class="p">)</span>
+
+<span class="c1"># 1. セレクトボックスの配置</span>
+<span class="n">category</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">"カテゴリを選択してください:"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"ドリンク"</span><span class="p">,</span> <span class="s2">"デザート"</span><span class="p">])</span>
+
+<span class="c1"># 2. 条件分岐によるリストの切り替え</span>
+<span class="k">if</span> <span class="n">category</span> <span class="o">==</span> <span class="s2">"ドリンク"</span><span class="p">:</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"ブレンドコーヒー"</span><span class="p">,</span> <span class="s2">"宇治抹茶ラテ"</span><span class="p">,</span> <span class="s2">"キャラメルマキアート"</span><span class="p">]</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"ベイクドチーズケーキ"</span><span class="p">,</span> <span class="s2">"窯焼きアップルパイ"</span><span class="p">,</span> <span class="s2">"特製クラシックプリン"</span><span class="p">]</span>
+
+<span class="c1"># 3. 画面表示</span>
+<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="sa">f</span><span class="s2">"✨ おすすめの</span><span class="si">{</span><span class="n">category</span><span class="si">}</span><span class="s2">一覧"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"- </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id25">
+<h3>課題 3 の解答例<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"店舗売上目標達成チェッカー 📈"</span><span class="p">)</span>
+
+<span class="n">target_sales</span> <span class="o">=</span> <span class="mi">200000</span>
+<span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="sa">f</span><span class="s2">"🎯 本日の目標売上: </span><span class="si">{</span><span class="n">target_sales</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+
+<span class="c1"># 1. 1万刻みの調整用スライダーを配置</span>
+<span class="n">actual_sales</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">"実績売上を入力してください (円):"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">300000</span><span class="p">,</span> <span class="mi">150000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"現在の実績売上: </span><span class="si">{</span><span class="n">actual_sales</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+
+<span class="c1"># 2. 目標判定ロジック</span>
+<span class="k">if</span> <span class="n">actual_sales</span> <span class="o">&gt;=</span> <span class="n">target_sales</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="s2">"🎉 目標達成！おめでとうございます！素晴らしい営業成果です！"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">deficit</span> <span class="o">=</span> <span class="n">target_sales</span> <span class="o">-</span> <span class="n">actual_sales</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">"⚠️ 目標未達成。目標まであと 【</span><span class="si">{</span><span class="n">deficit</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円】 足りません。"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id26">
+<h3>課題 4 の解答例<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"🥞 プレミアム・パンケーキPOSレジ 🥞"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"トッピングを自由に組み合わせて、オリジナルのカスタムパンケーキをお見積もりできます。"</span><span class="p">)</span>
+
+<span class="n">base_price</span> <span class="o">=</span> <span class="mi">600</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"プレーンパンケーキ基本価格: </span><span class="si">{</span><span class="n">base_price</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">"🧀 トッピングの選択"</span><span class="p">)</span>
+
+<span class="n">add_ice</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span><span class="s2">"バニラアイス (+150円)"</span><span class="p">)</span>
+<span class="n">add_chocolate</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span><span class="s2">"チョコレートシロップ (+80円)"</span><span class="p">)</span>
+<span class="n">add_banana</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span><span class="s2">"完熟バナナスライス (+120円)"</span><span class="p">)</span>
+
+<span class="c1"># トッピング金額の動的な一括加算</span>
+<span class="n">topping_total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">if</span> <span class="n">add_ice</span><span class="p">:</span>
+    <span class="n">topping_total</span> <span class="o">+=</span> <span class="mi">150</span>
+<span class="k">if</span> <span class="n">add_chocolate</span><span class="p">:</span>
+    <span class="n">topping_total</span> <span class="o">+=</span> <span class="mi">80</span>
+<span class="k">if</span> <span class="n">add_banana</span><span class="p">:</span>
+    <span class="n">topping_total</span> <span class="o">+=</span> <span class="mi">120</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">"🔢 数量の選択"</span><span class="p">)</span>
+<span class="n">quantity</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">"数量を選んでください:"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># お見積総額の計算（優先順位カッコを忘れないこと！）</span>
+<span class="n">total</span> <span class="o">=</span> <span class="p">(</span><span class="n">base_price</span> <span class="o">+</span> <span class="n">topping_total</span><span class="p">)</span> <span class="o">*</span> <span class="n">quantity</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">"💳 お見積書（合計金額）"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"パンケーキセット 合計支払金額"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">total</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id27">
+<h3>課題 5 の解答例（最上級・集大成アプリ）<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"🎪 武蔵大学学園祭 総合POSシステム ☕"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"学園祭カフェ出店「しらきじカフェ」のiPad POSレジお見積もりシステムです。"</span><span class="p">)</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">"📋 注文入力"</span><span class="p">)</span>
+
+<span class="c1"># 1. テキスト入力の配置</span>
+<span class="n">customer_name</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">text_input</span><span class="p">(</span><span class="s2">"お客様のお名前を入力してください:"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s2">"ゲスト様"</span><span class="p">)</span>
+
+<span class="c1"># 2. セレクトボックスの配置</span>
+<span class="n">menu_item</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span>
+    <span class="s2">"メニューを選択してください:"</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">"タピオカミルクティー (500円)"</span><span class="p">,</span> <span class="s2">"自家製レモネード (450円)"</span><span class="p">,</span> <span class="s2">"宇治抹茶宇治金時 (600円)"</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="k">if</span> <span class="s2">"タピオカ"</span> <span class="ow">in</span> <span class="n">menu_item</span><span class="p">:</span>
+    <span class="n">base_price</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="k">elif</span> <span class="s2">"レモネード"</span> <span class="ow">in</span> <span class="n">menu_item</span><span class="p">:</span>
+    <span class="n">base_price</span> <span class="o">=</span> <span class="mi">450</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">base_price</span> <span class="o">=</span> <span class="mi">600</span>
+
+<span class="c1"># 3. 数量スライダーの配置</span>
+<span class="n">qty</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">"数量を選択してください:"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">"⚙️ 特典・追加オプション設定"</span><span class="p">)</span>
+<span class="c1"># 4. 特典チェックボックス</span>
+<span class="n">is_student</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span><span class="s2">"武蔵大学の学生・教職員割引 (10%OFF)"</span><span class="p">)</span>
+<span class="c1"># 5. 夜間割増チェックボックス</span>
+<span class="n">is_night</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span><span class="s2">"夜間営業対応 (+100円/個)"</span><span class="p">)</span>
+
+<span class="c1"># 6. 計算ロジック</span>
+<span class="n">night_charge</span> <span class="o">=</span> <span class="mi">100</span> <span class="k">if</span> <span class="n">is_night</span> <span class="k">else</span> <span class="mi">0</span>
+<span class="n">subtotal</span> <span class="o">=</span> <span class="p">(</span><span class="n">base_price</span> <span class="o">+</span> <span class="n">night_charge</span><span class="p">)</span> <span class="o">*</span> <span class="n">qty</span>
+
+<span class="k">if</span> <span class="n">is_student</span><span class="p">:</span>
+    <span class="n">total_amount</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">subtotal</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">total_amount</span> <span class="o">=</span> <span class="n">subtotal</span>
+
+<span class="c1"># 7. 表示とエラーハンドリング</span>
+<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">"🧾 お会計明細票"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">customer_name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">""</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"🚨 エラー：お名前が空欄です。お会計明細を処理できません。"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="sa">f</span><span class="s2">"--- </span><span class="si">{</span><span class="n">customer_name</span><span class="si">}</span><span class="s2"> のご注文お見積書を正常に出力しました ---"</span><span class="p">)</span>
+    
+    <span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">col3</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    
+    <span class="k">with</span> <span class="n">col1</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"**👤 お客様情報**"</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"お名前: </span><span class="si">{</span><span class="n">customer_name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"選択商品: </span><span class="si">{</span><span class="n">menu_item</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"合計点数: </span><span class="si">{</span><span class="n">qty</span><span class="si">}</span><span class="s2"> 個"</span><span class="p">)</span>
+        
+    <span class="k">with</span> <span class="n">col2</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"**🎟️ 特典・割増ステータス**"</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"学割10%OFF: </span><span class="si">{</span><span class="s1">'適用(10%引き)'</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">is_student</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">'なし'</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"夜間営業割増: </span><span class="si">{</span><span class="s1">'適用(+100円/個)'</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">is_night</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">'なし'</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        
+    <span class="k">with</span> <span class="n">col3</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"**💰 お支払総額**"</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"最終ご請求金額 (税込)"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">total_amount</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id28">
+<h2>📚 第5回のまとめと、次回の「データ・グラフ連動」へ向けて<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h2>
+<p>200分の集中講義、本当にお疲れ様でした！
+これまでは「黒い実行結果画面」に味気ない文字や画像が表示されるだけだったプログラムが、本日の授業を通じて、自分たちの手で「誰もがグリグリ動かせるお洒落なWebアプリ」に進化しました。</p>
+<section id="id29">
+<h3>✨ 本日の重要キーワード<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Streamlit</strong>: HTML/CSS/JS不要で、Pythonコードのみでプロ級のUIを自動構築する革新的Webフレームワーク。</p></li>
+<li><p><strong>localtunnel</strong>: クラウドの奥深く（Colab）で動いているWebサービスを、外部へ直結させるトンネリング技術。</p></li>
+<li><p><strong>8501ポート</strong>: Streamlitが外部からのアクセスを待機している、Colab内の標準の窓口番号。</p></li>
+<li><p><strong>Rerun（再実行）システム</strong>: ユーザーが操作を行うたびに、Pythonのコードが1行目から最後まで毎回すべて最初から実行され直す、Streamlitの最も重要なお約束ルール。</p></li>
+<li><p><strong>st.buttonの罠</strong>: ボタンは「押された瞬間だけTrueになり、他の操作をするとFalseに戻る」という、Rerunが原因で起きる初心者定番の仕様。</p></li>
+<li><p><strong>st.metric / st.columns</strong>: 画面を並列に並べ、KPIメーターを表示する、ダッシュボード制作のレイアウト手法。</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="faq">
+<h2>❓ よくあるエラーと対処法（FAQ）<a class="headerlink" href="#faq" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Q. localtunnel のURLを踏むと、真っ白な画面のまま「504 Gateway Timeout」と表示されてアプリが開きません。</strong></p>
+<ul>
+<li><p><strong>A.</strong> Colab上でStreamlitの起動セルが一時停止してしまっているか、途中でエラー停止している可能性があります。Colabに戻り、アプリ起動セル（手順C）をもう一度停止ボタンを押してから再起動し、新しく発行されたURLを踏み直してみてください。</p></li>
+</ul>
+</li>
+<li><p><strong>Q. app.pyを書き換えても、画面が前の状態のまま変わりません。</strong></p>
+<ul>
+<li><p><strong>A.</strong> 手順A（<code class="docutils literal notranslate"><span class="pre">%%writefile</span> <span class="pre">app.py</span></code>）のセルを再実行し忘れているか、Web画面の右上にある「Rerun（再読み込み）」をクリックし忘れています。コードを書き換えたら、必ず「Colabでセル実行」➡「Web画面でRerun」の2アクションを行う癖をつけましょう！</p></li>
+</ul>
+</li>
+<li><p><strong>Q. スライダーを動かそうとすると、画面全体が「TypeError: ...」や「NameError: ...」という赤いエラーで埋め尽くされます。</strong></p>
+<ul>
+<li><p><strong>A.</strong> 鋭いバグですね！それはスライダーが動いたことによる「Rerun（再実行）」の際、コードのどこかで定義し忘れた変数や、データ型の不整合（文字列に数値を掛け算しようとするなど）が発生し、Pythonがパニックを起こしたためです。エラーメッセージに表示されている「何行目でエラーが起きているか」をじっくり読み、お掃除しましょう。分からなければ、そのエラーを丸ごと生成AIに投げるのも賢い解決策です！</p></li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<section id="id30">
+<h3>🌟 次回の「本格データ・グラフダッシュボード構築」への架け橋<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h3>
+<p>本日学んだこの美しいUIシステムは、まだ手書きのダミーデータ（450円など）を使っているだけで、これまでに学んだ「Pandasによる大量データの処理」とは繋がっていません。</p>
+<p>次回（第6回）の <strong>「Webサービスの活用2」</strong> では、
+「セレクトボックスで店舗名を選ぶ」➡「Pandasが自動でその店舗の売上CSVをフィルタリングする」➡「Matplotlibが売上推移グラフを自動で描き、Streamlit上にリアルタイム埋め込みする」という、<strong>「データ ✕ UI ✕ グラフ」がすべて一本の論理回路で連動する、プロ仕様のデータ分析ダッシュボード</strong>を完成させます！</p>
+<p>本日手に入れた「アプリを作る翼」を活かして、さらにエキサイティングな領域へ進みましょう。次回も元気にお会いしましょう、本当にお疲れ様でした！</p>
+</section>
+</section>
 </section>
 
         </article>
@@ -392,7 +1461,7 @@
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-08-28</div>
+              Last updated on 2026-08-31</div>
           </div>
           <div class="right-details">
             
@@ -401,8 +1470,109 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">第5回 Webサービスの活用1</a><ul>
+<li><a class="reference internal" href="#id1">🎯 到達目標</a><ul>
+<li><a class="reference internal" href="#google-colab">練習問題のGoogle Colab起動</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">なぜデータを「アプリ」にするのか？（ダッシュボード化の意義）</a><ul>
+<li><a class="reference internal" href="#id3">データ分析を「社会や現場に届ける」最後の壁</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#google-colabweb">Google ColabにおけるWebアプリ開発の壁とトンネリング技術</a><ul>
+<li><a class="reference internal" href="#ip">セキュリティの鍵「IPアドレス」</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hello-world-a-b-c-40">5.3 実践ハンズオン：Hello Worldアプリの起動（手順A, B, C） (約40分)</a><ul>
+<li><a class="reference internal" href="#id4">ステップ 1: 必要なライブラリのインストール</a></li>
+<li><a class="reference internal" href="#a-writefile">🚀 手順A: アプリのソースコードを書き出す（<code class="docutils literal notranslate"><span class="pre">%%writefile</span></code>）</a></li>
+<li><a class="reference internal" href="#b-ip">🔑 手順B: トンネルの鍵（あなたのIPアドレス）を確認する</a></li>
+<li><a class="reference internal" href="#c">🌐 手順C: アプリをバックグラウンドで起動し、トンネルを開通する！</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#streamlit-30">5.4 Streamlitの表示系コマンドと入力部品ウィジェット (約30分)</a><ul>
+<li><a class="reference internal" href="#id5">1. 情報を伝える表示系コマンド</a></li>
+<li><a class="reference internal" href="#id6">2. ユーザーの入力を受け取るウィジェット（入力部品）</a><ul>
+<li><a class="reference internal" href="#st-selectbox">① ドロップダウンメニュー（<code class="docutils literal notranslate"><span class="pre">st.selectbox</span></code>）</a></li>
+<li><a class="reference internal" href="#st-slider">② 数値調整スライダー（<code class="docutils literal notranslate"><span class="pre">st.slider</span></code>）</a></li>
+<li><a class="reference internal" href="#st-checkbox">③ チェックボックス（<code class="docutils literal notranslate"><span class="pre">st.checkbox</span></code>）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pos-30">5.5 ハンズオン：自動計算POSレジアプリの作成 (約30分)</a></li>
+<li><a class="reference internal" href="#streamlitrerunst-button-30">5.6 最重要：Streamlitの動作メカニズム「Rerunシステム」と「st.buttonの罠」 (約30分)</a><ul>
+<li><a class="reference internal" href="#rerun">1. 「Rerun（再実行）」システムの真実</a></li>
+<li><a class="reference internal" href="#st-button">2. 初心者が100%はまる「st.button の消える罠」</a></li>
+<li><a class="reference internal" href="#id7">どうやって対策するのか？</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8">📝 授業内確認練習問題（理論・挙動チェック：5問） (約20分)</a><ul>
+<li><a class="reference internal" href="#web">練習問題 1: 従来のWeb開発との最大の違い</a></li>
+<li><a class="reference internal" href="#colab">練習問題 2: Colab特有の「窓口」と「トンネル」</a></li>
+<li><a class="reference internal" href="#id9">練習問題 3: スライダーを動かした時の「Rerun」の動き</a></li>
+<li><a class="reference internal" href="#id10">練習問題 4: チェックボックスの「戻り値（データ型）」</a></li>
+<li><a class="reference internal" href="#id11">練習問題 5: 「ボタンが消えるバグ」のデバッグ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id12">💻 総合演習課題（難易度別5問：時間外用）</a><ul>
+<li><a class="reference internal" href="#id13">課題 1: 割引率調整スライダーと価格シミュレーター（難易度：易）</a><ul>
+<li><a class="reference internal" href="#id14">🛠️ 課題1：教員用採点基準（10点満点）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id15">課題 2: カテゴリ選択に応じたメニューの動的絞り込み（難易度：易）</a><ul>
+<li><a class="reference internal" href="#id16">🛠️ 課題2：教員用採点基準（10点満点）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id17">課題 3: 店舗売上目標達成判定チェッカー（難易度：中）</a><ul>
+<li><a class="reference internal" href="#id18">🛠️ 課題3：教員用採点基準（10点満点）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pos">課題 4: チェックボックスによる複数トッピング複数加算POSレジ（難易度：中）</a><ul>
+<li><a class="reference internal" href="#id19">🛠️ 課題4：教員用採点基準（10点満点）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id20">課題 5: 【最上級・集大成】武蔵大学学園祭総合POS見積システム（難易度：難）</a><ul>
+<li><a class="reference internal" href="#id21">🛠️ 課題5：教員用採点基準（10点満点）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id22">💡 総合演習課題の解答例（教員用・自習用）</a><ul>
+<li><a class="reference internal" href="#id23">課題 1 の解答例</a></li>
+<li><a class="reference internal" href="#id24">課題 2 の解答例</a></li>
+<li><a class="reference internal" href="#id25">課題 3 の解答例</a></li>
+<li><a class="reference internal" href="#id26">課題 4 の解答例</a></li>
+<li><a class="reference internal" href="#id27">課題 5 の解答例（最上級・集大成アプリ）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id28">📚 第5回のまとめと、次回の「データ・グラフ連動」へ向けて</a><ul>
+<li><a class="reference internal" href="#id29">✨ 本日の重要キーワード</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#faq">❓ よくあるエラーと対処法（FAQ）</a><ul>
+<li><a class="reference internal" href="#id30">🌟 次回の「本格データ・グラフダッシュボード構築」への架け橋</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
