@@ -4,10 +4,22 @@
 
 ---
 
-## 🎯 本日の到達目標
+## 🎯 到達目標
 1.  **オープンデータ（Open Data）の社会的背景**、および市民がIT技術を用いて社会課題を解決する**「シビックテック（Civic Tech）」**の意義を説明できる。
 2.  **クリエイティブ・コモンズ（CC）ライセンス**の4つの基本マーク（BY, NC, ND, SA）を理解し、データの二次利用ルールを遵守できる。
 3.  **シビックテック**とは何かを理解する
+
+---
+
+### 練習問題のGoogle Colab起動
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](
+https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exercises/2026/02.programming_advanced_a/advanced_02.ipynb)
+
+1. 上記の「Open In Colab」をクリックして、Google Colabを起動させてください
+2. [ファイル] → [ドライブにコピーを保存] を選択して、Googleドライブにコピーを保存してください
+3. 保存が成功すると，Googleドライブの「マイドライブ」 →「Colab Notebooks」にコピーしたファイルが保存されます。
+4. GoogleドライブにコピーしたGoogle ColabのNotebooksを開いてください
+5. 開いたGoogle ColabのNotebooksで作業をしてください
 
 ---
 
