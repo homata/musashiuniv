@@ -7,12 +7,14 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="2026/02.programming_advanced_a/markdown/advanced_07.html" />
 <meta property="og:site_name" content="musashiuniv" />
+<meta property="og:description" content="GISの仕組みとGeoPandasの第一歩 🎯 本日の到達目標: GISの基本的な仕組み（レイヤー構造） を、具体的なビジネスや社会課題解決の例と結びつけて説明できる。, 「地理座標系（経緯度）」と「投影座標系（平面）」の違い を理解し、地図が歪む理由を説明できる。, 代表的な地図データ形式（Shapefile, GeoJSON）の特徴と用途、およびShapefileのファイル破損の罠を回避..." />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2026_02.programming_advanced_a_markdown_advanced_07_cf021202.png" />
-<meta property="og:image:alt" content="" />
+<meta property="og:image" content="/_images/social_previews/summary_2026_02.programming_advanced_a_markdown_advanced_07_76510798.png" />
+<meta property="og:image:alt" content="GISの仕組みとGeoPandasの第一歩 🎯 本日の到達目標: GISの基本的な仕組み（レイヤー構造） を、具体的なビジネスや社会課題解決の例と結びつけて説明できる。, 「地理座標系（経緯度）」と「投影座標系（平面）」の違い を理解し、地図が歪む理由を説明できる。, 代表的な地図データ形式（Shapefile,..." />
+<meta name="description" content="GISの仕組みとGeoPandasの第一歩 🎯 本日の到達目標: GISの基本的な仕組み（レイヤー構造） を、具体的なビジネスや社会課題解決の例と結びつけて説明できる。, 「地理座標系（経緯度）」と「投影座標系（平面）」の違い を理解し、地図が歪む理由を説明できる。, 代表的な地図データ形式（Shapefile, GeoJSON）の特徴と用途、およびShapefileのファイル破損の罠を回避..." />
 <meta name="twitter:card" content="summary_large_image" />
-<link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" /><link rel="next" title="第8回 地理空間データの活⽤1" href="advanced_08.html" /><link rel="prev" title="第6回 Webサービスの活用2" href="advanced_06.html" />
+<link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" /><link rel="next" title="第8回 地理空間データの活用1" href="advanced_08.html" /><link rel="prev" title="第6回 Webサービスの活用2" href="advanced_06.html" />
 
     <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
         <title>第7回 地理空間情報の基礎 - Pythonプログラミング入門</title>
@@ -189,7 +191,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -297,15 +299,10 @@
 <li class="toctree-l3"><a class="reference internal" href="advanced_04.html">第4回 データ解析</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_05.html">第5回 Webサービスの活用1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_06.html">第6回 Webサービスの活用2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#id19">--- 2. サイドバーの設定 ---</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#pandas">--- 3. Pandasによる連動データの抽出 ---</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#id20">--- 4. メイン画面のデザイン ---</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#kpi">--- 5. カラム分割による主要業績指標 (KPI) ---</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#id21">統計量を計算</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#id22">画面を横に分割して、左にグラフ、右に生データをスッキリ配置</a></li>
 <li class="toctree-l3 current current-page"><a class="current reference internal" href="#">第7回 地理空間情報の基礎</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_08.html">第8回 地理空間データの活⽤1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_09.html">第9回 地理空間データの活⽤2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_08.html">第8回 地理空間データの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_09.html">第9回 地理空間データの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_09.html#id16">💻 総合演習課題（実技評価テスト・宿題用：5問）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
@@ -356,7 +353,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -364,6 +361,701 @@
         <article role="main" id="furo-main-content">
           <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>第7回 地理空間情報の基礎<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<p>GISの仕組みとGeoPandasの第一歩</p>
+<hr class="docutils" />
+<section id="id2">
+<h2>🎯 本日の到達目標<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>GISの基本的な仕組み（レイヤー構造） を、具体的なビジネスや社会課題解決の例と結びつけて説明できる。</p></li>
+<li><p>「地理座標系（経緯度）」と「投影座標系（平面）」の違い を理解し、地図が歪む理由を説明できる。</p></li>
+<li><p>代表的な地図データ形式（Shapefile, GeoJSON）の特徴と用途、およびShapefileのファイル破損の罠を回避できる。</p></li>
+<li><p>GeoPandas（ジオパンダス） ライブラリを読み込み、位置情報が含まれるデータ（Geometry列）を操作・条件抽出してプロットできる。</p></li>
+<li><p>Point（経度, 緯度）の順番ルール を正確に守り、プログラム上での位置情報の取り扱いに関するバグを自力でデバッグできる。</p></li>
+</ol>
+<hr class="docutils" />
+<section id="google-colab">
+<h3>練習問題のGoogle Colab起動<a class="headerlink" href="#google-colab" title="Link to this heading">¶</a></h3>
+<p><a class="reference external" href="https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exercises/2026/02.programming_advanced_a/advanced_07.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<ol class="arabic simple">
+<li><p>上記の「Open In Colab」をクリックして、Google Colabを起動させてください</p></li>
+<li><p>[ファイル] → [ドライブにコピーを保存] を選択して、Googleドライブにコピーを保存してください</p></li>
+<li><p>保存が成功すると，Googleドライブの「マイドライブ」 →「Colab Notebooks」にコピーしたファイルが保存されます。</p></li>
+<li><p>GoogleドライブにコピーしたGoogle ColabのNotebooksを開いてください</p></li>
+<li><p>開いたGoogle ColabのNotebooksで作業をしてください</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="gis">
+<h2>GIS（地理空間情報システム）とは何か？<a class="headerlink" href="#gis" title="Link to this heading">¶</a></h2>
+<section id="id3">
+<h3>地図は「パンケーキの重ね合わせ」である<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p>GIS（地理空間情報システム）とは、一言で言えば「地球上にあるあらゆるモノや出来事の位置情報を、
+コンピュータ上で重ね合わせて分析・視覚化するシステム」です。
+最も重要な概念が、地図を複数の「レイヤー（層）」に切り分けて管理するということです。</p>
+<p>パンケーキに例えてみましょう！</p>
+<ul class="simple">
+<li><p>一番下のパンケーキ：「地形・道路・河川（土台のレイヤー）」</p></li>
+<li><p>その上のホイップクリーム：「カフェや避難所の位置（点データのレイヤー）」</p></li>
+<li><p>その上のイチゴ：「ハザードマップの浸水想定エリア（面データのレイヤー）」</p></li>
+<li><p>その上のシロップ：「時間帯別の人流・人口密度のデータ（動的なデータレイヤー）」</p></li>
+</ul>
+<p>これらをコンピュータの中で1枚に「綺麗に重ね合わせる（オーバーレイ）」ことで、
+「川の近くで、人通りが多く、浸水のリスクが少ない場所に、新しく店舗を出店する、あるいは避難所を新設するにはどこが最適か？」
+という高度な都市計画やビジネス分析が、一瞬でできるようになります。</p>
+<p>【GISのレイヤー構造（イメージ図）】</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  [ レイヤー 4: 店舗 ]    🍒 カフェの位置（点データ：Point）
+         │
+  [ レイヤー 3: 道路 ]    🛣️ 道路や鉄道路線（線データ：LineString）
+         │
+  [ レイヤー 2: 行政区 ]  🟩 地区区画や浸水エリア（面データ：Polygon）
+         │
+  [ レイヤー 1: 地形 ]    🗺️ 背景の白地図（ベースマップ）
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  【ガッチャンコ！】 ＝ 1枚の便利な「防災マップ」や「ビジネスエリア分析マップ」の完成！
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3>空間データの表し方：ベクタデータ と ラスタデータ<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p>コンピュータが地図の形を覚える方法には、大きく分けて「ベクタ（Vector）」と「ラスタ（Raster）」の2つの型があります。</p>
+<section id="id5">
+<h4>1. ベクタデータ（幾何学データ）<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<p>位置を「座標（数値）」の組み合わせで表す方法です。</p>
+<ul class="simple">
+<li><p>特徴：どれだけ地図を拡大（ズームイン）しても、輪郭がカクカクしたり、ぼやけたりせず、常にシャープで綺麗な線が描かれます。データサイズも小さくて済みます。</p></li>
+<li><p>種類：</p>
+<ul>
+<li><p>点（Point）：店舗、駅、避難所の場所（1組の [緯度, 経度] ）。</p></li>
+<li><p>線（LineString）：道路、線路、河川（点の並び <code class="docutils literal notranslate"><span class="pre">[[x1,y1],</span> <span class="pre">[x2,y2]...]</span></code>）。</p></li>
+<li><p>面（Polygon）：豊島区、東京都、日本国、浸水エリア（始点と終点が繋がった閉じたエリア）。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id6">
+<h4>2. ラスタデータ（グリッド画像データ）<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<p>地図を細かな「マス目（ピクセル）」の集合体として、写真のように表す方法です。</p>
+<ul class="simple">
+<li><p>特徴：人工衛星から撮影した地表の写真（航空写真）や、気象庁の降雨レーダー画像（アメダス）など、グラデーションや複雑な色彩を表現するのに適しています。ただし、ズームインすると「ピクセル（モザイク）」が目立ち、ぼやけます。</p></li>
+</ul>
+<p>【ベクタ（滑らか） vs ラスタ（マス目）の比較】</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  【ベクタデータ（Vector）】             【ラスタデータ（Raster）】
+       (点・線・面で記録)                   (ピクセルの集まりで記録)
+            ╱                                ░ ░ █ ░ ░
+          ╱                                  ░ █ ░ █ ░
+        ╱                                    █ ░ ░ ░ █
+      (どれだけ拡大しても滑らか！)           (拡大するとギザギザになる！)
+</pre></div>
+</div>
+<p>データ分析やビジネス分析では、主に集計や距離計算が圧倒的に得意な「ベクタデータ（点・線・面）」をメインに使用します。</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id7">
+<h2>丸い地球をどうやって平らにする？<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<p>幾何学の理論パートです。しかし、数式は一切使いません。 イメージで理解しましょう。</p>
+<section id="id8">
+<h3>地理座標系（丸い地球を「角度」で表す）<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p>地球は、実は完全な球体ではなく、自転の遠心力で少し横に潰れた「楕円体」をしています。
+この丸い地球上の場所を示すために、地球の中心からの「角度」を使って場所を表す仕組みを地理座標系（Geographic Coordinate System: GCS）と呼びます。</p>
+<ul class="simple">
+<li><p>緯度（Latitude）：赤道を0度とし、北（北緯）に90度、南（南緯）に90度まで測る角度（Y軸）。</p></li>
+<li><p>経度（Longitude）：イギリスの旧グリニッジ天文台を通る線を0度（本初子午線）とし、東（東経）に180度、西（西経）に180度まで測る角度（X軸）。</p></li>
+</ul>
+<p>世界共通で使われている代表的な地理座標系が 「WGS84」 という世界測地系です。
+皆さんのスマートフォンに入っているGPSや、Google Mapsも標準ではこのWGS84（経度・緯度の角度データ）です。</p>
+</section>
+<section id="id9">
+<h3>投影座標系（丸い地球を無理やり「平面」にする）<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<p>地理座標系のデータ（度単位）のままでは、データ分析において非常に困ったことが起きます。</p>
+<ul class="simple">
+<li><p>「店舗から駅まで何メートル？」</p></li>
+<li><p>「この公園の面積は何平方メートル？」
+という計算をするのが、地球が丸いために非常に難しくなるのです。</p></li>
+</ul>
+<p>そこで、丸い地球を「無理やり引っ張って平らな紙に投影（印刷）」し、単位を「度（角度）」から「メートル（長さ）」に変換した仕組みを投影座標系（Projected Coordinate System: PCS）と呼びます。</p>
+<p>ここで、おいしい「みかんの皮」を想像してください。
+丸いみかんの皮を、破いたり引き伸ばしたりせずに、机の上に「完全な平らな四角形」として広げることはできますか？
+絶対にできませんよね。どうしても途中で破けてしまうか、皮のどこかをググッと引き伸ばさないと、平らな四角形にはなりません。</p>
+<p>【投影のイメージ（みかんの皮）】</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>      丸いみかん（地球：角度）         平面に広げた皮（世界地図：メートル）
+         ╭━━━━━╮                     ┌───────────────┐
+        ┃   ●   ┃   ──投影(flatten)─▶ │   ●   (歪み)   │
+         ╰━━━━━╯                     └───────────────┘
+      「角度は正確！」                「距離や面積が不自然に引き伸ばされる！」
+</pre></div>
+</div>
+<p>このように、丸い球体を平らな平面に投影するときには、必ず「面積」「距離」「角度」のどれかが犠牲（歪む）になります。</p>
+<ul class="simple">
+<li><p>メルカトル図法：</p>
+<ul>
+<li><p>世界地図でおなじみ。角度が正しいため大航海時代に船の羅針盤で多用されました。</p></li>
+<li><p>ただし、北極や南極に近づくほど面積が異常に引き伸ばされるため、ロシアやグリーンランドが実物より何倍も巨大に描かれる（面積の歪みが極大）というデメリットがあります。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id10">
+<h3>日本国内の正確な投影：平面直角座標系<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<p>「日本国内で、面積や距離を1cmの狂いもなく正確に測定・分析したい」という場合、地球全体をカバーするメルカトル図法を使うと、歪みが大きすぎて使えません。</p>
+<p>そこで、国土交通省の特別の機関である国土地理院は日本を南北に細長く19のエリアに分割し、それぞれのエリアの「中心の基準点（原点）」付近だけを平らにして、歪みを極限までゼロに抑える特別な投影系を作りました。これを「平面直角座標系（JGD2011）」と呼びます。</p>
+<ul class="simple">
+<li><p>第9系（EPSG:6677）：東京、神奈川、千葉、埼玉などの「関東エリア」を正確に測るための平面メートル座標系。関東を分析する時は、常にこの座標系に変換（プロジェクション）して、メートル単位で計算します。</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id11">
+<h2>地理空間データの代表的なファイル形式<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<p>実務のデータ分析で遭遇する、地図データの代表的なファイル形式を2つ覚えましょう。</p>
+<section id="shapefile-shp-31">
+<h3>Shapefile（シェープファイル：.shp）の「3つで1つ」の罠<a class="headerlink" href="#shapefile-shp-31" title="Link to this heading">¶</a></h3>
+<p>Shapefileは、アメリカのESRI社が開発した、GISの世界における「超定番（長老）」のファイル形式です。
+官公庁のオープンデータや市区町村の境界線は、現在もほぼこの形式で配布されています。</p>
+<p>【最大の罠：.shp だけでは動かない！】  　
+「都道府県のデータが欲しいので、<code class="docutils literal notranslate"><span class="pre">prefecture.shp</span></code> というファイルだけを送ってください」
+これは絶対にやってはいけない致命的なミスです！</p>
+<p>Shapefileは、実は1つのファイルではなく、「同じ名前の複数のファイルがセットになっており、同じフォルダ内にセットで存在する」構成となっています。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.shp</span></code>：位置の「形（ジオメトリ：点・線・面）」が保存されているファイル。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.dbf</span></code>：各図形に関連づけられた「属性データ（名前や人口などの表データ）」が保存されているファイル。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.shx</span></code>：位置と属性データを素早く検索するための「インデックス」ファイル。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.prj</span></code>*（推奨）：その地図データが「どの座標系（WGS84か、平面直角座標系か）」で作られているかを記録したファイル。これが無いと地図がどこにプロットされるべきか迷子になります。</p></li>
+</ul>
+<p>【Shapefileの内部構造（イメージ図）】</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  同じフォルダ内：
+  ├── 📂 tokyo_map.shp  (形データ：PointやPolygon)
+  ├── 📂 tokyo_map.dbf  (属性データ：人口や店舗名などのエクセル表)   👈 すべてセットで1つ！
+  ├── 📂 tokyo_map.shx  (検索用の接着剤)                             どれが欠けてもエラーで死ぬ！
+  └── 📂 tokyo_map.prj  (座標系の案内紙: EPSG番号など)
+</pre></div>
+</div>
+<p>※ Shapefileを他人に送る時や、Colabにアップロードする時は、<code class="docutils literal notranslate"><span class="pre">.shp</span></code> だけでなく、<code class="docutils literal notranslate"><span class="pre">.dbf</span></code> や <code class="docutils literal notranslate"><span class="pre">.shx</span></code> などすべてのセットをZIPファイル等に固めて一緒に扱う必要があります。</p>
+</section>
+<section id="geojson-geojson">
+<h3>GeoJSON（ジオジェイソン：.geojson）<a class="headerlink" href="#geojson-geojson" title="Link to this heading">¶</a></h3>
+<p>Webアプリやプログラミングの世界におけるメインとなる形式です。
+中身は、「JSON（辞書形式のテキスト）」を拡張しただけのシンプルなテキストファイルです。</p>
+<ul class="simple">
+<li><p>特徴：</p>
+<ul>
+<li><p>1つのファイル（<code class="docutils literal notranslate"><span class="pre">.geojson</span></code>）の中に、形データも属性データも座標系情報もすべて美しく収まっています。</p></li>
+<li><p>テキストデータなので、Pythonで開きやすく、Webブラウザの地図アプリとも非常に相性が良いです。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="geopandas">
+<h2>GeoPandasの導入<a class="headerlink" href="#geopandas" title="Link to this heading">¶</a></h2>
+<p>Pythonコードを動かして、地図空間データを操作してみます
+Pandasはエクセルのような表データを扱いましたが、GeoPandas（ジオパンダス）は、その表の中に「形や位置情報（Geometry：ジオメトリ）」の列を1つ追加した、地図分析・可視化ライブラリです。</p>
+<p>通常のPandasの文法（<code class="docutils literal notranslate"><span class="pre">.head()</span></code>, <code class="docutils literal notranslate"><span class="pre">groupby</span></code>, 条件抽出 <code class="docutils literal notranslate"><span class="pre">df[df[...]</span> <span class="pre">==</span> <span class="pre">...]</span></code>）が、そのまま使えるます。</p>
+<section id="id12">
+<h3>Google Colabの環境構築<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<p>Google Colabには標準でGeoPandasが入っていますが、時々バージョンの不整合で可視化の際に赤いエラーが出ることがあります。まずは環境を安全に整えるために、以下の「おまじない」セルを実行しましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># （準備）地図データの日本語化ライブラリ、geodatasetsとGeoPandasのインポート</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="n">japanize</span><span class="o">-</span><span class="n">matplotlib</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="n">geodatasets</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geodatasets</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">japanize_matplotlib</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"GeoPandasのインポートに成功しました！"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"GeoPandasバージョン:"</span><span class="p">,</span> <span class="n">gpd</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id13">
+<h3>世界地図データの読み込みと描画<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<p>練習用の「世界地図データ（世界各国の境界線ポリゴン）」を読み込みます。</p>
+<section id="natural-earth">
+<h4>Natural Earthデータ<a class="headerlink" href="#natural-earth" title="Link to this heading">¶</a></h4>
+<p>Natural Earth は、商用・非商用問わず誰でも無料で自由に利用できる、パブリックドメインのオープンな世界地図データセット</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.naturalearthdata.com/">Natural Earthの公式サイト</a></p></li>
+<li><p><a class="reference external" href="https://www.naturalearthdata.com/downloads/">データダウンロードページ</a></p></li>
+</ul>
+<p><strong>主な特徴</strong></p>
+<ul class="simple">
+<li><p>無料かつ自由な利用: パブリックドメインで提供されているため、クレジット表記や許可なしに商用・非商用を問わず自由に使用・改変できます。</p></li>
+<li><p>3つの縮尺（スケール）: 1:10m（詳細）、1:50m（中縮尺）、1:110m（小縮尺・全体）の3つの異なるスケールでデータが用意されており、用途に合わせた使い分けが可能である。</p></li>
+<li><p>豊富なデータ種類: 海岸線や国境などの政治的データ（Cultural）と、山や川、海洋などの自然的データ（Physical）が、ベクター形式（ポイント・ライン・ポリゴン）やラスター形式（地形陰影など）で揃っている。</p>
+<ul>
+<li><p>Cultural（文化的要素）: 国境線（Admin 0）、都道府県・州境（Admin 1）、都市、道路など</p></li>
+<li><p>Physical（物理的要素）: 海岸線、湖、河川、島など</p></li>
+<li><p>Raster（ラスタデータ）: 地形に陰影をつけた画像データなど</p></li>
+</ul>
+</li>
+<li><p>GISソフトとの高い親和性: QGIS や ArcGIS、各種プログラミング言語（PythonのGeoPandasやRなど）の地図作成・地理空間情報の可視化で広く活用されている。</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 世界地図データを読み込む</span>
+<span class="n">backup_url</span> <span class="o">=</span> <span class="s2">"https://raw.githubusercontent.com/homata/musashiuniv/master/data/ne_110m_admin_0_countries.zip"</span>
+<span class="n">world</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">backup_url</span><span class="p">)</span>
+
+<span class="c1"># カラム名を小文字にする</span>
+<span class="n">world</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>  
+
+<span class="c1"># 後位互換の為に変更する</span>
+<span class="k">if</span> <span class="s1">'gdp_md_est'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">world</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="s1">'gdp_md'</span> <span class="ow">in</span> <span class="n">world</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">world</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">'gdp_md'</span><span class="p">:</span> <span class="s1">'gdp_md_est'</span><span class="p">})</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">world</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">--- 世界地図データのデータフレーム（DataFrame） ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">world</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>通常のPandasと全く同じ表形式ですが、一番右端に <code class="docutils literal notranslate"><span class="pre">geometry</span></code>（ジオメトリ） という列があります。<br />
+ここに <code class="docutils literal notranslate"><span class="pre">MULTIPOLYGON</span></code>（複数の多角形：国境線で囲まれた面）などの位置情報がギッシャーリ詰まっています。</p>
+<p>この <code class="docutils literal notranslate"><span class="pre">world</span></code> に対して、<code class="docutils literal notranslate"><span class="pre">.plot()</span></code> メソッドを呼び出すだけで、GeoPandasが自動的に幾何学座標を計算し、一瞬で世界地図を描画してくれます</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 世界地図をプロット</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># world.plot() に ax(描画キャンバス) を指定してプロットします</span>
+<span class="n">world</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'lightgreen'</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'white'</span><span class="p">)</span>
+
+<span class="c1"># グラフ（地図）の装飾</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"GeoPandasで描いた世界地図"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"経度 (Longitude)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"緯度 (Latitude)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="pandas">
+<h3>特定のエリアだけを切り出す（Pandasの知識の応用）<a class="headerlink" href="#pandas" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">continent</span></code>（大陸名）が <code class="docutils literal notranslate"><span class="pre">&quot;Asia&quot;</span></code>（アジア）の国だけを抽出して、アジアだけの部分地図にしてみます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># アジア大陸の国だけを条件抽出</span>
+<span class="n">asia_countries</span> <span class="o">=</span> <span class="n">world</span><span class="p">[</span><span class="n">world</span><span class="p">[</span><span class="s2">"continent"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Asia"</span><span class="p">]</span>
+
+<span class="c1"># 画面に表の一部を表示して確認</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"アジア大陸の国々の数: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">asia_countries</span><span class="p">)</span><span class="si">}</span><span class="s2"> ヶ国"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">asia_countries</span><span class="p">[[</span><span class="s2">"name"</span><span class="p">,</span> <span class="s2">"gdp_md_est"</span><span class="p">,</span> <span class="s2">"geometry"</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># アジア地図のプロット</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="c1"># color=塗りつぶしの色, edgecolor=国境線の色</span>
+<span class="n">asia_countries</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'skyblue'</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'darkblue'</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"アジア大陸の国々の分布"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"経度"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"緯度"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">':'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id14">
+<h2>練習問題（5問）<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
+<section id="id15">
+<h3>練習問題 1: GISのレイヤー概念<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<p>GISで、地図を「道路」「店舗」「河川」といった異なる情報の層に切り分けて重ね合わせて分析する仕組みのことを、英語で何と呼ぶでしょうか？
+また、拡大しても形が一切劣化しない「点・線・面」の幾何学データの種類を何と呼ぶでしょうか？</p>
+<details>
+<summary>👉 練習問題 1 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p>正解：</p>
+<ul>
+<li><p>地図を重ね合わせる層の仕組み：「レイヤー（Layer）構造」</p></li>
+<li><p>劣化しない幾何学データ：「ベクタ（Vector）データ」</p></li>
+</ul>
+</li>
+<li><p>解説：</p>
+<ul>
+<li><p>地図は、1枚の巨大な絵として管理されているのではなく、「ベース地図」「道路」「建物」といった透明なシート（レイヤー）をコンピュータ上で何層も重ね合わせる（オーバーレイ）ことで、自由な分析を可能にしています。</p></li>
+<li><p>拡大するとギザギザにぼやける写真は「ラスタデータ」であり、数値（座標）で形を管理し、何倍に拡大しても滑らかなままの図形データを「ベクタデータ」と呼びます。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id16">
+<h3>練習問題 2: 座標系とみかんの皮の罠<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>地球の形をそのまま「角度（経度・緯度）」で表現した座標系を ( A ) 座標系と呼びます。</p></li>
+<li><p>丸い地球を無理やり平らに引き伸ばし、単位を「メートル（長さ）」に直して距離や面積を計りやすくした座標系を ( B ) 座標系と呼びます。</p></li>
+<li><p>日本国内の特定のエリア（例えば関東地域など）を歪みほぼゼロで正確に測定するために、日本を19地域に分割して定義された平面座標系を ( C ) と呼びます。
+空欄(A), (B), (C)に入る適切な用語の組み合わせを答えてください。</p></li>
+</ol>
+<details>
+<summary>👉 練習問題 2 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p>正解：</p>
+<ul>
+<li><p>( A ) = 地理（ちり）座標系</p></li>
+<li><p>( B ) = 投影（とうえい）座標系</p></li>
+<li><p>( C ) = 平面直角座標系（JGD2011）</p></li>
+</ul>
+</li>
+<li><p>解説：</p>
+<ul>
+<li><p>GPSなどで使われる「経度・緯度（WGS84など）」は地理座標系であり、単位は「度」です。</p></li>
+<li><p>みかんの皮を広げるように、無理やり平らにしてメートル単位にしたものが投影座標系です。</p></li>
+<li><p>日本独自の、狭い地域ごとに歪みを完全に封じ込めた投影系が、国土地理院の定める平面直角座標系（関東地域は「第9系：EPSG:6677」など）です。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="shapefile">
+<h3>練習問題 3: Shapefileの「長老」問題<a class="headerlink" href="#shapefile" title="Link to this heading">¶</a></h3>
+<p>自治体からShapefile形式の避難所データをダウンロードしてGoogle Colabで開こうとしたが、どうしてもエラーが起きて読み込めない。
+確認したところ、Google Colabのフォルダの中に <code class="docutils literal notranslate"><span class="pre">shelter.shp</span></code> というファイルだけが単体でアップロードされていました。
+「何が原因で、どうすれば解決するか」を考えてください。</p>
+<details>
+<summary>👉 練習問題 3 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p>正解：</p>
+<ul>
+<li><p>「原因」：Shapefile（シェープファイル）は <code class="docutils literal notranslate"><span class="pre">.shp</span></code> だけでは動きません。図形の中身（属性データ）を記録した <code class="docutils literal notranslate"><span class="pre">.dbf</span></code> や、検索用インデックスの <code class="docutils literal notranslate"><span class="pre">.shx</span></code> などの異なる拡張子のファイルが同じ名前でセットになって初めて動く「3つで1つ」のルールがあるからです。</p></li>
+<li><p>「解決策」：自治体の配布サイトからダウンロードしたZIPファイルを一度パソコンで解凍し、中に入っている <code class="docutils literal notranslate"><span class="pre">.shp</span></code>, <code class="docutils literal notranslate"><span class="pre">.dbf</span></code>, <code class="docutils literal notranslate"><span class="pre">.shx</span></code> などのファイルをすべてセットで同じGoogle Colabのフォルダにアップロード（またはZIPごとアップロードして解凍）してください。</p></li>
+</ul>
+</li>
+<li><p>解説：</p>
+<ul>
+<li><p>Shapefileをやり取りする時は、必ず「複数ファイルがセットで同じ名前でフォルダに入っているか」を確認をします。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="point">
+<h3>練習問題 4: 地図上の Point 定義における「全人類共通の罠」<a class="headerlink" href="#point" title="Link to this heading">¶</a></h3>
+<p>Pythonの地図幾何学ライブラリ（shapely）を使って、経度 139.75 度、緯度 35.68 度（皇居付近）の位置にピンを立てるため、以下のコードを書きました。</p>
+<p><code class="docutils literal notranslate"><span class="pre">point</span> <span class="pre">=</span> <span class="pre">Point(35.68,</span> <span class="pre">139.75)</span></code></p>
+<p>このコードには、実行したときに全く見当違いの場所（例えば南極の近くや、海の上）に位置がズレてしまう致命的なバグが潜んでいます。
+このバグの原因と、正しいコードの書き方を答えてください。</p>
+<details>
+<summary>👉 練習問題 4 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p>正解：</p>
+<ul>
+<li><p>バグの原因：Pointを定義する際は、日常会話の「緯度・経度」の順番ではなく、数学のグラフと同じ <code class="docutils literal notranslate"><span class="pre">Point(経度,</span> <span class="pre">緯度)</span></code> （ X軸 = 経度, Y軸 = 緯度 ） の順番で渡す必要があるから。</p></li>
+<li><p>正しいコード： <code class="docutils literal notranslate"><span class="pre">point</span> <span class="pre">=</span> <span class="pre">Point(139.75,</span> <span class="pre">35.68)</span></code></p></li>
+</ul>
+</li>
+<li><p>解説：</p>
+<ul>
+<li><p>「緯度経度」という表現から、<code class="docutils literal notranslate"><span class="pre">Point(緯度,</span> <span class="pre">経度)</span></code> と書いてしまい、日本の皇居のはずが「経度35.68度（サウジアラビア付近）、緯度139.75度（南極大陸付近）」にピンが表示されます。</p></li>
+<li><p>「Pointは X, Y の順。X軸は横に動く『経度』、Y軸は縦に動く『緯度』！」と覚えてください</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="geopandascrs">
+<h3>練習問題 5: GeoPandasの「crs」属性<a class="headerlink" href="#geopandascrs" title="Link to this heading">¶</a></h3>
+<p>GeoPandasで読み込んだ地理空間データフレーム（GeoDataFrame）が、現在「世界測地系WGS84（経緯度：度単位）」なのか「平面直角座標系（メートル単位）」なのかを、プログラム上で確認したいです。
+データフレームが <code class="docutils literal notranslate"><span class="pre">gdf</span></code> という名前のとき、座標参照系情報を取得・確認するためのプロパティ（属性）は何でしょうか？</p>
+<details>
+<summary>👉 練習問題 5 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p>正解： <code class="docutils literal notranslate"><span class="pre">gdf.crs</span></code></p></li>
+<li><p>解説：</p>
+<ul>
+<li><p>データフレーム名の後に <code class="docutils literal notranslate"><span class="pre">.crs</span></code> (Coordinate Reference System: 座標参照系) を添えて実行するだけで、現在の座標参照系が「EPSG:4326（WGS84）」なのか「EPSG:6677（平面直角座標9系）」なのかといった詳細なシステム情報を一瞬で確認できます。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id17">
+<h2>💻 演習（5問）<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h2>
+<hr class="docutils" />
+<section id="id18">
+<h3>準備<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<p>地図データの日本語化ライブラリ、geodatasetsとGeoPandasのインポート</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="n">japanize</span><span class="o">-</span><span class="n">matplotlib</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="n">geodatasets</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geodatasets</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">japanize_matplotlib</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"GeoPandasのインポートに成功しました！"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"GeoPandasバージョン:"</span><span class="p">,</span> <span class="n">gpd</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>世界地図データを読み込む</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">backup_url</span> <span class="o">=</span> <span class="s2">"https://raw.githubusercontent.com/homata/musashiuniv/master/data/ne_110m_admin_0_countries.zip"</span>
+<span class="n">world</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">backup_url</span><span class="p">)</span>
+
+<span class="c1"># カラム名を小文字にする</span>
+<span class="n">world</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>  
+
+<span class="c1"># 後位互換の為に変更する</span>
+<span class="k">if</span> <span class="s1">'gdp_md_est'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">world</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="s1">'gdp_md'</span> <span class="ow">in</span> <span class="n">world</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">world</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">'gdp_md'</span><span class="p">:</span> <span class="s1">'gdp_md_est'</span><span class="p">})</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">world</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">--- 世界地図データのデータフレーム（DataFrame） ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">world</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id19">
+<h3>演習<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+</section>
+<section id="europe">
+<h3>演習 1: ヨーロッパ（Europe）大陸の切り出しと地図描画<a class="headerlink" href="#europe" title="Link to this heading">¶</a></h3>
+<p>これまでの世界地図データフレーム <code class="docutils literal notranslate"><span class="pre">world</span></code> から、「continent」が「Europe」の国々だけを条件抽出し、国境線を「黒色（black）」、塗りつぶしを「オレンジ色（orange）」にした、美しいヨーロッパの地域地図を描画してください。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: 1. continent が Europe の国だけを抽出し、df_europe に代入する</span>
+<span class="n">df_europe</span> <span class="o">=</span> 
+
+<span class="c1"># 地図の描画（ここを埋めて完成させてください）</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># TODO: 2. df_europe を、国境線を「black」、塗りつぶしを「orange」にして ax 上にプロットする</span>
+<span class="n">df_europe</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>               <span class="p">)</span>
+
+<span class="c1"># グラフ（地図）の装飾</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"ヨーロッパ諸国の地域地図 🇪🇺"</span><span class="p">)</span>
+<span class="c1"># ヨーロッパ周辺が見えやすいように経緯度の表示範囲（ズーム）を指定します</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span> <span class="c1"># 経度の範囲</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">34</span><span class="p">,</span> <span class="mi">72</span><span class="p">)</span>  <span class="c1"># 緯度の範囲</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習 1 の解答コードを見る（クリックで展開）</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. ヨーロッパの条件抽出</span>
+<span class="n">df_europe</span> <span class="o">=</span> <span class="n">world</span><span class="p">[</span><span class="n">world</span><span class="p">[</span><span class="s2">"continent"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Europe"</span><span class="p">]</span>
+
+<span class="c1"># 地図の描画（ここを埋めて完成させてください）</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># 2. 地図の描画設定</span>
+<span class="n">df_europe</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'orange'</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'black'</span><span class="p">)</span>
+
+<span class="c1"># グラフ（地図）の装飾</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"ヨーロッパ諸国の地域地図"</span><span class="p">)</span>
+<span class="c1"># ヨーロッパ周辺が見えやすいように経緯度の表示範囲（ズーム）を指定します</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span> <span class="c1"># 経度の範囲</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">34</span><span class="p">,</span> <span class="mi">72</span><span class="p">)</span>  <span class="c1"># 緯度の範囲</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id20">
+<h3>演習 2: 世界の「人口が少ない国（ワースト5）」のデータ抽出とソート<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<p>データフレーム <code class="docutils literal notranslate"><span class="pre">world</span></code> の中から、人口（pop_est）が「1人以上（0人を省くため）」の国を対象とし、人口が「少ない順（昇順）」に並び替えた際の上位5ヶ国を抽出してください。
+抽出したデータフレームの「name（国名）」、「pop_est（推計人口）」、「geometry（形）」の3つの列だけを画面に表示してください。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: 1. 人口（pop_est）が 1 以上の国だけを条件抽出して df_valid_pop に代入する</span>
+<span class="n">df_valid_pop</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 2. 人口（pop_est）の少ない順（昇順：ascending=True）でソートする</span>
+<span class="n">df_sorted</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 人口が極めて少ない国ワースト5 ---"</span><span class="p">)</span>
+<span class="c1"># TODO: 3. 国名、推計人口、geometry 列だけを選択し、先頭の5行を表示する</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_sorted</span><span class="p">[</span>                               <span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習 2 の解答コードを見る（クリックで展開）</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. 人口1人以上の抽出</span>
+<span class="n">df_valid_pop</span> <span class="o">=</span> <span class="n">world</span><span class="p">[</span><span class="n">world</span><span class="p">[</span><span class="s2">"pop_est"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># 2. 人口の昇順でソート</span>
+<span class="n">df_sorted</span> <span class="o">=</span> <span class="n">df_valid_pop</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">"pop_est"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 3. 指定列の表示</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_sorted</span><span class="p">[[</span><span class="s2">"name"</span><span class="p">,</span> <span class="s2">"pop_est"</span><span class="p">,</span> <span class="s2">"geometry"</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id21">
+<h3>演習 3: 新設避難所3箇所の緯度・経度からのPoint作成<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
+<p>あなたの地域に、新しく3つの「新設避難所」ができることになりました。
+それぞれの避難所の名前と緯度・経度情報は以下の通りです。</p>
+<ul class="simple">
+<li><p>避難所A：東経 139.670、北緯 35.735</p></li>
+<li><p>避難所B：東経 139.682、北緯 35.741</p></li>
+<li><p>避難所C：東経 139.658、北緯 35.729</p></li>
+</ul>
+<p>Pythonの <code class="docutils literal notranslate"><span class="pre">shapely.geometry.Point</span></code> を使い、この3つの緯度経度から「全人類共通の罠（指定の順番）」を正しく回避して、正しいPointオブジェクトのリストを作成してください。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: 1. shapely.geometry から Point をインポートする</span>
+<span class="kn">from</span><span class="w"> </span>
+
+<span class="c1"># TODO: 2. 各避難所の緯度経度からPointを作成する（指定順に魂を込めて注意！）</span>
+<span class="n">point_A</span> <span class="o">=</span> 
+<span class="n">point_B</span> <span class="o">=</span> 
+<span class="n">point_C</span> <span class="o">=</span> 
+
+<span class="c1"># リストにまとめます</span>
+<span class="n">point_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">point_A</span><span class="p">,</span> <span class="n">point_B</span><span class="p">,</span> <span class="n">point_C</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"作成された避難所Pointデータ:"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">point_list</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="c1"># Point (139.xxx, 35.xxx) と経度が左、緯度が右に出ていれば成功！</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習 3 の解答コードを見る（クリックで展開）</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Pointのインポート</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span>
+
+<span class="c1"># 2. Pointの作成（経度がX軸、緯度がY軸なので 139.xxが最初になります）</span>
+<span class="n">point_A</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mf">139.670</span><span class="p">,</span> <span class="mf">35.735</span><span class="p">)</span>
+<span class="n">point_B</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mf">139.682</span><span class="p">,</span> <span class="mf">35.741</span><span class="p">)</span>
+<span class="n">point_C</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mf">139.658</span><span class="p">,</span> <span class="mf">35.729</span><span class="p">)</span>
+
+<span class="c1"># リストにまとめます</span>
+<span class="n">point_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">point_A</span><span class="p">,</span> <span class="n">point_B</span><span class="p">,</span> <span class="n">point_C</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"作成された避難所Pointデータ:"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">point_list</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="c1"># Point (139.xxx, 35.xxx) と経度が左、緯度が右に出ていれば成功！</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="geodataframe">
+<h3>演習 4: 避難所データベースの新規地理データフレーム（GeoDataFrame）化<a class="headerlink" href="#geodataframe" title="Link to this heading">¶</a></h3>
+<p>演習3で作成した「3つのPoint（位置データ）」と、それぞれの「備蓄食料数（Food_Stock）」が格納された辞書データがあります。
+これをもとに、GeoPandasの <code class="docutils literal notranslate"><span class="pre">gpd.GeoDataFrame()</span></code> を用いて、初期の座標参照系（CRS）を世界測地系である 「WGS84 (EPSG:4326)」 に設定した、新しい地理データフレーム <code class="docutils literal notranslate"><span class="pre">df_new_shelter</span></code> を新規作成してください。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span>
+
+<span class="c1"># 避難所Pointリスト</span>
+<span class="n">point_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">Point</span><span class="p">(</span><span class="mf">139.670</span><span class="p">,</span> <span class="mf">35.735</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mf">139.682</span><span class="p">,</span> <span class="mf">35.741</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mf">139.658</span><span class="p">,</span> <span class="mf">35.729</span><span class="p">)]</span>
+
+<span class="c1"># 辞書データ</span>
+<span class="n">raw_dict_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"避難所名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"新設A館"</span><span class="p">,</span> <span class="s2">"新設B館"</span><span class="p">,</span> <span class="s2">"新設C館"</span><span class="p">],</span>
+    <span class="s2">"備蓄食料"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">800</span><span class="p">],</span>
+    <span class="s2">"geometry"</span><span class="p">:</span> <span class="n">point_list</span> <span class="c1"># 位置情報のリストを geometry という列名に配置します</span>
+<span class="p">}</span>
+
+<span class="c1"># TODO: gpd.GeoDataFrame() を使い、辞書データ「raw_dict_data」を地理空間データフレームに変換する。</span>
+<span class="c1">#       その際、位置情報の列名を「geometry="geometry"」で指定し、</span>
+<span class="c1">#       初期座標系（crs）を世界測地系 WGS84 である "EPSG:4326" に定義してください。</span>
+<span class="n">df_new_shelter</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 新設避難所地理データフレーム ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_new_shelter</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"現在のデータ型:"</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">df_new_shelter</span><span class="p">))</span> <span class="c1"># GeoDataFrame と表示されれば正解</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"定義された座標系(CRS):"</span><span class="p">,</span> <span class="n">df_new_shelter</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span> <span class="c1"># EPSG:4326</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習 4 の解答コードを見る（クリックで展開）</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span>
+
+<span class="c1"># 避難所Pointリスト</span>
+<span class="n">point_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">Point</span><span class="p">(</span><span class="mf">139.670</span><span class="p">,</span> <span class="mf">35.735</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mf">139.682</span><span class="p">,</span> <span class="mf">35.741</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mf">139.658</span><span class="p">,</span> <span class="mf">35.729</span><span class="p">)]</span>
+
+<span class="c1"># 辞書データ</span>
+<span class="n">raw_dict_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"避難所名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"新設A館"</span><span class="p">,</span> <span class="s2">"新設B館"</span><span class="p">,</span> <span class="s2">"新設C館"</span><span class="p">],</span>
+    <span class="s2">"備蓄食料"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">800</span><span class="p">],</span>
+    <span class="s2">"geometry"</span><span class="p">:</span> <span class="n">point_list</span> <span class="c1"># 位置情報のリストを geometry という列名に配置します</span>
+<span class="p">}</span>
+
+<span class="c1"># TODO: gpd.GeoDataFrame() を使い、辞書データ「raw_dict_data」を地理空間データフレームに変換する。</span>
+<span class="c1">#       その際、位置情報の列名を「geometry="geometry"」で指定し、</span>
+<span class="c1">#       初期座標系（crs）を世界測地系 WGS84 である "EPSG:4326" に定義してください。</span>
+<span class="n">df_new_shelter</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">raw_dict_data</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="s2">"geometry"</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 新設避難所地理データフレーム ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_new_shelter</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"現在のデータ型:"</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">df_new_shelter</span><span class="p">))</span> <span class="c1"># GeoDataFrame と表示されれば正解</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"定義された座標系(CRS):"</span><span class="p">,</span> <span class="n">df_new_shelter</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span> <span class="c1"># EPSG:4326</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id22">
+<h3>演習 5: 【集大成】地理座標系から平面直角座標系（メートル座標）への投影変換<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
+<p>演習4で作成した <code class="docutils literal notranslate"><span class="pre">df_new_shelter</span></code> は現在、世界測地系である <code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code> であり、位置情報の単位は「度（角度）」です。
+これでは「避難所の周りに半径500mの円を描いて商圏を調べる」といったメートル単位の計算ができません。</p>
+<p>GeoPandasの <code class="docutils literal notranslate"><span class="pre">.to_crs()</span></code> メソッドを用いて、関東地方のメートル単位の正確な平面直角座標系である 「平面直角座標系第9系（JGD2011：EPSG:6677）」に投影変換したデータフレーム <code class="docutils literal notranslate"><span class="pre">df_shelter_meter</span></code> を作成してください。
+また、geometryの中身が <code class="docutils literal notranslate"><span class="pre">Point</span> <span class="pre">(139.xxx,</span> <span class="pre">35.xxx)</span></code> という角度から、<code class="docutils literal notranslate"><span class="pre">-xx,</span> <span class="pre">xxx</span></code>, <code class="docutils literal notranslate"><span class="pre">-xx,</span> <span class="pre">xxx</span></code> のような大きなメートル値に変化したことを確認してください。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_new_shelter</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">"避難所名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"新設A館"</span><span class="p">,</span> <span class="s2">"新設B館"</span><span class="p">,</span> <span class="s2">"新設C館"</span><span class="p">],</span>
+        <span class="s2">"備蓄食料"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">800</span><span class="p">],</span>
+        <span class="s2">"geometry"</span><span class="p">:</span> <span class="p">[</span><span class="n">Point</span><span class="p">(</span><span class="mf">139.670</span><span class="p">,</span> <span class="mf">35.735</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mf">139.682</span><span class="p">,</span> <span class="mf">35.741</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mf">139.658</span><span class="p">,</span> <span class="mf">35.729</span><span class="p">)]</span>
+    <span class="p">},</span>
+    <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span>
+<span class="p">)</span>
+
+<span class="c1"># TODO: .to_crs() を使い、座標参照系を平面直角座標第9系 \"EPSG:6677\" に変換してください。</span>
+<span class="n">df_shelter_meter</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"【変換前：世界測地系 (EPSG:4326)】 単位は『度』"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_new_shelter</span><span class="p">[</span><span class="s2">"geometry"</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">【変換後：平面直角座標第9系 (EPSG:6677)】 単位は『メートル』"</span><span class="p">)</span>
+<span class="c1"># geometryのPointの中身が、巨大なメートル数値（例: Point (-3142.23, -12423.44)等）に変化したか確認！</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_shelter_meter</span><span class="p">[</span><span class="s2">"geometry"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">変換後の新しい座標参照系(CRS):"</span><span class="p">,</span> <span class="n">df_shelter_meter</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習 5 の解答コードを見る（クリックで展開）</summary>
+<section id="id23">
+<h4>【模範解答コード】<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_new_shelter</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">"避難所名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"新設A館"</span><span class="p">,</span> <span class="s2">"新設B館"</span><span class="p">,</span> <span class="s2">"新設C館"</span><span class="p">],</span>
+        <span class="s2">"備蓄食料"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">800</span><span class="p">],</span>
+        <span class="s2">"geometry"</span><span class="p">:</span> <span class="p">[</span><span class="n">Point</span><span class="p">(</span><span class="mf">139.670</span><span class="p">,</span> <span class="mf">35.735</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mf">139.682</span><span class="p">,</span> <span class="mf">35.741</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mf">139.658</span><span class="p">,</span> <span class="mf">35.729</span><span class="p">)]</span>
+    <span class="p">},</span>
+    <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span>
+<span class="p">)</span>
+
+<span class="c1"># TODO: .to_crs() を使い、座標参照系を平面直角座標第9系 \"EPSG:6677\" に変換してください。</span>
+<span class="n">df_shelter_meter</span> <span class="o">=</span> <span class="n">df_new_shelter</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">6677</span><span class="p">)</span> <span class="c1"># もしくは .to_crs("EPSG:6677")</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"【変換前：世界測地系 (EPSG:4326)】 単位は『度』"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_new_shelter</span><span class="p">[</span><span class="s2">"geometry"</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">【変換後：平面直角座標第9系 (EPSG:6677)】 単位は『メートル』"</span><span class="p">)</span>
+<span class="c1"># geometryのPointの中身が、巨大なメートル数値（例: Point (-3142.23, -12423.44)等）に変化したか確認！</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_shelter_meter</span><span class="p">[</span><span class="s2">"geometry"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">変換後の新しい座標参照系(CRS):"</span><span class="p">,</span> <span class="n">df_shelter_meter</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id24">
+<h2>📚 まとめ<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>レイヤー構造：地図は「道路」「建物」といった透明なシート（トッピングケーキ）を重ねることでできており、コンピュータ上で自由にマージや条件分析ができる。</p></li>
+<li><p>点・線・面（ベクタデータ）：拡大しても崩れないシャープな図形。それぞれ <code class="docutils literal notranslate"><span class="pre">Point</span></code>, <code class="docutils literal notranslate"><span class="pre">LineString</span></code>, <code class="docutils literal notranslate"><span class="pre">Polygon</span></code> というデータ型でGeoPandasのgeometry列に保存される。</p></li>
+<li><p>座標系の歪み（みかんの皮）：地球は丸いため、平らにすると必ずどこかに歪みが出る。GPS等の経緯度を使う「地理座標系（度単位）」から、正確な「平面直角座標系（メートル単位：関東は <code class="docutils literal notranslate"><span class="pre">EPSG:6677</span></code>）」に変換（<code class="docutils literal notranslate"><span class="pre">.to_crs()</span></code>）して計算を行うのがGIS分析の鉄則。</p></li>
+<li><p>Shapefileの罠：<code class="docutils literal notranslate"><span class="pre">.shp</span></code> だけでは動かない。<code class="docutils literal notranslate"><span class="pre">.dbf</span></code> や <code class="docutils literal notranslate"><span class="pre">.shx</span></code> など同じ名前の複数ファイルをセットで扱う「長老」ならではのルールを守ること。</p></li>
+<li><p>Point(経度, 緯度)の順：数学座標の <code class="docutils literal notranslate"><span class="pre">(X,</span> <span class="pre">Y)</span></code> に基づくため、必ず <code class="docutils literal notranslate"><span class="pre">Point(経度,</span> <span class="pre">緯度)</span></code> の順で指定すること。</p></li>
+</ol>
+</section>
 </section>
 
         </article>
@@ -376,7 +1068,7 @@
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">第8回 地理空間データの活⽤1</div>
+                <div class="title">第8回 地理空間データの活用1</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -398,7 +1090,7 @@
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-09-01</div>
+              Last updated on 2026-09-02</div>
           </div>
           <div class="right-details">
             
@@ -407,8 +1099,81 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">第7回 地理空間情報の基礎</a><ul>
+<li><a class="reference internal" href="#id2">🎯 本日の到達目標</a><ul>
+<li><a class="reference internal" href="#google-colab">練習問題のGoogle Colab起動</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gis">GIS（地理空間情報システム）とは何か？</a><ul>
+<li><a class="reference internal" href="#id3">地図は「パンケーキの重ね合わせ」である</a></li>
+<li><a class="reference internal" href="#id4">空間データの表し方：ベクタデータ と ラスタデータ</a><ul>
+<li><a class="reference internal" href="#id5">1. ベクタデータ（幾何学データ）</a></li>
+<li><a class="reference internal" href="#id6">2. ラスタデータ（グリッド画像データ）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">丸い地球をどうやって平らにする？</a><ul>
+<li><a class="reference internal" href="#id8">地理座標系（丸い地球を「角度」で表す）</a></li>
+<li><a class="reference internal" href="#id9">投影座標系（丸い地球を無理やり「平面」にする）</a></li>
+<li><a class="reference internal" href="#id10">日本国内の正確な投影：平面直角座標系</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id11">地理空間データの代表的なファイル形式</a><ul>
+<li><a class="reference internal" href="#shapefile-shp-31">Shapefile（シェープファイル：.shp）の「3つで1つ」の罠</a></li>
+<li><a class="reference internal" href="#geojson-geojson">GeoJSON（ジオジェイソン：.geojson）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#geopandas">GeoPandasの導入</a><ul>
+<li><a class="reference internal" href="#id12">Google Colabの環境構築</a></li>
+<li><a class="reference internal" href="#id13">世界地図データの読み込みと描画</a><ul>
+<li><a class="reference internal" href="#natural-earth">Natural Earthデータ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pandas">特定のエリアだけを切り出す（Pandasの知識の応用）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id14">練習問題（5問）</a><ul>
+<li><a class="reference internal" href="#id15">練習問題 1: GISのレイヤー概念</a></li>
+<li><a class="reference internal" href="#id16">練習問題 2: 座標系とみかんの皮の罠</a></li>
+<li><a class="reference internal" href="#shapefile">練習問題 3: Shapefileの「長老」問題</a></li>
+<li><a class="reference internal" href="#point">練習問題 4: 地図上の Point 定義における「全人類共通の罠」</a></li>
+<li><a class="reference internal" href="#geopandascrs">練習問題 5: GeoPandasの「crs」属性</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id17">💻 演習（5問）</a><ul>
+<li><a class="reference internal" href="#id18">準備</a></li>
+<li><a class="reference internal" href="#id19">演習</a></li>
+<li><a class="reference internal" href="#europe">演習 1: ヨーロッパ（Europe）大陸の切り出しと地図描画</a></li>
+<li><a class="reference internal" href="#id20">演習 2: 世界の「人口が少ない国（ワースト5）」のデータ抽出とソート</a></li>
+<li><a class="reference internal" href="#id21">演習 3: 新設避難所3箇所の緯度・経度からのPoint作成</a></li>
+<li><a class="reference internal" href="#geodataframe">演習 4: 避難所データベースの新規地理データフレーム（GeoDataFrame）化</a></li>
+<li><a class="reference internal" href="#id22">演習 5: 【集大成】地理座標系から平面直角座標系（メートル座標）への投影変換</a><ul>
+<li><a class="reference internal" href="#id23">【模範解答コード】</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id24">📚 まとめ</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

@@ -3,19 +3,21 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="第9回 地理空間データの活⽤2" />
+<meta property="og:title" content="第9回 地理空間データの活用2" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="2026/02.programming_advanced_a/markdown/advanced_09.html" />
 <meta property="og:site_name" content="musashiuniv" />
+<meta property="og:description" content="leafmap/foliumによる動的可視化とインタラクティブマップ 🎯 到達目標: 動的マップ（folium / leafmap）と静的グラフ（Matplotlib）の長短を理解し、目的（学術論文、Webサービス、プレゼンなど）に応じて適切に使い分けられる。, Pythonコードが裏側で HTML、CSS、JavaScript（Leaflet.js）へ自動変換（コンパイル）される仕組み を..." />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2026_02.programming_advanced_a_markdown_advanced_09_4c6b0ffb.png" />
-<meta property="og:image:alt" content="" />
+<meta property="og:image" content="/None" />
+<meta property="og:image:alt" content="leafmap/foliumによる動的可視化とインタラクティブマップ 🎯 到達目標: 動的マップ（folium / leafmap）と静的グラフ（Matplotlib）の長短を理解し、目的（学術論文、Webサービス、プレゼンなど）に応じて適切に使い分けられる。, Pythonコードが裏側で HTML、CSS、Ja..." />
+<meta name="description" content="leafmap/foliumによる動的可視化とインタラクティブマップ 🎯 到達目標: 動的マップ（folium / leafmap）と静的グラフ（Matplotlib）の長短を理解し、目的（学術論文、Webサービス、プレゼンなど）に応じて適切に使い分けられる。, Pythonコードが裏側で HTML、CSS、JavaScript（Leaflet.js）へ自動変換（コンパイル）される仕組み を..." />
 <meta name="twitter:card" content="summary_large_image" />
-<link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" /><link rel="next" title="第10回 PythonとAI(scikit-learn)1" href="advanced_10.html" /><link rel="prev" title="第8回 地理空間データの活⽤1" href="advanced_08.html" />
+<link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" /><link rel="next" title="第10回 PythonとAI(scikit-learn)1" href="advanced_10.html" /><link rel="prev" title="第8回 地理空間データの活用1" href="advanced_08.html" />
 
     <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
-        <title>第9回 地理空間データの活⽤2 - Pythonプログラミング入門</title>
+        <title>第9回 地理空間データの活用2 - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=949a1ff5" />
@@ -189,7 +191,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -297,15 +299,9 @@
 <li class="toctree-l3"><a class="reference internal" href="advanced_04.html">第4回 データ解析</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_05.html">第5回 Webサービスの活用1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_06.html">第6回 Webサービスの活用2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#id19">--- 2. サイドバーの設定 ---</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#pandas">--- 3. Pandasによる連動データの抽出 ---</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#id20">--- 4. メイン画面のデザイン ---</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#kpi">--- 5. カラム分割による主要業績指標 (KPI) ---</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#id21">統計量を計算</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#id22">画面を横に分割して、左にグラフ、右に生データをスッキリ配置</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_07.html">第7回 地理空間情報の基礎</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_08.html">第8回 地理空間データの活⽤1</a></li>
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">第9回 地理空間データの活⽤2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_08.html">第8回 地理空間データの活用1</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">第9回 地理空間データの活用2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
@@ -356,14 +352,1060 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
           <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>第9回 地理空間データの活⽤2<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<h1>第9回 地理空間データの活用2<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<p>leafmap/foliumによる動的可視化とインタラクティブマップ</p>
+<hr class="docutils" />
+<section id="id2">
+<h2>🎯 到達目標<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>動的マップ（folium / leafmap）と静的グラフ（Matplotlib）の長短を理解し、目的（学術論文、Webサービス、プレゼンなど）に応じて適切に使い分けられる。</p></li>
+<li><p>Pythonコードが裏側で HTML、CSS、JavaScript（Leaflet.js）へ自動変換（コンパイル）される仕組み を説明できる。</p></li>
+<li><p>Pandasのループ処理（<code class="docutils literal notranslate"><span class="pre">iterrows()</span></code>）を用いて、何百件の位置情報（緯度経度）も一瞬で地図上にマッピングし、条件に応じてピンの色やアイコンを自動で変化させられる。</p></li>
+<li><p>ポップアップ（Popup）ウィンドウの中に HTMLタグを組み込み、改行、太字、公式サイトへのハイパーリンクなどがデザインされたリッチな吹き出しを作れる。</p></li>
+<li><p>地域別の数値データ（人口や売上）を、地図の境界線（GeoJSONポリゴン）の内側の色の濃淡で表現する 階級区分図（コーロプレス図） を自力で構築できる。</p></li>
+<li><p>作成した地図を Streamlitダッシュボードに埋め込む仕組み（st_folium） や、単体のHTMLファイルとして出力・共有するメソッド（.save()） をマスターする。</p></li>
+</ol>
+<hr class="docutils" />
+<section id="google-colab">
+<h3>練習問題のGoogle Colab起動<a class="headerlink" href="#google-colab" title="Link to this heading">¶</a></h3>
+<p><a class="reference external" href="https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exercises/2026/02.programming_advanced_a/advanced_09.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<ol class="arabic simple">
+<li><p>上記の「Open In Colab」をクリックして、Google Colabを起動させてください</p></li>
+<li><p>[ファイル] → [ドライブにコピーを保存] を選択して、Googleドライブにコピーを保存してください</p></li>
+<li><p>保存が成功すると，Googleドライブの「マイドライブ」 →「Colab Notebooks」にコピーしたファイルが保存されます。</p></li>
+<li><p>GoogleドライブにコピーしたGoogle ColabのNotebooksを開いてください</p></li>
+<li><p>開いたGoogle ColabのNotebooksで作業をしてください</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h2>地図の仕組みとライブラリ比較<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<section id="id4">
+<h3>地図をインタラクティブに表示<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p>これまで描画していたのは、MatplotlibやSeabornによる地図でした。<br />
+これは「画像ファイル（PNGやJPEG）」で表示をしてました。<br />
+デジタル地図に求められるのは、以下のような「対話（インタラクティブ）性」です。</p>
+<ol class="arabic simple">
+<li><p>直感的なスクロールとズーム（見たいところへ飛び、拡大する）。</p></li>
+<li><p>動的なトッピング（レイヤー）のオン・オフ（ハザードマップを重ねたり消したりする）。</p></li>
+<li><p>クリック時のイベント（ピンをクリックすると、そこに登録された詳細情報が表示される）。</p></li>
+</ol>
+<p>デジタル地図では 「JavaScript（ジャバスクリプト）」 という、Webブラウザを動かすための全く別のプログラミング言語で書かれています。
+代表的なオープンソースライブラリが 「Leaflet.js（リーフレット・ジェイエス）」 です。</p>
+<p>多くの場合、デジタル地図を作成するには、HTMLを書き、CSSでデザインを整え、JavaScriptで地図の初期化やピンの設置を書く必要があります。</p>
+</section>
+<section id="pythonweb">
+<h3>PythonでWeb地図の表示<a class="headerlink" href="#pythonweb" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">folium</span></code> や <code class="docutils literal notranslate"><span class="pre">leafmap</span></code> は「Pythonからデジタル地図を作成する」ライブラリで、HTML、CSS、JavaScriptに自動翻訳（自動変換）します。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  [ 🐍 あなたが書くPython ]
+   folium.Map(location=[35.73, 139.67], zoom_start=15)
+   folium.Marker(location=[35.7368, 139.6705], popup="武蔵大学").add_to(m)
+         │
+         ▼ (folium / leafmap が裏側で自動翻訳！)
+  [ ⚙️ 変換されたWebソース（HTML / CSS / JavaScript）]
+   &lt;html&gt;
+    &lt;head&gt;&lt;script src="https://unpkg.com/leaflet/dist/leaflet.js"&gt;&lt;/script&gt;&lt;/head&gt;
+    &lt;body&gt;
+     &lt;div id="map_xxx"&gt;&lt;/div&gt;
+     &lt;script&gt;
+      var map = L.map('map_xxx').setView([35.73, 139.67], 15);
+      L.marker([35.7368, 139.6705]).addTo(map).bindPopup("武蔵大学");
+     &lt;/script&gt;
+    &lt;/body&gt;
+   &lt;/html&gt;
+         │
+         ▼ (Google Colabの実行画面にロード！)
+  [ 🖥️ ブラウザ上でグリグリ動く本物のデジタルマップ誕生！ ]
+</pre></div>
+</div>
+<p>この仕組みのおかげで、JavaScriptの文法を1文字も覚えることなく、Pythonの知識だけでWebGISアプリが作成できます。</p>
+</section>
+<section id="id5">
+<h3>代表的な2大ライブラリの比較<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p>Pythonには動的地図を扱うライブラリがいくつかあります。授業では目的や難易度に応じて適切に選べるよう、以下の2つの特徴をしっかり理解しましょう。</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th style="text-align: left;">特徴</th>
+<th style="text-align: left;">🌐 <code>folium</code> (フォリウム)</th>
+<th style="text-align: left;">🌿 <code>leafmap</code> (リーフマップ)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">キャラクター</td>
+<td style="text-align: left;">「歴史ある、シンプルで硬派な定番長老」</td>
+<td style="text-align: left;">「最先端で、データ連携に強い超多機能エリート」</td>
+</tr>
+<tr>
+<td style="text-align: left;">歴史・ドキュメント</td>
+<td style="text-align: left;">非常に古くから使われており、世界中に日本語の解説ブログやトラブル対処法（Q&amp;A）が溢れています。</td>
+<td style="text-align: left;">比較的歴史が新しく、現在も猛スピードで進化しています。英語の公式ドキュメントが非常に充実しています。</td>
+</tr>
+<tr>
+<td style="text-align: left;">得意なこと</td>
+<td style="text-align: left;">緯度経度のリストからピンを数点立てる、市区町村の境界線をきれいに塗り分ける（Choropleth）など。</td>
+<td style="text-align: left;">PandasのDataFrameから <code>for</code> ループを回さずに一撃で1万個のピンを撒く、人工衛星データや標高データの解析など。</td>
+</tr>
+<tr>
+<td style="text-align: left;">Streamlit連携</td>
+<td style="text-align: left;">別途 <code>streamlit-folium</code> という仲介用ライブラリをインストールする必要があります。</td>
+<td style="text-align: left;">内蔵機能だけで、Streamlitダッシュボード上に2行でシームレスに地図を埋め込めます。</td>
+</tr>
+</tbody>
+</table>
+<p>まずは基本である <code class="docutils literal notranslate"><span class="pre">folium</span></code> を使って「ピンを立てる」「色を変える」といった位置情報の扱い方の構造を覚え，その後に <code class="docutils literal notranslate"><span class="pre">leafmap</span></code> に触れることで、両方の良さがわかります</p>
+<section id="id6">
+<h4>リンク<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://python-visualization.github.io/folium/latest/">folium公式</a></p></li>
+<li><p><a class="reference external" href="https://leafmap.org/">leafmap公式</a></p>
+<ul>
+<li><p><a class="reference external" href="https://leafmap.org/tutorials/">Tutorials</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="marker-html">
+<h2>ピン（Marker）の自動配置とHTMLポップアップの極意<a class="headerlink" href="#marker-html" title="Link to this heading">¶</a></h2>
+<p>それでは、デジタル地図を構築していきます
+武蔵大学を中心としたマップ（<code class="docutils literal notranslate"><span class="pre">zoom_start=15</span></code>：数字が大きいほど拡大）を立ち上げます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
+
+<span class="c1"># 1. 地図オブジェクトを作成する（中心点を緯度35.737, 経度139.670に設定）</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">35.737</span><span class="p">,</span> <span class="mf">139.670</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="c1"># 2. 表示（Colabでは変数名を書くだけで、地図が描画されます）</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+<p>画面の中に、本物のスクロール・拡大縮小ができる地図が表示されます
+まずは、この地図に「ピン（Marker）」を追加をします。</p>
+<section id="id7">
+<h3>経緯度指定の「鉄則」<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p>「緯度（Latitude）・経度（Longitude）」という順番で口にしますが、プログラミングやGIS（幾何空間）の世界では下記でした。</p>
+<ul class="simple">
+<li><p>横軸（X軸） ＝ 経度（東経140度など、左右の動き）</p></li>
+<li><p>縦軸（Y軸） ＝ 緯度（北緯35度など、上下の動き）</p></li>
+</ul>
+<p>座標を <code class="docutils literal notranslate"><span class="pre">(X,</span> <span class="pre">Y)</span></code> で表す基本ルールがあるため、GeoPandasやShapelyのPointオブジェクトでは <code class="docutils literal notranslate"><span class="pre">Point(経度,</span> <span class="pre">緯度)</span></code> の順（経度が先、緯度が後）で指定するのが鉄則でした。</p>
+<p>しかし、<code class="docutils literal notranslate"><span class="pre">folium</span></code> の <code class="docutils literal notranslate"><span class="pre">location</span></code> 引数では、歴史的な背景から <code class="docutils literal notranslate"><span class="pre">[緯度,</span> <span class="pre">経度]</span></code> の順（緯度が先、経度が後）となります</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  【 幾何・GISデータ（GeoPandas等） 】
+   geometry = Point( 経度 , 緯度 )  &lt;-- 横(X), 縦(Y) の数学の基本順
+
+  【 Web可視化（folium / Google Maps API 等） 】
+   location = [ 緯度 , 経度 ]      &lt;-- 日常生活の「緯度経度」の口頭順
+</pre></div>
+</div>
+<p>TIPS:<br />
+「地図を動かしたら画面が真っ白になった、あるいはピンが南極の近くや宇宙空間に消えてしまった！」という時、この「経度と緯度の指定順が逆になっていること」が多いです。<br />
+エラーは出ないのにピンが表示されない時は確認すべきポイントです。</p>
+</section>
+<section id="iterrows">
+<h3>ループ処理（<code class="docutils literal notranslate"><span class="pre">iterrows()</span></code>）による全自動マッピング<a class="headerlink" href="#iterrows" title="Link to this heading">¶</a></h3>
+<p>手動で <code class="docutils literal notranslate"><span class="pre">folium.Marker</span></code> を何個も書くのはスマートではありません。
+<code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">idx,</span> <span class="pre">row</span> <span class="pre">in</span> <span class="pre">df.iterrows():</span></code> のループ処理を使うことで、1万件のデータであっても全自動マッピングできます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Pandasデータフレームで3つの店舗データを用意（実務を想定したダミーデータ）</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
+
+<span class="n">shop_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"店舗名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"江古田コーヒー"</span><span class="p">,</span> <span class="s2">"桜台ベーカリー"</span><span class="p">,</span> <span class="s2">"練馬スイーツ"</span><span class="p">],</span>
+    <span class="s2">"緯度"</span><span class="p">:</span> <span class="p">[</span><span class="mf">35.7368</span><span class="p">,</span> <span class="mf">35.7382</span><span class="p">,</span> <span class="mf">35.7351</span><span class="p">],</span>
+    <span class="s2">"経度"</span><span class="p">:</span> <span class="p">[</span><span class="mf">139.6705</span><span class="p">,</span> <span class="mf">139.6631</span><span class="p">,</span> <span class="mf">139.6542</span><span class="p">],</span>
+    <span class="s2">"今日のおすすめ"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"コロンビア浅煎り"</span><span class="p">,</span> <span class="s2">"焼きたてクロワッサン"</span><span class="p">,</span> <span class="s2">"とろけるプリン"</span><span class="p">],</span>
+    <span class="s2">"評価スコア"</span><span class="p">:</span> <span class="p">[</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">,</span> <span class="mf">4.8</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># 2. 地図の土台を生成</span>
+<span class="n">m_shops</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">35.736</span><span class="p">,</span> <span class="mf">139.663</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="c1"># 3. 黄金のループ：iterrows() で1行ずつ位置を取り出してピンを立てる</span>
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">shop_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="c1"># 各行の経緯度、店舗名、おすすめ商品を取り出す</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"緯度"</span><span class="p">]</span>
+    <span class="n">lng</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"経度"</span><span class="p">]</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"店舗名"</span><span class="p">]</span>
+    <span class="n">recommend</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"今日のおすすめ"</span><span class="p">]</span>
+    
+    <span class="c1"># マーカーを作成して地図に追加</span>
+    <span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span>
+        <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">lat</span><span class="p">,</span> <span class="n">lng</span><span class="p">],</span> <span class="c1"># foliumは [緯度, 経度] の順！</span>
+        <span class="n">popup</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> (おすすめ: </span><span class="si">{</span><span class="n">recommend</span><span class="si">}</span><span class="s2">)"</span><span class="p">,</span> <span class="c1"># クリックした時のテキスト</span>
+        <span class="n">tooltip</span><span class="o">=</span><span class="n">name</span> <span class="c1"># マウスを乗せた時（ホバー）に出る簡易テキスト</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m_shops</span><span class="p">)</span>
+
+<span class="n">m_shops</span>
+</pre></div>
+</div>
+</section>
+<section id="htmlui">
+<h3>HTMLポップアップでデザインされたUIを作る<a class="headerlink" href="#htmlui" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">popup</span></code> 引数の中に渡す文字は、ただのテキストだけではありません。
+実は、HTMLのソースコードをそのまま文字列として流し込むことができます！</p>
+<p>「改行を入れたい」「太字にしたい」「文字の色を赤にしたい」「ホームページへのリンクを埋め込みたい」といった時、以下のような簡単なHTMLタグを記述することで、一気に実用的なWEBアプリの画面に変貌します。</p>
+<ul class="simple">
+<li><p>改行 ➡ <code class="docutils literal notranslate"><span class="pre">&lt;br&gt;</span></code></p></li>
+<li><p>太字 ➡ <code class="docutils literal notranslate"><span class="pre">&lt;b&gt;</span> <span class="pre">太字にしたい文字</span> <span class="pre">&lt;/b&gt;</span></code></p></li>
+<li><p>赤色の文字 ➡ <code class="docutils literal notranslate"><span class="pre">&lt;span</span> <span class="pre">style=&quot;color:</span> <span class="pre">red;&quot;&gt;</span> <span class="pre">赤くしたい文字</span> <span class="pre">&lt;/span&gt;</span></code></p></li>
+<li><p>ハイパーリンク ➡ <code class="docutils literal notranslate"><span class="pre">&lt;a</span> <span class="pre">href=&quot;URL&quot;</span> <span class="pre">target=&quot;_blank&quot;&gt;</span> <span class="pre">リンクテキスト</span> <span class="pre">&lt;/a&gt;</span></code> （<code class="docutils literal notranslate"><span class="pre">target=&quot;_blank&quot;</span></code> をつけると別タブで綺麗に開きます）</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m_rich</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">35.7368</span><span class="p">,</span> <span class="mf">139.6705</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="c1"># HTMLコードを文字列として作成します</span>
+<span class="c1"># Pythonの「トリプルクォーテーション（\"\"\"）」を使うと、改行を含んだ長い文字列を綺麗に書けます。</span>
+<span class="n">html_content</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">&lt;div style="font-family: sans-serif; font-size: 13px; width: 220px;"&gt;</span>
+<span class="s2">    &lt;h4 style="margin: 0 0 5px 0; color: #8B4513;"&gt;☕ 江古田コーヒー 本店&lt;/h4&gt;</span>
+<span class="s2">    &lt;hr style="margin: 5px 0; border: 0; border-top: 1px solid #ccc;"&gt;</span>
+<span class="s2">    &lt;b&gt;本日のブレンド:&lt;/b&gt; &lt;span style="color: green;"&gt;キリマンジャロ&lt;/span&gt;&lt;br&gt;</span>
+<span class="s2">    &lt;b&gt;本日の混雑状況:&lt;/b&gt; &lt;span style="background-color: #ffcccc; padding: 2px 5px; border-radius: 3px;"&gt;かなり混雑 🔥&lt;/span&gt;&lt;br&gt;</span>
+<span class="s2">    &lt;br&gt;</span>
+<span class="s2">    &lt;a href="https://www.musashi.ac.jp/" target="_blank" style="color: #1E90FF; text-decoration: none; font-weight: bold;"&gt;</span>
+<span class="s2">        👉 公式サイトをチェックする</span>
+<span class="s2">    &lt;/a&gt;</span>
+<span class="s2">&lt;/div&gt;</span>
+<span class="s2">"""</span>
+
+<span class="c1"># HTMLをfoliumのポップアップオブジェクトに変換（max_widthを指定すると改行が崩れません）</span>
+<span class="n">rich_popup</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Popup</span><span class="p">(</span><span class="n">html_content</span><span class="p">,</span> <span class="n">max_width</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+
+<span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span>
+    <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">35.7368</span><span class="p">,</span> <span class="mf">139.6705</span><span class="p">],</span>
+    <span class="n">popup</span><span class="o">=</span><span class="n">rich_popup</span><span class="p">,</span>
+    <span class="n">icon</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">Icon</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"darkblue"</span><span class="p">,</span> <span class="n">icon</span><span class="o">=</span><span class="s2">"coffee"</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">"fa"</span><span class="p">)</span> <span class="c1"># font-awesomeのコーヒーアイコンを使用</span>
+<span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m_rich</span><span class="p">)</span>
+
+<span class="n">m_rich</span>
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h3>条件分岐によるピンの「自動色分け」と「カスタムアイコン」<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p>「評価スコアが4.5以上の店舗は赤色ピン、それ未満は灰色ピンにする」といった処理を、if文をループに組み込むことで実装します。</p>
+<p>また、<code class="docutils literal notranslate"><span class="pre">folium.Icon</span></code> には <code class="docutils literal notranslate"><span class="pre">color</span></code>（ピン自体の色）の他に、ピンの中央に描かれる小さなイラスト（アイコン）を指定できます。
+標準で使えるアイコンの他に、FontAwesome（フォント・アサム） という世界共通の無料アイコン集のパーツを、<code class="docutils literal notranslate"><span class="pre">prefix=&quot;fa&quot;</span></code> を添えるだけで呼び出せます。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">icon=&quot;home&quot;</span></code> ➡ 家のマーク</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">icon=&quot;shopping-cart&quot;</span></code> ➡ カートのマーク</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">icon=&quot;info-sign&quot;</span></code> ➡ インフォメーション</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">icon=&quot;coffee&quot;,</span> <span class="pre">prefix=&quot;fa&quot;</span></code> ➡ コーヒーカップ</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">icon=&quot;cutlery&quot;,</span> <span class="pre">prefix=&quot;fa&quot;</span></code> ➡ フォークとナイフ（レストラン）</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 評価によってピンの色を自動で分けるデモ</span>
+<span class="n">m_color_test</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">35.736</span><span class="p">,</span> <span class="mf">139.663</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">shop_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"緯度"</span><span class="p">]</span>
+    <span class="n">lng</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"経度"</span><span class="p">]</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"店舗名"</span><span class="p">]</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"評価スコア"</span><span class="p">]</span>
+    
+    <span class="c1"># 🌟 if-else で条件分岐</span>
+    <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mf">4.5</span><span class="p">:</span>
+        <span class="n">pin_color</span> <span class="o">=</span> <span class="s2">"red"</span>    <span class="c1"># 高評価は赤</span>
+        <span class="n">pin_icon</span> <span class="o">=</span> <span class="s2">"star"</span>    <span class="c1"># 星マーク</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pin_color</span> <span class="o">=</span> <span class="s2">"gray"</span>   <span class="c1"># それ以外はグレー</span>
+        <span class="n">pin_icon</span> <span class="o">=</span> <span class="s2">"thumbs-up"</span> <span class="c1"># グッドマーク</span>
+        
+    <span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span>
+        <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">lat</span><span class="p">,</span> <span class="n">lng</span><span class="p">],</span>
+        <span class="n">popup</span><span class="o">=</span><span class="sa">f</span><span class="s2">"&lt;b&gt;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&lt;/b&gt;&lt;br&gt;スコア: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+        <span class="n">icon</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">Icon</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">pin_color</span><span class="p">,</span> <span class="n">icon</span><span class="o">=</span><span class="n">pin_icon</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">"fa"</span><span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m_color_test</span><span class="p">)</span>
+
+<span class="n">m_color_test</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="choropleth-map">
+<h2>階級区分図（Choropleth Map）のデータ構築パイプライン<a class="headerlink" href="#choropleth-map" title="Link to this heading">¶</a></h2>
+<section id="pandas">
+<h3>「形（境界ポリゴン）」と「数字（Pandas）」を合体させる理論<a class="headerlink" href="#pandas" title="Link to this heading">¶</a></h3>
+<p>ビジネスのマーケティングや自治体の地域分析で、「どのエリアで売上が高いか」「どこで高齢化が進んでいるか」を一目で把握するために、地域を色の濃淡で塗り分ける手法を階級区分図（コーロプレス図：Choropleth Map）と呼びます。</p>
+<p>これを作成するには、絶対に2つの別々のデータが必要です。</p>
+<ol class="arabic simple">
+<li><p>境界ポリゴン（地図の形データ：GeoJSON形式など）</p>
+<ul class="simple">
+<li><p>「〇〇区の境界線は、この緯度経度の点々を繋いだ多角形（Polygon）です」という、ただの「形」の情報。</p></li>
+</ul>
+</li>
+<li><p>統計データ（属性情報：PandasのDataFrameなど）</p>
+<ul class="simple">
+<li><p>「〇〇区の今年の売上高は500万円です」「高齢化率は28%です」という、ただの「数字」の表。</p></li>
+</ul>
+</li>
+</ol>
+<p>この2つを、共通のキーワード（例えば「区名」や「市区町村コード」）を接着剤（キー）にして合体させることで、初めて色分けされた地図が完成します。</p>
+<p>【階級区分図の接着（マージ）構造】</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  [ GeoJSON（地図の形） ]                       [ Pandas DataFrame（統計数字） ]
+   feature 1:                                    行 1:
+     name: "杉並区"                               店舗: "杉並区"
+     geometry: POLYGON((139.6 35.7...))            売上額: 1,200,000 円
+   feature 2:                                    行 2:
+     name: "練馬区"                               店舗: "練馬区"
+     geometry: POLYGON((139.6 35.7...))            売上額:  850,000 円
+            │                                              │
+            ╰───────  Choropleth( key_on="feature.properties.name" ) ╯
+                                      │
+                                      ▼ (合体完了！)
+  [ 🗺️ 杉並区は「濃い赤」、練馬区は「薄いオレンジ」に自動塗り分けされた動的地図！ ]
+</pre></div>
+</div>
+</section>
+<section id="folium-choropleth">
+<h3><code class="docutils literal notranslate"><span class="pre">folium.Choropleth</span></code> クラスのパラメータ徹底解読<a class="headerlink" href="#folium-choropleth" title="Link to this heading">¶</a></h3>
+<p>foliumでこれを行うためのコードは、非常に設定項目（引数）が多く、エラーを起こしやすいです。
+1行ずつのパラメータの意味を確認してください。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">folium</span><span class="o">.</span><span class="n">Choropleth</span><span class="p">(</span>
+    <span class="n">geo_data</span><span class="o">=</span><span class="n">geojson_data</span><span class="p">,</span>               <span class="c1"># 1. 地図の「形」データ（GeoJSONファイルなど）</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">pandas_df</span><span class="p">,</span>                     <span class="c1"># 2. 塗り分ける「数字」データ（PandasのDataFrame）</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"区名"</span><span class="p">,</span> <span class="s2">"売上額"</span><span class="p">],</span>           <span class="c1"># 3. Pandas側の [接着キーにする列, 色に変換する数字の列]</span>
+    <span class="n">key_on</span><span class="o">=</span><span class="s2">"feature.properties.name"</span><span class="p">,</span>   <span class="c1"># 4. GeoJSON（形）側の [接着キーにする項目パス] （※重要）</span>
+    <span class="n">fill_color</span><span class="o">=</span><span class="s2">"YlOrRd"</span><span class="p">,</span>                <span class="c1"># 5. グラデーションの色のパターンを指定（例: 黄色→橙→赤）</span>
+    <span class="n">fill_opacity</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>                   <span class="c1"># 6. 塗りつぶしの不透明度（0.0=透明 〜 1.0=完全不透明）</span>
+    <span class="n">line_opacity</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>                   <span class="c1"># 7. 境界線の不透明度</span>
+    <span class="n">legend_name</span><span class="o">=</span><span class="s2">"店舗別売上高（円）"</span>      <span class="c1"># 8. 凡例（色の説明バー）のタイトル</span>
+<span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="key-on">
+<h3><code class="docutils literal notranslate"><span class="pre">key_on</span></code> の書き方<a class="headerlink" href="#key-on" title="Link to this heading">¶</a></h3>
+<p>なぜ <code class="docutils literal notranslate"><span class="pre">key_on=&quot;feature.properties.name&quot;</span></code> のように、ドット（<code class="docutils literal notranslate"><span class="pre">.</span></code>）で繋がれた長い文字列を指定するのでしょうか？
+それは、GeoJSONという地図ファイルの内部構造（ネストされた辞書型）から、接着剤となる「地域名」を取り出すためのパスを指定しているからです。</p>
+<p>GeoJSONのファイルの中身は、以下のような構造をしています。</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FeatureCollection"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Feature"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"杉並区"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13115"</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"geometry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Polygon"</span><span class="p">,</span><span class="w"> </span><span class="nt">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>この中から、使いたい <code class="docutils literal notranslate"><span class="pre">&quot;杉並区&quot;</span></code>（<code class="docutils literal notranslate"><span class="pre">&quot;name&quot;</span></code>）を取り出すためには、</p>
+<ol class="arabic simple">
+<li><p>まず共通する親要素である <code class="docutils literal notranslate"><span class="pre">feature</span></code> から出発し、</p></li>
+<li><p>その中にある <code class="docutils literal notranslate"><span class="pre">properties</span></code>（属性グループ）の中に入り、</p></li>
+<li><p>目的の <code class="docutils literal notranslate"><span class="pre">name</span></code> という引き出しを開ける、</p></li>
+</ol>
+<p>というルートを伝える必要があります。これをドットで繋いで <code class="docutils literal notranslate"><span class="pre">feature.properties.name</span></code> と書くのが、foliumにおけるのルールです。</p>
+<p>アドバイス<br />
+「Choroplethを実行したら、地図は出るのに全部黒（またはグレー）に塗りつぶされて、グラデーションにならない！」というエラーのは、この <code class="docutils literal notranslate"><span class="pre">key_on</span></code> の指定パスが、GeoJSONファイルの中身とズレていることが原因が多いです。<br />
+GeoJSONを一度Pandasで読むなどして、propertiesの中にどんなキー名（<code class="docutils literal notranslate"><span class="pre">&quot;name&quot;</span></code> なのか、<code class="docutils literal notranslate"><span class="pre">&quot;name_local&quot;</span></code> なのか、<code class="docutils literal notranslate"><span class="pre">&quot;N03_004&quot;</span></code> なのか）が入っているかを事前に確認してください。</p>
+</section>
+<section id="color-brewer-2-0">
+<h3>色のグラデーション（Color Brewer 2.0 規格）の選び方<a class="headerlink" href="#color-brewer-2-0" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">fill_color</span></code> に指定する文字列は、何でも良いわけではありません。
+統計地図の世界標準カラー規格である 「ColorBrewer 2.0」 に定められたカラーコード（3文字の略称を繋いだもの）を指定します。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">YlOrRd</span></code>：Yellow (黄) ➡ Orange (橙) ➡ Red (赤)。売上高や危険度など、「数字が大きいほど警戒・活発」なデータの可視化に最適。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">YlGnBu</span></code>：Yellow (黄) ➡ Green (緑) ➡ Blue (青)。雨量や水分量、森林率など、自然・環境データの可視化に最適。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BuPu</span></code>：Blue (青) ➡ Purple (紫)。高級感や、少し落ち着いた分布を示すのに最適。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RdYlGn</span></code>：Red (赤：悪い/多い) ➡ Yellow (中間) ➡ Green (緑：良い/少ない)。「安全度」や「顧客満足度」など、両極端な評価を表すのに適したカラー。</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="web-streamlit">
+<h2>Webアプリ（Streamlit）への地図埋め込みとポータビリティ<a class="headerlink" href="#web-streamlit" title="Link to this heading">¶</a></h2>
+<p>Streamlit（ストリームリット） のウェブアプリケーションの中に、完璧に合体（埋め込み）させてみます</p>
+<section id="streamlit-folium">
+<h3><code class="docutils literal notranslate"><span class="pre">streamlit-folium</span></code> によるダッシュボードの合体<a class="headerlink" href="#streamlit-folium" title="Link to this heading">¶</a></h3>
+<p>StreamlitにMatplotlibのグラフを埋め込むときは <code class="docutils literal notranslate"><span class="pre">st.pyplot(fig)</span></code> と書きました。<br />
+同じように、foliumの動的地図オブジェクト（<code class="docutils literal notranslate"><span class="pre">m</span></code>）をStreamlitの画面上に美しく埋め込むための仲介役が <code class="docutils literal notranslate"><span class="pre">streamlit-folium</span></code> というライブラリです。</p>
+<p>これを使うと、<code class="docutils literal notranslate"><span class="pre">st_folium(m,</span> <span class="pre">width=700,</span> <span class="pre">height=500)</span></code> というたった1行を書くだけで、Streamlitのダッシュボードのど真ん中に、スクロールやピンのクリックができる極上の地図が合体します。</p>
+<p>【Streamlit ✕ GIS ✕ Pandas の完全連動ダッシュボード（構造図）】</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  ┌────────────────────────────────────────────────────────┐
+  │  📊 カフェ売上・商圏分析システム（Streamlit画面）       │
+  ├──────────────┬─────────────────────────────────────────┤
+  │ ⚙️ 操作盤   │  [ 🔮 選んだ店舗の1km商圏を自動計算 ]    │
+  │ (sidebar)    │                                         │
+  │              │  ┌───────────────────────────────────┐  │
+  │ ・店舗を選択 │  │  🗺️ インタラクティブ・foliumマップ    │  │  st_folium(m) で
+  │   [ 江古田店]│  │                                   │  │  アプリ画面に埋め込み！
+  │              │  │        ●(店舗)                    │  │
+  │ ・商圏レンジ │  │     ╭───★───╮                  │  │  スライダーを動かすと、
+  │   [ 1000m ]  │  │     │   (1km)│                  │  │  商圏円の大きさが
+  │              │  │     ╰────────╯                  │  │  リアルタイムで伸縮！
+  └──────────────┴─────────────────────────────────────────┘
+</pre></div>
+</div>
+<section id="id9">
+<h4>サンプル<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h4>
+<p>Streamlit，Folium streamlit-folium インストール</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!pip<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span>streamlit<span class="w"> </span>folium<span class="w"> </span>streamlit-folium
+</pre></div>
+</div>
+<p>cloudflaredインストール（1回実行すればOKです）</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!wget<span class="w"> </span>https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
+!dpkg<span class="w"> </span>-i<span class="w"> </span>cloudflared-linux-amd64.deb
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">streamlit_folium</span><span class="w"> </span><span class="kn">import</span> <span class="n">st_folium</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">set_page_config</span><span class="p">(</span><span class="n">page_title</span><span class="o">=</span><span class="s2">"Folium Map Demo"</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="s2">"wide"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Streamlit + Folium 地図サンプル"</span><span class="p">)</span>
+
+<span class="c1"># 地図の中心とズームレベル</span>
+<span class="n">center</span> <span class="o">=</span> <span class="p">[</span><span class="mf">35.7100</span><span class="p">,</span> <span class="mf">139.8107</span><span class="p">]</span>  <span class="c1"># 緯度, 経度</span>
+<span class="n">zoom</span> <span class="o">=</span> <span class="mi">13</span>
+
+<span class="c1"># Foliumの地図オブジェクトを作成</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="n">center</span><span class="p">,</span> <span class="n">zoom_start</span><span class="o">=</span><span class="n">zoom</span><span class="p">)</span>
+
+<span class="c1"># マーカーを追加</span>
+<span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span>
+    <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">35.7100</span><span class="p">,</span> <span class="mf">139.8107</span><span class="p">],</span>
+    <span class="n">popup</span><span class="o">=</span><span class="s2">"サンプル地点"</span><span class="p">,</span>
+    <span class="n">tooltip</span><span class="o">=</span><span class="s2">"クリックして詳細"</span>
+<span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+<span class="c1"># 円(半径付きエリア)を追加する例</span>
+<span class="n">folium</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span>
+    <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">35.7100</span><span class="p">,</span> <span class="mf">139.8107</span><span class="p">],</span>
+    <span class="n">radius</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>  <span class="c1"># メートル単位</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">,</span>
+    <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">fill_opacity</span><span class="o">=</span><span class="mf">0.2</span>
+<span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+<span class="c1"># Streamlitに地図を表示</span>
+<span class="n">st_data</span> <span class="o">=</span> <span class="n">st_folium</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+
+<span class="c1"># クリックした地点の情報を取得して表示(インタラクティブ)</span>
+<span class="k">if</span> <span class="n">st_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"last_clicked"</span><span class="p">):</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"クリックした座標:"</span><span class="p">,</span> <span class="n">st_data</span><span class="p">[</span><span class="s2">"last_clicked"</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>streamlitをapp.pyで起動。debug.logファイルにコンソール出力を書き出す</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash<span class="w"> </span>--bg
+streamlit<span class="w"> </span>run<span class="w"> </span>app.py<span class="w"> </span>&gt;<span class="w"> </span>debug.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</pre></div>
+</div>
+<p>cloudflaredを起動。tunnel.logファイルにコンソール出力を書き出す</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash<span class="w"> </span>--bg
+sleep<span class="w"> </span><span class="m">3</span>
+cloudflared<span class="w"> </span>tunnel<span class="w"> </span>--url<span class="w"> </span>http://localhost:8501<span class="w"> </span>--no-autoupdate<span class="w"> </span>&gt;<span class="w"> </span>tunnel.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</pre></div>
+</div>
+<p>ログファイルから「.trycloudflare.com」が含まれる行を検索して表示する</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!grep<span class="w"> </span>-o<span class="w"> </span><span class="s1">'https://[a-zA-Z0-9-]*\.trycloudflare\.com'</span><span class="w"> </span>tunnel.log
+</pre></div>
+</div>
+</section>
+</section>
+<section id="html">
+<h3>サーバー不要！「ポータブルHTML地図」として書き出す<a class="headerlink" href="#html" title="Link to this heading">¶</a></h3>
+<p>foliumオブジェクトには、非常に強力なファイル保存メソッド <code class="docutils literal notranslate"><span class="pre">.save()</span></code> が用意されています。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># （体験コード：実行するとColabの中に HTMLファイル が保存されます）</span>
+<span class="n">m_shops</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"cafe_map.html"</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>何が起きるのか？：</p>
+<ul>
+<li><p>このコードを実行すると、Colabの左側メニュー（ファイルフォルダ）の中に、<code class="docutils literal notranslate"><span class="pre">cafe_map.html</span></code> という1つのファイルが書き出されます。</p></li>
+<li><p>このファイルをダウンロードし、自分のパソコンのデスクトップでダブルクリックすると、インターネットブラウザが立ち上がり、PythonやColabを一切起動していない完全なオフライン状態（あるいは相手の環境）でも、あなたが作ったあの「グリグリ動く地図」が100%完璧に動作します！</p></li>
+</ul>
+</li>
+<li><p>ポータビリティの価値：</p>
+<ul>
+<li><p>HTMLファイルの中には、先述した「自動翻訳されたHTML/CSS/JavaScript」がすべてテキストとしてパッケージングされています。そのため、メールに添付して送ることもできますし、自分が持っているブログやホームページのコードの中に、iframeタグを使って簡単に地図をパーツとして埋め込むこともできます。これこそが、foliumが世界中のデータアナリストから今も愛され続ける最大の理由です。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id10">
+<h2>練習問題（理論＆クイック記述：5問） (約20分)<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<section id="id11">
+<h3>練習問題 1: 緯度・経度の「指定順序」の罠<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<p>GeoPandasで店舗の位置（Pointオブジェクト）を新しく手動で作成する場合と、foliumの地図上に <code class="docutils literal notranslate"><span class="pre">folium.Marker</span></code> でピンを立てる場合では、引数に指定する「緯度」と「経度」の順番のルールが異なります。
+それぞれの正しい指定順序の組み合わせを答えてください。</p>
+<ol class="arabic simple">
+<li><p>GeoPandas (ShapelyのPoint) ➡ <code class="docutils literal notranslate"><span class="pre">Point(</span> <span class="pre">[</span> <span class="pre">A</span> <span class="pre">]</span> <span class="pre">,</span> <span class="pre">[</span> <span class="pre">B</span> <span class="pre">]</span> <span class="pre">)</span></code></p></li>
+<li><p>folium (Map や Marker の location) ➡ <code class="docutils literal notranslate"><span class="pre">location</span> <span class="pre">=</span> <span class="pre">[</span> <span class="pre">[</span> <span class="pre">C</span> <span class="pre">]</span> <span class="pre">,</span> <span class="pre">[</span> <span class="pre">D</span> <span class="pre">]</span> <span class="pre">]</span></code></p></li>
+</ol>
+<details>
+<summary>👉 練習問題 1 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p>正解:</p>
+<ul>
+<li><p>[ A ] = 経度 (Longitude / X軸), [ B ] = 緯度 (Latitude / Y軸)</p></li>
+<li><p>[ C ] = 緯度 (Latitude), [ D ] = 経度 (Longitude)</p></li>
+</ul>
+</li>
+<li><p>解説:</p>
+<ul>
+<li><p>数学のグラフやGeoDataFrameのように「幾何学データ」として空間演算を行うGeoPandasでは、横軸（X軸）である 経度、縦軸（Y軸）である 緯度 の順で指定します。</p></li>
+<li><p>一方で、Google Mapsやfoliumなどの「Web可視化サービス」のAPIでは、日常の口頭順である 「緯度、経度」 の順でリストを渡すお約束になっています。</p></li>
+<li><p>この2つのズレは、プロのエンジニアでも最も頻繁に間違える罠ですので、コードを書く時は頭の中で「今、自分はデータの加工（GeoPandas）をしているのか、画面の描画（folium）をしているのか」を強く意識しましょう！</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id12">
+<h3>練習問題 2: 地図上のポップアップ内での改行<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<p>foliumのマーカー（ピン）をクリックした時に出る吹き出し（popup）の文字に、Pythonの通常の改行コード（<code class="docutils literal notranslate"><span class="pre">\n</span></code>）を含めて <code class="docutils literal notranslate"><span class="pre">popup=&quot;江古田店\n今日のおすすめ:プリン&quot;</span></code> と書きましたが、ブラウザの地図画面では改行されず、1行に繋がって表示されてしまいました。
+ポップアップの中で正しく改行を反映させるために、書き換えるべき「HTMLのタグ」を答えてください。</p>
+<details>
+<summary>👉 練習問題 2 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p>正解: <code class="docutils literal notranslate"><span class="pre">&lt;br&gt;</span></code> タグ</p></li>
+<li><p>解説:</p>
+<ul>
+<li><p>foliumのポップアップの中身は、ブラウザが「HTMLソースコード」として解釈して描画します。</p></li>
+<li><p>ブラウザ（HTML）の世界では、通常のテキストの改行コード（<code class="docutils literal notranslate"><span class="pre">\n</span></code>）や空白改行は完全に無視されるルールになっているため、改行を意味するHTMLタグである <code class="docutils literal notranslate"><span class="pre">&lt;br&gt;</span></code>（Breakの略） を文字列の間に挟む必要があります。</p></li>
+<li><p>例： <code class="docutils literal notranslate"><span class="pre">popup=&quot;江古田店&lt;br&gt;今日のおすすめ:プリン&quot;</span></code> と書けば、きれいに2行に分かれて表示されます。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="choropleth">
+<h3>練習問題 3: 階級区分図（Choropleth）がグレーにバグる原因<a class="headerlink" href="#choropleth" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">folium.Choropleth</span></code> を使って、各市区町村の人口統計を色の濃淡で塗り分けようとプログラムを実行しました。
+エラーメッセージは何も出ず、実行自体は成功して地図は描画されましたが、どの市区町村もグラデーションの色がつかず、すべて一律の「グレー（灰色）」に塗りつぶされてしまいました。
+このとき、疑うべき「Choroplethの引数設定」および「データの中身」の原因は何でしょうか？</p>
+<details>
+<summary>👉 練習問題 3 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p>正解:</p>
+<ul>
+<li><p>原因: <code class="docutils literal notranslate"><span class="pre">key_on</span></code> 引数で指定した「GeoJSON側の地域名が入っているキーのパス」が間違っている（ズレている）ため、Pandasの統計データと位置データが接着剤として噛み合わなかったから。</p></li>
+</ul>
+</li>
+<li><p>解説:</p>
+<ul>
+<li><p>foliumのChoroplethは、GeoJSONファイルとPandasのデータフレームを、指定されたキー（例：区名）でマッチングさせて色を塗ります。</p></li>
+<li><p>もし、<code class="docutils literal notranslate"><span class="pre">key_on=&quot;feature.properties.name&quot;</span></code> と指定したのに対し、実際のGeoJSONファイルの中に <code class="docutils literal notranslate"><span class="pre">&quot;name&quot;</span></code> というキーが存在せず、代わりに <code class="docutils literal notranslate"><span class="pre">&quot;city_name&quot;</span></code> という名前で登録されていた場合、接着剤が完全に空振りしてしまいます。</p></li>
+<li><p>foliumは「マッチする数値データが見つからなかった地域」を、データ未登録エリアとして標準色である「グレー」で安全に塗りつぶします。エラーを出してくれないため、接着キーの名前が完全に大文字小文字・アンダースコアまで一致しているか確認しましょう。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="sjoin">
+<h3>練習問題 4: 「メートル座標系」での空間結合（sjoin）と距離計算（復習）<a class="headerlink" href="#sjoin" title="Link to this heading">¶</a></h3>
+<p>第8回で、商圏バッファ（<code class="docutils literal notranslate"><span class="pre">.buffer()</span></code>）や距離計算（<code class="docutils literal notranslate"><span class="pre">.distance()</span></code>）を行う前には、GeoDataFrameを世界測地系 <code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code>（経緯度）から、平面直角座標系 <code class="docutils literal notranslate"><span class="pre">EPSG:6677</span></code>（メートル）などの投影座標系に変換するステップが絶対に必要だと学びました。
+では、本日学んだ <code class="docutils literal notranslate"><span class="pre">folium</span></code> や <code class="docutils literal notranslate"><span class="pre">leafmap</span></code> を使って、「動的地図の上にピンを配置したり、階級区分図を描画する」直前のデータは、投影変換した <code class="docutils literal notranslate"><span class="pre">EPSG:6677</span></code> のままで渡してよいでしょうか？ それとも、元の <code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code> に戻す（あるいは最初から変換しない）必要があるでしょうか？</p>
+<details>
+<summary>👉 練習問題 4 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p>正解: 元の世界測地系 <code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code>（経緯度・角度単位）に戻す（あるいは経緯度データのままで渡す）必要がある。</p></li>
+<li><p>解説:</p>
+<ul>
+<li><p>ここが、GeoPandas（加工）とfolium（描画）を組み合わせる際の、最大の頭の整理ポイントです！</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">folium</span></code> や <code class="docutils literal notranslate"><span class="pre">leafmap</span></code> のWeb地図は、世界基準のGPS座標である 「緯度と経度（角度：WGS84 / EPSG:4326）」でピンの位置や境界線を認識・表示する仕組み になっています。</p></li>
+<li><p>そのため、もしメートル平面座標系（<code class="docutils literal notranslate"><span class="pre">EPSG:6677</span></code>）のままで <code class="docutils literal notranslate"><span class="pre">folium.Marker(location=[X座標(メートル),</span> <span class="pre">Y座標(メートル)])</span></code> のように巨大な数値（例: -35000, -12000 など）を渡してしまうと、システムは「そんな緯度経度は地球上に存在しない！」とパニックを起こしてエラーになります。</p></li>
+<li><p>計算（バッファや距離）をする時はメートル平面（6677）に変換し、最終的に地図に塗る・撒く（folium可視化）時は、経緯度（4326）に戻す</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id13">
+<h3>練習問題 5: 動的マップの保存と共有（ポータビリティ）<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<p>作成した動的地図オブジェクト <code class="docutils literal notranslate"><span class="pre">m_final</span></code> を、外部の人に共有し、相手のパソコンのブラウザ上でグリグリと動く状態で確認してもらいたいです。
+このとき、foliumに用意されている最も適切な保存用のメソッドと、保存されるファイル形式（拡張子）の組み合わせを答えてください。</p>
+<details>
+<summary>👉 練習 modification 5 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p>正解: <code class="docutils literal notranslate"><span class="pre">.save()</span></code> メソッド、拡張子は <code class="docutils literal notranslate"><span class="pre">.html</span></code>（HTMLファイル形式）</p></li>
+<li><p>解説:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">m_final.save(&quot;my_analysis.html&quot;)</span></code> と記述して実行します。</p></li>
+<li><p>これにより、すべての地図情報、ピンの位置、JavaScriptの動作コードが1つに凝縮されたポータブルな「HTMLファイル」が書き出されます。</p></li>
+<li><p>相手はただファイルをダブルクリックしてブラウザ（ChromeやSafariなど）で開くだけで、Python環境を汚さずに100%動的な地図を操作できます。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id14">
+<h2>演習（5問）<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
+<hr class="docutils" />
+<section id="id15">
+<h3>演習 1: 東京タワーへのカスタムマーカー設置とHTML吹き出し<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<p>東京タワー（緯度: 35.6586, 経度: 139.7454）を中心としたズームレベル 16 のfolium地図を作成してください。</p>
+<ol class="arabic simple">
+<li><p>東京タワーの位置に、ピンの色が 「オレンジ（orange）」、アイコンが 「建物（fort / hotel）」（Font Awesomeを使用：<code class="docutils literal notranslate"><span class="pre">prefix=&quot;fa&quot;</span></code>）のカスタムマーカーを設置してください。</p></li>
+<li><p>マーカーをクリックした際に、太字（<code class="docutils literal notranslate"><span class="pre">&lt;b&gt;</span></code>）と改行（<code class="docutils literal notranslate"><span class="pre">&lt;br&gt;</span></code>）を使って、以下の通りに美しくデザインされたポップアップ（吹き出し）が表示されるように設定してください。</p>
+<ul class="simple">
+<li><p>「🗼 東京タワー」（1行目・太字）</p></li>
+<li><p>「高さ: 333m」（2行目）</p></li>
+<li><p>「1958年開業の電波塔」（3行目）</p></li>
+</ul>
+</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
+
+<span class="c1"># TODO: 1. 東京タワーを中心としたズームレベル16のfolium地図を作成</span>
+<span class="n">tokyo_tower_map</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">35.6586</span><span class="p">,</span> <span class="mf">139.7454</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="c1"># TODO: 2. HTMLの改行と太字タグを駆使してポップアップの文字列を作成</span>
+<span class="n">popup_html</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">"""</span>
+
+<span class="c1"># TODO: 3. カスタムマーカーを作成し、地図(tokyo_tower_map)に追加</span>
+<span class="c1"># ※ピンの色は "orange"、アイコン名は "fort"、prefix="fa" を指定</span>
+<span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span>
+    <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">35.6586</span><span class="p">,</span> <span class="mf">139.7454</span><span class="p">],</span>
+    <span class="n">popup</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">Popup</span><span class="p">(</span>  <span class="p">,</span> <span class="n">max_width</span><span class="o">=</span><span class="mi">200</span><span class="p">),</span>
+    <span class="n">icon</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">Icon</span><span class="p">(</span><span class="n">color</span><span class="o">=</span> <span class="p">,</span> <span class="n">icon</span><span class="o">=</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">tokyo_tower_map</span><span class="p">)</span>
+
+<span class="c1"># 表示確認</span>
+<span class="n">tokyo_tower_map</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習 1 の解答コードを見る（クリックで展開）</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
+
+<span class="c1"># 1. 地図の初期化</span>
+<span class="n">tokyo_tower_map</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">35.6586</span><span class="p">,</span> <span class="mf">139.7454</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="c1"># 2. HTMLポップアップの作成</span>
+<span class="n">popup_html</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">&lt;b&gt;🗼 東京タワー&lt;/b&gt;&lt;br&gt;</span>
+<span class="s2">高さ: 333m&lt;br&gt;</span>
+<span class="s2">1958年開業の電波塔</span>
+<span class="s2">"""</span>
+
+<span class="c1"># 3. マーカーの追加</span>
+<span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span>
+    <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">35.6586</span><span class="p">,</span> <span class="mf">139.7454</span><span class="p">],</span>
+    <span class="n">popup</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">Popup</span><span class="p">(</span><span class="n">popup_html</span><span class="p">,</span> <span class="n">max_width</span><span class="o">=</span><span class="mi">200</span><span class="p">),</span>
+    <span class="n">icon</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">Icon</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"orange"</span><span class="p">,</span> <span class="n">icon</span><span class="o">=</span><span class="s2">"fort"</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">"fa"</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">tokyo_tower_map</span><span class="p">)</span>
+
+<span class="n">tokyo_tower_map</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id16">
+<h3>演習 2: 売上目標達成度に応じた複数店舗ピンの「動的自動色分け」<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<p>3つのカフェ店舗の営業データ（PandasのDataFrame）があります。</p>
+<ol class="arabic simple">
+<li><p>各店舗の「今日の実績売上（Sales）」が、目標金額である 「55,000円」以上 の場合は、ピンの色を 「緑（green）」（アイコン: <code class="docutils literal notranslate"><span class="pre">thumbs-up</span></code>）、目標未満の場合は 「赤（red）」（アイコン: <code class="docutils literal notranslate"><span class="pre">warning</span></code>、どちらも <code class="docutils literal notranslate"><span class="pre">prefix=&quot;fa&quot;</span></code>）に動的に色分け判定（if-else）してください。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.iterrows()</span></code> のループ処理を用い、すべての店舗を自動で地図上にプロットしてください。</p></li>
+<li><p>ポップアップには「店舗名」と、太字の「売上：〇〇円」を表示させてください。</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
+
+<span class="c1"># 複数店舗の営業データ（ダミー）</span>
+<span class="n">cafe_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"店舗名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">,</span> <span class="s2">"池袋店"</span><span class="p">],</span>
+    <span class="s2">"緯度"</span><span class="p">:</span> <span class="p">[</span><span class="mf">35.7368</span><span class="p">,</span> <span class="mf">35.7215</span><span class="p">,</span> <span class="mf">35.7292</span><span class="p">],</span>
+    <span class="s2">"経度"</span><span class="p">:</span> <span class="p">[</span><span class="mf">139.6705</span><span class="p">,</span> <span class="mf">139.7523</span><span class="p">,</span> <span class="mf">139.7111</span><span class="p">],</span>
+    <span class="s2">"売上"</span><span class="p">:</span> <span class="p">[</span><span class="mi">62000</span><span class="p">,</span> <span class="mi">48000</span><span class="p">,</span> <span class="mi">75000</span><span class="p">]</span> <span class="c1"># 白山店だけ目標の55,000円未満</span>
+<span class="p">})</span>
+
+<span class="c1"># 東京城西エリア全体をカバーする中心点に地図を初期化</span>
+<span class="n">map_branches</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">35.729</span><span class="p">,</span> <span class="mf">139.711</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+
+<span class="c1"># TODO: df.iterrows() のループを回して店舗を1つずつプロットしてください</span>
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cafe_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"緯度"</span><span class="p">]</span>
+    <span class="n">lng</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"経度"</span><span class="p">]</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"店舗名"</span><span class="p">]</span>
+    <span class="n">sales</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"売上"</span><span class="p">]</span>
+    
+    <span class="c1"># TODO: 売上が 55000 以上の場合は green、未満の場合は red に色分け分岐</span>
+    <span class="k">if</span> <span class="n">sales</span> <span class="o">&gt;=</span> <span class="mi">55000</span><span class="p">:</span>
+        <span class="n">icon_color</span> <span class="o">=</span> 
+        <span class="n">icon_name</span> <span class="o">=</span> <span class="s2">"thumbs-up"</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">icon_color</span> <span class="o">=</span> 
+        <span class="n">icon_name</span> <span class="o">=</span> <span class="s2">"warning"</span>
+        
+    <span class="c1"># TODO: HTMLポップアップを作成（店舗名と、太字の売上金額を表示）</span>
+    <span class="n">popup_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"          "</span>
+    
+    <span class="c1"># TODO: マーカーを生成して map_branches に追加</span>
+    <span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span>
+        <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">lat</span><span class="p">,</span> <span class="n">lng</span><span class="p">],</span>
+        <span class="n">popup</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">Popup</span><span class="p">(</span>       <span class="p">,</span> <span class="n">max_width</span><span class="o">=</span><span class="mi">150</span><span class="p">),</span>
+        <span class="n">icon</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">Icon</span><span class="p">(</span><span class="n">color</span><span class="o">=</span>    <span class="p">,</span> <span class="n">icon</span><span class="o">=</span>    <span class="p">,</span> <span class="n">prefix</span><span class="o">=</span>   <span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">map_branches</span><span class="p">)</span>
+
+<span class="c1"># 表示確認</span>
+<span class="n">map_branches</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習 2 の解答コードを見る（クリックで展開）</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
+
+<span class="n">cafe_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"店舗名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">,</span> <span class="s2">"池袋店"</span><span class="p">],</span>
+    <span class="s2">"緯度"</span><span class="p">:</span> <span class="p">[</span><span class="mf">35.7368</span><span class="p">,</span> <span class="mf">35.7215</span><span class="p">,</span> <span class="mf">35.7292</span><span class="p">],</span>
+    <span class="s2">"経度"</span><span class="p">:</span> <span class="p">[</span><span class="mf">139.6705</span><span class="p">,</span> <span class="mf">139.7523</span><span class="p">,</span> <span class="mf">139.7111</span><span class="p">],</span>
+    <span class="s2">"売上"</span><span class="p">:</span> <span class="p">[</span><span class="mi">62000</span><span class="p">,</span> <span class="mi">48000</span><span class="p">,</span> <span class="mi">75000</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="n">map_branches</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">35.729</span><span class="p">,</span> <span class="mf">139.711</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cafe_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"緯度"</span><span class="p">]</span>
+    <span class="n">lng</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"経度"</span><span class="p">]</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"店舗名"</span><span class="p">]</span>
+    <span class="n">sales</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"売上"</span><span class="p">]</span>
+    
+    <span class="k">if</span> <span class="n">sales</span> <span class="o">&gt;=</span> <span class="mi">55000</span><span class="p">:</span>
+        <span class="n">icon_color</span> <span class="o">=</span> <span class="s2">"green"</span>
+        <span class="n">icon_name</span> <span class="o">=</span> <span class="s2">"thumbs-up"</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">icon_color</span> <span class="o">=</span> <span class="s2">"red"</span>
+        <span class="n">icon_name</span> <span class="o">=</span> <span class="s2">"warning"</span>
+        
+    <span class="n">popup_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"&lt;b&gt;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&lt;/b&gt;&lt;br&gt;売上: </span><span class="si">{</span><span class="n">sales</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">円"</span>
+    
+    <span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span>
+        <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">lat</span><span class="p">,</span> <span class="n">lng</span><span class="p">],</span>
+        <span class="n">popup</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">Popup</span><span class="p">(</span><span class="n">popup_text</span><span class="p">,</span> <span class="n">max_width</span><span class="o">=</span><span class="mi">150</span><span class="p">),</span>
+        <span class="n">icon</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">Icon</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">icon_color</span><span class="p">,</span> <span class="n">icon</span><span class="o">=</span><span class="n">icon_name</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">"fa"</span><span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">map_branches</span><span class="p">)</span>
+
+<span class="n">map_branches</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="m">
+<h3>演習 3: 避難所を中心とする「半径500m安全商圏サークル（半透明）」の重ね合わせ描画<a class="headerlink" href="#m" title="Link to this heading">¶</a></h3>
+<p>ある避難所の位置情報があります。
+地図の拡大・縮小（ズーム）操作に連動して、物理的な実距離を保ったまま自動で拡大縮小する、「半径500メートル」の影響サークル（Circleオブジェクト）を地図上に重ねて描画します。</p>
+<ol class="arabic simple">
+<li><p>武蔵大学（緯度: 35.7368, 経度: 139.6705）を中心に、ズームレベル 15 の地図を作成してください。</p></li>
+<li><p>武蔵大学の位置に通常のピン（青色）を立ててください。</p></li>
+<li><p>同じ位置を中心に、<code class="docutils literal notranslate"><span class="pre">folium.Circle</span></code> クラスを使い、「半径 500メートル（引数 <code class="docutils literal notranslate"><span class="pre">radius=500</span></code>）」の円を描画してください。</p>
+<ul class="simple">
+<li><p>円の境界線の色は 「赤（color=&quot;red&quot;）」。</p></li>
+<li><p>内側を 「赤（fill_color=&quot;red&quot;）」 で半透明に塗りつぶし（<code class="docutils literal notranslate"><span class="pre">fill=True</span></code>を指定、不透明度を 20%：<code class="docutils literal notranslate"><span class="pre">fill_opacity=0.2</span></code>に設定）してください。</p></li>
+</ul>
+</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
+
+<span class="c1"># TODO: 1. 武蔵大学を中心としたズームレベル15の地図を初期化</span>
+<span class="n">m_circle_test</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span>     <span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span>   <span class="p">)</span>
+
+<span class="c1"># TODO: 2. 中心点に通常のマーカー（青色）を立てて追加</span>
+<span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span>
+    <span class="n">location</span><span class="o">=</span><span class="p">[</span>            <span class="p">],</span>
+    <span class="n">popup</span><span class="o">=</span><span class="s2">"武蔵大学 避難所拠点"</span><span class="p">,</span>
+    <span class="n">icon</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">Icon</span><span class="p">(</span><span class="n">color</span><span class="o">=</span>     <span class="p">,</span> <span class="n">icon</span><span class="o">=</span><span class="s2">"home"</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m_circle_test</span><span class="p">)</span>
+
+<span class="c1"># TODO: 3. folium.Circle を使って、半径500mの半透明な赤い円を描画して追加</span>
+<span class="c1"># ※ radius=500, color="red", fill=True, fill_color="red", fill_opacity=0.2 を指定</span>
+<span class="n">folium</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span>
+    <span class="n">location</span><span class="o">=</span><span class="p">[</span>  <span class="p">],</span>
+    <span class="n">radius</span><span class="o">=</span>    <span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span>  <span class="p">,</span>
+    <span class="n">fill</span><span class="o">=</span>    <span class="p">,</span>
+    <span class="n">fill_color</span><span class="o">=</span>     <span class="p">,</span>
+    <span class="n">fill_opacity</span><span class="o">=</span>    <span class="p">,</span>
+    <span class="n">popup</span><span class="o">=</span><span class="s2">"避難拠点から500m徒歩圏内（安全避難商圏）"</span>
+<span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m_circle_test</span><span class="p">)</span>
+
+<span class="c1"># 表示確認</span>
+<span class="n">m_circle_test</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習 3 の解答コードを見る（クリックで展開）</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
+
+<span class="n">m_circle_test</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">35.7368</span><span class="p">,</span> <span class="mf">139.6705</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span>
+    <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">35.7368</span><span class="p">,</span> <span class="mf">139.6705</span><span class="p">],</span>
+    <span class="n">popup</span><span class="o">=</span><span class="s2">"武蔵大学 避難所拠点"</span><span class="p">,</span>
+    <span class="n">icon</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">Icon</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">,</span> <span class="n">icon</span><span class="o">=</span><span class="s2">"home"</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m_circle_test</span><span class="p">)</span>
+
+<span class="n">folium</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span>
+    <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">35.7368</span><span class="p">,</span> <span class="mf">139.6705</span><span class="p">],</span>
+    <span class="n">radius</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span>
+    <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">fill_color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span>
+    <span class="n">fill_opacity</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">popup</span><span class="o">=</span><span class="s2">"避難拠点から500m徒歩圏内（安全避難商圏）"</span>
+<span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m_circle_test</span><span class="p">)</span>
+
+<span class="n">m_circle_test</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="leafmap">
+<h3>演習 4: leafmapを用いた「ループ処理なし」の高速一括マーカープロット<a class="headerlink" href="#leafmap" title="Link to this heading">¶</a></h3>
+<p>GeoPandasやPandasで大量の位置情報（緯度経度）を扱う際、<code class="docutils literal notranslate"><span class="pre">folium</span></code> の <code class="docutils literal notranslate"><span class="pre">for</span></code> ループで1点ずつマッピングする手法はコードが長く、件数が多いと低速になります。
+次世代GISライブラリ <code class="docutils literal notranslate"><span class="pre">leafmap</span></code> の強力な機能である <code class="docutils literal notranslate"><span class="pre">add_points_from_xy()</span></code> メソッドを使うと、データフレームから経緯度の「列名」を指定するだけで、1行もループ処理（for文）を書くことなく、一瞬で全データを自動的に動的地図の上にマッピング（展開）できます。</p>
+<ol class="arabic simple">
+<li><p>以下の観光スポットデータフレーム <code class="docutils literal notranslate"><span class="pre">df_spots</span></code> があります。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">leafmap.Map</span></code> クラスを使って、東京スカイツリー周辺を中心としたズームレベル 13 の動的地図オブジェクト <code class="docutils literal notranslate"><span class="pre">leaf_m</span></code> を作成してください。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">leaf_m.add_points_from_xy()</span></code> メソッドを用い、データフレーム、X軸に使う経度列名、Y軸に使う緯度列名をそれぞれ指定して、一撃で地図上に全スポットをプロットするコードを完成させてください。</p></li>
+</ol>
+<p>leafmapをインストール</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="n">leafmap</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># （準備）leafmapのインストール</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">leafmap.foliumap</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">leafmap</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># 東東京エリアの観光スポット（ダミーデータ）</span>
+<span class="n">df_spots</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"スポット名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"東京スカイツリー"</span><span class="p">,</span> <span class="s2">"浅草寺"</span><span class="p">,</span> <span class="s2">"上野恩賜公園"</span><span class="p">],</span>
+    <span class="s2">"lat"</span><span class="p">:</span> <span class="p">[</span><span class="mf">35.7100</span><span class="p">,</span> <span class="mf">35.7147</span><span class="p">,</span> <span class="mf">35.7154</span><span class="p">],</span> <span class="c1"># 緯度</span>
+    <span class="s2">"lng"</span><span class="p">:</span> <span class="p">[</span><span class="mf">139.8107</span><span class="p">,</span> <span class="mf">139.7966</span><span class="p">,</span> <span class="mf">139.7740</span><span class="p">],</span> <span class="c1"># 経度</span>
+    <span class="s2">"混雑度"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"超混雑"</span><span class="p">,</span> <span class="s2">"かなり混雑"</span><span class="p">,</span> <span class="s2">"普通"</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># TODO: 1. leafmap.Map クラスを使って、スカイツリー（緯度35.7100, 経度139.8107）周辺を</span>
+<span class="c1">#          中心としたズームレベル13の地図オブジェクト leaf_m を作成</span>
+<span class="n">leaf_m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span>     <span class="p">],</span> <span class="n">zoom</span><span class="o">=</span>   <span class="p">)</span>
+
+<span class="c1"># TODO: 2. add_points_from_xy を使い、ループ処理なしでデータフレームの点を一瞬でプロット</span>
+<span class="c1"># 引数： df=df_spots, x="経度の列名", y="緯度の列名", popup=["クリック時に吹き出しに出す列名のリスト"]</span>
+<span class="n">leaf_m</span><span class="o">.</span><span class="n">add_points_from_xy</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span>     <span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span>      <span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span>      <span class="p">,</span>
+    <span class="n">popup</span><span class="o">=</span><span class="p">[</span>      <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># 表示確認</span>
+<span class="n">leaf_m</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習 4 の解答コードを見る（クリックで展開）</summary>
+<p>leafmapをインストール</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="n">leafmap</span>
+</pre></div>
+</div>
+<p>コードスニペットをもとめられたら下記を実行</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">output</span>
+<span class="n">output</span><span class="o">.</span><span class="n">enable_custom_widget_manager</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">leafmap.foliumap</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">leafmap</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">df_spots</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"スポット名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"東京スカイツリー"</span><span class="p">,</span> <span class="s2">"浅草寺"</span><span class="p">,</span> <span class="s2">"上野恩賜公園"</span><span class="p">],</span>
+    <span class="s2">"lat"</span><span class="p">:</span> <span class="p">[</span><span class="mf">35.7100</span><span class="p">,</span> <span class="mf">35.7147</span><span class="p">,</span> <span class="mf">35.7154</span><span class="p">],</span>
+    <span class="s2">"lng"</span><span class="p">:</span> <span class="p">[</span><span class="mf">139.8107</span><span class="p">,</span> <span class="mf">139.7966</span><span class="p">,</span> <span class="mf">139.7740</span><span class="p">],</span>
+    <span class="s2">"混雑度"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"超混雑"</span><span class="p">,</span> <span class="s2">"かなり混雑"</span><span class="p">,</span> <span class="s2">"普通"</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="n">leaf_m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">35.7100</span><span class="p">,</span> <span class="mf">139.8107</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+
+<span class="n">leaf_m</span><span class="o">.</span><span class="n">add_points_from_xy</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">df_spots</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"lng"</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">"lat"</span><span class="p">,</span>
+    <span class="n">popup</span><span class="o">=</span><span class="p">[</span><span class="s2">"スポット名"</span><span class="p">,</span> <span class="s2">"混雑度"</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">leaf_m</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id17">
+<h3>演習 5: 避難所混雑度シミュレーション「階級区分図（Choropleth）」の完全自動構築<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<p>これまでに学んだ、境界区画（GeoJSONポリゴン：形）と、統計データ（Pandas：数字）をマッチングさせて美しく塗り分ける、実務データ分析の王道パイプラインです。</p>
+<ol class="arabic simple">
+<li><p>以下のコード内に用意された「東京城西地区の簡易行政区画 GeoJSON（形データ）」と「各地区の避難所混雑率 Pandas DataFrame（数字データ）」を使用します。</p></li>
+<li><p>接着剤となる共通のキーワード列は、GeoJSON側が <code class="docutils literal notranslate"><span class="pre">properties.name</span></code>（properties辞書の中の name キー）、Pandas側が <code class="docutils literal notranslate"><span class="pre">地区名</span></code> 列です。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">folium.Choropleth</span></code> を使い、混雑率（数字）が高い地区ほど 「赤（OrRd：オレンジから赤へのグラデーション）」 で自動的に濃く塗り分けられる階級区分図を完成させてください。</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
+
+<span class="c1"># 1. 地形データ（GeoJSON形式：東京城西の簡易境界ポリゴンデータ：ダミー）</span>
+<span class="c1"># 通常はShapefile等から読み込みますが、このセルだけで即動作するように定義した、バグのないデータです。</span>
+<span class="n">geojson_districts</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"FeatureCollection"</span><span class="p">,</span>
+  <span class="s2">"features"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Feature"</span><span class="p">,</span>
+      <span class="s2">"properties"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"杉並区"</span><span class="p">},</span>
+      <span class="s2">"geometry"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Polygon"</span><span class="p">,</span>
+        <span class="s2">"coordinates"</span><span class="p">:</span> <span class="p">[[[</span><span class="mf">139.59</span><span class="p">,</span> <span class="mf">35.68</span><span class="p">],</span> <span class="p">[</span><span class="mf">139.64</span><span class="p">,</span> <span class="mf">35.68</span><span class="p">],</span> <span class="p">[</span><span class="mf">139.64</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">],</span> <span class="p">[</span><span class="mf">139.59</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">],</span> <span class="p">[</span><span class="mf">139.59</span><span class="p">,</span> <span class="mf">35.68</span><span class="p">]]]</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Feature"</span><span class="p">,</span>
+      <span class="s2">"properties"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"練馬区"</span><span class="p">},</span>
+      <span class="s2">"geometry"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Polygon"</span><span class="p">,</span>
+        <span class="s2">"coordinates"</span><span class="p">:</span> <span class="p">[[[</span><span class="mf">139.59</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">],</span> <span class="p">[</span><span class="mf">139.66</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">],</span> <span class="p">[</span><span class="mf">139.66</span><span class="p">,</span> <span class="mf">35.77</span><span class="p">],</span> <span class="p">[</span><span class="mf">139.59</span><span class="p">,</span> <span class="mf">35.77</span><span class="p">],</span> <span class="p">[</span><span class="mf">139.59</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">]]]</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Feature"</span><span class="p">,</span>
+      <span class="s2">"properties"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"中野区"</span><span class="p">},</span>
+      <span class="s2">"geometry"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Polygon"</span><span class="p">,</span>
+        <span class="s2">"coordinates"</span><span class="p">:</span> <span class="p">[[[</span><span class="mf">139.64</span><span class="p">,</span> <span class="mf">35.68</span><span class="p">],</span> <span class="p">[</span><span class="mf">139.69</span><span class="p">,</span> <span class="mf">35.68</span><span class="p">],</span> <span class="p">[</span><span class="mf">139.69</span><span class="p">,</span> <span class="mf">35.74</span><span class="p">],</span> <span class="p">[</span><span class="mf">139.64</span><span class="p">,</span> <span class="mf">35.74</span><span class="p">],</span> <span class="p">[</span><span class="mf">139.64</span><span class="p">,</span> <span class="mf">35.68</span><span class="p">]]]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># 2. 避難所の平均混雑率データ（PandasのDataFrame）</span>
+<span class="n">df_congestion</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"地区名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"杉並区"</span><span class="p">,</span> <span class="s2">"練馬区"</span><span class="p">,</span> <span class="s2">"中野区"</span><span class="p">],</span>
+    <span class="s2">"平均混雑率"</span><span class="p">:</span> <span class="p">[</span><span class="mf">85.5</span><span class="p">,</span> <span class="mf">42.0</span><span class="p">,</span> <span class="mf">68.2</span><span class="p">]</span> <span class="c1"># 杉並区が最も大混雑（危険！）</span>
+<span class="p">})</span>
+
+<span class="c1"># 3. 東京城西エリア全体が入る地図を初期化</span>
+<span class="n">m_choropleth</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">35.72</span><span class="p">,</span> <span class="mf">139.64</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># TODO: 4. folium.Choropleth を使って塗り分け地図を合体させてください。</span>
+<span class="c1"># 引数：</span>
+<span class="c1"># - geo_data: 地形GeoJSON (geojson_districts)</span>
+<span class="c1"># - data: 統計DataFrame (df_congestion)</span>
+<span class="c1"># - columns: Pandas側の接着キー列と、色分けにする数値列のリスト (["地区名", "平均混雑率"])</span>
+<span class="c1"># - key_on: GeoJSON側の接着キーを示す階層パス ("feature.properties.name" が鉄則！)</span>
+<span class="c1"># - fill_color: グラデーションカラー名 ("OrRd")</span>
+<span class="c1"># - fill_opacity: 塗りつぶしの不透明度 (0.7 程度)</span>
+<span class="c1"># - line_opacity: 境界線の不透明度 (0.3 程度)</span>
+<span class="c1"># - legend_name: 凡例のタイトル ("平均避難所混雑率 (%)")</span>
+<span class="n">folium</span><span class="o">.</span><span class="n">Choropleth</span><span class="p">(</span>
+    <span class="n">geo_data</span><span class="o">=</span>  <span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span>  <span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span>     <span class="p">],</span>
+    <span class="n">key_on</span><span class="o">=</span>  <span class="p">,</span>
+    <span class="n">fill_color</span><span class="o">=</span>  <span class="p">,</span>
+    <span class="n">fill_opacity</span><span class="o">=</span>  <span class="p">,</span>
+    <span class="n">line_opacity</span><span class="o">=</span>  <span class="p">,</span>
+    <span class="n">legend_name</span><span class="o">=</span>   <span class="s2">"</span>
+<span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m_choropleth</span><span class="p">)</span>
+
+<span class="c1"># 表示確認</span>
+<span class="n">m_choropleth</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習 5 の解答コードを見る（クリックで展開）</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
+
+<span class="n">geojson_districts</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"FeatureCollection"</span><span class="p">,</span>
+  <span class="s2">"features"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Feature"</span><span class="p">,</span>
+      <span class="s2">"properties"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"杉並区"</span><span class="p">},</span>
+      <span class="s2">"geometry"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Polygon"</span><span class="p">,</span>
+        <span class="s2">"coordinates"</span><span class="p">:</span> <span class="p">[[[</span><span class="mf">139.59</span><span class="p">,</span> <span class="mf">35.68</span><span class="p">],</span> <span class="p">[</span><span class="mf">139.64</span><span class="p">,</span> <span class="mf">35.68</span><span class="p">],</span> <span class="p">[</span><span class="mf">139.64</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">],</span> <span class="p">[</span><span class="mf">139.59</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">],</span> <span class="p">[</span><span class="mf">139.59</span><span class="p">,</span> <span class="mf">35.68</span><span class="p">]]]</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Feature"</span><span class="p">,</span>
+      <span class="s2">"properties"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"練馬区"</span><span class="p">},</span>
+      <span class="s2">"geometry"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Polygon"</span><span class="p">,</span>
+        <span class="s2">"coordinates"</span><span class="p">:</span> <span class="p">[[[</span><span class="mf">139.59</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">],</span> <span class="p">[</span><span class="mf">139.66</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">],</span> <span class="p">[</span><span class="mf">139.66</span><span class="p">,</span> <span class="mf">35.77</span><span class="p">],</span> <span class="p">[</span><span class="mf">139.59</span><span class="p">,</span> <span class="mf">35.77</span><span class="p">],</span> <span class="p">[</span><span class="mf">139.59</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">]]]</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Feature"</span><span class="p">,</span>
+      <span class="s2">"properties"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"中野区"</span><span class="p">},</span>
+      <span class="s2">"geometry"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Polygon"</span><span class="p">,</span>
+        <span class="s2">"coordinates"</span><span class="p">:</span> <span class="p">[[[</span><span class="mf">139.64</span><span class="p">,</span> <span class="mf">35.68</span><span class="p">],</span> <span class="p">[</span><span class="mf">139.69</span><span class="p">,</span> <span class="mf">35.68</span><span class="p">],</span> <span class="p">[</span><span class="mf">139.69</span><span class="p">,</span> <span class="mf">35.74</span><span class="p">],</span> <span class="p">[</span><span class="mf">139.64</span><span class="p">,</span> <span class="mf">35.74</span><span class="p">],</span> <span class="p">[</span><span class="mf">139.64</span><span class="p">,</span> <span class="mf">35.68</span><span class="p">]]]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">df_congestion</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"地区名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"杉並区"</span><span class="p">,</span> <span class="s2">"練馬区"</span><span class="p">,</span> <span class="s2">"中野区"</span><span class="p">],</span>
+    <span class="s2">"平均混雑率"</span><span class="p">:</span> <span class="p">[</span><span class="mf">85.5</span><span class="p">,</span> <span class="mf">42.0</span><span class="p">,</span> <span class="mf">68.2</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="n">m_choropleth</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">35.72</span><span class="p">,</span> <span class="mf">139.64</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">folium</span><span class="o">.</span><span class="n">Choropleth</span><span class="p">(</span>
+    <span class="n">geo_data</span><span class="o">=</span><span class="n">geojson_districts</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">df_congestion</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"地区名"</span><span class="p">,</span> <span class="s2">"平均混雑率"</span><span class="p">],</span>
+    <span class="n">key_on</span><span class="o">=</span><span class="s2">"feature.properties.name"</span><span class="p">,</span>
+    <span class="n">fill_color</span><span class="o">=</span><span class="s2">"OrRd"</span><span class="p">,</span>
+    <span class="n">fill_opacity</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+    <span class="n">line_opacity</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+    <span class="n">legend_name</span><span class="o">=</span><span class="s2">"平均避難所混雑率 (%)"</span>
+<span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m_choropleth</span><span class="p">)</span>
+
+<span class="n">m_choropleth</span>
+</pre></div>
+</div>
+</details>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id18">
+<h2>まとめ<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Web地図の自動翻訳: Pythonから HTML / CSS / JavaScript (Leaflet.js) へ自動でコードが変換される。</p></li>
+<li><p>location = [緯度, 経度]: foliumとGeoPandas（Point）では、経緯度の指定順が逆になるため注意！</p></li>
+<li><p>HTMLポップアップ: <code class="docutils literal notranslate"><span class="pre">&lt;br&gt;</span></code> や <code class="docutils literal notranslate"><span class="pre">&lt;b&gt;</span></code> などのタグを使って、吹き出し内をリッチにデザイン可能。</p></li>
+<li><p>階級区分図（Choropleth）: 形(GeoJSON)と数字(Pandas)を <code class="docutils literal notranslate"><span class="pre">key_on</span></code> で接着して作るグラデーション統計地図。</p></li>
+<li><p>ポータブルHTML地図: <code class="docutils literal notranslate"><span class="pre">.save(&quot;filename.html&quot;)</span></code> で書き出すことで、サーバーやPythonなしでどこでも動く地図を共有可能。</p></li>
+</ul>
+</section>
 </section>
 
         </article>
@@ -387,7 +1429,7 @@
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">第8回 地理空間データの活⽤1</div>
+                <div class="title">第8回 地理空間データの活用1</div>
                 
               </div>
             </a>
@@ -398,7 +1440,7 @@
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-09-01</div>
+              Last updated on 2026-09-02</div>
           </div>
           <div class="right-details">
             
@@ -407,8 +1449,78 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">第9回 地理空間データの活用2</a><ul>
+<li><a class="reference internal" href="#id2">🎯 到達目標</a><ul>
+<li><a class="reference internal" href="#google-colab">練習問題のGoogle Colab起動</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3">地図の仕組みとライブラリ比較</a><ul>
+<li><a class="reference internal" href="#id4">地図をインタラクティブに表示</a></li>
+<li><a class="reference internal" href="#pythonweb">PythonでWeb地図の表示</a></li>
+<li><a class="reference internal" href="#id5">代表的な2大ライブラリの比較</a><ul>
+<li><a class="reference internal" href="#id6">リンク</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#marker-html">ピン（Marker）の自動配置とHTMLポップアップの極意</a><ul>
+<li><a class="reference internal" href="#id7">経緯度指定の「鉄則」</a></li>
+<li><a class="reference internal" href="#iterrows">ループ処理（<code class="docutils literal notranslate"><span class="pre">iterrows()</span></code>）による全自動マッピング</a></li>
+<li><a class="reference internal" href="#htmlui">HTMLポップアップでデザインされたUIを作る</a></li>
+<li><a class="reference internal" href="#id8">条件分岐によるピンの「自動色分け」と「カスタムアイコン」</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#choropleth-map">階級区分図（Choropleth Map）のデータ構築パイプライン</a><ul>
+<li><a class="reference internal" href="#pandas">「形（境界ポリゴン）」と「数字（Pandas）」を合体させる理論</a></li>
+<li><a class="reference internal" href="#folium-choropleth"><code class="docutils literal notranslate"><span class="pre">folium.Choropleth</span></code> クラスのパラメータ徹底解読</a></li>
+<li><a class="reference internal" href="#key-on"><code class="docutils literal notranslate"><span class="pre">key_on</span></code> の書き方</a></li>
+<li><a class="reference internal" href="#color-brewer-2-0">色のグラデーション（Color Brewer 2.0 規格）の選び方</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#web-streamlit">Webアプリ（Streamlit）への地図埋め込みとポータビリティ</a><ul>
+<li><a class="reference internal" href="#streamlit-folium"><code class="docutils literal notranslate"><span class="pre">streamlit-folium</span></code> によるダッシュボードの合体</a><ul>
+<li><a class="reference internal" href="#id9">サンプル</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#html">サーバー不要！「ポータブルHTML地図」として書き出す</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10">練習問題（理論＆クイック記述：5問） (約20分)</a><ul>
+<li><a class="reference internal" href="#id11">練習問題 1: 緯度・経度の「指定順序」の罠</a></li>
+<li><a class="reference internal" href="#id12">練習問題 2: 地図上のポップアップ内での改行</a></li>
+<li><a class="reference internal" href="#choropleth">練習問題 3: 階級区分図（Choropleth）がグレーにバグる原因</a></li>
+<li><a class="reference internal" href="#sjoin">練習問題 4: 「メートル座標系」での空間結合（sjoin）と距離計算（復習）</a></li>
+<li><a class="reference internal" href="#id13">練習問題 5: 動的マップの保存と共有（ポータビリティ）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id14">演習（5問）</a><ul>
+<li><a class="reference internal" href="#id15">演習 1: 東京タワーへのカスタムマーカー設置とHTML吹き出し</a></li>
+<li><a class="reference internal" href="#id16">演習 2: 売上目標達成度に応じた複数店舗ピンの「動的自動色分け」</a></li>
+<li><a class="reference internal" href="#m">演習 3: 避難所を中心とする「半径500m安全商圏サークル（半透明）」の重ね合わせ描画</a></li>
+<li><a class="reference internal" href="#leafmap">演習 4: leafmapを用いた「ループ処理なし」の高速一括マーカープロット</a></li>
+<li><a class="reference internal" href="#id17">演習 5: 避難所混雑度シミュレーション「階級区分図（Choropleth）」の完全自動構築</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id18">まとめ</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

@@ -1059,8 +1059,6 @@ else:
 
 ## 📚 まとめ
 
-### ✨ 本日のキーワード
-
 *   Streamlit: HTML/CSS/JS不要で、Pythonコードのみでプロ級のUIを自動構築する革新的Webフレームワーク。
 *   Cloudflare Tunnel: クラウドの奥深く（Colab）で動いているWebサービスを、外部へ直結させるトンネリング技術。
 *   8501ポート: Streamlitが外部からのアクセスを待機している、Colab内の標準の窓口番号。

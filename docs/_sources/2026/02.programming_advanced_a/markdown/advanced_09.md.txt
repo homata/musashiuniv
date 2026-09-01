@@ -1,1 +1,1030 @@
-# 第9回 地理空間データの活⽤2
+# 第9回 地理空間データの活用2
+
+leafmap/foliumによる動的可視化とインタラクティブマップ
+
+---
+
+## 🎯 到達目標
+
+1.  動的マップ（folium / leafmap）と静的グラフ（Matplotlib）の長短を理解し、目的（学術論文、Webサービス、プレゼンなど）に応じて適切に使い分けられる。
+2.  Pythonコードが裏側で HTML、CSS、JavaScript（Leaflet.js）へ自動変換（コンパイル）される仕組み を説明できる。
+3.  Pandasのループ処理（`iterrows()`）を用いて、何百件の位置情報（緯度経度）も一瞬で地図上にマッピングし、条件に応じてピンの色やアイコンを自動で変化させられる。
+4.  ポップアップ（Popup）ウィンドウの中に HTMLタグを組み込み、改行、太字、公式サイトへのハイパーリンクなどがデザインされたリッチな吹き出しを作れる。
+5.  地域別の数値データ（人口や売上）を、地図の境界線（GeoJSONポリゴン）の内側の色の濃淡で表現する 階級区分図（コーロプレス図） を自力で構築できる。
+6.  作成した地図を Streamlitダッシュボードに埋め込む仕組み（st_folium） や、単体のHTMLファイルとして出力・共有するメソッド（.save()） をマスターする。
+
+---
+
+### 練習問題のGoogle Colab起動
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](
+https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exercises/2026/02.programming_advanced_a/advanced_09.ipynb)
+
+1. 上記の「Open In Colab」をクリックして、Google Colabを起動させてください
+2. [ファイル] → [ドライブにコピーを保存] を選択して、Googleドライブにコピーを保存してください
+3. 保存が成功すると，Googleドライブの「マイドライブ」 →「Colab Notebooks」にコピーしたファイルが保存されます。
+4. GoogleドライブにコピーしたGoogle ColabのNotebooksを開いてください
+5. 開いたGoogle ColabのNotebooksで作業をしてください
+
+---
+
+## 地図の仕組みとライブラリ比較
+
+### 地図をインタラクティブに表示
+
+これまで描画していたのは、MatplotlibやSeabornによる地図でした。  
+これは「画像ファイル（PNGやJPEG）」で表示をしてました。  
+デジタル地図に求められるのは、以下のような「対話（インタラクティブ）性」です。
+
+1. 直感的なスクロールとズーム（見たいところへ飛び、拡大する）。
+2. 動的なトッピング（レイヤー）のオン・オフ（ハザードマップを重ねたり消したりする）。
+3. クリック時のイベント（ピンをクリックすると、そこに登録された詳細情報が表示される）。
+
+デジタル地図では 「JavaScript（ジャバスクリプト）」 という、Webブラウザを動かすための全く別のプログラミング言語で書かれています。
+代表的なオープンソースライブラリが 「Leaflet.js（リーフレット・ジェイエス）」 です。  
+
+多くの場合、デジタル地図を作成するには、HTMLを書き、CSSでデザインを整え、JavaScriptで地図の初期化やピンの設置を書く必要があります。
+
+### PythonでWeb地図の表示
+
+ `folium` や `leafmap` は「Pythonからデジタル地図を作成する」ライブラリで、HTML、CSS、JavaScriptに自動翻訳（自動変換）します。
+
+```text
+  [ 🐍 あなたが書くPython ]
+   folium.Map(location=[35.73, 139.67], zoom_start=15)
+   folium.Marker(location=[35.7368, 139.6705], popup="武蔵大学").add_to(m)
+         │
+         ▼ (folium / leafmap が裏側で自動翻訳！)
+  [ ⚙️ 変換されたWebソース（HTML / CSS / JavaScript）]
+   <html>
+    <head><script src="https://unpkg.com/leaflet/dist/leaflet.js"></script></head>
+    <body>
+     <div id="map_xxx"></div>
+     <script>
+      var map = L.map('map_xxx').setView([35.73, 139.67], 15);
+      L.marker([35.7368, 139.6705]).addTo(map).bindPopup("武蔵大学");
+     </script>
+    </body>
+   </html>
+         │
+         ▼ (Google Colabの実行画面にロード！)
+  [ 🖥️ ブラウザ上でグリグリ動く本物のデジタルマップ誕生！ ]
+```
+
+この仕組みのおかげで、JavaScriptの文法を1文字も覚えることなく、Pythonの知識だけでWebGISアプリが作成できます。
+
+### 代表的な2大ライブラリの比較
+
+Pythonには動的地図を扱うライブラリがいくつかあります。授業では目的や難易度に応じて適切に選べるよう、以下の2つの特徴をしっかり理解しましょう。
+
+| 特徴 | 🌐 `folium` (フォリウム) | 🌿 `leafmap` (リーフマップ) |
+| :--- | :--- | :--- |
+| キャラクター | 「歴史ある、シンプルで硬派な定番長老」 | 「最先端で、データ連携に強い超多機能エリート」 |
+| 歴史・ドキュメント| 非常に古くから使われており、世界中に日本語の解説ブログやトラブル対処法（Q&A）が溢れています。 | 比較的歴史が新しく、現在も猛スピードで進化しています。英語の公式ドキュメントが非常に充実しています。 |
+| 得意なこと | 緯度経度のリストからピンを数点立てる、市区町村の境界線をきれいに塗り分ける（Choropleth）など。 | PandasのDataFrameから `for` ループを回さずに一撃で1万個のピンを撒く、人工衛星データや標高データの解析など。 |
+| Streamlit連携 | 別途 `streamlit-folium` という仲介用ライブラリをインストールする必要があります。 | 内蔵機能だけで、Streamlitダッシュボード上に2行でシームレスに地図を埋め込めます。 |
+
+まずは基本である `folium` を使って「ピンを立てる」「色を変える」といった位置情報の扱い方の構造を覚え，その後に `leafmap` に触れることで、両方の良さがわかります
+
+#### リンク
+* [folium公式](https://python-visualization.github.io/folium/latest/)
+* [leafmap公式](https://leafmap.org/)
+  * [Tutorials](https://leafmap.org/tutorials/)
+
+---
+
+## ピン（Marker）の自動配置とHTMLポップアップの極意
+
+それでは、デジタル地図を構築していきます
+武蔵大学を中心としたマップ（`zoom_start=15`：数字が大きいほど拡大）を立ち上げます。
+
+```python
+import folium
+
+# 1. 地図オブジェクトを作成する（中心点を緯度35.737, 経度139.670に設定）
+m = folium.Map(location=[35.737, 139.670], zoom_start=15)
+
+# 2. 表示（Colabでは変数名を書くだけで、地図が描画されます）
+m
+```
+
+画面の中に、本物のスクロール・拡大縮小ができる地図が表示されます
+まずは、この地図に「ピン（Marker）」を追加をします。
+
+### 経緯度指定の「鉄則」
+
+「緯度（Latitude）・経度（Longitude）」という順番で口にしますが、プログラミングやGIS（幾何空間）の世界では下記でした。
+
+* 横軸（X軸） ＝ 経度（東経140度など、左右の動き）
+* 縦軸（Y軸） ＝ 緯度（北緯35度など、上下の動き）
+
+座標を `(X, Y)` で表す基本ルールがあるため、GeoPandasやShapelyのPointオブジェクトでは `Point(経度, 緯度)` の順（経度が先、緯度が後）で指定するのが鉄則でした。
+
+しかし、`folium` の `location` 引数では、歴史的な背景から `[緯度, 経度]` の順（緯度が先、経度が後）となります
+
+```text
+  【 幾何・GISデータ（GeoPandas等） 】
+   geometry = Point( 経度 , 緯度 )  <-- 横(X), 縦(Y) の数学の基本順
+
+  【 Web可視化（folium / Google Maps API 等） 】
+   location = [ 緯度 , 経度 ]      <-- 日常生活の「緯度経度」の口頭順
+```
+
+TIPS:  
+「地図を動かしたら画面が真っ白になった、あるいはピンが南極の近くや宇宙空間に消えてしまった！」という時、この「経度と緯度の指定順が逆になっていること」が多いです。  
+エラーは出ないのにピンが表示されない時は確認すべきポイントです。
+
+### ループ処理（`iterrows()`）による全自動マッピング
+
+手動で `folium.Marker` を何個も書くのはスマートではありません。
+ `for idx, row in df.iterrows():` のループ処理を使うことで、1万件のデータであっても全自動マッピングできます。
+
+```python
+# 1. Pandasデータフレームで3つの店舗データを用意（実務を想定したダミーデータ）
+import pandas as pd
+import folium
+
+shop_df = pd.DataFrame({
+    "店舗名": ["江古田コーヒー", "桜台ベーカリー", "練馬スイーツ"],
+    "緯度": [35.7368, 35.7382, 35.7351],
+    "経度": [139.6705, 139.6631, 139.6542],
+    "今日のおすすめ": ["コロンビア浅煎り", "焼きたてクロワッサン", "とろけるプリン"],
+    "評価スコア": [4.5, 3.8, 4.8]
+})
+
+# 2. 地図の土台を生成
+m_shops = folium.Map(location=[35.736, 139.663], zoom_start=14)
+
+# 3. 黄金のループ：iterrows() で1行ずつ位置を取り出してピンを立てる
+for idx, row in shop_df.iterrows():
+    # 各行の経緯度、店舗名、おすすめ商品を取り出す
+    lat = row["緯度"]
+    lng = row["経度"]
+    name = row["店舗名"]
+    recommend = row["今日のおすすめ"]
+    
+    # マーカーを作成して地図に追加
+    folium.Marker(
+        location=[lat, lng], # foliumは [緯度, 経度] の順！
+        popup=f"{name} (おすすめ: {recommend})", # クリックした時のテキスト
+        tooltip=name # マウスを乗せた時（ホバー）に出る簡易テキスト
+    ).add_to(m_shops)
+
+m_shops
+```
+
+### HTMLポップアップでデザインされたUIを作る
+
+`popup` 引数の中に渡す文字は、ただのテキストだけではありません。
+実は、HTMLのソースコードをそのまま文字列として流し込むことができます！
+
+「改行を入れたい」「太字にしたい」「文字の色を赤にしたい」「ホームページへのリンクを埋め込みたい」といった時、以下のような簡単なHTMLタグを記述することで、一気に実用的なWEBアプリの画面に変貌します。
+
+*   改行 ➡ `<br>`
+*   太字 ➡ `<b> 太字にしたい文字 </b>`
+*   赤色の文字 ➡ `<span style="color: red;"> 赤くしたい文字 </span>`
+*   ハイパーリンク ➡ `<a href="URL" target="_blank"> リンクテキスト </a>` （`target="_blank"` をつけると別タブで綺麗に開きます）
+
+```python
+m_rich = folium.Map(location=[35.7368, 139.6705], zoom_start=15)
+
+# HTMLコードを文字列として作成します
+# Pythonの「トリプルクォーテーション（\"\"\"）」を使うと、改行を含んだ長い文字列を綺麗に書けます。
+html_content = """
+<div style="font-family: sans-serif; font-size: 13px; width: 220px;">
+    <h4 style="margin: 0 0 5px 0; color: #8B4513;">☕ 江古田コーヒー 本店</h4>
+    <hr style="margin: 5px 0; border: 0; border-top: 1px solid #ccc;">
+    <b>本日のブレンド:</b> <span style="color: green;">キリマンジャロ</span><br>
+    <b>本日の混雑状況:</b> <span style="background-color: #ffcccc; padding: 2px 5px; border-radius: 3px;">かなり混雑 🔥</span><br>
+    <br>
+    <a href="https://www.musashi.ac.jp/" target="_blank" style="color: #1E90FF; text-decoration: none; font-weight: bold;">
+        👉 公式サイトをチェックする
+    </a>
+</div>
+"""
+
+# HTMLをfoliumのポップアップオブジェクトに変換（max_widthを指定すると改行が崩れません）
+rich_popup = folium.Popup(html_content, max_width=250)
+
+folium.Marker(
+    location=[35.7368, 139.6705],
+    popup=rich_popup,
+    icon=folium.Icon(color="darkblue", icon="coffee", prefix="fa") # font-awesomeのコーヒーアイコンを使用
+).add_to(m_rich)
+
+m_rich
+```
+
+### 条件分岐によるピンの「自動色分け」と「カスタムアイコン」
+
+「評価スコアが4.5以上の店舗は赤色ピン、それ未満は灰色ピンにする」といった処理を、if文をループに組み込むことで実装します。
+
+また、`folium.Icon` には `color`（ピン自体の色）の他に、ピンの中央に描かれる小さなイラスト（アイコン）を指定できます。
+標準で使えるアイコンの他に、FontAwesome（フォント・アサム） という世界共通の無料アイコン集のパーツを、`prefix="fa"` を添えるだけで呼び出せます。
+
+*   `icon="home"` ➡ 家のマーク
+*   `icon="shopping-cart"` ➡ カートのマーク
+*   `icon="info-sign"` ➡ インフォメーション
+*   `icon="coffee", prefix="fa"` ➡ コーヒーカップ
+*   `icon="cutlery", prefix="fa"` ➡ フォークとナイフ（レストラン）
+
+```python
+# 評価によってピンの色を自動で分けるデモ
+m_color_test = folium.Map(location=[35.736, 139.663], zoom_start=14)
+
+for idx, row in shop_df.iterrows():
+    lat = row["緯度"]
+    lng = row["経度"]
+    name = row["店舗名"]
+    score = row["評価スコア"]
+    
+    # 🌟 if-else で条件分岐
+    if score >= 4.5:
+        pin_color = "red"    # 高評価は赤
+        pin_icon = "star"    # 星マーク
+    else:
+        pin_color = "gray"   # それ以外はグレー
+        pin_icon = "thumbs-up" # グッドマーク
+        
+    folium.Marker(
+        location=[lat, lng],
+        popup=f"<b>{name}</b><br>スコア: {score}",
+        icon=folium.Icon(color=pin_color, icon=pin_icon, prefix="fa")
+    ).add_to(m_color_test)
+
+m_color_test
+```
+
+---
+
+## 階級区分図（Choropleth Map）のデータ構築パイプライン
+
+### 「形（境界ポリゴン）」と「数字（Pandas）」を合体させる理論
+
+ビジネスのマーケティングや自治体の地域分析で、「どのエリアで売上が高いか」「どこで高齢化が進んでいるか」を一目で把握するために、地域を色の濃淡で塗り分ける手法を階級区分図（コーロプレス図：Choropleth Map）と呼びます。
+
+これを作成するには、絶対に2つの別々のデータが必要です。
+
+1. 境界ポリゴン（地図の形データ：GeoJSON形式など）
+    *  「〇〇区の境界線は、この緯度経度の点々を繋いだ多角形（Polygon）です」という、ただの「形」の情報。
+2. 統計データ（属性情報：PandasのDataFrameなど）
+    *  「〇〇区の今年の売上高は500万円です」「高齢化率は28%です」という、ただの「数字」の表。
+
+この2つを、共通のキーワード（例えば「区名」や「市区町村コード」）を接着剤（キー）にして合体させることで、初めて色分けされた地図が完成します。
+
+【階級区分図の接着（マージ）構造】
+
+```text
+  [ GeoJSON（地図の形） ]                       [ Pandas DataFrame（統計数字） ]
+   feature 1:                                    行 1:
+     name: "杉並区"                               店舗: "杉並区"
+     geometry: POLYGON((139.6 35.7...))            売上額: 1,200,000 円
+   feature 2:                                    行 2:
+     name: "練馬区"                               店舗: "練馬区"
+     geometry: POLYGON((139.6 35.7...))            売上額:  850,000 円
+            │                                              │
+            ╰───────  Choropleth( key_on="feature.properties.name" ) ╯
+                                      │
+                                      ▼ (合体完了！)
+  [ 🗺️ 杉並区は「濃い赤」、練馬区は「薄いオレンジ」に自動塗り分けされた動的地図！ ]
+```
+
+### `folium.Choropleth` クラスのパラメータ徹底解読
+
+foliumでこれを行うためのコードは、非常に設定項目（引数）が多く、エラーを起こしやすいです。
+1行ずつのパラメータの意味を確認してください。
+
+```python
+folium.Choropleth(
+    geo_data=geojson_data,               # 1. 地図の「形」データ（GeoJSONファイルなど）
+    data=pandas_df,                     # 2. 塗り分ける「数字」データ（PandasのDataFrame）
+    columns=["区名", "売上額"],           # 3. Pandas側の [接着キーにする列, 色に変換する数字の列]
+    key_on="feature.properties.name",   # 4. GeoJSON（形）側の [接着キーにする項目パス] （※重要）
+    fill_color="YlOrRd",                # 5. グラデーションの色のパターンを指定（例: 黄色→橙→赤）
+    fill_opacity=0.7,                   # 6. 塗りつぶしの不透明度（0.0=透明 〜 1.0=完全不透明）
+    line_opacity=0.2,                   # 7. 境界線の不透明度
+    legend_name="店舗別売上高（円）"      # 8. 凡例（色の説明バー）のタイトル
+).add_to(m)
+```
+
+###  `key_on` の書き方
+
+なぜ `key_on="feature.properties.name"` のように、ドット（`.`）で繋がれた長い文字列を指定するのでしょうか？
+それは、GeoJSONという地図ファイルの内部構造（ネストされた辞書型）から、接着剤となる「地域名」を取り出すためのパスを指定しているからです。
+
+GeoJSONのファイルの中身は、以下のような構造をしています。
+
+```json
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "杉並区",
+        "code": "13115"
+      },
+      "geometry": { "type": "Polygon", "coordinates": [...] }
+    }
+  ]
+}
+```
+
+この中から、使いたい `"杉並区"`（`"name"`）を取り出すためには、
+1.  まず共通する親要素である `feature` から出発し、
+2.  その中にある `properties`（属性グループ）の中に入り、
+3.  目的の `name` という引き出しを開ける、
+
+というルートを伝える必要があります。これをドットで繋いで `feature.properties.name` と書くのが、foliumにおけるのルールです。
+
+アドバイス  
+「Choroplethを実行したら、地図は出るのに全部黒（またはグレー）に塗りつぶされて、グラデーションにならない！」というエラーのは、この `key_on` の指定パスが、GeoJSONファイルの中身とズレていることが原因が多いです。  
+GeoJSONを一度Pandasで読むなどして、propertiesの中にどんなキー名（`"name"` なのか、`"name_local"` なのか、`"N03_004"` なのか）が入っているかを事前に確認してください。
+
+### 色のグラデーション（Color Brewer 2.0 規格）の選び方
+
+`fill_color` に指定する文字列は、何でも良いわけではありません。
+統計地図の世界標準カラー規格である 「ColorBrewer 2.0」 に定められたカラーコード（3文字の略称を繋いだもの）を指定します。
+
+*   `YlOrRd`：Yellow (黄) ➡ Orange (橙) ➡ Red (赤)。売上高や危険度など、「数字が大きいほど警戒・活発」なデータの可視化に最適。
+*   `YlGnBu`：Yellow (黄) ➡ Green (緑) ➡ Blue (青)。雨量や水分量、森林率など、自然・環境データの可視化に最適。
+*   `BuPu`：Blue (青) ➡ Purple (紫)。高級感や、少し落ち着いた分布を示すのに最適。
+*   `RdYlGn`：Red (赤：悪い/多い) ➡ Yellow (中間) ➡ Green (緑：良い/少ない)。「安全度」や「顧客満足度」など、両極端な評価を表すのに適したカラー。
+
+---
+
+## Webアプリ（Streamlit）への地図埋め込みとポータビリティ
+
+Streamlit（ストリームリット） のウェブアプリケーションの中に、完璧に合体（埋め込み）させてみます
+
+###  `streamlit-folium` によるダッシュボードの合体
+StreamlitにMatplotlibのグラフを埋め込むときは `st.pyplot(fig)` と書きました。  
+同じように、foliumの動的地図オブジェクト（`m`）をStreamlitの画面上に美しく埋め込むための仲介役が `streamlit-folium` というライブラリです。
+
+これを使うと、`st_folium(m, width=700, height=500)` というたった1行を書くだけで、Streamlitのダッシュボードのど真ん中に、スクロールやピンのクリックができる極上の地図が合体します。
+
+【Streamlit ✕ GIS ✕ Pandas の完全連動ダッシュボード（構造図）】
+
+```text
+  ┌────────────────────────────────────────────────────────┐
+  │  📊 カフェ売上・商圏分析システム（Streamlit画面）       │
+  ├──────────────┬─────────────────────────────────────────┤
+  │ ⚙️ 操作盤   │  [ 🔮 選んだ店舗の1km商圏を自動計算 ]    │
+  │ (sidebar)    │                                         │
+  │              │  ┌───────────────────────────────────┐  │
+  │ ・店舗を選択 │  │  🗺️ インタラクティブ・foliumマップ    │  │  st_folium(m) で
+  │   [ 江古田店]│  │                                   │  │  アプリ画面に埋め込み！
+  │              │  │        ●(店舗)                    │  │
+  │ ・商圏レンジ │  │     ╭───★───╮                  │  │  スライダーを動かすと、
+  │   [ 1000m ]  │  │     │   (1km)│                  │  │  商圏円の大きさが
+  │              │  │     ╰────────╯                  │  │  リアルタイムで伸縮！
+  └──────────────┴─────────────────────────────────────────┘
+```
+
+#### サンプル
+Streamlit，Folium streamlit-folium インストール
+```bash
+!pip install -q streamlit folium streamlit-folium
+```
+
+cloudflaredインストール（1回実行すればOKです）
+```bash
+!wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
+!dpkg -i cloudflared-linux-amd64.deb
+```
+
+```python
+%%writefile app.py
+import streamlit as st
+import folium
+from streamlit_folium import st_folium
+
+st.set_page_config(page_title="Folium Map Demo", layout="wide")
+st.title("Streamlit + Folium 地図サンプル")
+
+# 地図の中心とズームレベル
+center = [35.7100, 139.8107]  # 緯度, 経度
+zoom = 13
+
+# Foliumの地図オブジェクトを作成
+m = folium.Map(location=center, zoom_start=zoom)
+
+# マーカーを追加
+folium.Marker(
+    location=[35.7100, 139.8107],
+    popup="サンプル地点",
+    tooltip="クリックして詳細"
+).add_to(m)
+
+# 円(半径付きエリア)を追加する例
+folium.Circle(
+    location=[35.7100, 139.8107],
+    radius=500,  # メートル単位
+    color="blue",
+    fill=True,
+    fill_opacity=0.2
+).add_to(m)
+
+# Streamlitに地図を表示
+st_data = st_folium(m, width=800, height=600)
+
+# クリックした地点の情報を取得して表示(インタラクティブ)
+if st_data.get("last_clicked"):
+    st.write("クリックした座標:", st_data["last_clicked"])
+```
+
+
+streamlitをapp.pyで起動。debug.logファイルにコンソール出力を書き出す
+```bash
+%%bash --bg
+streamlit run app.py > debug.log 2>&1
+```
+
+cloudflaredを起動。tunnel.logファイルにコンソール出力を書き出す
+```bash
+%%bash --bg
+sleep 3
+cloudflared tunnel --url http://localhost:8501 --no-autoupdate > tunnel.log 2>&1
+```
+
+ログファイルから「.trycloudflare.com」が含まれる行を検索して表示する
+```bash
+!grep -o 'https://[a-zA-Z0-9-]*\.trycloudflare\.com' tunnel.log
+```
+
+
+### サーバー不要！「ポータブルHTML地図」として書き出す
+
+foliumオブジェクトには、非常に強力なファイル保存メソッド `.save()` が用意されています。
+
+```python
+# （体験コード：実行するとColabの中に HTMLファイル が保存されます）
+m_shops.save("cafe_map.html")
+```
+
+* 何が起きるのか？：
+    * このコードを実行すると、Colabの左側メニュー（ファイルフォルダ）の中に、`cafe_map.html` という1つのファイルが書き出されます。
+    * このファイルをダウンロードし、自分のパソコンのデスクトップでダブルクリックすると、インターネットブラウザが立ち上がり、PythonやColabを一切起動していない完全なオフライン状態（あるいは相手の環境）でも、あなたが作ったあの「グリグリ動く地図」が100%完璧に動作します！
+
+* ポータビリティの価値：
+    * HTMLファイルの中には、先述した「自動翻訳されたHTML/CSS/JavaScript」がすべてテキストとしてパッケージングされています。そのため、メールに添付して送ることもできますし、自分が持っているブログやホームページのコードの中に、iframeタグを使って簡単に地図をパーツとして埋め込むこともできます。これこそが、foliumが世界中のデータアナリストから今も愛され続ける最大の理由です。
+
+---
+
+## 練習問題（理論＆クイック記述：5問） (約20分)
+
+### 練習問題 1: 緯度・経度の「指定順序」の罠
+GeoPandasで店舗の位置（Pointオブジェクト）を新しく手動で作成する場合と、foliumの地図上に `folium.Marker` でピンを立てる場合では、引数に指定する「緯度」と「経度」の順番のルールが異なります。
+それぞれの正しい指定順序の組み合わせを答えてください。
+
+1.  GeoPandas (ShapelyのPoint) ➡ `Point( [ A ] , [ B ] )`
+2.  folium (Map や Marker の location) ➡ `location = [ [ C ] , [ D ] ]`
+
+<details>
+<summary>👉 練習問題 1 の解答と解説を見る</summary>
+
+*   正解:
+    *   [ A ] = 経度 (Longitude / X軸), [ B ] = 緯度 (Latitude / Y軸)
+    *   [ C ] = 緯度 (Latitude), [ D ] = 経度 (Longitude)
+*   解説:
+    *   数学のグラフやGeoDataFrameのように「幾何学データ」として空間演算を行うGeoPandasでは、横軸（X軸）である 経度、縦軸（Y軸）である 緯度 の順で指定します。
+    *   一方で、Google Mapsやfoliumなどの「Web可視化サービス」のAPIでは、日常の口頭順である 「緯度、経度」 の順でリストを渡すお約束になっています。
+    *   この2つのズレは、プロのエンジニアでも最も頻繁に間違える罠ですので、コードを書く時は頭の中で「今、自分はデータの加工（GeoPandas）をしているのか、画面の描画（folium）をしているのか」を強く意識しましょう！
+
+</details>
+
+---
+
+### 練習問題 2: 地図上のポップアップ内での改行
+foliumのマーカー（ピン）をクリックした時に出る吹き出し（popup）の文字に、Pythonの通常の改行コード（`\n`）を含めて `popup="江古田店\n今日のおすすめ:プリン"` と書きましたが、ブラウザの地図画面では改行されず、1行に繋がって表示されてしまいました。
+ポップアップの中で正しく改行を反映させるために、書き換えるべき「HTMLのタグ」を答えてください。
+
+<details>
+<summary>👉 練習問題 2 の解答と解説を見る</summary>
+
+*   正解: `<br>` タグ
+*   解説:
+    *   foliumのポップアップの中身は、ブラウザが「HTMLソースコード」として解釈して描画します。
+    *   ブラウザ（HTML）の世界では、通常のテキストの改行コード（`\n`）や空白改行は完全に無視されるルールになっているため、改行を意味するHTMLタグである `<br>`（Breakの略） を文字列の間に挟む必要があります。
+    *   例： `popup="江古田店<br>今日のおすすめ:プリン"` と書けば、きれいに2行に分かれて表示されます。
+
+</details>
+
+---
+
+### 練習問題 3: 階級区分図（Choropleth）がグレーにバグる原因
+`folium.Choropleth` を使って、各市区町村の人口統計を色の濃淡で塗り分けようとプログラムを実行しました。
+エラーメッセージは何も出ず、実行自体は成功して地図は描画されましたが、どの市区町村もグラデーションの色がつかず、すべて一律の「グレー（灰色）」に塗りつぶされてしまいました。
+このとき、疑うべき「Choroplethの引数設定」および「データの中身」の原因は何でしょうか？
+
+<details>
+<summary>👉 練習問題 3 の解答と解説を見る</summary>
+
+*   正解:
+    *   原因: `key_on` 引数で指定した「GeoJSON側の地域名が入っているキーのパス」が間違っている（ズレている）ため、Pandasの統計データと位置データが接着剤として噛み合わなかったから。
+*   解説:
+    *   foliumのChoroplethは、GeoJSONファイルとPandasのデータフレームを、指定されたキー（例：区名）でマッチングさせて色を塗ります。
+    *   もし、`key_on="feature.properties.name"` と指定したのに対し、実際のGeoJSONファイルの中に `"name"` というキーが存在せず、代わりに `"city_name"` という名前で登録されていた場合、接着剤が完全に空振りしてしまいます。
+    *   foliumは「マッチする数値データが見つからなかった地域」を、データ未登録エリアとして標準色である「グレー」で安全に塗りつぶします。エラーを出してくれないため、接着キーの名前が完全に大文字小文字・アンダースコアまで一致しているか確認しましょう。
+
+</details>
+
+---
+
+### 練習問題 4: 「メートル座標系」での空間結合（sjoin）と距離計算（復習）
+第8回で、商圏バッファ（`.buffer()`）や距離計算（`.distance()`）を行う前には、GeoDataFrameを世界測地系 `EPSG:4326`（経緯度）から、平面直角座標系 `EPSG:6677`（メートル）などの投影座標系に変換するステップが絶対に必要だと学びました。
+では、本日学んだ `folium` や `leafmap` を使って、「動的地図の上にピンを配置したり、階級区分図を描画する」直前のデータは、投影変換した `EPSG:6677` のままで渡してよいでしょうか？ それとも、元の `EPSG:4326` に戻す（あるいは最初から変換しない）必要があるでしょうか？
+
+<details>
+<summary>👉 練習問題 4 の解答と解説を見る</summary>
+
+*   正解: 元の世界測地系 `EPSG:4326`（経緯度・角度単位）に戻す（あるいは経緯度データのままで渡す）必要がある。
+*   解説:
+    *   ここが、GeoPandas（加工）とfolium（描画）を組み合わせる際の、最大の頭の整理ポイントです！
+    *   `folium` や `leafmap` のWeb地図は、世界基準のGPS座標である 「緯度と経度（角度：WGS84 / EPSG:4326）」でピンの位置や境界線を認識・表示する仕組み になっています。
+    *   そのため、もしメートル平面座標系（`EPSG:6677`）のままで `folium.Marker(location=[X座標(メートル), Y座標(メートル)])` のように巨大な数値（例: -35000, -12000 など）を渡してしまうと、システムは「そんな緯度経度は地球上に存在しない！」とパニックを起こしてエラーになります。
+    *   計算（バッファや距離）をする時はメートル平面（6677）に変換し、最終的に地図に塗る・撒く（folium可視化）時は、経緯度（4326）に戻す
+ 
+</details>
+
+---
+
+### 練習問題 5: 動的マップの保存と共有（ポータビリティ）
+作成した動的地図オブジェクト `m_final` を、外部の人に共有し、相手のパソコンのブラウザ上でグリグリと動く状態で確認してもらいたいです。
+このとき、foliumに用意されている最も適切な保存用のメソッドと、保存されるファイル形式（拡張子）の組み合わせを答えてください。
+
+<details>
+<summary>👉 練習 modification 5 の解答と解説を見る</summary>
+
+*   正解: `.save()` メソッド、拡張子は `.html`（HTMLファイル形式）
+*   解説:
+    *   `m_final.save("my_analysis.html")` と記述して実行します。
+    *   これにより、すべての地図情報、ピンの位置、JavaScriptの動作コードが1つに凝縮されたポータブルな「HTMLファイル」が書き出されます。
+    *   相手はただファイルをダブルクリックしてブラウザ（ChromeやSafariなど）で開くだけで、Python環境を汚さずに100%動的な地図を操作できます。
+
+</details>
+
+---
+
+## 演習（5問）
+
+---
+
+### 演習 1: 東京タワーへのカスタムマーカー設置とHTML吹き出し
+
+東京タワー（緯度: 35.6586, 経度: 139.7454）を中心としたズームレベル 16 のfolium地図を作成してください。
+1.  東京タワーの位置に、ピンの色が 「オレンジ（orange）」、アイコンが 「建物（fort / hotel）」（Font Awesomeを使用：`prefix="fa"`）のカスタムマーカーを設置してください。
+2.  マーカーをクリックした際に、太字（`<b>`）と改行（`<br>`）を使って、以下の通りに美しくデザインされたポップアップ（吹き出し）が表示されるように設定してください。
+    *   「🗼 東京タワー」（1行目・太字）
+    *   「高さ: 333m」（2行目）
+    *   「1958年開業の電波塔」（3行目）
+
+```python
+import folium
+
+# TODO: 1. 東京タワーを中心としたズームレベル16のfolium地図を作成
+tokyo_tower_map = folium.Map(location=[35.6586, 139.7454], zoom_start=16)
+
+# TODO: 2. HTMLの改行と太字タグを駆使してポップアップの文字列を作成
+popup_html = """
+"""
+
+# TODO: 3. カスタムマーカーを作成し、地図(tokyo_tower_map)に追加
+# ※ピンの色は "orange"、アイコン名は "fort"、prefix="fa" を指定
+folium.Marker(
+    location=[35.6586, 139.7454],
+    popup=folium.Popup(  , max_width=200),
+    icon=folium.Icon(color= , icon=, prefix=)
+).add_to(tokyo_tower_map)
+
+# 表示確認
+tokyo_tower_map
+```
+
+<details>
+<summary>👉 演習 1 の解答コードを見る（クリックで展開）</summary>
+
+```python
+import folium
+
+# 1. 地図の初期化
+tokyo_tower_map = folium.Map(location=[35.6586, 139.7454], zoom_start=16)
+
+# 2. HTMLポップアップの作成
+popup_html = """
+<b>🗼 東京タワー</b><br>
+高さ: 333m<br>
+1958年開業の電波塔
+"""
+
+# 3. マーカーの追加
+folium.Marker(
+    location=[35.6586, 139.7454],
+    popup=folium.Popup(popup_html, max_width=200),
+    icon=folium.Icon(color="orange", icon="fort", prefix="fa")
+).add_to(tokyo_tower_map)
+
+tokyo_tower_map
+```
+
+</details>
+
+---
+
+### 演習 2: 売上目標達成度に応じた複数店舗ピンの「動的自動色分け」
+
+3つのカフェ店舗の営業データ（PandasのDataFrame）があります。
+1.  各店舗の「今日の実績売上（Sales）」が、目標金額である 「55,000円」以上 の場合は、ピンの色を 「緑（green）」（アイコン: `thumbs-up`）、目標未満の場合は 「赤（red）」（アイコン: `warning`、どちらも `prefix="fa"`）に動的に色分け判定（if-else）してください。
+2.  `df.iterrows()` のループ処理を用い、すべての店舗を自動で地図上にプロットしてください。
+3.  ポップアップには「店舗名」と、太字の「売上：〇〇円」を表示させてください。
+
+```python
+import pandas as pd
+import folium
+
+# 複数店舗の営業データ（ダミー）
+cafe_df = pd.DataFrame({
+    "店舗名": ["江古田店", "白山店", "池袋店"],
+    "緯度": [35.7368, 35.7215, 35.7292],
+    "経度": [139.6705, 139.7523, 139.7111],
+    "売上": [62000, 48000, 75000] # 白山店だけ目標の55,000円未満
+})
+
+# 東京城西エリア全体をカバーする中心点に地図を初期化
+map_branches = folium.Map(location=[35.729, 139.711], zoom_start=13)
+
+# TODO: df.iterrows() のループを回して店舗を1つずつプロットしてください
+for idx, row in cafe_df.iterrows():
+    lat = row["緯度"]
+    lng = row["経度"]
+    name = row["店舗名"]
+    sales = row["売上"]
+    
+    # TODO: 売上が 55000 以上の場合は green、未満の場合は red に色分け分岐
+    if sales >= 55000:
+        icon_color = 
+        icon_name = "thumbs-up"
+    else:
+        icon_color = 
+        icon_name = "warning"
+        
+    # TODO: HTMLポップアップを作成（店舗名と、太字の売上金額を表示）
+    popup_text = f"          "
+    
+    # TODO: マーカーを生成して map_branches に追加
+    folium.Marker(
+        location=[lat, lng],
+        popup=folium.Popup(       , max_width=150),
+        icon=folium.Icon(color=    , icon=    , prefix=   )
+    ).add_to(map_branches)
+
+# 表示確認
+map_branches
+```
+
+<details>
+<summary>👉 演習 2 の解答コードを見る（クリックで展開）</summary>
+
+```python
+import pandas as pd
+import folium
+
+cafe_df = pd.DataFrame({
+    "店舗名": ["江古田店", "白山店", "池袋店"],
+    "緯度": [35.7368, 35.7215, 35.7292],
+    "経度": [139.6705, 139.7523, 139.7111],
+    "売上": [62000, 48000, 75000]
+})
+
+map_branches = folium.Map(location=[35.729, 139.711], zoom_start=13)
+
+for idx, row in cafe_df.iterrows():
+    lat = row["緯度"]
+    lng = row["経度"]
+    name = row["店舗名"]
+    sales = row["売上"]
+    
+    if sales >= 55000:
+        icon_color = "green"
+        icon_name = "thumbs-up"
+    else:
+        icon_color = "red"
+        icon_name = "warning"
+        
+    popup_text = f"<b>{name}</b><br>売上: {sales:,}円"
+    
+    folium.Marker(
+        location=[lat, lng],
+        popup=folium.Popup(popup_text, max_width=150),
+        icon=folium.Icon(color=icon_color, icon=icon_name, prefix="fa")
+    ).add_to(map_branches)
+
+map_branches
+```
+
+</details>
+
+---
+
+### 演習 3: 避難所を中心とする「半径500m安全商圏サークル（半透明）」の重ね合わせ描画
+
+ある避難所の位置情報があります。
+地図の拡大・縮小（ズーム）操作に連動して、物理的な実距離を保ったまま自動で拡大縮小する、「半径500メートル」の影響サークル（Circleオブジェクト）を地図上に重ねて描画します。
+1.  武蔵大学（緯度: 35.7368, 経度: 139.6705）を中心に、ズームレベル 15 の地図を作成してください。
+2.  武蔵大学の位置に通常のピン（青色）を立ててください。
+3.  同じ位置を中心に、`folium.Circle` クラスを使い、「半径 500メートル（引数 `radius=500`）」の円を描画してください。
+    *   円の境界線の色は 「赤（color="red"）」。
+    *   内側を 「赤（fill_color="red"）」 で半透明に塗りつぶし（`fill=True`を指定、不透明度を 20%：`fill_opacity=0.2`に設定）してください。
+
+```python
+import folium
+
+# TODO: 1. 武蔵大学を中心としたズームレベル15の地図を初期化
+m_circle_test = folium.Map(location=[     ], zoom_start=   )
+
+# TODO: 2. 中心点に通常のマーカー（青色）を立てて追加
+folium.Marker(
+    location=[            ],
+    popup="武蔵大学 避難所拠点",
+    icon=folium.Icon(color=     , icon="home")
+).add_to(m_circle_test)
+
+# TODO: 3. folium.Circle を使って、半径500mの半透明な赤い円を描画して追加
+# ※ radius=500, color="red", fill=True, fill_color="red", fill_opacity=0.2 を指定
+folium.Circle(
+    location=[  ],
+    radius=    ,
+    color=  ,
+    fill=    ,
+    fill_color=     ,
+    fill_opacity=    ,
+    popup="避難拠点から500m徒歩圏内（安全避難商圏）"
+).add_to(m_circle_test)
+
+# 表示確認
+m_circle_test
+```
+
+<details>
+<summary>👉 演習 3 の解答コードを見る（クリックで展開）</summary>
+
+```python
+import folium
+
+m_circle_test = folium.Map(location=[35.7368, 139.6705], zoom_start=15)
+
+folium.Marker(
+    location=[35.7368, 139.6705],
+    popup="武蔵大学 避難所拠点",
+    icon=folium.Icon(color="blue", icon="home")
+).add_to(m_circle_test)
+
+folium.Circle(
+    location=[35.7368, 139.6705],
+    radius=500,
+    color="red",
+    fill=True,
+    fill_color="red",
+    fill_opacity=0.2,
+    popup="避難拠点から500m徒歩圏内（安全避難商圏）"
+).add_to(m_circle_test)
+
+m_circle_test
+```
+
+</details>
+
+---
+
+### 演習 4: leafmapを用いた「ループ処理なし」の高速一括マーカープロット
+
+GeoPandasやPandasで大量の位置情報（緯度経度）を扱う際、`folium` の `for` ループで1点ずつマッピングする手法はコードが長く、件数が多いと低速になります。
+次世代GISライブラリ `leafmap` の強力な機能である `add_points_from_xy()` メソッドを使うと、データフレームから経緯度の「列名」を指定するだけで、1行もループ処理（for文）を書くことなく、一瞬で全データを自動的に動的地図の上にマッピング（展開）できます。
+
+1.  以下の観光スポットデータフレーム `df_spots` があります。
+2.  `leafmap.Map` クラスを使って、東京スカイツリー周辺を中心としたズームレベル 13 の動的地図オブジェクト `leaf_m` を作成してください。
+3.  `leaf_m.add_points_from_xy()` メソッドを用い、データフレーム、X軸に使う経度列名、Y軸に使う緯度列名をそれぞれ指定して、一撃で地図上に全スポットをプロットするコードを完成させてください。
+
+leafmapをインストール
+```python
+!pip install -q leafmap
+```
+
+```python
+# （準備）leafmapのインストール
+import leafmap.foliumap as leafmap
+import pandas as pd
+
+# 東東京エリアの観光スポット（ダミーデータ）
+df_spots = pd.DataFrame({
+    "スポット名": ["東京スカイツリー", "浅草寺", "上野恩賜公園"],
+    "lat": [35.7100, 35.7147, 35.7154], # 緯度
+    "lng": [139.8107, 139.7966, 139.7740], # 経度
+    "混雑度": ["超混雑", "かなり混雑", "普通"]
+})
+
+# TODO: 1. leafmap.Map クラスを使って、スカイツリー（緯度35.7100, 経度139.8107）周辺を
+#          中心としたズームレベル13の地図オブジェクト leaf_m を作成
+leaf_m = leafmap.Map(center=[     ], zoom=   )
+
+# TODO: 2. add_points_from_xy を使い、ループ処理なしでデータフレームの点を一瞬でプロット
+# 引数： df=df_spots, x="経度の列名", y="緯度の列名", popup=["クリック時に吹き出しに出す列名のリスト"]
+leaf_m.add_points_from_xy(
+    data=     ,
+    x=      ,
+    y=      ,
+    popup=[      ]
+)
+
+# 表示確認
+leaf_m
+```
+
+<details>
+<summary>👉 演習 4 の解答コードを見る（クリックで展開）</summary>
+
+leafmapをインストール
+```python
+!pip install -q leafmap
+```
+
+コードスニペットをもとめられたら下記を実行
+```python
+from google.colab import output
+output.enable_custom_widget_manager()
+```
+
+```python
+import leafmap.foliumap as leafmap
+import pandas as pd
+
+df_spots = pd.DataFrame({
+    "スポット名": ["東京スカイツリー", "浅草寺", "上野恩賜公園"],
+    "lat": [35.7100, 35.7147, 35.7154],
+    "lng": [139.8107, 139.7966, 139.7740],
+    "混雑度": ["超混雑", "かなり混雑", "普通"]
+})
+
+leaf_m = leafmap.Map(center=[35.7100, 139.8107], zoom=13)
+
+leaf_m.add_points_from_xy(
+    data=df_spots,
+    x="lng",
+    y="lat",
+    popup=["スポット名", "混雑度"]
+)
+
+leaf_m
+```
+
+</details>
+
+---
+
+### 演習 5: 避難所混雑度シミュレーション「階級区分図（Choropleth）」の完全自動構築
+
+これまでに学んだ、境界区画（GeoJSONポリゴン：形）と、統計データ（Pandas：数字）をマッチングさせて美しく塗り分ける、実務データ分析の王道パイプラインです。
+
+1.  以下のコード内に用意された「東京城西地区の簡易行政区画 GeoJSON（形データ）」と「各地区の避難所混雑率 Pandas DataFrame（数字データ）」を使用します。
+2.  接着剤となる共通のキーワード列は、GeoJSON側が `properties.name`（properties辞書の中の name キー）、Pandas側が `地区名` 列です。
+3.  `folium.Choropleth` を使い、混雑率（数字）が高い地区ほど 「赤（OrRd：オレンジから赤へのグラデーション）」 で自動的に濃く塗り分けられる階級区分図を完成させてください。
+
+```python
+import pandas as pd
+import folium
+
+# 1. 地形データ（GeoJSON形式：東京城西の簡易境界ポリゴンデータ：ダミー）
+# 通常はShapefile等から読み込みますが、このセルだけで即動作するように定義した、バグのないデータです。
+geojson_districts = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {"name": "杉並区"},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[139.59, 35.68], [139.64, 35.68], [139.64, 35.72], [139.59, 35.72], [139.59, 35.68]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "練馬区"},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[139.59, 35.72], [139.66, 35.72], [139.66, 35.77], [139.59, 35.77], [139.59, 35.72]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "中野区"},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[139.64, 35.68], [139.69, 35.68], [139.69, 35.74], [139.64, 35.74], [139.64, 35.68]]]
+      }
+    }
+  ]
+}
+
+# 2. 避難所の平均混雑率データ（PandasのDataFrame）
+df_congestion = pd.DataFrame({
+    "地区名": ["杉並区", "練馬区", "中野区"],
+    "平均混雑率": [85.5, 42.0, 68.2] # 杉並区が最も大混雑（危険！）
+})
+
+# 3. 東京城西エリア全体が入る地図を初期化
+m_choropleth = folium.Map(location=[35.72, 139.64], zoom_start=12)
+
+# TODO: 4. folium.Choropleth を使って塗り分け地図を合体させてください。
+# 引数：
+# - geo_data: 地形GeoJSON (geojson_districts)
+# - data: 統計DataFrame (df_congestion)
+# - columns: Pandas側の接着キー列と、色分けにする数値列のリスト (["地区名", "平均混雑率"])
+# - key_on: GeoJSON側の接着キーを示す階層パス ("feature.properties.name" が鉄則！)
+# - fill_color: グラデーションカラー名 ("OrRd")
+# - fill_opacity: 塗りつぶしの不透明度 (0.7 程度)
+# - line_opacity: 境界線の不透明度 (0.3 程度)
+# - legend_name: 凡例のタイトル ("平均避難所混雑率 (%)")
+folium.Choropleth(
+    geo_data=  ,
+    data=  ,
+    columns=[     ],
+    key_on=  ,
+    fill_color=  ,
+    fill_opacity=  ,
+    line_opacity=  ,
+    legend_name=   "
+).add_to(m_choropleth)
+
+# 表示確認
+m_choropleth
+```
+
+<details>
+<summary>👉 演習 5 の解答コードを見る（クリックで展開）</summary>
+
+```python
+import pandas as pd
+import folium
+
+geojson_districts = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {"name": "杉並区"},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[139.59, 35.68], [139.64, 35.68], [139.64, 35.72], [139.59, 35.72], [139.59, 35.68]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "練馬区"},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[139.59, 35.72], [139.66, 35.72], [139.66, 35.77], [139.59, 35.77], [139.59, 35.72]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "中野区"},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[139.64, 35.68], [139.69, 35.68], [139.69, 35.74], [139.64, 35.74], [139.64, 35.68]]]
+      }
+    }
+  ]
+}
+
+df_congestion = pd.DataFrame({
+    "地区名": ["杉並区", "練馬区", "中野区"],
+    "平均混雑率": [85.5, 42.0, 68.2]
+})
+
+m_choropleth = folium.Map(location=[35.72, 139.64], zoom_start=12)
+
+folium.Choropleth(
+    geo_data=geojson_districts,
+    data=df_congestion,
+    columns=["地区名", "平均混雑率"],
+    key_on="feature.properties.name",
+    fill_color="OrRd",
+    fill_opacity=0.7,
+    line_opacity=0.3,
+    legend_name="平均避難所混雑率 (%)"
+).add_to(m_choropleth)
+
+m_choropleth
+```
+
+</details>
+
+
+---
+
+## まとめ
+
+* Web地図の自動翻訳: Pythonから HTML / CSS / JavaScript (Leaflet.js) へ自動でコードが変換される。
+* location = [緯度, 経度]: foliumとGeoPandas（Point）では、経緯度の指定順が逆になるため注意！
+* HTMLポップアップ: `<br>` や `<b>` などのタグを使って、吹き出し内をリッチにデザイン可能。
+* 階級区分図（Choropleth）: 形(GeoJSON)と数字(Pandas)を `key_on` で接着して作るグラデーション統計地図。
+* ポータブルHTML地図: `.save("filename.html")` で書き出すことで、サーバーやPythonなしでどこでも動く地図を共有可能。

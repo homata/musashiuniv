@@ -3,19 +3,21 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="第8回 地理空間データの活⽤1" />
+<meta property="og:title" content="第8回 地理空間データの活用1" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="2026/02.programming_advanced_a/markdown/advanced_08.html" />
 <meta property="og:site_name" content="musashiuniv" />
+<meta property="og:description" content="商圏分析とハザード判定 🎯 到達目標: 「地理座標系（WGS84）」と「投影座標系（平面直角座標系）」の違いを完全に説明でき、適切なタイミングで.to_crs() を使ったメートル変換ができる。, 日本国内の狭い範囲をメートル単位で正確に計算するための「平面直角座標系（19の系）」の使い分け（特に関東をカバーする「第9系：EPSG:6677」）を理解する。, 商圏バッファ（.buffer()..." />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2026_02.programming_advanced_a_markdown_advanced_08_c089d60b.png" />
-<meta property="og:image:alt" content="" />
+<meta property="og:image" content="/None" />
+<meta property="og:image:alt" content="商圏分析とハザード判定 🎯 到達目標: 「地理座標系（WGS84）」と「投影座標系（平面直角座標系）」の違いを完全に説明でき、適切なタイミングで.to_crs() を使ったメートル変換ができる。, 日本国内の狭い範囲をメートル単位で正確に計算するための「平面直角座標系（19の系）」の使い分け（特に関東をカバーする..." />
+<meta name="description" content="商圏分析とハザード判定 🎯 到達目標: 「地理座標系（WGS84）」と「投影座標系（平面直角座標系）」の違いを完全に説明でき、適切なタイミングで.to_crs() を使ったメートル変換ができる。, 日本国内の狭い範囲をメートル単位で正確に計算するための「平面直角座標系（19の系）」の使い分け（特に関東をカバーする「第9系：EPSG:6677」）を理解する。, 商圏バッファ（.buffer()..." />
 <meta name="twitter:card" content="summary_large_image" />
-<link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" /><link rel="next" title="第9回 地理空間データの活⽤2" href="advanced_09.html" /><link rel="prev" title="第7回 地理空間情報の基礎" href="advanced_07.html" />
+<link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" /><link rel="next" title="第9回 地理空間データの活用2" href="advanced_09.html" /><link rel="prev" title="第7回 地理空間情報の基礎" href="advanced_07.html" />
 
     <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
-        <title>第8回 地理空間データの活⽤1 - Pythonプログラミング入門</title>
+        <title>第8回 地理空間データの活用1 - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=949a1ff5" />
@@ -189,7 +191,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -297,15 +299,10 @@
 <li class="toctree-l3"><a class="reference internal" href="advanced_04.html">第4回 データ解析</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_05.html">第5回 Webサービスの活用1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_06.html">第6回 Webサービスの活用2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#id19">--- 2. サイドバーの設定 ---</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#pandas">--- 3. Pandasによる連動データの抽出 ---</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#id20">--- 4. メイン画面のデザイン ---</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#kpi">--- 5. カラム分割による主要業績指標 (KPI) ---</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#id21">統計量を計算</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#id22">画面を横に分割して、左にグラフ、右に生データをスッキリ配置</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_07.html">第7回 地理空間情報の基礎</a></li>
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">第8回 地理空間データの活⽤1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_09.html">第9回 地理空間データの活⽤2</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">第8回 地理空間データの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_09.html">第9回 地理空間データの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_09.html#id16">💻 総合演習課題（実技評価テスト・宿題用：5問）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
@@ -356,14 +353,950 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
           <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>第8回 地理空間データの活⽤1<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<h1>第8回 地理空間データの活用1<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<p>商圏分析とハザード判定</p>
+<hr class="docutils" />
+<section id="id2">
+<h2>🎯 到達目標<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>「地理座標系（WGS84）」と「投影座標系（平面直角座標系）」の違いを完全に説明でき、適切なタイミングで <code class="docutils literal notranslate"><span class="pre">.to_crs()</span></code> を使ったメートル変換ができる。</p></li>
+<li><p>日本国内の狭い範囲をメートル単位で正確に計算するための「平面直角座標系（19の系）」の使い分け（特に関東をカバーする「第9系：EPSG:6677」）を理解する。</p></li>
+<li><p>商圏バッファ（<code class="docutils literal notranslate"><span class="pre">.buffer()</span></code>） を用いて、店舗や駅から指定距離（メートル）のサークル・影響帯を正確に生成し、重ね合わせて可視化できる。</p></li>
+<li><p>いびつな形状の行政区ポリゴンから、中心点となる 「重心（<code class="docutils literal notranslate"><span class="pre">.centroid</span></code>）」 を全自動で算出し、代表ピンを配置できる。</p></li>
+<li><p>空間結合（Spatial Join: <code class="docutils literal notranslate"><span class="pre">gpd.sjoin()</span></code>） の仕組みを理解し、経緯度の「点」がどの「境界線（面）」に含まれているかを、共通キーなしで物理的な重なりだけで全自動マージできる。</p></li>
+<li><p>点・線・面の空間関係（<code class="docutils literal notranslate"><span class="pre">intersects</span></code>, <code class="docutils literal notranslate"><span class="pre">within</span></code>, <code class="docutils literal notranslate"><span class="pre">contains</span></code>）を使い分け、ハザードエリアと店舗の重なりを検出する「ハザード自動判定パイプライン」を構築できる。</p></li>
+</ol>
+<hr class="docutils" />
+<section id="google-colab">
+<h3>練習問題のGoogle Colab起動<a class="headerlink" href="#google-colab" title="Link to this heading">¶</a></h3>
+<p><a class="reference external" href="https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exercises/2026/02.programming_advanced_a/advanced_08.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<ol class="arabic simple">
+<li><p>上記の「Open In Colab」をクリックして、Google Colabを起動させてください</p></li>
+<li><p>[ファイル] → [ドライブにコピーを保存] を選択して、Googleドライブにコピーを保存してください</p></li>
+<li><p>保存が成功すると，Googleドライブの「マイドライブ」 →「Colab Notebooks」にコピーしたファイルが保存されます。</p></li>
+<li><p>GoogleドライブにコピーしたGoogle ColabのNotebooksを開いてください</p></li>
+<li><p>開いたGoogle ColabのNotebooksで作業をしてください</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="crs">
+<h2>座標参照系（CRS）の高度な変換<a class="headerlink" href="#crs" title="Link to this heading">¶</a></h2>
+<p>地球上のどこにいるかを「経度・緯度（角度）」で表す世界共通のルールである <code class="docutils literal notranslate"><span class="pre">WGS84（EPSG:4326）</span></code> を学びました。
+スマートフォンのGPSや、Google Mapsで現在地を表示する分には、この経緯度が最も扱いやすいデータです。</p>
+<p>しかし、実務のデータ分析（GIS分析）において、経緯度（WGS84）のままで計算は角度なのでそのまま計算することはできません。</p>
+<section id="id3">
+<h3>🚨 「度」と「メートル」の混同<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p>例えば、「池袋店から半径500mの円」を作ろうとして、経緯度のデータのまま以下のようなコードを実行したとします。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ⚠️ 経緯度データ(WGS84)のまま、バッファを計算してしまう失敗コード</span>
+<span class="n">gdf_shops</span><span class="p">[</span><span class="s2">"商圏500m"</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf_shops</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>このプログラムを実行すると、エラーは出ません。
+しかし、地図を描画してみると、日本中（地球上）がすべて真っ青な巨大な円で埋め尽くされ、宇宙空間にまで届くような半径500度（地球1周は360度）の巨大サークルが作られてしまいます。</p>
+<p>【なぜこれが起きるのか？】</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code>（WGS84経緯度）のデータの単位は 「度（Degree）」 です。</p></li>
+<li><p>GeoPandasの空間演算（<code class="docutils literal notranslate"><span class="pre">.buffer()</span></code> や <code class="docutils literal notranslate"><span class="pre">.distance()</span></code> など）は、「そのデータが今持っている座標系の単位」をそのまま数値として使います。</p></li>
+<li><p>そのため、プログラムは「半径500メートル」ではなく、「半径500度」の円を作ろうとしてしまうのです。1度は約111kmですので、500度は約5万5千kmとなり、地球を1周半する巨大なバケツのような円が出来上がってしまいます。</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  【 間違った処理：単位は「度」 】                 【 正しい処理：単位は「メートル」 】
+  WGS84 (EPSG:4326) のまま .buffer(500)         平面直角 (EPSG:6677) に変換後 .buffer(500)
+    
+         地球 (1周360度)                                 店舗 Point
+       ╭━━━━━━━━━━━━━╮                                    ○
+      ┃  ┌─────────┐  ┃   ◀ 半径500度                 ┌───┼───┐
+      ┃  │  巨大円 │  ┃     (地球を包む)              │ 500m円│  ◀ 半径500メートル
+      ┃  └─────────┘  ┃                               └───┼───┘
+       ╰━━━━━━━━━━━━━╯                                    │
+</pre></div>
+</div>
+<p>計算を行う前に、データの単位を角度（度）からメートルに変換する」というステップが必要となります</p>
+</section>
+<hr class="docutils" />
+<section id="id4">
+<h3>🗺️ 日本独自の「19の平面直角座標系」<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p>丸い地球を平面のメートル座標に直すとき、日本全体を1つの平面で表そうとすると、端の方（北海道や沖縄）で大きな歪みが生じてしまいます。</p>
+<p>日本の国土地理院は、日本を南北に細かく 19の地域（系） に分割し、それぞれの地域で最も歪みが少なくなるメートル単位の座標系を定義しました。これを 「平面直角座標系（JGD2011）」 と呼びます。</p>
+<p>平面直角座標系（JGD2011）では、誤差数センチという極めて正確なメートル計算が可能になります。</p>
+<!--
+```{figure} images/02.numpy_pandas/99.PNG
+:width: 100%
+```
+-->
+<figure class="align-default">
+<a class="reference internal image-reference" href="https://www.gsi.go.jp/common/000186091.png"><img alt="https://www.gsi.go.jp/common/000186091.png" src="https://www.gsi.go.jp/common/000186091.png" style="width: 80%;" />
+</a>
+</figure>
+<p>※　平面直角座標系は<a class="reference external" href="https://www.gsi.go.jp/LAW/heimencho.html">「平成14年国土交通省告示第9号」</a>で定義されいる。</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>系番号</th>
+<th>EPSGコード（JGD2011）</th>
+<th>適用区域 (単位はメートル)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1（Ⅰ）</td>
+<td><code>EPSG:6669</code></td>
+<td>長崎県・鹿児島県（名瀬市、十島村、笠沙町（島しょ部）、里村、上甑村、下甑村、鹿島村、大和村、宇検村、瀬戸内町、住用村、龍郷町、笠利町、喜界町、徳之島町、天城町、伊仙町、和泊町、知名町、与論町、三島村）</td>
+</tr>
+<tr>
+<td>2（Ⅱ）</td>
+<td><code>EPSG:6670</code></td>
+<td>福岡県・佐賀県・熊本県・大分県・宮崎県・鹿児島県（西之表市、中種子町、南種子町、上屋久町、屋久町、三島村、島しょ部を除く全ての市町村）</td>
+</tr>
+<tr>
+<td>3（Ⅲ）</td>
+<td><code>EPSG:6671</code></td>
+<td>山口県・島根県・広島県</td>
+</tr>
+<tr>
+<td>4（Ⅳ）</td>
+<td><code>EPSG:6672</code></td>
+<td>香川県・愛媛県・徳島県・高知県</td>
+</tr>
+<tr>
+<td>5（Ⅴ）</td>
+<td><code>EPSG:6673</code></td>
+<td>兵庫県・鳥取県・岡山県</td>
+</tr>
+<tr>
+<td>6（Ⅵ）</td>
+<td><code>EPSG:6674</code></td>
+<td>京都府・大阪府・福井県・滋賀県・三重県・奈良県・和歌山県</td>
+</tr>
+<tr>
+<td>7（Ⅶ）</td>
+<td><code>EPSG:6675</code></td>
+<td>石川県・富山県・岐阜県・愛知県</td>
+</tr>
+<tr>
+<td>8（Ⅷ）</td>
+<td><code>EPSG:6676</code></td>
+<td>新潟県・長野県・山梨県・静岡県</td>
+</tr>
+<tr>
+<td>9（Ⅸ）</td>
+<td><code>EPSG:6677</code></td>
+<td>東京都（島しょ部を除く全ての市町村、23区，大島町、利島村、新島村、神津島村、三宅村、御蔵島村、八丈町、青ケ島村）・福島県・栃木県・埼玉県・千葉県・群馬県・神奈川県</td>
+</tr>
+<tr>
+<td>10（Ⅹ）</td>
+<td><code>EPSG:6678</code></td>
+<td>青森県・秋田県・山形県・岩手県・宮城県</td>
+</tr>
+<tr>
+<td>11（Ⅺ）</td>
+<td><code>EPSG:6679</code></td>
+<td>小樽市・函館市・伊達市・胆振支庁管内のうち有珠郡・檜山支庁管内・後志支庁管内・渡島支庁管内</td>
+</tr>
+<tr>
+<td>12（Ⅻ）</td>
+<td><code>EPSG:6680</code></td>
+<td>札幌市・旭川市・稚内市・留萌市・美唄市・夕張市・岩見沢市・苫小牧市・室蘭市・士別市・名寄市・芦別市・赤平市・三笠市・滝川市・砂川市・江別市・千歳市・歌志内市・深川市・紋別市・富良野市・登別市・恵庭市・北広島市・石狩市・石狩支庁管内・網走支庁管内のうち紋別郡・上川支庁管内・宗谷支庁管内・日高支庁管内・胆振支庁管内（有珠郡及び虻田郡を除く）・空知支庁管内・留萌支庁管内</td>
+</tr>
+<tr>
+<td>13（ⅩⅢ）</td>
+<td><code>EPSG:6681</code></td>
+<td>北見市・帯広市・釧路市・網走市・根室市・根室支庁管内・釧路支庁管内・網走支庁管内（紋別郡を除く）・十勝支庁管内</td>
+</tr>
+<tr>
+<td>14（ⅩⅣ）</td>
+<td><code>EPSG:6682</code></td>
+<td>東京都のうち、小笠原村(聟島列島、父島列島、母島列島、硫黄島)</td>
+</tr>
+<tr>
+<td>15（ⅩⅤ）</td>
+<td><code>EPSG:6683</code></td>
+<td>沖縄県のうち、那覇市、石川市、具志川市、宜野湾市、浦添市、名護市、糸満市、沖繩市、国頭村、大宜味村、東村、今帰仁村、本部町、恩納村、宜野座村、金武町、伊江村、与那城町、勝連町、読谷村、嘉手納町、北谷町、北中城村、中城村、西原町、豊見城村、東風平町、具志頭村、玉城村、知念村、佐敷町、与那原町、大里村、南風原町、仲里村、具志川村、渡嘉敷村、座間味村、粟国村、渡名喜村、伊平屋村、伊是名村</td>
+</tr>
+<tr>
+<td>16（ⅩⅥ）</td>
+<td><code>EPSG:6684</code></td>
+<td>沖縄県のうち、平良市、石垣市、城辺町、下地町、上野村、伊良部町、多良間村、竹富町、与那国町</td>
+</tr>
+<tr>
+<td>17（ⅩⅦ）</td>
+<td><code>EPSG:6685</code></td>
+<td>沖縄県のうち、南大東村、北大東村</td>
+</tr>
+<tr>
+<td>18（ⅩⅧ）</td>
+<td><code>EPSG:6686</code></td>
+<td>東京都のうち、小笠原村(沖ノ鳥島)</td>
+</tr>
+<tr>
+<td>19（ⅩⅨ）</td>
+<td><code>EPSG:6687</code></td>
+<td>東京都のうち、小笠原村 (南鳥島)</td>
+</tr>
+</tbody>
+</table>
+<p>※　市町村の名称は合併等のため現在は異なる名称となっている場合がある。</p>
+<ul class="simple">
+<li><p>選び方のルール:</p>
+<ul>
+<li><p>分析したいエリアが「東京や武蔵大学周辺（関東）」であれば、「第9系（EPSG:6677）」 を選びます。</p></li>
+<li><p>「大阪や京都（近畿）」であれば、「第6系（EPSG:6674）」 を選びます。</p></li>
+</ul>
+</li>
+</ul>
+<!--
+* [19の平面直角座標系](https://www.gsi.go.jp/sokuchikijun/jpc.html)
+* [【GIS】測地系、投影法、座標系、EPSGコードについてまとめてみた](https://qiita.com/asahina820/items/a1707cba749c1fb2b192)
+* [QGISにおける座標系の設定の基本と手順](https://qgis.mierune.co.jp/posts/howto_set_crs)
+-->
+</section>
+<hr class="docutils" />
+<section id="id5">
+<h3>💻 ハンズオン<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">.to_crs()</span></code> による座標変換</p>
+<p>実際に、Google Colab上で緯度経度の店舗データを、関東をカバーする「第9系（EPSG:6677）」に変換し、データフレームの中身がどう変化するかを確認してみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span>
+
+<span class="c1"># 1. 緯度経度の店舗データを用意（通常のPandas DataFrame）</span>
+<span class="c1"># 江古田店、白山店の緯度経度</span>
+<span class="n">df_shops_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"店舗名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">],</span>
+    <span class="s2">"経度(Lng)"</span><span class="p">:</span> <span class="p">[</span><span class="mf">139.6732</span><span class="p">,</span> <span class="mf">139.7523</span><span class="p">],</span> <span class="c1"># X軸</span>
+    <span class="s2">"緯度(Lat)"</span><span class="p">:</span> <span class="p">[</span><span class="mf">35.7371</span><span class="p">,</span> <span class="mf">35.7215</span><span class="p">]</span>   <span class="c1"># Y軸</span>
+<span class="p">})</span>
+
+<span class="c1"># 2. 経度・緯度から Point オブジェクトを作成（X, Yの順序に注意！）</span>
+<span class="n">geometry</span> <span class="o">=</span> <span class="p">[</span><span class="n">Point</span><span class="p">(</span><span class="n">xy</span><span class="p">)</span> <span class="k">for</span> <span class="n">xy</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">df_shops_raw</span><span class="p">[</span><span class="s2">"経度(Lng)"</span><span class="p">],</span> <span class="n">df_shops_raw</span><span class="p">[</span><span class="s2">"緯度(Lat)"</span><span class="p">])]</span>
+
+<span class="c1"># 3. GeoPandasのデータフレームを作成（最初は WGS84 = EPSG:4326 を指定）</span>
+<span class="n">gdf_shops</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">df_shops_raw</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">geometry</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 変換前：世界測地系 (EPSG:4326) ---"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"データの座標系情報:"</span><span class="p">,</span> <span class="n">gdf_shops</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+<span class="c1"># geometry 列の値が [POINT (139.6732 35.7371)] のように角度（度）になっているのを確認してください</span>
+<span class="n">display</span><span class="p">(</span><span class="n">gdf_shops</span><span class="p">[[</span><span class="s2">"店舗名"</span><span class="p">,</span> <span class="s2">"geometry"</span><span class="p">]])</span>
+
+<span class="c1"># 4. 【魔法の変換】関東の平面直角座標系「第9系(EPSG:6677)」にメートル変換！</span>
+<span class="n">gdf_shops_meter</span> <span class="o">=</span> <span class="n">gdf_shops</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">6677</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">--- 変換後：平面直角座標系第9系 (EPSG:6677) ---"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"データの座標系情報:"</span><span class="p">,</span> <span class="n">gdf_shops_meter</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+<span class="c1"># geometry 列の値が [POINT (-11543.12 37432.45)] のような巨大なメートル数値に変わっているのを確認してください！</span>
+<span class="c1"># これは「第9系の原点（日本経緯度原点付近）」から、南西に何メートル、北東に何メートル離れているかを表しています。</span>
+<span class="n">display</span><span class="p">(</span><span class="n">gdf_shops_meter</span><span class="p">[[</span><span class="s2">"店舗名"</span><span class="p">,</span> <span class="s2">"geometry"</span><span class="p">]])</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="buffer-centroid">
+<h2>商圏バッファ（<code class="docutils literal notranslate"><span class="pre">.buffer()</span></code>）と重心（<code class="docutils literal notranslate"><span class="pre">.centroid</span></code>）<a class="headerlink" href="#buffer-centroid" title="Link to this heading">¶</a></h2>
+<p>座標系がメートル単位（<code class="docutils literal notranslate"><span class="pre">EPSG:6677</span></code>）に変換できたら、「空間演算」に入ります。</p>
+<section id="buffer">
+<h3>商圏バッファ（<code class="docutils literal notranslate"><span class="pre">.buffer()</span></code>）の作成<a class="headerlink" href="#buffer" title="Link to this heading">¶</a></h3>
+<p>商圏バッファとは、「店舗や駅から、指定したメートル距離の範囲を塗りつぶした面（Polygon）を自動生成する処理」です。</p>
+<p>GeoPandasでは、地理データフレームに対して <code class="docutils literal notranslate"><span class="pre">.buffer(距離)</span></code> を実行するだけで、一瞬で円や帯（ポリゴン）を生成してくれます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 平面直角座標系(メートル)のデータフレームに対して、半径1000mの円を作る</span>
+<span class="n">gdf_shops_meter</span><span class="p">[</span><span class="s2">"商圏1km"</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf_shops_meter</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">gdf_shops_meter</span>
+</pre></div>
+</div>
+<p>このコードを実行すると、<code class="docutils literal notranslate"><span class="pre">gdf_shops_meter</span></code> の中に、店舗を中心とする半径1kmの「ポリゴン（多角形）」が新しい列として追加されます。</p>
+<section id="resolution">
+<h4>💡 解像度 <code class="docutils literal notranslate"><span class="pre">resolution</span></code> の指定<a class="headerlink" href="#resolution" title="Link to this heading">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">.buffer()</span></code> の中に、<code class="docutils literal notranslate"><span class="pre">resolution=30</span></code> のようなオプションを指定することができます。
+バッファは、コンピュータ上では「多角形（カクカクした24角形や32角形など）」として描かれます。
+この解像度（カクカクの細かさ）を標準よりも大きく指定することで、ギザギザのない滑らかで美しい「本物の円」を描くことができます（実務で地図を美しく見せるためのプロの定番設定です）。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 滑らかな円を描く設定</span>
+<span class="n">gdf_shops_meter</span><span class="p">[</span><span class="s2">"商圏1km"</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf_shops_meter</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id6">
+<h3>💻 商圏バッファの可視化<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<p>店舗の周りに「半径1,000m（1km）」の商圏円を描き、背景地図の上に重ね合わせて描画してみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="n">japanize</span><span class="o">-</span><span class="n">matplotlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">japanize_matplotlib</span>
+
+<span class="c1"># 1. 前のセクションで作成した gdf_shops_meter (EPSG:6677) を使用します</span>
+<span class="c1"># 店舗の geometry 列に対して、1000m のバッファを生成し、新しいデータフレームを作成</span>
+<span class="n">gdf_buffers</span> <span class="o">=</span> <span class="n">gdf_shops_meter</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># geometry 列を1000mのバッファ（円ポリゴン）で上書きする</span>
+<span class="n">gdf_buffers</span><span class="p">[</span><span class="s2">"geometry"</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf_shops_meter</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># 2. 地図の描画（Matplotlibを使って重ね合わせます）</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># まず、背景として店舗の「1km商圏バッファ」を、半透明の緑色で描画</span>
+<span class="n">gdf_buffers</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"green"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"darkgreen"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"1km商圏"</span><span class="p">)</span>
+
+<span class="c1"># その上に、店舗の「位置（ピン・点）」を赤い点で重ねて描画</span>
+<span class="n">gdf_shops_meter</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"^"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"店舗位置"</span><span class="p">)</span>
+
+<span class="c1"># グラフの装飾</span>
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">gdf_shops_meter</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="c1"># geometryからX座標、Y座標を取り出して、店舗名のテキストラベルを表示</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mi">100</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="mi">100</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s2">"店舗名"</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">"bold"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"店舗別 1km商圏シミュレーション (平面直角座標第9系)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"X座標 (メートル)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Y座標 (メートル)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="centroid">
+<h3>行政区画の「重心（<code class="docutils literal notranslate"><span class="pre">.centroid</span></code>）」の算出<a class="headerlink" href="#centroid" title="Link to this heading">¶</a></h3>
+<p>実務で、「新宿区」や「練馬区」といったいびつな境界線（ポリゴン）を持つデータに対して、</p>
+<ul class="simple">
+<li><p>「新宿区の中心に、区を代表するテキストラベルを貼りたい」</p></li>
+<li><p>「各区の広がりを1つの代表ピン（点）に落とし込んで計算したい」
+という局面があります。</p></li>
+</ul>
+<p>このとき、いびつな多角形の「幾何学的な中心（重さのバランスが取れる中心点）」を全自動で求めてくれるのが、<code class="docutils literal notranslate"><span class="pre">.centroid</span></code>（セントロイド：重心）属性です。</p>
+<p>【重心算出のイメージ（いびつな多角形から点へ）】</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>      いびつな行政区（Polygon）               中心点（Centroid: Point）
+         ╭━━━━━━━━━━━━━━━━╮                        ╭━━━━━━━━━━━━━━━━╮
+        ┃                ┃    ──.centroid──▶      ┃       ★        ┃
+        ┃                ┃                        ┃  (数学的な中心)  ┃
+         ╰━━━━━━━━━━━━━━━━╯                        ╰━━━━━━━━━━━━━━━━╯
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span><span class="p">,</span> <span class="n">Polygon</span>
+
+<span class="n">poly_nerima</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([(</span><span class="mf">139.60</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.66</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.66</span><span class="p">,</span> <span class="mf">35.76</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.60</span><span class="p">,</span> <span class="mf">35.76</span><span class="p">)])</span> <span class="c1"># 練馬区簡易</span>
+<span class="n">poly_toshima</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([(</span><span class="mf">139.66</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.73</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.73</span><span class="p">,</span> <span class="mf">35.76</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.66</span><span class="p">,</span> <span class="mf">35.76</span><span class="p">)])</span> <span class="c1"># 豊島区簡易</span>
+<span class="n">gdf_districts</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">({</span>
+    <span class="s2">"区名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"練馬区"</span><span class="p">,</span> <span class="s2">"豊島区"</span><span class="p">]</span>
+<span class="p">},</span> <span class="n">geometry</span><span class="o">=</span><span class="p">[</span><span class="n">poly_nerima</span><span class="p">,</span> <span class="n">poly_toshima</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">)</span>
+
+<span class="c1"># 各ポリゴンの中心（Point）を求めて、新しい列に代入する</span>
+<span class="c1"># 平面直角座標系(9系: 東京都・埼玉県など)に変換してから重心を計算して、EPSG:4326に戻す</span>
+<span class="n">gdf_projected</span> <span class="o">=</span> <span class="n">gdf_districts</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">6677</span><span class="p">)</span>
+<span class="n">gdf_districts</span><span class="p">[</span><span class="s2">"中心点"</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf_projected</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">4326</span><span class="p">)</span>
+<span class="n">gdf_districts</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="spatial-join-gpd-sjoin">
+<h2>空間結合（Spatial Join: <code class="docutils literal notranslate"><span class="pre">gpd.sjoin()</span></code>）の真髄<a class="headerlink" href="#spatial-join-gpd-sjoin" title="Link to this heading">¶</a></h2>
+<p>Pandasの <code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code> を使い、共通の「店舗名」や「商品ID」といったキーワード（キー列）を架け橋にして2つの表を横に合体させる「結合」をしました。</p>
+<p>しかし、地理空間情報（GIS）の世界では、以下のような事態があります。</p>
+<ul class="simple">
+<li><p>「店舗の経緯度データ」と「練馬区や豊島区の境界線（ポリゴン）データ」がある。</p></li>
+<li><p>この2つの表には、「店舗名」や「住所」といった共通のキーワードは1列も存在しない。</p></li>
+<li><p>しかし、「どの店舗がどの区の境界線の中（物理的）に含まれているか」を判定して、2つの表を結合したい。</p></li>
+</ul>
+<p>このように、共通キーが一切存在しなくても、「物理的な位置の重なり、交差、包含関係」だけを頼りにして、2つの地理データフレームを全自動でマージする究極の処理が、
+「空間結合（Spatial Join：<code class="docutils literal notranslate"><span class="pre">gpd.sjoin()</span></code>）」です。</p>
+<p>【空間結合（sjoin）のビジュアルイメージ】</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  [ 店舗 Point ] ──▶ [ 行政区区画 Polygon ] ──▶ [ gpd.sjoin() で結合！ ]
+  江古田店 (GPS)       豊島区 (境界線)              「江古田店 ＝ 豊島区」と
+  白山店 (GPS)         文京区 (境界線)               物理的な包含でマージされる！
+</pre></div>
+</div>
+<section id="id7">
+<h3>📦 空間結合の基本コードと引数<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p>空間結合は、GeoPandasの <code class="docutils literal notranslate"><span class="pre">gpd.sjoin()</span></code> 関数を使います。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 空間結合を実行するコード</span>
+<span class="n">joined_gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">sjoin</span><span class="p">(</span>
+    <span class="n">left_df</span><span class="o">=</span><span class="n">gdf_shops</span><span class="p">,</span>        <span class="c1"># 左側の地理データフレーム（例：店舗Point）</span>
+    <span class="n">right_df</span><span class="o">=</span><span class="n">gdf_districts</span><span class="p">,</span>   <span class="c1"># 右側の地理データフレーム（例：市区町村Polygon）</span>
+    <span class="n">how</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span>               <span class="c1"># 結合方式（左の店舗データを1件も消さない場合は left）</span>
+    <span class="n">predicate</span><span class="o">=</span><span class="s2">"intersects"</span>    <span class="c1"># 空間関係（intersects = 物理的に重なっている・交差している）</span>
+<span class="p">)</span>
+<span class="n">joined_gdf</span>
+</pre></div>
+</div>
+<section id="id8">
+<h4>🛠️ 引数の詳細な意味<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">left_df</span></code> と <code class="docutils literal notranslate"><span class="pre">right_df</span></code>:
+結合したい2つのGeoDataFrameを指定します。通常、左側（<code class="docutils literal notranslate"><span class="pre">left_df</span></code>）に残したいメインのデータ（店舗など）を配置します。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">how</span></code>:
+Pandasのmergeと同様に、<code class="docutils literal notranslate"><span class="pre">&quot;left&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;right&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;inner&quot;</span></code> が選べます。</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">how=&quot;left&quot;</span></code>：左側の店舗データをすべて残します。もし、どの区のポリゴンにも属していない（例えば海の上にある、あるいは東京都外にある）店舗があった場合は、区名の列には <code class="docutils literal notranslate"><span class="pre">NaN</span></code> が入ります。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">how=&quot;inner&quot;</span></code>：両方の位置が完全に重なるものだけを残します。区のポリゴン外にある店舗は、データから消去されます。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">predicate</span></code>（空間関係）:
+結合する際の「重なり方の判定基準」を指定します。非常に重要なパラメータですので、次のセクションで図解します。</p></li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="predicates">
+<h2>空間関係（Predicates）の使い分けとハザード判定<a class="headerlink" href="#predicates" title="Link to this heading">¶</a></h2>
+<p>空間結合や、空間フィルターを行う際、点・線・面が「どのように重なっているか」の条件分岐を指定する必要があります。GeoPandasでは主に以下の3つの空間関係が使われます。</p>
+<section id="id9">
+<h3>3大空間関係の物理的な意味<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<p>点（Point）、線（LineString）、面（Polygon）の関係性を、以下の図とアスキーアートで直感的にイメージしましょう。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  ① intersects (交差する：最も使いやすい超万能判定)
+     - 2つの図形が、一部でも「重なっている」「触れている」状態。
+     - 点が面の中にある場合も、線が面を横切る場合も、すべてTrueになります。
+     
+             Polygon                       Polygon
+         ╭━━━━━━━━━━━━━╮               ╭━━━━━━━━━━━━━╮
+         ┃   ○ (点)    ┃  (True)       ┃ ───○─── (線)┃  (True)
+         ╰━━━━━━━━━━━━━╯               ╰━━━━━━━━━━━━━╯
+
+  ② within (〜の中に含まれる：主語が「小さい側」のときに使う)
+     - 左側の図形が、右側の図形の中に「すっぽり完全に収まっている」状態。
+     - 「店舗（点） within 行政区（面）」➡ 店舗が区の中に完全に入っていればTrue。
+     
+             Polygon
+         ╭━━━━━━━━━━━━━╮
+         ┃   ○ (点)    ┃  (点 within 面 ＝ True)
+         ╰━━━━━━━━━━━━━╯
+
+  ③ contains (〜を包含する：主語が「大きい側」のときに使う)
+     - 左側の図形が、右側の図形を「完全に包み込んでいる」状態（withinの逆）。
+     - 「行政区（面） contains 店舗（点）」➡ 区が店舗を包んでいればTrue。
+</pre></div>
+</div>
+<p>「店舗がどの区にあるか」を調べたいときは、結合判定に <code class="docutils literal notranslate"><span class="pre">intersects</span></code>（交差） または <code class="docutils literal notranslate"><span class="pre">within</span></code>（内包） を使えば間違いありません。</p>
+</section>
+<hr class="docutils" />
+<section id="id10">
+<h3>💻 実践ハザード判定：浸水エリアと避難所の空間交差判定<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<p>「水害時の浸水想定エリア（Polygon）に重なっている危険な避難所（Point）を、空間結合で一瞬で検知するプログラム」 を構築してみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span><span class="p">,</span> <span class="n">Polygon</span>
+
+<span class="c1"># 1. ハザードマップの「浸水想定エリア（ポリゴン）」を作成（ダミー）</span>
+<span class="c1"># 川の近くの低い土地をイメージした四角形ポリゴン</span>
+<span class="n">flood_poly</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([(</span><span class="mf">139.660</span><span class="p">,</span> <span class="mf">35.730</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.675</span><span class="p">,</span> <span class="mf">35.730</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.675</span><span class="p">,</span> <span class="mf">35.740</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.660</span><span class="p">,</span> <span class="mf">35.740</span><span class="p">)])</span>
+<span class="n">gdf_hazard</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">({</span>
+    <span class="s2">"エリア名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"荒川・神田川洪水浸水想定区域"</span><span class="p">],</span>
+    <span class="s2">"想定水深"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"最大3.0m（2階床下まで浸水）"</span><span class="p">]</span>
+<span class="p">},</span> <span class="n">geometry</span><span class="o">=</span><span class="p">[</span><span class="n">flood_poly</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">)</span>
+
+<span class="c1"># 2. 地域にある「避難所（点）」データを用意</span>
+<span class="n">df_shelters_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"避難所名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"第一小学校体育館"</span><span class="p">,</span> <span class="s2">"光が丘西公園"</span><span class="p">,</span> <span class="s2">"練馬文化センター"</span><span class="p">,</span> <span class="s2">"川沿いコミュニティ"</span><span class="p">],</span>
+    <span class="s2">"経度"</span><span class="p">:</span> <span class="p">[</span><span class="mf">139.6710</span><span class="p">,</span> <span class="mf">139.6350</span><span class="p">,</span> <span class="mf">139.6540</span><span class="p">,</span> <span class="mf">139.6650</span><span class="p">],</span>
+    <span class="s2">"緯度"</span><span class="p">:</span> <span class="p">[</span><span class="mf">35.7370</span><span class="p">,</span> <span class="mf">35.7580</span><span class="p">,</span> <span class="mf">35.7350</span><span class="p">,</span> <span class="mf">35.7320</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="n">geometry_shelters</span> <span class="o">=</span> <span class="p">[</span><span class="n">Point</span><span class="p">(</span><span class="n">xy</span><span class="p">)</span> <span class="k">for</span> <span class="n">xy</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">df_shelters_raw</span><span class="p">[</span><span class="s2">"経度"</span><span class="p">],</span> <span class="n">df_shelters_raw</span><span class="p">[</span><span class="s2">"緯度"</span><span class="p">])]</span>
+<span class="n">gdf_shelters</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">df_shelters_raw</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">geometry_shelters</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 避難所リスト ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">gdf_shelters</span><span class="p">[[</span><span class="s2">"避難所名"</span><span class="p">,</span> <span class="s2">"geometry"</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">--- 浸水想定ポリゴン ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">gdf_hazard</span><span class="p">)</span>
+
+<span class="c1"># 3. 【空間結合】避難所とハザードエリアを重ね合わせる！</span>
+<span class="c1"># how="left" にすることで、安全な避難所もすべて残し、危険な避難所にだけ「想定水深」が結合されるようにします。</span>
+<span class="n">gdf_assessment</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">sjoin</span><span class="p">(</span><span class="n">gdf_shelters</span><span class="p">,</span> <span class="n">gdf_hazard</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="s2">"intersects"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">--- 空間結合による防災安全度アセスメント結果 ---"</span><span class="p">)</span>
+<span class="c1"># 「想定水深」の列が NaN になっていない避難所は、物理的に浸水エリアに重なっている「危険な避難所」です！</span>
+<span class="n">display</span><span class="p">(</span><span class="n">gdf_assessment</span><span class="p">[[</span><span class="s2">"避難所名"</span><span class="p">,</span> <span class="s2">"エリア名"</span><span class="p">,</span> <span class="s2">"想定水深"</span><span class="p">,</span> <span class="s2">"geometry"</span><span class="p">]])</span>
+
+<span class="c1"># 4. 危険な避難所だけをフィルタリングして表示</span>
+<span class="n">danger_shelters</span> <span class="o">=</span> <span class="n">gdf_assessment</span><span class="p">[</span><span class="n">gdf_assessment</span><span class="p">[</span><span class="s2">"想定水深"</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">⚠️ 【即時検知】浸水想定区域に重なっている危険な避難所一覧 ⚠️"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">danger_shelters</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"・</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">'避難所名'</span><span class="p">]</span><span class="si">}</span><span class="s2"> (想定される被害: </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">'想定水深'</span><span class="p">]</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id11">
+<h2>練習問題（5問）<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<hr class="docutils" />
+<section id="id12">
+<h3>練習問題 1: 座標変換の引数の罠<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<p>店舗データの緯度経度からPointを作ってGeoDataFrameを作成した直後、関東をカバーする「平面直角座標系第9系」に座標変換を行おうとしています。
+以下のコードの空欄 <code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">A</span> <span class="pre">)</span></code> に入る適切なパラメータを答えてください。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 座標変換を行うコード</span>
+<span class="n">gdf_meter</span> <span class="o">=</span> <span class="n">gdf_shops</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span> <span class="p">(</span> <span class="n">A</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">crs=&quot;EPSG:6677&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">epsg=6677</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">epsg=4326</span></code></p></li>
+</ol>
+<details>
+<summary>👉 練習問題 1 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p>正解: 2 (<code class="docutils literal notranslate"><span class="pre">epsg=6677</span></code>)</p></li>
+<li><p>解説:</p>
+<ul>
+<li><p>GeoPandasで座標変換を行うメソッドは <code class="docutils literal notranslate"><span class="pre">.to_crs()</span></code> です。この引数に、国土地理院が定めたEPSGコードを「数値」で指定する場合は、<code class="docutils literal notranslate"><span class="pre">epsg=6677</span></code> のように小文字の <code class="docutils literal notranslate"><span class="pre">epsg</span></code> を引数名として渡します。</p></li>
+<li><p>1の <code class="docutils literal notranslate"><span class="pre">crs=&quot;EPSG:6677&quot;</span></code> のような指定方法は <code class="docutils literal notranslate"><span class="pre">.to_crs()</span></code> では一般的なエラー原因になりますので注意しましょう。3の <code class="docutils literal notranslate"><span class="pre">epsg=4326</span></code> は、メートルから元の経緯度に「戻す」ときに使うコード（WGS84）です。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="to-crs">
+<h3>練習問題 2: なぜバッファの前に <code class="docutils literal notranslate"><span class="pre">.to_crs()</span></code> が必要なのか？<a class="headerlink" href="#to-crs" title="Link to this heading">¶</a></h3>
+<p>経緯度座標系（WGS84：EPSG:4326）のデータフレームに対して、メートル単位の座標変換（to_crs）を行わずに、そのまま <code class="docutils literal notranslate"><span class="pre">.buffer(500)</span></code> を実行してしまいました。
+このときに起こる不都合な現象として、正しい説明を選んでください。</p>
+<ol class="arabic simple">
+<li><p>プログラムが <code class="docutils literal notranslate"><span class="pre">UnitError</span></code> というエラーを吐いて、その場で強制終了する。</p></li>
+<li><p>エラーは出ないが、単位が「メートル」ではなく「度」として解釈されるため、日本を遥かに超えて地球を何周も包むような巨大な（半径500度の）バッファ円が作られてしまう。</p></li>
+<li><p>GeoPandasが賢く自動判定し、自動でメートルに内部変換して正しい500mの円を作ってくれる。</p></li>
+</ol>
+<details>
+<summary>👉 練習問題 2 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p>正解: 2</p></li>
+<li><p>解説:</p>
+<ul>
+<li><p>GeoPandasは、データが今持っている座標系の単位をそのまま数学的な数値として使います。</p></li>
+<li><p>WGS84（経緯度）のデータの単位は「度（角度）」です。そのため、<code class="docutils literal notranslate"><span class="pre">.buffer(500)</span></code> を実行すると、システムは「半径500度」という、地球（1周360度）よりも巨大な円ポリゴンを生成しようとしてしまい、画面が真っ青になりフリーズする原因になります。</p></li>
+<li><p>距離や面積など、現実のスケール（メートル）で計算する前には、必ず <code class="docutils literal notranslate"><span class="pre">.to_crs(epsg=6677)</span></code> などでメートル座標系に変換する癖をつけましょう</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="geometry">
+<h3>練習問題 3: 点、線、面の形状データ（Geometry）<a class="headerlink" href="#geometry" title="Link to this heading">¶</a></h3>
+<p>GeoPandasで扱える、地理空間情報の代表的な3つの形状オブジェクト（点、線、面）に対応する「shapely」のクラス名の組み合わせとして、正しいものを答えてください。</p>
+<ul class="simple">
+<li><p>点（店舗の位置、避難所のGPSなど） ➡ ( A )</p></li>
+<li><p>線（鉄道路線、川の流路、道路など） ➡ ( B )</p></li>
+<li><p>面（市区町村の境界、浸水エリアなど） ➡ ( C )</p></li>
+</ul>
+<details>
+<summary>👉 練習問題 3 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p>正解:</p>
+<ul>
+<li><p>( A ) = <code class="docutils literal notranslate"><span class="pre">Point</span></code></p></li>
+<li><p>( B ) = <code class="docutils literal notranslate"><span class="pre">LineString</span></code></p></li>
+<li><p>( C ) = <code class="docutils literal notranslate"><span class="pre">Polygon</span></code></p></li>
+</ul>
+</li>
+<li><p>解説:</p>
+<ul>
+<li><p>GISのベクタデータは、この3つの基本形状で表されます。</p></li>
+<li><p>点（Point）は1つの座標、線（LineString）は複数の座標を結んだ折れ線、面（Polygon）は最初の点と最後の点が閉じた多角形（エリア）を指します。GeoPandasの <code class="docutils literal notranslate"><span class="pre">geometry</span></code> 列には、これらのオブジェクトが格納されています。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="sjoinhow-left">
+<h3>練習問題 4: sjoinにおける「how=&quot;left&quot;」の意味<a class="headerlink" href="#sjoinhow-left" title="Link to this heading">¶</a></h3>
+<p>店舗位置（点：left_df）と行政区画（面：right_df）を <code class="docutils literal notranslate"><span class="pre">gpd.sjoin(...,</span> <span class="pre">how=&quot;left&quot;)</span></code> で空間結合しました。
+この「左外部結合（<code class="docutils literal notranslate"><span class="pre">how=&quot;left&quot;</span></code>）」を指定した際、店舗データがどのようにマージされるか、正しい説明を選んでください。</p>
+<ol class="arabic simple">
+<li><p>境界線の中に店舗が含まれている「区」のデータだけを残し、境界線の外にある（どこの区にも入らない）店舗データは表から削除される。</p></li>
+<li><p>左側の店舗データを「1件も消さずにすべて残す」。もし区のポリゴン外にある店舗があった場合は、結合された区名の列には「NaN（欠損）」が入る。</p></li>
+<li><p>右側の行政区データをすべて残し、店舗のない区であっても、区のポリゴンを強制的にすべて表に残す。</p></li>
+</ol>
+<details>
+<summary>👉 練習問題 4 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p>正解: 2</p></li>
+<li><p>解説:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">how=&quot;left&quot;</span></code> は、左側のデータフレームの行を完全に守る指定です。</p></li>
+<li><p>実務で「全店舗の売上や情報を守りたい」ときは、必ず <code class="docutils literal notranslate"><span class="pre">how=&quot;left&quot;</span></code> を使います。</p></li>
+<li><p>もし1を指定した動き（重なったものだけを残す）にしたい場合は、<code class="docutils literal notranslate"><span class="pre">how=&quot;inner&quot;</span></code>（内部結合）を指定します。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="sjoin-merge">
+<h3>練習問題 5: 空間結合（sjoin）と通常結合（merge）の違い<a class="headerlink" href="#sjoin-merge" title="Link to this heading">¶</a></h3>
+<p>Pandasの <code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code> と、GeoPandasの <code class="docutils literal notranslate"><span class="pre">gpd.sjoin()</span></code> の決定的な違いについて、
+データの「キー（共通する列）」の有無に注目して説明してください。</p>
+<details>
+<summary>👉 練習問題 5 の解答と解説を見る</summary>
+<ul class="simple">
+<li><p>正解:</p>
+<ul>
+<li><p>通常の <code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code> は、2つの表に「店舗名」や「顧客ID」のような、共通するキーワード（共通のキー列）が最低1つ存在しなければ結合できません。</p></li>
+<li><p>一方、空間結合 <code class="docutils literal notranslate"><span class="pre">gpd.sjoin()</span></code> は、共通するキーワードが1列も存在しなくても、それぞれのデータが持っている位置座標をもとに、「物理的に重なっているか、含まれているか」という空間的な位置関係だけを頼りに2つの表を結合できる点。</p></li>
+</ul>
+</li>
+<li><p>解説:</p>
+<ul>
+<li><p>「住所マスタがないけれど、GPSの位置だけで2つのデータをガッチャンコしたい！」という、現実のあらゆるデータ処理の現場で空間結合が「魔法」と呼ばれるのは、このキー不要な物理包含マージができるからです。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id13">
+<h2>💻 演習（5問）<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
+<hr class="docutils" />
+<section id="id14">
+<h3>演習 1: 緯度経度の手動定義と平面メートル変換<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<p>「江古田駅（経度139.6728, 緯度35.7377）」の位置情報があります。</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">shapely.geometry</span></code> の <code class="docutils literal notranslate"><span class="pre">Point</span></code> を使って、この位置を表す Point オブジェクトを作成してください。（※指定の順序に注意！）</p></li>
+<li><p>世界測地系（WGS84：<code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code>）を指定して、1行の地理空間データフレーム（GeoDataFrame）を作成してください。</p></li>
+<li><p>それを関東の平面直角座標系第9系（<code class="docutils literal notranslate"><span class="pre">EPSG:6677</span></code>）に <code class="docutils literal notranslate"><span class="pre">.to_crs()</span></code> を使って変換し、結果を表示してください。</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span>
+
+<span class="c1"># TODO: 1. 経度・緯度を指定して Point オブジェクトを作る（X, Yの順）</span>
+<span class="n">station_point</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 2. crs="EPSG:4326" を指定して、1行のGeoDataFrameを作成する</span>
+<span class="c1"># 辞書データとして格納して変換します</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"場所名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"江古田駅"</span><span class="p">],</span> <span class="s2">"geometry"</span><span class="p">:</span> <span class="p">[</span><span class="n">station_point</span><span class="p">]}</span>
+<span class="n">gdf_station</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span>          <span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">)</span>
+
+<span class="c1"># TODO: 3. メートル座標系「EPSG:6677」に座標変換する</span>
+<span class="n">gdf_station_meter</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 座標変換完了 ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">gdf_station_meter</span><span class="p">)</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習 1 の解答コードを見る（クリックで展開）</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span>
+
+<span class="c1"># 1. Point(経度, 緯度) の順で定義する</span>
+<span class="n">station_point</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mf">139.6728</span><span class="p">,</span> <span class="mf">35.7377</span><span class="p">)</span>
+
+<span class="c1"># 2. 辞書から GeoDataFrame を作成し、初期CRSを WGS84 に設定</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"場所名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"江古田駅"</span><span class="p">],</span> <span class="s2">"geometry"</span><span class="p">:</span> <span class="p">[</span><span class="n">station_point</span><span class="p">]}</span>
+<span class="n">gdf_station</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">)</span>
+
+<span class="c1"># 3. .to_crs() で EPSG:6677 に変換</span>
+<span class="n">gdf_station_meter</span> <span class="o">=</span> <span class="n">gdf_station</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">6677</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 座標変換完了 ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">gdf_station_meter</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id15">
+<h3>演習 2: 3種類の異なる距離の多重商圏バッファ（マルチバッファ）の自動生成<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<p>ある新規出店候補地（Point：平面直角座標上 <code class="docutils literal notranslate"><span class="pre">[X=0,</span> <span class="pre">Y=0]</span></code>）を中心として、エリアマーケティングのために
+「半径300m」「500m」「1,000m（1km）」の3重の商圏サークル（Polygon）を一瞬で作成し、Matplotlibで重ねてプロットしてください。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span>
+
+<span class="c1"># 平面直角座標の原点 [0, 0] を中心点とする</span>
+<span class="n">center</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">gdf_center</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">({</span><span class="s2">"場所"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"出店候補地"</span><span class="p">]},</span> <span class="n">geometry</span><span class="o">=</span><span class="p">[</span><span class="n">center</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:6677"</span><span class="p">)</span>
+
+<span class="c1"># TODO: .buffer() を使って、3つの異なる距離（300, 500, 1000）の円ポリゴンを生成し、</span>
+<span class="c1">#       それぞれ別々のGeoDataFrameとして保存してください。</span>
+<span class="c1">#       ※カクカクしないよう resolution=30 を指定しましょう。</span>
+<span class="n">gdf_300m</span> <span class="o">=</span> <span class="n">gdf_center</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">gdf_300m</span><span class="p">[</span><span class="s2">"geometry"</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf_center</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span>    <span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="n">gdf_500m</span> <span class="o">=</span> <span class="n">gdf_center</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">gdf_500m</span><span class="p">[</span><span class="s2">"geometry"</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf_center</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span>    <span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="n">gdf_1km</span> <span class="o">=</span> <span class="n">gdf_center</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">gdf_1km</span><span class="p">[</span><span class="s2">"geometry"</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf_center</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span>    <span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># プロット（重ね合わせ：一番大きい1km円を一番下に、300m円を一番上に重ねます）</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># TODO: それぞれの色を分けてプロットしてください。</span>
+<span class="c1"># - gdf_1km: color="red", alpha=0.1 (一番薄い赤)</span>
+<span class="c1"># - gdf_500m: color="red", alpha=0.2 (中間の赤)</span>
+<span class="c1"># - gdf_300m: color="red", alpha=0.4 (一番濃い赤)</span>
+<span class="n">gdf_1km</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">)</span>
+<span class="n">gdf_500m</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">)</span>
+<span class="n">gdf_300m</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span>
+
+<span class="n">gdf_center</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"black"</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"*"</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"中心点"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"出店候補地の多重商圏シミュレーション (300m/500m/1km)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">":"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習 2 の解答コードを見る（クリックで展開）</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span>
+
+<span class="c1"># 平面直角座標の原点 [0, 0] を中心点とする</span>
+<span class="n">center</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">gdf_center</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">({</span><span class="s2">"場所"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"出店候補地"</span><span class="p">]},</span> <span class="n">geometry</span><span class="o">=</span><span class="p">[</span><span class="n">center</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:6677"</span><span class="p">)</span>
+
+<span class="c1"># TODO: .buffer() を使って、3つの異なる距離（300, 500, 1000）の円ポリゴンを生成し、</span>
+<span class="c1">#       それぞれ別々のGeoDataFrameとして保存してください。</span>
+<span class="c1">#       ※カクカクしないよう resolution=30 を指定しましょう。</span>
+<span class="c1"># buffer の引数にメートル単位の距離（300, 500, 1000）を指定する</span>
+<span class="n">gdf_300m</span> <span class="o">=</span> <span class="n">gdf_center</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">gdf_300m</span><span class="p">[</span><span class="s2">"geometry"</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf_center</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="n">gdf_500m</span> <span class="o">=</span> <span class="n">gdf_center</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">gdf_500m</span><span class="p">[</span><span class="s2">"geometry"</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf_center</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="n">gdf_1km</span> <span class="o">=</span> <span class="n">gdf_center</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">gdf_1km</span><span class="p">[</span><span class="s2">"geometry"</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf_center</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># プロット（重ね合わせ：一番大きい1km円を一番下に、300m円を一番上に重ねます）</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># TODO: それぞれの色を分けてプロットしてください。</span>
+<span class="c1"># - gdf_1km: color="red", alpha=0.1 (一番薄い赤)</span>
+<span class="c1"># - gdf_500m: color="red", alpha=0.2 (中間の赤)</span>
+<span class="c1"># - gdf_300m: color="red", alpha=0.4 (一番濃い赤)</span>
+<span class="n">gdf_1km</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">)</span>
+<span class="n">gdf_500m</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">)</span>
+<span class="n">gdf_300m</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span>
+
+<span class="n">gdf_center</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"black"</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"*"</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"中心点"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"出店候補地の多重商圏シミュレーション (300m/500m/1km)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">":"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="point">
+<h3>演習 3: 行政区ポリゴンと店舗Pointの空間結合（所属区の自動分類）<a class="headerlink" href="#point" title="Link to this heading">¶</a></h3>
+<p>練馬区と豊島区の境界ポリゴンデータ（<code class="docutils literal notranslate"><span class="pre">gdf_districts</span></code>）と、2つのカフェ店舗のPointデータ（<code class="docutils literal notranslate"><span class="pre">gdf_shops</span></code>）があります。
+共通キーは1つもありません。空間結合（<code class="docutils literal notranslate"><span class="pre">gpd.sjoin()</span></code>）を使い、「どの店舗が何区に物理的に入っているか」を自動分類して、店舗データに「区名」の列をマージしてください。なお、店舗データは1件も消さないものとします。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span><span class="p">,</span> <span class="n">Polygon</span>
+
+<span class="c1"># 1. 行政区ポリゴン（ダミー）</span>
+<span class="n">poly_nerima</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([(</span><span class="mf">139.60</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.66</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.66</span><span class="p">,</span> <span class="mf">35.76</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.60</span><span class="p">,</span> <span class="mf">35.76</span><span class="p">)])</span> <span class="c1"># 練馬区簡易</span>
+<span class="n">poly_toshima</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([(</span><span class="mf">139.66</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.73</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.73</span><span class="p">,</span> <span class="mf">35.76</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.66</span><span class="p">,</span> <span class="mf">35.76</span><span class="p">)])</span> <span class="c1"># 豊島区簡易</span>
+<span class="n">gdf_districts</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">({</span>
+    <span class="s2">"区名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"練馬区"</span><span class="p">,</span> <span class="s2">"豊島区"</span><span class="p">]</span>
+<span class="p">},</span> <span class="n">geometry</span><span class="o">=</span><span class="p">[</span><span class="n">poly_nerima</span><span class="p">,</span> <span class="n">poly_toshima</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">)</span>
+
+<span class="c1"># 2. 店舗 Point（江古田店は練馬区内、池袋店は豊島区内）</span>
+<span class="n">shop_points</span> <span class="o">=</span> <span class="p">[</span><span class="n">Point</span><span class="p">(</span><span class="mf">139.654</span><span class="p">,</span> <span class="mf">35.735</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mf">139.711</span><span class="p">,</span> <span class="mf">35.729</span><span class="p">)]</span>
+<span class="n">gdf_shops</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">({</span>
+    <span class="s2">"店舗名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"池袋店"</span><span class="p">]</span>
+<span class="p">},</span> <span class="n">geometry</span><span class="o">=</span><span class="n">shop_points</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">)</span>
+
+<span class="c1"># TODO: gpd.sjoin を使い、gdf_shops に対し gdf_districts の「区名」を空間結合してください。</span>
+<span class="c1">#       店舗データが1件も消えないよう how="left"、判定基準は intersects としてください。</span>
+<span class="n">joined_result</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">sjoin</span><span class="p">(</span>
+    <span class="n">left_df</span><span class="o">=</span>          <span class="p">,</span>
+    <span class="n">right_df</span><span class="o">=</span>          <span class="p">,</span>
+    <span class="n">how</span><span class="o">=</span>          <span class="p">,</span>
+    <span class="n">predicate</span><span class="o">=</span>          
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 空間結合の結果 ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">joined_result</span><span class="p">[[</span><span class="s2">"店舗名"</span><span class="p">,</span> <span class="s2">"区名"</span><span class="p">,</span> <span class="s2">"geometry"</span><span class="p">]])</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習 3 の解答コードを見る（クリックで展開）</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span><span class="p">,</span> <span class="n">Polygon</span>
+
+<span class="c1"># 1. 行政区ポリゴン（ダミー）</span>
+<span class="n">poly_nerima</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([(</span><span class="mf">139.60</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.66</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.66</span><span class="p">,</span> <span class="mf">35.76</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.60</span><span class="p">,</span> <span class="mf">35.76</span><span class="p">)])</span> <span class="c1"># 練馬区簡易</span>
+<span class="n">poly_toshima</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([(</span><span class="mf">139.66</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.73</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.73</span><span class="p">,</span> <span class="mf">35.76</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.66</span><span class="p">,</span> <span class="mf">35.76</span><span class="p">)])</span> <span class="c1"># 豊島区簡易</span>
+<span class="n">gdf_districts</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">({</span>
+    <span class="s2">"区名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"練馬区"</span><span class="p">,</span> <span class="s2">"豊島区"</span><span class="p">]</span>
+<span class="p">},</span> <span class="n">geometry</span><span class="o">=</span><span class="p">[</span><span class="n">poly_nerima</span><span class="p">,</span> <span class="n">poly_toshima</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">)</span>
+
+<span class="c1"># 2. 店舗 Point（江古田店は練馬区内、池袋店は豊島区内）</span>
+<span class="n">shop_points</span> <span class="o">=</span> <span class="p">[</span><span class="n">Point</span><span class="p">(</span><span class="mf">139.654</span><span class="p">,</span> <span class="mf">35.735</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mf">139.711</span><span class="p">,</span> <span class="mf">35.729</span><span class="p">)]</span>
+<span class="n">gdf_shops</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">({</span>
+    <span class="s2">"店舗名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"池袋店"</span><span class="p">]</span>
+<span class="p">},</span> <span class="n">geometry</span><span class="o">=</span><span class="n">shop_points</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">)</span>
+
+<span class="c1"># TODO: gpd.sjoin を使い、gdf_shops に対し gdf_districts の「区名」を空間結合してください。</span>
+<span class="c1">#       店舗データが1件も消えないよう how="left"、判定基準は intersects としてください。</span>
+<span class="n">joined_result</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">sjoin</span><span class="p">(</span>
+    <span class="n">left_df</span><span class="o">=</span><span class="n">gdf_shops</span><span class="p">,</span>
+    <span class="n">right_df</span><span class="o">=</span><span class="n">gdf_districts</span><span class="p">,</span>
+    <span class="n">how</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span>
+    <span class="n">predicate</span><span class="o">=</span><span class="s2">"intersects"</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 空間結合の結果 ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">joined_result</span><span class="p">[[</span><span class="s2">"店舗名"</span><span class="p">,</span> <span class="s2">"区名"</span><span class="p">,</span> <span class="s2">"geometry"</span><span class="p">]])</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="within">
+<h3>演習 4: 空間関係（within）を使った「区内にある避難所」の条件抽出<a class="headerlink" href="#within" title="Link to this heading">¶</a></h3>
+<p>空間結合関数（sjoin）を使わずに、1つの「練馬区ポリゴン（<code class="docutils literal notranslate"><span class="pre">nerima_poly</span></code>）」の範囲内（within）にすっぽりと収まっている避難所（Point）だけを、
+GeoPandasの条件式で綺麗に抽出して表示してください。</p>
+<p>※ ヒント：地理データフレームに対して、<code class="docutils literal notranslate"><span class="pre">gdf.geometry.within(図形)</span></code> を実行すると、各行がその図形の中にあれば <code class="docutils literal notranslate"><span class="pre">True</span></code>、
+なければ <code class="docutils literal notranslate"><span class="pre">False</span></code> という「True/Falseのリスト（マスク）」が作られます。これを使って条件抽出を行います。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span><span class="p">,</span> <span class="n">Polygon</span>
+
+<span class="c1"># 1. 練馬区の簡易ポリゴン</span>
+<span class="n">nerima_poly</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([(</span><span class="mf">139.60</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.66</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.66</span><span class="p">,</span> <span class="mf">35.76</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.60</span><span class="p">,</span> <span class="mf">35.76</span><span class="p">)])</span>
+
+<span class="c1"># 2. 避難所の地理データフレーム（1=練馬区内、2=杉並区内[区外]）</span>
+<span class="n">shelter_points</span> <span class="o">=</span> <span class="p">[</span><span class="n">Point</span><span class="p">(</span><span class="mf">139.635</span><span class="p">,</span> <span class="mf">35.742</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mf">139.612</span><span class="p">,</span> <span class="mf">35.698</span><span class="p">)]</span>
+<span class="n">gdf_shelters</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">({</span>
+    <span class="s2">"避難所名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"練馬第一小"</span><span class="p">,</span> <span class="s2">"杉並第二中"</span><span class="p">]</span>
+<span class="p">},</span> <span class="n">geometry</span><span class="o">=</span><span class="n">shelter_points</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">)</span>
+
+<span class="c1"># TODO: gdf_shelters の中から、geometry が「nerima_poly」の「内包（within）」にある行だけを</span>
+<span class="c1">#       条件抽出して、df_nerima_shelters に代入してください。</span>
+<span class="c1">#       ※ gdf_shelters[gdf_shelters.geometry.within(nerima_poly)] の書き方を使います。</span>
+<span class="n">df_nerima_shelters</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 練馬区内の避難所として抽出されたデータ ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_nerima_shelters</span><span class="p">)</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習 4 の解答コードを見る（クリックで展開）</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span><span class="p">,</span> <span class="n">Polygon</span>
+
+<span class="c1"># 1. 練馬区の簡易ポリゴン</span>
+<span class="n">nerima_poly</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([(</span><span class="mf">139.60</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.66</span><span class="p">,</span> <span class="mf">35.72</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.66</span><span class="p">,</span> <span class="mf">35.76</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.60</span><span class="p">,</span> <span class="mf">35.76</span><span class="p">)])</span>
+
+<span class="c1"># 2. 避難所の地理データフレーム（1=練馬区内、2=杉並区内[区外]）</span>
+<span class="n">shelter_points</span> <span class="o">=</span> <span class="p">[</span><span class="n">Point</span><span class="p">(</span><span class="mf">139.635</span><span class="p">,</span> <span class="mf">35.742</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mf">139.612</span><span class="p">,</span> <span class="mf">35.698</span><span class="p">)]</span>
+<span class="n">gdf_shelters</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">({</span>
+    <span class="s2">"避難所名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"練馬第一小"</span><span class="p">,</span> <span class="s2">"杉並第二中"</span><span class="p">]</span>
+<span class="p">},</span> <span class="n">geometry</span><span class="o">=</span><span class="n">shelter_points</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">)</span>
+
+<span class="c1"># TODO: gdf_shelters の中から、geometry が「nerima_poly」の「内包（within）」にある行だけを</span>
+<span class="c1">#       条件抽出して、df_nerima_shelters に代入してください。</span>
+<span class="c1">#       ※ gdf_shelters[gdf_shelters.geometry.within(nerima_poly)] の書き方を使います。</span>
+<span class="n">df_nerima_shelters</span> <span class="o">=</span> <span class="n">gdf_shelters</span><span class="p">[</span><span class="n">gdf_shelters</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">within</span><span class="p">(</span><span class="n">nerima_poly</span><span class="p">)]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 練馬区内の避難所として抽出されたデータ ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_nerima_shelters</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="km">
+<h3>演習 5: 【最上級・応用】避難所の1km商圏内の「危険土砂災害エリア」自動検知<a class="headerlink" href="#km" title="Link to this heading">¶</a></h3>
+<p>土砂災害警戒区域（危険エリアPolygon：<code class="docutils literal notranslate"><span class="pre">gdf_landslide</span></code>）と、地域の避難所（Point：<code class="docutils literal notranslate"><span class="pre">gdf_shelters</span></code>）があります。</p>
+<ol class="arabic simple">
+<li><p>避難所の安全性を評価するため、避難所データに 「避難所から半径1,000m（1km）」のバッファ（円ポリゴン） を追加したGeoDataFrameを作成してください。</p></li>
+<li><p>空間結合（<code class="docutils literal notranslate"><span class="pre">gpd.sjoin</span></code>）の <code class="docutils literal notranslate"><span class="pre">how=&quot;inner&quot;</span></code> を用いて、「1km商圏が、土砂災害警戒区域ポリゴンと1点でも重なっている（intersects）危険な避難所」 だけを検出して表示してください。
+※注意：距離を計算するため、事前にすべてのデータフレームを平面直角座標系第9系（<code class="docutils literal notranslate"><span class="pre">EPSG:6677</span></code>）に変換してから処理してください！</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span><span class="p">,</span> <span class="n">Polygon</span>
+
+<span class="c1"># 1. 土砂災害警戒エリア（ポリゴン：経緯度）</span>
+<span class="n">danger_poly</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([(</span><span class="mf">139.610</span><span class="p">,</span> <span class="mf">35.710</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.620</span><span class="p">,</span> <span class="mf">35.710</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.620</span><span class="p">,</span> <span class="mf">35.720</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.610</span><span class="p">,</span> <span class="mf">35.720</span><span class="p">)])</span>
+<span class="n">gdf_landslide</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">({</span><span class="s2">"災害種別"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"土砂災害特別警戒区域"</span><span class="p">]},</span> <span class="n">geometry</span><span class="o">=</span><span class="p">[</span><span class="n">danger_poly</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">)</span>
+
+<span class="c1"># 2. 避難所（点：経緯度。避難所Aは危険エリアのすぐ近く、避難所Bは遥か遠く）</span>
+<span class="n">shelter_points</span> <span class="o">=</span> <span class="p">[</span><span class="n">Point</span><span class="p">(</span><span class="mf">139.615</span><span class="p">,</span> <span class="mf">35.715</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mf">139.750</span><span class="p">,</span> <span class="mf">35.720</span><span class="p">)]</span>
+<span class="n">gdf_shelters</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">({</span><span class="s2">"避難所名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"山手避難所A"</span><span class="p">,</span> <span class="s2">"ベイサイド避難所B"</span><span class="p">]},</span> <span class="n">geometry</span><span class="o">=</span><span class="n">shelter_points</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">)</span>
+
+<span class="c1"># TODO: 1. 2つのデータフレームを「EPSG:6677（メートル座標）」に変換する</span>
+<span class="n">gdf_landslide_m</span> <span class="o">=</span> <span class="n">gdf_landslide</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span>      <span class="p">)</span>
+<span class="n">gdf_shelters_m</span> <span class="o">=</span> <span class="n">gdf_shelters</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span>      <span class="p">)</span>
+
+<span class="c1"># TODO: 2. 避難所データ(gdf_shelters_m)のgeometryを、1000mのバッファ（円ポリゴン）で上書きする</span>
+<span class="n">gdf_shelter_buffers</span> <span class="o">=</span> <span class="n">gdf_shelters_m</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">gdf_shelter_buffers</span><span class="p">[</span><span class="s2">"geometry"</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf_shelters_m</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span>    <span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># TODO: 3. gpd.sjoin を使い、避難所バッファ(gdf_shelter_buffers)と危険エリア(gdf_landslide_m)を</span>
+<span class="c1">#       「how="inner"」かつ「predicate="intersects"」で空間結合して、危険な避難所を炙り出す</span>
+<span class="n">danger_detected</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">sjoin</span><span class="p">(</span>
+    <span class="n">left_df</span><span class="o">=</span>          <span class="p">,</span>
+    <span class="n">right_df</span><span class="o">=</span>          <span class="p">,</span>
+    <span class="n">how</span><span class="o">=</span>          <span class="p">,</span>
+    <span class="n">predicate</span><span class="o">=</span>          
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"⚠️ 【即時検知】1km以内に土砂災害危険エリアが存在する避難所一覧 ⚠️"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">danger_detected</span><span class="p">[[</span><span class="s2">"避難所名"</span><span class="p">,</span> <span class="s2">"災害種別"</span><span class="p">,</span> <span class="s2">"geometry"</span><span class="p">]])</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習 5 の解答コードを見る（クリックで展開）</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span><span class="p">,</span> <span class="n">Polygon</span>
+
+<span class="c1"># 1. 土砂災害警戒エリア（ポリゴン：経緯度）</span>
+<span class="n">danger_poly</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([(</span><span class="mf">139.610</span><span class="p">,</span> <span class="mf">35.710</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.620</span><span class="p">,</span> <span class="mf">35.710</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.620</span><span class="p">,</span> <span class="mf">35.720</span><span class="p">),</span> <span class="p">(</span><span class="mf">139.610</span><span class="p">,</span> <span class="mf">35.720</span><span class="p">)])</span>
+<span class="n">gdf_landslide</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">({</span><span class="s2">"災害種別"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"土砂災害特別警戒区域"</span><span class="p">]},</span> <span class="n">geometry</span><span class="o">=</span><span class="p">[</span><span class="n">danger_poly</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">)</span>
+
+<span class="c1"># 2. 避難所（点：経緯度。避難所Aは危険エリアのすぐ近く、避難所Bは遥か遠く）</span>
+<span class="n">shelter_points</span> <span class="o">=</span> <span class="p">[</span><span class="n">Point</span><span class="p">(</span><span class="mf">139.615</span><span class="p">,</span> <span class="mf">35.715</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mf">139.750</span><span class="p">,</span> <span class="mf">35.720</span><span class="p">)]</span>
+<span class="n">gdf_shelters</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">({</span><span class="s2">"避難所名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"山手避難所A"</span><span class="p">,</span> <span class="s2">"ベイサイド避難所B"</span><span class="p">]},</span> <span class="n">geometry</span><span class="o">=</span><span class="n">shelter_points</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">)</span>
+
+<span class="c1"># TODO: 1. 2つのデータフレームを「EPSG:6677（メートル座標）」に変換する</span>
+<span class="n">gdf_landslide_m</span> <span class="o">=</span> <span class="n">gdf_landslide</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">6677</span><span class="p">)</span>
+<span class="n">gdf_shelters_m</span> <span class="o">=</span> <span class="n">gdf_shelters</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">6677</span><span class="p">)</span>
+
+<span class="c1"># TODO: 2. 避難所データ(gdf_shelters_m)のgeometryを、1000mのバッファ（円ポリゴン）で上書きする</span>
+<span class="n">gdf_shelter_buffers</span> <span class="o">=</span> <span class="n">gdf_shelters_m</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">gdf_shelter_buffers</span><span class="p">[</span><span class="s2">"geometry"</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf_shelters_m</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># TODO: 3. gpd.sjoin を使い、避難所バッファ(gdf_shelter_buffers)と危険エリア(gdf_landslide_m)を</span>
+<span class="c1">#       「how="inner"」かつ「predicate="intersects"」で空間結合して、危険な避難所を炙り出す</span>
+<span class="n">danger_detected</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">sjoin</span><span class="p">(</span>
+    <span class="n">left_df</span><span class="o">=</span><span class="n">gdf_shelter_buffers</span><span class="p">,</span>
+    <span class="n">right_df</span><span class="o">=</span><span class="n">gdf_landslide_m</span><span class="p">,</span>
+    <span class="n">how</span><span class="o">=</span><span class="s2">"inner"</span><span class="p">,</span>
+    <span class="n">predicate</span><span class="o">=</span><span class="s2">"intersects"</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"⚠️ 【即時検知】1km以内に土砂災害危険エリアが存在する避難所一覧 ⚠️"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">danger_detected</span><span class="p">[[</span><span class="s2">"避難所名"</span><span class="p">,</span> <span class="s2">"災害種別"</span><span class="p">,</span> <span class="s2">"geometry"</span><span class="p">]])</span>
+</pre></div>
+</div>
+</details>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id16">
+<h2>まとめ<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>WGS84経緯度（EPSG:4326） の単位は 「度」 である。そのままバッファ <code class="docutils literal notranslate"><span class="pre">.buffer()</span></code> を作ると、地球を超える巨大円（半径500度など）になりバグる。</p></li>
+<li><p>距離（メートル）を正確に計算する前には、必ず地域ごとの平面直角座標系（関東なら <code class="docutils literal notranslate"><span class="pre">EPSG:6677（第9系）</span></code>）へ <code class="docutils literal notranslate"><span class="pre">.to_crs()</span></code> で変換する。</p></li>
+<li><p>商圏バッファ（<code class="docutils literal notranslate"><span class="pre">.buffer(距離)</span></code>） で店舗周辺の影響圏を多角形（Polygon）化でき、重心（<code class="docutils literal notranslate"><span class="pre">.centroid</span></code>） でいびつな多角形の中心点（Point）を全自動で取得できる。</p></li>
+<li><p>空間結合（<code class="docutils literal notranslate"><span class="pre">gpd.sjoin()</span></code>） は、共通のキー列がなくても、「点 ✕ 面」などの物理的な位置の重なりだけで、2つの地理データフレームを合体・マージできる。</p></li>
+<li><p>空間関係（predicate）は、最も万能な <code class="docutils literal notranslate"><span class="pre">intersects</span></code>（交差）、中にすっぽり収まる <code class="docutils literal notranslate"><span class="pre">within</span></code>、包み込む <code class="docutils literal notranslate"><span class="pre">contains</span></code> を使い分ける。</p></li>
+</ul>
+</section>
 </section>
 
         </article>
@@ -376,7 +1309,7 @@
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">第9回 地理空間データの活⽤2</div>
+                <div class="title">第9回 地理空間データの活用2</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -398,7 +1331,7 @@
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-09-01</div>
+              Last updated on 2026-09-02</div>
           </div>
           <div class="right-details">
             
@@ -407,8 +1340,74 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">第8回 地理空間データの活用1</a><ul>
+<li><a class="reference internal" href="#id2">🎯 到達目標</a><ul>
+<li><a class="reference internal" href="#google-colab">練習問題のGoogle Colab起動</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#crs">座標参照系（CRS）の高度な変換</a><ul>
+<li><a class="reference internal" href="#id3">🚨 「度」と「メートル」の混同</a></li>
+<li><a class="reference internal" href="#id4">🗺️ 日本独自の「19の平面直角座標系」</a></li>
+<li><a class="reference internal" href="#id5">💻 ハンズオン</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#buffer-centroid">商圏バッファ（<code class="docutils literal notranslate"><span class="pre">.buffer()</span></code>）と重心（<code class="docutils literal notranslate"><span class="pre">.centroid</span></code>）</a><ul>
+<li><a class="reference internal" href="#buffer">商圏バッファ（<code class="docutils literal notranslate"><span class="pre">.buffer()</span></code>）の作成</a><ul>
+<li><a class="reference internal" href="#resolution">💡 解像度 <code class="docutils literal notranslate"><span class="pre">resolution</span></code> の指定</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">💻 商圏バッファの可視化</a></li>
+<li><a class="reference internal" href="#centroid">行政区画の「重心（<code class="docutils literal notranslate"><span class="pre">.centroid</span></code>）」の算出</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#spatial-join-gpd-sjoin">空間結合（Spatial Join: <code class="docutils literal notranslate"><span class="pre">gpd.sjoin()</span></code>）の真髄</a><ul>
+<li><a class="reference internal" href="#id7">📦 空間結合の基本コードと引数</a><ul>
+<li><a class="reference internal" href="#id8">🛠️ 引数の詳細な意味</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#predicates">空間関係（Predicates）の使い分けとハザード判定</a><ul>
+<li><a class="reference internal" href="#id9">3大空間関係の物理的な意味</a></li>
+<li><a class="reference internal" href="#id10">💻 実践ハザード判定：浸水エリアと避難所の空間交差判定</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id11">練習問題（5問）</a><ul>
+<li><a class="reference internal" href="#id12">練習問題 1: 座標変換の引数の罠</a></li>
+<li><a class="reference internal" href="#to-crs">練習問題 2: なぜバッファの前に <code class="docutils literal notranslate"><span class="pre">.to_crs()</span></code> が必要なのか？</a></li>
+<li><a class="reference internal" href="#geometry">練習問題 3: 点、線、面の形状データ（Geometry）</a></li>
+<li><a class="reference internal" href="#sjoinhow-left">練習問題 4: sjoinにおける「how=&quot;left&quot;」の意味</a></li>
+<li><a class="reference internal" href="#sjoin-merge">練習問題 5: 空間結合（sjoin）と通常結合（merge）の違い</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id13">💻 演習（5問）</a><ul>
+<li><a class="reference internal" href="#id14">演習 1: 緯度経度の手動定義と平面メートル変換</a></li>
+<li><a class="reference internal" href="#id15">演習 2: 3種類の異なる距離の多重商圏バッファ（マルチバッファ）の自動生成</a></li>
+<li><a class="reference internal" href="#point">演習 3: 行政区ポリゴンと店舗Pointの空間結合（所属区の自動分類）</a></li>
+<li><a class="reference internal" href="#within">演習 4: 空間関係（within）を使った「区内にある避難所」の条件抽出</a></li>
+<li><a class="reference internal" href="#km">演習 5: 【最上級・応用】避難所の1km商圏内の「危険土砂災害エリア」自動検知</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id16">まとめ</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
