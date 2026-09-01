@@ -867,7 +867,7 @@ Streamlitを使う場合、それらの知識が一切不要であるのはな�
 <hr class="docutils" />
 <section id="colab">
 <h3>練習問題 2: Colab特有の「窓口」と「トンネル」<a class="headerlink" href="#colab" title="Link to this heading">¶</a></h3>
-<p>Google ColabでStreamlitを動かす際、<code class="docutils literal notranslate"><span class="pre">!npx</span> <span class="pre">localtunnel</span> <span class="pre">--port</span> <span class="pre">8501</span></code> というコマンドを実行しました。</p>
+<p>Google ColabでStreamlitを動かす際、<code class="docutils literal notranslate"><span class="pre">cloudflared</span> <span class="pre">tunnel</span> <span class="pre">--url</span> <span class="pre">http://localhost:8501</span> <span class="pre">--no-autoupdate</span></code> というコマンドを実行しました。</p>
 <ol class="arabic simple">
 <li><p>この 「<code class="docutils literal notranslate"><span class="pre">8501</span></code>」 という数字は何を表しているでしょうか？</p></li>
 <li><p>なぜ、ただ起動するだけでなく、トネリングという追加のツールを使う必要があるのか、理由を説明してください。</p></li>
@@ -986,11 +986,11 @@ Streamlitのルール（鉄則）に沿って説明してください。</p>
 </section>
 <hr class="docutils" />
 <section id="id18">
-<h2>💻 演習課題（5問）<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h2>
-<p>1行ずつコードを確認しながら、穴埋め（<code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TODO:</span></code> の部分）を完成させてください。</p>
+<h2>💻 演習（5問）<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h2>
+<p>穴埋め（<code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TODO:</span></code> の部分）を完成させてください。</p>
 <hr class="docutils" />
 <section id="id19">
-<h3>課題 1: 割引率調整スライダーと価格シミュレーター（難易度：易）<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<h3>演習 1: 割引率調整スライダーと価格シミュレーター（難易度：易）<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
 <p>カフェのお会計において、サイドバーに設置したスライダーで「割引率（%）」を自由に調整し、その割引が適用された「割引後の支払金額」をメイン画面にリアルタイム表示するアプリを作成してください。</p>
 <ul class="simple">
 <li><p>【要件】</p>
@@ -1023,10 +1023,31 @@ Streamlitのルール（鉄則）に沿って説明してください。</p>
 <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span>                               <span class="p">)</span>
 </pre></div>
 </div>
+<details>
+<summary>👉 演習 1 の解答コードを見る（クリックで展開）</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"カフェ割引シミュレーター ☕"</span><span class="p">)</span>
+
+<span class="n">base_price</span> <span class="o">=</span> <span class="mi">500</span>
+
+<span class="c1"># 1. スライダーの設定</span>
+<span class="n">discount</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">"割引率(%)を設定してください:"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># 2. 割引後価格の計算</span>
+<span class="n">discount_price</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">base_price</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">discount</span> <span class="o">/</span> <span class="mi">100</span><span class="p">))</span>
+
+<span class="c1"># 3. 画面の出力</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"通常価格: </span><span class="si">{</span><span class="n">base_price</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"割引適用後の価格"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">discount_price</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
 </section>
 <hr class="docutils" />
 <section id="id20">
-<h3>課題 2: カテゴリ選択に応じたメニューの動的絞り込み（難易度：易）<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<h3>演習 2: カテゴリ選択に応じたメニューの動的絞り込み（難易度：易）<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
 <p>あらかじめ用意されたデータ（カフェのメニュー）から、ユーザーがセレクトボックスで選択したカテゴリ（ドリンク、またはデザート）に属する商品だけを画面に動的に表示する、簡易データベース検索アプリを作成してください。</p>
 <ul class="simple">
 <li><p>【要件】</p>
@@ -1065,11 +1086,35 @@ Streamlitのルール（鉄則）に沿って説明してください。</p>
     <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"- </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
+<details>
+<summary>👉 演習 2 の解答コードを見る（クリックで展開）</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"メニュー検索カタログ 📖"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"カテゴリを選ぶと、おすすめ商品の一覧を自動で切り替えます。"</span><span class="p">)</span>
+
+<span class="c1"># 1. セレクトボックスの配置</span>
+<span class="n">category</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">"カテゴリを選択してください:"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"ドリンク"</span><span class="p">,</span> <span class="s2">"デザート"</span><span class="p">])</span>
+
+<span class="c1"># 2. 条件分岐によるリストの切り替え</span>
+<span class="k">if</span> <span class="n">category</span> <span class="o">==</span> <span class="s2">"ドリンク"</span><span class="p">:</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"ブレンドコーヒー"</span><span class="p">,</span> <span class="s2">"宇治抹茶ラテ"</span><span class="p">,</span> <span class="s2">"キャラメルマキアート"</span><span class="p">]</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"ベイクドチーズケーキ"</span><span class="p">,</span> <span class="s2">"窯焼きアップルパイ"</span><span class="p">,</span> <span class="s2">"特製クラシックプリン"</span><span class="p">]</span>
+
+<span class="c1"># 3. 画面表示</span>
+<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="sa">f</span><span class="s2">"✨ おすすめの</span><span class="si">{</span><span class="n">category</span><span class="si">}</span><span class="s2">一覧"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"- </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
 </section>
 <hr class="docutils" />
 <section id="id21">
-<h3>課題 3: 店舗売上目標達成判定チェッカー（難易度：中）<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
-<p>その日の「実績売上」をスライダーで入力し、あらかじめ設定した「目標売上」に到達しているかどうかをAI（プログラム）が自動で判定し、目標値までの「残り金額」と、達成・未達成のステータスを表示するアプリを作成してください。</p>
+<h3>演習 3: 店舗売上目標達成判定チェッカー（難易度：中）<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
+<p>その日の「実績売上」をスライダーで入力し、あらかじめ設定した「目標売上」に到達しているかどうかをプログラムが自動で判定し、目標値までの「残り金額」と、達成・未達成のステータスを表示するアプリを作成してください。</p>
 <ul class="simple">
 <li><p>【要件】</p>
 <ol class="arabic simple">
@@ -1108,10 +1153,34 @@ Streamlitのルール（鉄則）に沿って説明してください。</p>
     
 </pre></div>
 </div>
+<details>
+<summary>👉 演習 3 の解答コードを見る（クリックで展開）</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"店舗売上目標達成チェッカー 📈"</span><span class="p">)</span>
+
+<span class="n">target_sales</span> <span class="o">=</span> <span class="mi">200000</span>
+<span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="sa">f</span><span class="s2">"🎯 本日の目標売上: </span><span class="si">{</span><span class="n">target_sales</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+
+<span class="c1"># 1. 1万刻みの調整用スライダーを配置</span>
+<span class="n">actual_sales</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">"実績売上を入力してください (円):"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">300000</span><span class="p">,</span> <span class="mi">150000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"現在の実績売上: </span><span class="si">{</span><span class="n">actual_sales</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+
+<span class="c1"># 2. 目標判定ロジック</span>
+<span class="k">if</span> <span class="n">actual_sales</span> <span class="o">&gt;=</span> <span class="n">target_sales</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="s2">"🎉 目標達成！おめでとうございます！素晴らしい営業成果です！"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">deficit</span> <span class="o">=</span> <span class="n">target_sales</span> <span class="o">-</span> <span class="n">actual_sales</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">"⚠️ 目標未達成。目標まであと 【</span><span class="si">{</span><span class="n">deficit</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円】 足りません。"</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
 </section>
 <hr class="docutils" />
 <section id="pos">
-<h3>課題 4: チェックボックスによる複数トッピング複数加算POSレジ（難易度：中）<a class="headerlink" href="#pos" title="Link to this heading">¶</a></h3>
+<h3>演習 4: チェックボックスによる複数トッピング複数加算POSレジ（難易度：中）<a class="headerlink" href="#pos" title="Link to this heading">¶</a></h3>
 <p>基本の「パンケーキ（600円）」に対し、3つのトッピング（ホイップ、チョコ、アイス）をチェックボックスで複数自由にトッピングし、数量を掛け合わせた「お見積もり合計金額」をリアルタイムで算出するオシャレなPOSシステムを構築してください。</p>
 <ul class="simple">
 <li><p>【要件】</p>
@@ -1166,10 +1235,47 @@ Streamlitのルール（鉄則）に沿って説明してください。</p>
 <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"パンケーキセット 合計支払金額"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">total</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
 </pre></div>
 </div>
+<details>
+<summary>👉 演習 4 の解答コードを見る（クリックで展開）</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"🥞 プレミアム・パンケーキPOSレジ 🥞"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"トッピングを自由に組み合わせて、オリジナルのカスタムパンケーキをお見積もりできます。"</span><span class="p">)</span>
+
+<span class="n">base_price</span> <span class="o">=</span> <span class="mi">600</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"プレーンパンケーキ基本価格: </span><span class="si">{</span><span class="n">base_price</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">"🧀 トッピングの選択"</span><span class="p">)</span>
+
+<span class="n">add_ice</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span><span class="s2">"バニラアイス (+150円)"</span><span class="p">)</span>
+<span class="n">add_chocolate</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span><span class="s2">"チョコレートシロップ (+80円)"</span><span class="p">)</span>
+<span class="n">add_banana</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span><span class="s2">"完熟バナナスライス (+120円)"</span><span class="p">)</span>
+
+<span class="c1"># トッピング金額の動的な一括加算</span>
+<span class="n">topping_total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">if</span> <span class="n">add_ice</span><span class="p">:</span>
+    <span class="n">topping_total</span> <span class="o">+=</span> <span class="mi">150</span>
+<span class="k">if</span> <span class="n">add_chocolate</span><span class="p">:</span>
+    <span class="n">topping_total</span> <span class="o">+=</span> <span class="mi">80</span>
+<span class="k">if</span> <span class="n">add_banana</span><span class="p">:</span>
+    <span class="n">topping_total</span> <span class="o">+=</span> <span class="mi">120</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">"🔢 数量の選択"</span><span class="p">)</span>
+<span class="n">quantity</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">"数量を選んでください:"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># お見積総額の計算（優先順位カッコを忘れないこと！）</span>
+<span class="n">total</span> <span class="o">=</span> <span class="p">(</span><span class="n">base_price</span> <span class="o">+</span> <span class="n">topping_total</span><span class="p">)</span> <span class="o">*</span> <span class="n">quantity</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">"💳 お見積書（合計金額）"</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"パンケーキセット 合計支払金額"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">total</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span><span class="err">```</span>
+</pre></div>
+</div>
+</details>
 </section>
 <hr class="docutils" />
 <section id="id22">
-<h3>課題 5: 【最上級・集大成】POS見積システム（難易度：難）<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
+<h3>演習 5: 【最上級・集大成】POS見積システム（難易度：難）<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
 <p>これまでに学んだすべてのStreamlit要素（テキスト入力、セレクトボックス、スライダー、チェックボックス、カラム分割、KPIメーター表示、お祝い/エラー表示）を完全合体させ、学園祭のカフェ出店でiPadレジとしてそのまま実戦投入できる「総合POSシステム」を構築してください。</p>
 <ul class="simple">
 <li><p>【要件】</p>
@@ -1276,126 +1382,8 @@ Streamlitのルール（鉄則）に沿って説明してください。</p>
         <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span>                                            <span class="p">)</span>
 </pre></div>
 </div>
-</section>
-</section>
-<hr class="docutils" />
-<section id="id23">
-<h2>💡 演習課題の解答例<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h2>
-<p>（自分でたくさんタイポし、エラー画面と睨み合い、AIにアドバイスをもらってデバッグできたプロセスこそが、あなたの「開発力」を急成長させます。答えをコピーする前に、一度じっくり自力で試行錯誤しましょう！）</p>
 <details>
-<summary>👉 課題1〜5の解答（ここをクリックして展開）</summary>
-<section id="id24">
-<h3>課題 1 の解答例<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
-
-<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"カフェ割引シミュレーター ☕"</span><span class="p">)</span>
-
-<span class="n">base_price</span> <span class="o">=</span> <span class="mi">500</span>
-
-<span class="c1"># 1. スライダーの設定</span>
-<span class="n">discount</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">"割引率(%)を設定してください:"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-
-<span class="c1"># 2. 割引後価格の計算</span>
-<span class="n">discount_price</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">base_price</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">discount</span> <span class="o">/</span> <span class="mi">100</span><span class="p">))</span>
-
-<span class="c1"># 3. 画面の出力</span>
-<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"通常価格: </span><span class="si">{</span><span class="n">base_price</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
-<span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"割引適用後の価格"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">discount_price</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<hr class="docutils" />
-<section id="id25">
-<h3>課題 2 の解答例<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
-
-<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"メニュー検索カタログ 📖"</span><span class="p">)</span>
-<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"カテゴリを選ぶと、おすすめ商品の一覧を自動で切り替えます。"</span><span class="p">)</span>
-
-<span class="c1"># 1. セレクトボックスの配置</span>
-<span class="n">category</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">"カテゴリを選択してください:"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"ドリンク"</span><span class="p">,</span> <span class="s2">"デザート"</span><span class="p">])</span>
-
-<span class="c1"># 2. 条件分岐によるリストの切り替え</span>
-<span class="k">if</span> <span class="n">category</span> <span class="o">==</span> <span class="s2">"ドリンク"</span><span class="p">:</span>
-    <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"ブレンドコーヒー"</span><span class="p">,</span> <span class="s2">"宇治抹茶ラテ"</span><span class="p">,</span> <span class="s2">"キャラメルマキアート"</span><span class="p">]</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"ベイクドチーズケーキ"</span><span class="p">,</span> <span class="s2">"窯焼きアップルパイ"</span><span class="p">,</span> <span class="s2">"特製クラシックプリン"</span><span class="p">]</span>
-
-<span class="c1"># 3. 画面表示</span>
-<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="sa">f</span><span class="s2">"✨ おすすめの</span><span class="si">{</span><span class="n">category</span><span class="si">}</span><span class="s2">一覧"</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
-    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"- </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<hr class="docutils" />
-<section id="id26">
-<h3>課題 3 の解答例<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
-
-<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"店舗売上目標達成チェッカー 📈"</span><span class="p">)</span>
-
-<span class="n">target_sales</span> <span class="o">=</span> <span class="mi">200000</span>
-<span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="sa">f</span><span class="s2">"🎯 本日の目標売上: </span><span class="si">{</span><span class="n">target_sales</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
-
-<span class="c1"># 1. 1万刻みの調整用スライダーを配置</span>
-<span class="n">actual_sales</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">"実績売上を入力してください (円):"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">300000</span><span class="p">,</span> <span class="mi">150000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
-
-<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"現在の実績売上: </span><span class="si">{</span><span class="n">actual_sales</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
-
-<span class="c1"># 2. 目標判定ロジック</span>
-<span class="k">if</span> <span class="n">actual_sales</span> <span class="o">&gt;=</span> <span class="n">target_sales</span><span class="p">:</span>
-    <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="s2">"🎉 目標達成！おめでとうございます！素晴らしい営業成果です！"</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">deficit</span> <span class="o">=</span> <span class="n">target_sales</span> <span class="o">-</span> <span class="n">actual_sales</span>
-    <span class="n">st</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">"⚠️ 目標未達成。目標まであと 【</span><span class="si">{</span><span class="n">deficit</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円】 足りません。"</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<hr class="docutils" />
-<section id="id27">
-<h3>課題 4 の解答例<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
-
-<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"🥞 プレミアム・パンケーキPOSレジ 🥞"</span><span class="p">)</span>
-<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"トッピングを自由に組み合わせて、オリジナルのカスタムパンケーキをお見積もりできます。"</span><span class="p">)</span>
-
-<span class="n">base_price</span> <span class="o">=</span> <span class="mi">600</span>
-<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"プレーンパンケーキ基本価格: </span><span class="si">{</span><span class="n">base_price</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
-
-<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">"🧀 トッピングの選択"</span><span class="p">)</span>
-
-<span class="n">add_ice</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span><span class="s2">"バニラアイス (+150円)"</span><span class="p">)</span>
-<span class="n">add_chocolate</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span><span class="s2">"チョコレートシロップ (+80円)"</span><span class="p">)</span>
-<span class="n">add_banana</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span><span class="s2">"完熟バナナスライス (+120円)"</span><span class="p">)</span>
-
-<span class="c1"># トッピング金額の動的な一括加算</span>
-<span class="n">topping_total</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">if</span> <span class="n">add_ice</span><span class="p">:</span>
-    <span class="n">topping_total</span> <span class="o">+=</span> <span class="mi">150</span>
-<span class="k">if</span> <span class="n">add_chocolate</span><span class="p">:</span>
-    <span class="n">topping_total</span> <span class="o">+=</span> <span class="mi">80</span>
-<span class="k">if</span> <span class="n">add_banana</span><span class="p">:</span>
-    <span class="n">topping_total</span> <span class="o">+=</span> <span class="mi">120</span>
-
-<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">"🔢 数量の選択"</span><span class="p">)</span>
-<span class="n">quantity</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">"数量を選んでください:"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># お見積総額の計算（優先順位カッコを忘れないこと！）</span>
-<span class="n">total</span> <span class="o">=</span> <span class="p">(</span><span class="n">base_price</span> <span class="o">+</span> <span class="n">topping_total</span><span class="p">)</span> <span class="o">*</span> <span class="n">quantity</span>
-
-<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">"💳 お見積書（合計金額）"</span><span class="p">)</span>
-<span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"パンケーキセット 合計支払金額"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">total</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<hr class="docutils" />
-<section id="id28">
-<h3>課題 5 の解答例（最上級・集大成アプリ）<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h3>
+<summary>👉 演習 5 の解答コードを見る（クリックで展開）</summary>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
 
@@ -1468,10 +1456,10 @@ Streamlitのルール（鉄則）に沿って説明してください。</p>
 </section>
 </section>
 <hr class="docutils" />
-<section id="id29">
-<h2>📚 まとめ<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h2>
-<section id="id30">
-<h3>✨ 本日の重要キーワード<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h3>
+<section id="id23">
+<h2>📚 まとめ<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h2>
+<section id="id24">
+<h3>✨ 本日のキーワード<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Streamlit: HTML/CSS/JS不要で、Pythonコードのみでプロ級のUIを自動構築する革新的Webフレームワーク。</p></li>
 <li><p>Cloudflare Tunnel: クラウドの奥深く（Colab）で動いているWebサービスを、外部へ直結させるトンネリング技術。</p></li>
@@ -1590,24 +1578,16 @@ Streamlitのルール（鉄則）に沿って説明してください。</p>
 <li><a class="reference internal" href="#id17">練習問題 5: 「ボタンが消えるバグ」のデバッグ</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id18">💻 演習課題（5問）</a><ul>
-<li><a class="reference internal" href="#id19">課題 1: 割引率調整スライダーと価格シミュレーター（難易度：易）</a></li>
-<li><a class="reference internal" href="#id20">課題 2: カテゴリ選択に応じたメニューの動的絞り込み（難易度：易）</a></li>
-<li><a class="reference internal" href="#id21">課題 3: 店舗売上目標達成判定チェッカー（難易度：中）</a></li>
-<li><a class="reference internal" href="#pos">課題 4: チェックボックスによる複数トッピング複数加算POSレジ（難易度：中）</a></li>
-<li><a class="reference internal" href="#id22">課題 5: 【最上級・集大成】POS見積システム（難易度：難）</a></li>
+<li><a class="reference internal" href="#id18">💻 演習（5問）</a><ul>
+<li><a class="reference internal" href="#id19">演習 1: 割引率調整スライダーと価格シミュレーター（難易度：易）</a></li>
+<li><a class="reference internal" href="#id20">演習 2: カテゴリ選択に応じたメニューの動的絞り込み（難易度：易）</a></li>
+<li><a class="reference internal" href="#id21">演習 3: 店舗売上目標達成判定チェッカー（難易度：中）</a></li>
+<li><a class="reference internal" href="#pos">演習 4: チェックボックスによる複数トッピング複数加算POSレジ（難易度：中）</a></li>
+<li><a class="reference internal" href="#id22">演習 5: 【最上級・集大成】POS見積システム（難易度：難）</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id23">💡 演習課題の解答例</a><ul>
-<li><a class="reference internal" href="#id24">課題 1 の解答例</a></li>
-<li><a class="reference internal" href="#id25">課題 2 の解答例</a></li>
-<li><a class="reference internal" href="#id26">課題 3 の解答例</a></li>
-<li><a class="reference internal" href="#id27">課題 4 の解答例</a></li>
-<li><a class="reference internal" href="#id28">課題 5 の解答例（最上級・集大成アプリ）</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id29">📚 まとめ</a><ul>
-<li><a class="reference internal" href="#id30">✨ 本日の重要キーワード</a></li>
+<li><a class="reference internal" href="#id23">📚 まとめ</a><ul>
+<li><a class="reference internal" href="#id24">✨ 本日のキーワード</a></li>
 </ul>
 </li>
 </ul>

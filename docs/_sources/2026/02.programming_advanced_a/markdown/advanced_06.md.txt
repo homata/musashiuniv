@@ -26,10 +26,6 @@ https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exe
 
 ---
 
-* [サンプルファイル: cafe_sales_analytics_data.csv](https://raw.githubusercontent.com/homata/musashiuniv/master/data/cafe_sales_analytics_data.csv)
-  
----
-
 ## ダッシュボードの画面レイアウト設計
 
 ダッシュボードは、ただ情報を画面に並べれば良いわけではありません。経営陣や現場のスタッフが「一瞬で状況を把握でき、迷わず操作できる」ように情報が美しく整理整頓されている必要があります。
@@ -83,7 +79,6 @@ cloudflaredインストール
 !wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
 !dpkg -i cloudflared-linux-amd64.deb
 ```
-
 
 ```python
 %%writefile app_layout.py
@@ -640,6 +635,9 @@ df = pd.read_csv(uploaded_file)
 st.dataframe(df)
 ```
 
+<a href="https://raw.githubusercontent.com/homata/musashiuniv/master/data/cafe_sales_analytics_data.csv" download="cafe_sales_analytics_data.csv">サンプルファイル: cafe_sales_analytics_data.csv</a>
+  
+
 このコードを実行すると、アプリを起動した直後（まだユーザーがファイルを1枚もアップロードしていない状態）に、画面に真っ赤な文字で `ValueError` や `AttributeError` などの大パニックエラーが表示され、アプリが正常に動作しません。
 1. なぜ、ファイルを選ぶ前の段階でこのようなエラーが発生してしまうのでしょうか？
 2. このエラーを完全に回避するために追加すべき、Pythonの条件分岐（防護壁）の正しい構文を答えてください。
@@ -665,7 +663,7 @@ st.dataframe(df)
 
 ---
 
-## 💻 演習課題（5問）
+## 💻 演習（5問）
 
 下記を使ってStreamlitを起動してください。
 前のStreamlitが動作している場合があるので、Streamlit停止してから起動をしてください
@@ -684,7 +682,7 @@ streamlit run <アプリ名> > debug.log 2>&1
 
 ---
 
-### 演習課題 1: スライダーによる「店舗割引価格」リアルタイム見積器（難易度：易）
+### 演習 1: スライダーによる「店舗割引価格」リアルタイム見積器（難易度：易）
 サイドバーに割引率を調整するスライダーを設置し、ユーザーが割引率を動かすと、基本価格からリアルタイムに割引された「お支払い金額」を算出してメイン画面に表示するアプリを構築してください。
 
 #### 【要件】
@@ -694,7 +692,7 @@ streamlit run <アプリ名> > debug.log 2>&1
 4. `st.metric()` を使い、ラベルを `"割引後の特別価格"`、値を `f"{discounted_price} 円"` として大きく表示すること。さらに、delta引数に割引された金額（例：`-50 円`）を自動算出（`discounted_price - 500`）して表示すること。
 
 <details>
-<summary>👉 演習課題 1 の解答コードを見る（クリックで展開）</summary>
+<summary>👉 演習 1 の解答コードを見る（クリックで展開）</summary>
 
 ```python
 %%writefile app_challenge1.py
@@ -729,7 +727,7 @@ st.metric(
 
 ---
 
-### 演習課題 2: セレクトボックスによる「カテゴリ別平均価格」の算出（難易度：易）
+### 演習 2: セレクトボックスによる「カテゴリ別平均価格」の算出（難易度：易）
 Pandasのデータフレームにあらかじめ定義されたメニュー表から、ユーザーが選んだカテゴリ（ドリンク or デザート）のデータだけをリアルタイムに条件抽出し、平均価格を算出して表示するアプリを構築してください。
 
 #### 【要件】
@@ -748,7 +746,7 @@ Pandasのデータフレームにあらかじめ定義されたメニュー表�
 6. `st.dataframe()` を使って、抽出されたデータフレーム一覧を表示すること。さらに、`st.metric()` を使って「このカテゴリの平均価格」を大きく表示すること。
 
 <details>
-<summary>👉 演習課題 2 の解答コードを見る（クリックで展開）</summary>
+<summary>👉 演習 2 の解答コードを見る（クリックで展開）</summary>
 
 ```python
 %%writefile app_challenge2.py
@@ -793,7 +791,7 @@ st.metric(
 
 ---
 
-### 演習課題 3: 目標ライン付き「売上目標達成日」の動的棒グラフ化（難易度：中）
+### 演習 3: 目標ライン付き「売上目標達成日」の動的棒グラフ化（難易度：中）
 ユーザーがスライダーを使って「目標売上高（万円）」を設定すると、その目標金額を達成した曜日だけの営業データをデータフレームからリアルタイムに条件抽出し、Matplotlibで美しいグリーンの棒グラフを描いて画面に埋め込むアプリを構築してください。
 
 #### 【要件】
@@ -812,7 +810,7 @@ st.metric(
 7. 作成した `fig` を `st.pyplot(fig)` を使ってメイン画面にプロットすること。
 
 <details>
-<summary>👉 演習課題 3 の模範解答コードを見る（クリックで展開）</summary>
+<summary>👉 演習 3 の解答コードを見る（クリックで展開）</summary>
 
 ```python
 %%writefile app_challenge3.py
@@ -878,19 +876,20 @@ else:
 
 ---
 
-### 演習課題 4: 全自動・要約統計量CSVデータ解析機（難易度：中）
-ユーザーがアップロードした任意のCSVファイルを、Pandasで読み込み、データに欠損値（NaN）がないか自動チェック。さらに、データの「基本統計量（記述統計）」である平均値や最大・最小値（`.describe()`）を自動算出して画面に美しく配置する、本格的な汎用ツールを作成してください。
+### 演習 4: 全自動・要約統計量CSVデータ解析機（難易度：中）
+ユーザーがアップロードした任意のCSVファイルを、Pandasで読み込み、データに欠損値（NaN）がないか自動チェック。さらに、
+データの「基本統計量（記述統計）」である平均値や最大・最小値（`.describe()`）を自動算出して画面に美しく配置する、本格的な汎用ツールを作成してください。
 
 #### 【要件】
 1. セルの先頭に `%%writefile app_challenge4.py` を記述すること。
 2. `st.file_uploader` を設置し、CSVファイルのみを許可すること。
 3. 初期起動エラーを防ぐため、`if uploaded_file is not None:` という防護壁を記述すること。
 4. アップロードされたファイルを、`pd.read_csv(uploaded_file)` で読み込み、データフレーム `df` に代入すること。
-5. `df.describe()`（記述統計の基本セット）を実行し、算出された統計データフレームを `st.subheader("📊 データの要要約統計量")` とともに `st.dataframe()` で出力すること。
+5. `df.describe()`（記述統計の基本セット）を実行し、算出された統計データフレームを `st.subheader("📊 データの要約統計量")` とともに `st.dataframe()` で出力すること。
 6. `st.metric()` を使い、アップロードされたデータの「総レコード件数（データの行数）」を表示すること（`len(df)` で算出）。
 
 <details>
-<summary>👉 演習課題 4 の模範解答コードを見る（クリックで展開）</summary>
+<summary>👉 演習 4 の解答コードを見る（クリックで展開）</summary>
 
 ```python
 %%writefile app_challenge4.py
@@ -948,7 +947,7 @@ else:
 
 ---
 
-### 演習課題 5: 実践！武蔵カフェ・複数店舗経営リアルタイムダッシュボード（難易度：難）
+### 演習 5: 実践！武蔵カフェ・複数店舗経営リアルタイムダッシュボード（難易度：難）
 本日学んだ「サイドバー」「Columns」「Pandas連動フィルタリング」「Matplotlib折れ線グラフ」のすべての知識を総動員し、カフェ経営者になったつもりで「江古田店」と「白山店」の1か月間のデータをリアルタイムで分析・評価する、応用クラス前半戦の金字塔となるダッシュボードアプリを完成させてください。
 
 #### 【要件】
@@ -976,7 +975,7 @@ except:
 8. グラフの真下には、`st.dataframe(df_filtered)` を使って、現在絞り込まれている売上データの詳細テーブルを表示すること。
 
 <details>
-<summary>👉 演習課題 5 の模範解答コードを見る（クリックで展開）</summary>
+<summary>👉 演習 5 の解答コードを見る（クリックで展開）</summary>
 
 ```python
 %%writefile app_challenge5.py
@@ -986,18 +985,16 @@ import matplotlib.pyplot as plt
 import japanize_matplotlib # 日本語フォント対応
 
 # 1. データのインポート
-   ```python
-   try:
-       url = "https://raw.githubusercontent.com/homata/musashiuniv/master/data/cafe_monthly_sales.csv"
-       df = pd.read_csv(url)
-   except:
-       df = pd.DataFrame({
-           "日付": ["7/1", "7/2", "7/3", "7/4", "7/5", "7/1", "7/2", "7/3", "7/4", "7/5"],
-           "店舗名": ["江古田店", "江古田店", "江古田店", "江古田店", "江古田店", "白山店", "白山店", "白山店", "白山店", "白山店"],
-           "売上額 (円)": [45000, 52000, 48000, 60000, 75000, 38000, 41000, 39000, 45000, 50000],
-           "客数 (人)": [90, 110, 95, 120, 150, 85, 90, 80, 100, 110]
-       })
-   ```
+try:
+    url = "https://raw.githubusercontent.com/homata/musashiuniv/master/data/cafe_monthly_sales.csv"
+    df = pd.read_csv(url)
+except:
+    df = pd.DataFrame({
+        "日付": ["7/1", "7/2", "7/3", "7/4", "7/5", "7/1", "7/2", "7/3", "7/4", "7/5"],
+        "店舗名": ["江古田店", "江古田店", "江古田店", "江古田店", "江古田店", "白山店", "白山店", "白山店", "白山店", "白山店"],
+        "売上額 (円)": [45000, 52000, 48000, 60000, 75000, 38000, 41000, 39000, 45000, 50000],
+        "客数 (人)": [90, 110, 95, 120, 150, 85, 90, 80, 100, 110]
+    })
 
 # --- 2. サイドバーの設定 ---
 st.sidebar.title("⚙️ ダッシュボード設定")

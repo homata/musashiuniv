@@ -499,7 +499,7 @@ Streamlitを使う場合、それらの知識が一切不要であるのはな�
 ---
 
 ### 練習問題 2: Colab特有の「窓口」と「トンネル」
-Google ColabでStreamlitを動かす際、`!npx localtunnel --port 8501` というコマンドを実行しました。
+Google ColabでStreamlitを動かす際、`cloudflared tunnel --url http://localhost:8501 --no-autoupdate` というコマンドを実行しました。
 1. この 「`8501`」 という数字は何を表しているでしょうか？
 2. なぜ、ただ起動するだけでなく、トネリングという追加のツールを使う必要があるのか、理由を説明してください。
 
@@ -595,13 +595,13 @@ topping_qty = st.slider("トッピングの量 (g)", 0, 100, 10)
 
 ---
 
-## 💻 演習課題（5問）
+## 💻 演習（5問）
 
-1行ずつコードを確認しながら、穴埋め（`# TODO:` の部分）を完成させてください。
+穴埋め（`# TODO:` の部分）を完成させてください。
 
 ---
 
-### 課題 1: 割引率調整スライダーと価格シミュレーター（難易度：易）
+### 演習 1: 割引率調整スライダーと価格シミュレーター（難易度：易）
 カフェのお会計において、サイドバーに設置したスライダーで「割引率（%）」を自由に調整し、その割引が適用された「割引後の支払金額」をメイン画面にリアルタイム表示するアプリを作成してください。
 
 *   【要件】
@@ -631,10 +631,33 @@ st.write(f"通常価格: {base_price} 円")
 # TODO: 3. st.metric を使い、ラベルを「割引適用後の価格」、値を「〇〇 円」の形式で表示する。
 st.metric(                               )
 ```
+<details>
+<summary>👉 演習 1 の解答コードを見る（クリックで展開）</summary>
+
+```python
+%%writefile app.py
+import streamlit as st
+
+st.title("カフェ割引シミュレーター ☕")
+
+base_price = 500
+
+# 1. スライダーの設定
+discount = st.sidebar.slider("割引率(%)を設定してください:", 0, 50, 10)
+
+# 2. 割引後価格の計算
+discount_price = int(base_price * (1 - discount / 100))
+
+# 3. 画面の出力
+st.write(f"通常価格: {base_price} 円")
+st.metric(label="割引適用後の価格", value=f"{discount_price} 円")
+```
+
+</details>
 
 ---
 
-### 課題 2: カテゴリ選択に応じたメニューの動的絞り込み（難易度：易）
+### 演習 2: カテゴリ選択に応じたメニューの動的絞り込み（難易度：易）
 あらかじめ用意されたデータ（カフェのメニュー）から、ユーザーがセレクトボックスで選択したカテゴリ（ドリンク、またはデザート）に属する商品だけを画面に動的に表示する、簡易データベース検索アプリを作成してください。
 
 *   【要件】
@@ -668,10 +691,37 @@ for item in items:
     st.write(f"- {item}")
 ```
 
+<details>
+<summary>👉 演習 2 の解答コードを見る（クリックで展開）</summary>
+
+```python
+%%writefile app.py
+import streamlit as st
+
+st.title("メニュー検索カタログ 📖")
+st.write("カテゴリを選ぶと、おすすめ商品の一覧を自動で切り替えます。")
+
+# 1. セレクトボックスの配置
+category = st.selectbox("カテゴリを選択してください:", ["ドリンク", "デザート"])
+
+# 2. 条件分岐によるリストの切り替え
+if category == "ドリンク":
+    items = ["ブレンドコーヒー", "宇治抹茶ラテ", "キャラメルマキアート"]
+else:
+    items = ["ベイクドチーズケーキ", "窯焼きアップルパイ", "特製クラシックプリン"]
+
+# 3. 画面表示
+st.header(f"✨ おすすめの{category}一覧")
+for item in items:
+    st.write(f"- {item}")
+```
+
+</details>
+
 ---
 
-### 課題 3: 店舗売上目標達成判定チェッカー（難易度：中）
-その日の「実績売上」をスライダーで入力し、あらかじめ設定した「目標売上」に到達しているかどうかをAI（プログラム）が自動で判定し、目標値までの「残り金額」と、達成・未達成のステータスを表示するアプリを作成してください。
+### 演習 3: 店舗売上目標達成判定チェッカー（難易度：中）
+その日の「実績売上」をスライダーで入力し、あらかじめ設定した「目標売上」に到達しているかどうかをプログラムが自動で判定し、目標値までの「残り金額」と、達成・未達成のステータスを表示するアプリを作成してください。
 
 *   【要件】
     1.  目標売上は固定で 200,000円 とする。
@@ -708,9 +758,36 @@ else:
     
 ```
 
+<details>
+<summary>👉 演習 3 の解答コードを見る（クリックで展開）</summary>
+
+```python
+%%writefile app.py
+import streamlit as st
+
+st.title("店舗売上目標達成チェッカー 📈")
+
+target_sales = 200000
+st.subheader(f"🎯 本日の目標売上: {target_sales:,} 円")
+
+# 1. 1万刻みの調整用スライダーを配置
+actual_sales = st.slider("実績売上を入力してください (円):", 0, 300000, 150000, step=10000)
+
+st.write(f"現在の実績売上: {actual_sales:,} 円")
+
+# 2. 目標判定ロジック
+if actual_sales >= target_sales:
+    st.success("🎉 目標達成！おめでとうございます！素晴らしい営業成果です！")
+else:
+    deficit = target_sales - actual_sales
+    st.warning(f"⚠️ 目標未達成。目標まであと 【{deficit:,} 円】 足りません。")
+```
+
+</details>
+
 ---
 
-### 課題 4: チェックボックスによる複数トッピング複数加算POSレジ（難易度：中）
+### 演習 4: チェックボックスによる複数トッピング複数加算POSレジ（難易度：中）
 基本の「パンケーキ（600円）」に対し、3つのトッピング（ホイップ、チョコ、アイス）をチェックボックスで複数自由にトッピングし、数量を掛け合わせた「お見積もり合計金額」をリアルタイムで算出するオシャレなPOSシステムを構築してください。
 
 *   【要件】
@@ -760,9 +837,49 @@ st.header("💳 お見積書（合計金額）")
 st.metric(label="パンケーキセット 合計支払金額", value=f"{total:,} 円")
 ```
 
----
+<details>
+<summary>👉 演習 4 の解答コードを見る（クリックで展開）</summary>
 
-### 課題 5: 【最上級・集大成】POS見積システム（難易度：難）
+```python
+%%writefile app.py
+import streamlit as st
+
+st.title("🥞 プレミアム・パンケーキPOSレジ 🥞")
+st.write("トッピングを自由に組み合わせて、オリジナルのカスタムパンケーキをお見積もりできます。")
+
+base_price = 600
+st.write(f"プレーンパンケーキ基本価格: {base_price} 円")
+
+st.header("🧀 トッピングの選択")
+
+add_ice = st.checkbox("バニラアイス (+150円)")
+add_chocolate = st.checkbox("チョコレートシロップ (+80円)")
+add_banana = st.checkbox("完熟バナナスライス (+120円)")
+
+# トッピング金額の動的な一括加算
+topping_total = 0
+if add_ice:
+    topping_total += 150
+if add_chocolate:
+    topping_total += 80
+if add_banana:
+    topping_total += 120
+
+st.header("🔢 数量の選択")
+quantity = st.slider("数量を選んでください:", 1, 10, 1)
+
+# お見積総額の計算（優先順位カッコを忘れないこと！）
+total = (base_price + topping_total) * quantity
+
+st.header("💳 お見積書（合計金額）")
+st.metric(label="パンケーキセット 合計支払金額", value=f"{total:,} 円")```
+```
+
+</details>
+
+----
+
+### 演習 5: 【最上級・集大成】POS見積システム（難易度：難）
 これまでに学んだすべてのStreamlit要素（テキスト入力、セレクトボックス、スライダー、チェックボックス、カラム分割、KPIメーター表示、お祝い/エラー表示）を完全合体させ、学園祭のカフェ出店でiPadレジとしてそのまま実戦投入できる「総合POSシステム」を構築してください。
 
 *   【要件】
@@ -864,125 +981,9 @@ else:
         st.metric(                                            )
 ```
 
----
-## 💡 演習課題の解答例
-
-（自分でたくさんタイポし、エラー画面と睨み合い、AIにアドバイスをもらってデバッグできたプロセスこそが、あなたの「開発力」を急成長させます。答えをコピーする前に、一度じっくり自力で試行錯誤しましょう！）
-
 <details>
-<summary>👉 課題1〜5の解答（ここをクリックして展開）</summary>
+<summary>👉 演習 5 の解答コードを見る（クリックで展開）</summary>
 
-### 課題 1 の解答例
-```python
-%%writefile app.py
-import streamlit as st
-
-st.title("カフェ割引シミュレーター ☕")
-
-base_price = 500
-
-# 1. スライダーの設定
-discount = st.sidebar.slider("割引率(%)を設定してください:", 0, 50, 10)
-
-# 2. 割引後価格の計算
-discount_price = int(base_price * (1 - discount / 100))
-
-# 3. 画面の出力
-st.write(f"通常価格: {base_price} 円")
-st.metric(label="割引適用後の価格", value=f"{discount_price} 円")
-```
-
----
-
-### 課題 2 の解答例
-```python
-%%writefile app.py
-import streamlit as st
-
-st.title("メニュー検索カタログ 📖")
-st.write("カテゴリを選ぶと、おすすめ商品の一覧を自動で切り替えます。")
-
-# 1. セレクトボックスの配置
-category = st.selectbox("カテゴリを選択してください:", ["ドリンク", "デザート"])
-
-# 2. 条件分岐によるリストの切り替え
-if category == "ドリンク":
-    items = ["ブレンドコーヒー", "宇治抹茶ラテ", "キャラメルマキアート"]
-else:
-    items = ["ベイクドチーズケーキ", "窯焼きアップルパイ", "特製クラシックプリン"]
-
-# 3. 画面表示
-st.header(f"✨ おすすめの{category}一覧")
-for item in items:
-    st.write(f"- {item}")
-```
-
----
-
-### 課題 3 の解答例
-```python
-%%writefile app.py
-import streamlit as st
-
-st.title("店舗売上目標達成チェッカー 📈")
-
-target_sales = 200000
-st.subheader(f"🎯 本日の目標売上: {target_sales:,} 円")
-
-# 1. 1万刻みの調整用スライダーを配置
-actual_sales = st.slider("実績売上を入力してください (円):", 0, 300000, 150000, step=10000)
-
-st.write(f"現在の実績売上: {actual_sales:,} 円")
-
-# 2. 目標判定ロジック
-if actual_sales >= target_sales:
-    st.success("🎉 目標達成！おめでとうございます！素晴らしい営業成果です！")
-else:
-    deficit = target_sales - actual_sales
-    st.warning(f"⚠️ 目標未達成。目標まであと 【{deficit:,} 円】 足りません。")
-```
-
----
-
-### 課題 4 の解答例
-```python
-%%writefile app.py
-import streamlit as st
-
-st.title("🥞 プレミアム・パンケーキPOSレジ 🥞")
-st.write("トッピングを自由に組み合わせて、オリジナルのカスタムパンケーキをお見積もりできます。")
-
-base_price = 600
-st.write(f"プレーンパンケーキ基本価格: {base_price} 円")
-
-st.header("🧀 トッピングの選択")
-
-add_ice = st.checkbox("バニラアイス (+150円)")
-add_chocolate = st.checkbox("チョコレートシロップ (+80円)")
-add_banana = st.checkbox("完熟バナナスライス (+120円)")
-
-# トッピング金額の動的な一括加算
-topping_total = 0
-if add_ice:
-    topping_total += 150
-if add_chocolate:
-    topping_total += 80
-if add_banana:
-    topping_total += 120
-
-st.header("🔢 数量の選択")
-quantity = st.slider("数量を選んでください:", 1, 10, 1)
-
-# お見積総額の計算（優先順位カッコを忘れないこと！）
-total = (base_price + topping_total) * quantity
-
-st.header("💳 お見積書（合計金額）")
-st.metric(label="パンケーキセット 合計支払金額", value=f"{total:,} 円")
-```
-
----
-
-### 課題 5 の解答例（最上級・集大成アプリ）
 ```python
 %%writefile app.py
 import streamlit as st
@@ -1055,12 +1056,15 @@ else:
 </details>
 
 ---
+
 ## 📚 まとめ
 
-### ✨ 本日の重要キーワード
+### ✨ 本日のキーワード
 
 *   Streamlit: HTML/CSS/JS不要で、Pythonコードのみでプロ級のUIを自動構築する革新的Webフレームワーク。
 *   Cloudflare Tunnel: クラウドの奥深く（Colab）で動いているWebサービスを、外部へ直結させるトンネリング技術。
 *   8501ポート: Streamlitが外部からのアクセスを待機している、Colab内の標準の窓口番号。
 *   Rerun（再実行）システム: ユーザーが操作を行うたびに、Pythonのコードが1行目から最後まで毎回すべて最初から実行され直す
 *   st.buttonの罠: ボタンは「押された瞬間だけTrueになり、他の操作をするとFalseに戻る」という、Rerunが原因で起きる定番のふるまい。
+
+
