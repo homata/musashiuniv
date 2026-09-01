@@ -299,6 +299,12 @@
 <li class="toctree-l3 current current-page"><a class="current reference internal" href="#">第4回 データ解析</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_05.html">第5回 Webサービスの活用1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_06.html">第6回 Webサービスの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#id19">--- 2. サイドバーの設定 ---</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#pandas">--- 3. Pandasによる連動データの抽出 ---</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#id20">--- 4. メイン画面のデザイン ---</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#kpi">--- 5. カラム分割による主要業績指標 (KPI) ---</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#id21">統計量を計算</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#id22">画面を横に分割して、左にグラフ、右に生データをスッキリ配置</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_07.html">第7回 地理空間情報の基礎</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_08.html">第8回 地理空間データの活⽤1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_09.html">第9回 地理空間データの活⽤2</a></li>
@@ -2383,7 +2389,7 @@ Pandasの <code class="docutils literal notranslate"><span class="pre">pd.pivot_
 <span class="n">df_cafe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s2">"店舗名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"江古田店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">,</span> <span class="s2">"白山店"</span><span class="p">,</span> <span class="s2">"江古田店"</span><span class="p">],</span>
     <span class="s2">"曜日"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"土曜"</span><span class="p">,</span> <span class="s2">"日曜"</span><span class="p">,</span> <span class="s2">"土曜"</span><span class="p">,</span> <span class="s2">"日曜"</span><span class="p">,</span> <span class="s2">"土曜"</span><span class="p">],</span>
-    <span class="s2">"売上金額"</span><span class="p">:</span>
+    <span class="s2">"売上金額"</span><span class="p">:</span> <span class="p">[</span><span class="mi">450</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">750</span><span class="p">]</span>
 <span class="p">})</span>
 
 <span class="c1"># TODO: pd.pivot_table を使って、縦=店舗名、横=曜日、値=売上金額の合計(sum)を集計してください。</span>
@@ -2476,7 +2482,6 @@ Pandasの <code class="docutils literal notranslate"><span class="pre">pd.pivot_
 <li><p>数字が連動して動いている（相関がある）からといって、安易に「原因と結果（因果）」だと判断せず、「裏に何か別の要因（人口など）が隠れていないか？」と疑いを持つことが大切です。</p></li>
 </ul>
 </details>
-```
 </section>
 </section>
 <hr class="docutils" />
@@ -2694,7 +2699,7 @@ Pandasの <code class="docutils literal notranslate"><span class="pre">pd.pivot_
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-08-31</div>
+              Last updated on 2026-09-01</div>
           </div>
           <div class="right-details">
             
