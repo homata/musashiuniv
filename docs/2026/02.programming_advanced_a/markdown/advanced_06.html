@@ -389,6 +389,10 @@
 <li><p>GoogleドライブにコピーしたGoogle ColabのNotebooksを開いてください</p></li>
 <li><p>開いたGoogle ColabのNotebooksで作業をしてください</p></li>
 </ol>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://raw.githubusercontent.com/homata/musashiuniv/master/data/cafe_sales_analytics_data.csv">サンプルファイル: cafe_sales_analytics_data.csv</a></p></li>
+</ul>
 </section>
 </section>
 <hr class="docutils" />
@@ -746,9 +750,6 @@ streamlit<span class="w"> </span>run<span class="w"> </span>app_visual.py<span c
 <span class="n">uploaded_file</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">file_uploader</span><span class="p">(</span><span class="s2">"売上データのCSVファイルをアップロードしてください"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"csv"</span><span class="p">)</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><a class="reference external" href="https://raw.githubusercontent.com/homata/musashiuniv/master/data/cafe_sales_analytics_data.csv">サンプルファイル: cafe_sales_analytics_data.csv</a></p></li>
-</ul>
 <section id="id4">
 <h3>🚨 エラーを防ぐための「防護壁（条件分岐）」<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
 <p>ファイルアップローダーを設置した際、最も気をつけなければならないのは、「ユーザーがまだファイルをアップロードしていない（空白の）瞬間」に、Pandasが無理やり読み込もうとしてプログラムが赤文字のエラーを吐き出して止まってしまうことです。</p>

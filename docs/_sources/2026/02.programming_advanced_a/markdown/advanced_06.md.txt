@@ -26,6 +26,10 @@ https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exe
 
 ---
 
+* [サンプルファイル: cafe_sales_analytics_data.csv](https://raw.githubusercontent.com/homata/musashiuniv/master/data/cafe_sales_analytics_data.csv)
+  
+---
+
 ## ダッシュボードの画面レイアウト設計
 
 ダッシュボードは、ただ情報を画面に並べれば良いわけではありません。経営陣や現場のスタッフが「一瞬で状況を把握でき、迷わず操作できる」ように情報が美しく整理整頓されている必要があります。
@@ -409,8 +413,7 @@ streamlit run app_visual.py > debug.log 2>&1
 # ファイルのアップロードボタンを設置（CSVファイルのみを受け付ける設定）
 uploaded_file = st.file_uploader("売上データのCSVファイルをアップロードしてください", type="csv")
 ```
-* [サンプルファイル: cafe_sales_analytics_data.csv](https://raw.githubusercontent.com/homata/musashiuniv/master/data/cafe_sales_analytics_data.csv)
-  
+
 ### 🚨 エラーを防ぐための「防護壁（条件分岐）」
 ファイルアップローダーを設置した際、最も気をつけなければならないのは、「ユーザーがまだファイルをアップロードしていない（空白の）瞬間」に、Pandasが無理やり読み込もうとしてプログラムが赤文字のエラーを吐き出して止まってしまうことです。
 
