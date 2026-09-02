@@ -77,6 +77,7 @@ gdf_shops["商圏500m"] = gdf_shops.geometry.buffer(500)
 :width: 100%
 ```
 -->
+
 ```{figure} https://www.gsi.go.jp/common/000186091.png
 :width: 80%
 ```
@@ -110,12 +111,6 @@ gdf_shops["商圏500m"] = gdf_shops.geometry.buffer(500)
 * 選び方のルール:
     * 分析したいエリアが「東京や武蔵大学周辺（関東）」であれば、「第9系（EPSG:6677）」 を選びます。
     * 「大阪や京都（近畿）」であれば、「第6系（EPSG:6674）」 を選びます。
-
-<!--
-* [19の平面直角座標系](https://www.gsi.go.jp/sokuchikijun/jpc.html)
-* [【GIS】測地系、投影法、座標系、EPSGコードについてまとめてみた](https://qiita.com/asahina820/items/a1707cba749c1fb2b192)
-* [QGISにおける座標系の設定の基本と手順](https://qgis.mierune.co.jp/posts/howto_set_crs)
--->
 
 ---
 

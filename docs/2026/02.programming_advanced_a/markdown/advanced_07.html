@@ -10,7 +10,7 @@
 <meta property="og:description" content="GISの仕組みとGeoPandasの第一歩 🎯 本日の到達目標: GISの基本的な仕組み（レイヤー構造） を、具体的なビジネスや社会課題解決の例と結びつけて説明できる。, 「地理座標系（経緯度）」と「投影座標系（平面）」の違い を理解し、地図が歪む理由を説明できる。, 代表的な地図データ形式（Shapefile, GeoJSON）の特徴と用途、およびShapefileのファイル破損の罠を回避..." />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2026_02.programming_advanced_a_markdown_advanced_07_76510798.png" />
+<meta property="og:image" content="/None" />
 <meta property="og:image:alt" content="GISの仕組みとGeoPandasの第一歩 🎯 本日の到達目標: GISの基本的な仕組み（レイヤー構造） を、具体的なビジネスや社会課題解決の例と結びつけて説明できる。, 「地理座標系（経緯度）」と「投影座標系（平面）」の違い を理解し、地図が歪む理由を説明できる。, 代表的な地図データ形式（Shapefile,..." />
 <meta name="description" content="GISの仕組みとGeoPandasの第一歩 🎯 本日の到達目標: GISの基本的な仕組み（レイヤー構造） を、具体的なビジネスや社会課題解決の例と結びつけて説明できる。, 「地理座標系（経緯度）」と「投影座標系（平面）」の違い を理解し、地図が歪む理由を説明できる。, 代表的な地図データ形式（Shapefile, GeoJSON）の特徴と用途、およびShapefileのファイル破損の罠を回避..." />
 <meta name="twitter:card" content="summary_large_image" />
@@ -302,7 +302,6 @@
 <li class="toctree-l3 current current-page"><a class="current reference internal" href="#">第7回 地理空間情報の基礎</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_08.html">第8回 地理空間データの活用1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_09.html">第9回 地理空間データの活用2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_09.html#id16">💻 総合演習課題（実技評価テスト・宿題用：5問）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
@@ -455,9 +454,51 @@
 <hr class="docutils" />
 <section id="id7">
 <h2>丸い地球をどうやって平らにする？<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
-<p>幾何学の理論パートです。しかし、数式は一切使いません。 イメージで理解しましょう。</p>
+<p>地球は丸い？</p>
+<p>【地球のイメージ（ジャガイモ）】</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/011.png"><img alt="../../../_images/011.png" src="../../../_images/011.png" style="width: 60%;" />
+</a>
+</figure>
+<p>地球時と地心座標時</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/001.png"><img alt="../../../_images/001.png" src="../../../_images/001.png" style="width: 70%;" />
+</a>
+</figure>
+<p><a class="reference external" href="https://meria21.hamazo.tv/e8338516.html">出展</a></p>
 <section id="id8">
-<h3>地理座標系（丸い地球を「角度」で表す）<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<h3>地球の形状と大きさの定義 －ジオイドと地球楕円体－<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p>地球は山や谷など凹凸が存在し、このままの形状を基準とすると非常に複雑になります。そのため地球の凹凸をシンプルな形状にモデル化する必要があります。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="https://www.esrij.com/cms/wp-content/uploads/2025/12/mes_01.png"><img alt="https://www.esrij.com/cms/wp-content/uploads/2025/12/mes_01.png" src="https://www.esrij.com/cms/wp-content/uploads/2025/12/mes_01.png" style="width: 80%;" />
+</a>
+</figure>
+<p>出典：<a class="reference external" href="https://www.esrij.com/starting-gis/gis-guide/coordinate-and-spatial/datum/">ESRIジャパンWebサイト</a></p>
+</section>
+<section id="id9">
+<h3>地図投影法<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<p>3 次元空間に存在している地球をそのままの形で平面上に表現することはできません。つまり、曲面を持つ地球を平面状の地図で表現するためには、地球表面の情報を平面に投影する処理が生じます。そのための手法を「地図投影法」と呼びます。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="https://www.esrij.com/cms/wp-content/uploads/2025/12/01_projection.png"><img alt="https://www.esrij.com/cms/wp-content/uploads/2025/12/01_projection.png" src="https://www.esrij.com/cms/wp-content/uploads/2025/12/01_projection.png" style="width: 80%;" />
+</a>
+</figure>
+<p>出典：<a class="reference external" href="https://www.esrij.com/starting-gis/gis-guide/coordinate-and-spatial/map-projection/">ESRIジャパンWebサイト</a></p>
+</section>
+<section id="id10">
+<h3>測地系と座標系<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>測地系：地球上を楕円形にとらえた上で、地球上の位置と経緯度を対応させる基準のことです。</p></li>
+<li><p>座標系：数値による位置の表し方を指します。経度と緯度で表現される地理座標系と、それ以外の方法（球体を平面に変換するなど）の方法で表現される投影座標系の2種類が存在します。</p></li>
+</ul>
+<p>一般的に球体を平面にすると、面積・角度・距離を同時に正しく投影させることはできません。</p>
+<!--
+* [19の平面直角座標系](https://www.gsi.go.jp/sokuchikijun/jpc.html)
+* [【GIS】測地系、投影法、座標系、EPSGコードについてまとめてみた](https://qiita.com/asahina820/items/a1707cba749c1fb2b192)
+* [QGISにおける座標系の設定の基本と手順](https://qgis.mierune.co.jp/posts/howto_set_crs)
+-->
+</section>
+<section id="id11">
+<h3>地理座標系（丸い地球を「角度」で表す）<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
 <p>地球は、実は完全な球体ではなく、自転の遠心力で少し横に潰れた「楕円体」をしています。
 この丸い地球上の場所を示すために、地球の中心からの「角度」を使って場所を表す仕組みを地理座標系（Geographic Coordinate System: GCS）と呼びます。</p>
 <ul class="simple">
@@ -467,8 +508,8 @@
 <p>世界共通で使われている代表的な地理座標系が 「WGS84」 という世界測地系です。
 皆さんのスマートフォンに入っているGPSや、Google Mapsも標準ではこのWGS84（経度・緯度の角度データ）です。</p>
 </section>
-<section id="id9">
-<h3>投影座標系（丸い地球を無理やり「平面」にする）<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<section id="id12">
+<h3>投影座標系（丸い地球を無理やり「平面」にする）<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
 <p>地理座標系のデータ（度単位）のままでは、データ分析において非常に困ったことが起きます。</p>
 <ul class="simple">
 <li><p>「店舗から駅まで何メートル？」</p></li>
@@ -487,6 +528,10 @@
       「角度は正確！」                「距離や面積が不自然に引き伸ばされる！」
 </pre></div>
 </div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/022.png"><img alt="../../../_images/022.png" src="../../../_images/022.png" style="width: 50%;" />
+</a>
+</figure>
 <p>このように、丸い球体を平らな平面に投影するときには、必ず「面積」「距離」「角度」のどれかが犠牲（歪む）になります。</p>
 <ul class="simple">
 <li><p>メルカトル図法：</p>
@@ -496,19 +541,69 @@
 </ul>
 </li>
 </ul>
+<section id="google">
+<h4>Googleマップ<a class="headerlink" href="#google" title="Link to this heading">¶</a></h4>
+<p>Googleマップで利用されているウェブメルカトルという投影法では、北極・南極にいくほど巨大になるように表現されており、カナダやロシア、グリーンランド、南極大陸などを分析するには不向きであると言えるでしょう。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="https://sinrintech.com/wp-content/uploads/2024/02/600px-Tissot_mercator.png"><img alt="https://sinrintech.com/wp-content/uploads/2024/02/600px-Tissot_mercator.png" src="https://sinrintech.com/wp-content/uploads/2024/02/600px-Tissot_mercator.png" style="width: 80%;" />
+</a>
+</figure>
+<p>出典：<a class="reference external" href="https://wiki.openstreetmap.org/wiki/Zoom_levels">OpenStreetMap</a></p>
 </section>
-<section id="id10">
-<h3>日本国内の正確な投影：平面直角座標系<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+</section>
+<section id="id13">
+<h3>日本国内の正確な投影：平面直角座標系<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
 <p>「日本国内で、面積や距離を1cmの狂いもなく正確に測定・分析したい」という場合、地球全体をカバーするメルカトル図法を使うと、歪みが大きすぎて使えません。</p>
 <p>そこで、国土交通省の特別の機関である国土地理院は日本を南北に細長く19のエリアに分割し、それぞれのエリアの「中心の基準点（原点）」付近だけを平らにして、歪みを極限までゼロに抑える特別な投影系を作りました。これを「平面直角座標系（JGD2011）」と呼びます。</p>
 <ul class="simple">
 <li><p>第9系（EPSG:6677）：東京、神奈川、千葉、埼玉などの「関東エリア」を正確に測るための平面メートル座標系。関東を分析する時は、常にこの座標系に変換（プロジェクション）して、メートル単位で計算します。</p></li>
 </ul>
 </section>
+<section id="epsg-european-petroleum-survey-group">
+<h3>EPSGコード（European Petroleum Survey Group）<a class="headerlink" href="#epsg-european-petroleum-survey-group" title="Link to this heading">¶</a></h3>
+<p>様々な測地系や投影法に対して割り振られたユニークな番号のことです</p>
+<section id="epsg">
+<h4>EPSGコードの種類<a class="headerlink" href="#epsg" title="Link to this heading">¶</a></h4>
+<p>代表的なものは以下となります</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>EPSGコード</th>
+<th>測地系</th>
+<th>座標系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6668</td>
+<td>JGD2011</td>
+<td>地理座標系</td>
+</tr>
+<tr>
+<td>4326</td>
+<td>WGS84</td>
+<td>地理座標系</td>
+</tr>
+<tr>
+<td>3857</td>
+<td>WGS84</td>
+<td>Webメルカトル</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>EPSGコードとは</p>
+<ul>
+<li><p>地球上の位置を表す座標参照系（CRS）に一意に割り当てられた世界共通の識別番号（ID）です</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
 </section>
 <hr class="docutils" />
-<section id="id11">
-<h2>地理空間データの代表的なファイル形式<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<section id="id14">
+<h2>地理空間データの代表的なファイル形式<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
 <p>実務のデータ分析で遭遇する、地図データの代表的なファイル形式を2つ覚えましょう。</p>
 <section id="shapefile-shp-31">
 <h3>Shapefile（シェープファイル：.shp）の「3つで1つ」の罠<a class="headerlink" href="#shapefile-shp-31" title="Link to this heading">¶</a></h3>
@@ -554,8 +649,8 @@
 <p>Pythonコードを動かして、地図空間データを操作してみます
 Pandasはエクセルのような表データを扱いましたが、GeoPandas（ジオパンダス）は、その表の中に「形や位置情報（Geometry：ジオメトリ）」の列を1つ追加した、地図分析・可視化ライブラリです。</p>
 <p>通常のPandasの文法（<code class="docutils literal notranslate"><span class="pre">.head()</span></code>, <code class="docutils literal notranslate"><span class="pre">groupby</span></code>, 条件抽出 <code class="docutils literal notranslate"><span class="pre">df[df[...]</span> <span class="pre">==</span> <span class="pre">...]</span></code>）が、そのまま使えるます。</p>
-<section id="id12">
-<h3>Google Colabの環境構築<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<section id="id15">
+<h3>Google Colabの環境構築<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
 <p>Google Colabには標準でGeoPandasが入っていますが、時々バージョンの不整合で可視化の際に赤いエラーが出ることがあります。まずは環境を安全に整えるために、以下の「おまじない」セルを実行しましょう。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># （準備）地図データの日本語化ライブラリ、geodatasetsとGeoPandasのインポート</span>
 <span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="n">japanize</span><span class="o">-</span><span class="n">matplotlib</span>
@@ -570,8 +665,8 @@ Pandasはエクセルのような表データを扱いましたが、GeoPandas�
 </pre></div>
 </div>
 </section>
-<section id="id13">
-<h3>世界地図データの読み込みと描画<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<section id="id16">
+<h3>世界地図データの読み込みと描画<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
 <p>練習用の「世界地図データ（世界各国の境界線ポリゴン）」を読み込みます。</p>
 <section id="natural-earth">
 <h4>Natural Earthデータ<a class="headerlink" href="#natural-earth" title="Link to this heading">¶</a></h4>
@@ -653,10 +748,10 @@ Pandasはエクセルのような表データを扱いましたが、GeoPandas�
 </section>
 </section>
 <hr class="docutils" />
-<section id="id14">
-<h2>練習問題（5問）<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
-<section id="id15">
-<h3>練習問題 1: GISのレイヤー概念<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<section id="id17">
+<h2>練習問題（5問）<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h2>
+<section id="id18">
+<h3>練習問題 1: GISのレイヤー概念<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
 <p>GISで、地図を「道路」「店舗」「河川」といった異なる情報の層に切り分けて重ね合わせて分析する仕組みのことを、英語で何と呼ぶでしょうか？
 また、拡大しても形が一切劣化しない「点・線・面」の幾何学データの種類を何と呼ぶでしょうか？</p>
 <details>
@@ -678,8 +773,8 @@ Pandasはエクセルのような表データを扱いましたが、GeoPandas�
 </details>
 </section>
 <hr class="docutils" />
-<section id="id16">
-<h3>練習問題 2: 座標系とみかんの皮の罠<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<section id="id19">
+<h3>練習問題 2: 座標系とみかんの皮の罠<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
 <ol class="arabic simple">
 <li><p>地球の形をそのまま「角度（経度・緯度）」で表現した座標系を ( A ) 座標系と呼びます。</p></li>
 <li><p>丸い地球を無理やり平らに引き伸ばし、単位を「メートル（長さ）」に直して距離や面積を計りやすくした座標系を ( B ) 座標系と呼びます。</p></li>
@@ -773,11 +868,11 @@ Pandasはエクセルのような表データを扱いましたが、GeoPandas�
 </section>
 </section>
 <hr class="docutils" />
-<section id="id17">
-<h2>💻 演習（5問）<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h2>
+<section id="id20">
+<h2>💻 演習（5問）<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h2>
 <hr class="docutils" />
-<section id="id18">
-<h3>準備<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<section id="id21">
+<h3>準備<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
 <p>地図データの日本語化ライブラリ、geodatasetsとGeoPandasのインポート</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="n">japanize</span><span class="o">-</span><span class="n">matplotlib</span>
 <span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="n">geodatasets</span>
@@ -808,8 +903,8 @@ Pandasはエクセルのような表データを扱いましたが、GeoPandas�
 </div>
 </section>
 <hr class="docutils" />
-<section id="id19">
-<h3>演習<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<section id="id22">
+<h3>演習<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
 </section>
 <section id="europe">
 <h3>演習 1: ヨーロッパ（Europe）大陸の切り出しと地図描画<a class="headerlink" href="#europe" title="Link to this heading">¶</a></h3>
@@ -855,8 +950,8 @@ Pandasはエクセルのような表データを扱いましたが、GeoPandas�
 </details>
 </section>
 <hr class="docutils" />
-<section id="id20">
-<h3>演習 2: 世界の「人口が少ない国（ワースト5）」のデータ抽出とソート<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<section id="id23">
+<h3>演習 2: 世界の「人口が少ない国（ワースト5）」のデータ抽出とソート<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h3>
 <p>データフレーム <code class="docutils literal notranslate"><span class="pre">world</span></code> の中から、人口（pop_est）が「1人以上（0人を省くため）」の国を対象とし、人口が「少ない順（昇順）」に並び替えた際の上位5ヶ国を抽出してください。
 抽出したデータフレームの「name（国名）」、「pop_est（推計人口）」、「geometry（形）」の3つの列だけを画面に表示してください。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: 1. 人口（pop_est）が 1 以上の国だけを条件抽出して df_valid_pop に代入する</span>
@@ -885,8 +980,8 @@ Pandasはエクセルのような表データを扱いましたが、GeoPandas�
 </details>
 </section>
 <hr class="docutils" />
-<section id="id21">
-<h3>演習 3: 新設避難所3箇所の緯度・経度からのPoint作成<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
+<section id="id24">
+<h3>演習 3: 新設避難所3箇所の緯度・経度からのPoint作成<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
 <p>あなたの地域に、新しく3つの「新設避難所」ができることになりました。
 それぞれの避難所の名前と緯度・経度情報は以下の通りです。</p>
 <ul class="simple">
@@ -989,8 +1084,8 @@ Pandasはエクセルのような表データを扱いましたが、GeoPandas�
 </details>
 </section>
 <hr class="docutils" />
-<section id="id22">
-<h3>演習 5: 【集大成】地理座標系から平面直角座標系（メートル座標）への投影変換<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
+<section id="id25">
+<h3>演習 5: 【集大成】地理座標系から平面直角座標系（メートル座標）への投影変換<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h3>
 <p>演習4で作成した <code class="docutils literal notranslate"><span class="pre">df_new_shelter</span></code> は現在、世界測地系である <code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code> であり、位置情報の単位は「度（角度）」です。
 これでは「避難所の周りに半径500mの円を描いて商圏を調べる」といったメートル単位の計算ができません。</p>
 <p>GeoPandasの <code class="docutils literal notranslate"><span class="pre">.to_crs()</span></code> メソッドを用いて、関東地方のメートル単位の正確な平面直角座標系である 「平面直角座標系第9系（JGD2011：EPSG:6677）」に投影変換したデータフレーム <code class="docutils literal notranslate"><span class="pre">df_shelter_meter</span></code> を作成してください。
@@ -1018,8 +1113,8 @@ Pandasはエクセルのような表データを扱いましたが、GeoPandas�
 </div>
 <details>
 <summary>👉 演習 5 の解答コードを見る（クリックで展開）</summary>
-<section id="id23">
-<h4>【模範解答コード】<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h4>
+<section id="id26">
+<h4>【模範解答コード】<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_new_shelter</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span>
     <span class="p">{</span>
         <span class="s2">"避難所名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"新設A館"</span><span class="p">,</span> <span class="s2">"新設B館"</span><span class="p">,</span> <span class="s2">"新設C館"</span><span class="p">],</span>
@@ -1046,8 +1141,8 @@ Pandasはエクセルのような表データを扱いましたが、GeoPandas�
 </section>
 </section>
 <hr class="docutils" />
-<section id="id24">
-<h2>📚 まとめ<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h2>
+<section id="id27">
+<h2>📚 まとめ<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h2>
 <ol class="arabic simple">
 <li><p>レイヤー構造：地図は「道路」「建物」といった透明なシート（トッピングケーキ）を重ねることでできており、コンピュータ上で自由にマージや条件分析ができる。</p></li>
 <li><p>点・線・面（ベクタデータ）：拡大しても崩れないシャープな図形。それぞれ <code class="docutils literal notranslate"><span class="pre">Point</span></code>, <code class="docutils literal notranslate"><span class="pre">LineString</span></code>, <code class="docutils literal notranslate"><span class="pre">Polygon</span></code> というデータ型でGeoPandasのgeometry列に保存される。</p></li>
@@ -1126,47 +1221,57 @@ Pandasはエクセルのような表データを扱いましたが、GeoPandas�
 </ul>
 </li>
 <li><a class="reference internal" href="#id7">丸い地球をどうやって平らにする？</a><ul>
-<li><a class="reference internal" href="#id8">地理座標系（丸い地球を「角度」で表す）</a></li>
-<li><a class="reference internal" href="#id9">投影座標系（丸い地球を無理やり「平面」にする）</a></li>
-<li><a class="reference internal" href="#id10">日本国内の正確な投影：平面直角座標系</a></li>
+<li><a class="reference internal" href="#id8">地球の形状と大きさの定義 －ジオイドと地球楕円体－</a></li>
+<li><a class="reference internal" href="#id9">地図投影法</a></li>
+<li><a class="reference internal" href="#id10">測地系と座標系</a></li>
+<li><a class="reference internal" href="#id11">地理座標系（丸い地球を「角度」で表す）</a></li>
+<li><a class="reference internal" href="#id12">投影座標系（丸い地球を無理やり「平面」にする）</a><ul>
+<li><a class="reference internal" href="#google">Googleマップ</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id11">地理空間データの代表的なファイル形式</a><ul>
+<li><a class="reference internal" href="#id13">日本国内の正確な投影：平面直角座標系</a></li>
+<li><a class="reference internal" href="#epsg-european-petroleum-survey-group">EPSGコード（European Petroleum Survey Group）</a><ul>
+<li><a class="reference internal" href="#epsg">EPSGコードの種類</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id14">地理空間データの代表的なファイル形式</a><ul>
 <li><a class="reference internal" href="#shapefile-shp-31">Shapefile（シェープファイル：.shp）の「3つで1つ」の罠</a></li>
 <li><a class="reference internal" href="#geojson-geojson">GeoJSON（ジオジェイソン：.geojson）</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#geopandas">GeoPandasの導入</a><ul>
-<li><a class="reference internal" href="#id12">Google Colabの環境構築</a></li>
-<li><a class="reference internal" href="#id13">世界地図データの読み込みと描画</a><ul>
+<li><a class="reference internal" href="#id15">Google Colabの環境構築</a></li>
+<li><a class="reference internal" href="#id16">世界地図データの読み込みと描画</a><ul>
 <li><a class="reference internal" href="#natural-earth">Natural Earthデータ</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#pandas">特定のエリアだけを切り出す（Pandasの知識の応用）</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id14">練習問題（5問）</a><ul>
-<li><a class="reference internal" href="#id15">練習問題 1: GISのレイヤー概念</a></li>
-<li><a class="reference internal" href="#id16">練習問題 2: 座標系とみかんの皮の罠</a></li>
+<li><a class="reference internal" href="#id17">練習問題（5問）</a><ul>
+<li><a class="reference internal" href="#id18">練習問題 1: GISのレイヤー概念</a></li>
+<li><a class="reference internal" href="#id19">練習問題 2: 座標系とみかんの皮の罠</a></li>
 <li><a class="reference internal" href="#shapefile">練習問題 3: Shapefileの「長老」問題</a></li>
 <li><a class="reference internal" href="#point">練習問題 4: 地図上の Point 定義における「全人類共通の罠」</a></li>
 <li><a class="reference internal" href="#geopandascrs">練習問題 5: GeoPandasの「crs」属性</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id17">💻 演習（5問）</a><ul>
-<li><a class="reference internal" href="#id18">準備</a></li>
-<li><a class="reference internal" href="#id19">演習</a></li>
+<li><a class="reference internal" href="#id20">💻 演習（5問）</a><ul>
+<li><a class="reference internal" href="#id21">準備</a></li>
+<li><a class="reference internal" href="#id22">演習</a></li>
 <li><a class="reference internal" href="#europe">演習 1: ヨーロッパ（Europe）大陸の切り出しと地図描画</a></li>
-<li><a class="reference internal" href="#id20">演習 2: 世界の「人口が少ない国（ワースト5）」のデータ抽出とソート</a></li>
-<li><a class="reference internal" href="#id21">演習 3: 新設避難所3箇所の緯度・経度からのPoint作成</a></li>
+<li><a class="reference internal" href="#id23">演習 2: 世界の「人口が少ない国（ワースト5）」のデータ抽出とソート</a></li>
+<li><a class="reference internal" href="#id24">演習 3: 新設避難所3箇所の緯度・経度からのPoint作成</a></li>
 <li><a class="reference internal" href="#geodataframe">演習 4: 避難所データベースの新規地理データフレーム（GeoDataFrame）化</a></li>
-<li><a class="reference internal" href="#id22">演習 5: 【集大成】地理座標系から平面直角座標系（メートル座標）への投影変換</a><ul>
-<li><a class="reference internal" href="#id23">【模範解答コード】</a></li>
+<li><a class="reference internal" href="#id25">演習 5: 【集大成】地理座標系から平面直角座標系（メートル座標）への投影変換</a><ul>
+<li><a class="reference internal" href="#id26">【模範解答コード】</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id24">📚 まとめ</a></li>
+<li><a class="reference internal" href="#id27">📚 まとめ</a></li>
 </ul>
 </li>
 </ul>
