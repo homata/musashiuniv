@@ -501,7 +501,7 @@ fig, ax = plt.subplots(figsize=(10, 8))
 df_europe.plot(               )
 
 # グラフ（地図）の装飾
-plt.title("ヨーロッパ諸国の地域地図 🇪🇺")
+plt.title("ヨーロッパ諸国の地域地図")
 # ヨーロッパ周辺が見えやすいように経緯度の表示範囲（ズーム）を指定します
 ax.set_xlim(-25, 45) # 経度の範囲
 ax.set_ylim(34, 72)  # 緯度の範囲
@@ -680,7 +680,7 @@ print("定義された座標系(CRS):", df_new_shelter.crs) # EPSG:4326
 
 ---
 
-### 演習 5: 【集大成】地理座標系から平面直角座標系（メートル座標）への投影変換
+### 演習 5: 地理座標系から平面直角座標系（メートル座標）への投影変換
 演習4で作成した `df_new_shelter` は現在、世界測地系である `EPSG:4326` であり、位置情報の単位は「度（角度）」です。
 これでは「避難所の周りに半径500mの円を描いて商圏を調べる」といったメートル単位の計算ができません。
 
@@ -712,7 +712,6 @@ print("\n変換後の新しい座標参照系(CRS):", df_shelter_meter.crs)
 <details>
 <summary>👉 演習 5 の解答コードを見る（クリックで展開）</summary>
 
-#### 【模範解答コード】
 ```python
 df_new_shelter = gpd.GeoDataFrame(
     {
@@ -723,7 +722,7 @@ df_new_shelter = gpd.GeoDataFrame(
     crs="EPSG:4326"
 )
 
-# TODO: .to_crs() を使い、座標参照系を平面直角座標第9系 \"EPSG:6677\" に変換してください。
+# TODO: .to_crs() を使い、座標参照系を平面直角座標第9系 "EPSG:6677" に変換してください。
 df_shelter_meter = df_new_shelter.to_crs(epsg=6677) # もしくは .to_crs("EPSG:6677")
 
 print("【変換前：世界測地系 (EPSG:4326)】 単位は『度』")

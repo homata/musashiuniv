@@ -475,6 +475,320 @@
 </ul>
 </section>
 </section>
+<hr class="docutils" />
+<section id="leafmap">
+<h3>leafmapとは<a class="headerlink" href="#leafmap" title="Link to this heading">¶</a></h3>
+<p>Leafmapは、Google Colab、JupyterNotebook環境で地図作成と地理空間分析を行うためのPythonパッケージです。</p>
+<p>インタラクティブなマッピングと地理空間分析を行うための無料でオープンソースの
+Pythonパッケージ</p>
+<ul class="simple">
+<li><p>ユーザーが最小限のコーディングで地理空間データを分析および視覚化可能にしたもの</p></li>
+<li><p>Google Colab、JupyterNotebook環境で動作</p></li>
+<li><p>テネシー大学 地理学部 准教授のQiusheng Wu, PhDが開発</p></li>
+<li><p>foliumやipyleafletなどのライブラリをベースに構築</p></li>
+<li><p>geemapは、Google Earth Engine (GEE) が動作</p></li>
+<li><p>leafmapは、geemapのスピンオフでgeemapのGEEなしのバージョン</p></li>
+</ul>
+<p><img alt="" src="https://wetlands.io/file/images/leafmap_demo.gif" /></p>
+<ul class="simple">
+<li><p>背景地図を自由に変えられる</p></li>
+<li><p>初期表示位置やズームレベルなど細かく設定できる</p></li>
+<li><p>COGなど、最新のクラウドネイティブなラスター形式も読める</p></li>
+<li><p>GeoPandasのGeoDataFrameが読めるので、つまりほとんどの形式のベクターデータが読める</p></li>
+<li><p>地物の属性情報は当然みれる</p></li>
+<li><p>HTMLファイルを書き出せる</p></li>
+<li><p>地物を画面上で書いて、出力できる</p></li>
+<li><p>mapbox style specっぽい書き方でスタイリングできる</p></li>
+<li><p>地図上からベクターデータにクエリできる</p></li>
+<li><p>複数のレイヤーを追加できる</p></li>
+<li><p>WhiteboxToolsを取り込んでおり、高度なGIS処理ができる</p></li>
+<li><p>バックエンドとしてkepler.glやpydeckを選択することもできる</p></li>
+<li><p>これらをほぼコーディングせずに行える</p></li>
+</ul>
+<hr class="docutils" />
+<section id="leadmap">
+<h4>leadmapのサイト<a class="headerlink" href="#leadmap" title="Link to this heading">¶</a></h4>
+<p><a class="reference external" href="https://leafmap.org/">leafmap</a></p>
+<p>Leafmapは、foliumやipyleaflet（インタラクティブマップ作成用）、WhiteboxToolsやwhiteboxgui（地理空間データ分析用）、ipywidgets（インタラクティブなGUIデザイン用）などのオープンソースのパッケージをベースに構築されています。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/giswqs/leafmap">GitHub - giswqs/leafmap</a></p></li>
+<li><p><a class="reference external" href="https://leafmap.org/notebooks/00_key_features/">leafmap Tutorials</a></p></li>
+<li><p><a class="reference external" href="https://drive.google.com/file/d/1prYiibICwX1yZ7yRY1ER5ulqMlCn9n59/view?usp=sharing">JupyterNotebook形式ファイルダウンロード</a></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id7">
+<h4>Google Colab ファイル<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h4>
+<ol class="arabic simple">
+<li><p>対話型マッピングのためのPythonパッケージであるleafmapの紹介</p>
+<ul class="simple">
+<li><p>Introducing the leafmap Python package for interactive mapping (<a class="reference external" href="https://youtu.be/-UPt7x3Gn60">video</a> | <a class="reference external" href="https://i.imgur.com/2pRxunR.gif">gif</a> | <a class="reference external" href="https://leafmap.org/notebooks/01_leafmap_intro">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>leafmapでベースマップを使用する</p>
+<ul class="simple">
+<li><p>Using basemaps in leafmap (<a class="reference external" href="https://youtu.be/uylpjbDZesY">video</a> | <a class="reference external" href="https://youtu.be/-lOo-vxjrDM">gif</a> | <a class="reference external" href="https://leafmap.org/notebooks/02_using_basemaps">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>Cloud Optimized GeoTIFF（COG）とSpatioTemporal Asset Catalog（STAC）の利用について</p>
+<ul class="simple">
+<li><p>Using Cloud Optimized GeoTIFF (COG) and SpatioTemporal Asset Catalog (STAC) (<a class="reference external" href="https://leafmap.org/notebooks/03_cog_stac">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>Cloud Optimized GeoTIFF（COG）のバーチャルモザイクの作成</p>
+<ul class="simple">
+<li><p>Creating a virtual mosaic of Cloud Optimized GeoTIFFs (COG) (<a class="reference external" href="https://leafmap.org/notebooks/04_cog_mosaic">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>leafmapを使ったローカルラスターデータセットの読み込み</p>
+<ul class="simple">
+<li><p>Loading local raster datasets with leafmap (<a class="reference external" href="https://leafmap.org/notebooks/05_load_raster">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>地図にカスタム凡例を追加する</p>
+<ul class="simple">
+<li><p>Adding custom legends to the map (<a class="reference external" href="https://leafmap.org/notebooks/06_legend">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>地図にカスタムカラーバーを追加する</p>
+<ul class="simple">
+<li><p>Adding custom colorbars to the map (<a class="reference external" href="https://leafmap.org/notebooks/07_colorbar">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>LeafmapでWhiteboxToolsを使用する</p>
+<ul class="simple">
+<li><p>Using WhiteboxTools with leafmap (<a class="reference external" href="https://leafmap.org/notebooks/08_whitebox">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>CSVをポイントに変換する</p>
+<ul class="simple">
+<li><p>Converting CSV to points (<a class="reference external" href="https://leafmap.org/notebooks/09_csv_to_points">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>ローカルベクターデータ（shp, geojson, kmlなど）を地図に追加する</p>
+<ul class="simple">
+<li><p>Adding local vector data (e.g., shp, geojson, kml) to the map (<a class="reference external" href="https://leafmap.org/notebooks/10_add_vector">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>複数の地図を同時に可視化するリンクマップの作成</p>
+<ul class="simple">
+<li><p>Creating linked maps for visualizing multiple maps simultaneously (<a class="reference external" href="https://leafmap.org/notebooks/11_linked_maps">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>1行のコードで分割地図を作成する</p>
+<ul class="simple">
+<li><p>Creating a split-panel map with a single line of code (<a class="reference external" href="https://leafmap.org/notebooks/12_split_map">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>1行のコードでGeoPandas GeoDataFrameを地図に追加する。</p>
+<ul class="simple">
+<li><p>Adding a GeoPandas GeoDataFrame to the map with a single line of code (<a class="reference external" href="https://leafmap.org/notebooks/13_geopandas">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>PostGISデータベースから地図にデータを追加する</p>
+<ul class="simple">
+<li><p>Adding data from a PostGIS database to the map (<a class="reference external" href="https://leafmap.org/notebooks/14_postgis">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>OpenStreetMapのデータを1行のコードで地図にダウンロードする。</p>
+<ul class="simple">
+<li><p>Downloading OpenStreetMap data to the map with a single line of code (<a class="reference external" href="https://leafmap.org/notebooks/15_add_osm">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>HERE Map Widget for Jupyterをプロットのバックエンドとして使用する。</p>
+<ul class="simple">
+<li><p>Use <a class="reference external" href="https://github.com/heremaps/here-map-widget-for-jupyter">HERE Map Widget for Jupyter</a> as plotting backend (<a class="reference external" href="https://leafmap.org/notebooks/16_heremap">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>地図にベクタータイルレイヤーを追加する</p>
+<ul class="simple">
+<li><p>Adding vector tile layers to the map (<a class="reference external" href="https://leafmap.org/notebooks/17_vector_tile_layer">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>ポップアップ属性を持つポイントレイヤーを地図に追加する</p>
+<ul class="simple">
+<li><p>Adding a point layer with popup attributes to the map (<a class="reference external" href="https://leafmap.org/notebooks/18_point_layer">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>地図をhtmlファイルとして保存する</p>
+<ul class="simple">
+<li><p>Saving maps as a html file (<a class="reference external" href="https://leafmap.org/notebooks/19_map_to_html">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>プラネットグローバルマンスリーとクオータリーモザイクの追加</p>
+<ul class="simple">
+<li><p>Adding Planet global monthly and quarterly mosaic (<a class="reference external" href="https://leafmap.org/notebooks/20_planet_imagery">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>タイムセリーズインスペクタをワンクリックで使用する</p>
+<ul class="simple">
+<li><p>Using timeseries inspector with one click (<a class="reference external" href="https://leafmap.org/notebooks/21_ts_inspector">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>タイムスライダーを使った時系列画像の可視化</p>
+<ul class="simple">
+<li><p>Using time slider for visualizing timeseries images (<a class="reference external" href="https://leafmap.org/notebooks/22_time_slider">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>1行のコードでカラーマップを作成する</p>
+<ul class="simple">
+<li><p>Creating colormaps with a single line of code (<a class="reference external" href="https://leafmap.org/notebooks/23_colormaps">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>csvからヒートマップを作成する</p>
+<ul class="simple">
+<li><p>Creating heat map from csv (<a class="reference external" href="https://leafmap.org/notebooks/24_heatmap">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>カラーバーと地図タイトルを使った人口ヒートマップの作成</p>
+<ul class="simple">
+<li><p>Creating a population heat map with a colorbar and map title (<a class="reference external" href="https://leafmap.org/notebooks/25_map_title">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>kepler.glプロッティングバックエンドを利用したインタラクティブマップの作成</p>
+<ul class="simple">
+<li><p>Creating an interactive map using the kepler.gl plotting backend (<a class="reference external" href="https://leafmap.org/notebooks/26_kepler_gl">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>ベースマップギャラリーの作成</p>
+<ul class="simple">
+<li><p>Creating a basemap gallery (<a class="reference external" href="https://leafmap.org/notebooks/27_basemap_gallery">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>1行のコードで地図を公開</p>
+<ul class="simple">
+<li><p>Publishing maps with a single line of code (<a class="reference external" href="https://leafmap.org/notebooks/28_publish_map">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>pydeckプロッティングバックエンドを使用する</p>
+<ul class="simple">
+<li><p>Using the pydeck plotting backend (<a class="reference external" href="https://leafmap.org/notebooks/29_pydeck">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>米国国勢調査のデータを使用</p>
+<ul class="simple">
+<li><p>Using U.S. Census data (<a class="reference external" href="https://leafmap.org/notebooks/30_census_data">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>xyzservicesでベースマップを検索する</p>
+<ul class="simple">
+<li><p>Searching basemaps with xyzservices (<a class="reference external" href="https://leafmap.org/notebooks/31_search_basemaps">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>ローカル ラスター データセットと Cloud Optimized GeoTIFF (COG) の読み込み</p>
+<ul class="simple">
+<li><p>Loading local raster datasets and Cloud Optimized GeoTIFF (COG) (<a class="reference external" href="https://leafmap.org/notebooks/32_local_tile">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>地図に画像をオーバーレイ表示する</p>
+<ul class="simple">
+<li><p>Adding image overlay to the map (<a class="reference external" href="https://leafmap.org/notebooks/33_image_overlay">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>xyデータからポイントを追加する</p>
+<ul class="simple">
+<li><p>Adding points from xy data (e.g., CSV, Pandas DataFrame) (<a class="reference external" href="https://leafmap.org/notebooks/34_add_points_from_xy">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>xyデータからサークルマーカーを追加する</p>
+<ul class="simple">
+<li><p>Adding circle markers from xy data (e.g., CSV, Pandas DataFrame) (<a class="reference external" href="https://leafmap.org/notebooks/35_circle_markers">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>地図にラベルを追加する</p>
+<ul class="simple">
+<li><p>Adding labels to the map (<a class="reference external" href="https://leafmap.org/notebooks/36_add_labels">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>Planetary Computer STACアイテムを地図に追加する</p>
+<ul class="simple">
+<li><p>Adding Planetary Computer STAC item to the map (<a class="reference external" href="https://leafmap.org/notebooks/37_planetary_computer">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>plotlyのプロッティングバックエンドを使用する</p>
+<ul class="simple">
+<li><p>Using the plotly plotting backend (<a class="reference external" href="https://leafmap.org/notebooks/38_plotly">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>インスペクターツールを使った画素値の取得</p>
+<ul class="simple">
+<li><p>Getting pixel values using the Inspector tool (<a class="reference external" href="https://leafmap.org/notebooks/39_inspector_tool">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>インタラクティブなplotlyツールバーGUIを使用する</p>
+<ul class="simple">
+<li><p>Using the interactive plotly toolbar GUI (<a class="reference external" href="https://leafmap.org/notebooks/40_plotly_gui">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>ラスターGUIによるCOG/STACアイテムの読み込み</p>
+<ul class="simple">
+<li><p>Loading COG/STAC items using the raster GUI (<a class="reference external" href="https://leafmap.org/notebooks/41_raster_gui">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>クラウド最適化GeoTIFF（COG）の作成</p>
+<ul class="simple">
+<li><p>Creating Cloud Optimized GeoTIFF (COG) (<a class="reference external" href="https://leafmap.org/notebooks/42_create_cog">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>ベクターデータ内の位置や特徴を検索する</p>
+<ul class="simple">
+<li><p>Searching for locations and features in vector data (<a class="reference external" href="https://leafmap.org/notebooks/43_search_control">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>ベクターデータの属性テーブルをコーディングなしで開く</p>
+<ul class="simple">
+<li><p>Opening vector data attribute table without coding (<a class="reference external" href="https://leafmap.org/notebooks/44_attribute_table">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>コーディングなしでインタラクティブにベクターデータを作成</p>
+<ul class="simple">
+<li><p>Creating vector data interactively without coding (<a class="reference external" href="https://leafmap.org/notebooks/45_create_vector">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>既存のベクターデータをコーディングなしでインタラクティブに編集</p>
+<ul class="simple">
+<li><p>Editing existing vector data interactively without coding (<a class="reference external" href="https://leafmap.org/notebooks/46_edit_vector">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>numpyの配列をCOGに変換する</p>
+<ul class="simple">
+<li><p>Converting numpy array to COG (<a class="reference external" href="https://leafmap.org/notebooks/47_numpy_to_cog">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>たった1行のコードでLiDARデータを3Dで可視化する</p>
+<ul class="simple">
+<li><p>Visualizing LiDAR data in 3D with only one line of code (<a class="reference external" href="https://leafmap.org/notebooks/48_lidar">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>foliumで分割地図を作成する</p>
+<ul class="simple">
+<li><p>Creating a split-panel map with folium (<a class="reference external" href="https://leafmap.org/notebooks/49_split_control">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>カスタムアイコンでマーカークラスタを作成する</p>
+<ul class="simple">
+<li><p>Creating a marker cluster with custom icons (<a class="reference external" href="https://leafmap.org/notebooks/50_marker_cluster">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>マスクによる画像の切り抜き</p>
+<ul class="simple">
+<li><p>Clipping an image by mask (<a class="reference external" href="https://leafmap.org/notebooks/51_clip_image">notebook</a>)</p></li>
+</ul>
+</li>
+<li><p>NetCDFデータの可視化</p>
+<ul class="simple">
+<li><p>Visualizing NetCDF data (<a class="reference external" href="https://leafmap.org/notebooks/52_netcdf">notebook</a>)</p></li>
+<li><p>netCDF (Network Common Data Form) は、気温、湿度、気圧、風速、方向などの科学的な多次元データ (変数) を格納するためのファイル形式</p></li>
+</ul>
+</li>
+<li><p>多様な分類体系を持つコレポリスマップの作成</p>
+<ul class="simple">
+<li><p>Creating choropleth maps with a variety of classification schemes (<a class="reference external" href="https://leafmap.org/notebooks/53_choropleth">notebook</a>)</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
 </section>
 <hr class="docutils" />
 <section id="marker-html">
@@ -492,8 +806,8 @@
 </div>
 <p>画面の中に、本物のスクロール・拡大縮小ができる地図が表示されます
 まずは、この地図に「ピン（Marker）」を追加をします。</p>
-<section id="id7">
-<h3>経緯度指定の「鉄則」<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<section id="id8">
+<h3>経緯度指定の「鉄則」<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
 <p>「緯度（Latitude）・経度（Longitude）」という順番で口にしますが、プログラミングやGIS（幾何空間）の世界では下記でした。</p>
 <ul class="simple">
 <li><p>横軸（X軸） ＝ 経度（東経140度など、左右の動き）</p></li>
@@ -591,8 +905,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id8">
-<h3>条件分岐によるピンの「自動色分け」と「カスタムアイコン」<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<section id="id9">
+<h3>条件分岐によるピンの「自動色分け」と「カスタムアイコン」<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
 <p>「評価スコアが4.5以上の店舗は赤色ピン、それ未満は灰色ピンにする」といった処理を、if文をループに組み込むことで実装します。</p>
 <p>また、<code class="docutils literal notranslate"><span class="pre">folium.Icon</span></code> には <code class="docutils literal notranslate"><span class="pre">color</span></code>（ピン自体の色）の他に、ピンの中央に描かれる小さなイラスト（アイコン）を指定できます。
 標準で使えるアイコンの他に、FontAwesome（フォント・アサム） という世界共通の無料アイコン集のパーツを、<code class="docutils literal notranslate"><span class="pre">prefix=&quot;fa&quot;</span></code> を添えるだけで呼び出せます。</p>
@@ -752,8 +1066,8 @@ GeoJSONを一度Pandasで読むなどして、propertiesの中にどんなキー
   └──────────────┴─────────────────────────────────────────┘
 </pre></div>
 </div>
-<section id="id9">
-<h4>サンプル<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h4>
+<section id="id10">
+<h4>サンプル<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h4>
 <p>Streamlit，Folium streamlit-folium インストール</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!pip<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span>streamlit<span class="w"> </span>folium<span class="w"> </span>streamlit-folium
 </pre></div>
@@ -842,10 +1156,10 @@ cloudflared<span class="w"> </span>tunnel<span class="w"> </span>--url<span clas
 </section>
 </section>
 <hr class="docutils" />
-<section id="id10">
-<h2>練習問題（理論＆クイック記述：5問） (約20分)<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
 <section id="id11">
-<h3>練習問題 1: 緯度・経度の「指定順序」の罠<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<h2>練習問題（理論＆クイック記述：5問） (約20分)<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<section id="id12">
+<h3>練習問題 1: 緯度・経度の「指定順序」の罠<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
 <p>GeoPandasで店舗の位置（Pointオブジェクト）を新しく手動で作成する場合と、foliumの地図上に <code class="docutils literal notranslate"><span class="pre">folium.Marker</span></code> でピンを立てる場合では、引数に指定する「緯度」と「経度」の順番のルールが異なります。
 それぞれの正しい指定順序の組み合わせを答えてください。</p>
 <ol class="arabic simple">
@@ -872,8 +1186,8 @@ cloudflared<span class="w"> </span>tunnel<span class="w"> </span>--url<span clas
 </details>
 </section>
 <hr class="docutils" />
-<section id="id12">
-<h3>練習問題 2: 地図上のポップアップ内での改行<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<section id="id13">
+<h3>練習問題 2: 地図上のポップアップ内での改行<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
 <p>foliumのマーカー（ピン）をクリックした時に出る吹き出し（popup）の文字に、Pythonの通常の改行コード（<code class="docutils literal notranslate"><span class="pre">\n</span></code>）を含めて <code class="docutils literal notranslate"><span class="pre">popup=&quot;江古田店\n今日のおすすめ:プリン&quot;</span></code> と書きましたが、ブラウザの地図画面では改行されず、1行に繋がって表示されてしまいました。
 ポップアップの中で正しく改行を反映させるために、書き換えるべき「HTMLのタグ」を答えてください。</p>
 <details>
@@ -935,8 +1249,8 @@ cloudflared<span class="w"> </span>tunnel<span class="w"> </span>--url<span clas
 </details>
 </section>
 <hr class="docutils" />
-<section id="id13">
-<h3>練習問題 5: 動的マップの保存と共有（ポータビリティ）<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<section id="id14">
+<h3>練習問題 5: 動的マップの保存と共有（ポータビリティ）<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
 <p>作成した動的地図オブジェクト <code class="docutils literal notranslate"><span class="pre">m_final</span></code> を、外部の人に共有し、相手のパソコンのブラウザ上でグリグリと動く状態で確認してもらいたいです。
 このとき、foliumに用意されている最も適切な保存用のメソッドと、保存されるファイル形式（拡張子）の組み合わせを答えてください。</p>
 <details>
@@ -955,11 +1269,11 @@ cloudflared<span class="w"> </span>tunnel<span class="w"> </span>--url<span clas
 </section>
 </section>
 <hr class="docutils" />
-<section id="id14">
-<h2>演習（5問）<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
-<hr class="docutils" />
 <section id="id15">
-<h3>演習 1: 東京タワーへのカスタムマーカー設置とHTML吹き出し<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<h2>演習（5問）<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
+<hr class="docutils" />
+<section id="id16">
+<h3>演習 1: 東京タワーへのカスタムマーカー設置とHTML吹き出し<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
 <p>東京タワー（緯度: 35.6586, 経度: 139.7454）を中心としたズームレベル 16 のfolium地図を作成してください。</p>
 <ol class="arabic simple">
 <li><p>東京タワーの位置に、ピンの色が 「オレンジ（orange）」、アイコンが 「建物（fort / hotel）」（Font Awesomeを使用：<code class="docutils literal notranslate"><span class="pre">prefix=&quot;fa&quot;</span></code>）のカスタムマーカーを設置してください。</p></li>
@@ -1019,8 +1333,8 @@ cloudflared<span class="w"> </span>tunnel<span class="w"> </span>--url<span clas
 </details>
 </section>
 <hr class="docutils" />
-<section id="id16">
-<h3>演習 2: 売上目標達成度に応じた複数店舗ピンの「動的自動色分け」<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<section id="id17">
+<h3>演習 2: 売上目標達成度に応じた複数店舗ピンの「動的自動色分け」<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
 <p>3つのカフェ店舗の営業データ（PandasのDataFrame）があります。</p>
 <ol class="arabic simple">
 <li><p>各店舗の「今日の実績売上（Sales）」が、目標金額である 「55,000円」以上 の場合は、ピンの色を 「緑（green）」（アイコン: <code class="docutils literal notranslate"><span class="pre">thumbs-up</span></code>）、目標未満の場合は 「赤（red）」（アイコン: <code class="docutils literal notranslate"><span class="pre">warning</span></code>、どちらも <code class="docutils literal notranslate"><span class="pre">prefix=&quot;fa&quot;</span></code>）に動的に色分け判定（if-else）してください。</p></li>
@@ -1181,8 +1495,8 @@ cloudflared<span class="w"> </span>tunnel<span class="w"> </span>--url<span clas
 </details>
 </section>
 <hr class="docutils" />
-<section id="leafmap">
-<h3>演習 4: leafmapを用いた「ループ処理なし」の高速一括マーカープロット<a class="headerlink" href="#leafmap" title="Link to this heading">¶</a></h3>
+<section id="id18">
+<h3>演習 4: leafmapを用いた「ループ処理なし」の高速一括マーカープロット<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
 <p>GeoPandasやPandasで大量の位置情報（緯度経度）を扱う際、<code class="docutils literal notranslate"><span class="pre">folium</span></code> の <code class="docutils literal notranslate"><span class="pre">for</span></code> ループで1点ずつマッピングする手法はコードが長く、件数が多いと低速になります。
 次世代GISライブラリ <code class="docutils literal notranslate"><span class="pre">leafmap</span></code> の強力な機能である <code class="docutils literal notranslate"><span class="pre">add_points_from_xy()</span></code> メソッドを使うと、データフレームから経緯度の「列名」を指定するだけで、1行もループ処理（for文）を書くことなく、一瞬で全データを自動的に動的地図の上にマッピング（展開）できます。</p>
 <ol class="arabic simple">
@@ -1259,8 +1573,8 @@ cloudflared<span class="w"> </span>tunnel<span class="w"> </span>--url<span clas
 </details>
 </section>
 <hr class="docutils" />
-<section id="id17">
-<h3>演習 5: 避難所混雑度シミュレーション「階級区分図（Choropleth）」の完全自動構築<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<section id="id19">
+<h3>演習 5: 避難所混雑度シミュレーション「階級区分図（Choropleth）」の完全自動構築<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
 <p>これまでに学んだ、境界区画（GeoJSONポリゴン：形）と、統計データ（Pandas：数字）をマッチングさせて美しく塗り分ける、実務データ分析の王道パイプラインです。</p>
 <ol class="arabic simple">
 <li><p>以下のコード内に用意された「東京城西地区の簡易行政区画 GeoJSON（形データ）」と「各地区の避難所混雑率 Pandas DataFrame（数字データ）」を使用します。</p></li>
@@ -1396,8 +1710,8 @@ cloudflared<span class="w"> </span>tunnel<span class="w"> </span>--url<span clas
 </section>
 </section>
 <hr class="docutils" />
-<section id="id18">
-<h2>まとめ<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h2>
+<section id="id20">
+<h2>まとめ<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Web地図の自動翻訳: Pythonから HTML / CSS / JavaScript (Leaflet.js) へ自動でコードが変換される。</p></li>
 <li><p>location = [緯度, 経度]: foliumとGeoPandas（Point）では、経緯度の指定順が逆になるため注意！</p></li>
@@ -1473,13 +1787,18 @@ cloudflared<span class="w"> </span>tunnel<span class="w"> </span>--url<span clas
 <li><a class="reference internal" href="#id6">リンク</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#leafmap">leafmapとは</a><ul>
+<li><a class="reference internal" href="#leadmap">leadmapのサイト</a></li>
+<li><a class="reference internal" href="#id7">Google Colab ファイル</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#marker-html">ピン（Marker）の自動配置とHTMLポップアップの極意</a><ul>
-<li><a class="reference internal" href="#id7">経緯度指定の「鉄則」</a></li>
+<li><a class="reference internal" href="#id8">経緯度指定の「鉄則」</a></li>
 <li><a class="reference internal" href="#iterrows">ループ処理（<code class="docutils literal notranslate"><span class="pre">iterrows()</span></code>）による全自動マッピング</a></li>
 <li><a class="reference internal" href="#htmlui">HTMLポップアップでデザインされたUIを作る</a></li>
-<li><a class="reference internal" href="#id8">条件分岐によるピンの「自動色分け」と「カスタムアイコン」</a></li>
+<li><a class="reference internal" href="#id9">条件分岐によるピンの「自動色分け」と「カスタムアイコン」</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#choropleth-map">階級区分図（Choropleth Map）のデータ構築パイプライン</a><ul>
@@ -1491,29 +1810,29 @@ cloudflared<span class="w"> </span>tunnel<span class="w"> </span>--url<span clas
 </li>
 <li><a class="reference internal" href="#web-streamlit">Webアプリ（Streamlit）への地図埋め込みとポータビリティ</a><ul>
 <li><a class="reference internal" href="#streamlit-folium"><code class="docutils literal notranslate"><span class="pre">streamlit-folium</span></code> によるダッシュボードの合体</a><ul>
-<li><a class="reference internal" href="#id9">サンプル</a></li>
+<li><a class="reference internal" href="#id10">サンプル</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#html">サーバー不要！「ポータブルHTML地図」として書き出す</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id10">練習問題（理論＆クイック記述：5問） (約20分)</a><ul>
-<li><a class="reference internal" href="#id11">練習問題 1: 緯度・経度の「指定順序」の罠</a></li>
-<li><a class="reference internal" href="#id12">練習問題 2: 地図上のポップアップ内での改行</a></li>
+<li><a class="reference internal" href="#id11">練習問題（理論＆クイック記述：5問） (約20分)</a><ul>
+<li><a class="reference internal" href="#id12">練習問題 1: 緯度・経度の「指定順序」の罠</a></li>
+<li><a class="reference internal" href="#id13">練習問題 2: 地図上のポップアップ内での改行</a></li>
 <li><a class="reference internal" href="#choropleth">練習問題 3: 階級区分図（Choropleth）がグレーにバグる原因</a></li>
 <li><a class="reference internal" href="#sjoin">練習問題 4: 「メートル座標系」での空間結合（sjoin）と距離計算（復習）</a></li>
-<li><a class="reference internal" href="#id13">練習問題 5: 動的マップの保存と共有（ポータビリティ）</a></li>
+<li><a class="reference internal" href="#id14">練習問題 5: 動的マップの保存と共有（ポータビリティ）</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id14">演習（5問）</a><ul>
-<li><a class="reference internal" href="#id15">演習 1: 東京タワーへのカスタムマーカー設置とHTML吹き出し</a></li>
-<li><a class="reference internal" href="#id16">演習 2: 売上目標達成度に応じた複数店舗ピンの「動的自動色分け」</a></li>
+<li><a class="reference internal" href="#id15">演習（5問）</a><ul>
+<li><a class="reference internal" href="#id16">演習 1: 東京タワーへのカスタムマーカー設置とHTML吹き出し</a></li>
+<li><a class="reference internal" href="#id17">演習 2: 売上目標達成度に応じた複数店舗ピンの「動的自動色分け」</a></li>
 <li><a class="reference internal" href="#m">演習 3: 避難所を中心とする「半径500m安全商圏サークル（半透明）」の重ね合わせ描画</a></li>
-<li><a class="reference internal" href="#leafmap">演習 4: leafmapを用いた「ループ処理なし」の高速一括マーカープロット</a></li>
-<li><a class="reference internal" href="#id17">演習 5: 避難所混雑度シミュレーション「階級区分図（Choropleth）」の完全自動構築</a></li>
+<li><a class="reference internal" href="#id18">演習 4: leafmapを用いた「ループ処理なし」の高速一括マーカープロット</a></li>
+<li><a class="reference internal" href="#id19">演習 5: 避難所混雑度シミュレーション「階級区分図（Choropleth）」の完全自動構築</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id18">まとめ</a></li>
+<li><a class="reference internal" href="#id20">まとめ</a></li>
 </ul>
 </li>
 </ul>

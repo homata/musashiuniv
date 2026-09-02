@@ -919,7 +919,7 @@ Pandasはエクセルのような表データを扱いましたが、GeoPandas�
 <span class="n">df_europe</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>               <span class="p">)</span>
 
 <span class="c1"># グラフ（地図）の装飾</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"ヨーロッパ諸国の地域地図 🇪🇺"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"ヨーロッパ諸国の地域地図"</span><span class="p">)</span>
 <span class="c1"># ヨーロッパ周辺が見えやすいように経緯度の表示範囲（ズーム）を指定します</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span> <span class="c1"># 経度の範囲</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">34</span><span class="p">,</span> <span class="mi">72</span><span class="p">)</span>  <span class="c1"># 緯度の範囲</span>
@@ -1085,7 +1085,7 @@ Pandasはエクセルのような表データを扱いましたが、GeoPandas�
 </section>
 <hr class="docutils" />
 <section id="id25">
-<h3>演習 5: 【集大成】地理座標系から平面直角座標系（メートル座標）への投影変換<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h3>
+<h3>演習 5: 地理座標系から平面直角座標系（メートル座標）への投影変換<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h3>
 <p>演習4で作成した <code class="docutils literal notranslate"><span class="pre">df_new_shelter</span></code> は現在、世界測地系である <code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code> であり、位置情報の単位は「度（角度）」です。
 これでは「避難所の周りに半径500mの円を描いて商圏を調べる」といったメートル単位の計算ができません。</p>
 <p>GeoPandasの <code class="docutils literal notranslate"><span class="pre">.to_crs()</span></code> メソッドを用いて、関東地方のメートル単位の正確な平面直角座標系である 「平面直角座標系第9系（JGD2011：EPSG:6677）」に投影変換したデータフレーム <code class="docutils literal notranslate"><span class="pre">df_shelter_meter</span></code> を作成してください。
@@ -1113,8 +1113,6 @@ Pandasはエクセルのような表データを扱いましたが、GeoPandas�
 </div>
 <details>
 <summary>👉 演習 5 の解答コードを見る（クリックで展開）</summary>
-<section id="id26">
-<h4>【模範解答コード】<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_new_shelter</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span>
     <span class="p">{</span>
         <span class="s2">"避難所名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"新設A館"</span><span class="p">,</span> <span class="s2">"新設B館"</span><span class="p">,</span> <span class="s2">"新設C館"</span><span class="p">],</span>
@@ -1124,7 +1122,7 @@ Pandasはエクセルのような表データを扱いましたが、GeoPandas�
     <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span>
 <span class="p">)</span>
 
-<span class="c1"># TODO: .to_crs() を使い、座標参照系を平面直角座標第9系 \"EPSG:6677\" に変換してください。</span>
+<span class="c1"># TODO: .to_crs() を使い、座標参照系を平面直角座標第9系 "EPSG:6677" に変換してください。</span>
 <span class="n">df_shelter_meter</span> <span class="o">=</span> <span class="n">df_new_shelter</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">6677</span><span class="p">)</span> <span class="c1"># もしくは .to_crs("EPSG:6677")</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"【変換前：世界測地系 (EPSG:4326)】 単位は『度』"</span><span class="p">)</span>
@@ -1139,10 +1137,9 @@ Pandasはエクセルのような表データを扱いましたが、GeoPandas�
 </details>
 </section>
 </section>
-</section>
 <hr class="docutils" />
-<section id="id27">
-<h2>📚 まとめ<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h2>
+<section id="id26">
+<h2>📚 まとめ<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h2>
 <ol class="arabic simple">
 <li><p>レイヤー構造：地図は「道路」「建物」といった透明なシート（トッピングケーキ）を重ねることでできており、コンピュータ上で自由にマージや条件分析ができる。</p></li>
 <li><p>点・線・面（ベクタデータ）：拡大しても崩れないシャープな図形。それぞれ <code class="docutils literal notranslate"><span class="pre">Point</span></code>, <code class="docutils literal notranslate"><span class="pre">LineString</span></code>, <code class="docutils literal notranslate"><span class="pre">Polygon</span></code> というデータ型でGeoPandasのgeometry列に保存される。</p></li>
@@ -1265,13 +1262,10 @@ Pandasはエクセルのような表データを扱いましたが、GeoPandas�
 <li><a class="reference internal" href="#id23">演習 2: 世界の「人口が少ない国（ワースト5）」のデータ抽出とソート</a></li>
 <li><a class="reference internal" href="#id24">演習 3: 新設避難所3箇所の緯度・経度からのPoint作成</a></li>
 <li><a class="reference internal" href="#geodataframe">演習 4: 避難所データベースの新規地理データフレーム（GeoDataFrame）化</a></li>
-<li><a class="reference internal" href="#id25">演習 5: 【集大成】地理座標系から平面直角座標系（メートル座標）への投影変換</a><ul>
-<li><a class="reference internal" href="#id26">【模範解答コード】</a></li>
+<li><a class="reference internal" href="#id25">演習 5: 地理座標系から平面直角座標系（メートル座標）への投影変換</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id27">📚 まとめ</a></li>
+<li><a class="reference internal" href="#id26">📚 まとめ</a></li>
 </ul>
 </li>
 </ul>
