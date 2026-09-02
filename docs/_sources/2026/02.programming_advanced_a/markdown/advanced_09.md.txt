@@ -15,7 +15,7 @@ leafmap/foliumによる動的可視化とインタラクティブマップ
 
 ---
 
-### 練習問題のGoogle Colab起動
+## 練習問題のGoogle Colab起動
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](
 https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exercises/2026/02.programming_advanced_a/advanced_09.ipynb)
 
@@ -89,7 +89,6 @@ Pythonには動的地図を扱うライブラリがいくつかあります。�
 * [folium公式](https://python-visualization.github.io/folium/latest/)
 * [leafmap公式](https://leafmap.org/)
   * [Tutorials](https://leafmap.org/tutorials/)
-
 
 ---
 
@@ -542,7 +541,7 @@ Streamlit，Folium streamlit-folium インストール
 !pip install -q streamlit folium streamlit-folium
 ```
 
-cloudflaredインストール（1回実行すればOKです）
+cloudflaredインストール
 ```bash
 !wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
 !dpkg -i cloudflared-linux-amd64.deb
@@ -608,7 +607,7 @@ cloudflared tunnel --url http://localhost:8501 --no-autoupdate > tunnel.log 2>&1
 ```
 
 
-### サーバー不要！「ポータブルHTML地図」として書き出す
+### 「ポータブルHTML地図」を書き出す
 
 foliumオブジェクトには、非常に強力なファイル保存メソッド `.save()` が用意されています。
 

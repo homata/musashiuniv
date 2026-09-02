@@ -3,19 +3,21 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="第10回 PythonとAI(scikit-learn)1" />
+<meta property="og:title" content="第10回 PythonとAI (scikit-learn) 1" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="2026/02.programming_advanced_a/markdown/advanced_10.html" />
 <meta property="og:site_name" content="musashiuniv" />
+<meta property="og:description" content="機械学習の基礎と回帰分析 🎯 到達目標: AI、機械学習、ディープラーニングの違いと、「教師あり学習（分類・回帰）」および「教師なし学習」の違いを説明できる。, 機械学習における「データの分割（学習用データとテスト用データ）」の重要性を理解し、なぜ分割が必要なのか（過学習の防止）を説明できる。, scikit-learn を使って、「単回帰（Linear Regression）」および「重回..." />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2026_02.programming_advanced_a_markdown_advanced_10_51794c29.png" />
-<meta property="og:image:alt" content="" />
+<meta property="og:image" content="/None" />
+<meta property="og:image:alt" content="機械学習の基礎と回帰分析 🎯 到達目標: AI、機械学習、ディープラーニングの違いと、「教師あり学習（分類・回帰）」および「教師なし学習」の違いを説明できる。, 機械学習における「データの分割（学習用データとテスト用データ）」の重要性を理解し、なぜ分割が必要なのか（過学習の防止）を説明できる。, scikit-l..." />
+<meta name="description" content="機械学習の基礎と回帰分析 🎯 到達目標: AI、機械学習、ディープラーニングの違いと、「教師あり学習（分類・回帰）」および「教師なし学習」の違いを説明できる。, 機械学習における「データの分割（学習用データとテスト用データ）」の重要性を理解し、なぜ分割が必要なのか（過学習の防止）を説明できる。, scikit-learn を使って、「単回帰（Linear Regression）」および「重回..." />
 <meta name="twitter:card" content="summary_large_image" />
-<link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" /><link rel="next" title="第11回 PythonとAI(scikit-learn)2" href="advanced_11.html" /><link rel="prev" title="第9回 地理空間データの活⽤2" href="advanced_09.html" />
+<link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" /><link rel="next" title="第11回 PythonとAI(scikit-learn)2" href="advanced_11.html" /><link rel="prev" title="第9回 地理空間データの活用2" href="advanced_09.html" />
 
     <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
-        <title>第10回 PythonとAI(scikit-learn)1 - Pythonプログラミング入門</title>
+        <title>第10回 PythonとAI (scikit-learn) 1 - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=949a1ff5" />
@@ -189,7 +191,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -297,16 +299,11 @@
 <li class="toctree-l3"><a class="reference internal" href="advanced_04.html">第4回 データ解析</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_05.html">第5回 Webサービスの活用1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_06.html">第6回 Webサービスの活用2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#id19">--- 2. サイドバーの設定 ---</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#pandas">--- 3. Pandasによる連動データの抽出 ---</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#id20">--- 4. メイン画面のデザイン ---</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#kpi">--- 5. カラム分割による主要業績指標 (KPI) ---</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#id21">統計量を計算</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#id22">画面を横に分割して、左にグラフ、右に生データをスッキリ配置</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_07.html">第7回 地理空間情報の基礎</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_08.html">第8回 地理空間データの活⽤1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_09.html">第9回 地理空間データの活⽤2</a></li>
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">第10回 PythonとAI(scikit-learn)1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_08.html">第8回 地理空間データの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_09.html">第9回 地理空間データの活用2</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">第10回 PythonとAI (scikit-learn) 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fit">ステップ 2: モデルの学習（.fit()）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_13.html">第13回 総合演習</a></li>
@@ -356,14 +353,883 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
           <section class="tex2jax_ignore mathjax_ignore" id="pythonai-scikit-learn-1">
-<h1>第10回 PythonとAI(scikit-learn)1<a class="headerlink" href="#pythonai-scikit-learn-1" title="Link to this heading">¶</a></h1>
+<h1>第10回 PythonとAI (scikit-learn) 1<a class="headerlink" href="#pythonai-scikit-learn-1" title="Link to this heading">¶</a></h1>
+<p>機械学習の基礎と回帰分析</p>
+<hr class="docutils" />
+<section id="id1">
+<h2>🎯 到達目標<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>AI、機械学習、ディープラーニングの違いと、「教師あり学習（分類・回帰）」および「教師なし学習」の違いを説明できる。</p></li>
+<li><p>機械学習における「データの分割（学習用データとテスト用データ）」の重要性を理解し、なぜ分割が必要なのか（過学習の防止）を説明できる。</p></li>
+<li><p>scikit-learn を使って、「単回帰（Linear Regression）」および「重回帰」モデルを定義・学習（<code class="docutils literal notranslate"><span class="pre">.fit()</span></code>）・予測（<code class="docutils literal notranslate"><span class="pre">.predict()</span></code>）できる。</p></li>
+<li><p>予測結果を評価する指標である決定係数（(R^2)）や平均絶対誤差（MAE）の意味を理解し、モデルの賢さを評価できる。</p></li>
+<li><p>AIが理解できない「文字（カテゴリーデータ）」を数値に変換する「ワンホットエンコーディング」を理解し、実務データに適用できる。</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="google-colab">
+<h2>練習問題のGoogle Colab起動<a class="headerlink" href="#google-colab" title="Link to this heading">¶</a></h2>
+<p><a class="reference external" href="https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exercises/2026/02.programming_advanced_a/advanced_10.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<ol class="arabic simple">
+<li><p>上記の「Open In Colab」をクリックして、Google Colabを起動させてください</p></li>
+<li><p>[ファイル] → [ドライブにコピーを保存] を選択して、Googleドライブにコピーを保存してください</p></li>
+<li><p>保存が成功すると，Googleドライブの「マイドライブ」 →「Colab Notebooks」にコピーしたファイルが保存されます。</p></li>
+<li><p>GoogleドライブにコピーしたGoogle ColabのNotebooksを開いてください</p></li>
+<li><p>開いたGoogle ColabのNotebooksで作業をしてください</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="id2">
+<h2>用語説明<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>線形回帰モデルとは</p>
+<ul>
+<li><p>線形回帰モデル（Linear Regression Model）は、目的変数（結果）と説明変数（要因）の関係を「直線（線形）」で表す統計モデルの総称です。</p></li>
+<li><p>単回帰モデル（説明変数が1つ）</p></li>
+<li><p>重回帰モデル（説明変数が2つ以上）</p></li>
+</ul>
+</li>
+<li><p>重回帰モデルとは</p>
+<ul>
+<li><p>重回帰モデル（じゅうかいきモデル、Multiple Regression Model）とは、1つの目的変数（結果）を、複数の説明変数（要因）から予測・説明する統計モデルです。</p></li>
+<li><p>重回帰モデルは、この線形回帰モデルの一種</p></li>
+</ul>
+</li>
+<li><p>決定係数（R²）</p>
+<ul>
+<li><p>決定係数（R²、R-squared、coefficient of determination）は、回帰モデルが目的変数のばらつき（分散）をどれだけ説明できているかを示す指標です。0〜1の値をとり、1に近いほど当てはまりが良いことを意味します。</p></li>
+</ul>
+</li>
+<li><p>平均絶対誤差（MAE）</p>
+<ul>
+<li><p>平均絶対誤差（MAE: Mean Absolute Error）は、実際の値と予測値の差（誤差）の絶対値を平均した指標です</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="ai-machine-learning">
+<h2>AI・機械学習（Machine Learning）の全体像<a class="headerlink" href="#ai-machine-learning" title="Link to this heading">¶</a></h2>
+<p>「AI」「機械学習」「ディープラーニング（深層学習）」は、以下のような「親子関係（入れ子構造）」になっています。</p>
+<p>【AI技術の入れ子構造（イメージ図）】</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>┌───────────────────────────────────────────────────────────────────┐
+│  AI（人工知能）：人間のように賢いコンピュータ全体の技術                │
+│  ┌─────────────────────────────────────────────────────────────┐  │
+│  │  機械学習（Machine Learning）：データから「ルール」を自動で学ぶ │  │
+│  │  ┌──────────────────────────────────────────────────────┐   │  │
+│  │  │  ディープラーニング：人間の脳を模した、特に複雑な機械学   │   │  │
+│  │  └──────────────────────────────────────────────────────┘   │  │
+│  └─────────────────────────────────────────────────────────────┘  │
+└───────────────────────────────────────────────────────────────────┘
+</pre></div>
+</div>
+<section id="id3">
+<h3>機械学習の3大グループ<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p>機械学習は、学習の進め方によって大きく3つのグループに分かれます。</p>
+<ol class="arabic simple">
+<li><p>教師あり学習（Supervised Learning）</p>
+<ul class="simple">
+<li><p>特徴：あらかじめ「問題」と「解答（ラベル）」がセットになったデータを与えて、AIを訓練する方法です。</p></li>
+<li><p>例：「過去の気温と曜日（問題）」と「その日のコーヒーの売上（解答）」をたくさん与えて、明日の売上を予測させます。</p></li>
+</ul>
+</li>
+<li><p>教師なし学習（Unsupervised Learning）</p>
+<ul class="simple">
+<li><p>特徴：解答（ラベル）を与えず、データそのものの特徴から、自動的にグループ分け（クラスタリング）をさせる方法です。</p></li>
+<li><p>例：たくさんのお客さんの購買履歴から、自動的に「スイーツ好きグループ」「仕事帰りのサラリーマングループ」のように分類させます。</p></li>
+</ul>
+</li>
+<li><p>強化学習（Reinforcement Learning）：</p>
+<ul class="simple">
+<li><p>特徴：コンピュータに試行錯誤をさせ、上手くいったら「ご褒美（スコア）」をあげることで、最適な動きを自ら学ばせる方法です。</p></li>
+<li><p>例：お掃除ロボットが部屋の形を覚える、囲碁や将棋のAIが勝てる手順を覚えるなど。</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id4">
+<h3>教師あり学習の中の2つのアプローチ：「分類」と「回帰」<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p>「教師あり学習」は、解いたい問題のタイプによってさらに2つに分かれます。</p>
+<ul class="simple">
+<li><p>回帰（Regression）：</p>
+<ul>
+<li><p>予測するもの：「数値（連続値）」です。</p></li>
+<li><p>問い：「明日の客数は何人になるか？」「このマンションの価格は何万円か？」</p></li>
+</ul>
+</li>
+<li><p>分類（Classification）：</p>
+<ul>
+<li><p>予測するもの：「カテゴリ（グループ）」です。</p></li>
+<li><p>問い：「このメールは『迷惑メール』か『普通メール』か？」「この画像は『犬』か『猫』か？」</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id5">
+<h2>線形回帰（単回帰）の直感的メカニズム<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<p>教師あり学習の中で最も基本的で強力な手法である「線形回帰（Linear Regression）」を深掘りします。
+中学校の数学で習った、直線の式 (y = ax + b) を覚えているでしょうか？</p>
+<ul class="simple">
+<li><p>(y)：予測したい結果（売上） ➡ 目的変数 と呼びます。</p></li>
+<li><p>(x)：売上を決める要因（気温） ➡ 説明変数（特徴量） と呼びます。</p></li>
+<li><p>(a)：直線の傾き ➡ 回帰係数（ウェイト） と呼びます。</p></li>
+<li><p>(b)：直線の切片 ➡ バイアス と呼びます。</p></li>
+</ul>
+<section id="ai1">
+<h3>AIはどうやって「最も綺麗な1本線」を引くのか？（最小二乗法）<a class="headerlink" href="#ai1" title="Link to this heading">¶</a></h3>
+<p>散布図の上にバラバラと置かれた過去のデータ（点々）があります。　　
+AIは、この点々の真ん中を通る「最も代表的な1本線」を自動的に計算で引きます。
+この時に使われる最も有名な仕組みが 「最小二乗法」 です。</p>
+<p>【最小二乗法の直感的ビジュアル】</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>   y（売上）
+     ^
+     │       点A ● ──┬─┐ (ズレ・残差)
+     │               │ │
+     │               │ │ (ズレを1辺とする正方形の「面積」)
+     │  ──────○──────┴─┘───────── 予測直線 (y = ax + b)
+     │       / 
+     │     ● 点B
+     │
+     └───────────────────────────────&gt; x（気温）
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>すべての実際のデータ（点）から、自分が引いた「予測直線」までの縦の距離（ズレ・残差）を測ります。</p></li>
+<li><p>ズレがプラスの人もマイナスの人もいるため、単純に足し算するとゼロになってしまいます。そこで、ズレを1辺とする「正方形の面積（ズレの二乗）」を作ります。</p></li>
+<li><p>すべてのデータで作った「正方形の面積の合計」が、最も小さく（最小に）なるような傾き (a) と切片 (b) を、コンピュータが裏側で超高速で計算して決定します。これが「最小二乗法」の正体です！</p></li>
+<li><p>scikit-learnを使うと、数学の難しい行列計算や微分の式を書かなくても、たった一行のコマンドでこの傾きと切片を一瞬で特定してくれます。</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="overfitting">
+<h2>機械学習の生命線：過学習（Overfitting）とデータの分割<a class="headerlink" href="#overfitting" title="Link to this heading">¶</a></h2>
+<p>AIに売上を予測させるためには、過去のデータをそのまま全て使ってはいけません。ここがデータ分析における最大のポイントです。</p>
+<section id="id6">
+<h3>「過去問の丸暗記」による不合格の罠（過学習）<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<p>もし、あなたが持っている「過去100日分の売上データ」をすべてAIに丸暗記（学習）させたとします。
+そのAIに「過去100日の中の、ある日の売上」を予測させると、ほぼ100%完璧に当てることができます。
+しかし、これでは「ただの丸暗記」であり、本当に知りたい「まだ見ぬ明日（未来）の売上」を予測できる実力があるかどうかが分かりません。</p>
+<p>このように、手元のデータにだけ完璧にフィットしすぎて、新しいデータに対して全く予測が当たらなくなってしまう現象を
+過学習（オーバーフィッティング） と呼びます。</p>
+<p>【過学習と理想的な学習のイメージ】</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  ▼ 理想的な学習 (ちょうどいい直線)         ▼ 過学習 (丸暗記による複雑すぎるグネグネ線)
+    y |                                       y |
+      |     ●       ●                           |     ● ───●
+      |   ●   /   ●                             |   /   \   / \   ●
+      |     /                                   |  ●     ●     ──/
+      └──────────────────&gt; x                  └──────────────────&gt; x
+    新しいデータが来ても大体当たる！            手元のデータには100点だが、新データで大爆死！
+</pre></div>
+</div>
+<p>これを防ぐために、手元のデータをあらかじめ「教科書用（学習用）」と「実力テスト用」の2つに分割して、
+AIには実力テスト用のデータを完全に隠した状態で訓練を行います。</p>
+</section>
+<section id="id7">
+<h3>黄金の3ステップ「分割 ➡ 学習 ➡ 予測・評価」<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p>scikit-learnでの実装手順は常にこの流れです。</p>
+<p>ステップ 1: データの生成と分割（Colabのセルで実行してください）</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="c1"># 模擬データを作成します（カフェの「最高気温」と「アイスコーヒーの売上杯数」100日分）</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># 気温: 20度〜35度</span>
+<span class="c1"># 売上杯数 ＝ 気温 × 3.5 ＋ 基本8杯 ＋ ノイズ</span>
+<span class="n">sales</span> <span class="o">=</span> <span class="n">temp</span> <span class="o">*</span> <span class="mf">3.5</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">df_cafe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"気温"</span><span class="p">:</span> <span class="n">temp</span><span class="p">,</span>
+    <span class="s2">"売上杯数"</span><span class="p">:</span> <span class="n">sales</span>
+<span class="p">})</span>
+
+<span class="c1"># 説明変数 X (2次元：[[]]にすること！) と、目的変数 y (1次元)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_cafe</span><span class="p">[[</span><span class="s2">"気温"</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_cafe</span><span class="p">[</span><span class="s2">"売上杯数"</span><span class="p">]</span>
+
+<span class="c1"># データを「学習用(80%)」と「テスト用(20%)」に分割します</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"データ分割成功：学習用 </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span><span class="si">}</span><span class="s2">件, テスト用 </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span><span class="si">}</span><span class="s2">件"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="fit">
+<h1>ステップ 2: モデルの学習（.fit()）<a class="headerlink" href="#fit" title="Link to this heading">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="c1"># AIモデルを定義</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+
+<span class="c1"># 学習用データ（教科書）を与えて、AIに傾きと切片を計算させます！</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"勉強(学習)が完了しました！"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"導き出したルール: 売上杯数 ＝ 気温 × </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> ＋ </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>ステップ 3: 予測（.predict()）と実力テストの採点（評価）</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">r2_score</span><span class="p">,</span> <span class="n">mean_absolute_error</span>
+
+<span class="c1"># テスト用データ（AIが一度も見たことがない問題）を解かせます！</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># テスト結果の採点</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> <span class="c1"># 総合得点（決定係数）</span>
+<span class="n">mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> <span class="c1"># 平均的なズレ（MAE）</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"【実力テストの結果】"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"総合得点（決定係数 R²）: </span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  (1.0に近いほど優秀、0.7以上が合格ライン)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"平均的なズレ（MAE）     : </span><span class="si">{</span><span class="n">mae</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> 杯 (予測値から平均して何杯ズレているか)"</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<section id="multiple-regression">
+<h2>重回帰（Multiple Regression）分析の罠<a class="headerlink" href="#multiple-regression" title="Link to this heading">¶</a></h2>
+<p>ここまでは「気温（1つの要因）」だけを使って売上を予測する「単回帰（Simple Regression）分析」を学びました。
+しかし実際のビジネスでは、「気温」だけでなく、「チラシの配布部数」「曜日」「降水確率」など、
+複数のヒントを同時に使って予測したいはずです。これを「重回帰（Multiple Regression）分析」と呼びます。</p>
+<p>重回帰の予測式は以下のようになります。</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{売上} = (\text{気温} \times a_1) + (\text{広告費} \times a_2) + (\text{降水確率} \times a_3) + b\]</div>
+</div>
+<p>ヒントが増えるため、一般的に予測精度は劇的にアップしますが、重回帰分析を扱う際には、多重共線性という罠が潜んでいます。</p>
+<section id="multicollinearity">
+<h3>多重共線性（マルチコ：Multicollinearity）の恐怖<a class="headerlink" href="#multicollinearity" title="Link to this heading">¶</a></h3>
+<p>多重共線性とは、予測のヒント（説明変数）の中に、「中身がほぼ同じ（強い相関がある）データ」を2つ以上同時に与えてしまうことで、
+AIの頭がパニックになり、予測結果が壊滅的に傾きが異常な値になる現象です。</p>
+<p>【多重共線性の直感的イメージ】</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  ▼ 良い重回帰 (お互いに違う、新しいヒントを与えている)
+    [売上] ＝ ( 気温 ✕ a1 ) ＋ ( 広告宣伝費 ✕ a2 ) ＋ b  ➡ AI「違う視点の情報だから、凄くよく分かる！」
+
+  ▼ 悪い重回帰（中身がほぼ同じ、重複したヒントを与えている）
+    [売上] ＝ ( 摂氏温度 ✕ a1 ) ＋ ( 華氏温度 ✕ a2 ) ＋ b  ➡ AI「え？これどっちもただの『温度』じゃん！
+                                                              どっちを優先すればいいの！？」
+                                                           ➡ 傾きが「プラス数万」「マイナス数万」と大暴走！
+</pre></div>
+</div>
+<section id="id8">
+<h4>回避するルール<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
+<p>「最高気温」と「最低気温」、「店の面積」と「店内の席数」のように、お互いの相関係数（(r)）が 0.8 以上になるような
+似たもの同士のデータは、どちらか片方だけをモデルに与え、もう片方はゴミ箱に捨てるのが鉄則です。</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="scikit-learn">
+<h2>実践：scikit-learnでの重回帰モデル構築<a class="headerlink" href="#scikit-learn" title="Link to this heading">¶</a></h2>
+<p>ヒントを2つ（「気温」と「チラシ配布部数」）に増やした、本格的な「重回帰分析」のプログラムをColabで動かします。<br />
+Pandasで説明変数Xを切り出す際に、<code class="docutils literal notranslate"><span class="pre">df[[&quot;列1&quot;,</span> <span class="pre">&quot;列2&quot;]]</span></code> とリストで指定するだけで、あとのコードは単回帰と全く同じ（<code class="docutils literal notranslate"><span class="pre">.fit</span></code> して <code class="docutils literal notranslate"><span class="pre">.predict</span></code>）です。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. 2つのヒントを持つ重回帰用ダミーデータの生成</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">r2_score</span><span class="p">,</span> <span class="n">mean_absolute_error</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">temp_multi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span> <span class="c1"># 気温(150日分)</span>
+<span class="n">flyer_multi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span> <span class="c1"># チラシ配り枚数(100〜500枚)</span>
+<span class="c1"># 売上金額 ＝ 気温 × 1500円 ＋ チラシ × 50円 ＋ 基本1万円 ＋ ノイズ</span>
+<span class="n">revenue</span> <span class="o">=</span> <span class="n">temp_multi</span> <span class="o">*</span> <span class="mi">1500</span> <span class="o">+</span> <span class="n">flyer_multi</span> <span class="o">*</span> <span class="mi">50</span> <span class="o">+</span> <span class="mi">10000</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
+
+<span class="n">df_store</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"気温"</span><span class="p">:</span> <span class="n">temp_multi</span><span class="p">,</span>
+    <span class="s2">"チラシ配布数"</span><span class="p">:</span> <span class="n">flyer_multi</span><span class="p">,</span>
+    <span class="s2">"売上高（円）"</span><span class="p">:</span> <span class="n">revenue</span>
+<span class="p">})</span>
+
+<span class="c1"># 2. 説明変数X（2列！）と目的変数yの取り出し</span>
+<span class="n">X_multi</span> <span class="o">=</span> <span class="n">df_store</span><span class="p">[[</span><span class="s2">"気温"</span><span class="p">,</span> <span class="s2">"チラシ配布数"</span><span class="p">]]</span> <span class="c1"># 複数列をリストでまとめて渡します</span>
+<span class="n">y_multi</span> <span class="o">=</span> <span class="n">df_store</span><span class="p">[</span><span class="s2">"売上高（円）"</span><span class="p">]</span>
+
+<span class="c1"># 3. データを「学習用80%」と「テスト用20%」に分割</span>
+<span class="n">X_train_m</span><span class="p">,</span> <span class="n">X_test_m</span><span class="p">,</span> <span class="n">y_train_m</span><span class="p">,</span> <span class="n">y_test_m</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_multi</span><span class="p">,</span> <span class="n">y_multi</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># 4. モデルの定義と学習</span>
+<span class="n">multi_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">multi_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_m</span><span class="p">,</span> <span class="n">y_train_m</span><span class="p">)</span>
+
+<span class="c1"># 5. テストデータでの予測</span>
+<span class="n">y_pred_m</span> <span class="o">=</span> <span class="n">multi_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_m</span><span class="p">)</span>
+
+<span class="c1"># 6. 評価</span>
+<span class="n">r2_multi</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test_m</span><span class="p">,</span> <span class="n">y_pred_m</span><span class="p">)</span>
+<span class="n">mae_multi</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test_m</span><span class="p">,</span> <span class="n">y_pred_m</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 自作重回帰モデルの評価結果 ---"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"傾き（各変数の影響力）: 気温 ＝ </span><span class="si">{</span><span class="n">multi_model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">円/度, チラシ ＝ </span><span class="si">{</span><span class="n">multi_model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">円/枚"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"切片（基本売上）      : </span><span class="si">{</span><span class="n">multi_model</span><span class="o">.</span><span class="n">intercept_</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"決定係数 (R²値)       : </span><span class="si">{</span><span class="n">r2_multi</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> (ヒントを増やしたことで精度が上がりました！)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"平均的なズレ (MAE)    : </span><span class="si">{</span><span class="n">mae_multi</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id9">
+<h2>特徴量エンジニアリング（文字データの数値化）の基礎<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<p>ここまでは、すべて「気温（度）」や「チラシ配布数（枚）」といった、綺麗な「数字」のデータだけを使って予測を行ってきました。
+しかし実際の売上データには、「時間帯（昼／夜）」「店舗所在地（江古田／白山）」「会員ランク（ゴールド／一般）」といった、
+「文字（カテゴリーデータ）」が含まれていることが非常に多いです。</p>
+<p>AIモデルは数学の計算マシンなので、そのまま <code class="docutils literal notranslate"><span class="pre">&quot;昼&quot;</span></code> や <code class="docutils literal notranslate"><span class="pre">&quot;夜&quot;</span></code> という文字を式に足すことはできません。
+そこで、文字データをAIが理解できる 0 と 1 の数字に翻訳してあげる作業が必要になります。
+これを「ワンホットエンコーディング（One-Hot Encoding）」と呼びます。</p>
+<p>【ワンホットエンコーディングのビジュアル変換図】</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  ▼ 元のデータ（文字が含まれる）               ▼ 変換後（AIが理解できる0と1のフラグ列に分裂する！）
+   │ 顧客名 │ 時間帯 │                         │ 顧客名 │ 時間帯_夜 │ 時間帯_昼 │
+   │ 山田   │ 昼     │     ── pd.get_dummies ─▶ │ 山田   │     0     │     1     │
+   │ 佐藤   │ 夜     │                          │ 佐藤   │     1     │     0     │
+   │ 鈴木   │ 昼     │                          │ 鈴木   │     0     │     1     │
+</pre></div>
+</div>
+<p>Pandasの便利なメソッド <code class="docutils literal notranslate"><span class="pre">pd.get_dummies()</span></code> を使うと、指定した文字の列を自動的に「その文字であるか(1)・ないか(0)」の列に
+分裂させ、数値に変換してくれます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ワンホットエンコーディングの実験</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">df_text</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"メニュー名"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"ブレンドコーヒー"</span><span class="p">,</span> <span class="s2">"アイスラテ"</span><span class="p">,</span> <span class="s2">"チョコケーキ"</span><span class="p">],</span>
+    <span class="s2">"カテゴリ"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"ドリンク"</span><span class="p">,</span> <span class="s2">"ドリンク"</span><span class="p">,</span> <span class="s2">"フード"</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 変換前のデータフレーム ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_text</span><span class="p">)</span>
+
+<span class="c1"># pd.get_dummies を使って、文字の列「カテゴリ」を 0 と 1 のダミー変数に一発変換！</span>
+<span class="c1"># dtype=int をつけると True/False ではなく 1 と 0 で出力されます。</span>
+<span class="n">df_encoded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df_text</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"カテゴリ"</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">--- ワンホットエンコーディング変換後のデータフレーム ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_encoded</span><span class="p">)</span> <span class="c1"># カテゴリ列が「カテゴリ_ドリンク」と「カテゴリ_フード」の数値に変わりました！</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id10">
+<h2>📝 練習問題（5問）<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<hr class="docutils" />
+<section id="id11">
+<h3>練習問題 1: 教師あり学習（回帰・分類）と教師なし学習の判別<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<p>以下に挙げる3つのAI活用事例は、「教師あり学習（回帰）」「教師あり学習（分類）」「教師なし学習」のどれに該当するか、それぞれ答えてください。</p>
+<ol class="arabic simple">
+<li><p>スマートフォンの写真アプリが、写真に写っているのが「犬」か「猫」かを判定してフォルダ分けする機能。</p></li>
+<li><p>不動産サイトで、土地の広さや駅からの距離を入力すると、予想される「家賃（円）」を画面に出力する機能。</p></li>
+<li><p>スーパーの購買データから、特に指示をしていないのに、AIが自動的に「子育てファミリー層」「一人暮らしシニア層」といったグループ分けを行う機能。</p></li>
+</ol>
+<details>
+<summary>👉 練習問題 1 の解答を見る</summary>
+<ul class="simple">
+<li><p>正解:</p>
+<ol class="arabic simple">
+<li><p>写真の判定 ➡ 教師あり学習（分類）</p>
+<ul>
+<li><p>解説: 「犬」か「猫」という、あらかじめ決められた「カテゴリー（グループ）」のどれに属するかを予測するタスクだからです。</p></li>
+</ul>
+</li>
+<li><p>予想家賃の出力 ➡ 教師あり学習（回帰）</p>
+<ul>
+<li><p>解説: 「家賃（円）」という、連続した「数値」そのものを予測するタスクだからです。</p></li>
+</ul>
+</li>
+<li><p>自動グループ分け ➡ 教師なし学習（クラスタリング）</p>
+<ul>
+<li><p>解説: 予め「この人はファミリー層」という正解ラベル（答え）を与えずに、データの特徴だけを頼りに自動で似た者同士をグルーピングしているからです。</p></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id12">
+<h3>練習問題 2: 線形回帰式の読み取りと予測計算<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<p>あるカフェの「最高気温 ((x))」から「アイスコーヒーの売上杯数 ((y))」を予測する単回帰モデルを構築したところ、以下のような数式（ルール）が得られました。</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[y = 4.2x - 55.0\]</div>
+</div>
+<ol class="arabic simple">
+<li><p>この式の傾き「<code class="docutils literal notranslate"><span class="pre">4.2</span></code>」は、ビジネスにおいてどのような意味を持っているか説明してください。</p></li>
+<li><p>明日の予想最高気温が「30度」だった場合、AIが予測するアイスコーヒーの売上は何杯になるか計算してください。</p></li>
+</ol>
+<details>
+<summary>👉 練習問題 2 の解答を見る</summary>
+<ul class="simple">
+<li><p>正解:</p>
+<ol class="arabic simple">
+<li><p>傾き「<code class="docutils literal notranslate"><span class="pre">4.2</span></code>」の意味：「最高気温が 1度 上がるごとに、アイスコーヒーの売上が平均して 4.2杯 増える」という関係性。</p></li>
+<li><p>30度の時の予測杯数：71杯</p>
+<ul>
+<li><p><em>計算式</em>: (y = 4.2 \times 30 - 55.0 = 126.0 - 55.0 = 71.0)（杯）</p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>解説:</p>
+<ul>
+<li><p>このように、数式が1つ得られれば、任意のヒント（気温30度）を入力するだけで、未来の数値を掛け算と足し算（引き算）だけで一発で予測できるようになります。これが回帰分析の最大の魅力です。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id13">
+<h3>練習問題 3: 過学習（オーバーフィッティング）の要因と対策<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<p>機械学習モデルを訓練したところ、「学習用データに対する決定係数（(R^2)）は 0.99 とほぼ完璧だったが、テスト用データに対する決定係数は 0.25 と壊滅的だった」という状態になりました。</p>
+<ol class="arabic simple">
+<li><p>このような、手元のデータにだけ過剰に適合し、新しいデータに対応できなくなった状態を何と呼びますか？</p></li>
+<li><p>この現象が起こってしまう「代表的な原因」を1つ挙げてください。</p></li>
+</ol>
+<details>
+<summary>👉 練習問題 3 の解答を見る</summary>
+<ul class="simple">
+<li><p>正解:</p>
+<ol class="arabic simple">
+<li><p>状態の名前：過学習（またはオーバーフィッティング：Overfitting）</p></li>
+<li><p>代表的な原因（いずれか1つ）：</p>
+<ul>
+<li><p>用意したデータ全体の件数が少なすぎたため。</p></li>
+<li><p>説明変数（ヒント）に対して、データの構造が複雑（グネグネ）になりすぎたため。</p></li>
+<li><p>モデルが学習データの特徴（ノイズまで含む）を「丸暗記」してしまったため。</p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>解説:</p>
+<ul>
+<li><p>よくある失敗パターンです。これを防ぐためには、データの件数を十分に増やす、あるいは、極端に複雑な数式を使わずにシンプルなモデル（直線など）を使用する、といった対策が有効です。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="train-test-split">
+<h3>練習問題 4: <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> の引数の理解<a class="headerlink" href="#train-test-split" title="Link to this heading">¶</a></h3>
+<p>データを学習用とテスト用に分割する際、以下のようなコードを実行しました。</p>
+<p><code class="docutils literal notranslate"><span class="pre">X_train,</span> <span class="pre">X_test,</span> <span class="pre">y_train,</span> <span class="pre">y_test</span> <span class="pre">=</span> <span class="pre">train_test_split(X,</span> <span class="pre">y,</span> <span class="pre">test_size=0.25,</span> <span class="pre">random_state=42)</span></code></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">test_size=0.25</span></code> と指定したことで、全体の何%のデータが「テスト用」として取り分けられますか？</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">random_state=42</span></code> を設定する理由を説明してください。</p></li>
+</ol>
+<details>
+<summary>👉 練習問題 4 の解答を見る</summary>
+<ul class="simple">
+<li><p>正解:</p>
+<ol class="arabic simple">
+<li><p>テスト用の割合：25%（残りの75%が学習用になります）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">random_state=42</span></code> の理由：データをランダムに分割する際の「シャッフルの仕方のパターン」を42番というキーで固定し、プログラムを実行するたびに分割結果が毎回変わってしまうのを防ぐため。</p></li>
+</ol>
+</li>
+<li><p>解説:</p>
+<ul>
+<li><p>もし <code class="docutils literal notranslate"><span class="pre">random_state</span></code> を書き忘れると、セルを実行するたびに「たまたま学習に都合の良いデータ」が学習用に回ってしまい、AIのテスト点数（決定係数）が毎回コロコロ変わってしまいます。実験の公平性を守り、同じコードなら誰が実行しても同じ点数になるように、常にこのおまじない数値を固定して指定します。（数値は 42 でも 0 100 でも、任意の整数で構いません）。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id14">
+<h3>練習問題 5: 重回帰における「多重共線性（マルチコ）」の回避<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<p>あるカフェの売上予測を行うために、以下の4つのデータをヒント（説明変数）として集めました。
+重回帰モデルを構築するにあたり、多重共線性の罠を回避するために「絶対に同時にヒントとして組み込んではいけない」組み合わせはどれでしょうか？</p>
+<ul class="simple">
+<li><p>[データA] 最高気温（℃）</p></li>
+<li><p>[データB] 最低気温（℃）</p></li>
+<li><p>[データC] チラシの店頭配布数（枚）</p></li>
+<li><p>[データD] 本日の天気（雨＝1、晴れ＝0）</p></li>
+</ul>
+<details>
+<summary>👉 練習問題 5 の解答を見る</summary>
+<ul class="simple">
+<li><p>正解: 「[データA] 最高気温」と「[データB] 最低気温」の組み合わせ</p></li>
+<li><p>解説:</p>
+<ul>
+<li><p>最高気温が高い日は、当然最低気温も高くなる傾向（非常に強い相関関係）があります。このように、お互いが「ほぼ同じ情報」を持っているペアを同時に重回帰モデルに入れてしまうと、数式の分母がゼロに近づくような現象が起こり、傾き（coef_）の計算が大暴走して予測精度が著しく低下（マルチコバグが発生）します。</p></li>
+<li><p>「最高気温」と「チラシ」や、「最低気温」と「天気」などの組み合わせは、お互いに全く異なる視点の新しいヒントであるため、同時に組み込んでも何の問題もありません。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id15">
+<h2>🌟 レベルアップするおすすめコード<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
+<p>予測に使うヒント（説明変数）を2つに増やし、さらに今回の文字データ数値化を組み込んだ「重回帰分析の完全パイプライン」のデモです。
+「気温」に加えて、「曜日（平日／土日）」という文字データをダミー変数化し、これらを組み合わせて売上を完璧に予測する流れのコードです</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">コードセル</span> <span class="o">--&gt;</span>
+<span class="c1"># 文字と数字を組み合わせた「高度な重回帰分析」のデモ</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">r2_score</span><span class="p">,</span> <span class="n">mean_absolute_error</span>
+
+<span class="c1"># 1. 模擬データ（気温、曜日、アイスコーヒー売上高）の作成</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">temp_demo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">day_type_demo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">"平日"</span><span class="p">,</span> <span class="s2">"土日"</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># ランダムに配置</span>
+
+<span class="c1"># 基本売上は、気温に比例し、さらに「土日」なら1万円売上がアップする</span>
+<span class="c1"># 土日なら 10000、平日なら 0 加算</span>
+<span class="n">day_effect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">day_type_demo</span> <span class="o">==</span> <span class="s2">"土日"</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">sales_demo</span> <span class="o">=</span> <span class="n">temp_demo</span> <span class="o">*</span> <span class="mi">1500</span> <span class="o">+</span> <span class="n">day_effect</span> <span class="o">+</span> <span class="mi">5000</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">df_advanced</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"気温"</span><span class="p">:</span> <span class="n">temp_demo</span><span class="p">,</span>
+    <span class="s2">"曜日区分"</span><span class="p">:</span> <span class="n">day_type_demo</span><span class="p">,</span>
+    <span class="s2">"売上高"</span><span class="p">:</span> <span class="n">sales_demo</span>
+<span class="p">})</span>
+
+<span class="c1"># 2. 【最重要】文字データ（曜日区分）を 0 と 1 の数値にワンホットエンコーディング！</span>
+<span class="n">df_processed</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df_advanced</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"曜日区分"</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- ワンホット変換後の表（先頭3行） ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_processed</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># 3. 説明変数X（気温、曜日区分_土日）と目的変数yの指定</span>
+<span class="c1"># ※曜日区分_平日は「曜日区分_土日が0」のとき自動的に平日を意味するため、</span>
+<span class="c1">#   多重共線性を防ぐため、片方（曜日区分_土日）だけをヒントに使います（drop_firstの思想）。</span>
+<span class="n">X_adv</span> <span class="o">=</span> <span class="n">df_processed</span><span class="p">[[</span><span class="s2">"気温"</span><span class="p">,</span> <span class="s2">"曜日区分_土日"</span><span class="p">]]</span>
+<span class="n">y_adv</span> <span class="o">=</span> <span class="n">df_processed</span><span class="p">[</span><span class="s2">"売上高"</span><span class="p">]</span>
+
+<span class="c1"># 4. データ分割</span>
+<span class="n">X_train_a</span><span class="p">,</span> <span class="n">X_test_a</span><span class="p">,</span> <span class="n">y_train_a</span><span class="p">,</span> <span class="n">y_test_a</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_adv</span><span class="p">,</span> <span class="n">y_adv</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># 5. 学習</span>
+<span class="n">adv_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">adv_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_a</span><span class="p">,</span> <span class="n">y_train_a</span><span class="p">)</span>
+
+<span class="c1"># 6. 予測と評価</span>
+<span class="n">y_pred_a</span> <span class="o">=</span> <span class="n">adv_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_a</span><span class="p">)</span>
+<span class="n">r2_adv</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test_a</span><span class="p">,</span> <span class="n">y_pred_a</span><span class="p">)</span>
+<span class="n">mae_adv</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test_a</span><span class="p">,</span> <span class="n">y_pred_a</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">--- 高度な重回帰モデルの評価結果 ---"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"決定係数 (R²): </span><span class="si">{</span><span class="n">r2_adv</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">  (非常に高い予測精度がでました！)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"平均誤差 (MAE): </span><span class="si">{</span><span class="n">mae_adv</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"予測式: 売上 ＝ 気温 ✕ </span><span class="si">{</span><span class="n">adv_model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">円 ＋ 土日フラグ ✕ </span><span class="si">{</span><span class="n">adv_model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">円 ＋ </span><span class="si">{</span><span class="n">adv_model</span><span class="o">.</span><span class="n">intercept_</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">円"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id16">
+<h2>💻 演習演習（5問）<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h2>
+<hr class="docutils" />
+<section id="id17">
+<h3>演習 1: 広告投資による売上予測（単回帰モデルの構築）<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<p>あるアパレルブランドの「インターネット広告費（万円）」と、その月の「総売上高（万円）」のデータがあります。
+広告費から総売上高を自動で予測する「単回帰モデル」を構築してください。</p>
+<ol class="arabic simple">
+<li><p>説明変数 <code class="docutils literal notranslate"><span class="pre">X_ad</span></code> に「広告費」列、目的変数 <code class="docutils literal notranslate"><span class="pre">y_revenue</span></code> に「総売上高」列を指定してください（Xを2次元データフレーム型、yを1次元シリーズ型にすることを厳守すること）。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> を使い、データを学習用（75%）とテスト用（25%）に分割してください。シャッフルの仕方を固定するため <code class="docutils literal notranslate"><span class="pre">random_state=42</span></code> を設定してください。</p></li>
+<li><p>学習用データを用いて、線形回帰モデル <code class="docutils literal notranslate"><span class="pre">ad_model</span></code> を学習（<code class="docutils literal notranslate"><span class="pre">.fit()</span></code>）させてください。</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="c1"># 店舗データ</span>
+<span class="n">df_shop</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"広告費"</span><span class="p">:</span> <span class="p">[</span><span class="mf">12.5</span><span class="p">,</span> <span class="mf">25.0</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">,</span> <span class="mf">30.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">,</span> <span class="mf">22.0</span><span class="p">,</span> <span class="mf">18.5</span><span class="p">,</span> <span class="mf">35.0</span><span class="p">,</span> <span class="mf">10.5</span><span class="p">,</span> <span class="mf">28.0</span><span class="p">],</span>
+    <span class="s2">"総売上高"</span><span class="p">:</span> <span class="p">[</span><span class="mf">150.0</span><span class="p">,</span> <span class="mf">280.0</span><span class="p">,</span> <span class="mf">180.0</span><span class="p">,</span> <span class="mf">320.0</span><span class="p">,</span> <span class="mf">110.0</span><span class="p">,</span> <span class="mf">250.0</span><span class="p">,</span> <span class="mf">210.0</span><span class="p">,</span> <span class="mf">380.0</span><span class="p">,</span> <span class="mf">130.0</span><span class="p">,</span> <span class="mf">300.0</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># TODO: 1. 説明変数X_adと目的変数y_revenueの作成</span>
+<span class="n">X_ad</span> <span class="o">=</span> 
+<span class="n">y_revenue</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 2. データを学習用(75%)とテスト用(25%)に分割</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 3. モデルの定義と学習</span>
+<span class="n">ad_model</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"【演習1】モデル構築完了。学習用データの件数:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">))</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習1: 解答コードを見る</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. 説明変数X_adと目的変数y_revenueの作成</span>
+<span class="n">X_ad</span> <span class="o">=</span> <span class="n">df_shop</span><span class="p">[[</span><span class="s2">"広告費"</span><span class="p">]]</span> <span class="c1"># [[ ]] で2次元に</span>
+<span class="n">y_revenue</span> <span class="o">=</span> <span class="n">df_shop</span><span class="p">[</span><span class="s2">"総売上高"</span><span class="p">]</span>
+
+<span class="c1"># 2. データを学習用(75%)とテスト用(25%)に分割</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_ad</span><span class="p">,</span> <span class="n">y_revenue</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># 3. モデルの定義と学習</span>
+<span class="n">ad_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">ad_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id18">
+<h3>演習 2: 複数ヒントによる売上予測（重回帰モデルの構築）<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<p>演習1のデータに、「店舗の駅からの距離（徒歩分）」という新しいデータを追加しました。
+広告費（多いほど売上アップ）と、駅からの距離（遠いほど売上ダウン）の、2つのヒントを使って売上をより精密に予測する
+「重回帰モデル」を構築してください。</p>
+<ol class="arabic simple">
+<li><p>説明変数 <code class="docutils literal notranslate"><span class="pre">X_multi</span></code> に「広告費」列と「駅からの距離」列を同時に指定してください（2次元データフレーム型にすること）。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> を使い、データを学習用（75%）とテスト用（25%）に分割してください。<code class="docutils literal notranslate"><span class="pre">random_state=42</span></code> を設定してください。</p></li>
+<li><p>学習用データを用いて、線形回帰モデル <code class="docutils literal notranslate"><span class="pre">shop_multi_model</span></code> を学習（<code class="docutils literal notranslate"><span class="pre">.fit()</span></code>）させてください。</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="c1"># 駅距離データが追加された店舗データ</span>
+<span class="n">df_shop_advanced</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"広告費"</span><span class="p">:</span> <span class="p">[</span><span class="mf">12.5</span><span class="p">,</span> <span class="mf">25.0</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">,</span> <span class="mf">30.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">,</span> <span class="mf">22.0</span><span class="p">,</span> <span class="mf">18.5</span><span class="p">,</span> <span class="mf">35.0</span><span class="p">,</span> <span class="mf">10.5</span><span class="p">,</span> <span class="mf">28.0</span><span class="p">],</span>
+    <span class="s2">"駅からの距離"</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="c1"># 徒歩分</span>
+    <span class="s2">"総売上高"</span><span class="p">:</span> <span class="p">[</span><span class="mf">150.0</span><span class="p">,</span> <span class="mf">280.0</span><span class="p">,</span> <span class="mf">180.0</span><span class="p">,</span> <span class="mf">320.0</span><span class="p">,</span> <span class="mf">110.0</span><span class="p">,</span> <span class="mf">250.0</span><span class="p">,</span> <span class="mf">210.0</span><span class="p">,</span> <span class="mf">380.0</span><span class="p">,</span> <span class="mf">130.0</span><span class="p">,</span> <span class="mf">300.0</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># TODO: 1. 説明変数X_multiと目的変数yの作成</span>
+<span class="n">X_multi</span> <span class="o">=</span> 
+<span class="n">y</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 2. データを学習用とテスト用に分割</span>
+<span class="n">X_train_m</span><span class="p">,</span> <span class="n">X_test_m</span><span class="p">,</span> <span class="n">y_train_m</span><span class="p">,</span> <span class="n">y_test_m</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 3. モデルの定義と学習</span>
+<span class="n">shop_multi_model</span> <span class="o">=</span> 
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"【演習2】重回帰モデルの学習完了。"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"導き出した傾き: 広告費影響 ＝ </span><span class="si">{</span><span class="n">shop_multi_model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, 駅距離影響 ＝ </span><span class="si">{</span><span class="n">shop_multi_model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習2: 模範解答コードを見る</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. 説明変数X_multiと目的変数yの作成</span>
+<span class="n">X_multi</span> <span class="o">=</span> <span class="n">df_shop_advanced</span><span class="p">[[</span><span class="s2">"広告費"</span><span class="p">,</span> <span class="s2">"駅からの距離"</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_shop_advanced</span><span class="p">[</span><span class="s2">"総売上高"</span><span class="p">]</span>
+
+<span class="c1"># 2. データを学習用とテスト用に分割</span>
+<span class="n">X_train_m</span><span class="p">,</span> <span class="n">X_test_m</span><span class="p">,</span> <span class="n">y_train_m</span><span class="p">,</span> <span class="n">y_test_m</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_multi</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># 3. モデルの定義と学習</span>
+<span class="n">shop_multi_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">shop_multi_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_m</span><span class="p">,</span> <span class="n">y_train_m</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="ai-mae">
+<h3>演習 3: 自作AIの採点と予測ズレ（MAE）の測定<a class="headerlink" href="#ai-mae" title="Link to this heading">¶</a></h3>
+<p>演習2で構築・学習させた <code class="docutils literal notranslate"><span class="pre">shop_multi_model</span></code> を使って、隠しておいたテストデータ（実力テスト）に対する予測を行い、
+モデルの賢さを数値（評価指標）で算出してください。</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">shop_multi_model</span></code> を使い、テストデータ（<code class="docutils literal notranslate"><span class="pre">X_test_m</span></code>）に対する売上高の予測を算出して変数 <code class="docutils literal notranslate"><span class="pre">y_pred_m</span></code> に代入してください。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r2_score</span></code> を使って決定係数を計算し、変数 <code class="docutils literal notranslate"><span class="pre">score_r2</span></code> に代入して出力してください。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mean_absolute_error</span></code> を使って平均絶対誤差を計算し、変数 <code class="docutils literal notranslate"><span class="pre">score_mae</span></code> に代入して出力してください。</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">r2_score</span><span class="p">,</span> <span class="n">mean_absolute_error</span>
+
+<span class="c1"># TODO: 1. テストデータ X_test_m に対する予測を実行</span>
+<span class="n">y_pred_m</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 2. 決定係数(R²)を計算</span>
+<span class="n">score_r2</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 3. 平均絶対誤差(MAE)を計算</span>
+<span class="n">score_mae</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 【演習3】自作AIの採点結果 ---"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"総合得点 (R²値) : </span><span class="si">{</span><span class="n">score_r2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"平均的なズレ (MAE) : </span><span class="si">{</span><span class="n">score_mae</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> 万円"</span><span class="p">)</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習3: 解答コードを見る</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. テストデータ X_test_m に対する予測を実行</span>
+<span class="n">y_pred_m</span> <span class="o">=</span> <span class="n">shop_multi_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_m</span><span class="p">)</span>
+
+<span class="c1"># 2. 決定係数(R²)を計算</span>
+<span class="n">score_r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test_m</span><span class="p">,</span> <span class="n">y_pred_m</span><span class="p">)</span>
+
+<span class="c1"># 3. 平均絶対誤差(MAE)を計算</span>
+<span class="n">score_mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test_m</span><span class="p">,</span> <span class="n">y_pred_m</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id19">
+<h3>演習 4: 文字データのダミー変数化と売上予測<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<p>カフェの売上データに、新しく「メニューカテゴリ」という文字（<code class="docutils literal notranslate"><span class="pre">&quot;ドリンク&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;フード&quot;</span></code>）のデータが追加されました。
+この文字データをワンホットエンコーディング（ダミー変数化）して数値化した上で、売上高を予測する線形回帰モデルを構築してください。</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pd.get_dummies()</span></code> を使い、<code class="docutils literal notranslate"><span class="pre">df_cafe_advanced</span></code> の「メニューカテゴリ」列をワンホットエンコーディングに変換し、新しいデータフレーム <code class="docutils literal notranslate"><span class="pre">df_dummies</span></code> を作成してください（<code class="docutils literal notranslate"><span class="pre">dtype=int</span></code> を指定すること）。</p></li>
+<li><p>説明変数 <code class="docutils literal notranslate"><span class="pre">X_dummies</span></code> に「価格（円）」列と、新しく分裂してできた「メニューカテゴリ_フード」列の2つを指定してください。目的変数 <code class="docutils literal notranslate"><span class="pre">y_sales</span></code> に「販売数」列を指定してください。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> でデータを学習用（70%）、テスト用（30%）に分割してください。<code class="docutils literal notranslate"><span class="pre">random_state=42</span></code> を設定してください。</p></li>
+<li><p>学習用データを用いて、線形回帰モデル <code class="docutils literal notranslate"><span class="pre">category_model</span></code> を学習（<code class="docutils literal notranslate"><span class="pre">.fit()</span></code>）させてください。</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="c1"># 新しいカフェデータ</span>
+<span class="n">df_cafe_advanced</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"価格（円）"</span><span class="p">:</span> <span class="p">[</span><span class="mi">400</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">350</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">550</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">380</span><span class="p">,</span> <span class="mi">520</span><span class="p">,</span> <span class="mi">580</span><span class="p">],</span>
+    <span class="s2">"メニューカテゴリ"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"ドリンク"</span><span class="p">,</span> <span class="s2">"ドリンク"</span><span class="p">,</span> <span class="s2">"フード"</span><span class="p">,</span> <span class="s2">"ドリンク"</span><span class="p">,</span> <span class="s2">"フード"</span><span class="p">,</span> <span class="s2">"フード"</span><span class="p">,</span> <span class="s2">"ドリンク"</span><span class="p">,</span> <span class="s2">"ドリンク"</span><span class="p">,</span> <span class="s2">"フード"</span><span class="p">,</span> <span class="s2">"フード"</span><span class="p">],</span>
+    <span class="s2">"販売数"</span><span class="p">:</span> <span class="p">[</span><span class="mi">120</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">55</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># TODO: 1. メニューカテゴリ列をワンホットエンコーディングに変換</span>
+<span class="n">df_dummies</span> <span class="o">=</span> 
+
+<span class="c1"># 変換後のカラム名を確認（ここは直さなくてOK）</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"変換後のカラム一覧:"</span><span class="p">,</span> <span class="n">df_dummies</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+
+<span class="c1"># TODO: 2. 説明変数X_dummiesと目的変数y_salesの作成</span>
+<span class="n">X_dummies</span> <span class="o">=</span> 
+<span class="n">y_sales</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 3. データを学習用(70%)とテスト用(30%)に分割</span>
+<span class="n">X_train_d</span><span class="p">,</span> <span class="n">X_test_d</span><span class="p">,</span> <span class="n">y_train_d</span><span class="p">,</span> <span class="n">y_test_d</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 4. モデルの定義と学習</span>
+<span class="n">category_model</span> <span class="o">=</span> 
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">【演習4】カテゴリ変数を含めた学習が成功しました！"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"フードカテゴリである場合、売上数は平均して </span><span class="si">{</span><span class="n">category_model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">個 変化するルールを導出しました。"</span><span class="p">)</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習4: 解答コードを見る</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. メニューカテゴリ列をワンホットエンコーディングに変換</span>
+<span class="n">df_dummies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df_cafe_advanced</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"メニューカテゴリ"</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># 2. 説明変数X_dummiesと目的変数y_salesの作成</span>
+<span class="c1"># ※「メニューカテゴリ_フード」と「価格（円）」を指定</span>
+<span class="n">X_dummies</span> <span class="o">=</span> <span class="n">df_dummies</span><span class="p">[[</span><span class="s2">"価格（円）"</span><span class="p">,</span> <span class="s2">"メニューカテゴリ_フード"</span><span class="p">]]</span>
+<span class="n">y_sales</span> <span class="o">=</span> <span class="n">df_dummies</span><span class="p">[</span><span class="s2">"販売数"</span><span class="p">]</span>
+
+<span class="c1"># 3. データを学習用(70%)とテスト用(30%)に分割</span>
+<span class="n">X_train_d</span><span class="p">,</span> <span class="n">X_test_d</span><span class="p">,</span> <span class="n">y_train_d</span><span class="p">,</span> <span class="n">y_test_d</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_dummies</span><span class="p">,</span> <span class="n">y_sales</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># 4. モデルの定義と学習</span>
+<span class="n">category_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">category_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_d</span><span class="p">,</span> <span class="n">y_train_d</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id20">
+<h3>演習 5: 特徴量の標準化と重回帰パイプライン<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<p>実務のデータ分析で直面する最大の壁が、予測ヒントとなるデータの「単位（スケール）のバラツキ」です。
+例えば、「客数（数十人レベル）」と「店舗の広告宣伝費（数十万円レベル）」をそのまま同時に重回帰モデルに与えると、単位の桁数が違いすぎるため、AIは「広告宣伝費のほうが数値が大きいから、超重要ヒントに違いない！」と勘違い（偏った傾きを学習）してしまいます。</p>
+<p>これを防ぐために、すべての説明変数の平均を0、標準偏差を1に変換してスケールを統一する 「標準化（Standardization）」 という最重要前処理を行います。</p>
+<p>scikit-learnの <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> を用い、標準化を行ってから重回帰モデルを構築・予測・評価する「最高峰の機械学習パイプライン」を完成させてください！</p>
+<ol class="arabic simple">
+<li><p>説明変数 <code class="docutils literal notranslate"><span class="pre">X</span></code> に「客数」列と「広告費」列を指定し、目的変数 <code class="docutils literal notranslate"><span class="pre">y</span></code> に「売上高」列を指定してください。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> でデータを学習用（80%）、テスト用（20%）に分割してください。<code class="docutils literal notranslate"><span class="pre">random_state=42</span></code> を設定してください。</p></li>
+<li><p>【標準化の実践】： <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> のインスタンスを作成し、学習用データ <code class="docutils literal notranslate"><span class="pre">X_train</span></code> にのみ <code class="docutils literal notranslate"><span class="pre">.fit_transform()</span></code> を実行して標準化された <code class="docutils literal notranslate"><span class="pre">X_train_scaled</span></code> を作成してください。その後、テスト用データ <code class="docutils literal notranslate"><span class="pre">X_test</span></code> に対しては <code class="docutils literal notranslate"><span class="pre">.transform()</span></code> のみを実行して標準化された <code class="docutils literal notranslate"><span class="pre">X_test_scaled</span></code> を作成してください（※テストデータに対して fit を行ってはいけないという、実務上の最重要ルールがあります）。</p></li>
+<li><p>標準化された学習データ <code class="docutils literal notranslate"><span class="pre">X_train_scaled</span></code> と <code class="docutils literal notranslate"><span class="pre">y_train</span></code> を用いて、線形回帰モデル <code class="docutils literal notranslate"><span class="pre">standardized_model</span></code> を学習（<code class="docutils literal notranslate"><span class="pre">.fit()</span></code>）させてください。</p></li>
+<li><p>標準化されたテストデータ <code class="docutils literal notranslate"><span class="pre">X_test_scaled</span></code> を用いて予測を算出し、決定係数（R²）と平均絶対誤差（MAE）を出力してください。</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span> <span class="c1"># 【新規】標準化を行うツール</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">r2_score</span><span class="p">,</span> <span class="n">mean_absolute_error</span>
+
+<span class="c1"># 単位が全く異なる店舗データ（客数は2桁、広告費は5桁！）</span>
+<span class="n">df_real_business</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"客数"</span><span class="p">:</span> <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">110</span><span class="p">],</span> <span class="c1"># 人</span>
+    <span class="s2">"広告費"</span><span class="p">:</span> <span class="p">[</span><span class="mi">15000</span><span class="p">,</span> <span class="mi">80000</span><span class="p">,</span> <span class="mi">35000</span><span class="p">,</span> <span class="mi">200000</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="mi">20000</span><span class="p">,</span> <span class="mi">120000</span><span class="p">,</span> <span class="mi">40000</span><span class="p">,</span> <span class="mi">90000</span><span class="p">,</span> <span class="mi">45000</span><span class="p">],</span> <span class="c1"># 円</span>
+    <span class="s2">"売上高"</span><span class="p">:</span> <span class="p">[</span><span class="mi">120000</span><span class="p">,</span> <span class="mi">450000</span><span class="p">,</span> <span class="mi">280000</span><span class="p">,</span> <span class="mi">980000</span><span class="p">,</span> <span class="mi">390000</span><span class="p">,</span> <span class="mi">180000</span><span class="p">,</span> <span class="mi">720000</span><span class="p">,</span> <span class="mi">300000</span><span class="p">,</span> <span class="mi">580000</span><span class="p">,</span> <span class="mi">320000</span><span class="p">]</span> <span class="c1"># 円</span>
+<span class="p">})</span>
+
+<span class="c1"># TODO: 1. 説明変数Xと目的変数yの作成</span>
+<span class="n">X</span> <span class="o">=</span> 
+<span class="n">y</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 2. データを学習用(80%)とテスト用(20%)に分割</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 3. StandardScalerによる特徴量の標準化</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="c1"># 学習用データに対しては fit_transform() を行う</span>
+<span class="n">X_train_scaled</span> <span class="o">=</span> 
+<span class="c1"># テスト用データに対しては transform() のみを行う！</span>
+<span class="n">X_test_scaled</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 4. 標準化されたデータを用いたモデルの定義と学習</span>
+<span class="n">standardized_model</span> <span class="o">=</span> 
+
+
+<span class="c1"># TODO: 5. 予測の実行と、R²、MAEの算出</span>
+<span class="n">y_pred</span> <span class="o">=</span> 
+<span class="n">r2</span> <span class="o">=</span> 
+<span class="n">mae</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 【演習5】標準化重回帰モデルの評価結果 ---"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"決定係数 (R²): </span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> (標準化を行っても完璧な関係が保たれています！)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"平均的なズレ (MAE): </span><span class="si">{</span><span class="n">mae</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> 円"</span><span class="p">)</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習5: 解答コードを見る</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. 説明変数Xと目的変数yの作成</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_real_business</span><span class="p">[[</span><span class="s2">"客数"</span><span class="p">,</span> <span class="s2">"広告費"</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_real_business</span><span class="p">[</span><span class="s2">"売上高"</span><span class="p">]</span>
+
+<span class="c1"># 2. データを学習用(80%)とテスト用(20%)に分割</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># 3. StandardScalerによる特徴量の標準化</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span> <span class="c1"># 学習用データでスケールを学習＆変換</span>
+<span class="n">X_test_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>       <span class="c1"># テストデータは学習データのスケール基準で変換</span>
+
+<span class="c1"># 4. 標準化されたデータを用いたモデルの定義と学習</span>
+<span class="n">standardized_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">standardized_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># 5. 予測の実行と、R²、MAEの算出</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">standardized_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id21">
+<h2>📚 まとめ<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>機械学習の3大分類：データから自動でルールを学ぶ「教師あり学習」「教師なし学習」「強化学習」がある。</p></li>
+<li><p>回帰と分類：数値を予測するのが「回帰（Regression）」、カテゴリ（犬か猫かなど）を予測するのが「分類（Classification）」。</p></li>
+<li><p>過学習（オーバーフィッティング）：過去データの丸暗記により、未来の予測が当たらなくなること。これを防ぐためにデータを「学習用（教科書）」と「テスト用（本番試験）」に分割する。</p></li>
+<li><p>モデルの評価：AIの総合得点は「決定係数 (R^2)」（1.0に近いほど優秀）、具体的な予測のズレは「平均絶対誤差 MAE」（元の単位で表され、小さいほど優秀）で測る。</p></li>
+<li><p>多重共線性（マルチコ）：重回帰において、似たような説明変数（例：最高気温と最低気温）を同時にヒントに与えると、AIがパニックを起こして予測がバグる現象。どちらか一方を削除して回避する。</p></li>
+<li><p>ワンホットエンコーディング：AIは文字が読めないため、<code class="docutils literal notranslate"><span class="pre">pd.get_dummies()</span></code> を使ってカテゴリーデータを 0 と 1 のフラグ列に変換する。</p></li>
+</ul>
+</section>
 </section>
 
         </article>
@@ -387,7 +1253,7 @@
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">第9回 地理空間データの活⽤2</div>
+                <div class="title">第9回 地理空間データの活用2</div>
                 
               </div>
             </a>
@@ -398,7 +1264,7 @@
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-09-01</div>
+              Last updated on 2026-09-02</div>
           </div>
           <div class="right-details">
             
@@ -407,8 +1273,73 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">第10回 PythonとAI (scikit-learn) 1</a><ul>
+<li><a class="reference internal" href="#id1">🎯 到達目標</a></li>
+<li><a class="reference internal" href="#google-colab">練習問題のGoogle Colab起動</a></li>
+<li><a class="reference internal" href="#id2">用語説明</a></li>
+<li><a class="reference internal" href="#ai-machine-learning">AI・機械学習（Machine Learning）の全体像</a><ul>
+<li><a class="reference internal" href="#id3">機械学習の3大グループ</a></li>
+<li><a class="reference internal" href="#id4">教師あり学習の中の2つのアプローチ：「分類」と「回帰」</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">線形回帰（単回帰）の直感的メカニズム</a><ul>
+<li><a class="reference internal" href="#ai1">AIはどうやって「最も綺麗な1本線」を引くのか？（最小二乗法）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#overfitting">機械学習の生命線：過学習（Overfitting）とデータの分割</a><ul>
+<li><a class="reference internal" href="#id6">「過去問の丸暗記」による不合格の罠（過学習）</a></li>
+<li><a class="reference internal" href="#id7">黄金の3ステップ「分割 ➡ 学習 ➡ 予測・評価」</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fit">ステップ 2: モデルの学習（.fit()）</a><ul>
+<li><a class="reference internal" href="#multiple-regression">重回帰（Multiple Regression）分析の罠</a><ul>
+<li><a class="reference internal" href="#multicollinearity">多重共線性（マルチコ：Multicollinearity）の恐怖</a><ul>
+<li><a class="reference internal" href="#id8">回避するルール</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scikit-learn">実践：scikit-learnでの重回帰モデル構築</a></li>
+<li><a class="reference internal" href="#id9">特徴量エンジニアリング（文字データの数値化）の基礎</a></li>
+<li><a class="reference internal" href="#id10">📝 練習問題（5問）</a><ul>
+<li><a class="reference internal" href="#id11">練習問題 1: 教師あり学習（回帰・分類）と教師なし学習の判別</a></li>
+<li><a class="reference internal" href="#id12">練習問題 2: 線形回帰式の読み取りと予測計算</a></li>
+<li><a class="reference internal" href="#id13">練習問題 3: 過学習（オーバーフィッティング）の要因と対策</a></li>
+<li><a class="reference internal" href="#train-test-split">練習問題 4: <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> の引数の理解</a></li>
+<li><a class="reference internal" href="#id14">練習問題 5: 重回帰における「多重共線性（マルチコ）」の回避</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id15">🌟 レベルアップするおすすめコード</a></li>
+<li><a class="reference internal" href="#id16">💻 演習演習（5問）</a><ul>
+<li><a class="reference internal" href="#id17">演習 1: 広告投資による売上予測（単回帰モデルの構築）</a></li>
+<li><a class="reference internal" href="#id18">演習 2: 複数ヒントによる売上予測（重回帰モデルの構築）</a></li>
+<li><a class="reference internal" href="#ai-mae">演習 3: 自作AIの採点と予測ズレ（MAE）の測定</a></li>
+<li><a class="reference internal" href="#id19">演習 4: 文字データのダミー変数化と売上予測</a></li>
+<li><a class="reference internal" href="#id20">演習 5: 特徴量の標準化と重回帰パイプライン</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id21">📚 まとめ</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -421,5 +1352,7 @@
     <script src="../../../_static/copybutton.js?v=940804e7"></script>
     <script src="../../../_static/translations.js?v=4755f45a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>
 </html>

@@ -13,7 +13,7 @@
 
 ---
 
-### 練習問題のGoogle Colab起動
+## 練習問題のGoogle Colab起動
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](
 https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exercises/2026/02.programming_advanced_a/advanced_03.ipynb)
 

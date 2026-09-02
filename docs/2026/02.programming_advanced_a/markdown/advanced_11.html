@@ -7,12 +7,14 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="2026/02.programming_advanced_a/markdown/advanced_11.html" />
 <meta property="og:site_name" content="musashiuniv" />
+<meta property="og:description" content="分類モデルとクラスタリング 🎯 到達目標: 「回帰（数値を当てる）」 と 「分類（グループを当てる）」 の違いを、実例を交えて説明できる。, 決定木（Decision Tree） アルゴリズムが、データを最もきれいに2分割する「Yes/Noの質問」を自動で組み立てていく仕組みを直感的に理解できる。, 単純な「正解率（Accuracy）」だけを信じる危険性を理解し、ビジネスの目的に応じて 「適..." />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2026_02.programming_advanced_a_markdown_advanced_11_03bcaa05.png" />
-<meta property="og:image:alt" content="" />
+<meta property="og:image" content="/_images/social_previews/summary_2026_02.programming_advanced_a_markdown_advanced_11_2e77183f.png" />
+<meta property="og:image:alt" content="分類モデルとクラスタリング 🎯 到達目標: 「回帰（数値を当てる）」 と 「分類（グループを当てる）」 の違いを、実例を交えて説明できる。, 決定木（Decision Tree） アルゴリズムが、データを最もきれいに2分割する「Yes/Noの質問」を自動で組み立てていく仕組みを直感的に理解できる。, 単純な「正解..." />
+<meta name="description" content="分類モデルとクラスタリング 🎯 到達目標: 「回帰（数値を当てる）」 と 「分類（グループを当てる）」 の違いを、実例を交えて説明できる。, 決定木（Decision Tree） アルゴリズムが、データを最もきれいに2分割する「Yes/Noの質問」を自動で組み立てていく仕組みを直感的に理解できる。, 単純な「正解率（Accuracy）」だけを信じる危険性を理解し、ビジネスの目的に応じて 「適..." />
 <meta name="twitter:card" content="summary_large_image" />
-<link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" /><link rel="next" title="第12回 Pythonとバイブコーディング（Vibe Coding）" href="advanced_12.html" /><link rel="prev" title="第10回 PythonとAI(scikit-learn)1" href="advanced_10.html" />
+<link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" /><link rel="next" title="第12回 Pythonとバイブコーディング（Vibe Coding）" href="advanced_12.html" /><link rel="prev" title="第10回 PythonとAI (scikit-learn) 1" href="advanced_10.html" />
 
     <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
         <title>第11回 PythonとAI(scikit-learn)2 - Pythonプログラミング入門</title>
@@ -189,7 +191,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -297,16 +299,11 @@
 <li class="toctree-l3"><a class="reference internal" href="advanced_04.html">第4回 データ解析</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_05.html">第5回 Webサービスの活用1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_06.html">第6回 Webサービスの活用2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#id19">--- 2. サイドバーの設定 ---</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#pandas">--- 3. Pandasによる連動データの抽出 ---</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#id20">--- 4. メイン画面のデザイン ---</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#kpi">--- 5. カラム分割による主要業績指標 (KPI) ---</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#id21">統計量を計算</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_06.html#id22">画面を横に分割して、左にグラフ、右に生データをスッキリ配置</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_07.html">第7回 地理空間情報の基礎</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_08.html">第8回 地理空間データの活⽤1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_09.html">第9回 地理空間データの活⽤2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_08.html">第8回 地理空間データの活用1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_09.html">第9回 地理空間データの活用2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_10.html">第10回 PythonとAI (scikit-learn) 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_10.html#fit">ステップ 2: モデルの学習（.fit()）</a></li>
 <li class="toctree-l3 current current-page"><a class="current reference internal" href="#">第11回 PythonとAI(scikit-learn)2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_13.html">第13回 総合演習</a></li>
@@ -356,7 +353,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -364,6 +361,934 @@
         <article role="main" id="furo-main-content">
           <section class="tex2jax_ignore mathjax_ignore" id="pythonai-scikit-learn-2">
 <h1>第11回 PythonとAI(scikit-learn)2<a class="headerlink" href="#pythonai-scikit-learn-2" title="Link to this heading">¶</a></h1>
+<p>分類モデルとクラスタリング</p>
+<hr class="docutils" />
+<section id="id1">
+<h2>🎯 到達目標<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>「回帰（数値を当てる）」 と 「分類（グループを当てる）」 の違いを、実例を交えて説明できる。</p></li>
+<li><p>決定木（Decision Tree） アルゴリズムが、データを最もきれいに2分割する「Yes/Noの質問」を自動で組み立てていく仕組みを直感的に理解できる。</p></li>
+<li><p>単純な「正解率（Accuracy）」だけを信じる危険性を理解し、ビジネスの目的に応じて 「適合率（Precision）」 と 「再現率（Recall）」 を使い分けられる。</p></li>
+<li><p>「教師あり学習（正解あり）」 と 「教師なし学習（正解なし）」 の決定的な違いを、用途と併せて説明できる。</p></li>
+<li><p>K-Means（K平均法） を使って、ラベルのない顧客データを自動でグループ分け（セグメンテーション）し、エルボー法で最適なグループ数を科学的に導き出せる。</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="google-colab">
+<h2>練習問題のGoogle Colab起動<a class="headerlink" href="#google-colab" title="Link to this heading">¶</a></h2>
+<p><a class="reference external" href="https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exercises/2026/02.programming_advanced_a/advanced_11.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<ol class="arabic simple">
+<li><p>上記の「Open In Colab」をクリックして、Google Colabを起動させてください</p></li>
+<li><p>[ファイル] → [ドライブにコピーを保存] を選択して、Googleドライブにコピーを保存してください</p></li>
+<li><p>保存が成功すると，Googleドライブの「マイドライブ」 →「Colab Notebooks」にコピーしたファイルが保存されます。</p></li>
+<li><p>GoogleドライブにコピーしたGoogle ColabのNotebooksを開いてください</p></li>
+<li><p>開いたGoogle ColabのNotebooksで作業をしてください</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="id2">
+<h2>用語説明<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>K-Means（K平均法）</p>
+<ul>
+<li><p>K-Means（K平均法）は、データをK個のグループ（クラスタ）に自動的に分類する教師なし学習のアルゴリズムです</p></li>
+</ul>
+</li>
+<li><p>エルボー法（Elbow Method）</p>
+<ul>
+<li><p>エルボー法（Elbow Method）は、K-Means法などのクラスタリングにおいて、最適なクラスタ数を決めるための代表的な手法です</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h2>教師あり学習「分類」モデルの真髄<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+</section>
+<section id="classification">
+<h2>分類（Classification）とは何か？（回帰との違い）<a class="headerlink" href="#classification" title="Link to this heading">¶</a></h2>
+<p>前回学んだ「回帰（Regression）」は、アイスコーヒーの売上杯数（28杯、45杯、52杯...）といった「途切れなく連続する数値（連続値）」を当てるのが目的でした。</p>
+<p>それに対し、本日学ぶ「分類（Classification）」は、「このメールは迷惑メール（1）か、普通メール（0）か」「このお客様はリピーターになってくれる（1）か、もう来ない（0）か」という、「あらかじめ決められたカテゴリ（離散値）」のどれに当てはまるかを予測します。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>▼ 回帰（Regression）の目的：
+  [ 気温 32度 ]  ──▶  【 AIモデル 】  ──▶  「今日の売上は 235,000円 です！」（具体的な数値をピンポイントで予測）
+
+▼ 分類（Classification）の目的：
+  [ 年齢: 21歳, 来店3回 ] ──▶  【 AIモデル 】  ──▶  「リピーターになる確率 85% ＝ 【リピーター(1)】に分類！」
+</pre></div>
+</div>
+<section id="decision-tree">
+<h3>決定木（Decision Tree）の直感的イメージ<a class="headerlink" href="#decision-tree" title="Link to this heading">¶</a></h3>
+<p>分類を行うアルゴリズムにはたくさんの種類がありますが、その中で強力なのが「決定木（Decision Tree）」です。</p>
+<p>決定木は、データの中に隠れているパターンを分析し、コンピュータが自動的に「最もきれいにデータを仕分けられるYes/Noの質問リスト」を作ってくれるアルゴリズムです。その形が、木が枝分かれしているように見えるため「決定木（意思決定の木）」と呼ばれます。</p>
+<p>例えば、あるカフェの顧客データから「リピーターになる人（1）」と「1回きりの人（0）」を見分ける決定木をAIが作ると、以下のようなフローチャートが自動生成されます。</p>
+<p>【決定木の枝分かれ（イメージ図）】</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                  [ 🌳 ルートノード（出発点） ]
+                   お客様はリピーターになるか？
+                               │
+                 ❓ 質問1: 来店回数は 3回以上？
+                     /                       \
+               (Yes) /                       \ (No)
+                    /                         \
+      ❓ 質問2: ケーキを注文した？          【 1回きりの顧客(0) 】
+            /               \               (※来店回数が少ないため)
+      (Yes) /               \ (No)
+           /                 \
+  【 超VIP(1) 】        【 リピーター(1) 】
+  (高確率で再来店)      (普通のリピーター)
+</pre></div>
+</div>
+<p>AIは、過去のデータをすべて見比べながら、「どういう順番で、どのような質問をすれば、最もすっきりと1と0を仕分けることができるか」を自動的に学習（<code class="docutils literal notranslate"><span class="pre">.fit()</span></code>）してくれるのです。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id4">
+<h2>実践：決定木の構築と過学習（木の深さ）のコントロール<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<p>それでは、実際に決定木モデルを構築してみましょう！
+今回は、カフェの「年齢」と「1回あたりの購入金額」という2つの情報から、そのお客様が「リピーター（1）」になるか「1回きりのライト顧客（0）」になるかを予測する決定木モデルを作成します。</p>
+<p>まずは、おなじみの「ダミーデータ自動生成」を行い、データを学習用とテスト用に分割します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. 模擬データの作成とデータ分割</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">n_customers</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># 100人分のお客様の「年齢」と「平均支払金額（円）」</span>
+<span class="n">age</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="n">n_customers</span><span class="p">)</span>
+<span class="n">spend</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">2500</span><span class="p">,</span> <span class="n">n_customers</span><span class="p">)</span>
+
+<span class="c1"># 年齢が若くて支払金額が高い人、または年齢が高くて支払金額がそこそこの人が</span>
+<span class="c1"># リピーター（1）になりやすいというルール（パターンのベース）を定義</span>
+<span class="n">repeater</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">spend</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">35</span> <span class="ow">and</span> <span class="n">s</span> <span class="o">&gt;</span> <span class="mi">1200</span><span class="p">:</span>
+        <span class="n">repeater</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">a</span> <span class="o">&gt;=</span> <span class="mi">35</span> <span class="ow">and</span> <span class="n">s</span> <span class="o">&gt;</span> <span class="mi">800</span><span class="p">:</span>
+        <span class="n">repeater</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># 多少のノイズ（ランダムさ）を加えて現実らしくする</span>
+        <span class="n">repeater</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">0.85</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># データフレーム化</span>
+<span class="n">df_customer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"年齢"</span><span class="p">:</span> <span class="n">age</span><span class="p">,</span>
+    <span class="s2">"支払金額"</span><span class="p">:</span> <span class="n">spend</span><span class="p">,</span>
+    <span class="s2">"リピーター"</span><span class="p">:</span> <span class="n">repeater</span>
+<span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- カフェの顧客データ（先頭5名分） ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_customer</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># 説明変数 X（年齢、支払金額）と目的変数 y（リピーター：1か0か）に分ける</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_customer</span><span class="p">[[</span><span class="s2">"年齢"</span><span class="p">,</span> <span class="s2">"支払金額"</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_customer</span><span class="p">[</span><span class="s2">"リピーター"</span><span class="p">]</span>
+
+<span class="c1"># データを「学習用（75%）」と「テスト用（25%）」に分割</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"データ分割完了：学習用 </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span><span class="si">}</span><span class="s2">名分, テスト用 </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span><span class="si">}</span><span class="s2">名分"</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="id5">
+<h3>決定木モデルの学習と「木の深さ」の制限<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p>決定木を作る際、最も注意しなければならないパラメータが「木の最大深さ（<code class="docutils literal notranslate"><span class="pre">max_depth</span></code>）」です。</p>
+<p>もし、この制限をかけずにAIに学習させると、AIは「100%完全に1と0を仕分けられるまで、無限に細かく複雑な質問」を作り続けてしまいます。
+これは、過去のデータの細かいノイズ（たまたまその日だけ機嫌が悪かったお客様、など）まで丸暗記してしまい、新しいデータ（テストデータ）が来たときに全く予測が当たらなくなる過学習（オーバーフィッティング）を引き起こします。</p>
+<p>そのため、実務では <code class="docutils literal notranslate"><span class="pre">max_depth</span></code>（質問を繰り返す回数の上限）を 3回や4回程度に制限する のが鉄則です。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2. 決定木モデルの定義・学習・予測</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span> <span class="c1"># 決定木分類器</span>
+
+<span class="c1"># max_depth=3（質問は最大3階層まで）に制限して過学習を防ぎます</span>
+<span class="n">clf_tree</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># 【超重要】学習用データを使って、AIに「最適な質問リスト」を考えさせます</span>
+<span class="n">clf_tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># 勉強した成果を使い、一度も見たことがないテスト用の客層に対して予測を実行</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf_tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"AIによるリピーター予測（最初の5名分）："</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"実際のテスト用データの正解（最初の5名分）："</span><span class="p">,</span> <span class="n">y_test</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3>決定木の最大のメリット：「なぜ？」が説明できる（可視化）<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<p>決定木の素晴らしいところは、他のAIモデル（複雑なニューラルネットワークなど）と違い、「なぜその予測をしたのか」という思考のプロセスを、人間が完全に見て納得できるという点にあります。これを目で見える図（ツリー構造）として書き出してみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3. 決定木の構造を綺麗にビジュアル表示する</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_tree</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">japanize_matplotlib</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plot_tree</span><span class="p">(</span>
+    <span class="n">clf_tree</span><span class="p">,</span>
+    <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s2">"年齢"</span><span class="p">,</span> <span class="s2">"支払金額"</span><span class="p">],</span> <span class="c1"># 質問に使った説明変数名</span>
+    <span class="n">class_names</span><span class="o">=</span><span class="p">[</span><span class="s2">"リピートなし"</span><span class="p">,</span> <span class="s2">"リピートあり"</span><span class="p">],</span> <span class="c1"># 分類結果のグループ名</span>
+    <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1"># 確率が高い方に色を塗って分かりやすくする</span>
+    <span class="n">rounded</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1"># 角を丸くする</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"AIが自動構築した『リピーター判定』決定木フローチャート"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>描画された図の一番上のボックス（根っこ）を見てみましょう。
+AIが「データを最もきれいに2分割できる最高の最初の質問」として、例えば「支払金額 &lt;= 973.5円」といった具体的な数値を自動で弾き出し、そこから見事に枝分かれ（ツリー）を構築している様子が視覚的に確認できたはずです！</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id7">
+<h2>分類モデルの成績表：「評価指標」の正しい読み解き方<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<p>予測モデルが完成したら、そのモデルの「実力テスト（評価）」を行います。
+しかし、分類モデルの評価は、前回の回帰（MAEや<span class="math notranslate nohighlight">\(R^2\)</span>）とは異なる、非常に重要なビジネス上のトラップが潜んでいます。</p>
+<section id="accuracy">
+<h3>① 単純な「正解率（Accuracy）」だけを信じてはいけない罠（不均衡データ）<a class="headerlink" href="#accuracy" title="Link to this heading">¶</a></h3>
+<p>多くの人は、AIの評価として「正解率（Accuracy）＝全体の何％の予測が当たったか」だけを見てしまいがちです。
+しかし、これは実務において最悪の意思決定を招く原因になります。</p>
+<p>例えば、100人中1人だけが感染している「超難病（確率1%）」を発見する診断AIを作るとします。
+このAIのプログラムを極めてシンプルにし、「中身を一切見ず、誰が来ても全員に『あなたは健康（陰性）です』と答えるだけの怠け者AI」にしたとします。</p>
+<p>この怠け者AIの正解率はどうなるでしょうか？
+100人中99人は本当に健康なので、なんと「正解率 99.0%」の超優秀に見えるAIが誕生してしまいます。しかし、一番見つけなければならない「1名の難病患者」を完全に見落としているため、医療現場では使い物にならないどころか、人命に関わる欠陥品です。</p>
+<p>このように、データの比率に偏りがある（不均衡データ）場合、正解率（Accuracy）は使い物になりません。そこで、実務では以下の「混同行列（Confusion Matrix）」を頭に叩き込む必要があります。</p>
+</section>
+<section id="confusion-matrix-4">
+<h3>② 混同行列（Confusion Matrix）の直感的4分類<a class="headerlink" href="#confusion-matrix-4" title="Link to this heading">¶</a></h3>
+<p>混同行列とは、実際の正解（1か0か）と、AIの予測（1か0か）の組み合わせを2✕2の表にまとめたものです。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                  【 AIの予測結果 】
+                 予測＝1           予測＝0
+            ┌─────────────────┬─────────────────┐
+  本物＝1   │  ① 真陽性 (TP)  │  ② 偽陰性 (FN)  │
+            │  （大アタリ！） │ （見落とし！）  │
+実際の正解  ├─────────────────┼─────────────────┤
+  本物＝0   │  ③ 偽陽性 (FP)  │  ④ 真陰性 (TN)  │
+            │ （オオカミ少年）│  （安全クリア） │
+            └─────────────────┴─────────────────┘
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>① 真陽性 (TP: True Positive)：本物が「1」で、AIも「1」と予測。文句なしの大アタリ！</p></li>
+<li><p>② 偽陰性 (FN: False Negative)：本物は「1」なのに、AIは「0」と予測。病気や解約をスルーしてしまった最も危険な「見落とし（見逃し）」。</p></li>
+<li><p>③ 偽陽性 (FP: False Positive)：本物は「0」なのに、AIは「1」と予測。何もないのに「狼が来たぞ！」と騒いでしまった「空振り（オオカミ少年・誤検知）」。</p></li>
+<li><p>④ 真陰性 (TN: True Negative)：本物が「0」で、AIも「0」と予測。何もないことを正しく見破った「安全クリア」。</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="precision-recall">
+<h3>③ 適合率（Precision）と再現率（Recall）のビジネス・トレードオフ<a class="headerlink" href="#precision-recall" title="Link to this heading">¶</a></h3>
+<p>この混同行列をもとに、不均衡データでも騙されないための「2大指標」が定義されます。この2つは天秤（トレードオフ）の関係にあり、ビジネスの目的によってどちらを重視するかを私たちが選ぶ必要があります。</p>
+<section id="precision">
+<h4>1. 適合率 (Precision) ＝ 「空振りを減らしたい！」<a class="headerlink" href="#precision" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>意味：AIが「1（リピーターになる）」と予測した人たちの中で、「本当に1だった本物の割合」。</p></li>
+<li><p>式： <span class="math notranslate nohighlight">\(\text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}}\)</span></p></li>
+<li><p>重視すべきビジネス場面：</p>
+<ul>
+<li><p>「無駄なコストを極限まで減らしたいとき」。</p></li>
+<li><p><em>例</em>：予算が限られているため、リピート確率が極めて高い人だけに限定して「2000円割引の超高額クーポン」をDM郵送したい。もしAIの予測が空振り（偽陽性：リピートしない人に送ってしまう）すると、郵送費とクーポン代が丸ごと赤字になってしまいます。このような時は、空振りを減らすために「適合率」を最重視します。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="recall">
+<h4>2. 再現率 (Recall) ＝ 「見落としを減らしたい！」<a class="headerlink" href="#recall" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>意味：本当に「1（リピーターになるはず）」だった人たちの中で、AIがどれだけ「見落とさずに1だと見破れたかの割合」（検出率とも呼ばれます）。</p></li>
+<li><p>式： <span class="math notranslate nohighlight">\(\text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}\)</span></p></li>
+<li><p>重視すべきビジネス場面：</p>
+<ul>
+<li><p>「見落とした時のリスクやダメージが、取り返しのつかないほど巨大なとき」。</p></li>
+<li><p><em>例①</em>：がんの早期発見AI。空振り（健康なのに『再検査です』と脅してしまう）は後で検査すれば誤解が解けますが、見落とし（がんがあるのに『健康です』とスルーする）は患者の命に関わります。</p></li>
+<li><p><em>例②</em>：クレジットカードの不正利用検知や、顧客の解約予兆検知。「怪しい行動」を少しでも多くあぶり出し、多少の空振りがあっても、本物の不正や解約を1件残らず食い止めたいときは、「再現率」を限界まで高める必要があります。</p></li>
+</ul>
+</li>
+</ul>
+<p>それでは、先ほど作ったカフェの決定木モデルの成績表を、scikit-learnを使って一瞬で計算してみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 4. 評価指標を一括計算する</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- AIモデルの成績表（実力テスト結果） ---"</span><span class="p">)</span>
+<span class="c1"># 1. 正解率（Accuracy）</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"① 正解率 (Accuracy) : </span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  (全体のうち当たった割合)"</span><span class="p">)</span>
+
+<span class="c1"># 2. 適合率（Precision：空振りを防ぐ力）</span>
+<span class="n">prec</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"② 適合率 (Precision): </span><span class="si">{</span><span class="n">prec</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  (AIが『1』と予言した中の本物率)"</span><span class="p">)</span>
+
+<span class="c1"># 3. 再現率（Recall：見落としを防ぐ力）</span>
+<span class="n">rec</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"③ 再現率 (Recall)   : </span><span class="si">{</span><span class="n">rec</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  (本物の『1』をどれだけ検知できたか)"</span><span class="p">)</span>
+
+<span class="c1"># 4. 混同行列（表の形式で出力）</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">▼ 混同行列（Confusion Matrix）の実数内訳:"</span><span class="p">)</span>
+<span class="n">cm_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"実際の0（非リピ）"</span><span class="p">,</span> <span class="s2">"実際の1（リピ）"</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"予測の0"</span><span class="p">,</span> <span class="s2">"予測の1"</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">cm_df</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>テスト結果の適合率や再現率の数値を見ながら、「このAIは、クーポンの誤送付を防ぐのに向いているか？
+それとも優良顧客の流出を食い止めるのに向いているか？」を考えることが大切です。</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id8">
+<h2>教師なし学習「クラスタリング」の衝撃<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+</section>
+<section id="unsupervised-learning">
+<h2>教師なし学習（Unsupervised Learning）の役割<a class="headerlink" href="#unsupervised-learning" title="Link to this heading">¶</a></h2>
+<p>これまでの学習は、データの中に必ず「売上杯数」や「リピーターフラグ（1/0）」といった「正解ラベル（答え）」がセットされていました。
+しかし、現実社会にあるデータの9割以上には、そのような都合の良い正解ラベルは付いていません。</p>
+<p>例えば、あなたは新しくカフェの店長に就任し、手元に「過去1万人分の購入データ（来店回数と支払金額）」という大きなエクセルシートがあるとします。
+正解ラベルはありませんが、ここから「うちのカフェには、どのようなタイプのお客さんたちが集まっているのか？」という顧客のプロファイリング（顧客セグメンテーション）を行いたいとします。</p>
+<p>ここで活躍するのが、教師なし学習（Unsupervised Learning）です。
+教師なし学習のAIは、正解を与えられなくても、自らデータの点々の「距離感（特徴）」をじっくり観察し、「似た性質を持つ者同士のグループ」を自動的にあぶり出して分類してくれます。</p>
+<p>【教師あり（分類）と教師なし（クラスタリング）の違い】</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>▼ 教師あり学習（分類）：あらかじめ「正解の境界線」を教わって分ける
+  [ 🔴と🔵が混ざった過去データ ]  ──(学習)──▶  「ここが赤と青の境目（境界線）だ！」
+
+▼ 教師なし学習（クラスタリング）：正解はない。なんとなく「集まっている塊」を見つけて分ける
+  [ ⚫と⚫が混ざった過去データ ]  ──(学習)──▶  「なんとなく、左上に1つの塊、右下に1つの塊があるな！」
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>##K-Means（K平均法）の直感的なステップ</p>
+<p>教師なし学習の中で、最も有名で強力なグループ分けアルゴリズムが K-Means（K平均法 / ケー・ミーンズ） です。
+K-Meansの「K」とは、「データを何個のグループに分けたいか」というグループの数を表します（私たちが事前に設定します）。</p>
+<p>K-Meansは、まるで学校の席替えでリーダーがクラスメイトを自分のグループに引き寄せるように、以下の4つのステップを高速で繰り返すことで、完璧なグループ分けを自動的に完成させます。</p>
+<section id="k-means4">
+<h3>K-Meansがグループを決める「4つのステップ」<a class="headerlink" href="#k-means4" title="Link to this heading">¶</a></h3>
+<section id="id9">
+<h4>ステップ 1：リーダー（重心）をランダムに配置する<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h4>
+<p>あなたが「3つのグループに分けたい（K=3）」と命令すると、AIは真っ白なデータ空間の上に、3つの「リーダーのピン（重心：Centroid）」をランダムにグサッと立てます。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  [ データの点々 ]
+     *    *              * 
+        *     ▲(赤)        * *
+                ▲(青)
+     * *   ▲(緑)
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h4>ステップ 2：一番近いリーダーのグループに所属する（割り当て）<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h4>
+<p>すべてのデータの点々は、自分から一番距離が近いリーダーを見つけ、「私は赤グループに入ります」「僕は緑グループ！」と、自動的に所属を決めます。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>     🔴   🔴             🔵 
+        🔴               🔵 🔵
+             
+     🟢 🟢   
+</pre></div>
+</div>
+</section>
+<section id="id11">
+<h4>ステップ 3：グループの中心地にリーダーが引っ越す（重心の再計算）<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h4>
+<p>所属が決まったら、リーダーは「よし、みんなの真ん中の位置（平均値）を計算して、そこに私が引っ越そう！」と、メンバーの中心地へと移動します。これにより、リーダーの位置がブラッシュアップされます。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>       *   *(新赤リーダー)   * 
+        *                *(新青リーダー)*
+             
+     * *(新緑リーダー)
+</pre></div>
+</div>
+</section>
+<section id="id12">
+<h4>ステップ 4：リーダーが動かなくなるまで「2」と「3」を繰り返す！<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
+<p>リーダーが動いたので、もう一度ステップ2に戻り、データの点々は「あ、リーダーの位置が変わったから、私は今度は青グループの方が近いな」と所属を決め直します。
+このステップ2と3を何度も何度も繰り返すと、やがてリーダーが全く動かなくなります。ここで「クラスタリング完了」となります。</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="k-means">
+<h2>K-Meansの実践ハンズオンと「エルボー法」<a class="headerlink" href="#k-means" title="Link to this heading">¶</a></h2>
+<p>それでは、K-Meansを使って、カフェの顧客100名を自動的にグループ分けしてみましょう！
+データは「来店回数」と「平均支払金額（客単価）」の2つの特徴だけを持つ、ラベルのない散布図データです。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. データの作成（来店回数と客単価）</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># カフェに集まる、性質の異なる3つのグループの顧客層を模擬的に生成します</span>
+<span class="c1"># グループA: 来店は少ないが、1回の支払額が非常に高い「たまの贅沢・ご褒美層」</span>
+<span class="n">g_a_freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">g_a_spend</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">1800</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># グループB: 毎日のように来るが、支払額は安い「お仕事・ノマド常連層」</span>
+<span class="n">g_b_freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+<span class="n">g_b_spend</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">450</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+
+<span class="c1"># グループC: 来店も支払額もそこそこの「標準的なライト層」</span>
+<span class="n">g_c_freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">g_c_spend</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># 合体して1つの顧客データフレームにします</span>
+<span class="n">df_customer_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"来店回数"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">g_a_freq</span><span class="p">,</span> <span class="n">g_b_freq</span><span class="p">,</span> <span class="n">g_c_freq</span><span class="p">]),</span>
+    <span class="s2">"平均支払金額"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">g_a_spend</span><span class="p">,</span> <span class="n">g_b_spend</span><span class="p">,</span> <span class="n">g_c_spend</span><span class="p">])</span>
+<span class="p">})</span>
+
+<span class="c1"># データの可視化（最初は誰がどのグループか分からない真っ黒な点々です）</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_customer_raw</span><span class="p">[</span><span class="s2">"来店回数"</span><span class="p">],</span> <span class="n">df_customer_raw</span><span class="p">[</span><span class="s2">"平均支払金額"</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"カフェ顧客データ（初期状態：正解ラベルなし）"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"来店回数 (回)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"平均支払金額 (円)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<section id="id13">
+<h3>K-Meansを動かす前の「標準化（スケーリング）」のルール<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<p>クラスタリングを動かす前に、前回の重回帰の最後でも紹介した「標準化（データのスケールを整える）」を実行しなければなりません。</p>
+<p>なぜなら、K-Meansは点と点の「物理的な距離」を測ってグループ分けするからです。
+今回のデータを見ると、横軸の「来店回数」は高々 <code class="docutils literal notranslate"><span class="pre">1〜20</span></code> 程度の狭い範囲ですが、縦軸の「支払金額」は <code class="docutils literal notranslate"><span class="pre">300〜2500</span></code> という巨大な桁数の範囲を動きます。
+このままの状態で距離を計算すると、AIは「縦軸の支払金額のちょっとのズレ（例えば100円の差）」をもの凄く遠い距離だと勘違いし、横軸の来店回数の違いをほぼ無視して、縦方向の細長いスライスだけでグループ分けをしてしまいます。</p>
+<p>これを防ぐために、両方の列を「平均が0、標準偏差（ばらつき）が1」の平等なスケールに変換（標準化）してから、K-Meansに入力します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2. データの標準化と K-Means の実行</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
+
+<span class="c1"># ① データを平等なスケールに標準化します</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_customer_raw</span><span class="p">)</span>
+
+<span class="c1"># ② K-Meansモデルの定義（3つのグループに分けたいので n_clusters=3）</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># ③ 学習とグループ割り当ての実行</span>
+<span class="c1"># 教師なし学習なので、引数に y (正解) は渡さず、X_scaled（ヒント）だけを渡します！</span>
+<span class="c1"># .fit_predict() を使うと、学習と同時に各データのグループ番号（0, 1, 2）を返してくれます。</span>
+<span class="n">customer_clusters</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">)</span>
+
+<span class="c1"># 元のデータフレームに「AIが自動で決めたグループ番号」を追加</span>
+<span class="n">df_customer_raw</span><span class="p">[</span><span class="s2">"グループ番号"</span><span class="p">]</span> <span class="o">=</span> <span class="n">customer_clusters</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- AIが自動でグループ分けした結果（先頭5名分） ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_customer_raw</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="ai">
+<h3>AIが色付けした顧客セグメントの可視化<a class="headerlink" href="#ai" title="Link to this heading">¶</a></h3>
+<p>AIが自動的に導き出したグループ番号ごとに、色を変えて散布図を再描画してみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3. クラスタリング結果のプロット</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="c1"># グループ番号（0, 1, 2）ごとに色を変えてプロット</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">cluster_data</span> <span class="o">=</span> <span class="n">df_customer_raw</span><span class="p">[</span><span class="n">df_customer_raw</span><span class="p">[</span><span class="s2">"グループ番号"</span><span class="p">]</span> <span class="o">==</span> <span class="n">i</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cluster_data</span><span class="p">[</span><span class="s2">"来店回数"</span><span class="p">],</span> <span class="n">cluster_data</span><span class="p">[</span><span class="s2">"平均支払金額"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"グループ </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"K-Meansによる顧客自動セグメンテーション（3グループ）"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"来店回数 (回)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"平均支払金額 (円)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>人間が「この人はVIP、この人はライト」と教えることすらしていないのに、コンピュータが距離感から見事に「来店は少ないが高額なグループ」「常連だけど安価なグループ」「平均的なグループ」の3つの塊を自動で看破し、色分けしたのが確認できたでしょうか？
+これが教師なし学習の絶大なパワーです。</p>
+</section>
+<hr class="docutils" />
+<section id="elbow-method">
+<h3>グループ数はいくつに設定すればいいの？「エルボー法（Elbow Method）」<a class="headerlink" href="#elbow-method" title="Link to this heading">¶</a></h3>
+<p>K-Meansを使うとき、誰もが「グループ数（K）は本当に3個でいいのか？2個や4個の方がいいのでは？」と悩みます。正解のラベルがないため、客観的に評価するのが難しいためです。</p>
+<p>この疑問を解決するアプローチが、エルボー法（Elbow Method）です。</p>
+<p>K-Meansモデルには、学習が終わると <code class="docutils literal notranslate"><span class="pre">inertia_</span></code>（インナーシャ：グループ内の歪み・データのバラツキの合計値） という数値が自動で保存されます。
+グループ数を「1個、2個、3個……」と増やしていくと、当然グループが細分化されるため、グループ内のバラツキ（<code class="docutils literal notranslate"><span class="pre">inertia_</span></code>）はどんどん小さくなっていきます。</p>
+<p>この「グループ数」と「バラツキの数値」をグラフにプロットした時、「これ以上グループを増やしても、大してバラツキが減らなくなる境界線（グラフがガクッと折れ曲がり、まるで人間の『肘（Elbow）』のように見える部分）」があります。この折れ曲がりポイントを最適なグループ数（K）と判断するのがエルボー法です。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 4. エルボー法による最適なグループ数の探索</span>
+<span class="n">inertia_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">k_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span> <span class="c1"># グループ数Kを 1から7まで試してみる</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">k_range</span><span class="p">:</span>
+    <span class="c1"># 各Kでモデルを作り、学習させます</span>
+    <span class="n">km_test</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">km_test</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">)</span>
+    <span class="c1"># 歪み（inertia_）をリストに格納</span>
+    <span class="n">inertia_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">km_test</span><span class="o">.</span><span class="n">inertia_</span><span class="p">)</span>
+
+<span class="c1"># エルボー図を描画</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k_range</span><span class="p">,</span> <span class="n">inertia_list</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"purple"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"最適なグループ数を見極める『エルボー図』"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"設定したグループ数 (K)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"グループ内のデータのバラツキ合計 (Inertia)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>グラフを見てください。
+Kが「3」の部分を境目にして、それ以降（4, 5, 6）は傾きが緩やかになり、バラツキがあまり減らなくなっている（肘のように曲がっている）のが見つかったでしょうか？
+エルボー法により、「このカフェの顧客データは、科学的に『3つ』に分類するのが最も美しいグループ数である」という客観的な根拠を、説得力を持って上司やクライアントにプレゼンすることができます！</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id14">
+<h2>練習問題（5問）<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
+<section id="id15">
+<h3>練習問題 1: 「回帰」と「分類」の仕分け（理論）<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<p>以下のデータ予測タスクのうち、解くべき問題が「分類（Classification）」であるものを「すべて」選んでください。</p>
+<ol class="arabic simple">
+<li><p>各顧客が「今月の新商品を注文する（1）か、しない（0）か」を予測する。</p></li>
+<li><p>カフェの「来週の土曜日の売上金額（円）」を予測する。</p></li>
+<li><p>アップロードされた写真が「ショートケーキ」「モンブラン」「プリン」のどれであるかを予測する。</p></li>
+<li><p>カフェに滞在する「お客様の平均時間（分）」を予測する。</p></li>
+</ol>
+<details>
+<summary>👉 練習問題 1 の解答を見る</summary>
+<ul class="simple">
+<li><p>正解: 1 と 3</p></li>
+<li><p>解説:</p>
+<ul>
+<li><p>1 は「注文する／しない」という2カテゴリの予測、3 は3種類のケーキというカテゴリの予測なので、これらはすべて分類（Classification）の問題です。</p></li>
+<li><p>2 は「売上金額（円）」という連続する数値を当てるため、4 は「滞在時間（分）」という連続する数値を当てるため、これらは回帰（Regression）の問題に該当します。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id16">
+<h3>練習問題 2: 正解率（Accuracy）の甘い罠（理論）<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<p>あなたはカフェの会員登録アプリで「退会しそうな人を事前に発見して引き止めるAI」を構築しました。
+このカフェの会員の退会率は非常に低く、年間でわずか「0.5%（200人に1人）」しか退会しません。</p>
+<p>あなたが作った予測モデルの精度を測定したところ、「正解率（Accuracy）が 99.5%」という驚異的な数値が出ました。
+しかし、実際に中身を詳しく見ると、このAIは「退会しそうな人を1人も発見できていない」ことが分かりました。なぜこのような現象が起きてしまったのか、理由を説明してください。</p>
+<details>
+<summary>👉 練習問題 2 の解答を見る</summary>
+<ul class="simple">
+<li><p>解答例:</p>
+<ul>
+<li><p>このデータは退会する人が0.5%、退会しない人が99.5%という極端に偏った「不均衡データ」である。</p></li>
+<li><p>AIが全員に対して単に「この人は退会しません（0）」と、何一つ考えずにただ同じ予測を繰り返す（怠け者モデル）だけで、全体の99.5%の予測が当たってしまい、見かけ上の正解率（Accuracy）が99.5%になってしまった。</p></li>
+<li><p>実際のビジネスで本当に見つけなければならない「退会しそうなわずか0.5%の人（見落とし）」を一切捉えられていないため、このAIは実務的には価値がまったくない。</p></li>
+</ul>
+</li>
+<li><p>解説:</p>
+<ul>
+<li><p>不均衡データに対して正解率（Accuracy）だけを評価に使うと、こうした見かけの数値に騙される「不均衡データの罠」に陥ります。こうした場合は、後述する適合率や再現率、混同行列を必ずセットで評価する必要があります。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id17">
+<h3>練習問題 3: 適合率と再現率、どっちを優先？（データリテラシー）<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<p>あなたが開発した「カフェのクレジットカードの不正利用を自動的に検知・ブロックするAIモデル」があるとします。
+この不正検知システムを実務で運用するにあたり、以下の2つのリスクを考えました。</p>
+<ul class="simple">
+<li><p>リスクA（空振りのリスク）：普通の健全なお客様の決済を、AIが「不正利用かもしれない！」と誤検知（空振り）してしまい、一時的に決済をロックして不快な思いをさせてしまう。</p></li>
+<li><p>リスクB（見落としのリスク）：本物の泥棒がクレジットカードを不正に大金を使ってしまっているのに、AIが「普通のお客様の決済です」とスルー（見落とし）してしまい、店とカード会社に数百万の損害が出る。</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>今回のクレジットカード不正検知ビジネスにおいて、極限まで減らさなければならないのはリスクAとリスクBのどちらでしょうか？</p></li>
+<li><p>そのリスクを避けるために、私たちが最大まで引き上げるべきAIモデルの評価指標は、「適合率（Precision）」と「再現率（Recall）」のどちらでしょうか？</p></li>
+</ol>
+<details>
+<summary>👉 練習問題 3 の解答を見る</summary>
+<ul class="simple">
+<li><p>正解:</p>
+<ol class="arabic simple">
+<li><p>極限まで減らすべきリスク：リスクB（本物の不正利用の見落とし）</p></li>
+<li><p>最大まで高めるべきAIの評価指標：「再現率（Recall）」</p></li>
+</ol>
+</li>
+<li><p>解説:</p>
+<ul>
+<li><p>カードの不正利用は、1件見落とすだけで数百万の壊滅的な実害が発生します。多少の空振り（健全なお客様を疑って確認の手間を取らせてしまう：リスクA）をしてでも、本物の泥棒を「絶対に1件も見落とさない」ようにモデルを設定する必要があります。</p></li>
+<li><p>したがって、見落としを限界までゼロに近づける指標である 「再現率（Recall、検出率）」 を最優先で引き上げるチューニングを行うのが、実務における正しいデータリテラシーです。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id18">
+<h3>練習問題 4: 教師あり学習と教師なし学習の決定的な違い（理論）<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<p>データサイエンスのプロジェクトを進める上で、「教師あり学習」と「教師なし学習（クラスタリング）」の最も決定的なデータの持ち方の違い（何が存在し、何が存在しないか）を説明してください。</p>
+<details>
+<summary>👉 練習問題 4 の解答を見る</summary>
+<ul class="simple">
+<li><p>正解: データのなかに「正解ラベル（ターゲット・答えとなるy）」が含まれているか、含まれていないかの違い。</p></li>
+<li><p>解説:</p>
+<ul>
+<li><p>教師あり学習：データの中に「売上高」や「リピーター判定（1/0）」といった明確な正解の列（y）があらかじめ用意されており、それをヒントから当てるルールを学びます。</p></li>
+<li><p>教師なし学習：データの中には「年齢」「来店回数」といったヒント（X）しかなく、正解（y）が存在しません。コンピュータが自らデータのバラツキや距離の偏りを見つけて、自動的に似たもの同士をグルーピングします。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id19">
+<h3>練習問題 5: K-Meansにおける「標準化」の必要性（理論）<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<p>K-Means（K平均法）を動かす前に、データの各列のスケールを揃える「標準化（平均0、標準偏差1にする変換）」を行う必要があるのはなぜですか？
+「距離」というキーワードを必ず含めて説明してください。</p>
+<details>
+<summary>👉 練習問題 5 の解答を見る</summary>
+<ul class="simple">
+<li><p>解答例:</p>
+<ul>
+<li><p>K-Meansは、データ同士の「距離（空間的な直線距離）」を測ることによってグループ分けを計算するアルゴリズムだから。</p></li>
+<li><p>標準化をせずに「単位や桁数が著しく異なるデータ（例：1〜20の来店回数と、300〜2500の支払金額）」をそのまま計算に入れると、桁数の大きい支払金額のわずかな差だけで「距離がとても遠い」とAIが過剰に判定してしまい、来店回数の違いをほとんど無視した歪んだグループ分けになってしまうため、データのばらつきのスケールを均等に揃える必要がある。</p></li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id20">
+<h2>💻 演習問題（5問）<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h2>
+<section id="id21">
+<h3>📋 演習の概要<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>演習 1（決定木の学習）: 顧客アンケートから「新メニューのリピート意向」を予測する決定木AIモデルの構築（難易度：易）</p></li>
+<li><p>演習 2（過学習の制御）: 決定木の最大深さ（<code class="docutils literal notranslate"><span class="pre">max_depth</span></code>）を変更し、テストデータの精度変化をスコアリングする過学習制御実験（難易度：中）</p></li>
+<li><p>演習 3（評価指標の算出）: 予測結果から、混同行列（Confusion Matrix）を可視化し、Accuracy, Precision, Recallを算出（難易度：中）</p></li>
+<li><p>演習 4（K-Meansセグメント）: カフェの「平均滞在時間」と「年間支払総額」の未ラベルデータから、K-Meansで3つの顧客クラスタを自動検出（難易度：中）</p></li>
+<li><p>演習 5（エルボー最適解の探索）: K-Meansの <code class="docutils literal notranslate"><span class="pre">inertia_</span></code>（歪み）を取り出すforループを書き、最適なKを見極めるエルボー図を描く実践（難易度：難）</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id22">
+<h3>演習 1: 顧客アンケートから「リピート意向」を予測する決定木分類器の作成<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
+<p>ここに、カフェで新しく発売した「特製アサイーボウル」を注文した顧客50人のアンケート結果があります。
+説明変数（X）として「年齢」「評価（1〜5の5段階評価）」の2つを用い、目的変数（y）として「リピート意向（1: また買う、0: もう買わない）」を予測する決定木モデルを作成してください。</p>
+<ul class="simple">
+<li><p>条件:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code> のパラメータは <code class="docutils literal notranslate"><span class="pre">max_depth=2</span></code>（質問は最大2回まで）に設定してください。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">random_state=42</span></code> を指定して、結果を固定してください。</p></li>
+<li><p>モデルを学習（<code class="docutils literal notranslate"><span class="pre">.fit()</span></code>）させる際は、事前に用意された学習用データ（<code class="docutils literal notranslate"><span class="pre">X_train</span></code>, <code class="docutils literal notranslate"><span class="pre">y_train</span></code>）を使用してください。</p></li>
+</ol>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+
+<span class="c1"># --- データの自動生成 (このセルをそのまま実行してください) ---</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">80</span>
+<span class="n">survey_age</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">)</span>
+<span class="n">survey_rating</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">)</span> <span class="c1"># 5段階評価</span>
+
+<span class="c1"># 評価が4以上、または年齢が30代以下の評価3の人がまた買いやすいパターン</span>
+<span class="n">survey_repeat</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">survey_age</span><span class="p">,</span> <span class="n">survey_rating</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">r</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="n">survey_repeat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="mi">39</span> <span class="ow">and</span> <span class="n">r</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">survey_repeat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">survey_repeat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">df_survey</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"年齢"</span><span class="p">:</span> <span class="n">survey_age</span><span class="p">,</span>
+    <span class="s2">"満足度評価"</span><span class="p">:</span> <span class="n">survey_rating</span><span class="p">,</span>
+    <span class="s2">"リピート"</span><span class="p">:</span> <span class="n">survey_repeat</span>
+<span class="p">})</span>
+
+<span class="c1"># データ分割</span>
+<span class="n">X_survey</span> <span class="o">=</span> <span class="n">df_survey</span><span class="p">[[</span><span class="s2">"年齢"</span><span class="p">,</span> <span class="s2">"満足度評価"</span><span class="p">]]</span>
+<span class="n">y_survey</span> <span class="o">=</span> <span class="n">df_survey</span><span class="p">[</span><span class="s2">"リピート"</span><span class="p">]</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_survey</span><span class="p">,</span> <span class="n">y_survey</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># --- ここからコードを記述してください ---</span>
+
+<span class="c1"># TODO: 1. DecisionTreeClassifier のインスタンスを作成（max_depth=2, random_state=42）</span>
+<span class="n">clf_survey</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 2. 学習用データ（X_train, y_train）を使って学習を実行（.fit）</span>
+
+
+<span class="c1"># TODO: 3. テストデータ（X_test）を使って予測を実行し、結果を y_pred_survey に代入する</span>
+<span class="n">y_pred_survey</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"学習完了後のAIの予測結果:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_pred_survey</span><span class="p">)</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習 1 の解答を見る</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. インスタンスの作成</span>
+<span class="n">clf_survey</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># 2. モデルの学習</span>
+<span class="n">clf_survey</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># 3. 予測の実行</span>
+<span class="n">y_pred_survey</span> <span class="o">=</span> <span class="n">clf_survey</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="max-depth">
+<h3>演習 2: 木の深さ（max_depth）の変更による過学習の制御実験<a class="headerlink" href="#max-depth" title="Link to this heading">¶</a></h3>
+<p>決定木を構築する際、<code class="docutils literal notranslate"><span class="pre">max_depth</span></code>（木の深さの上限）をいくらに設定するかで予測の精度が激変します。
+演習1で使用した顧客アンケートデータ（<code class="docutils literal notranslate"><span class="pre">X_train</span></code>, <code class="docutils literal notranslate"><span class="pre">y_train</span></code>, <code class="docutils literal notranslate"><span class="pre">X_test</span></code>, <code class="docutils literal notranslate"><span class="pre">y_test</span></code>）を使い、木の深さを「制限なし（最大まで伸ばす）」にした場合の決定木モデルを構築し、テストデータの正解率（Accuracy）を算出してください。</p>
+<ul class="simple">
+<li><p>条件:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code> を定義する際、<code class="docutils literal notranslate"><span class="pre">max_depth</span></code> パラメータを指定せずに（Noneのまま）作成し、<code class="docutils literal notranslate"><span class="pre">random_state=42</span></code> のみを指定して、変数 <code class="docutils literal notranslate"><span class="pre">clf_deep</span></code> に代入してください。</p></li>
+<li><p>学習用データで学習を実行してください。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">accuracy_score</span></code> をインポートし、テストデータに対する正解率を計算して画面に出力してください。</p></li>
+</ol>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習1のデータ（X_train, y_train, X_test, y_test）がColabのメモリに残っている状態で実行します。</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="c1"># --- ここからコードを記述してください ---</span>
+
+<span class="c1"># TODO: 1. max_depthを指定せず、random_state=42のみで決定木モデルを作成</span>
+<span class="n">clf_deep</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 2. 学習用データで学習を実行</span>
+
+
+<span class="c1"># TODO: 3. テストデータで予測を実行し、y_deep_pred に代入</span>
+<span class="n">y_deep_pred</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 4. テストデータの実際の正解(y_test)と予測(y_deep_pred)から、正解率(Accuracy)を算出</span>
+<span class="n">deep_accuracy</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"深さ制限なしの決定木のテストデータ正解率: </span><span class="si">{</span><span class="n">deep_accuracy</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習 2 の解答を見る</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. 制限なしの決定木作成</span>
+<span class="n">clf_deep</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># 2. 学習</span>
+<span class="n">clf_deep</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># 3. 予測</span>
+<span class="n">y_deep_pred</span> <span class="o">=</span> <span class="n">clf_deep</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># 4. 正解率の算出</span>
+<span class="n">deep_accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_deep_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id23">
+<h3>演習 3: 分類成績表（混同行列、適合率、再現率）の一括算出<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h3>
+<p>あなたが作成したAIモデルの予測精度をより正確に測定するため、演習1で作成した「深さ制限あり（max_depth=2）のモデル」の予測結果（<code class="docutils literal notranslate"><span class="pre">y_pred_survey</span></code>）を使い、以下の評価指標をすべて計算して表示するプログラムを完成させてください。</p>
+<ul class="simple">
+<li><p>算出するもの:</p>
+<ol class="arabic simple">
+<li><p>混同行列（実数内訳）：<code class="docutils literal notranslate"><span class="pre">confusion_matrix()</span></code></p></li>
+<li><p>正解率：<code class="docutils literal notranslate"><span class="pre">accuracy_score()</span></code></p></li>
+<li><p>適合率（Precision）：<code class="docutils literal notranslate"><span class="pre">precision_score()</span></code></p></li>
+<li><p>再現率（Recall）：<code class="docutils literal notranslate"><span class="pre">recall_score()</span></code></p></li>
+</ol>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習1が正常に完了し、予測結果 y_pred_survey と y_test がメモリにある状態で実行します。</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># --- ここからコードを記述してください ---</span>
+
+<span class="c1"># TODO: 1. 混同行列を計算し、変数 cm_survey に代入</span>
+<span class="n">cm_survey</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 2. 正解率を計算し、変数 acc_survey に代入</span>
+<span class="n">acc_survey</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 3. 適合率(Precision)を計算し、変数 prec_survey に代入</span>
+<span class="n">prec_survey</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 4. 再現率(Recall)を計算し、変数 rec_survey に代入</span>
+<span class="n">rec_survey</span> <span class="o">=</span> 
+
+
+<span class="c1"># 結果表示（ここはそのまま実行して確認してください）</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"==== 決定木（max_depth=2）評価レポート ===="</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"正解率 (Accuracy) : </span><span class="si">{</span><span class="n">acc_survey</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"適合率 (Precision): </span><span class="si">{</span><span class="n">prec_survey</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"再現率 (Recall)   : </span><span class="si">{</span><span class="n">rec_survey</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">▼ 混同行列の実数内訳:"</span><span class="p">)</span>
+<span class="n">cm_df_survey</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cm_survey</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"実際0（非リピ）"</span><span class="p">,</span> <span class="s2">"実際1（リピ）"</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"予測0"</span><span class="p">,</span> <span class="s2">"予測1"</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">cm_df_survey</span><span class="p">)</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習 3 の解答を見る</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. 混同行列の計算</span>
+<span class="n">cm_survey</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_survey</span><span class="p">)</span>
+
+<span class="c1"># 2. 正解率の計算</span>
+<span class="n">acc_survey</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_survey</span><span class="p">)</span>
+
+<span class="c1"># 3. 適合率の計算</span>
+<span class="n">prec_survey</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_survey</span><span class="p">)</span>
+
+<span class="c1"># 4. 再現率の計算</span>
+<span class="n">rec_survey</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_survey</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id24">
+<h3>演習 4: K-Means を使った「滞在時間と客単価」による未ラベル顧客グループ分け<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
+<p>ここに、正解ラベル（答え）が全く付いていない、カフェの顧客120名分のデータフレーム <code class="docutils literal notranslate"><span class="pre">df_cafe_unlabeled</span></code> があります。
+記録されている特徴量は、お客様の「滞在時間（分）」と「年間支払総額（円）」の2つです。</p>
+<p>K-Meansを使って、この120名のお客様を「4つのグループ（n_clusters=4）」に自動的にセグメンテーション（グループ分け）してください。</p>
+<ul class="simple">
+<li><p>条件:</p>
+<ol class="arabic simple">
+<li><p>距離を正しく計算させるため、K-Meansにデータを入れる前に、<code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> を用いてすべてのデータを標準化してください（変数 <code class="docutils literal notranslate"><span class="pre">X_unlabeled_scaled</span></code> に代入）。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">KMeans</span></code> のインスタンスを作る際は、<code class="docutils literal notranslate"><span class="pre">n_clusters=4</span></code>、<code class="docutils literal notranslate"><span class="pre">random_state=42</span></code> を指定してください。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fit_predict()</span></code> を実行して、各顧客のグループ番号（0, 1, 2, 3）を取得し、データフレームの新しい列 「顧客タイプ」 に追加して中身を表示してください。</p></li>
+</ol>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
+
+<span class="c1"># --- データの自動生成 (このセルをそのまま実行してください) ---</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">n_guests</span> <span class="o">=</span> <span class="mi">120</span>
+<span class="c1"># 120名の「滞在時間(分)」と「年間支払総額(円)」</span>
+<span class="n">stay_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span>   <span class="c1"># サクッと短時間層</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="c1"># 長居する勉強・仕事層</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>   <span class="c1"># 標準のおしゃべり層</span>
+<span class="p">])</span>
+<span class="n">annual_spend</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">5000</span><span class="p">,</span> <span class="mi">1200</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">30000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">15000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="n">df_cafe_unlabeled</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"滞在時間"</span><span class="p">:</span> <span class="n">stay_time</span><span class="p">,</span>
+    <span class="s2">"年間支払総額"</span><span class="p">:</span> <span class="n">annual_spend</span>
+<span class="p">})</span>
+
+<span class="c1"># --- ここからコードを記述してください ---</span>
+
+<span class="c1"># TODO: 1. StandardScaler のインスタンスを作成し、データを標準化する</span>
+<span class="n">scaler_unlabeled</span> <span class="o">=</span> 
+<span class="n">X_unlabeled_scaled</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 2. KMeans のインスタンスを作成（n_clusters=4, random_state=42）</span>
+<span class="n">kmeans_unlabeled</span> <span class="o">=</span> 
+
+<span class="c1"># TODO: 3. fit_predict を使って標準化データからグループ番号（0〜3）を取得し、新列「顧客タイプ」に追加</span>
+<span class="n">df_cafe_unlabeled</span><span class="p">[</span><span class="s2">"顧客タイプ"</span><span class="p">]</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"--- 自動グループ分け完了後のデータフレーム（先頭10名分） ---"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_cafe_unlabeled</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習 4 の解答を見る</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. StandardScaler によるデータの標準化</span>
+<span class="n">scaler_unlabeled</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_unlabeled_scaled</span> <span class="o">=</span> <span class="n">scaler_unlabeled</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_cafe_unlabeled</span><span class="p">)</span>
+
+<span class="c1"># 2. KMeansモデルの定義（n_clusters=4, random_state=42）</span>
+<span class="n">kmeans_unlabeled</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># 3. 学習と同時にクラスタラベルを予測し、データフレームに列追加</span>
+<span class="n">df_cafe_unlabeled</span><span class="p">[</span><span class="s2">"顧客タイプ"</span><span class="p">]</span> <span class="o">=</span> <span class="n">kmeans_unlabeled</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X_unlabeled_scaled</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="id25">
+<h3>演習 5: エルボー法（Elbow Method）による最適なグループ数の科学的探索<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h3>
+<p>K-Meansで最も頭を悩ませる「最適なグループ数（K）の数」を決定するために、forループと <code class="docutils literal notranslate"><span class="pre">inertia_</span></code>（グループ内の歪み・ばらつき合計）を組み合わせた「エルボー図」を自力で描画する、応用レベルのプログラムを作成してください。</p>
+<ul class="simple">
+<li><p>条件:</p>
+<ol class="arabic simple">
+<li><p>グループ数 <span class="math notranslate nohighlight">\(K\)</span> を 「1 から 8 まで（1以上9未満）」 変化させる for ループを作成してください。</p></li>
+<li><p>ループ内で各 <span class="math notranslate nohighlight">\(K\)</span> に応じた <code class="docutils literal notranslate"><span class="pre">KMeans(n_clusters=k,</span> <span class="pre">random_state=42,</span> <span class="pre">n_init=10)</span></code> を定義・学習（<code class="docutils literal notranslate"><span class="pre">.fit()</span></code>）させてください。</p></li>
+<li><p>学習が終わったモデルから、ばらつき合計値である <code class="docutils literal notranslate"><span class="pre">test_model.inertia_</span></code> を取得し、リスト <code class="docutils literal notranslate"><span class="pre">my_inertia_list</span></code> に <code class="docutils literal notranslate"><span class="pre">.append()</span></code> で追加していってください。</p></li>
+<li><p>ループ終了後、横軸に設定したグループ数（1〜8）、縦軸に <code class="docutils literal notranslate"><span class="pre">my_inertia_list</span></code> の値をプロットした線グラフ（マーカー付き）を Matplotlib で描画してください。</p></li>
+</ol>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 演習4の標準化されたデータ「X_unlabeled_scaled」がメモリにある状態で実行します。</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">my_inertia_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">k_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span> <span class="c1"># 1から8まで試す</span>
+
+<span class="c1"># --- ここからコードを記述してください ---</span>
+
+<span class="c1"># TODO: 1. forループを使って k_range (1から8) の値をループ処理する</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> 
+
+    <span class="c1"># TODO: 2. K-Meansモデルを各 k で定義 (n_clusters=k, random_state=42, n_init=10)</span>
+    <span class="n">test_model</span> <span class="o">=</span> 
+    
+    <span class="c1"># TODO: 3. 標準化データ X_unlabeled_scaled を使って学習させる（教師なしなので fit のみでOK）</span>
+    
+    
+    <span class="c1"># TODO: 4. my_inertia_list に、モデルの「inertia_」属性の値をアペンドする</span>
+    
+
+<span class="c1"># TODO: 5. Matplotlib を用いて、横軸 k_range、縦軸 my_inertia_list のエルボー図を描く</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>                               <span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"顧客データの最適なKを見つけるエルボー図"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"グループ数 (K)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"インナーシャ (Inertia)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<details>
+<summary>👉 演習 5 の解答を見る</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. forループを回す</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">k_range</span><span class="p">:</span>
+    <span class="c1"># 2. KMeansモデルを定義</span>
+    <span class="n">test_model</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="c1"># 3. 学習の実行</span>
+    <span class="n">test_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_unlabeled_scaled</span><span class="p">)</span>
+    <span class="c1"># 4. インナーシャ（歪み）の蓄積</span>
+    <span class="n">my_inertia_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_model</span><span class="o">.</span><span class="n">inertia_</span><span class="p">)</span>
+
+<span class="c1"># 5. エルボー図のプロット</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k_range</span><span class="p">,</span> <span class="n">my_inertia_list</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"顧客データの最適なKを見つけるエルボー図"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"グループ数 (K)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"インナーシャ (Inertia)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</details>
+</section>
+</section>
+<section id="id26">
+<h2>📚 まとめ<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>「回帰（数値を当てる）」 と 「分類（グループを当てる）」 の違いがある。</p></li>
+<li><p>決定木（Decision Tree） アルゴリズムが、データを最もきれいに2分割する。</p></li>
+<li><p>単純な「正解率（Accuracy）」だけを信じる危険性を理解する</p></li>
+<li><p>「教師あり学習（正解あり）」 と 「教師なし学習（正解なし）」 の決定的な違いを理解する</p></li>
+<li><p>K-Means（K平均法） とエルボー法の使い方を理解する</p></li>
+<li><p>最適なグループ数を科学的に導き出せる。</p></li>
+</ol>
+</section>
 </section>
 
         </article>
@@ -387,7 +1312,7 @@
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">第10回 PythonとAI(scikit-learn)1</div>
+                <div class="title">第10回 PythonとAI (scikit-learn) 1</div>
                 
               </div>
             </a>
@@ -398,7 +1323,7 @@
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-09-01</div>
+              Last updated on 2026-09-02</div>
           </div>
           <div class="right-details">
             
@@ -407,8 +1332,84 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">第11回 PythonとAI(scikit-learn)2</a><ul>
+<li><a class="reference internal" href="#id1">🎯 到達目標</a></li>
+<li><a class="reference internal" href="#google-colab">練習問題のGoogle Colab起動</a></li>
+<li><a class="reference internal" href="#id2">用語説明</a></li>
+<li><a class="reference internal" href="#id3">教師あり学習「分類」モデルの真髄</a></li>
+<li><a class="reference internal" href="#classification">分類（Classification）とは何か？（回帰との違い）</a><ul>
+<li><a class="reference internal" href="#decision-tree">決定木（Decision Tree）の直感的イメージ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">実践：決定木の構築と過学習（木の深さ）のコントロール</a><ul>
+<li><a class="reference internal" href="#id5">決定木モデルの学習と「木の深さ」の制限</a></li>
+<li><a class="reference internal" href="#id6">決定木の最大のメリット：「なぜ？」が説明できる（可視化）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">分類モデルの成績表：「評価指標」の正しい読み解き方</a><ul>
+<li><a class="reference internal" href="#accuracy">① 単純な「正解率（Accuracy）」だけを信じてはいけない罠（不均衡データ）</a></li>
+<li><a class="reference internal" href="#confusion-matrix-4">② 混同行列（Confusion Matrix）の直感的4分類</a></li>
+<li><a class="reference internal" href="#precision-recall">③ 適合率（Precision）と再現率（Recall）のビジネス・トレードオフ</a><ul>
+<li><a class="reference internal" href="#precision">1. 適合率 (Precision) ＝ 「空振りを減らしたい！」</a></li>
+<li><a class="reference internal" href="#recall">2. 再現率 (Recall) ＝ 「見落としを減らしたい！」</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8">教師なし学習「クラスタリング」の衝撃</a></li>
+<li><a class="reference internal" href="#unsupervised-learning">教師なし学習（Unsupervised Learning）の役割</a><ul>
+<li><a class="reference internal" href="#k-means4">K-Meansがグループを決める「4つのステップ」</a><ul>
+<li><a class="reference internal" href="#id9">ステップ 1：リーダー（重心）をランダムに配置する</a></li>
+<li><a class="reference internal" href="#id10">ステップ 2：一番近いリーダーのグループに所属する（割り当て）</a></li>
+<li><a class="reference internal" href="#id11">ステップ 3：グループの中心地にリーダーが引っ越す（重心の再計算）</a></li>
+<li><a class="reference internal" href="#id12">ステップ 4：リーダーが動かなくなるまで「2」と「3」を繰り返す！</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#k-means">K-Meansの実践ハンズオンと「エルボー法」</a><ul>
+<li><a class="reference internal" href="#id13">K-Meansを動かす前の「標準化（スケーリング）」のルール</a></li>
+<li><a class="reference internal" href="#ai">AIが色付けした顧客セグメントの可視化</a></li>
+<li><a class="reference internal" href="#elbow-method">グループ数はいくつに設定すればいいの？「エルボー法（Elbow Method）」</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id14">練習問題（5問）</a><ul>
+<li><a class="reference internal" href="#id15">練習問題 1: 「回帰」と「分類」の仕分け（理論）</a></li>
+<li><a class="reference internal" href="#id16">練習問題 2: 正解率（Accuracy）の甘い罠（理論）</a></li>
+<li><a class="reference internal" href="#id17">練習問題 3: 適合率と再現率、どっちを優先？（データリテラシー）</a></li>
+<li><a class="reference internal" href="#id18">練習問題 4: 教師あり学習と教師なし学習の決定的な違い（理論）</a></li>
+<li><a class="reference internal" href="#id19">練習問題 5: K-Meansにおける「標準化」の必要性（理論）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id20">💻 演習問題（5問）</a><ul>
+<li><a class="reference internal" href="#id21">📋 演習の概要</a></li>
+<li><a class="reference internal" href="#id22">演習 1: 顧客アンケートから「リピート意向」を予測する決定木分類器の作成</a></li>
+<li><a class="reference internal" href="#max-depth">演習 2: 木の深さ（max_depth）の変更による過学習の制御実験</a></li>
+<li><a class="reference internal" href="#id23">演習 3: 分類成績表（混同行列、適合率、再現率）の一括算出</a></li>
+<li><a class="reference internal" href="#id24">演習 4: K-Means を使った「滞在時間と客単価」による未ラベル顧客グループ分け</a></li>
+<li><a class="reference internal" href="#id25">演習 5: エルボー法（Elbow Method）による最適なグループ数の科学的探索</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id26">📚 まとめ</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -421,5 +1422,7 @@
     <script src="../../../_static/copybutton.js?v=940804e7"></script>
     <script src="../../../_static/translations.js?v=4755f45a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>
 </html>

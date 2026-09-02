@@ -14,7 +14,7 @@
 <meta property="og:image:alt" content="leafmap/foliumによる動的可視化とインタラクティブマップ 🎯 到達目標: 動的マップ（folium / leafmap）と静的グラフ（Matplotlib）の長短を理解し、目的（学術論文、Webサービス、プレゼンなど）に応じて適切に使い分けられる。, Pythonコードが裏側で HTML、CSS、Ja..." />
 <meta name="description" content="leafmap/foliumによる動的可視化とインタラクティブマップ 🎯 到達目標: 動的マップ（folium / leafmap）と静的グラフ（Matplotlib）の長短を理解し、目的（学術論文、Webサービス、プレゼンなど）に応じて適切に使い分けられる。, Pythonコードが裏側で HTML、CSS、JavaScript（Leaflet.js）へ自動変換（コンパイル）される仕組み を..." />
 <meta name="twitter:card" content="summary_large_image" />
-<link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" /><link rel="next" title="第10回 PythonとAI(scikit-learn)1" href="advanced_10.html" /><link rel="prev" title="第8回 地理空間データの活用1" href="advanced_08.html" />
+<link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" /><link rel="next" title="第10回 PythonとAI (scikit-learn) 1" href="advanced_10.html" /><link rel="prev" title="第8回 地理空間データの活用1" href="advanced_08.html" />
 
     <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
         <title>第9回 地理空間データの活用2 - Pythonプログラミング入門</title>
@@ -302,7 +302,8 @@
 <li class="toctree-l3"><a class="reference internal" href="advanced_07.html">第7回 地理空間情報の基礎</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_08.html">第8回 地理空間データの活用1</a></li>
 <li class="toctree-l3 current current-page"><a class="current reference internal" href="#">第9回 地理空間データの活用2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_10.html">第10回 PythonとAI(scikit-learn)1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_10.html">第10回 PythonとAI (scikit-learn) 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_10.html#fit">ステップ 2: モデルの学習（.fit()）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_13.html">第13回 総合演習</a></li>
@@ -372,9 +373,10 @@
 <li><p>地域別の数値データ（人口や売上）を、地図の境界線（GeoJSONポリゴン）の内側の色の濃淡で表現する 階級区分図（コーロプレス図） を自力で構築できる。</p></li>
 <li><p>作成した地図を Streamlitダッシュボードに埋め込む仕組み（st_folium） や、単体のHTMLファイルとして出力・共有するメソッド（.save()） をマスターする。</p></li>
 </ol>
+</section>
 <hr class="docutils" />
 <section id="google-colab">
-<h3>練習問題のGoogle Colab起動<a class="headerlink" href="#google-colab" title="Link to this heading">¶</a></h3>
+<h2>練習問題のGoogle Colab起動<a class="headerlink" href="#google-colab" title="Link to this heading">¶</a></h2>
 <p><a class="reference external" href="https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exercises/2026/02.programming_advanced_a/advanced_09.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <ol class="arabic simple">
 <li><p>上記の「Open In Colab」をクリックして、Google Colabを起動させてください</p></li>
@@ -383,7 +385,6 @@
 <li><p>GoogleドライブにコピーしたGoogle ColabのNotebooksを開いてください</p></li>
 <li><p>開いたGoogle ColabのNotebooksで作業をしてください</p></li>
 </ol>
-</section>
 </section>
 <hr class="docutils" />
 <section id="id3">
@@ -1072,7 +1073,7 @@ GeoJSONを一度Pandasで読むなどして、propertiesの中にどんなキー
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!pip<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span>streamlit<span class="w"> </span>folium<span class="w"> </span>streamlit-folium
 </pre></div>
 </div>
-<p>cloudflaredインストール（1回実行すればOKです）</p>
+<p>cloudflaredインストール</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!wget<span class="w"> </span>https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
 !dpkg<span class="w"> </span>-i<span class="w"> </span>cloudflared-linux-amd64.deb
 </pre></div>
@@ -1134,7 +1135,7 @@ cloudflared<span class="w"> </span>tunnel<span class="w"> </span>--url<span clas
 </section>
 </section>
 <section id="html">
-<h3>サーバー不要！「ポータブルHTML地図」として書き出す<a class="headerlink" href="#html" title="Link to this heading">¶</a></h3>
+<h3>「ポータブルHTML地図」を書き出す<a class="headerlink" href="#html" title="Link to this heading">¶</a></h3>
 <p>foliumオブジェクトには、非常に強力なファイル保存メソッド <code class="docutils literal notranslate"><span class="pre">.save()</span></code> が用意されています。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># （体験コード：実行するとColabの中に HTMLファイル が保存されます）</span>
 <span class="n">m_shops</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"cafe_map.html"</span><span class="p">)</span>
@@ -1733,7 +1734,7 @@ cloudflared<span class="w"> </span>tunnel<span class="w"> </span>--url<span clas
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">第10回 PythonとAI(scikit-learn)1</div>
+                <div class="title">第10回 PythonとAI (scikit-learn) 1</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -1777,10 +1778,8 @@ cloudflared<span class="w"> </span>tunnel<span class="w"> </span>--url<span clas
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">第9回 地理空間データの活用2</a><ul>
-<li><a class="reference internal" href="#id2">🎯 到達目標</a><ul>
+<li><a class="reference internal" href="#id2">🎯 到達目標</a></li>
 <li><a class="reference internal" href="#google-colab">練習問題のGoogle Colab起動</a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#id3">地図の仕組みとライブラリ比較</a><ul>
 <li><a class="reference internal" href="#id4">地図をインタラクティブに表示</a></li>
 <li><a class="reference internal" href="#pythonweb">PythonでWeb地図の表示</a></li>
@@ -1814,7 +1813,7 @@ cloudflared<span class="w"> </span>tunnel<span class="w"> </span>--url<span clas
 <li><a class="reference internal" href="#id10">サンプル</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#html">サーバー不要！「ポータブルHTML地図」として書き出す</a></li>
+<li><a class="reference internal" href="#html">「ポータブルHTML地図」を書き出す</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#id11">練習問題（5問）</a><ul>

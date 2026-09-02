@@ -1,0 +1,26 @@
+### 機械学習
+
+```{toctree}
+:maxdepth: 2
+:numbered: 2
+
+supervised_learning
+unsupervised_learning
+
+f1score.md
+```
+
+**ダウンロード**
+* [Google Colabファイルとデータ](./files/machine_learning_r0.zip)
+    * **Googleドライブにアップロードする時の注意点**
+        * ダウンロードされる「machine_learning_r0.zip」は圧縮ファイルです
+        * 下記の手順でパソコン上で解凍してGoogleドライブにアップロードしてください
+            1. パソコンにダウンロードした「machine_learning_r0.zip」ファイルは圧縮ファイルです。
+            2. 「machine_learning_r0.zip」をパソコン上で解凍してください
+                - Windowsの場合、右マウスメニュー「すべてを展開」を選択して解凍します
+            3. 「machine_learning_r0.zip」が解凍されると「machine_learning_r0」というフォルダが作成されます
+            4. 「machine_learning_r0」の下にある「machine_learning」フォルダーをGoogleドライブの「マイフォルダー」にアップロードしてください
+
+**参考**  
+* [7-2. scikit-learnライブラリ (Google Colab)](https://colab.research.google.com/github/homata/utokyo-ipp.github.io/blob/master/colab/7/7-2.ipynb)
+
