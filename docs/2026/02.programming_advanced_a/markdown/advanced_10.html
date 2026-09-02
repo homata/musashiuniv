@@ -303,7 +303,6 @@
 <li class="toctree-l3"><a class="reference internal" href="advanced_08.html">第8回 地理空間データの活用1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_09.html">第9回 地理空間データの活用2</a></li>
 <li class="toctree-l3 current current-page"><a class="current reference internal" href="#">第10回 PythonとAI (scikit-learn) 1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#fit">ステップ 2: モデルの学習（.fit()）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_13.html">第13回 総合演習</a></li>
@@ -563,11 +562,7 @@ AIには実力テスト用のデータを完全に隠した状態で訓練を行
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"データ分割成功：学習用 </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span><span class="si">}</span><span class="s2">件, テスト用 </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span><span class="si">}</span><span class="s2">件"</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="fit">
-<h1>ステップ 2: モデルの学習（.fit()）<a class="headerlink" href="#fit" title="Link to this heading">¶</a></h1>
+<p>ステップ 2: モデルの学習（.fit()）</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
 
 <span class="c1"># AIモデルを定義</span>
@@ -595,6 +590,8 @@ AIには実力テスト用のデータを完全に隠した状態で訓練を行
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"平均的なズレ（MAE）     : </span><span class="si">{</span><span class="n">mae</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> 杯 (予測値から平均して何杯ズレているか)"</span><span class="p">)</span>
 </pre></div>
 </div>
+</section>
+</section>
 <hr class="docutils" />
 <section id="multiple-regression">
 <h2>重回帰（Multiple Regression）分析の罠<a class="headerlink" href="#multiple-regression" title="Link to this heading">¶</a></h2>
@@ -1303,9 +1300,6 @@ Pandasで説明変数Xを切り出す際に、<code class="docutils literal notr
 <li><a class="reference internal" href="#id7">黄金の3ステップ「分割 ➡ 学習 ➡ 予測・評価」</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a class="reference internal" href="#fit">ステップ 2: モデルの学習（.fit()）</a><ul>
 <li><a class="reference internal" href="#multiple-regression">重回帰（Multiple Regression）分析の罠</a><ul>
 <li><a class="reference internal" href="#multicollinearity">多重共線性（マルチコ：Multicollinearity）の恐怖</a><ul>
 <li><a class="reference internal" href="#id8">回避するルール</a></li>

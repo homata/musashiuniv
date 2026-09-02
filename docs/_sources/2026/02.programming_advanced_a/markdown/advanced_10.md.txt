@@ -175,7 +175,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 print(f"データ分割成功：学習用 {len(X_train)}件, テスト用 {len(X_test)}件")
 ```
 
-# ステップ 2: モデルの学習（.fit()）
+ステップ 2: モデルの学習（.fit()）
 ```python
 from sklearn.linear_model import LinearRegression
 

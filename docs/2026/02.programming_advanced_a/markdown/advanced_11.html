@@ -10,7 +10,7 @@
 <meta property="og:description" content="分類モデルとクラスタリング 🎯 到達目標: 「回帰（数値を当てる）」 と 「分類（グループを当てる）」 の違いを、実例を交えて説明できる。, 決定木（Decision Tree） アルゴリズムが、データを最もきれいに2分割する「Yes/Noの質問」を自動で組み立てていく仕組みを直感的に理解できる。, 単純な「正解率（Accuracy）」だけを信じる危険性を理解し、ビジネスの目的に応じて 「適..." />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2026_02.programming_advanced_a_markdown_advanced_11_2e77183f.png" />
+<meta property="og:image" content="/None" />
 <meta property="og:image:alt" content="分類モデルとクラスタリング 🎯 到達目標: 「回帰（数値を当てる）」 と 「分類（グループを当てる）」 の違いを、実例を交えて説明できる。, 決定木（Decision Tree） アルゴリズムが、データを最もきれいに2分割する「Yes/Noの質問」を自動で組み立てていく仕組みを直感的に理解できる。, 単純な「正解..." />
 <meta name="description" content="分類モデルとクラスタリング 🎯 到達目標: 「回帰（数値を当てる）」 と 「分類（グループを当てる）」 の違いを、実例を交えて説明できる。, 決定木（Decision Tree） アルゴリズムが、データを最もきれいに2分割する「Yes/Noの質問」を自動で組み立てていく仕組みを直感的に理解できる。, 単純な「正解率（Accuracy）」だけを信じる危険性を理解し、ビジネスの目的に応じて 「適..." />
 <meta name="twitter:card" content="summary_large_image" />
@@ -303,7 +303,6 @@
 <li class="toctree-l3"><a class="reference internal" href="advanced_08.html">第8回 地理空間データの活用1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_09.html">第9回 地理空間データの活用2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_10.html">第10回 PythonとAI (scikit-learn) 1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_10.html#fit">ステップ 2: モデルの学習（.fit()）</a></li>
 <li class="toctree-l3 current current-page"><a class="current reference internal" href="#">第11回 PythonとAI(scikit-learn)2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_13.html">第13回 総合演習</a></li>
@@ -652,8 +651,10 @@ AIが「データを最もきれいに2分割できる最高の最初の質問�
   [ ⚫と⚫が混ざった過去データ ]  ──(学習)──▶  「なんとなく、左上に1つの塊、右下に1つの塊があるな！」
 </pre></div>
 </div>
+</section>
 <hr class="docutils" />
-<p>##K-Means（K平均法）の直感的なステップ</p>
+<section id="k-means-k">
+<h2>K-Means（K平均法）の直感的なステップ<a class="headerlink" href="#k-means-k" title="Link to this heading">¶</a></h2>
 <p>教師なし学習の中で、最も有名で強力なグループ分けアルゴリズムが K-Means（K平均法 / ケー・ミーンズ） です。
 K-Meansの「K」とは、「データを何個のグループに分けたいか」というグループの数を表します（私たちが事前に設定します）。</p>
 <p>K-Meansは、まるで学校の席替えでリーダーがクラスメイトを自分のグループに引き寄せるように、以下の4つのステップを高速で繰り返すことで、完璧なグループ分けを自動的に完成させます。</p>
@@ -1369,7 +1370,8 @@ Kが「3」の部分を境目にして、それ以降（4, 5, 6）は傾きが�
 </ul>
 </li>
 <li><a class="reference internal" href="#id8">教師なし学習「クラスタリング」の衝撃</a></li>
-<li><a class="reference internal" href="#unsupervised-learning">教師なし学習（Unsupervised Learning）の役割</a><ul>
+<li><a class="reference internal" href="#unsupervised-learning">教師なし学習（Unsupervised Learning）の役割</a></li>
+<li><a class="reference internal" href="#k-means-k">K-Means（K平均法）の直感的なステップ</a><ul>
 <li><a class="reference internal" href="#k-means4">K-Meansがグループを決める「4つのステップ」</a><ul>
 <li><a class="reference internal" href="#id9">ステップ 1：リーダー（重心）をランダムに配置する</a></li>
 <li><a class="reference internal" href="#id10">ステップ 2：一番近いリーダーのグループに所属する（割り当て）</a></li>
