@@ -261,17 +261,6 @@ gdf_districts
 
 ## 空間結合（Spatial Join: `gpd.sjoin()`）の真髄
 
-
-空間演算
-* Contains - AがBを含んでいるのかのかチェックする
-* Intersects - AとBが重なっているのかチェックする
-* Distance – AとBの距離を求める
-* Area – ポリゴンの面積を求める
-
-```{figure} images/08.gis_application1/00.png
-:width: 60%
-```
-
 Pandasの `pd.merge()` を使い、共通の「店舗名」や「商品ID」といったキーワード（キー列）を架け橋にして2つの表を横に合体させる「結合」をしました。
 
 しかし、地理空間情報（GIS）の世界では、以下のような事態があります。
@@ -287,6 +276,14 @@ Pandasの `pd.merge()` を使い、共通の「店舗名」や「商品ID」と�
   [ 店舗 Point ] ──▶ [ 行政区区画 Polygon ] ──▶ [ gpd.sjoin() で結合！ ]
   江古田店 (GPS)       豊島区 (境界線)              「江古田店 ＝ 豊島区」と
   白山店 (GPS)         文京区 (境界線)               物理的な包含でマージされる！
+```
+
+* 空間演算の例 （他にも多数の空間演算があります）
+  * Contains - AがBを含んでいるのかのかチェックする
+  * Intersects - AとBが重なっているのかチェックする
+
+```{figure} images/08.gis_application1/00.png
+:width: 50%
 ```
 
 ### 📦 空間結合の基本コードと引数

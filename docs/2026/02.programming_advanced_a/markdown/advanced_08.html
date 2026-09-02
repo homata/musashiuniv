@@ -692,17 +692,6 @@
 <hr class="docutils" />
 <section id="spatial-join-gpd-sjoin">
 <h2>空間結合（Spatial Join: <code class="docutils literal notranslate"><span class="pre">gpd.sjoin()</span></code>）の真髄<a class="headerlink" href="#spatial-join-gpd-sjoin" title="Link to this heading">¶</a></h2>
-<p>空間演算</p>
-<ul class="simple">
-<li><p>Contains - AがBを含んでいるのかのかチェックする</p></li>
-<li><p>Intersects - AとBが重なっているのかチェックする</p></li>
-<li><p>Distance – AとBの距離を求める</p></li>
-<li><p>Area – ポリゴンの面積を求める</p></li>
-</ul>
-<figure class="align-default">
-<a class="reference internal image-reference" href="../../../_images/002.png"><img alt="../../../_images/002.png" src="../../../_images/002.png" style="width: 60%;" />
-</a>
-</figure>
 <p>Pandasの <code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code> を使い、共通の「店舗名」や「商品ID」といったキーワード（キー列）を架け橋にして2つの表を横に合体させる「結合」をしました。</p>
 <p>しかし、地理空間情報（GIS）の世界では、以下のような事態があります。</p>
 <ul class="simple">
@@ -718,6 +707,18 @@
   白山店 (GPS)         文京区 (境界線)               物理的な包含でマージされる！
 </pre></div>
 </div>
+<ul class="simple">
+<li><p>空間演算の例 （他にも多数の空間演算があります）</p>
+<ul>
+<li><p>Contains - AがBを含んでいるのかのかチェックする</p></li>
+<li><p>Intersects - AとBが重なっているのかチェックする</p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/002.png"><img alt="../../../_images/002.png" src="../../../_images/002.png" style="width: 50%;" />
+</a>
+</figure>
 <section id="id7">
 <h3>📦 空間結合の基本コードと引数<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
 <p>空間結合は、GeoPandasの <code class="docutils literal notranslate"><span class="pre">gpd.sjoin()</span></code> 関数を使います。</p>
