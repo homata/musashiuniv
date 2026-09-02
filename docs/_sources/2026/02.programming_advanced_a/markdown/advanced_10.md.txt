@@ -27,16 +27,18 @@ https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exe
 
 ## 用語説明
 * 線形回帰モデルとは
-    * 線形回帰モデル（Linear Regression Model）は、目的変数（結果）と説明変数（要因）の関係を「直線（線形）」で表す統計モデルの総称です。
-    * 単回帰モデル（説明変数が1つ）
-    * 重回帰モデル（説明変数が2つ以上）
+  * 線形回帰モデル（Linear Regression Model）は、目的変数（結果）と説明変数（要因）の関係を「直線（線形）」で表す統計モデルの総称です。
+  * 単回帰モデル（説明変数が1つ）
+  * 重回帰モデル（説明変数が2つ以上）
 * 重回帰モデルとは
-    * 重回帰モデル（じゅうかいきモデル、Multiple Regression Model）とは、1つの目的変数（結果）を、複数の説明変数（要因）から予測・説明する統計モデルです。
-    * 重回帰モデルは、この線形回帰モデルの一種
+  * 重回帰モデル（じゅうかいきモデル、Multiple Regression Model）とは、1つの目的変数（結果）を、複数の説明変数（要因）から予測・説明する統計モデルです。
+  * 重回帰モデルは、この線形回帰モデルの一種
 * 決定係数（R²）
-    * 決定係数（R²、R-squared、coefficient of determination）は、回帰モデルが目的変数のばらつき（分散）をどれだけ説明できているかを示す指標です。0〜1の値をとり、1に近いほど当てはまりが良いことを意味します。 
+  * 決定係数（R²、R-squared、coefficient of determination）は、回帰モデルが目的変数のばらつき（分散）をどれだけ説明できているかを示す指標です。0〜1の値をとり、1に近いほど当てはまりが良いことを意味します。 
 * 平均絶対誤差（MAE）
-    * 平均絶対誤差（MAE: Mean Absolute Error）は、実際の値と予測値の差（誤差）の絶対値を平均した指標です
+  * 平均絶対誤差（MAE: Mean Absolute Error）は、実際の値と予測値の差（誤差）の絶対値を平均した指標です
+* 最小二乗法
+  * 最小二乗法（Least Squares Method、OLS: Ordinary Least Squares）は、実際の値と予測値の差（残差）の二乗和が最小になるように、回帰モデルのパラメータ（係数）を求める推定方法です。線形回帰・重回帰モデルでもっとも標準的に使われるパラメータ推定手法です
 
 ---
 ## AI・機械学習（Machine Learning）の全体像
@@ -90,6 +92,135 @@ https://colab.research.google.com/github/homata/musashiuniv/blob/master/docs/exe
 * (x)：売上を決める要因（気温） ➡ 説明変数（特徴量） と呼びます。
 * (a)：直線の傾き ➡ 回帰係数（ウェイト） と呼びます。
 * (b)：直線の切片 ➡ バイアス と呼びます。
+
+### scikit-learnライブラリ
+
+scikit-learnライブラリには分類、回帰、クラスタリング、次元削減、前処理、モデル選択などの機械学習の処理を行うモジュールが含まれています。
+
+* [scikit-learn](https://scikit-learn.org/)
+    * [API Reference](https://scikit-learn.org/stable/api/index.html)
+
+#### Irisデータセット
+データファイル: iris.csv
+
+Irisデータセットは、機械学習や統計学の入門で最もよく使われるアヤメ（花）の分類用データセットです
+基本情報
+* データ数: 150件（3種類×各50件）
+* 種類（クラス）: setosa（ヒオウギアヤメ）、versicolor（ブルーフラッグ）、virginica（ヴァージニカ）
+* 特徴量（4項目）:
+  * がく片の長さ（Sepal Length）
+  * がく片の幅（Sepal Width）
+  * 花びらの長さ（Petal Length）
+  * 花びらの幅（Petal Width）
+* 作成者: イギリスの統計学者ロナルド・フィッシャー（1936年）
+
+データロード
+```python
+import pandas as pd
+iris = pd.read_csv('iris.csv')
+iris.head(5)
+```
+または
+```python
+!wget -P . https://raw.githubusercontent.com/homata/musashiuniv/master/data/iris.csv
+```
+irisデータセットはscikit-learnが持つデータセットにも含まれている
+
+
+```python
+from sklearn.datasets import load_iris
+iris = load_iris()
+X_iris = iris.data # 特徴量データ
+y_iris = iris.target # ラベルデータ
+```
+
+#### モデル学習の基礎
+
+scikit-learnでは、以下の手順でデータからモデルの学習を行います。
+
+* 使用するモデルのクラスの選択
+* モデルのハイパーパラメータの選択とインスタンス化
+* データの準備
+  * 教師あり学習では、特徴量データとラベルデータを準備
+  * 教師あり学習では、特徴量・ラベルデータをモデル学習用の訓練データとモデル評価用のテストデータに分ける
+  * 教師なし学習では、特徴量データを準備
+* モデルをデータに適合（fit() メソッド）
+* モデルの評価
+  * 教師あり学習では、predict() メソッドを用いてテストデータの特徴量データからラベルデータを予測しその精度の評価を行う
+* 教師なし学習では、transform() または predict() メソッドを用いて特徴量データのクラスタリングや次元削減などを行う
+
+##### 教師あり学習・分類の例
+
+以下では、アイリスデータセットを用いて花の4つの特徴から3つの花の種類を分類する手続きを示しています。  
+scikit-learnでは、全てのモデルはPythonクラスとして実装されており、ここでは分類を行うモデルの1つであるロジスティック回帰 (LogisticRegression) クラスをインポートしています。
+
+train_test_split() はデータセットを訓練データとテストデータに分割するための関数、accuracy_score() はモデルの予測精度を評価するための関数です。
+
+特徴量データ (X_irist) とラベルデータ (y_iris) からなるデータセットを訓練データ (X_train, y_train) とテストデータ (X_test, y_test) に分割しています。ここでは、train_test_split() 関数の test_size 引数にデータセットの30%をテストデータとすることを指定しています。また、stratify 引数にラベルデータを指定することで、訓練データとテストデータ、それぞれでラベルの分布が同じになるようにしています。
+
+ロジスティック回帰クラスのインスタンスを作成し、fit() メソッドによりモデルを訓練データに適合させています。そして、predict() メソッドを用いてテストデータの特徴量データ (X_test) のラベルを予測し、accuracy_score() 関数で実際のラベルデータ (y_test) と比較して予測精度の評価を行なっています。97%の精度で花の4つの特徴から3つの花の種類を分類できていることがわかります。
+
+アヤメの分類予測
+```python
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+
+# 1. データの読み込み
+iris = load_iris()   # irisデータロード
+X_iris = iris.data   # 特徴量データ: アヤメの特徴量（茎の長さ、花弁の幅など）
+y_iris = iris.target # ラベルデータ: アヤメの品種（0, 1, 2 の3種類）
+
+# 2. 訓練データとテストデータの分割
+#  X: 特徴量（データ）, y: 正解ラベル, test_size=0.3 で「全体の30%をテスト用にする」と指定
+#  random_state=1, データの「シャッフル（並び替え）のランダムパターン」を固定するための設定
+#  stratify=y_iris, データを分割するときに、正解ラベル（クラス）の「割合」を保ったまま分ける（層化抽出）ための設定
+#   stratify=y_iris（y_iris は正解ラベルの変数名）と指定すると、元のデータ全体に含まれるアヤメの3品種（Setosa, Versicolor, Virginica）
+#   の割合（例えば 1:1:1）が、分割後の y_train と y_test でもきっちり 1:1:1 の同じ割合になるよう均等に分けてくれます。
+# 戻り値
+#    X_train: 学習用のデータ（特徴量） → model.fit に使う
+#    X_test: テスト用のデータ（特徴量） → model.predict に使う
+#    y_train: 学習用の正解ラベル → model.fit に使う
+#    y_test: テスト用の正解ラベル → accuracy_score での答え合わせに使う
+# random_stateで再現性を確保し、stratifyで品種の割合を均等にします
+X_train, X_test, y_train, y_test = train_test_split(
+    X_iris, y_iris, 
+    test_size=0.3,       # 30%をテスト用、70%を学習用にする
+    random_state=1,      # シャッフルのパターンを固定
+    stratify=y_iris      # 元の品種の割合（1:1:1）をキープ
+)
+
+# 3. モデルの選定と学習 (fit)
+model = LogisticRegression(max_iter=200)
+# model = LogisticRegression(solver='lbfgs')   # ロジスティック回帰モデル：solver引数には最適化手法を指定
+
+model.fit(X_train, y_train) # 学習用データでパターンを覚える
+
+# 4. 未知のデータに対する予測 (predict)
+y_pred = model.predict(X_test) # テスト用データを入れて予測値を出させる
+
+# 5. 精度の評価 (accuracy_score)
+score = accuracy_score(y_test, y_pred) # 予測精度（accuracy）の評価: 実際の正解と予測を答え合わせ
+
+print(f"テストデータの予測正解率: {score:.2%}")
+```
+
+説明  
+* train_test_split（データ分割）: 機械学習モデルの評価を正しく行うために、手元にあるデータを「学習用（Train）」と「テスト用（Test）」の2つに分割する関数
+* model.fit（学習）: 過去の正解データを使って、モデルにパターンやルールを覚えさせる作業
+* model.predict（予測）: 学習が終わったあとに、未知のデータに対する結果をはじき出す作業
+* accuracy_score（スコア）: 機械学習（主に分類問題）において、モデルの予測がどれくらい当たっているかの割合（正解率）を計算する関数
+
+このコードの流れ
+1. 分ける: train_test_split でデータを「訓練用（70%）」と「テスト用（30%）」に、偏りなく綺麗に切り分けます。
+2. 覚える: model.fit で、訓練用データの「特徴」と「アヤメの品種」の関係性をモデルに学習させます。
+3. 当てる: model.predict に一度も見たことがないテスト用データを渡し、アヤメの品種を予測させます。
+4. 測る: accuracy_score で、予測がどれくらい当たっていたかのパーセンテージ（正解率）を算出します。
+
+##### なぜ分割するのか？
+機械学習では、「学習に使ったデータ」でモデルを評価してはいけません。学習データを丸暗記してしまい、新しいデータに対応できない状態（過学習 / オーバーフィッティング）に気づけなくなるからです。  
+そのため、データを事前に切り分けておき、テスト用データ（モデルが一度も見たことのないデータ）を使って、先ほどの accuracy_score などで本当の実力を測定します。
 
 ### AIはどうやって「最も綺麗な1本線」を引くのか？（最小二乗法）
 

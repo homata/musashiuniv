@@ -635,8 +635,10 @@ df = pd.read_csv(uploaded_file)
 st.dataframe(df)
 ```
 
-<a href="https://raw.githubusercontent.com/homata/musashiuniv/master/data/cafe_sales_analytics_data.csv" download="cafe_sales_analytics_data.csv">サンプルファイル: cafe_sales_analytics_data.csv</a>
-  
+サンプルファイル: cafe_sales_analytics_data.csv
+```python
+!wget -P . https://raw.githubusercontent.com/homata/musashiuniv/master/data/cafe_sales_analytics_data.csv
+```
 
 このコードを実行すると、アプリを起動した直後（まだユーザーがファイルを1枚もアップロードしていない状態）に、画面に真っ赤な文字で `ValueError` や `AttributeError` などの大パニックエラーが表示され、アプリが正常に動作しません。
 1. なぜ、ファイルを選ぶ前の段階でこのようなエラーが発生してしまうのでしょうか？

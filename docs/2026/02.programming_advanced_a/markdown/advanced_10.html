@@ -14,7 +14,7 @@
 <meta property="og:image:alt" content="機械学習の基礎と回帰分析 🎯 到達目標: AI、機械学習、ディープラーニングの違いと、「教師あり学習（分類・回帰）」および「教師なし学習」の違いを説明できる。, 機械学習における「データの分割（学習用データとテスト用データ）」の重要性を理解し、なぜ分割が必要なのか（過学習の防止）を説明できる。, scikit-l..." />
 <meta name="description" content="機械学習の基礎と回帰分析 🎯 到達目標: AI、機械学習、ディープラーニングの違いと、「教師あり学習（分類・回帰）」および「教師なし学習」の違いを説明できる。, 機械学習における「データの分割（学習用データとテスト用データ）」の重要性を理解し、なぜ分割が必要なのか（過学習の防止）を説明できる。, scikit-learn を使って、「単回帰（Linear Regression）」および「重回..." />
 <meta name="twitter:card" content="summary_large_image" />
-<link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" /><link rel="next" title="第11回 PythonとAI(scikit-learn)2" href="advanced_11.html" /><link rel="prev" title="第9回 地理空間データの活用2" href="advanced_09.html" />
+<link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" /><link rel="next" title="第11回 PythonとAI(scikit-learn) 2" href="advanced_11.html" /><link rel="prev" title="第9回 地理空間データの活用2" href="advanced_09.html" />
 
     <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
         <title>第10回 PythonとAI (scikit-learn) 1 - Pythonプログラミング入門</title>
@@ -303,7 +303,7 @@
 <li class="toctree-l3"><a class="reference internal" href="advanced_08.html">第8回 地理空間データの活用1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_09.html">第9回 地理空間データの活用2</a></li>
 <li class="toctree-l3 current current-page"><a class="current reference internal" href="#">第10回 PythonとAI (scikit-learn) 1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_11.html">第11回 PythonとAI(scikit-learn) 2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_13.html">第13回 総合演習</a></li>
 </ul>
@@ -411,6 +411,11 @@
 <li><p>平均絶対誤差（MAE: Mean Absolute Error）は、実際の値と予測値の差（誤差）の絶対値を平均した指標です</p></li>
 </ul>
 </li>
+<li><p>最小二乗法</p>
+<ul>
+<li><p>最小二乗法（Least Squares Method、OLS: Ordinary Least Squares）は、実際の値と予測値の差（残差）の二乗和が最小になるように、回帰モデルのパラメータ（係数）を求める推定方法です。線形回帰・重回帰モデルでもっとも標準的に使われるパラメータ推定手法です</p></li>
+</ul>
+</li>
 </ul>
 </section>
 <hr class="docutils" />
@@ -483,6 +488,147 @@
 <li><p>(a)：直線の傾き ➡ 回帰係数（ウェイト） と呼びます。</p></li>
 <li><p>(b)：直線の切片 ➡ バイアス と呼びます。</p></li>
 </ul>
+<section id="scikit-learn">
+<h3>scikit-learnライブラリ<a class="headerlink" href="#scikit-learn" title="Link to this heading">¶</a></h3>
+<p>scikit-learnライブラリには分類、回帰、クラスタリング、次元削減、前処理、モデル選択などの機械学習の処理を行うモジュールが含まれています。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://scikit-learn.org/">scikit-learn</a></p>
+<ul>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/api/index.html">API Reference</a></p></li>
+</ul>
+</li>
+</ul>
+<section id="iris">
+<h4>Irisデータセット<a class="headerlink" href="#iris" title="Link to this heading">¶</a></h4>
+<p>データファイル: iris.csv</p>
+<p>Irisデータセットは、機械学習や統計学の入門で最もよく使われるアヤメ（花）の分類用データセットです
+基本情報</p>
+<ul class="simple">
+<li><p>データ数: 150件（3種類×各50件）</p></li>
+<li><p>種類（クラス）: setosa（ヒオウギアヤメ）、versicolor（ブルーフラッグ）、virginica（ヴァージニカ）</p></li>
+<li><p>特徴量（4項目）:</p>
+<ul>
+<li><p>がく片の長さ（Sepal Length）</p></li>
+<li><p>がく片の幅（Sepal Width）</p></li>
+<li><p>花びらの長さ（Petal Length）</p></li>
+<li><p>花びらの幅（Petal Width）</p></li>
+</ul>
+</li>
+<li><p>作成者: イギリスの統計学者ロナルド・フィッシャー（1936年）</p></li>
+</ul>
+<p>データロード</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'iris.csv'</span><span class="p">)</span>
+<span class="n">iris</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>または</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">wget</span> <span class="o">-</span><span class="n">P</span> <span class="o">.</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">homata</span><span class="o">/</span><span class="n">musashiuniv</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">iris</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+<p>irisデータセットはscikit-learnが持つデータセットにも含まれている</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_iris</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+<span class="n">X_iris</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span> <span class="c1"># 特徴量データ</span>
+<span class="n">y_iris</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span> <span class="c1"># ラベルデータ</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h4>モデル学習の基礎<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<p>scikit-learnでは、以下の手順でデータからモデルの学習を行います。</p>
+<ul class="simple">
+<li><p>使用するモデルのクラスの選択</p></li>
+<li><p>モデルのハイパーパラメータの選択とインスタンス化</p></li>
+<li><p>データの準備</p>
+<ul>
+<li><p>教師あり学習では、特徴量データとラベルデータを準備</p></li>
+<li><p>教師あり学習では、特徴量・ラベルデータをモデル学習用の訓練データとモデル評価用のテストデータに分ける</p></li>
+<li><p>教師なし学習では、特徴量データを準備</p></li>
+</ul>
+</li>
+<li><p>モデルをデータに適合（fit() メソッド）</p></li>
+<li><p>モデルの評価</p>
+<ul>
+<li><p>教師あり学習では、predict() メソッドを用いてテストデータの特徴量データからラベルデータを予測しその精度の評価を行う</p></li>
+</ul>
+</li>
+<li><p>教師なし学習では、transform() または predict() メソッドを用いて特徴量データのクラスタリングや次元削減などを行う</p></li>
+</ul>
+<section id="id7">
+<h5>教師あり学習・分類の例<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h5>
+<p>以下では、アイリスデータセットを用いて花の4つの特徴から3つの花の種類を分類する手続きを示しています。<br />
+scikit-learnでは、全てのモデルはPythonクラスとして実装されており、ここでは分類を行うモデルの1つであるロジスティック回帰 (LogisticRegression) クラスをインポートしています。</p>
+<p>train_test_split() はデータセットを訓練データとテストデータに分割するための関数、accuracy_score() はモデルの予測精度を評価するための関数です。</p>
+<p>特徴量データ (X_irist) とラベルデータ (y_iris) からなるデータセットを訓練データ (X_train, y_train) とテストデータ (X_test, y_test) に分割しています。ここでは、train_test_split() 関数の test_size 引数にデータセットの30%をテストデータとすることを指定しています。また、stratify 引数にラベルデータを指定することで、訓練データとテストデータ、それぞれでラベルの分布が同じになるようにしています。</p>
+<p>ロジスティック回帰クラスのインスタンスを作成し、fit() メソッドによりモデルを訓練データに適合させています。そして、predict() メソッドを用いてテストデータの特徴量データ (X_test) のラベルを予測し、accuracy_score() 関数で実際のラベルデータ (y_test) と比較して予測精度の評価を行なっています。97%の精度で花の4つの特徴から3つの花の種類を分類できていることがわかります。</p>
+<p>アヤメの分類予測</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_iris</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="c1"># 1. データの読み込み</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>   <span class="c1"># irisデータロード</span>
+<span class="n">X_iris</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span>   <span class="c1"># 特徴量データ: アヤメの特徴量（茎の長さ、花弁の幅など）</span>
+<span class="n">y_iris</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span> <span class="c1"># ラベルデータ: アヤメの品種（0, 1, 2 の3種類）</span>
+
+<span class="c1"># 2. 訓練データとテストデータの分割</span>
+<span class="c1">#  X: 特徴量（データ）, y: 正解ラベル, test_size=0.3 で「全体の30%をテスト用にする」と指定</span>
+<span class="c1">#  random_state=1, データの「シャッフル（並び替え）のランダムパターン」を固定するための設定</span>
+<span class="c1">#  stratify=y_iris, データを分割するときに、正解ラベル（クラス）の「割合」を保ったまま分ける（層化抽出）ための設定</span>
+<span class="c1">#   stratify=y_iris（y_iris は正解ラベルの変数名）と指定すると、元のデータ全体に含まれるアヤメの3品種（Setosa, Versicolor, Virginica）</span>
+<span class="c1">#   の割合（例えば 1:1:1）が、分割後の y_train と y_test でもきっちり 1:1:1 の同じ割合になるよう均等に分けてくれます。</span>
+<span class="c1"># 戻り値</span>
+<span class="c1">#    X_train: 学習用のデータ（特徴量） → model.fit に使う</span>
+<span class="c1">#    X_test: テスト用のデータ（特徴量） → model.predict に使う</span>
+<span class="c1">#    y_train: 学習用の正解ラベル → model.fit に使う</span>
+<span class="c1">#    y_test: テスト用の正解ラベル → accuracy_score での答え合わせに使う</span>
+<span class="c1"># random_stateで再現性を確保し、stratifyで品種の割合を均等にします</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X_iris</span><span class="p">,</span> <span class="n">y_iris</span><span class="p">,</span> 
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>       <span class="c1"># 30%をテスト用、70%を学習用にする</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>      <span class="c1"># シャッフルのパターンを固定</span>
+    <span class="n">stratify</span><span class="o">=</span><span class="n">y_iris</span>      <span class="c1"># 元の品種の割合（1:1:1）をキープ</span>
+<span class="p">)</span>
+
+<span class="c1"># 3. モデルの選定と学習 (fit)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="c1"># model = LogisticRegression(solver='lbfgs')   # ロジスティック回帰モデル：solver引数には最適化手法を指定</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span> <span class="c1"># 学習用データでパターンを覚える</span>
+
+<span class="c1"># 4. 未知のデータに対する予測 (predict)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span> <span class="c1"># テスト用データを入れて予測値を出させる</span>
+
+<span class="c1"># 5. 精度の評価 (accuracy_score)</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> <span class="c1"># 予測精度（accuracy）の評価: 実際の正解と予測を答え合わせ</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"テストデータの予測正解率: </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>説明</p>
+<ul class="simple">
+<li><p>train_test_split（データ分割）: 機械学習モデルの評価を正しく行うために、手元にあるデータを「学習用（Train）」と「テスト用（Test）」の2つに分割する関数</p></li>
+<li><p>model.fit（学習）: 過去の正解データを使って、モデルにパターンやルールを覚えさせる作業</p></li>
+<li><p>model.predict（予測）: 学習が終わったあとに、未知のデータに対する結果をはじき出す作業</p></li>
+<li><p>accuracy_score（スコア）: 機械学習（主に分類問題）において、モデルの予測がどれくらい当たっているかの割合（正解率）を計算する関数</p></li>
+</ul>
+<p>このコードの流れ</p>
+<ol class="arabic simple">
+<li><p>分ける: train_test_split でデータを「訓練用（70%）」と「テスト用（30%）」に、偏りなく綺麗に切り分けます。</p></li>
+<li><p>覚える: model.fit で、訓練用データの「特徴」と「アヤメの品種」の関係性をモデルに学習させます。</p></li>
+<li><p>当てる: model.predict に一度も見たことがないテスト用データを渡し、アヤメの品種を予測させます。</p></li>
+<li><p>測る: accuracy_score で、予測がどれくらい当たっていたかのパーセンテージ（正解率）を算出します。</p></li>
+</ol>
+</section>
+<section id="id8">
+<h5>なぜ分割するのか？<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h5>
+<p>機械学習では、「学習に使ったデータ」でモデルを評価してはいけません。学習データを丸暗記してしまい、新しいデータに対応できない状態（過学習 / オーバーフィッティング）に気づけなくなるからです。<br />
+そのため、データを事前に切り分けておき、テスト用データ（モデルが一度も見たことのないデータ）を使って、先ほどの accuracy_score などで本当の実力を測定します。</p>
+</section>
+</section>
+</section>
 <section id="ai1">
 <h3>AIはどうやって「最も綺麗な1本線」を引くのか？（最小二乗法）<a class="headerlink" href="#ai1" title="Link to this heading">¶</a></h3>
 <p>散布図の上にバラバラと置かれた過去のデータ（点々）があります。　　
@@ -513,8 +659,8 @@ AIは、この点々の真ん中を通る「最も代表的な1本線」を自�
 <section id="overfitting">
 <h2>機械学習の生命線：過学習（Overfitting）とデータの分割<a class="headerlink" href="#overfitting" title="Link to this heading">¶</a></h2>
 <p>AIに売上を予測させるためには、過去のデータをそのまま全て使ってはいけません。ここがデータ分析における最大のポイントです。</p>
-<section id="id6">
-<h3>「過去問の丸暗記」による不合格の罠（過学習）<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<section id="id9">
+<h3>「過去問の丸暗記」による不合格の罠（過学習）<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
 <p>もし、あなたが持っている「過去100日分の売上データ」をすべてAIに丸暗記（学習）させたとします。
 そのAIに「過去100日の中の、ある日の売上」を予測させると、ほぼ100%完璧に当てることができます。
 しかし、これでは「ただの丸暗記」であり、本当に知りたい「まだ見ぬ明日（未来）の売上」を予測できる実力があるかどうかが分かりません。</p>
@@ -533,8 +679,8 @@ AIは、この点々の真ん中を通る「最も代表的な1本線」を自�
 <p>これを防ぐために、手元のデータをあらかじめ「教科書用（学習用）」と「実力テスト用」の2つに分割して、
 AIには実力テスト用のデータを完全に隠した状態で訓練を行います。</p>
 </section>
-<section id="id7">
-<h3>黄金の3ステップ「分割 ➡ 学習 ➡ 予測・評価」<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<section id="id10">
+<h3>黄金の3ステップ「分割 ➡ 学習 ➡ 予測・評価」<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
 <p>scikit-learnでの実装手順は常にこの流れです。</p>
 <p>ステップ 1: データの生成と分割（Colabのセルで実行してください）</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -618,16 +764,16 @@ AIの頭がパニックになり、予測結果が壊滅的に傾きが異常な
                                                            ➡ 傾きが「プラス数万」「マイナス数万」と大暴走！
 </pre></div>
 </div>
-<section id="id8">
-<h4>回避するルール<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
+<section id="id11">
+<h4>回避するルール<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h4>
 <p>「最高気温」と「最低気温」、「店の面積」と「店内の席数」のように、お互いの相関係数（(r)）が 0.8 以上になるような
 似たもの同士のデータは、どちらか片方だけをモデルに与え、もう片方はゴミ箱に捨てるのが鉄則です。</p>
 </section>
 </section>
 </section>
 <hr class="docutils" />
-<section id="scikit-learn">
-<h2>実践：scikit-learnでの重回帰モデル構築<a class="headerlink" href="#scikit-learn" title="Link to this heading">¶</a></h2>
+<section id="id12">
+<h2>実践：scikit-learnでの重回帰モデル構築<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
 <p>ヒントを2つ（「気温」と「チラシ配布部数」）に増やした、本格的な「重回帰分析」のプログラムをColabで動かします。<br />
 Pandasで説明変数Xを切り出す際に、<code class="docutils literal notranslate"><span class="pre">df[[&quot;列1&quot;,</span> <span class="pre">&quot;列2&quot;]]</span></code> とリストで指定するだけで、あとのコードは単回帰と全く同じ（<code class="docutils literal notranslate"><span class="pre">.fit</span></code> して <code class="docutils literal notranslate"><span class="pre">.predict</span></code>）です。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. 2つのヒントを持つ重回帰用ダミーデータの生成</span>
@@ -676,8 +822,8 @@ Pandasで説明変数Xを切り出す際に、<code class="docutils literal notr
 </div>
 </section>
 <hr class="docutils" />
-<section id="id9">
-<h2>特徴量エンジニアリング（文字データの数値化）の基礎<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<section id="id13">
+<h2>特徴量エンジニアリング（文字データの数値化）の基礎<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
 <p>ここまでは、すべて「気温（度）」や「チラシ配布数（枚）」といった、綺麗な「数字」のデータだけを使って予測を行ってきました。
 しかし実際の売上データには、「時間帯（昼／夜）」「店舗所在地（江古田／白山）」「会員ランク（ゴールド／一般）」といった、
 「文字（カテゴリーデータ）」が含まれていることが非常に多いです。</p>
@@ -715,11 +861,11 @@ Pandasで説明変数Xを切り出す際に、<code class="docutils literal notr
 </div>
 </section>
 <hr class="docutils" />
-<section id="id10">
-<h2>📝 練習問題（5問）<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<section id="id14">
+<h2>📝 練習問題（5問）<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
 <hr class="docutils" />
-<section id="id11">
-<h3>練習問題 1: 教師あり学習（回帰・分類）と教師なし学習の判別<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<section id="id15">
+<h3>練習問題 1: 教師あり学習（回帰・分類）と教師なし学習の判別<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
 <p>以下に挙げる3つのAI活用事例は、「教師あり学習（回帰）」「教師あり学習（分類）」「教師なし学習」のどれに該当するか、それぞれ答えてください。</p>
 <ol class="arabic simple">
 <li><p>スマートフォンの写真アプリが、写真に写っているのが「犬」か「猫」かを判定してフォルダ分けする機能。</p></li>
@@ -752,8 +898,8 @@ Pandasで説明変数Xを切り出す際に、<code class="docutils literal notr
 </details>
 </section>
 <hr class="docutils" />
-<section id="id12">
-<h3>練習問題 2: 線形回帰式の読み取りと予測計算<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<section id="id16">
+<h3>練習問題 2: 線形回帰式の読み取りと予測計算<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
 <p>あるカフェの「最高気温 ((x))」から「アイスコーヒーの売上杯数 ((y))」を予測する単回帰モデルを構築したところ、以下のような数式（ルール）が得られました。</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -785,8 +931,8 @@ Pandasで説明変数Xを切り出す際に、<code class="docutils literal notr
 </details>
 </section>
 <hr class="docutils" />
-<section id="id13">
-<h3>練習問題 3: 過学習（オーバーフィッティング）の要因と対策<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<section id="id17">
+<h3>練習問題 3: 過学習（オーバーフィッティング）の要因と対策<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
 <p>機械学習モデルを訓練したところ、「学習用データに対する決定係数（(R^2)）は 0.99 とほぼ完璧だったが、テスト用データに対する決定係数は 0.25 と壊滅的だった」という状態になりました。</p>
 <ol class="arabic simple">
 <li><p>このような、手元のデータにだけ過剰に適合し、新しいデータに対応できなくなった状態を何と呼びますか？</p></li>
@@ -842,8 +988,8 @@ Pandasで説明変数Xを切り出す際に、<code class="docutils literal notr
 </details>
 </section>
 <hr class="docutils" />
-<section id="id14">
-<h3>練習問題 5: 重回帰における「多重共線性（マルチコ）」の回避<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<section id="id18">
+<h3>練習問題 5: 重回帰における「多重共線性（マルチコ）」の回避<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
 <p>あるカフェの売上予測を行うために、以下の4つのデータをヒント（説明変数）として集めました。
 重回帰モデルを構築するにあたり、多重共線性の罠を回避するために「絶対に同時にヒントとして組み込んではいけない」組み合わせはどれでしょうか？</p>
 <ul class="simple">
@@ -867,8 +1013,8 @@ Pandasで説明変数Xを切り出す際に、<code class="docutils literal notr
 </section>
 </section>
 <hr class="docutils" />
-<section id="id15">
-<h2>🌟 レベルアップするおすすめコード<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
+<section id="id19">
+<h2>🌟 レベルアップするおすすめコード<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h2>
 <p>予測に使うヒント（説明変数）を2つに増やし、さらに今回の文字データ数値化を組み込んだ「重回帰分析の完全パイプライン」のデモです。
 「気温」に加えて、「曜日（平日／土日）」という文字データをダミー変数化し、これらを組み合わせて売上を完璧に予測する流れのコードです</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">コードセル</span> <span class="o">--&gt;</span>
@@ -926,11 +1072,11 @@ Pandasで説明変数Xを切り出す際に、<code class="docutils literal notr
 </div>
 </section>
 <hr class="docutils" />
-<section id="id16">
-<h2>💻 演習演習（5問）<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h2>
+<section id="id20">
+<h2>💻 演習演習（5問）<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h2>
 <hr class="docutils" />
-<section id="id17">
-<h3>演習 1: 広告投資による売上予測（単回帰モデルの構築）<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<section id="id21">
+<h3>演習 1: 広告投資による売上予測（単回帰モデルの構築）<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
 <p>あるアパレルブランドの「インターネット広告費（万円）」と、その月の「総売上高（万円）」のデータがあります。
 広告費から総売上高を自動で予測する「単回帰モデル」を構築してください。</p>
 <ol class="arabic simple">
@@ -978,8 +1124,8 @@ Pandasで説明変数Xを切り出す際に、<code class="docutils literal notr
 </details>
 </section>
 <hr class="docutils" />
-<section id="id18">
-<h3>演習 2: 複数ヒントによる売上予測（重回帰モデルの構築）<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<section id="id22">
+<h3>演習 2: 複数ヒントによる売上予測（重回帰モデルの構築）<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
 <p>演習1のデータに、「店舗の駅からの距離（徒歩分）」という新しいデータを追加しました。
 広告費（多いほど売上アップ）と、駅からの距離（遠いほど売上ダウン）の、2つのヒントを使って売上をより精密に予測する
 「重回帰モデル」を構築してください。</p>
@@ -1071,8 +1217,8 @@ Pandasで説明変数Xを切り出す際に、<code class="docutils literal notr
 </details>
 </section>
 <hr class="docutils" />
-<section id="id19">
-<h3>演習 4: 文字データのダミー変数化と売上予測<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<section id="id23">
+<h3>演習 4: 文字データのダミー変数化と売上予測<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h3>
 <p>カフェの売上データに、新しく「メニューカテゴリ」という文字（<code class="docutils literal notranslate"><span class="pre">&quot;ドリンク&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;フード&quot;</span></code>）のデータが追加されました。
 この文字データをワンホットエンコーディング（ダミー変数化）して数値化した上で、売上高を予測する線形回帰モデルを構築してください。</p>
 <ol class="arabic simple">
@@ -1134,8 +1280,8 @@ Pandasで説明変数Xを切り出す際に、<code class="docutils literal notr
 </details>
 </section>
 <hr class="docutils" />
-<section id="id20">
-<h3>演習 5: 特徴量の標準化と重回帰パイプライン<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<section id="id24">
+<h3>演習 5: 特徴量の標準化と重回帰パイプライン<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
 <p>実務のデータ分析で直面する最大の壁が、予測ヒントとなるデータの「単位（スケール）のバラツキ」です。
 例えば、「客数（数十人レベル）」と「店舗の広告宣伝費（数十万円レベル）」をそのまま同時に重回帰モデルに与えると、単位の桁数が違いすぎるため、AIは「広告宣伝費のほうが数値が大きいから、超重要ヒントに違いない！」と勘違い（偏った傾きを学習）してしまいます。</p>
 <p>これを防ぐために、すべての説明変数の平均を0、標準偏差を1に変換してスケールを統一する 「標準化（Standardization）」 という最重要前処理を行います。</p>
@@ -1216,8 +1362,8 @@ Pandasで説明変数Xを切り出す際に、<code class="docutils literal notr
 </section>
 </section>
 <hr class="docutils" />
-<section id="id21">
-<h2>📚 まとめ<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h2>
+<section id="id25">
+<h2>📚 まとめ<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>機械学習の3大分類：データから自動でルールを学ぶ「教師あり学習」「教師なし学習」「強化学習」がある。</p></li>
 <li><p>回帰と分類：数値を予測するのが「回帰（Regression）」、カテゴリ（犬か猫かなど）を予測するのが「分類（Classification）」。</p></li>
@@ -1239,7 +1385,7 @@ Pandasで説明変数Xを切り出す際に、<code class="docutils literal notr
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">第11回 PythonとAI(scikit-learn)2</div>
+                <div class="title">第11回 PythonとAI(scikit-learn) 2</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -1261,7 +1407,7 @@ Pandasで説明変数Xを切り出す際に、<code class="docutils literal notr
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-09-02</div>
+              Last updated on 2026-09-03</div>
           </div>
           <div class="right-details">
             
@@ -1292,41 +1438,50 @@ Pandasで説明変数Xを切り出す際に、<code class="docutils literal notr
 </ul>
 </li>
 <li><a class="reference internal" href="#id5">線形回帰（単回帰）の直感的メカニズム</a><ul>
+<li><a class="reference internal" href="#scikit-learn">scikit-learnライブラリ</a><ul>
+<li><a class="reference internal" href="#iris">Irisデータセット</a></li>
+<li><a class="reference internal" href="#id6">モデル学習の基礎</a><ul>
+<li><a class="reference internal" href="#id7">教師あり学習・分類の例</a></li>
+<li><a class="reference internal" href="#id8">なぜ分割するのか？</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#ai1">AIはどうやって「最も綺麗な1本線」を引くのか？（最小二乗法）</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#overfitting">機械学習の生命線：過学習（Overfitting）とデータの分割</a><ul>
-<li><a class="reference internal" href="#id6">「過去問の丸暗記」による不合格の罠（過学習）</a></li>
-<li><a class="reference internal" href="#id7">黄金の3ステップ「分割 ➡ 学習 ➡ 予測・評価」</a></li>
+<li><a class="reference internal" href="#id9">「過去問の丸暗記」による不合格の罠（過学習）</a></li>
+<li><a class="reference internal" href="#id10">黄金の3ステップ「分割 ➡ 学習 ➡ 予測・評価」</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#multiple-regression">重回帰（Multiple Regression）分析の罠</a><ul>
 <li><a class="reference internal" href="#multicollinearity">多重共線性（マルチコ：Multicollinearity）の恐怖</a><ul>
-<li><a class="reference internal" href="#id8">回避するルール</a></li>
+<li><a class="reference internal" href="#id11">回避するルール</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#scikit-learn">実践：scikit-learnでの重回帰モデル構築</a></li>
-<li><a class="reference internal" href="#id9">特徴量エンジニアリング（文字データの数値化）の基礎</a></li>
-<li><a class="reference internal" href="#id10">📝 練習問題（5問）</a><ul>
-<li><a class="reference internal" href="#id11">練習問題 1: 教師あり学習（回帰・分類）と教師なし学習の判別</a></li>
-<li><a class="reference internal" href="#id12">練習問題 2: 線形回帰式の読み取りと予測計算</a></li>
-<li><a class="reference internal" href="#id13">練習問題 3: 過学習（オーバーフィッティング）の要因と対策</a></li>
+<li><a class="reference internal" href="#id12">実践：scikit-learnでの重回帰モデル構築</a></li>
+<li><a class="reference internal" href="#id13">特徴量エンジニアリング（文字データの数値化）の基礎</a></li>
+<li><a class="reference internal" href="#id14">📝 練習問題（5問）</a><ul>
+<li><a class="reference internal" href="#id15">練習問題 1: 教師あり学習（回帰・分類）と教師なし学習の判別</a></li>
+<li><a class="reference internal" href="#id16">練習問題 2: 線形回帰式の読み取りと予測計算</a></li>
+<li><a class="reference internal" href="#id17">練習問題 3: 過学習（オーバーフィッティング）の要因と対策</a></li>
 <li><a class="reference internal" href="#train-test-split">練習問題 4: <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> の引数の理解</a></li>
-<li><a class="reference internal" href="#id14">練習問題 5: 重回帰における「多重共線性（マルチコ）」の回避</a></li>
+<li><a class="reference internal" href="#id18">練習問題 5: 重回帰における「多重共線性（マルチコ）」の回避</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id15">🌟 レベルアップするおすすめコード</a></li>
-<li><a class="reference internal" href="#id16">💻 演習演習（5問）</a><ul>
-<li><a class="reference internal" href="#id17">演習 1: 広告投資による売上予測（単回帰モデルの構築）</a></li>
-<li><a class="reference internal" href="#id18">演習 2: 複数ヒントによる売上予測（重回帰モデルの構築）</a></li>
+<li><a class="reference internal" href="#id19">🌟 レベルアップするおすすめコード</a></li>
+<li><a class="reference internal" href="#id20">💻 演習演習（5問）</a><ul>
+<li><a class="reference internal" href="#id21">演習 1: 広告投資による売上予測（単回帰モデルの構築）</a></li>
+<li><a class="reference internal" href="#id22">演習 2: 複数ヒントによる売上予測（重回帰モデルの構築）</a></li>
 <li><a class="reference internal" href="#ai-mae">演習 3: 自作AIの採点と予測ズレ（MAE）の測定</a></li>
-<li><a class="reference internal" href="#id19">演習 4: 文字データのダミー変数化と売上予測</a></li>
-<li><a class="reference internal" href="#id20">演習 5: 特徴量の標準化と重回帰パイプライン</a></li>
+<li><a class="reference internal" href="#id23">演習 4: 文字データのダミー変数化と売上予測</a></li>
+<li><a class="reference internal" href="#id24">演習 5: 特徴量の標準化と重回帰パイプライン</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id21">📚 まとめ</a></li>
+<li><a class="reference internal" href="#id25">📚 まとめ</a></li>
 </ul>
 </li>
 </ul>

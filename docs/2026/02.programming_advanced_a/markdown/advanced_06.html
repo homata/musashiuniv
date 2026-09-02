@@ -303,8 +303,7 @@
 <li class="toctree-l3"><a class="reference internal" href="advanced_08.html">第8回 地理空間データの活用1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_09.html">第9回 地理空間データの活用2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_10.html">第10回 PythonとAI (scikit-learn) 1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_10.html#fit">ステップ 2: モデルの学習（.fit()）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_11.html">第11回 PythonとAI(scikit-learn)2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced_11.html">第11回 PythonとAI(scikit-learn) 2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_13.html">第13回 総合演習</a></li>
 </ul>
@@ -979,7 +978,10 @@ streamlit<span class="w"> </span>run<span class="w"> </span>app_uploader.py<span
 <span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><a href="https://raw.githubusercontent.com/homata/musashiuniv/master/data/cafe_sales_analytics_data.csv" download="cafe_sales_analytics_data.csv">サンプルファイル: cafe_sales_analytics_data.csv</a></p>
+<p>サンプルファイル: cafe_sales_analytics_data.csv</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">wget</span> <span class="o">-</span><span class="n">P</span> <span class="o">.</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">homata</span><span class="o">/</span><span class="n">musashiuniv</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cafe_sales_analytics_data</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
 <p>このコードを実行すると、アプリを起動した直後（まだユーザーがファイルを1枚もアップロードしていない状態）に、画面に真っ赤な文字で <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> や <code class="docutils literal notranslate"><span class="pre">AttributeError</span></code> などの大パニックエラーが表示され、アプリが正常に動作しません。</p>
 <ol class="arabic simple">
 <li><p>なぜ、ファイルを選ぶ前の段階でこのようなエラーが発生してしまうのでしょうか？</p></li>
@@ -1462,7 +1464,7 @@ streamlit<span class="w"> </span>run<span class="w"> </span>&lt;アプリ名&gt;
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-09-02</div>
+              Last updated on 2026-09-03</div>
           </div>
           <div class="right-details">
             

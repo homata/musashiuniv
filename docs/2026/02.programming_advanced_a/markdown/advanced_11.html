@@ -3,21 +3,21 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="第11回 PythonとAI(scikit-learn)2" />
+<meta property="og:title" content="第11回 PythonとAI(scikit-learn) 2" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="2026/02.programming_advanced_a/markdown/advanced_11.html" />
 <meta property="og:site_name" content="musashiuniv" />
 <meta property="og:description" content="分類モデルとクラスタリング 🎯 到達目標: 「回帰（数値を当てる）」 と 「分類（グループを当てる）」 の違いを、実例を交えて説明できる。, 決定木（Decision Tree） アルゴリズムが、データを最もきれいに2分割する「Yes/Noの質問」を自動で組み立てていく仕組みを直感的に理解できる。, 単純な「正解率（Accuracy）」だけを信じる危険性を理解し、ビジネスの目的に応じて 「適..." />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/None" />
+<meta property="og:image" content="/_images/social_previews/summary_2026_02.programming_advanced_a_markdown_advanced_11_da8c2984.png" />
 <meta property="og:image:alt" content="分類モデルとクラスタリング 🎯 到達目標: 「回帰（数値を当てる）」 と 「分類（グループを当てる）」 の違いを、実例を交えて説明できる。, 決定木（Decision Tree） アルゴリズムが、データを最もきれいに2分割する「Yes/Noの質問」を自動で組み立てていく仕組みを直感的に理解できる。, 単純な「正解..." />
 <meta name="description" content="分類モデルとクラスタリング 🎯 到達目標: 「回帰（数値を当てる）」 と 「分類（グループを当てる）」 の違いを、実例を交えて説明できる。, 決定木（Decision Tree） アルゴリズムが、データを最もきれいに2分割する「Yes/Noの質問」を自動で組み立てていく仕組みを直感的に理解できる。, 単純な「正解率（Accuracy）」だけを信じる危険性を理解し、ビジネスの目的に応じて 「適..." />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="検索" href="../../../search.html" /><link rel="next" title="第12回 Pythonとバイブコーディング（Vibe Coding）" href="advanced_12.html" /><link rel="prev" title="第10回 PythonとAI (scikit-learn) 1" href="advanced_10.html" />
 
     <!-- Generated with Sphinx 8.2.0 and Furo 2024.08.06 -->
-        <title>第11回 PythonとAI(scikit-learn)2 - Pythonプログラミング入門</title>
+        <title>第11回 PythonとAI(scikit-learn) 2 - Pythonプログラミング入門</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=949a1ff5" />
@@ -303,7 +303,7 @@
 <li class="toctree-l3"><a class="reference internal" href="advanced_08.html">第8回 地理空間データの活用1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_09.html">第9回 地理空間データの活用2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_10.html">第10回 PythonとAI (scikit-learn) 1</a></li>
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">第11回 PythonとAI(scikit-learn)2</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">第11回 PythonとAI(scikit-learn) 2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_12.html">第12回 Pythonとバイブコーディング（Vibe Coding）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="advanced_13.html">第13回 総合演習</a></li>
 </ul>
@@ -359,7 +359,7 @@
         </div>
         <article role="main" id="furo-main-content">
           <section class="tex2jax_ignore mathjax_ignore" id="pythonai-scikit-learn-2">
-<h1>第11回 PythonとAI(scikit-learn)2<a class="headerlink" href="#pythonai-scikit-learn-2" title="Link to this heading">¶</a></h1>
+<h1>第11回 PythonとAI(scikit-learn) 2<a class="headerlink" href="#pythonai-scikit-learn-2" title="Link to this heading">¶</a></h1>
 <p>分類モデルとクラスタリング</p>
 <hr class="docutils" />
 <section id="id1">
@@ -630,10 +630,89 @@ AIが「データを最もきれいに2分割できる最高の最初の質問�
 それとも優良顧客の流出を食い止めるのに向いているか？」を考えることが大切です。</p>
 </section>
 </section>
-</section>
 <hr class="docutils" />
 <section id="id8">
-<h2>教師なし学習「クラスタリング」の衝撃<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+<h3>分類問題における正解・不正解のパターン<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p>分類問題における実測値と予測値の関係性は以下のマトリクスで表現できます。</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">正（実測）</th>
+<th style="text-align: left;">負（実測）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">正（予測）</td>
+<td style="text-align: left;">TP</td>
+<td style="text-align: left;">FP</td>
+</tr>
+<tr>
+<td style="text-align: left;">負（予測）</td>
+<td style="text-align: left;">FN</td>
+<td style="text-align: left;">TN</td>
+</tr>
+</tbody>
+</table>
+<!--
+| 混同行列    |  実際            |...              | ...             |
+| ...        |                  | 陽性 (Positive) |  陰性 (Negative) |
+|:-----------|:-----------------|:---------------|:-----------------|
+| モデルの予測 | 陽性 (Positive) | TP              | FP               |
+| ...        | 陰性 (Negative)  | FN             | TN                |
+-->
+<p>モデルが正しく予測したパターン → 頭にT(True)がつく</p>
+<ul class="simple">
+<li><p>TP(True Positive)：実測値と予測値の両方が正であったもの</p></li>
+<li><p>TN(Ture Negative)：実測値と予測値の両方が負であったもの</p></li>
+</ul>
+<p>モデルが間違って予測したパターン → 頭にF(False)がつく</p>
+<ul class="simple">
+<li><p>FP(False Positive)：実測値が負なのに、誤って正と予測値したもの（誤検知、偽陽性）</p></li>
+<li><p>FN(False Negative)：実測値が正なのに、誤って負と予測値したもの（偽陰性）</p></li>
+</ul>
+<p>どの数値を用いるかが評価指標を見るときのポイントになります。</p>
+<p><strong>Accuracy(正解率)</strong><br />
+読んで字のごとく、全体のうちどれだけ正解があるかだ。
+「予測がどれだけ正しかったか」を見る指標</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(TP + TN) / (TP + TN + FP + FN)
+=&gt;  予測が正しかった数 / 予測したデータ数
+</pre></div>
+</div>
+<p><strong>Precision(適合率）</strong><br />
+無駄打ちをなくすのが目標<br />
+Precisionは「正と予測したものが、どれだけ正しかったか」を見る指標</p>
+<p>英語でPreciseは精密な、という意味があることからも精度のように厳密に予測の性能を図ることができる。<br />
+再現率とはトレードオフの関係にある。</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>TP / (TP + FP)
+=&gt;  正と予測した中で実際に正であったものの数 / 正と予測したものの数
+</pre></div>
+</div>
+<p><strong>Recall(再現率)</strong>
+機会損失をなくすのが目標<br />
+Recallは「実際に正であったもののうち、どれだけ正と予測できたか」を見る指標</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>TP / (TP + FN)
+=&gt; 実際に正であったものの中で正と予測できた数 / 実際に正であったものの数
+</pre></div>
+</div>
+<p><strong>F値(F-measure/F1スコア)</strong>
+F値はPrecisionとRecallの調和平均<br />
+Recall(再現率)とPrecision(適合率)はトレードオフの関係にあることから、これらの調和平均をとって性能指標とすることが多い。
+これをF値(F-measure/F1スコア)と呼ぶ。</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>F1score = (2 x (適合率 x 再現率)) / (適合率 + 再現率)
+</pre></div>
+</div>
+<p><strong>参考</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://tech.ledge.co.jp/entry/metrics">分類問題の予測結果の評価指標（Accuracy, Precision, Recall, F値, AUC）について整理してみた</a></p></li>
+<li><p><a class="reference external" href="https://note.com/noa813/n/nef0692042cdf">【機械学習の初学者向け】F1スコアについて理解しよう！</a></p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id9">
+<h2>教師なし学習「クラスタリング」の衝撃<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
 </section>
 <section id="unsupervised-learning">
 <h2>教師なし学習（Unsupervised Learning）の役割<a class="headerlink" href="#unsupervised-learning" title="Link to this heading">¶</a></h2>
@@ -660,8 +739,8 @@ K-Meansの「K」とは、「データを何個のグループに分けたいか
 <p>K-Meansは、まるで学校の席替えでリーダーがクラスメイトを自分のグループに引き寄せるように、以下の4つのステップを高速で繰り返すことで、完璧なグループ分けを自動的に完成させます。</p>
 <section id="k-means4">
 <h3>K-Meansがグループを決める「4つのステップ」<a class="headerlink" href="#k-means4" title="Link to this heading">¶</a></h3>
-<section id="id9">
-<h4>ステップ 1：リーダー（重心）をランダムに配置する<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h4>
+<section id="id10">
+<h4>ステップ 1：リーダー（重心）をランダムに配置する<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h4>
 <p>あなたが「3つのグループに分けたい（K=3）」と命令すると、AIは真っ白なデータ空間の上に、3つの「リーダーのピン（重心：Centroid）」をランダムにグサッと立てます。</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  [ データの点々 ]
      *    *              * 
@@ -671,8 +750,8 @@ K-Meansの「K」とは、「データを何個のグループに分けたいか
 </pre></div>
 </div>
 </section>
-<section id="id10">
-<h4>ステップ 2：一番近いリーダーのグループに所属する（割り当て）<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h4>
+<section id="id11">
+<h4>ステップ 2：一番近いリーダーのグループに所属する（割り当て）<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h4>
 <p>すべてのデータの点々は、自分から一番距離が近いリーダーを見つけ、「私は赤グループに入ります」「僕は緑グループ！」と、自動的に所属を決めます。</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>     🔴   🔴             🔵 
         🔴               🔵 🔵
@@ -681,8 +760,8 @@ K-Meansの「K」とは、「データを何個のグループに分けたいか
 </pre></div>
 </div>
 </section>
-<section id="id11">
-<h4>ステップ 3：グループの中心地にリーダーが引っ越す（重心の再計算）<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h4>
+<section id="id12">
+<h4>ステップ 3：グループの中心地にリーダーが引っ越す（重心の再計算）<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
 <p>所属が決まったら、リーダーは「よし、みんなの真ん中の位置（平均値）を計算して、そこに私が引っ越そう！」と、メンバーの中心地へと移動します。これにより、リーダーの位置がブラッシュアップされます。</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>       *   *(新赤リーダー)   * 
         *                *(新青リーダー)*
@@ -691,8 +770,8 @@ K-Meansの「K」とは、「データを何個のグループに分けたいか
 </pre></div>
 </div>
 </section>
-<section id="id12">
-<h4>ステップ 4：リーダーが動かなくなるまで「2」と「3」を繰り返す！<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
+<section id="id13">
+<h4>ステップ 4：リーダーが動かなくなるまで「2」と「3」を繰り返す！<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h4>
 <p>リーダーが動いたので、もう一度ステップ2に戻り、データの点々は「あ、リーダーの位置が変わったから、私は今度は青グループの方が近いな」と所属を決め直します。
 このステップ2と3を何度も何度も繰り返すと、やがてリーダーが全く動かなくなります。ここで「クラスタリング完了」となります。</p>
 </section>
@@ -738,8 +817,8 @@ K-Meansの「K」とは、「データを何個のグループに分けたいか
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<section id="id13">
-<h3>K-Meansを動かす前の「標準化（スケーリング）」のルール<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<section id="id14">
+<h3>K-Meansを動かす前の「標準化（スケーリング）」のルール<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
 <p>クラスタリングを動かす前に、前回の重回帰の最後でも紹介した「標準化（データのスケールを整える）」を実行しなければなりません。</p>
 <p>なぜなら、K-Meansは点と点の「物理的な距離」を測ってグループ分けするからです。
 今回のデータを見ると、横軸の「来店回数」は高々 <code class="docutils literal notranslate"><span class="pre">1〜20</span></code> 程度の狭い範囲ですが、縦軸の「支払金額」は <code class="docutils literal notranslate"><span class="pre">300〜2500</span></code> という巨大な桁数の範囲を動きます。
@@ -824,10 +903,10 @@ Kが「3」の部分を境目にして、それ以降（4, 5, 6）は傾きが�
 </section>
 </section>
 <hr class="docutils" />
-<section id="id14">
-<h2>練習問題（5問）<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
 <section id="id15">
-<h3>練習問題 1: 「回帰」と「分類」の仕分け（理論）<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<h2>練習問題（5問）<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
+<section id="id16">
+<h3>練習問題 1: 「回帰」と「分類」の仕分け（理論）<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
 <p>以下のデータ予測タスクのうち、解くべき問題が「分類（Classification）」であるものを「すべて」選んでください。</p>
 <ol class="arabic simple">
 <li><p>各顧客が「今月の新商品を注文する（1）か、しない（0）か」を予測する。</p></li>
@@ -849,8 +928,8 @@ Kが「3」の部分を境目にして、それ以降（4, 5, 6）は傾きが�
 </details>
 </section>
 <hr class="docutils" />
-<section id="id16">
-<h3>練習問題 2: 正解率（Accuracy）の甘い罠（理論）<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<section id="id17">
+<h3>練習問題 2: 正解率（Accuracy）の甘い罠（理論）<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
 <p>あなたはカフェの会員登録アプリで「退会しそうな人を事前に発見して引き止めるAI」を構築しました。
 このカフェの会員の退会率は非常に低く、年間でわずか「0.5%（200人に1人）」しか退会しません。</p>
 <p>あなたが作った予測モデルの精度を測定したところ、「正解率（Accuracy）が 99.5%」という驚異的な数値が出ました。
@@ -874,8 +953,8 @@ Kが「3」の部分を境目にして、それ以降（4, 5, 6）は傾きが�
 </details>
 </section>
 <hr class="docutils" />
-<section id="id17">
-<h3>練習問題 3: 適合率と再現率、どっちを優先？（データリテラシー）<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<section id="id18">
+<h3>練習問題 3: 適合率と再現率、どっちを優先？（データリテラシー）<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
 <p>あなたが開発した「カフェのクレジットカードの不正利用を自動的に検知・ブロックするAIモデル」があるとします。
 この不正検知システムを実務で運用するにあたり、以下の2つのリスクを考えました。</p>
 <ul class="simple">
@@ -905,8 +984,8 @@ Kが「3」の部分を境目にして、それ以降（4, 5, 6）は傾きが�
 </details>
 </section>
 <hr class="docutils" />
-<section id="id18">
-<h3>練習問題 4: 教師あり学習と教師なし学習の決定的な違い（理論）<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<section id="id19">
+<h3>練習問題 4: 教師あり学習と教師なし学習の決定的な違い（理論）<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
 <p>データサイエンスのプロジェクトを進める上で、「教師あり学習」と「教師なし学習（クラスタリング）」の最も決定的なデータの持ち方の違い（何が存在し、何が存在しないか）を説明してください。</p>
 <details>
 <summary>👉 練習問題 4 の解答を見る</summary>
@@ -922,8 +1001,8 @@ Kが「3」の部分を境目にして、それ以降（4, 5, 6）は傾きが�
 </details>
 </section>
 <hr class="docutils" />
-<section id="id19">
-<h3>練習問題 5: K-Meansにおける「標準化」の必要性（理論）<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<section id="id20">
+<h3>練習問題 5: K-Meansにおける「標準化」の必要性（理論）<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
 <p>K-Means（K平均法）を動かす前に、データの各列のスケールを揃える「標準化（平均0、標準偏差1にする変換）」を行う必要があるのはなぜですか？
 「距離」というキーワードを必ず含めて説明してください。</p>
 <details>
@@ -940,10 +1019,10 @@ Kが「3」の部分を境目にして、それ以降（4, 5, 6）は傾きが�
 </section>
 </section>
 <hr class="docutils" />
-<section id="id20">
-<h2>💻 演習問題（5問）<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h2>
 <section id="id21">
-<h3>📋 演習の概要<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
+<h2>💻 演習問題（5問）<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h2>
+<section id="id22">
+<h3>📋 演習の概要<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>演習 1（決定木の学習）: 顧客アンケートから「新メニューのリピート意向」を予測する決定木AIモデルの構築（難易度：易）</p></li>
 <li><p>演習 2（過学習の制御）: 決定木の最大深さ（<code class="docutils literal notranslate"><span class="pre">max_depth</span></code>）を変更し、テストデータの精度変化をスコアリングする過学習制御実験（難易度：中）</p></li>
@@ -953,8 +1032,8 @@ Kが「3」の部分を境目にして、それ以降（4, 5, 6）は傾きが�
 </ul>
 </section>
 <hr class="docutils" />
-<section id="id22">
-<h3>演習 1: 顧客アンケートから「リピート意向」を予測する決定木分類器の作成<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
+<section id="id23">
+<h3>演習 1: 顧客アンケートから「リピート意向」を予測する決定木分類器の作成<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h3>
 <p>ここに、カフェで新しく発売した「特製アサイーボウル」を注文した顧客50人のアンケート結果があります。
 説明変数（X）として「年齢」「評価（1〜5の5段階評価）」の2つを用い、目的変数（y）として「リピート意向（1: また買う、0: もう買わない）」を予測する決定木モデルを作成してください。</p>
 <ul class="simple">
@@ -1080,8 +1159,8 @@ Kが「3」の部分を境目にして、それ以降（4, 5, 6）は傾きが�
 </details>
 </section>
 <hr class="docutils" />
-<section id="id23">
-<h3>演習 3: 分類成績表（混同行列、適合率、再現率）の一括算出<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h3>
+<section id="id24">
+<h3>演習 3: 分類成績表（混同行列、適合率、再現率）の一括算出<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
 <p>あなたが作成したAIモデルの予測精度をより正確に測定するため、演習1で作成した「深さ制限あり（max_depth=2）のモデル」の予測結果（<code class="docutils literal notranslate"><span class="pre">y_pred_survey</span></code>）を使い、以下の評価指標をすべて計算して表示するプログラムを完成させてください。</p>
 <ul class="simple">
 <li><p>算出するもの:</p>
@@ -1140,8 +1219,8 @@ Kが「3」の部分を境目にして、それ以降（4, 5, 6）は傾きが�
 </details>
 </section>
 <hr class="docutils" />
-<section id="id24">
-<h3>演習 4: K-Means を使った「滞在時間と客単価」による未ラベル顧客グループ分け<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
+<section id="id25">
+<h3>演習 4: K-Means を使った「滞在時間と客単価」による未ラベル顧客グループ分け<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h3>
 <p>ここに、正解ラベル（答え）が全く付いていない、カフェの顧客120名分のデータフレーム <code class="docutils literal notranslate"><span class="pre">df_cafe_unlabeled</span></code> があります。
 記録されている特徴量は、お客様の「滞在時間（分）」と「年間支払総額（円）」の2つです。</p>
 <p>K-Meansを使って、この120名のお客様を「4つのグループ（n_clusters=4）」に自動的にセグメンテーション（グループ分け）してください。</p>
@@ -1211,8 +1290,8 @@ Kが「3」の部分を境目にして、それ以降（4, 5, 6）は傾きが�
 </details>
 </section>
 <hr class="docutils" />
-<section id="id25">
-<h3>演習 5: エルボー法（Elbow Method）による最適なグループ数の科学的探索<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h3>
+<section id="id26">
+<h3>演習 5: エルボー法（Elbow Method）による最適なグループ数の科学的探索<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h3>
 <p>K-Meansで最も頭を悩ませる「最適なグループ数（K）の数」を決定するために、forループと <code class="docutils literal notranslate"><span class="pre">inertia_</span></code>（グループ内の歪み・ばらつき合計）を組み合わせた「エルボー図」を自力で描画する、応用レベルのプログラムを作成してください。</p>
 <ul class="simple">
 <li><p>条件:</p>
@@ -1279,8 +1358,8 @@ Kが「3」の部分を境目にして、それ以降（4, 5, 6）は傾きが�
 </details>
 </section>
 </section>
-<section id="id26">
-<h2>📚 まとめ<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h2>
+<section id="id27">
+<h2>📚 まとめ<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h2>
 <ol class="arabic simple">
 <li><p>「回帰（数値を当てる）」 と 「分類（グループを当てる）」 の違いがある。</p></li>
 <li><p>決定木（Decision Tree） アルゴリズムが、データを最もきれいに2分割する。</p></li>
@@ -1345,7 +1424,7 @@ Kが「3」の部分を境目にして、それ以降（4, 5, 6）は傾きが�
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">第11回 PythonとAI(scikit-learn)2</a><ul>
+<li><a class="reference internal" href="#">第11回 PythonとAI(scikit-learn) 2</a><ul>
 <li><a class="reference internal" href="#id1">🎯 到達目標</a></li>
 <li><a class="reference internal" href="#google-colab">練習問題のGoogle Colab起動</a></li>
 <li><a class="reference internal" href="#id2">用語説明</a></li>
@@ -1367,44 +1446,45 @@ Kが「3」の部分を境目にして、それ以降（4, 5, 6）は傾きが�
 <li><a class="reference internal" href="#recall">2. 再現率 (Recall) ＝ 「見落としを減らしたい！」</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#id8">分類問題における正解・不正解のパターン</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id8">教師なし学習「クラスタリング」の衝撃</a></li>
+<li><a class="reference internal" href="#id9">教師なし学習「クラスタリング」の衝撃</a></li>
 <li><a class="reference internal" href="#unsupervised-learning">教師なし学習（Unsupervised Learning）の役割</a></li>
 <li><a class="reference internal" href="#k-means-k">K-Means（K平均法）の直感的なステップ</a><ul>
 <li><a class="reference internal" href="#k-means4">K-Meansがグループを決める「4つのステップ」</a><ul>
-<li><a class="reference internal" href="#id9">ステップ 1：リーダー（重心）をランダムに配置する</a></li>
-<li><a class="reference internal" href="#id10">ステップ 2：一番近いリーダーのグループに所属する（割り当て）</a></li>
-<li><a class="reference internal" href="#id11">ステップ 3：グループの中心地にリーダーが引っ越す（重心の再計算）</a></li>
-<li><a class="reference internal" href="#id12">ステップ 4：リーダーが動かなくなるまで「2」と「3」を繰り返す！</a></li>
+<li><a class="reference internal" href="#id10">ステップ 1：リーダー（重心）をランダムに配置する</a></li>
+<li><a class="reference internal" href="#id11">ステップ 2：一番近いリーダーのグループに所属する（割り当て）</a></li>
+<li><a class="reference internal" href="#id12">ステップ 3：グループの中心地にリーダーが引っ越す（重心の再計算）</a></li>
+<li><a class="reference internal" href="#id13">ステップ 4：リーダーが動かなくなるまで「2」と「3」を繰り返す！</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a class="reference internal" href="#k-means">K-Meansの実践ハンズオンと「エルボー法」</a><ul>
-<li><a class="reference internal" href="#id13">K-Meansを動かす前の「標準化（スケーリング）」のルール</a></li>
+<li><a class="reference internal" href="#id14">K-Meansを動かす前の「標準化（スケーリング）」のルール</a></li>
 <li><a class="reference internal" href="#ai">AIが色付けした顧客セグメントの可視化</a></li>
 <li><a class="reference internal" href="#elbow-method">グループ数はいくつに設定すればいいの？「エルボー法（Elbow Method）」</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id14">練習問題（5問）</a><ul>
-<li><a class="reference internal" href="#id15">練習問題 1: 「回帰」と「分類」の仕分け（理論）</a></li>
-<li><a class="reference internal" href="#id16">練習問題 2: 正解率（Accuracy）の甘い罠（理論）</a></li>
-<li><a class="reference internal" href="#id17">練習問題 3: 適合率と再現率、どっちを優先？（データリテラシー）</a></li>
-<li><a class="reference internal" href="#id18">練習問題 4: 教師あり学習と教師なし学習の決定的な違い（理論）</a></li>
-<li><a class="reference internal" href="#id19">練習問題 5: K-Meansにおける「標準化」の必要性（理論）</a></li>
+<li><a class="reference internal" href="#id15">練習問題（5問）</a><ul>
+<li><a class="reference internal" href="#id16">練習問題 1: 「回帰」と「分類」の仕分け（理論）</a></li>
+<li><a class="reference internal" href="#id17">練習問題 2: 正解率（Accuracy）の甘い罠（理論）</a></li>
+<li><a class="reference internal" href="#id18">練習問題 3: 適合率と再現率、どっちを優先？（データリテラシー）</a></li>
+<li><a class="reference internal" href="#id19">練習問題 4: 教師あり学習と教師なし学習の決定的な違い（理論）</a></li>
+<li><a class="reference internal" href="#id20">練習問題 5: K-Meansにおける「標準化」の必要性（理論）</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id20">💻 演習問題（5問）</a><ul>
-<li><a class="reference internal" href="#id21">📋 演習の概要</a></li>
-<li><a class="reference internal" href="#id22">演習 1: 顧客アンケートから「リピート意向」を予測する決定木分類器の作成</a></li>
+<li><a class="reference internal" href="#id21">💻 演習問題（5問）</a><ul>
+<li><a class="reference internal" href="#id22">📋 演習の概要</a></li>
+<li><a class="reference internal" href="#id23">演習 1: 顧客アンケートから「リピート意向」を予測する決定木分類器の作成</a></li>
 <li><a class="reference internal" href="#max-depth">演習 2: 木の深さ（max_depth）の変更による過学習の制御実験</a></li>
-<li><a class="reference internal" href="#id23">演習 3: 分類成績表（混同行列、適合率、再現率）の一括算出</a></li>
-<li><a class="reference internal" href="#id24">演習 4: K-Means を使った「滞在時間と客単価」による未ラベル顧客グループ分け</a></li>
-<li><a class="reference internal" href="#id25">演習 5: エルボー法（Elbow Method）による最適なグループ数の科学的探索</a></li>
+<li><a class="reference internal" href="#id24">演習 3: 分類成績表（混同行列、適合率、再現率）の一括算出</a></li>
+<li><a class="reference internal" href="#id25">演習 4: K-Means を使った「滞在時間と客単価」による未ラベル顧客グループ分け</a></li>
+<li><a class="reference internal" href="#id26">演習 5: エルボー法（Elbow Method）による最適なグループ数の科学的探索</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id26">📚 まとめ</a></li>
+<li><a class="reference internal" href="#id27">📚 まとめ</a></li>
 </ul>
 </li>
 </ul>
