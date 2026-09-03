@@ -467,7 +467,7 @@ from sklearn.metrics import r2_score
 # ダミーの過去の客数(X)と1日の売上高(y)
 np.random.seed(42)
 X = np.random.randint(40, 220, (100, 1)) # 客数
-y = X * 2300 + np.random.normal(0, 15000, 100) # 売上
+y = X * 2300 + np.random.normal(0, 15000, 100).reshape(-1, 1) # 売上
 
 # TODO: 1. データを「学習用80%」「テスト用20%」に分割する（random_state=42を指定してください）
 X_train, X_test, y_train, y_test = 

@@ -10,7 +10,7 @@
 <meta property="og:description" content="コード内の# TODO: と書かれた部分を適切に書き換え、指示された通りの結果を出力するプログラムを完成させてください。 📝 試験問題（全10問）: 【テーマ1：データ前処理とデータ加工】（問1〜問3）: 📊 問1: Pandasでのデータ結合(merge)と欠損値補完: カフェの「1日の注文履歴（ orders_df ）」と「顧客マスタ（ customers_df ）」があります。 ord..." />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="/_images/social_previews/summary_2026_02.programming_advanced_a_markdown_advanced_14_530b0f1f.png" />
+<meta property="og:image" content="/None" />
 <meta property="og:image:alt" content="コード内の# TODO: と書かれた部分を適切に書き換え、指示された通りの結果を出力するプログラムを完成させてください。 📝 試験問題（全10問）: 【テーマ1：データ前処理とデータ加工】（問1〜問3）: 📊 問1: Pandasでのデータ結合(merge)と欠損値補完: カフェの「1日の注文履歴（ orders..." />
 <meta name="description" content="コード内の# TODO: と書かれた部分を適切に書き換え、指示された通りの結果を出力するプログラムを完成させてください。 📝 試験問題（全10問）: 【テーマ1：データ前処理とデータ加工】（問1〜問3）: 📊 問1: Pandasでのデータ結合(merge)と欠損値補完: カフェの「1日の注文履歴（ orders_df ）」と「顧客マスタ（ customers_df ）」があります。 ord..." />
 <meta name="twitter:card" content="summary_large_image" />
@@ -852,7 +852,7 @@
 <span class="c1"># ダミーの過去の客数(X)と1日の売上高(y)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="c1"># 客数</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">X</span> <span class="o">*</span> <span class="mi">2300</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15000</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># 売上</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">X</span> <span class="o">*</span> <span class="mi">2300</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15000</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># 売上</span>
 
 <span class="c1"># TODO: 1. データを「学習用80%」「テスト用20%」に分割する（random_state=42を指定してください）</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> 
@@ -1126,7 +1126,7 @@
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-09-02</div>
+              Last updated on 2026-09-03</div>
           </div>
           <div class="right-details">
             

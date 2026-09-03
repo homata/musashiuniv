@@ -917,7 +917,7 @@ Pandasで説明変数Xを切り出す際に、<code class="docutils literal notr
 <li><p>傾き「<code class="docutils literal notranslate"><span class="pre">4.2</span></code>」の意味：「最高気温が 1度 上がるごとに、アイスコーヒーの売上が平均して 4.2杯 増える」という関係性。</p></li>
 <li><p>30度の時の予測杯数：71杯</p>
 <ul>
-<li><p><em>計算式</em>: (y = 4.2 \times 30 - 55.0 = 126.0 - 55.0 = 71.0)（杯）</p></li>
+<li><p><em>計算式</em>: (y = 4.2 * 30 - 55.0 = 126.0 - 55.0 = 71.0)（杯）</p></li>
 </ul>
 </li>
 </ol>
@@ -1014,11 +1014,10 @@ Pandasで説明変数Xを切り出す際に、<code class="docutils literal notr
 </section>
 <hr class="docutils" />
 <section id="id19">
-<h2>🌟 レベルアップするおすすめコード<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h2>
+<h2>レベルアップするおすすめコード<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h2>
 <p>予測に使うヒント（説明変数）を2つに増やし、さらに今回の文字データ数値化を組み込んだ「重回帰分析の完全パイプライン」のデモです。
 「気温」に加えて、「曜日（平日／土日）」という文字データをダミー変数化し、これらを組み合わせて売上を完璧に予測する流れのコードです</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">コードセル</span> <span class="o">--&gt;</span>
-<span class="c1"># 文字と数字を組み合わせた「高度な重回帰分析」のデモ</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 文字と数字を組み合わせた「高度な重回帰分析」のデモ</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
@@ -1472,7 +1471,7 @@ Pandasで説明変数Xを切り出す際に、<code class="docutils literal notr
 <li><a class="reference internal" href="#id18">練習問題 5: 重回帰における「多重共線性（マルチコ）」の回避</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id19">🌟 レベルアップするおすすめコード</a></li>
+<li><a class="reference internal" href="#id19">レベルアップするおすすめコード</a></li>
 <li><a class="reference internal" href="#id20">💻 演習演習（5問）</a><ul>
 <li><a class="reference internal" href="#id21">演習 1: 広告投資による売上予測（単回帰モデルの構築）</a></li>
 <li><a class="reference internal" href="#id22">演習 2: 複数ヒントによる売上予測（重回帰モデルの構築）</a></li>
